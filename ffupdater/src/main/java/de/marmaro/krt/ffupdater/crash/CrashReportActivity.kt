@@ -26,11 +26,16 @@ import android.widget.TextView
 import androidx.annotation.Keep
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
 import de.marmaro.krt.ffupdater.BuildConfig.BUILD_TYPE
 import de.marmaro.krt.ffupdater.BuildConfig.VERSION_CODE
 import de.marmaro.krt.ffupdater.BuildConfig.VERSION_NAME
 import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.entity.InstallationStatus.INSTALLED
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @Keep
 class CrashReportActivity : AppCompatActivity() {
@@ -54,7 +59,9 @@ class CrashReportActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.crash_report__exception_logs).text = logs
 
         findViewById<Button>(R.id.crash_report__copy_error_message_to_clipboard_button).setOnClickListener {
-            copyErrorMessageToClipboard()
+            lifecycleScope.launch(Dispatchers.Main) {
+                copyErrorMessageToClipboard()
+            }
         }
         findViewById<Button>(R.id.crash_report__got_to_notabug_org_button).setOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW, NOTABUG_URI))
@@ -72,14 +79,19 @@ class CrashReportActivity : AppCompatActivity() {
         return true
     }
 
-    private fun copyErrorMessageToClipboard() {
+    private suspend fun copyErrorMessageToClipboard() {
         val clipboardManager = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
         val clip = ClipData.newPlainText("FFUpdater crash report", getCrashReport())
         clipboardManager.setPrimaryClip(clip)
         showBriefMessage(R.string.crash_report__report_is_copied_to_clipboard)
     }
 
-    private fun getCrashReport(): String {
+    private suspend fun getCrashReport(): String {
+        val origin = if (App.FFUPDATER.findImpl().isInstalled(applicationContext) == INSTALLED) {
+            "Github"
+        } else {
+            "F-Droid/other"
+        }
         return """
             |Stacktrace:
             |```
@@ -92,7 +104,7 @@ class CrashReportActivity : AppCompatActivity() {
             |Device information:
             || Key | Value |
             || --- | --- |
-            || FFUpdater version | $VERSION_NAME ($VERSION_CODE) $BUILD_TYPE |
+            || FFUpdater version | $VERSION_NAME ($VERSION_CODE) $BUILD_TYPE $origin |
             || Device | $MODEL ($PRODUCT, $DEVICE, $BOARD) |
             || Manufacturer | $BRAND ($MANUFACTURER) | 
             || Supported ABIs | ${SUPPORTED_ABIS.joinToString()} |
