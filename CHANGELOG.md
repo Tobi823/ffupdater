@@ -1,3 +1,8 @@
+# 2023-07-?? Release 78.1.0 (149)
+
+* Add automatic check if the background update check is regularly executed
+* Improve handling of errors
+
 # 2023-07-14 Release 78.0.6 (148)
 
 * Fix "FFUpdater crashing after downloading any apk/when trying to install the apk" (Tobi823/ffupdater#438)
