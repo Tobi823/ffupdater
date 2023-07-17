@@ -9,8 +9,6 @@ import de.marmaro.krt.ffupdater.installer.AppInstaller
 import de.marmaro.krt.ffupdater.installer.entity.InstallResult
 import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
 import de.marmaro.krt.ffupdater.security.FingerprintValidator
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import java.io.File
 
 @Keep
@@ -19,9 +17,7 @@ abstract class AbstractAppInstaller(
 ) : AppInstaller {
 
     override suspend fun startInstallation(context: Context, file: File): InstallResult {
-        return withContext(Dispatchers.IO) {
-            install2Internal(context, file)
-        }
+        return install2Internal(context, file)
     }
 
     @Throws(InstallationFailedException::class)

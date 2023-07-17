@@ -2,7 +2,9 @@ package de.marmaro.krt.ffupdater.app.impl.base
 
 import android.content.Context
 import android.os.Environment
+import android.util.Log
 import androidx.annotation.Keep
+import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
 import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.installer.exceptions.InvalidApkException
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
@@ -46,25 +48,31 @@ interface ApkDownloader : AppAttributes {
         return File(cacheFolder, "${getSanitizedPackageName()}_${getSanitizedVersion(latestVersion)}.apk")
     }
 
-    fun deleteFileCache(context: Context) {
-        getApkCacheFolder(context.applicationContext).listFiles()!!
-            .filter { it.name.startsWith(getSanitizedPackageName()) }
-            .filter { it.name.endsWith(".apk") }
-            .forEach { it.delete() }
+    suspend fun deleteFileCache(context: Context) {
+        withContext(Dispatchers.IO) {
+            Log.i(LOG_TAG, "delete file cache")
+            getApkCacheFolder(context.applicationContext).listFiles()!!
+                .filter { it.name.startsWith("${getSanitizedPackageName()}_") }
+                .filter { it.name.endsWith(".apk") }
+                .forEach { it.delete() }
+        }
     }
 
-    fun deleteFileCacheExceptLatest(context: Context, latestVersion: LatestVersion) {
-        val latestFile = getApkFile(context.applicationContext, latestVersion)
-        getApkCacheFolder(context.applicationContext).listFiles()!!
-            .filter { it != latestFile }
-            .filter { it.name.startsWith(getSanitizedPackageName()) }
-            .filter { it.name.endsWith(".apk") }
-            .forEach { it.delete() }
+    suspend fun deleteFileCacheExceptLatest(context: Context, latestVersion: LatestVersion) {
+        withContext(Dispatchers.IO) {
+            Log.i(LOG_TAG, "delete file cache except latest")
+            val latestFile = getApkFile(context.applicationContext, latestVersion)
+            getApkCacheFolder(context.applicationContext).listFiles()!!
+                .filter { it != latestFile }
+                .filter { it.name.startsWith("${getSanitizedPackageName()}_") }
+                .filter { it.name.endsWith(".apk") }
+                .forEach { it.delete() }
+        }
     }
 
     private fun getDownloadFile(context: Context): File {
         val cacheFolder = getApkCacheFolder(context.applicationContext)
-        return File(cacheFolder, "${getSanitizedPackageName()}.download")
+        return File(cacheFolder, "${getSanitizedPackageName()}_download.download")
     }
 
     private fun getSanitizedPackageName(): String {

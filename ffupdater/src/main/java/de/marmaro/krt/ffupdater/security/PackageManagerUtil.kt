@@ -13,6 +13,8 @@ import androidx.annotation.MainThread
 import androidx.annotation.RequiresApi
 import de.marmaro.krt.ffupdater.app.impl.AppBase
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import java.io.File
 import java.io.FileNotFoundException
 
@@ -22,35 +24,39 @@ object PackageManagerUtil {
     @Suppress("DEPRECATION")
     @MainThread
     @Throws(FileNotFoundException::class)
-    fun getPackageArchiveInfo(pm: PackageManager, path: String): Signature {
-        val file = File(path)
-        check(file.exists()) { "File '$path' does not exists." }
-        val signatures = mutableListOf<() -> Signature?>()
-        if (DeviceSdkTester.supportsAndroid13()) {
-            signatures.add { extractSignature(pm.getPackageArchiveInfo(path, getPackageInfoFlags())) }
+    suspend fun getPackageArchiveInfo(pm: PackageManager, path: String): Signature {
+        return withContext(Dispatchers.Default) {
+            val file = File(path)
+            check(file.exists()) { "File '$path' does not exists." }
+            val signatures = mutableListOf<() -> Signature?>()
+            if (DeviceSdkTester.supportsAndroid13()) {
+                signatures.add { extractSignature(pm.getPackageArchiveInfo(path, getPackageInfoFlags())) }
+            }
+            if (DeviceSdkTester.supportsAndroid9()) {
+                signatures.add { extractSignature(pm.getPackageArchiveInfo(path, GET_SIGNING_CERTIFICATES)) }
+            }
+            signatures.add { extractSignature(pm.getPackageArchiveInfo(path, GET_SIGNATURES)) }
+            signatures.firstNotNullOf { it() }
         }
-        if (DeviceSdkTester.supportsAndroid9()) {
-            signatures.add { extractSignature(pm.getPackageArchiveInfo(path, GET_SIGNING_CERTIFICATES)) }
-        }
-        signatures.add { extractSignature(pm.getPackageArchiveInfo(path, GET_SIGNATURES)) }
-        return signatures.firstNotNullOf { it() }
     }
 
     @Suppress("DEPRECATION")
     @SuppressLint("PackageManagerGetSignatures")
-    fun getInstalledAppInfo(pm: PackageManager, app: AppBase): Signature {
-        try {
-            val signatures = mutableListOf<() -> Signature?>()
-            if (DeviceSdkTester.supportsAndroid13()) {
-                signatures.add { extractSignature(pm.getPackageInfo(app.packageName, getPackageInfoFlags())) }
+    suspend fun getInstalledAppInfo(pm: PackageManager, app: AppBase): Signature {
+        return withContext(Dispatchers.Default) {
+            try {
+                val signatures = mutableListOf<() -> Signature?>()
+                if (DeviceSdkTester.supportsAndroid13()) {
+                    signatures.add { extractSignature(pm.getPackageInfo(app.packageName, getPackageInfoFlags())) }
+                }
+                if (DeviceSdkTester.supportsAndroid9()) {
+                    signatures.add { extractSignature(pm.getPackageInfo(app.packageName, GET_SIGNING_CERTIFICATES)) }
+                }
+                signatures.add { extractSignature(pm.getPackageInfo(app.packageName, GET_SIGNATURES)) }
+                signatures.firstNotNullOf { it() }
+            } catch (e: PackageManager.NameNotFoundException) {
+                throw RuntimeException("app.packageName is not whitelisted in AndroidManifest.xml", e)
             }
-            if (DeviceSdkTester.supportsAndroid9()) {
-                signatures.add { extractSignature(pm.getPackageInfo(app.packageName, GET_SIGNING_CERTIFICATES)) }
-            }
-            signatures.add { extractSignature(pm.getPackageInfo(app.packageName, GET_SIGNATURES)) }
-            return signatures.firstNotNullOf { it() }
-        } catch (e: PackageManager.NameNotFoundException) {
-            throw RuntimeException("app.packageName is not whitelisted in AndroidManifest.xml", e)
         }
     }
 

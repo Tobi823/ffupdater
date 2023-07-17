@@ -126,8 +126,10 @@ class DownloadActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this)[InstallActivityViewModel::class.java]
         findViewById<Button>(R.id.install_activity__delete_cache_button).setOnClickListener {
-            app.findImpl().deleteFileCache(applicationContext)
-            hide(R.id.install_activity__delete_cache)
+            lifecycleScope.launch(Dispatchers.Main) {
+                app.findImpl().deleteFileCache(applicationContext)
+                hide(R.id.install_activity__delete_cache)
+            }
         }
         findViewById<Button>(R.id.install_activity__open_cache_folder_button).setOnClickListener {
             tryOpenDownloadFolderInFileManager()
@@ -155,11 +157,15 @@ class DownloadActivity : AppCompatActivity() {
             // next time
             if (viewModel.installationSuccess) {
                 if (ForegroundSettings.isDeleteUpdateIfInstallSuccessful) {
-                    appImpl.deleteFileCache(applicationContext)
+                    lifecycleScope.launch(Dispatchers.Main) {
+                        appImpl.deleteFileCache(applicationContext)
+                    }
                 }
             } else {
                 if (ForegroundSettings.isDeleteUpdateIfInstallFailed) {
-                    appImpl.deleteFileCache(applicationContext)
+                    lifecycleScope.launch(Dispatchers.Main) {
+                        appImpl.deleteFileCache(applicationContext)
+                    }
                 }
             }
             viewModel.clear()

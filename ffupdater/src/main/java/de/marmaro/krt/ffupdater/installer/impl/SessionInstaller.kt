@@ -51,7 +51,7 @@ class SessionInstaller(app: App, private val foreground: Boolean) : AbstractAppI
     @SuppressLint("UnspecifiedImmutableFlag")
     @MainThread
     private suspend fun install(context: Context, file: File) {
-        withContext(Dispatchers.Main) {
+        withContext(Dispatchers.Default) {
             val params = createSessionParams(context, file)
             val sessionId = try {
                 context.packageManager.packageInstaller.createSession(params)

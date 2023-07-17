@@ -6,6 +6,7 @@ import androidx.annotation.Keep
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.lifecycle.lifecycleScope
 import androidx.preference.EditTextPreference
 import androidx.preference.ListPreference
 import androidx.preference.MultiSelectListPreference
@@ -23,6 +24,8 @@ import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.settings.DataStoreHelper
 import de.marmaro.krt.ffupdater.settings.ForegroundSettings
 import de.marmaro.krt.ffupdater.settings.NetworkSettings.DnsProvider.CUSTOM_SERVER
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import rikka.shizuku.Shizuku
 
 
@@ -103,8 +106,10 @@ class SettingsActivity : AppCompatActivity() {
 
         private fun deleteFileCacheWhenChange32BitAppsPreference() {
             findSwitchPref("device__prefer_32bit_apks").setOnPreferenceChangeListener { _, _ ->
-                App.values().forEach {
-                    it.findImpl().deleteFileCache(requireContext())
+                lifecycleScope.launch(Dispatchers.Main) {
+                    App.values().forEach {
+                        it.findImpl().deleteFileCache(requireContext())
+                    }
                 }
                 true
             }
