@@ -37,7 +37,7 @@ object Iceraven : AppBase() {
     override val projectPage = "https://github.com/fork-maintainers/iceraven-browser"
     override val displayCategory = DisplayCategory.BASED_ON_FIREFOX
 
-    override fun getInstalledVersion(packageManager: PackageManager): String? {
+    override suspend fun getInstalledVersion(packageManager: PackageManager): String? {
         val installedVersion = super.getInstalledVersion(packageManager)
         return installedVersion?.replace("iceraven-", "")
     }

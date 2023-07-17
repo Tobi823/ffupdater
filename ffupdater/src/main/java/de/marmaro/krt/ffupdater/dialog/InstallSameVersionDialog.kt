@@ -4,7 +4,6 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
-import android.view.View
 import android.widget.TextView
 import androidx.annotation.Keep
 import androidx.fragment.app.DialogFragment
@@ -54,12 +53,6 @@ class InstallSameVersionDialog : DialogFragment() {
             val fragment = InstallSameVersionDialog()
             fragment.arguments = bundle
             return fragment
-        }
-
-        fun newInstanceOnClick(view: View, app: App, manager: FragmentManager) {
-            view.setOnClickListener {
-                newInstance(app).show(manager)
-            }
         }
     }
 }

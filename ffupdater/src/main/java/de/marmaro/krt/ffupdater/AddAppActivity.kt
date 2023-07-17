@@ -14,6 +14,7 @@ import androidx.annotation.Keep
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
@@ -35,6 +36,9 @@ import de.marmaro.krt.ffupdater.dialog.RunningDownloadsDialog
 import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.settings.ForegroundSettings
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 @Keep
 class AddAppActivity : AppCompatActivity() {
@@ -46,7 +50,9 @@ class AddAppActivity : AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(ForegroundSettings.themePreference)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        addAppsToUserInterface()
+        lifecycleScope.launch(Dispatchers.IO) {
+            addAppsToUserInterface()
+        }
     }
 
     override fun onResume() {
@@ -62,7 +68,7 @@ class AddAppActivity : AppCompatActivity() {
     }
 
     @UiThread
-    private fun addAppsToUserInterface() {
+    private suspend fun addAppsToUserInterface() {
         val installedApps = App.values()
             .map { it.findImpl() }
             .filter { it.installableByUser }
@@ -88,9 +94,11 @@ class AddAppActivity : AppCompatActivity() {
             items.addAll(categoryApps)
         }
 
-        val view = findViewById<RecyclerView>(R.id.add_app_activity__recycler_view)
-        view.adapter = AvailableAppsAdapter(items, this)
-        view.layoutManager = LinearLayoutManager(this)
+        withContext(Dispatchers.Main) {
+            val view = findViewById<RecyclerView>(R.id.add_app_activity__recycler_view)
+            view.adapter = AvailableAppsAdapter(items, this@AddAppActivity)
+            view.layoutManager = LinearLayoutManager(this@AddAppActivity)
+        }
     }
 
     companion object {

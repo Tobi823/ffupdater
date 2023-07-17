@@ -98,11 +98,13 @@ interface ApkDownloader : AppAttributes {
         processDownload(context.applicationContext, downloadFile, latestVersion)
     }
 
-    private fun checkDownloadFile(file: File, latestVersion: LatestVersion) {
-        if (!file.exists()) throw NetworkException("File was not downloaded: $file")
-        val expectedBytes = latestVersion.exactFileSizeBytesOfDownload
-        if (expectedBytes != null && expectedBytes != file.length()) {
-            throw NetworkException("Size of download should be $expectedBytes bytes, but it is ${file.length()} bytes.")
+    private suspend fun checkDownloadFile(file: File, latestVersion: LatestVersion) {
+        withContext(Dispatchers.IO) {
+            if (!file.exists()) throw NetworkException("File was not downloaded: $file")
+            val expectedBytes = latestVersion.exactFileSizeBytesOfDownload
+            if (expectedBytes != null && expectedBytes != file.length()) {
+                throw NetworkException("Size of download should be $expectedBytes bytes, but it is ${file.length()} bytes.")
+            }
         }
     }
 

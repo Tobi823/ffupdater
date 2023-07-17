@@ -25,12 +25,12 @@ interface InstalledVersionFetcher : AppAttributes {
     }
 
     @AnyThread
-    fun isInstalledWithoutFingerprintVerification(packageManager: PackageManager): Boolean {
+    suspend fun isInstalledWithoutFingerprintVerification(packageManager: PackageManager): Boolean {
         return PackageManagerUtil.isAppInstalled(packageManager, packageName)
     }
 
     @AnyThread
-    fun getInstalledVersion(packageManager: PackageManager): String? {
+    suspend fun getInstalledVersion(packageManager: PackageManager): String? {
         return PackageManagerUtil.getInstalledAppVersionName(packageManager, packageName)
     }
 

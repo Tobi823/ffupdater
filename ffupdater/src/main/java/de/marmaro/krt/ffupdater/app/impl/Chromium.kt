@@ -126,7 +126,7 @@ object Chromium : AppBase() {
         super.appWasInstalledCallback(context, available)
     }
 
-    override fun isInstalledAppOutdated(
+    override suspend fun isInstalledAppOutdated(
         context: Context,
         available: LatestVersion,
     ): Boolean {

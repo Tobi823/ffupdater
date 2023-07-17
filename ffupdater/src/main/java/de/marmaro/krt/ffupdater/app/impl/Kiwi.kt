@@ -76,7 +76,7 @@ object Kiwi : AppBase() {
         return abiString
     }
 
-    override fun isInstalledAppOutdated(
+    override suspend fun isInstalledAppOutdated(
         context: Context,
         available: LatestVersion,
     ): Boolean {

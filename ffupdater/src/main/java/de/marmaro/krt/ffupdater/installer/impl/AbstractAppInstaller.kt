@@ -5,6 +5,7 @@ import androidx.annotation.Keep
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.R.string.download_activity__downloaded_application_is_not_verified
 import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.impl.AppBase
 import de.marmaro.krt.ffupdater.installer.AppInstaller
 import de.marmaro.krt.ffupdater.installer.entity.InstallResult
 import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
@@ -23,23 +24,14 @@ abstract class AbstractAppInstaller(
     @Throws(InstallationFailedException::class)
     private suspend fun install2Internal(context: Context, file: File): InstallResult {
         val appImpl = app.findImpl()
-        val fileResult = try {
-            FingerprintValidator.checkApkFile(context.packageManager, file, appImpl)
-        } catch (e: Exception) {
-            val em = "Failed to validate the signature of the download."
-            throw InstallationFailedException("Can't validate the signature of the APK file.", e, -103, em)
-        }
-        val fileCertHash = fileResult.hexString
-        if (!fileResult.isValid) {
-            val message = "Downloaded application is NOT verified. Expected ${appImpl.signatureHash} but " +
-                    "was $fileCertHash."
-            val errorMessage = context.getString(download_activity__downloaded_application_is_not_verified)
-            throw InstallationFailedException(message, -100, errorMessage)
-        }
-
+        val fileCertHash = hasApkCorrectCertificate(context, file, appImpl)
         // in failure, this will throw InstallationFailedException
         executeInstallerSpecificLogic(context, file)
+        hasInstalledAppCorrectCertificate(context, appImpl, fileCertHash)
+        return InstallResult(fileCertHash)
+    }
 
+    private suspend fun hasInstalledAppCorrectCertificate(context: Context, appImpl: AppBase, fileCertHash: String) {
         val appResult = try {
             FingerprintValidator.checkInstalledApp(context.packageManager, appImpl)
         } catch (e: Exception) {
@@ -50,7 +42,23 @@ abstract class AbstractAppInstaller(
             val errorMessage = context.getString(R.string.installed_app_is_not_verified)
             throw InstallationFailedException("Installed app is NOT verified", -101, errorMessage)
         }
-        return InstallResult(fileCertHash)
+    }
+
+    private suspend fun hasApkCorrectCertificate(context: Context, file: File, appImpl: AppBase): String {
+        val fileResult = try {
+            FingerprintValidator.checkApkFile(context.packageManager, file, appImpl)
+        } catch (e: Exception) {
+            val em = "Failed to validate the signature of the download."
+            throw InstallationFailedException("Can't validate the signature of the APK file.", e, -103, em)
+        }
+        val fileCertHash = fileResult.hexString
+        if (!fileResult.isValid) {
+            val message = "Downloaded application is NOT verified. " +
+                    "Expected ${appImpl.signatureHash} but was $fileCertHash."
+            val errorMessage = context.getString(download_activity__downloaded_application_is_not_verified)
+            throw InstallationFailedException(message, -100, errorMessage)
+        }
+        return fileCertHash
     }
 
     protected abstract suspend fun executeInstallerSpecificLogic(context: Context, file: File)

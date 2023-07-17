@@ -37,7 +37,7 @@ object TorBrowserAlpha : AppBase() {
     override val projectPage = "https://www.torproject.org/download/alpha/"
     override val displayCategory = DisplayCategory.BASED_ON_FIREFOX
 
-    override fun getInstalledVersion(packageManager: PackageManager): String? {
+    override suspend fun getInstalledVersion(packageManager: PackageManager): String? {
         val rawVersion = super.getInstalledVersion(packageManager) ?: return null
         val rightPart = rawVersion.split(" ")[1]
         return rightPart.trim { it in listOf('(', ')') }

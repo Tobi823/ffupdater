@@ -43,10 +43,4 @@ class RequestInstallationPermissionDialog : DialogFragment() {
     fun show(manager: FragmentManager) {
         show(manager, "request_installation_permission_dialog")
     }
-
-    companion object {
-        fun newInstance(): InstallSameVersionDialog {
-            return InstallSameVersionDialog()
-        }
-    }
 }

@@ -92,21 +92,25 @@ object PackageManagerUtil {
         return signatures[0]
     }
 
-    fun getInstalledAppVersionName(pm: PackageManager, packageName: String): String? {
-        return try {
-            @Suppress("DEPRECATION")
-            pm.getPackageInfo(packageName, 0)?.versionName
-        } catch (e: PackageManager.NameNotFoundException) {
-            null
+    suspend fun getInstalledAppVersionName(pm: PackageManager, packageName: String): String? {
+        return withContext(Dispatchers.IO) {
+            try {
+                @Suppress("DEPRECATION")
+                pm.getPackageInfo(packageName, 0)?.versionName
+            } catch (e: PackageManager.NameNotFoundException) {
+                null
+            }
         }
     }
 
-    fun isAppInstalled(pm: PackageManager, packageName: String): Boolean {
-        return try {
-            pm.getPackageInfo(packageName, 0)
-            true
-        } catch (e: PackageManager.NameNotFoundException) {
-            false
+    suspend fun isAppInstalled(pm: PackageManager, packageName: String): Boolean {
+        return withContext(Dispatchers.IO) {
+            try {
+                pm.getPackageInfo(packageName, 0)
+                true
+            } catch (e: PackageManager.NameNotFoundException) {
+                false
+            }
         }
     }
 }

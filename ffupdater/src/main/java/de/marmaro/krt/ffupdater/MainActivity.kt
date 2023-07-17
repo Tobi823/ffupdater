@@ -30,6 +30,8 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.snackbar.Snackbar
 import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
+import de.marmaro.krt.ffupdater.R.string.crash_report__explain_text__download_activity_update_check
+import de.marmaro.krt.ffupdater.R.string.main_activity__app_was_signed_by_different_certificate
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.InstalledAppStatus
 import de.marmaro.krt.ffupdater.background.BackgroundUpdateChecker
@@ -325,72 +327,80 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun onBindViewHolder(view: AppHolder, position: Int) {
-            val app = elements[position]
-            val appImpl = app.findImpl()
-            val metadata = appAndUpdateStatus.getOrDefault(app, null)
-            val error = errors[app]
-            val fragmentManager = activity.supportFragmentManager
+            activity.lifecycleScope.launch(Dispatchers.Main) {
+                val app = elements[position]
+                val appImpl = app.findImpl()
+                val metadata = appAndUpdateStatus.getOrDefault(app, null)
+                val error = errors[app]
+                val fragmentManager = activity.supportFragmentManager
+                val hasDifferentSignature = appsWithWrongFingerprint.contains(app)
+                val hasError = (error != null)
+                val hideWarningButtons = ForegroundSettings.isHideWarningButtonForInstalledApps
+                val appHasWarning = appImpl.installationWarning == null
 
-            view.title.setText(appImpl.title)
-            view.icon.setImageResource(appImpl.icon)
+                view.title.setText(appImpl.title)
+                view.icon.setImageResource(appImpl.icon)
 
-            when {
-                appsWithWrongFingerprint.contains(app) -> onBindViewHolderWhenWrongFingerprint(view)
-                error != null -> onBindViewHolderWhenError(view, app, error)
-                else -> onBindViewHolderWhenNormal(view, app, metadata)
-            }
-
-            view.downloadButton.setOnClickListener {
-                activity.lifecycleScope.launch(Dispatchers.Main) {
-                    activity.installOrDownloadApp(app)
+                when {
+                    hasDifferentSignature -> showDifferentAppSignature(view)
+                    hasError -> showError(view, app, error!!)
+                    else -> showInstalledAndAvailableVersions(view, app, metadata)
                 }
-            }
 
-            val hideWarningButtons = ForegroundSettings.isHideWarningButtonForInstalledApps
-            when {
-                hideWarningButtons -> view.warningIcon.visibility = View.GONE
-                appImpl.installationWarning == null -> view.warningIcon.visibility = View.GONE
-                else -> AppWarningDialog.newInstanceOnClick(view.warningIcon, app, fragmentManager)
-            }
+                view.downloadButton.setOnClickListener {
+                    activity.lifecycleScope.launch(Dispatchers.Main) {
+                        activity.installOrDownloadApp(app)
+                    }
+                }
 
-            AppInfoDialog.newInstanceOnClick(view.infoButton, app, fragmentManager)
+                AppInfoDialog.newInstanceOnClick(view.infoButton, app, fragmentManager)
+                when {
+                    hideWarningButtons -> view.warningIcon.visibility = View.GONE
+                    appHasWarning -> view.warningIcon.visibility = View.GONE
+                    else -> AppWarningDialog.newInstanceOnClick(view.warningIcon, app, fragmentManager)
+                }
 
-            view.openProjectPageButton.setOnClickListener {
-                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(appImpl.projectPage))
-                activity.startActivity(browserIntent)
+                view.openProjectPageButton.setOnClickListener {
+                    val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(appImpl.projectPage))
+                    activity.startActivity(browserIntent)
+                }
             }
         }
 
-        private fun onBindViewHolderWhenWrongFingerprint(view: AppHolder) {
-            view.installedVersion.text =
-                activity.getString(R.string.main_activity__app_was_signed_by_different_certificate)
+        private fun showDifferentAppSignature(view: AppHolder) {
+            view.installedVersion.text = activity.getString(main_activity__app_was_signed_by_different_certificate)
             view.availableVersion.text = ""
             view.downloadButton.visibility = View.GONE
             view.availableVersion.visibility = View.GONE
             view.eolReason.visibility = View.GONE
         }
 
-        private fun onBindViewHolderWhenError(view: AppHolder, app: App, error: ExceptionWrapper) {
+        private suspend fun showError(view: AppHolder, app: App, error: ExceptionWrapper) {
             view.installedVersion.visibility = View.VISIBLE
             view.installedVersion.text = app.findImpl().getDisplayInstalledVersion(activity)
             view.availableVersion.visibility = View.VISIBLE
             view.availableVersion.setText(error.message)
-            if (error.exception != null) {
-                val throwableAndLogs = ThrowableAndLogs(error.exception, LogReader.readLogs())
-                view.availableVersion.setOnClickListener {
-                    val description =
-                        activity.getString(R.string.crash_report__explain_text__download_activity_update_check)
-                    val intent =
-                        CrashReportActivity.createIntent(activity.applicationContext, throwableAndLogs, description)
-                    activity.startActivity(intent)
-                }
-            }
+            error.exception?.let { showException(view, it) }
             view.downloadButton.setImageResource(R.drawable.ic_file_download_grey)
             view.eolReason.visibility = if (app.findImpl().isEol()) View.VISIBLE else View.GONE
             app.findImpl().eolReason?.let { view.eolReason.setText(it) }
         }
 
-        private fun onBindViewHolderWhenNormal(view: AppHolder, app: App, metadata: InstalledAppStatus?) {
+        private fun showException(view: AppHolder, exception: Exception) {
+            val throwableAndLogs = ThrowableAndLogs(exception, LogReader.readLogs())
+            view.availableVersion.setOnClickListener {
+                val description = activity.getString(crash_report__explain_text__download_activity_update_check)
+                val context = activity.applicationContext
+                val intent = CrashReportActivity.createIntent(context, throwableAndLogs, description)
+                activity.startActivity(intent)
+            }
+        }
+
+        private suspend fun showInstalledAndAvailableVersions(
+            view: AppHolder,
+            app: App,
+            metadata: InstalledAppStatus?,
+        ) {
             view.installedVersion.visibility = View.VISIBLE
             view.installedVersion.text = app.findImpl().getDisplayInstalledVersion(activity)
             view.availableVersion.visibility = View.VISIBLE

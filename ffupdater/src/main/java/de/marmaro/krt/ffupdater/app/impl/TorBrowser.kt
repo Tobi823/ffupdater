@@ -38,7 +38,7 @@ object TorBrowser : AppBase() {
     override val projectPage = "https://www.torproject.org/download/#android"
     override val displayCategory = DisplayCategory.BASED_ON_FIREFOX
 
-    override fun getInstalledVersion(packageManager: PackageManager): String? {
+    override suspend fun getInstalledVersion(packageManager: PackageManager): String? {
         val rawVersion = super.getInstalledVersion(packageManager) ?: return null
         return rawVersion.split(" ").last()
             .removePrefix("(")
