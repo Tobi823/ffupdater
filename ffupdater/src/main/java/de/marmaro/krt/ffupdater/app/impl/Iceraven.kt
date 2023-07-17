@@ -7,7 +7,7 @@ import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
+import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.BASED_ON_FIREFOX
 import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
@@ -35,7 +35,7 @@ object Iceraven : AppBase() {
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "9c0d22379f487b70a4f9f8bec0173cf91a1644f08f93385b5b782ce37660ba81"
     override val projectPage = "https://github.com/fork-maintainers/iceraven-browser"
-    override val displayCategory = DisplayCategory.BASED_ON_FIREFOX
+    override val displayCategory = listOf(BASED_ON_FIREFOX)
 
     override suspend fun getInstalledVersion(packageManager: PackageManager): String? {
         val installedVersion = super.getInstalledVersion(packageManager)

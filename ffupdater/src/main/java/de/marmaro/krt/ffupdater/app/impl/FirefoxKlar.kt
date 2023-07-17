@@ -6,7 +6,7 @@ import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
+import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.FROM_MOZILLA
 import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
@@ -34,7 +34,7 @@ object FirefoxKlar : AppBase() {
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "6203a473be36d64ee37f87fa500edbc79eab930610ab9b9fa4ca7d5c1f1b4ffc"
     override val projectPage = "https://github.com/mozilla-mobile/firefox-android"
-    override val displayCategory = DisplayCategory.FROM_MOZILLA
+    override val displayCategory = listOf(FROM_MOZILLA)
 
     @MainThread
     @Throws(NetworkException::class)

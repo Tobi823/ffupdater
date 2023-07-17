@@ -6,7 +6,7 @@ import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
+import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.BETTER_THAN_GOOGLE_CHROME
 import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
@@ -32,7 +32,7 @@ object DuckDuckGoAndroid : AppBase() {
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "bb7bb31c573c46a1da7fc5c528a6acf432108456feec50810c7f33694eb3d2d4"
     override val projectPage = "https://github.com/duckduckgo/Android"
-    override val displayCategory = DisplayCategory.BETTER_THAN_GOOGLE_CHROME
+    override val displayCategory = listOf(BETTER_THAN_GOOGLE_CHROME)
 
     @MainThread
     @Throws(NetworkException::class)

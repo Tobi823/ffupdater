@@ -8,7 +8,7 @@ import androidx.annotation.MainThread
 import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
+import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.BETTER_THAN_GOOGLE_CHROME
 import de.marmaro.krt.ffupdater.app.entity.InstalledAppStatus
 import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.device.ABI
@@ -38,7 +38,7 @@ object Kiwi : AppBase() {
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "829b930e919cd56c9a67617c312e3b425a38894b929e735c3d391d9c51b9e4c0"
     override val projectPage = "https://github.com/kiwibrowser/src.next"
-    override val displayCategory = DisplayCategory.BETTER_THAN_GOOGLE_CHROME
+    override val displayCategory = listOf(BETTER_THAN_GOOGLE_CHROME)
 
     @MainThread
     @Throws(NetworkException::class)

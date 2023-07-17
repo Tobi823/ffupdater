@@ -6,7 +6,8 @@ import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
+import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.BASED_ON_FIREFOX
+import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.GOOD_PRIVACY_BROWSER
 import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
@@ -15,6 +16,9 @@ import de.marmaro.krt.ffupdater.network.fdroid.FdroidConsumer
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 
+/**
+ * https://f-droid.org/packages/org.mozilla.fennec_fdroid/
+ */
 @Keep
 object FennecFdroid : AppBase() {
     override val app = App.FENNEC_FDROID
@@ -30,7 +34,7 @@ object FennecFdroid : AppBase() {
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "06665358efd8ba05be236a47a12cb0958d7d75dd939d77c2b31f5398537ebdc5"
     override val projectPage = "https://f-droid.org/packages/org.mozilla.fennec_fdroid/"
-    override val displayCategory = DisplayCategory.BASED_ON_FIREFOX
+    override val displayCategory = listOf(BASED_ON_FIREFOX, GOOD_PRIVACY_BROWSER)
 
     @MainThread
     @Throws(NetworkException::class)

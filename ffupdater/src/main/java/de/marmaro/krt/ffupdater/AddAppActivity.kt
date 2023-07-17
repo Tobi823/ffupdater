@@ -20,13 +20,14 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.google.android.material.snackbar.Snackbar
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.BASED_ON_FIREFOX
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.BETTER_THAN_GOOGLE_CHROME
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.EOL
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.FROM_MOZILLA
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.GOOD_PRIVACY_BROWSER
+import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.GOOD_SECURITY_BROWSER
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.OTHER
+import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.values
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.dialog.AppInfoDialog
@@ -77,11 +78,12 @@ class AddAppActivity : AppCompatActivity() {
 
         val items = mutableListOf<AvailableAppsAdapter.ItemWrapper>()
 
-        for (displayCategory in DisplayCategory.values()) {
+        for (displayCategory in values()) {
             val titleText = when (displayCategory) {
                 FROM_MOZILLA -> getString(R.string.add_app_activity__title_from_mozilla)
                 BASED_ON_FIREFOX -> getString(R.string.add_app_activity__title_based_on_firefox)
                 GOOD_PRIVACY_BROWSER -> getString(R.string.add_app_activity__title_good_privacy_browsers)
+                GOOD_SECURITY_BROWSER -> getString(R.string.add_app_activity__title_good_security_browsers)
                 BETTER_THAN_GOOGLE_CHROME -> getString(R.string.add_app_activity__title_better_than_google_chrome)
                 OTHER -> getString(R.string.add_app_activity__title_other_applications)
                 EOL -> getString(R.string.add_app_activity__title_end_of_live_browser)
@@ -89,7 +91,8 @@ class AddAppActivity : AppCompatActivity() {
             items.add(AvailableAppsAdapter.WrappedTitle(titleText))
 
             val categoryApps = installedApps
-                .filter { it.displayCategory == displayCategory }
+                .filter { displayCategory in it.displayCategory }
+                .filter { if (displayCategory == EOL) true else (EOL !in it.displayCategory) }
                 .map { AvailableAppsAdapter.WrappedApp(it.app) }
             items.addAll(categoryApps)
         }

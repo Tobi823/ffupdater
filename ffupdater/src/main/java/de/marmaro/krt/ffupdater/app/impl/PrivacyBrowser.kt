@@ -6,7 +6,7 @@ import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
+import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.GOOD_PRIVACY_BROWSER
 import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.fdroid.FdroidConsumer
@@ -30,7 +30,7 @@ object PrivacyBrowser : AppBase() {
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "f97614dc96964bea2e4fa66b24608a510a87b3b1e01ba68e0753c099133a8768"
     override val projectPage = "https://f-droid.org/en/packages/com.stoutner.privacybrowser.standard/"
-    override val displayCategory = DisplayCategory.BETTER_THAN_GOOGLE_CHROME
+    override val displayCategory = listOf(GOOD_PRIVACY_BROWSER)
 
     @MainThread
     @Throws(NetworkException::class)

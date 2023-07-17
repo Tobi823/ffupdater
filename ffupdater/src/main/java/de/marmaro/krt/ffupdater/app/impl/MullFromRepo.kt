@@ -6,7 +6,8 @@ import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
+import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.BASED_ON_FIREFOX
+import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.GOOD_PRIVACY_BROWSER
 import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
@@ -31,7 +32,7 @@ object MullFromRepo : AppBase() {
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "260e0a49678c78b70c02d6537add3b6dc0a17171bbde8ce75fd4026a8a3e18d2"
     override val projectPage = "https://divestos.org/fdroid/official/"
-    override val displayCategory = DisplayCategory.BASED_ON_FIREFOX
+    override val displayCategory = listOf(BASED_ON_FIREFOX, GOOD_PRIVACY_BROWSER)
 
     @MainThread
     @Throws(NetworkException::class)

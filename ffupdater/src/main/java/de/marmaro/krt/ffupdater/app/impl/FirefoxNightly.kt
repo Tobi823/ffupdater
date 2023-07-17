@@ -9,7 +9,7 @@ import androidx.annotation.MainThread
 import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
+import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.FROM_MOZILLA
 import de.marmaro.krt.ffupdater.app.entity.InstalledAppStatus
 import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.device.ABI
@@ -43,7 +43,7 @@ object FirefoxNightly : AppBase() {
     override val supportedAbis = ARM32_ARM64_X86_X64
     override val projectPage =
         "https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v3.firefox-android.apks.fenix-nightly.latest"
-    override val displayCategory = DisplayCategory.FROM_MOZILLA
+    override val displayCategory = listOf(FROM_MOZILLA)
 
     @MainThread
     @Throws(NetworkException::class)

@@ -6,7 +6,7 @@ import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
+import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.BETTER_THAN_GOOGLE_CHROME
 import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
@@ -36,7 +36,7 @@ object Vivaldi : AppBase() {
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "e8a78544655ba8c09817f732768f5689b1662ec4b2bc5a0bc0ec138d33ca3d1e"
     override val projectPage = "https://vivaldi.com/de/download/"
-    override val displayCategory = DisplayCategory.BETTER_THAN_GOOGLE_CHROME
+    override val displayCategory = listOf(BETTER_THAN_GOOGLE_CHROME)
 
     @MainThread
     @Throws(NetworkException::class)

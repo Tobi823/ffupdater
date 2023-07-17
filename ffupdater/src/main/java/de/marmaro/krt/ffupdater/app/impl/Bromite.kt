@@ -6,7 +6,8 @@ import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
+import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.EOL
+import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.GOOD_PRIVACY_BROWSER
 import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
@@ -37,7 +38,7 @@ object Bromite : AppBase() {
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "e1ee5cd076d7b0dc84cb2b45fb78b86df2eb39a3b6c56ba3dc292a5e0c3b9504"
     override val projectPage = "https://github.com/bromite/bromite"
-    override val displayCategory = DisplayCategory.EOL
+    override val displayCategory = listOf(GOOD_PRIVACY_BROWSER, EOL)
 
     @MainThread
     @Throws(NetworkException::class)

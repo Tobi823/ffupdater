@@ -286,4 +286,5 @@
     <string name="crash_report__report_is_copied_to_clipboard">Crash report is copied to your clipboard</string>
     <string name="installer__android_too_old_for_shizuku">Your Android is too old for Shizuku.</string>
     <string name="add_app_activity__title_based_on_firefox">Based on Firefox</string>
+    <string name="add_app_activity__title_good_security_browsers">Good Security Browser</string>
 </resources>

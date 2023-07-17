@@ -7,7 +7,7 @@ import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
+import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.*
 import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
@@ -35,7 +35,7 @@ object TorBrowserAlpha : AppBase() {
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "15f760b41acbe4783e667102c9f67119be2af62fab07763f9d57f01e5e1074e1"
     override val projectPage = "https://www.torproject.org/download/alpha/"
-    override val displayCategory = DisplayCategory.BASED_ON_FIREFOX
+    override val displayCategory = listOf(BASED_ON_FIREFOX, GOOD_PRIVACY_BROWSER, GOOD_SECURITY_BROWSER)
 
     override suspend fun getInstalledVersion(packageManager: PackageManager): String? {
         val rawVersion = super.getInstalledVersion(packageManager) ?: return null

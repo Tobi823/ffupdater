@@ -6,7 +6,7 @@ import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
+import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.OTHER
 import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
@@ -30,7 +30,7 @@ object FFUpdater : AppBase() {
     override val signatureHash = "f4e642bb85cbbcfd7302b2cbcbd346993a41067c27d995df492c9d0d38747e62"
     override val installableByUser = false
     override val projectPage = "https://github.com/Tobi823/ffupdater"
-    override val displayCategory = DisplayCategory.OTHER
+    override val displayCategory = listOf(OTHER)
 
     @MainThread
     @Throws(NetworkException::class)

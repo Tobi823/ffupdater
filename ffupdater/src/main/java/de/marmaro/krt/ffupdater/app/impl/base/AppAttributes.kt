@@ -20,7 +20,7 @@ interface AppAttributes {
     val installableByUser: Boolean
     val projectPage: String
     val eolReason: Int?
-    val displayCategory: DisplayCategory
+    val displayCategory: List<DisplayCategory>
     val fileNameInZipArchive: String?
 
     fun isEol() = (eolReason != null)

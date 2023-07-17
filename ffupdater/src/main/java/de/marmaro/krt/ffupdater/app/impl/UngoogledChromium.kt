@@ -6,7 +6,7 @@ import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
+import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.*
 import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
@@ -35,7 +35,7 @@ object UngoogledChromium : AppBase() {
     @Suppress("SpellCheckingInspection")
     override val signatureHash = "7e6ba7bbb939fa52d5569a8ea628056adf8c75292bf4dee6b353fafaf2c30e19"
     override val eolReason = R.string.ungoogled_chromium__eol_reason
-    override val displayCategory = DisplayCategory.EOL
+    override val displayCategory = listOf(BETTER_THAN_GOOGLE_CHROME, EOL)
 
     @MainThread
     @Throws(NetworkException::class)

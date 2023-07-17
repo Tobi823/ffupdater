@@ -10,7 +10,7 @@ import androidx.preference.PreferenceManager
 import com.google.gson.JsonObject
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
+import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.BETTER_THAN_GOOGLE_CHROME
 import de.marmaro.krt.ffupdater.app.entity.InstalledAppStatus
 import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.device.ABI
@@ -39,7 +39,7 @@ object Chromium : AppBase() {
     override val supportedAbis = ARM32_ARM64
     override val signatureHash = "32a2fc74d731105859e5a85df16d95f102d85b22099b8064c5d8915c61dad1e0"
     override val projectPage = "https://www.chromium.org/chromium-projects/"
-    override val displayCategory = DisplayCategory.BETTER_THAN_GOOGLE_CHROME
+    override val displayCategory = listOf(BETTER_THAN_GOOGLE_CHROME)
     override val fileNameInZipArchive = "chrome-android/apks/ChromePublic.apk"
 
     @MainThread
