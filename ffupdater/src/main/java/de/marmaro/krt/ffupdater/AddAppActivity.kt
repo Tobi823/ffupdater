@@ -80,7 +80,7 @@ class AddAppActivity : AppCompatActivity() {
         for (displayCategory in DisplayCategory.values()) {
             val titleText = when (displayCategory) {
                 FROM_MOZILLA -> getString(R.string.add_app_activity__title_from_mozilla)
-                BASED_ON_FIREFOX -> getString(R.string.add_app_activity__title_from_mozilla)
+                BASED_ON_FIREFOX -> getString(R.string.add_app_activity__title_based_on_firefox)
                 GOOD_PRIVACY_BROWSER -> getString(R.string.add_app_activity__title_good_privacy_browsers)
                 BETTER_THAN_GOOGLE_CHROME -> getString(R.string.add_app_activity__title_better_than_google_chrome)
                 OTHER -> getString(R.string.add_app_activity__title_other_applications)

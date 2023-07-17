@@ -285,4 +285,5 @@
     <string name="notification__bg_update_check__unreliable_execution__text">Maybe it is caused by the battery or performance settings for your device. Click this notification to disable battery optimization for this app.</string>
     <string name="crash_report__report_is_copied_to_clipboard">Crash report is copied to your clipboard</string>
     <string name="installer__android_too_old_for_shizuku">Your Android is too old for Shizuku.</string>
+    <string name="add_app_activity__title_based_on_firefox">Based on Firefox</string>
 </resources>
