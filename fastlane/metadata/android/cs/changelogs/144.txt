@@ -1,0 +1,10 @@
+* Děkujeme za překlady na Weblate: Kazushi Hayama, Retrial, nautilusx, Juraj Motuz, gallegonovato, Alexthegib, markov, Priit Jõerüüt, 109247019824, Eryk Michalak, Giovanni Donisi a Oğuz Ersen
+* oprava Firefoxu Nightly
+* snížení využití sítě v aplikaci FFUpdater vylepšením síťové mezipaměti
+* pokus o správnou konfiguraci Proguard (software pro komprimaci velikosti stahování a instalace FFUpdater)
+* oprava chyby "Soubor nebyl stažen"
+* oprava resource leaků
+* zlepšení protokolování a hlášení chyb
+* aktualizace závislostí
+* refaktorizace a vyčištění kódu
+* oprava unit testů

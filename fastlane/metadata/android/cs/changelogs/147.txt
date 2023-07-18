@@ -1,0 +1,5 @@
+* Děkujeme za překlady na Weblate: markov, Oğuz Ersen a Kazushi Hayama
+* Oprava chyby při kontrole aktualizací na pozadí (zůstala z testů)
+* Na problematických zařízeních (https://dontkillmyapp.com): požádat uživatele o ignorování optimalizace baterie (Tobi823/ffupdater#409).
+* Neupozorňovat na chybějící oprávnění k oznámení, pokud jsou oznámení vypnutá (Tobi823/ffupdater#423).
+* Přepracování a vyčištění kódu

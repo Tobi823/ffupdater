@@ -1,0 +1,4 @@
+* Děkujeme za příspěvky na Weblate : Priit Jõerüüt
+* Vylepšení zpracování neplatných odpovědí API (Tobi823/ffupdater#434)
+* Oprava dvojího zobrazení Firefoxu Nightly (Tobi823/ffupdater#435)
+* Pokus o konfiguraci Proguard tak, aby minimalizoval velikost aplikace
