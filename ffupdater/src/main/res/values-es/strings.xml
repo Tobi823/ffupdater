@@ -328,4 +328,13 @@
     <string name="add_app_activity__title_based_on_firefox">Basado en Firefox</string>
     <string name="add_app_activity__title_good_security_browsers">Buen navegador para la seguridad</string>
     <string name="crash_report__report_is_copied_to_clipboard">El informe de errores se copió en el portapapeles</string>
+    <string name="notification__uncaught_exception__channel_name">Notificaciones de fallos</string>
+    <string name="notification__uncaught_exception__channel_description">Errores inesperados que bloquean FFUpdater.</string>
+    <string name="notification__uncaught_exception__title">FFUpdater se ha bloqueado</string>
+    <string name="notification__uncaught_exception__text">Haz clic para ver el informe de error.</string>
+    <string name="notification__bachground_work__channel_description">Notificaciones del trabajo en segundo plano</string>
+    <string name="notification__bachground_work__text">Esta notificación es necesaria para una ejecución fiable. Dependiendo de tu configuración, las actualizaciones se obtienen, descargan e instalan en segundo plano. Esta notificación puede ocultarse o silenciarse sin detener el trabajo en segundo plano. Una vez finalizada la comprobación, la notificación también se cerrará.</string>
+    <string name="notification__bachground_work__channel_name">Notificación de trabajo en segundo plano</string>
+    <string name="notification__bachground_work__title">Ejecutando el trabajo en segundo plano</string>
+    <string name="notification__bachground_work__action_title">Cancelar este trabajo en segundo plano</string>
 </resources>
