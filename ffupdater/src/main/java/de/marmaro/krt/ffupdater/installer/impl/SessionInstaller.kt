@@ -40,32 +40,35 @@ class SessionInstaller(app: App, private val foreground: Boolean) : AbstractAppI
     override suspend fun executeInstallerSpecificLogic(context: Context, file: File) {
         require(file.exists()) { "File does not exists." }
         registerIntentReceiver(context)
-        install(context, file)
+        val possibleSessionId = install(context, file)
         try {
             installationStatus.await()
         } finally {
             unregisterIntentReceiver(context)
+            possibleSessionId?.let { context.packageManager.packageInstaller.abandonSession(it) }
         }
     }
 
     @SuppressLint("UnspecifiedImmutableFlag")
     @MainThread
-    private suspend fun install(context: Context, file: File) {
-        withContext(Dispatchers.Default) {
+    private suspend fun install(context: Context, file: File): Int? {
+        return withContext(Dispatchers.Default) {
+            val packageInstaller = context.packageManager.packageInstaller
             val params = createSessionParams(context, file)
             val sessionId = try {
-                context.packageManager.packageInstaller.createSession(params)
+                packageInstaller.createSession(params)
             } catch (e: IOException) {
                 val errorMessage = context.getString(R.string.session_installer__not_enough_storage, e.message)
                 fail(getShortErrorMessage(STATUS_FAILURE_STORAGE), e, STATUS_FAILURE_STORAGE, errorMessage)
-                return@withContext
+                return@withContext null
             }
 
-            context.packageManager.packageInstaller.openSession(sessionId).use {
+            packageInstaller.openSession(sessionId).use {
                 copyApkToSession(it, file)
                 val intentSender = createSessionChangeReceiver(context, sessionId)
                 it.commit(intentSender)
             }
+            return@withContext sessionId
         }
     }
 
