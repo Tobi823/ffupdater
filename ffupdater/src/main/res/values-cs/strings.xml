@@ -34,7 +34,7 @@
     <string name="crash_report__got_to_notabug_org">Přejít na notabug.org</string>
     <string name="device_too_old_dialog__message">Aplikace vyžaduje Android %1$s. Ale vaše zařízení má verzi Android %2$s. Vyberte si jinou aplikaci, aktualizujte operační systém nebo přejděte na novější smartphone.</string>
     <string name="device_too_old_dialog__title">Zařízení je zastaralé</string>
-    <string name="dialog_button__do_not_install">Ne, nestahovat</string>
+    <string name="dialog_button__do_not_install">Ne, neinstalovat</string>
     <string name="dialog_button__yes">Ano</string>
     <string name="notification__download_running__channel_descr">Zobrazí se, když se stahují aktualizace na pozadí.</string>
     <string name="notification__download_running__channel_name">Upozornění na stahování na pozadí</string>
@@ -306,4 +306,23 @@
     <string name="main_activity__denied_notification_permission">FFUpdater vyžaduje oprávnění, aby vás mohl informovat o aktualizacích.</string>
     <string name="main_activity__an_error_occurred"><u>Došlo k neočekávané chybě. Zkuste to znovu později.</u></string>
     <string name="eol_reason__browser_no_longer_maintained">Prohlížeč není nadále spravován.</string>
+    <string name="crash_report__report_is_copied_to_clipboard">Chybové hlášeni bylo zkopírováno do schránky</string>
+    <string name="notification__bg_update_check__unreliable_execution__channel_description">Upozornění na nespolehlivé fungování kontroly aktualizací na pozadí</string>
+    <string name="notification__bg_update_check__unreliable_execution__channel_name">Kontrola aktualizací na pozadí nebyla provedena</string>
+    <string name="notification__bg_update_check__unreliable_execution__text">Možná je to způsobeno nastavením baterie nebo výkonu vašeho zařízení. Kliknutím na toto upozornění zakážete optimalizaci baterie pro tuto aplikaci.</string>
+    <string name="add_app_activity__title_based_on_firefox">Založen na Firefoxu</string>
+    <string name="add_app_activity__title_good_security_browsers">Dobrý bezpečný prohlížeč</string>
+    <string name="notification__uncaught_exception__channel_name">Oznámení o pádu aplikace</string>
+    <string name="notification__uncaught_exception__text">Kliknutím zobrazíte chybovou zprávu.</string>
+    <string name="notification__bachground_work__channel_description">Oznámení o práci aplikace na pozadí</string>
+    <string name="notification__bachground_work__channel_name">Oznámení o práci na pozadí</string>
+    <string name="notification__bachground_work__text">Toto oznámení je nutné pro spolehlivou funkčnost. V závislosti na vašem nastavení se aktualizace načítají, stahují a instalují na pozadí. Můžete toto oznámení schovat nebo ztlumit bez zastavení práce na pozadí. Po dokončení se oznámení zavře.</string>
+    <string name="notification__bachground_work__action_title">Zrušit tuto práci na pozadí</string>
+    <string name="installer__android_too_old_for_shizuku">Vaše Android zařízení je pro Shizuku příliš zastaralé.</string>
+    <string name="notification__uncaught_exception__channel_description">Nečekané chyby způsobily pád FFUpdateru.</string>
+    <string name="notification__uncaught_exception__title">FFUpdater spadnul</string>
+    <string name="notification__bachground_work__title">Provádění práce na pozadí</string>
+    <string name="notification__bg_update_check__unreliable_execution__title">Kontrola aktualizací na pozadí nefunguje spolehlivě</string>
+    <string name="background__installation__when_screen_off__summary">Zkusit nainstalovat aktualizace pouze pokud je obrazovka vypnutá.</string>
+    <string name="background__installation__when_screen_off__title">Instalace pouze při vypnuté obrazovce</string>
 </resources>
