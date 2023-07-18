@@ -312,4 +312,9 @@
 \n
 \nFirefox Focus е перфектният мрежов четец за неангажиращо разглеждане без следи.</string>
     <string name="eol_reason__browser_no_longer_maintained">Мрежовият четец вече не се поддържа.</string>
+    <string name="background__installation__when_screen_off__title">Инсталиране при изключен екран</string>
+    <string name="notification__uncaught_exception__channel_name">Известие за срив</string>
+    <string name="add_app_activity__title_based_on_firefox">На основата на Firefox</string>
+    <string name="add_app_activity__title_good_security_browsers">Добър, защитен четец</string>
+    <string name="background__installation__when_screen_off__summary">Инсталиране на обновяванията само при изключен екран.</string>
 </resources>
