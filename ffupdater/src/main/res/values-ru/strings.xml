@@ -12,8 +12,8 @@
     <string name="notification__error__title">Фоновая проверка обновлений не удалась</string>
     <string name="brave__description">Веб-браузер Brave — это ваш личный бесплатный и безопасный браузер, блокирующий постороннюю рекламу. \n\nВеб-браузер Brave — это быстрое и безопасное приложение для Android со встроенным блокировщиком сторонней рекламы. Brave — это молниеносный, безопасный и приватный браузер. Он защищает вас от отслеживания рекламой, заражения вредоносными программами и всплывающих окон.</string>
     <string name="brave__title">Браузер Brave</string>
-    <string name="brave__warning">- Brave основан на Google Chrome (Chromium) - некоторым людям это не нравится. Хотите установить Brave\?
-\n- Ze względu na Basic Attention Token BAT na blockchainie Ethereum projekt ten ma powiązania z kryptowalutami. Blockchainy mają wiele problemów i moim zdaniem należy ich unikać.</string>
+    <string name="brave__warning">-Brave использует техническую основу Google Chrome и тем самым косвенно поддерживает монопольное положение движка рендеринга Chromium
+\n- В связи с тем, что токен Basic Attention Token BAT находится на блокчейне Ethereum, проект имеет отношение к криптовалютам. У блокчейнов много проблем, и, на мой взгляд, их следует избегать.</string>
     <string name="brave_beta__description">Добро пожаловать в Brave Beta для Android!\nОпробуйте новейшие функции и оставьте свой отзыв: https://brave.com/msupport\nВы можете установить Brave Beta вместе с текущей версией Brave для Android.</string>
     <string name="brave_beta__title">Brave Browser (Beta)</string>
     <string name="brave_nightly__description">Добро пожаловать в Brave Nightly (Developer) для Android!\nОпробуйте новейшие функции и оставьте первые отзывы: https://brave.com/msupport\nВы можете установить Brave Nightly вместе с текущей версией Brave для Android.</string>
@@ -58,9 +58,9 @@
     <string name="iceraven__title">Iceraven Browser</string>
     <string name="iceraven__warning">- Поддерживающий не даёт никаких гарантий по безопасности, и даже стабильности.
 \n- Проекту требуется больше времени для предоставления обновлений безопасности.</string>
-    <string name="infobox">Это программа обновления для нескольких браузеров от Mozilla и других поставщиков. Нажмите кнопку плюс для установки и кнопку со стрелкой вниз для обновления. Вы можете проверить наличие новых обновлений, потянув вниз или открыв приложение заново. По умолчанию приложение будет регулярно проверять наличие обновлений в фоновом режиме. Я сделал все возможное, чтобы обезопасить процесс установки/обновления - не стесняйтесь, перепроверьте или улучшите его, создав pull-request.
+    <string name="infobox">Это программа обновления для браузеров, ориентированных на конфиденциальность. Для установки новых приложений нажмите кнопку \"плюс\". Проведите пальцем вниз, чтобы принудительно проверить наличие новых обновлений. По умолчанию приложение будет периодически проверять наличие обновлений в фоновом режиме, которые затем будут загружены и в конечном итоге установлены. Нажмите на шестеренку, чтобы настроить поведение в настройках.
 \n
-\nПоследняя успешная проверка фонового обновления: %1$s</string>
+\nПоследняя успешная проверка обновлений в фоновом режиме: %1$s</string>
     <string name="app_card__information_about_the_app">информация о приложении</string>
     <string name="download_activity__delete_cache_button_text">очистить кэш</string>
     <string name="download_activity__delete_cache_explanation">Если вы считаете, что FFUpdater ошибочно сохранил в кэше обновление приложения или просто желаете очистить место, нажмите кнопку \"очистить кэш\", для удаления загруженного файла.</string>
@@ -101,7 +101,7 @@
     <string name="installed_version">Установлен: %1$s</string>
     <string name="kiwi__description">Kiwi Browser сделан, чтобы обозревать интернет, читать новости, смотреть видео и слушать музыку без раздражающих элементов.</string>
     <string name="kiwi__title">Kiwi Browser Next</string>
-    <string name="kiwi__warning">- Kiwi использует кодовую базу Google Chrome и тем самым поддерживает монопольную позицию движка отрисовки Chromium.
+    <string name="kiwi__warning">- Kiwi использует техническую основу Google Chrome и тем самым косвенно поддерживает монопольное положение движка рендеринга Chromium
 \n- Kiwi — не идеальный приватный браузер, но у него есть хорошая поддержка дополнений.
 \n- Браузер монетизируется поисковыми движками за каждый запрос, сделанный через Kiwi Browser. В зависимости от выбранного поискового движка, запросы могут идти через серверы Kiwibrowser / Kiwisearchservices.
 \n- Google Ads в Kiwi может использовать данные местоположения для показа таргетированной рекламы, но это можно отключить выключив настройку \"Discovery feature\". Но правила игры скоро изменятся. Подробности на https://privacy.kiwibrowser.org.</string>
@@ -117,7 +117,7 @@
     <string name="request_installation_permission_dialog__abort">Прервать</string>
     <string name="request_installation_permission_dialog__grant_permission">Разрешение</string>
     <string name="request_installation_permission_dialog__message">FFUpdater не хватает разрешения на установку и обновление приложений. Вы должны предоставить эти разрешения, иначе FFUpdater не будет работать.</string>
-    <string name="request_installation_permission_dialog__title">Разрешение установщика</string>
+    <string name="request_installation_permission_dialog__title">Разрешение на установку</string>
     <string name="running_downloads_dialog__message">Сейчас приложение загружает обновления в фоновом режиме. Вы хотите начать новую загрузку, которая может занять больше времени?</string>
     <string name="running_downloads_dialog__negative">Нет, не загружать</string>
     <string name="running_downloads_dialog__title">Выполняющиеся загрузки</string>
@@ -139,7 +139,7 @@
     <string name="settings__background__download__metered__summary">Не рекомендуется для пользователей с ограниченным объемом мобильных данных.</string>
     <string name="settings__background__download__metered__title">Загружайте обновления приложений в сетях с дозированной оплатой</string>
     <string name="settings__background__installation__enabled__summary">Попытайтесь установить обновления без участия пользователя.</string>
-    <string name="settings__background__installation__enabled__title">Установите обновление</string>
+    <string name="settings__background__installation__enabled__title">Устанавливать обновления</string>
     <string name="settings__background__update_check__enabled__summary">Регулярно проверяйте наличие новых обновлений.</string>
     <string name="settings__background__update_check__enabled__title">Проверка обновления</string>
     <string name="settings__background__update_check__excluded_apps__summary">Полезно, если вы не хотите обновлять приложение и не хотите получать уведомления о его обновлении.</string>
@@ -147,7 +147,7 @@
     <string name="settings__background__update_check__interval__title">Интервал проверки обновления</string>
     <string name="settings__background__update_check__metered__title">Проверка обновлений в сетях с дозированной оплатой</string>
     <string name="settings__background_category__summary">Настройки, когда приложение работает в фоновом режиме и невидимо для пользователя.</string>
-    <string name="settings__background_category__title">Справочная информация</string>
+    <string name="settings__background_category__title">Фон</string>
     <string name="settings__foreground__download__metered__title">Загрузка обновлений в сетях с дозированной оплатой</string>
     <string name="settings__foreground__hide_warning_buttons">Скрыть предупреждения для установленных приложений.</string>
     <string name="settings__foreground__theme_preference__summary">Выбор между светлой и тёмной темой</string>
@@ -193,9 +193,95 @@
     <string name="vivaldi__warning">- Vivaldi является лишь частично открытым исходным кодом.
 \n- Он также использует техническую основу Google Chrome и тем самым косвенно поддерживает монопольное положение движка рендеринга Chromium.</string>
     <string name="app_card__app_warning_button_description">Показывать предупреждения о данном приложении</string>
-    <string name="notification__download_error__channel_descr">Показывает, когда загрузки обновлений в фоне завершаются неудачно.</string>
+    <string name="notification__download_error__channel_descr">Показывает, когда загрузки обновлений в фоновом режиме завершаются неудачно.</string>
     <string name="notification__download_error__title">Фоновая загрузка обновления завершилась с ошибкой</string>
     <string name="notification__download_error__text">Фоновая загрузка обновления %1$s завершилась с ошибкой. Если эта ошибка происходит часто, нажмите сюда, чтобы посмотреть отчёт об ошибке.</string>
     <string name="notification__download_error__channel_name">Уведомление о ошибках загрузки в фоне</string>
     <string name="notification__download_error__descr">Фоновая загрузка обновления %1$s завершилась с ошибкой. Если это происходит часто, не стесняйтесь сообщить об этом на notabug.org, GitHub или GitLab.</string>
+    <string name="network__dns_provider__title">Настройки DNS</string>
+    <string name="mulch__warning">- Mulch использует техническую основу Google Chrome и тем самым косвенно поддерживает монопольное положение движка рендеринга Chromium.</string>
+    <string name="installer__android_too_old_for_shizuku">Ваш Android слишком стар для Shizuku.</string>
+    <string name="network__dns_provider__no">Без DNS (только для тестирования)</string>
+    <string name="installer__method__native">Native installer: Резервный вариант, если session installer не работает на смартфоне.</string>
+    <string name="network__dns_provider__custom">Пользовательский сервер DNS по HTTPS</string>
+    <string name="installer__method__root">Root-установщик: Обновление приложений без диалогового окна подтверждения. Для этого требуется рутированный смартфон.</string>
+    <string name="notification__update_available__generic_channel_descr">Канал уведомлений о доступных обновлениях приложения.</string>
+    <string name="lockwise__eol_reason">Mozilla прекратила поддержку в декабре 2021 года. Пожалуйста, перейдите на другой менеджер паролей.</string>
+    <string name="mull__title">Mull</string>
+    <string name="mull__description">Это ориентированный на конфиденциальность и деблобированный веб-браузер, основанный на технологии Mozilla. Он поддерживает многие функции, реализованные в проекте Tor Uplift, используя настройки из проекта arkenfox-user.js. Рекомендуется установить \'uBlock Origin\'.</string>
+    <string name="ungoogled_chromium__eol_reason">Разработчик написал: \"Я не смогу обновлять версии в течение некоторого времени. Если возможно, используйте один из браузеров [которые поддерживает FFUpdater] в это время.\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
+    <string name="add_app_activity__title_from_mozilla">От Mozilla</string>
+    <string name="add_app_activity__title_better_than_google_chrome">Лучше, чем Google Chrome</string>
+    <string name="settings__network__trust_user_cas__summary">Включите опцию, если трафик данных должен проверяться и изменяться другими приложениями. Если вы не уверены, отключите эту опцию.</string>
+    <string name="chromium__description">Chromium - это проект браузера с открытым исходным кодом, целью которого является создание более безопасного, быстрого и стабильного способа работы в Интернете для всех пользователей. На их сайте вы найдете документы по дизайну, обзоры архитектуры, информацию о тестировании и многое другое, что поможет вам научиться создавать и работать с исходным кодом Chromium.</string>
+    <string name="notification__bg_update_check__unreliable_execution__title">Фоновая проверка обновлений выполняется ненадежно</string>
+    <string name="orbot__title">Orbot: Tor для Android</string>
+    <string name="tor_browser__description">Tor Browser для Android - единственный официальный мобильный браузер, поддерживаемый проектом Tor, разработчиками самого мощного в мире инструмента для обеспечения конфиденциальности и свободы в Интернете.</string>
+    <string name="notification__update_available__generic_channel_name">Уведомление об обновлении приложения</string>
+    <string name="settings__background__update_check__when_device_idle__summary">Включите эту опцию, если вы не хотите, чтобы ваши приложения перезапускались при фоновом обновлении. Отключите эту опцию, если требуется более предсказуемое расписание проверок фоновых обновлений.</string>
+    <string name="mulch__description">Это ориентированный на безопасность и усиленный веб-браузер, основанный на технологии Chromium. Многие анти-функции отключены/удалены, а несколько функций безопасности включены/добавлены благодаря патчам из проекта Vanadium. В репозиторий исходных текстов также включены пребилды и make-файлы, позволяющие другим операционным системам включать Mulch в качестве системного WebView.</string>
+    <string name="settings__network_category__title">Сеть</string>
+    <string name="network__proxy__dialog_message">Если вы хотите использовать SOCKS или HTTP-прокси, введите здесь данные о соединении. Используйте один из этих форматов:
+\n
+\nSOCKS/HTTP;ip/domain;port
+\n
+\nSOCKS/HTTP;ip/domain;port;username;password
+\n
+\nНапример: SOCKS;1.2.3.4;22 или HTTP;5.6.7.8;80;user1;pw123 или HTTP;p.webshare.io;80;u;p. Оставьте это значение пустым, если вы хотите использовать конфигурацию системного прокси.
+\n
+\nОграничение: При изменении в настройках \'DNS settings\' на DNS over HTTPS server необходимо ввести домен прокси-сервера. IP-адреса работать не будут.</string>
+    <string name="network__custom_doh_server__dialog_message">Введите данные подключения к пользовательскому серверу DoH в одном из этих форматов:
+\n
+\nurl;ip1
+\n
+\nurl;ip1;ip2
+\n
+\nurl;ip1;ip2;ip3
+\n
+\nurl;ip1;ip2;ip3;ip4
+\n
+\nНапример: https://dns.google/dns-query;8.8.8.8 или https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
+    <string name="settings__device_category__title">Устройство</string>
+    <string name="installer__method__root_not_granted">Root-права не выданы!</string>
+    <string name="device__prefer_32bit_apks__title">Предпочитать 32-Bit АПК</string>
+    <string name="installer__method__session">Session installer: Рекомендуется для большинства устройств. На Android 12 и выше приложения могут обновляться без звука после одного подтверждения пользователя.</string>
+    <string name="add_app_activity__title_based_on_firefox">На основе Firefox</string>
+    <string name="background__separate_notification_channels__title">Различные каналы уведомления</string>
+    <string name="add_app_activity__title_good_security_browsers">Хороший Безопасный Браузер</string>
+    <string name="crash_report__report_is_copied_to_clipboard">Отчет об ошибке скопирован в ваш буфер обмена</string>
+    <string name="notification__bg_update_check__unreliable_execution__text">Возможно, это связано с настройками батареи или производительности вашего устройства. Нажмите на это уведомление, чтобы отключить оптимизацию батареи для этого приложения.</string>
+    <string name="notification__bg_update_check__unreliable_execution__channel_description">Предупреждение о ненадежном выполнении фоновой проверки обновлений</string>
+    <string name="network__proxy__title">Прокси</string>
+    <string name="network__dns_provider__system">Использовать системный DNS</string>
+    <string name="background__separate_notification_channels__summary">Использовать различные каналы уведомлений для каждого отдельного приложения</string>
+    <string name="notification__eol_apps__channel_description">Канал уведомлений для предупреждений об устаревших приложениях.</string>
+    <string name="notification__eol_apps__channel_name">Уведомление об устаревших приложениях</string>
+    <string name="notification__eol_apps__text">У вас установлены устаревшие приложения, которые больше не следует использовать. Нажмите для получения дополнительной информации.</string>
+    <string name="notification__eol_apps__title">Установлены устаревшие приложения</string>
+    <string name="main_activity__an_error_occurred"><u>Произошла ошибка. Повторите попытку позже.</u></string>
+    <string name="app_card__open_project_page">Открыть страницу проекта в браузере</string>
+    <string name="tor_browser__title">Tor Browser</string>
+    <string name="crash_report_activity__label">Репорт падения</string>
+    <string name="add_app_activity__label">Добавить Новое Приложение</string>
+    <string name="add_app_activity__title_other_applications">Другие приложения</string>
+    <string name="add_app_activity__title_end_of_live_browser">Браузеры с оконченной поддержкой</string>
+    <string name="add_app_activity__title_good_privacy_browsers">Хорошие Конфиденциальные Браузеры</string>
+    <string name="add_app_activity__add_new_application">Добавить новое приложение</string>
+    <string name="chromium__title">Chromium</string>
+    <string name="chromium__warning">Chromium использует техническую основу Google Chrome и тем самым косвенно поддерживает монопольное положение движка рендеринга Chromium.</string>
+    <string name="settings__background__update_check__when_device_idle__title">Обновление проверяется только в том случае, если устройство находится в состоянии простоя</string>
+    <string name="settings__background__update_check__when_device_idle__unsupported">Эта опция доступна только на Android Marshmallow или более поздних версиях.</string>
+    <string name="mulch__title">Mulch</string>
+    <string name="fennecfdroid__title">Fennec F-Droid</string>
+    <string name="fennecfdroid__description">Fennec F-Droid основан на последней версии Firefox (кодовое название Fenix). Из него удалены проприетарные биты и телеметрия, но он по-прежнему подключается к различным сервисам Mozilla и Google, которые могут отслеживать пользователей.</string>
+    <string name="fennecfdroid__warning">FFUpdater загружает файлы с серверов F-Droid и поэтому работает медленее.</string>
+    <string name="network__custom_doh_server__title">Пользовательский сервер DNS по HTTPS</string>
+    <string name="device__prefer_32bit_apks__summary">Включите, если на вашем устройстве мало оперативной памяти. В этом случае FFUpdater будет использовать 32-битные APK, которые обычно требуют меньше памяти.</string>
+    <string name="installer__method__shizuku_not_installed">Shizuku не установлен!</string>
+    <string name="network__dns_provider__digital_society_ch">DNS через HTTPS: Цифровое общество Швейцарии</string>
+    <string name="network__dns_provider__quad9">DNS через HTTPS: Quad9</string>
+    <string name="network__dns_provider__cloudflare">DNS через HTTPS: Cloudflare</string>
+    <string name="network__dns_provider__google">DNS через HTTPS: Google</string>
+    <string name="installer__method__shizuku">Shizuku installer: Обновление приложений без диалогового окна подтверждения. Для этого требуется приложение Shizuku или модуль Sui Magisk.</string>
+    <string name="orbot__description">Orbot - это бесплатное прокси-приложение, которое позволяет другим приложениям использовать интернет более безопасно. Orbot использует Tor для шифрования вашего интернет-трафика, а затем скрывает его, пропуская через ряд компьютеров по всему миру. Tor - это свободное программное обеспечение и открытая сеть, которая помогает защититься от формы сетевого наблюдения, угрожающей личной свободе и неприкосновенности частной жизни, конфиденциальным деловым операциям и отношениям, а также государственной безопасности, известной как анализ трафика.</string>
 </resources>
