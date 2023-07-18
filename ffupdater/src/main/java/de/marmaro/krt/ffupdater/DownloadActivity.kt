@@ -216,7 +216,7 @@ class DownloadActivity : AppCompatActivity() {
     }
 
     private suspend fun startInstallationProcess() {
-        Log.d(LOG_TAG, "startInstallationProcess(): Start process for ${app.name}.")
+        Log.d(LOG_TAG, "DownloadActivity: Start process for ${app.name}.")
 
         checkIfStorageIsMounted()
             .onFailure { return@startInstallationProcess }
@@ -303,7 +303,7 @@ class DownloadActivity : AppCompatActivity() {
 
     @MainThread
     private suspend fun startDownload(): MethodResult {
-        Log.d(LOG_TAG, "startInstallationProcess(): Start download of ${app.name}.")
+        Log.d(LOG_TAG, "DownloadActivity: Start download of ${app.name}.")
         if (!ForegroundSettings.isDownloadOnMeteredAllowed && isNetworkMetered(applicationContext)) {
             displayFetchFailure(getString(main_activity__no_unmetered_network))
             return MethodResult.failure()
@@ -354,7 +354,7 @@ class DownloadActivity : AppCompatActivity() {
 
     @MainThread
     private suspend fun reuseCurrentDownload(): MethodResult {
-        Log.d(LOG_TAG, "reuseCurrentDownload(): Reuse running download of ${app.name}.")
+        Log.d(LOG_TAG, "DownloadActivity: Reuse running download of ${app.name}.")
         show(R.id.downloadingFile)
         val latestUpdate = installedAppStatus.latestVersion
         setText(R.id.downloadingFileUrl, latestUpdate.downloadUrl)
@@ -376,13 +376,13 @@ class DownloadActivity : AppCompatActivity() {
         } finally {
             hide(R.id.downloadingFile)
         }
-        Log.d(LOG_TAG, "reuseCurrentDownload(): Reusing failed for ${app.name}.")
+        Log.d(LOG_TAG, "DownloadActivity: Reusing failed for ${app.name}.")
         return MethodResult.failure()
     }
 
     @MainThread
     private suspend fun installApp(): MethodResult {
-        Log.d(LOG_TAG, "Install app ${app.name}.")
+        Log.d(LOG_TAG, "DownloadActivity: Install app ${app.name}.")
         show(R.id.installingApplication)
         val file = appImpl.getApkFile(applicationContext, installedAppStatus.latestVersion)
 

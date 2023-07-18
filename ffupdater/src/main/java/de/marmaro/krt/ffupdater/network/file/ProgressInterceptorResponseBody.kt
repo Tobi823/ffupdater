@@ -26,7 +26,7 @@ class ProgressInterceptorResponseBody(
 
     @OptIn(ExperimentalCoroutinesApi::class)
     private fun trackTransmittedBytes(source: Source): Source {
-        Log.i(LOG_TAG, "Execute real network request: $originalUrl")
+        Log.i(LOG_TAG, "ProgressInterceptorResponseBody: Execute real network request: $originalUrl")
         if (processChannel?.isClosedForSend == true) {
             processChannel = null
         }

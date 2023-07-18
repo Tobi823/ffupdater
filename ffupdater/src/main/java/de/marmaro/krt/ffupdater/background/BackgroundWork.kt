@@ -62,7 +62,6 @@ import java.util.concurrent.TimeUnit.SECONDS
 class BackgroundWork(context: Context, workerParams: WorkerParameters) :
     CoroutineWorker(context.applicationContext, workerParams) {
 
-
     /**
      * Execute the logic for update checking, downloading and installation.
      *
@@ -83,26 +82,26 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
     @MainThread
     override suspend fun doWork(): Result {
         try {
-            Log.i(LOG_TAG, "BackgroundJob: Execute background job.")
+            Log.i(LOG_TAG, "BackgroundWork: Execute background job.")
             val result = internalDoWork()
-            Log.i(LOG_TAG, "BackgroundJob: Finish.")
+            Log.i(LOG_TAG, "BackgroundWork: Finish.")
             return result
         } catch (e: java.util.concurrent.CancellationException) {
-            Log.i(LOG_TAG, "BackgroundJob: Job was cancelled. Enqueue job again.", e)
+            Log.i(LOG_TAG, "BackgroundWork: Job was cancelled. Enqueue job again.", e)
             enqueueAgain(applicationContext)
             return Result.success()
         } catch (e: CancellationException) {
-            Log.i(LOG_TAG, "BackgroundJob: Job was possible cancelled. Enqueue job again.", e)
+            Log.i(LOG_TAG, "BackgroundWork: Job was possible cancelled. Enqueue job again.", e)
             enqueueAgain(applicationContext)
             return Result.success()
         } catch (e: Exception) {
             if (runAttemptCount < MAX_RETRIES) {
-                Log.w(LOG_TAG, "BackgroundJob: Job failed. Restart in ${calcBackoffTime(runAttemptCount)}.", e)
+                Log.w(LOG_TAG, "BackgroundWork: Job failed. Restart in ${calcBackoffTime(runAttemptCount)}.", e)
                 return Result.retry()
             }
 
             val backgroundException = BackgroundException(e)
-            Log.e(LOG_TAG, "BackgroundJob: Job failed.", backgroundException)
+            Log.e(LOG_TAG, "BackgroundWorker: Job failed.", backgroundException)
             when (e) {
                 is NetworkException ->
                     NotificationBuilder.showNetworkErrorNotification(applicationContext, backgroundException)
@@ -175,13 +174,13 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
     private fun checkUpdateCheckAllowed(): MethodWorkManagerResult {
         return when {
             !BackgroundSettings.isUpdateCheckEnabled ->
-                neverRetry("Background should be disabled - disable it now.")
+                neverRetry("BackgroundWork: Background should be disabled - disable it now.")
 
             FileDownloader.areDownloadsCurrentlyRunning() ->
-                retrySoon("Retry background job because other downloads are running.")
+                retrySoon("BackgroundWork: Retry background job because other downloads are running.")
 
             !BackgroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(applicationContext) ->
-                retrySoon("No unmetered network available for update check.")
+                retrySoon("BackgroundWork: No unmetered network available for update check.")
 
             else -> success()
         }
@@ -203,20 +202,20 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
         val outdatedApps = installedAppStatusList
             .filter { it.isUpdateAvailable }
 
-        Log.d(LOG_TAG, "BackgroundJob: [${outdatedApps.map { it.app }.joinToString(",")}] are outdated.")
+        Log.d(LOG_TAG, "BackgroundWork: [${outdatedApps.map { it.app }.joinToString(",")}] are outdated.")
         return outdatedApps
     }
 
     private fun checkDownloadsAllowed(): MethodWorkManagerResult {
         return when {
             !BackgroundSettings.isDownloadEnabled ->
-                retrySoon("Don't download updates because the user don't want it.")
+                retrySoon("BackgroundWork: Don't download updates because the user don't want it.")
 
             !BackgroundSettings.isDownloadOnMeteredAllowed && isNetworkMetered(applicationContext) ->
-                retrySoon("No unmetered network available for download.")
+                retrySoon("BackgroundWork: No unmetered network available for download.")
 
             NetworkUtil.isDataSaverEnabled(applicationContext) ->
-                retrySoon("Abort because data saver is enabled.")
+                retrySoon("BackgroundWork: Abort because data saver is enabled.")
 
             else -> success()
         }
@@ -227,7 +226,7 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
             .filter {
                 val enoughStorage = StorageUtil.isEnoughStorageAvailable(applicationContext)
                 if (!enoughStorage) {
-                    Log.i(LOG_TAG, "BackgroundJob: Skip ${it.app} because not enough storage is available.")
+                    Log.i(LOG_TAG, "BackgroundWork: Skip ${it.app} because not enough storage is available.")
                     NotificationBuilder.showUpdateAvailableNotification(applicationContext, it.app)
                 }
                 enoughStorage
@@ -238,7 +237,7 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
     @MainThread
     private suspend fun downloadApp(app: App, latestVersion: LatestVersion) {
         val appImpl = app.findImpl()
-        Log.i(LOG_TAG, "BackgroundJob: Download update for $app.")
+        Log.i(LOG_TAG, "BackgroundWork: Download update for $app.")
         try {
             appImpl.download(applicationContext, latestVersion) { _, progressChannel ->
                 NotificationBuilder.showDownloadRunningNotification(applicationContext, app, null, null)
@@ -263,16 +262,16 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
     private fun shouldInstallationBeAborted(): MethodWorkManagerResult {
         return when {
             DeviceSdkTester.supportsAndroid10() && !applicationContext.packageManager.canRequestPackageInstalls() ->
-                retryRegularTimeSlot("BackgroundJob: Missing installation permission.")
+                retryRegularTimeSlot("BackgroundWork: Missing installation permission.")
 
             !BackgroundSettings.isInstallationEnabled ->
-                retryRegularTimeSlot("Automatic background app installation is not enabled.")
+                retryRegularTimeSlot("BackgroundWork: Automatic background app installation is not enabled.")
 
             !DeviceSdkTester.supportsAndroid12() && InstallerSettings.getInstallerMethod() == SESSION_INSTALLER ->
-                retryRegularTimeSlot("The current installer can not update apps in the background")
+                retryRegularTimeSlot("BackgroundWork: The current installer can not update apps in the background")
 
             InstallerSettings.getInstallerMethod() == NATIVE_INSTALLER ->
-                retryRegularTimeSlot("The current installer can not update apps in the background")
+                retryRegularTimeSlot("BackgroundWork: The current installer can not update apps in the background")
 
             else -> success()
         }
@@ -299,18 +298,18 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
                 }
                 gentleUpdatePossible.await()
             } catch (e: SecurityException) {
-                Log.i(LOG_TAG, "BackgroundJob: Can't check if $app can be gently updated.")
+                Log.i(LOG_TAG, "BackgroundWork: Can't check if $app can be gently updated.")
                 gentleUpdatePossible.complete(true)
             }
             if (!value) {
-                Log.i(LOG_TAG, "BackgroundJob: Skip $app because it is still in use.")
+                Log.i(LOG_TAG, "BackgroundWork: Skip $app because it is still in use.")
             }
             return value
         }
 
         if (BackgroundSettings.isInstallationWhenScreenOff) {
             return PowerUtil.isDeviceInteractive()
-                .ifTrue { Log.i(LOG_TAG, "internalDoWork(): Skip $app because the device is still interactive.") }
+                .ifTrue { Log.i(LOG_TAG, "BackgroundWork: Skip $app because the device is still interactive.") }
         }
         return true
     }
@@ -322,7 +321,7 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
 
         val installer = createBackgroundAppInstaller(applicationContext, app)
         try {
-            Log.i(LOG_TAG, "BackgroundJob: Update $app.")
+            Log.i(LOG_TAG, "BackgroundWork: Update $app.")
             installer.startInstallation(applicationContext, file)
 
             NotificationBuilder.showInstallSuccessNotification(applicationContext, app)

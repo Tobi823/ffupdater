@@ -2,6 +2,7 @@
 
 * Add automatic check if the background update check is regularly executed
 * Improve handling of errors
+* Fix the "Job was cancelled;" error (Tobi832/ffupdater#442)
 
 # 2023-07-14 Release 78.0.6 (148)
 

@@ -47,7 +47,7 @@ object NetworkSettings {
     fun customDohServer(): DohConnectionDetails {
         val rawString = preferences.getString("network__custom_doh_server", "")?.trim()
         if (rawString.isNullOrEmpty()) {
-            Log.w(LOG_TAG, "Missing connection details for custom DoH server.")
+            Log.w(LOG_TAG, "NetworkSettings: Missing connection details for custom DoH server.")
             return DohConnectionDetails(
                 "http://missing_connection_details_for_custom_doh_server.local",
                 listOf("172.0.0.1")
@@ -55,7 +55,10 @@ object NetworkSettings {
         }
         val arguments = rawString.split(";")
         if (arguments.size < 2) {
-            Log.w(LOG_TAG, "Wrong formatted connection details for the DoH server. Reset connection details")
+            Log.w(
+                LOG_TAG, "NetworkSettings: Wrong formatted connection details for the DoH server. " +
+                        "Reset connection details"
+            )
             return DohConnectionDetails("http://invalid_doh_connection_details.local", listOf("172.0.0.1"))
         }
         val server = arguments[0]

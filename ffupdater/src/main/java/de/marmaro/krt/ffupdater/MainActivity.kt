@@ -218,7 +218,7 @@ class MainActivity : AppCompatActivity() {
             RunningDownloadsDialog.newInstance(app, false).show(supportFragmentManager)
             return
         }
-        Log.d(LOG_TAG, "installOrDownloadApp(): Start DownloadActivity to install or update ${app.name}.")
+        Log.d(LOG_TAG, "MainActivity: Start DownloadActivity to install or update ${app.name}.")
         val intent = DownloadActivity.createIntent(this@MainActivity, app)
         startActivity(intent)
     }

@@ -209,7 +209,7 @@ object FileDownloader {
     private suspend fun getMutexForUrl(url: String): Mutex {
         mapMutex.withLock {
             if (mutexForUrls.size > 30) {
-                Log.d(FFUpdater.LOG_TAG, "callUrlWithCache(): Cleanup mutexForUrls.")
+                Log.d(FFUpdater.LOG_TAG, "FileDownloader: Cleanup mutexForUrls.")
                 mutexForUrls
                     .filter { !it.value.isLocked }
                     .map { it.key }

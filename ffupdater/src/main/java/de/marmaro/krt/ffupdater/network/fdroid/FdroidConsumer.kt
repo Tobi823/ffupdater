@@ -25,7 +25,7 @@ object FdroidConsumer {
         val commitId = getLastCommitId(packageName, cacheBehaviour)
         val createdAt = getCreateDate(commitId, cacheBehaviour)
 
-        Log.i(LOG_TAG, "found latest version ${latestVersion.versionName}")
+        Log.i(LOG_TAG, "FdroidConsumer: Found latest version ${latestVersion.versionName}")
         return Result(
             latestVersion.versionName,
             latestVersion.versionCode,
