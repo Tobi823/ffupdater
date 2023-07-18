@@ -34,7 +34,7 @@ import de.marmaro.krt.ffupdater.R.string.crash_report__explain_text__download_ac
 import de.marmaro.krt.ffupdater.R.string.main_activity__app_was_signed_by_different_certificate
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.InstalledAppStatus
-import de.marmaro.krt.ffupdater.background.BackgroundUpdateChecker
+import de.marmaro.krt.ffupdater.background.BackgroundWork
 import de.marmaro.krt.ffupdater.crash.CrashReportActivity
 import de.marmaro.krt.ffupdater.crash.LogReader
 import de.marmaro.krt.ffupdater.crash.ThrowableAndLogs
@@ -132,7 +132,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun askForIgnoringBatteryOptimizationIfNecessary() {
         if (DeviceSdkTester.supportsAndroidMarshmallow() &&
-            !BackgroundUpdateChecker.isBackgroundUpdateCheckReliableExecuted()
+            !BackgroundWork.isBackgroundUpdateCheckReliableExecuted()
         ) {
             NotificationBuilder.showBackgroundUpdateCheckUnreliableExecutionNotification(this)
         }

@@ -53,7 +53,7 @@ import de.marmaro.krt.ffupdater.network.exceptions.ApiRateLimitExceededException
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour.USE_EVEN_OUTDATED_CACHE
 import de.marmaro.krt.ffupdater.network.file.DownloadStatus
-import de.marmaro.krt.ffupdater.notification.BackgroundNotificationRemover
+import de.marmaro.krt.ffupdater.notification.NotificationRemover
 import de.marmaro.krt.ffupdater.settings.ForegroundSettings
 import de.marmaro.krt.ffupdater.settings.InstallerSettings
 import de.marmaro.krt.ffupdater.storage.StorageUtil
@@ -136,7 +136,7 @@ class DownloadActivity : AppCompatActivity() {
         }
 
         // hide existing background notification for this app
-        BackgroundNotificationRemover.removeAppStatusNotifications(applicationContext, app)
+        NotificationRemover.removeAppStatusNotifications(applicationContext, app)
 
         // prevent network timeouts when the displayed is automatically turned off
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
@@ -396,7 +396,7 @@ class DownloadActivity : AppCompatActivity() {
             displayAppInstallationFailure(e.translatedMessage, ex)
         } finally {
             // hide existing background notification for applicationContext app
-            BackgroundNotificationRemover.removeAppStatusNotifications(applicationContext, app)
+            NotificationRemover.removeAppStatusNotifications(applicationContext, app)
             hide(R.id.installingApplication)
         }
         return MethodResult.failure()

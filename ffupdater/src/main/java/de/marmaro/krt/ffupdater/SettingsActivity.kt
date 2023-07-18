@@ -13,11 +13,10 @@ import androidx.preference.MultiSelectListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
-import androidx.work.ExistingPeriodicWorkPolicy.UPDATE
 import com.google.android.material.snackbar.Snackbar
 import com.topjohnwu.superuser.Shell
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.background.BackgroundUpdateChecker
+import de.marmaro.krt.ffupdater.background.BackgroundWork
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.entity.Installer
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
@@ -182,7 +181,7 @@ class SettingsActivity : AppCompatActivity() {
             super.onPause()
             if (restartBackgroundJobAfterClosingActivity) {
                 restartBackgroundJobAfterClosingActivity = false
-                BackgroundUpdateChecker.start(requireContext().applicationContext, UPDATE)
+                BackgroundWork.enqueueAgain(requireContext().applicationContext)
             }
         }
     }

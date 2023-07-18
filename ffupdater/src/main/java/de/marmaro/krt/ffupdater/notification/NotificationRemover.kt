@@ -11,7 +11,7 @@ import de.marmaro.krt.ffupdater.notification.NotificationBuilder.INSTALL_SUCCESS
 import de.marmaro.krt.ffupdater.notification.NotificationBuilder.UPDATE_AVAILABLE_CODE
 
 @Keep
-object BackgroundNotificationRemover {
+object NotificationRemover {
 
     private fun removeUpdateAvailableNotification(context: Context, app: App) {
         getNotificationManager(context)

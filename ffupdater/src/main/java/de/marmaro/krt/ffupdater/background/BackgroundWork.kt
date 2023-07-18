@@ -7,6 +7,8 @@ import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import androidx.work.CoroutineWorker
 import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.ExistingPeriodicWorkPolicy.KEEP
+import androidx.work.ExistingPeriodicWorkPolicy.UPDATE
 import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkManager
 import androidx.work.WorkRequest
@@ -35,8 +37,8 @@ import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour.USE_CACHE
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
-import de.marmaro.krt.ffupdater.notification.BackgroundNotificationRemover
 import de.marmaro.krt.ffupdater.notification.NotificationBuilder
+import de.marmaro.krt.ffupdater.notification.NotificationRemover
 import de.marmaro.krt.ffupdater.settings.BackgroundSettings
 import de.marmaro.krt.ffupdater.settings.DataStoreHelper
 import de.marmaro.krt.ffupdater.settings.InstallerSettings
@@ -46,6 +48,7 @@ import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CompletableDeferred
 import java.time.Duration
 import java.util.concurrent.TimeUnit.MINUTES
+import java.util.concurrent.TimeUnit.SECONDS
 
 /**
  * BackgroundJob will be regularly called by the AndroidX WorkManager to:
@@ -56,7 +59,7 @@ import java.util.concurrent.TimeUnit.MINUTES
  * Depending on the device and the settings from the user not all steps will be executed.
  */
 @Keep
-class BackgroundUpdateChecker(context: Context, workerParams: WorkerParameters) :
+class BackgroundWork(context: Context, workerParams: WorkerParameters) :
     CoroutineWorker(context.applicationContext, workerParams) {
 
 
@@ -81,12 +84,17 @@ class BackgroundUpdateChecker(context: Context, workerParams: WorkerParameters) 
     override suspend fun doWork(): Result {
         try {
             Log.i(LOG_TAG, "BackgroundJob: Execute background job.")
-            storeBackgroundJobExecutionTime()
-            areRunRequirementsMet()
-                .onFailure { return it }
             val result = internalDoWork()
             Log.i(LOG_TAG, "BackgroundJob: Finish.")
             return result
+        } catch (e: java.util.concurrent.CancellationException) {
+            Log.i(LOG_TAG, "BackgroundJob: Job was cancelled. Enqueue job again.", e)
+            enqueueAgain(applicationContext)
+            return Result.success()
+        } catch (e: CancellationException) {
+            Log.i(LOG_TAG, "BackgroundJob: Job was possible cancelled. Enqueue job again.", e)
+            enqueueAgain(applicationContext)
+            return Result.success()
         } catch (e: Exception) {
             if (runAttemptCount < MAX_RETRIES) {
                 Log.w(LOG_TAG, "BackgroundJob: Job failed. Restart in ${calcBackoffTime(runAttemptCount)}.", e)
@@ -96,7 +104,7 @@ class BackgroundUpdateChecker(context: Context, workerParams: WorkerParameters) 
             val backgroundException = BackgroundException(e)
             Log.e(LOG_TAG, "BackgroundJob: Job failed.", backgroundException)
             when (e) {
-                is NetworkException, is CancellationException ->
+                is NetworkException ->
                     NotificationBuilder.showNetworkErrorNotification(applicationContext, backgroundException)
 
                 else -> NotificationBuilder.showErrorNotification(applicationContext, backgroundException)
@@ -127,8 +135,18 @@ class BackgroundUpdateChecker(context: Context, workerParams: WorkerParameters) 
 
     @MainThread
     private suspend fun internalDoWork(): Result {
-        BackgroundNotificationRemover.removeDownloadErrorNotification(applicationContext)
-        BackgroundNotificationRemover.removeAppStatusNotifications(applicationContext)
+        storeBackgroundJobExecutionTime()
+        areRunRequirementsMet()
+            .onFailure { return it }
+
+        if (DeviceSdkTester.supportsAndroidOreo()) {
+            // Only show notification on Android 8 because it can be silenced
+            val foregroundInfo = NotificationBuilder.createBackgroundWorkNotification(applicationContext, id)
+            setForeground(foregroundInfo)
+        }
+
+        NotificationRemover.removeDownloadErrorNotification(applicationContext)
+        NotificationRemover.removeAppStatusNotifications(applicationContext)
 
         checkUpdateCheckAllowed().onFailure {
             return@internalDoWork it
@@ -238,7 +256,7 @@ class BackgroundUpdateChecker(context: Context, workerParams: WorkerParameters) 
         } catch (e: DisplayableException) {
             NotificationBuilder.showDownloadNotification(applicationContext, app, e)
         } finally {
-            BackgroundNotificationRemover.removeDownloadRunningNotification(applicationContext, app)
+            NotificationRemover.removeDownloadRunningNotification(applicationContext, app)
         }
     }
 
@@ -333,7 +351,19 @@ class BackgroundUpdateChecker(context: Context, workerParams: WorkerParameters) 
         private const val WORK_MANAGER_KEY = "update_checker"
         private val MAX_RETRIES = getRetriesForTotalBackoffTime(Duration.ofHours(8))
 
-        fun start(context: Context, policy: ExistingPeriodicWorkPolicy) {
+        fun start(context: Context) {
+            internalStart(context.applicationContext, KEEP)
+        }
+
+        fun enqueueAgain(context: Context) {
+            internalStart(context.applicationContext, UPDATE, BackgroundSettings.updateCheckInterval)
+        }
+
+        private fun internalStart(
+            context: Context,
+            policy: ExistingPeriodicWorkPolicy,
+            initialDelay: Duration = Duration.ZERO,
+        ) {
             val instance = WorkManager.getInstance(context.applicationContext)
             if (!BackgroundSettings.isUpdateCheckEnabled) {
                 instance.cancelUniqueWork(WORK_MANAGER_KEY)
@@ -341,7 +371,9 @@ class BackgroundUpdateChecker(context: Context, workerParams: WorkerParameters) 
             }
 
             val minutes = BackgroundSettings.updateCheckInterval.toMinutes()
-            val workRequest = PeriodicWorkRequest.Builder(BackgroundUpdateChecker::class.java, minutes, MINUTES).build()
+            val workRequest = PeriodicWorkRequest.Builder(BackgroundWork::class.java, minutes, MINUTES)
+                .setInitialDelay(initialDelay.seconds, SECONDS)
+                .build()
             instance.enqueueUniquePeriodicWork(WORK_MANAGER_KEY, policy, workRequest)
         }
 

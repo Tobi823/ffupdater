@@ -287,4 +287,13 @@
     <string name="installer__android_too_old_for_shizuku">Your Android is too old for Shizuku.</string>
     <string name="add_app_activity__title_based_on_firefox">Based on Firefox</string>
     <string name="add_app_activity__title_good_security_browsers">Good Security Browser</string>
+    <string name="notification__uncaught_exception__channel_name">Crash notifications</string>
+    <string name="notification__uncaught_exception__channel_description">Unexpected errors which crash FFUpdater.</string>
+    <string name="notification__uncaught_exception__title">FFUpdater crashed</string>
+    <string name="notification__uncaught_exception__text">Click to view the error report.</string>
+    <string name="notification__bachground_work__channel_name">Background Work Notifications</string>
+    <string name="notification__bachground_work__channel_description">Notifications of the background work</string>
+    <string name="notification__bachground_work__title">Executing background work</string>
+    <string name="notification__bachground_work__text">This notification is required for a reliable execution. Depending on your settings, updates are fetched, downloaded and installed in the background. This notification can be hidden or muted without stopping the background work. After the check is completed, the notification will is also be closed.</string>
+    <string name="notification__bachground_work__action_title">Cancel this background work</string>
 </resources>

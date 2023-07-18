@@ -13,12 +13,15 @@ object StorageCleaner {
     suspend fun deleteApksOfNotInstalledApps(context: Context) {
         withContext(Dispatchers.IO) {
             val installedApps = InstalledAppsCache.getInstalledAppsWithCorrectFingerprint(context.applicationContext)
-            App.values()
+            val apps = App.values()
                 .filter { it !in installedApps }
-                .forEach {
-                    Log.i(LOG_TAG, "StorageCleaner: Delete possible cached files of $it")
-                    it.findImpl().deleteFileCache(context.applicationContext)
-                }
+
+            val names = apps.joinToString(", ") { it.name }
+            Log.i(LOG_TAG, "StorageCleaner: Delete possible cached files of $names")
+
+            apps.forEach {
+                it.findImpl().deleteFileCache(context.applicationContext)
+            }
         }
     }
 }

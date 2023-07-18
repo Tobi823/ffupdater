@@ -3,8 +3,7 @@ package de.marmaro.krt.ffupdater
 import android.app.Application
 import androidx.annotation.Keep
 import androidx.preference.PreferenceManager
-import androidx.work.ExistingPeriodicWorkPolicy.KEEP
-import de.marmaro.krt.ffupdater.background.BackgroundUpdateChecker
+import de.marmaro.krt.ffupdater.background.BackgroundWork
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.device.PowerUtil
 import de.marmaro.krt.ffupdater.device.StorageCleaner
@@ -44,8 +43,6 @@ class FFUpdater : Application() {
         FileDownloader.init(applicationContext)
         Migrator.migrate(applicationContext)
 
-//        CrashListener.openCrashReporterForUncaughtExceptions(applicationContext)
-
         startBackgroundJob()
         cleanupUnusedApkFiles()
     }
@@ -53,7 +50,7 @@ class FFUpdater : Application() {
     private fun startBackgroundJob() {
         CoroutineScope(Job() + Dispatchers.IO).launch {
             delay(30 * 1000)
-            BackgroundUpdateChecker.start(applicationContext.applicationContext, KEEP)
+            BackgroundWork.start(applicationContext.applicationContext)
         }
     }
 

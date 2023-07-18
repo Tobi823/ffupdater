@@ -12,11 +12,14 @@ import android.content.Context
 import android.content.Context.NOTIFICATION_SERVICE
 import android.content.Intent
 import android.graphics.BitmapFactory
+import android.graphics.drawable.Icon
 import android.net.Uri
 import android.os.Build
 import android.provider.Settings
 import androidx.annotation.Keep
 import androidx.annotation.RequiresApi
+import androidx.work.ForegroundInfo
+import androidx.work.WorkManager
 import de.marmaro.krt.ffupdater.*
 import de.marmaro.krt.ffupdater.R.string.*
 import de.marmaro.krt.ffupdater.app.App
@@ -25,6 +28,7 @@ import de.marmaro.krt.ffupdater.crash.LogReader
 import de.marmaro.krt.ffupdater.crash.ThrowableAndLogs
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.settings.BackgroundSettings
+import java.util.UUID
 
 
 @Keep
@@ -83,11 +87,13 @@ object NotificationBuilder {
                 "update_notification__${app.name.lowercase()}"
             } else {
                 "update_notification__general"
-            }, name = if (useDifferentChannels) {
+            },
+            name = if (useDifferentChannels) {
                 context.getString(notification__update_available__channel_name, appTitle)
             } else {
                 context.getString(notification__update_available__generic_channel_name)
-            }, description = if (useDifferentChannels) {
+            },
+            description = if (useDifferentChannels) {
                 context.getString(notification__update_available__channel_descr, appTitle)
             } else {
                 context.getString(notification__update_available__generic_channel_descr)
@@ -225,16 +231,41 @@ object NotificationBuilder {
     fun showErrorNotification(context: Context, throwableAndLogs: ThrowableAndLogs, description: String) {
         val channel = ChannelData(
             id = "uncaught_exception_notification",
-            name = "Crash notifications",
-            description = "Unexpected errors which crash FFUpdater."
+            name = context.getString(notification__uncaught_exception__channel_name),
+            description = context.getString(notification__uncaught_exception__channel_description)
         )
         val notification = NotificationData(
             id = EOL_APPS_CODE,
-            title = "FFUpdater crashed",
-            text = "Click to view the error report.",
+            title = context.getString(notification__uncaught_exception__title),
+            text = context.getString(notification__uncaught_exception__text),
         )
         val intent = CrashReportActivity.createIntent(context.applicationContext, throwableAndLogs, description)
         showNotification(context, channel, notification, intent)
+    }
+
+    fun createBackgroundWorkNotification(context: Context, uuid: UUID): ForegroundInfo {
+        val channel = ChannelData(
+            id = "background_work_notification",
+            name = context.getString(notification__bachground_work__channel_name),
+            description = context.getString(notification__bachground_work__channel_description)
+        )
+        val notificationData = NotificationData(
+            id = BACKGROUND_UPDATE_CHECK_CODE,
+            title = context.getString(notification__bachground_work__title),
+            text = context.getString(notification__bachground_work__text),
+        )
+
+        val intent = WorkManager.getInstance(context.applicationContext).createCancelPendingIntent(uuid)
+        val actionTitle = context.getString(notification__bachground_work__action_title)
+        val action = if (DeviceSdkTester.supportsAndroidMarshmallow()) {
+            val icon = Icon.createWithResource(context.applicationContext, R.mipmap.ic_launcher)
+            Notification.Action.Builder(icon, actionTitle, intent).build()
+        } else {
+            Notification.Action.Builder(R.mipmap.ic_launcher, actionTitle, intent).build()
+        }
+
+        val notification = showNotification(context, channel, notificationData, null, action)
+        return ForegroundInfo(BACKGROUND_UPDATE_CHECK_CODE, notification)
     }
 
     @SuppressLint("UnspecifiedImmutableFlag")
@@ -242,8 +273,9 @@ object NotificationBuilder {
         context: Context,
         channelData: ChannelData,
         notification: NotificationData,
-        intent: Intent?,
-    ) {
+        intent: Intent? = null,
+        action: Notification.Action? = null,
+    ): Notification {
         val notificationManager = getNotificationManager(context)
 
         val notificationBuilder = if (DeviceSdkTester.supportsAndroidOreo()) {
@@ -266,8 +298,11 @@ object NotificationBuilder {
             val flags = FLAG_UPDATE_CURRENT + (if (DeviceSdkTester.supportsAndroid12()) FLAG_IMMUTABLE else 0)
             notificationBuilder.setContentIntent(PendingIntent.getActivity(context, 0, intent, flags))
         }
+        action?.let { notificationBuilder.addAction(it) }
 
-        notificationManager.notify(notification.id, notificationBuilder.build())
+        val androidNotification = notificationBuilder.build()
+        notificationManager.notify(notification.id, androidNotification)
+        return androidNotification
     }
 
     private fun getNotificationManager(context: Context): NotificationManager {
@@ -275,11 +310,12 @@ object NotificationBuilder {
     }
 
     const val UPDATE_AVAILABLE_CODE = 200
-    const val ERROR_CODE = 300
+    private const val ERROR_CODE = 300
     const val DOWNLOAD_IS_RUNNING_CODE = 400
     const val INSTALL_SUCCESS_CODE = 500
     const val INSTALL_FAILURE_ERROR = 600
     const val DOWNLOAD_ERROR_CODE = 700
-    const val EOL_APPS_CODE = 800
+    private const val EOL_APPS_CODE = 800
+    private const val BACKGROUND_UPDATE_CHECK_CODE = 900
 
 }
