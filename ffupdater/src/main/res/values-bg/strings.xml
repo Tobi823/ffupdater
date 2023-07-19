@@ -9,7 +9,7 @@
     <string name="application_installation_was_not_successful">Приложението не е инсталирано</string>
     <string name="application_successfully_installed">Приложението е инсталирано</string>
     <string name="available_version">Налично: %1$s</string>
-    <string name="notification__error__text">Съобщете за тази грешка. Докоснете, за да видите доклада.</string>
+    <string name="notification__error__text">Съобщете за тази грешка. За да видите доклада докоснете.</string>
     <string name="notification__error__title">Неуспешна проверка за обновяване във фонов режим</string>
     <string name="brave__description">Разглеждайте интернет поверително и безплатно! Приложението поверителен четец на Брейв е вашият бърз, безплатен и безопасен личен мрежов четец със спиране на реклами и изскачащи прозорци. Разглеждайте и търсете в интернет в поверителен режим, без да бъдете следени от рекламодатели, зловреден софтуер и изскачащи прозорци.</string>
     <string name="brave__title">Поверителният четец Брейв</string>
@@ -55,7 +55,7 @@
     <string name="notification__eol_apps__text">Имате изведени от употреба приложения, които не бива да ползвате. Докоснете за детайли.</string>
     <string name="notification__eol_apps__title">Инсталирано е изведено от употреба приложение</string>
     <string name="notification__error__channel_descr">Категория известия за грешки при проверката за обновяване във фонов режим.</string>
-    <string name="notification__error__channel_name">Известие за грешка при проверка за обновяване във фонов режим</string>
+    <string name="notification__error__channel_name">Известие при грешка в проверка за обновяване във фонов режим</string>
     <string name="firefox_beta__description">Четецът Файърфокс за Андроид е поверителен поначало. Хиляди проследявания в мрежата са след вас всеки ден, събирайки данни за местата на които сте били като намаляват и скоростта ви. Файърфокс по подразбиране спира над 2000 от тях, а има и добавки за спиране на реклами. С Файърфокс получавате сигурността която заслужавате и скоростта, която търсите в поверителен, мобилен четец.</string>
     <string name="firefox_beta__title">Файърфокс бета за Андроид</string>
     <string name="firefox_beta__warning">- Приложението е предназначено за разработчици и изпитатели. Може да съдържа дефекти, които да повлияят на нормалната работа с него.</string>
@@ -162,7 +162,7 @@
     <string name="settings__background__download__metered__summary">Не се препоръчва за потребители с ограничен обем на мобилните данни.</string>
     <string name="settings__background__download__metered__title">Изтегляне на обновявания в мрежи с отчитане на трафика</string>
     <string name="settings__background__installation__enabled__summary">Извършва се опит за обновяване без участието на потребителя.</string>
-    <string name="settings__background__installation__enabled__title">Install update</string>
+    <string name="settings__background__installation__enabled__title">Инсталиране на обновяванията</string>
     <string name="settings__background__update_check__enabled__summary">Редовна проверка за обновявания.</string>
     <string name="settings__background__update_check__enabled__title">Проверка за обновяване</string>
     <string name="settings__background__update_check__excluded_apps__summary">Полезно, ако не искате да обновявате дадено приложение и не желаете да получавате известия за нови издания.</string>
@@ -210,7 +210,7 @@
     <string name="notification__update_available__channel_descr">Категория известия за достъпни издания на %1$s.</string>
     <string name="notification__update_available__channel_name">Известие при достъпно издание на %1$s</string>
     <string name="update_notification__text">Докоснете за обновяване</string>
-    <string name="update_notification__title">Налично издание на %1$s</string>
+    <string name="update_notification__title">Налично е издание на %1$s</string>
     <string name="vivaldi__description">Открийте изключително бърз мрежов четец! Vivaldi е нов, безплатен и поверителен мрежов четец, създаден с мисъл за гъвкавост. Той е снабден с полезни функции, включително вградено спиране на реклами (изскачащи прозорци също), защита от проследяване и поверително превеждане. Възможностите на четеца, като например подходящи раздели в настолен стил, тъмни/светли теми и избор на оформление, ви помагат да го направите свой.</string>
     <string name="vivaldi__title">Четецът Вивалди</string>
     <string name="vivaldi__warning">- Vivaldi е само частично с отворен код.
@@ -238,7 +238,7 @@
     <string name="chromium__warning">- Хромиум е на основата на Гугъл Хром и по този начин косвено подкрепя монополното положение на машината за изчертаване на Хромиум.</string>
     <string name="settings__background__update_check__when_device_idle__title">Проверяване за издания само ако устройството е в покой</string>
     <string name="settings__background__update_check__when_device_idle__unsupported">Тази възможност е достъпна за Андроид Маршмалоу и следващи издания.</string>
-    <string name="settings__background__update_check__when_device_idle__summary">Когато е отметнато приложението не се рестиртира от обновяване във фонов режим. Когато липсва отметка се обновяването във фонов режим следва предсказуемия график.</string>
+    <string name="settings__background__update_check__when_device_idle__summary">Когато е отметнато приложението не се рестартира от обновяване във фонов режим. Когато липсва отметка обновяването във фонов режим следва определения график.</string>
     <string name="fennecfdroid__title">Фенек от F-Droid</string>
     <string name="fennecfdroid__warning">FFUpdater изтегля файловете от сървърите на F-Droid и затова не е по-бърз.</string>
     <string name="mulch__title">Мулч</string>
@@ -313,8 +313,22 @@
 \nFirefox Focus е перфектният мрежов четец за неангажиращо разглеждане без следи.</string>
     <string name="eol_reason__browser_no_longer_maintained">Мрежовият четец вече не се поддържа.</string>
     <string name="background__installation__when_screen_off__title">Инсталиране при изключен екран</string>
-    <string name="notification__uncaught_exception__channel_name">Известие за срив</string>
+    <string name="notification__uncaught_exception__channel_name">Известие при срив</string>
     <string name="add_app_activity__title_based_on_firefox">На основата на Firefox</string>
     <string name="add_app_activity__title_good_security_browsers">Добър, защитен четец</string>
     <string name="background__installation__when_screen_off__summary">Инсталиране на обновяванията само при изключен екран.</string>
+    <string name="notification__uncaught_exception__channel_description">Категория известия за сривове на FFUpdater.</string>
+    <string name="notification__bachground_work__channel_description">Категория известия за работа във фонов режим.</string>
+    <string name="notification__bachground_work__channel_name">Известие при работа във фонов режим</string>
+    <string name="notification__bg_update_check__unreliable_execution__text">Вероятната причина е или батерията, или настройките за производителност на устройството. За да изключите оптимизирането на батерията за това приложение докоснете известието.</string>
+    <string name="notification__bachground_work__text">Известието е необходимо за надеждно изпълнение. В зависимост от настройките обновяванията се извличат, изтеглят и инсталират във фонов режим. Това известие може да бъде скрито или заглушено, без да влияе на работа. След приключване на проверката за обноване то ще бъде затворено.</string>
+    <string name="crash_report__report_is_copied_to_clipboard">Докладът за срив е копиран в междинната памет</string>
+    <string name="installer__android_too_old_for_shizuku">Изданието на Android е твърде старо за Shizuku.</string>
+    <string name="notification__uncaught_exception__title">FFUpdater се срина</string>
+    <string name="notification__uncaught_exception__text">За да видите доклада докоснете.</string>
+    <string name="notification__bachground_work__title">Изпълняване във фонов режим</string>
+    <string name="notification__bachground_work__action_title">Спиране</string>
+    <string name="notification__bg_update_check__unreliable_execution__channel_description">Категория известия за ненадеждна проверка за обновяване във фонов режим.</string>
+    <string name="notification__bg_update_check__unreliable_execution__channel_name">Известие при неизпълнено обновяване във фонов режим</string>
+    <string name="notification__bg_update_check__unreliable_execution__title">Проверката за обновяване във фонов режим не се изпълнява надеждно</string>
 </resources>
