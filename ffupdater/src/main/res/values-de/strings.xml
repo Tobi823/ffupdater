@@ -313,4 +313,23 @@
     <string name="main_activity__denied_notification_permission">FFUpdater benötigt die Berechtigung, dich über Updates zu informieren.</string>
     <string name="main_activity__an_error_occurred"><u>Ein Fehler ist aufgetreten. Versuche es später erneut.</u></string>
     <string name="eol_reason__browser_no_longer_maintained">Der Browser wird nicht mehr gewartet.</string>
+    <string name="crash_report__report_is_copied_to_clipboard">Absturzbericht wird in die Zwischenablage kopiert</string>
+    <string name="installer__android_too_old_for_shizuku">Dein Android ist zu alt für Shizuku.</string>
+    <string name="notification__uncaught_exception__channel_name">Absturzbenachrichtigungen</string>
+    <string name="notification__uncaught_exception__title">FFUpdater abgestürzt</string>
+    <string name="notification__bachground_work__channel_name">Benachrichtigungen über Hintergrundaktivitäten</string>
+    <string name="notification__bachground_work__channel_description">Benachrichtigungen über die Hintergrundaktivitäten</string>
+    <string name="notification__bachground_work__text">Diese Benachrichtigung ist für eine zuverlässige Ausführung erforderlich. Abhängig von deinen Einstellungen werden Updates im Hintergrund abgerufen, heruntergeladen und installiert. Diese Benachrichtigung kann ausgeblendet oder stummgeschaltet werden, ohne die Hintergrundaktivität zu unterbrechen. Nachdem die Prüfung abgeschlossen ist, wird auch die Benachrichtigung geschlossen.</string>
+    <string name="add_app_activity__title_based_on_firefox">Basierend auf Firefox</string>
+    <string name="add_app_activity__title_good_security_browsers">Gute Sicherheitsbrowser</string>
+    <string name="notification__uncaught_exception__channel_description">Unerwartete Fehler, die FFUpdater zum Absturz bringen.</string>
+    <string name="notification__uncaught_exception__text">Klicke hier, um den Fehlerbericht anzuzeigen.</string>
+    <string name="notification__bachground_work__title">Ausführen von Hintergrundaktivitäten</string>
+    <string name="notification__bachground_work__action_title">Diese Hintergrundaktivität abbrechen</string>
+    <string name="notification__bg_update_check__unreliable_execution__channel_name">Überprüfung auf Hintergrundaktualisierung nicht ausgeführt</string>
+    <string name="notification__bg_update_check__unreliable_execution__channel_description">Warnung bei unzuverlässiger Ausführung der Hintergrundaktualisierungsprüfung</string>
+    <string name="notification__bg_update_check__unreliable_execution__title">Überprüfung der Hintergrundaktualisierung wird nicht zuverlässig ausgeführt</string>
+    <string name="notification__bg_update_check__unreliable_execution__text">Möglicherweise liegt es an den Akku- oder Leistungseinstellungen deines Geräts. Klicke auf diese Benachrichtigung, um die Akkuoptimierung für diese App zu deaktivieren.</string>
+    <string name="background__installation__when_screen_off__summary">Versuche Updates nur zu installieren, wenn der Gerätebildschirm ausgeschaltet ist.</string>
+    <string name="background__installation__when_screen_off__title">Nur installieren, wenn der Bildschirm ausgeschaltet ist</string>
 </resources>
