@@ -1,0 +1,5 @@
+* Danke für die Weblate-Beiträge von: markov, Oğuz Ersen und Kazushi Hayama
+* Fehler bei der Überprüfung von Hintergrundaktualisierungen behoben (Überbleibsel von Tests)
+* Bei problematischen Geräten (https://dontkillmyapp.com): Bittet den Benutzer, bei der Akkuoptimierung ignoriert zu werden (Tobi823/ffupdater#409)
+* Warnt nicht vor fehlender Benachrichtigungsberechtigung, wenn Benachrichtigungen deaktiviert sind (Tobi823/ffupdater#423)
+* Code umgestaltet und bereinigt

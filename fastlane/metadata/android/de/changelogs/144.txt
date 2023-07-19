@@ -1,0 +1,10 @@
+* Danke für die Weblate-Beiträge von: Kazushi Hayama, Retrial, nautilusx, Juraj Motuz, gallegonovato, Alexthegib, markov, Priit Jõerüüt, 109247019824, Eryk Michalak, Giovanni Donisi und Oğuz Ersen
+* Firefox Nightly repariert
+* Reduzierung der Netzwerkauslastung von FFUpdater durch Verbesserung des Netzwerk-Caches
+* Versuche Proguard korrekt zu konfigurieren (Software zum Komprimieren der Download- und Installationsgröße von FFUpdater)
+* Fehler behoben "Datei wurde nicht heruntergeladen"
+* Ressourcenlecks behoben
+* Verbesserte Protokollierung und Fehlerberichterstattung
+* Abhängigkeiten aktualisieren
+* Code umgestaltet und bereinigt
+* Korrektur von Unit-Tests

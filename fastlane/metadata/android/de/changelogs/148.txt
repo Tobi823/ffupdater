@@ -1,0 +1,1 @@
+* Behoben "FFUpdater stürzt nach dem Herunterladen einer apk / beim Versuch, die apk zu installieren ab" (Tobi823/ffupdater#438)

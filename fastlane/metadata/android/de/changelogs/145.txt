@@ -1,0 +1,4 @@
+* Danke für die Weblate-Beiträge von: Priit Jõerüüt
+* Verbesserter Umgang mit ungültigen API-Antworten (Tobi823/ffupdater#434)
+* Doppelte Anzeige von Firefox Nightly behoben (Tobi823/ffupdater#435)
+* Versuche Proguard so zu konfigurieren, dass die App-Größe minimiert wird

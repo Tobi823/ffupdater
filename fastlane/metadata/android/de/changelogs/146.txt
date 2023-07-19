@@ -1,0 +1,5 @@
+* Danke für die Weblate-Beiträge von: Priit Jõerüüt, Oğuz Ersen und Kazushi Hayama
+* Apps nur im Hintergrund aktualisieren, wenn sie nicht verwendet werden (erfordert Android 14) (Tobi823/ffupdater#400)
+* Option hinzugefügt, um Apps nur im Hintergrund zu aktualisieren, wenn der Bildschirm ausgeschaltet ist (Tobi823/ffupdater#400)
+* Fortschrittsklammern ausblenden, wenn der Download noch nicht gestartet wurde (Tobi823/ffupdater#401)
+* Code umgestaltet und bereinigt
