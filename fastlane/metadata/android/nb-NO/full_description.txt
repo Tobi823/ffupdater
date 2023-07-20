@@ -10,7 +10,7 @@ Nettlesere fra Mozilla eller basert på Firefox:
 
 Gode personvernnettlesere:
 - Bromite, Bromite SystemWebView
-- Mulch
+- Mulch, Mulch System WebView
 
 Nettleser som er bedre enn Google Chrome:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)

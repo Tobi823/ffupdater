@@ -10,7 +10,7 @@ Mozilla veya Firefox tabanlı tarayıcılar
 
 Gizlilik açısından iyi tarayıcılar:
 - Bromit, Bromit SystemWebView
-- Mulch
+- Mulch, Mulch System WebView
 
 Google Chrome'dan daha iyi olan tarayıcılar:
 - Brave Gizli Tarayıcı, Brave Tarayıcı (Beta), Brave Tarayıcı (Gecelik)

@@ -58,6 +58,7 @@ class CheckReleaseAgeIT {
             TestData(Iceraven, 84),
 //            TestData(Lockwise(GithubConsumer.INSTANCE), 84),
             TestData(Mulch, 56),
+            TestData(MulchSystemWebView, 56),
             TestData(MullFromRepo, 56),
             TestData(Orbot, 4 * 30),
             TestData(PrivacyBrowser, 56),

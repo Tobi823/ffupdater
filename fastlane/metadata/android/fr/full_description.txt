@@ -10,7 +10,7 @@ Navigateurs de Mozilla ou basés sur Firefox :
 
 Bons navigateurs de confidentialité :
 - Bromite, Bromite SystemWebView
-- Mulch
+- Mulch, Mulch System WebView
 
 Navigateurs qui sont meilleurs que Google Chrome :
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)

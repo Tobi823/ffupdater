@@ -24,6 +24,7 @@ enum class App {
     KIWI,
     LOCKWISE,
     MULCH,
+    MULCH_SYSTEMWEBVIEW,
     MULL_FROM_REPO,
     ORBOT,
     PRIVACY_BROWSER,
@@ -55,6 +56,7 @@ enum class App {
             KIWI -> Kiwi
             LOCKWISE -> Lockwise
             MULCH -> Mulch
+            MULCH_SYSTEMWEBVIEW -> MulchSystemWebView
             MULL_FROM_REPO -> MullFromRepo
             ORBOT -> Orbot
             PRIVACY_BROWSER -> PrivacyBrowser

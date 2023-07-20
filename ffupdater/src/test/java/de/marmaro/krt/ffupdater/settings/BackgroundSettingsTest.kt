@@ -223,6 +223,7 @@ class BackgroundSettingsTest : BaseTest() {
                 "MULCH",
                 "MULCH",
                 "MULL",
+                "MULCH_SYSTEMWEBVIEW",
                 "MULL_FROM_REPO",
                 "ORBOT",
                 "PRIVACY_BROWSER",

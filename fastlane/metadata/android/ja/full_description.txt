@@ -10,7 +10,7 @@ Mozilla または Firefox ベースのブラウザ:
 
 優れたプライバシーブラウザ
 - Bromite、Bromite SystemWebView
-- Mulch
+- Mulch, Mulch System WebView
 
 Google Chromeより優れたブラウザ
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)

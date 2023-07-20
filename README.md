@@ -22,7 +22,8 @@ Browsers from Mozilla or based on Firefox:
 
 Good privacy browsers:
 
-- [Mulch](https://divestos.org/index.php?page=our_apps)
+- [Mulch](https://divestos.org/pages/our_apps#mull)
+  , [Mulch System WebView](https://divestos.org/pages/our_apps#mull)
 
 Browser which are better than Google Chrome:
 

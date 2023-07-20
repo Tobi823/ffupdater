@@ -62,6 +62,7 @@
         <package android:name="org.ungoogled.chromium.stable" />
         <package android:name="us.spotco.fennec_dos" />
         <package android:name="us.spotco.mulch" />
+        <package android:name="us.spotco.mulch_wv" />
     </queries>
 
     <application

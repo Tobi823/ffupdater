@@ -296,4 +296,6 @@
     <string name="notification__bachground_work__title">Executing background work</string>
     <string name="notification__bachground_work__text">This notification is required for a reliable execution. Depending on your settings, updates are fetched, downloaded and installed in the background. This notification can be hidden or muted without stopping the background work. After the check is completed, the notification will is also be closed.</string>
     <string name="notification__bachground_work__action_title">Cancel this background work</string>
+    <string name="mulch_wv__title">Mulch System WebView</string>
+    <string name="mulch_wv__description">This is a security oriented and hardened system WebView based on Chromium technology. Many anti-features are disabled/removed and a handful security features are enabled/added thanks to patches from the [https://github.com/GrapheneOS/Vanadium Vanadium project].</string>
 </resources>

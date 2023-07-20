@@ -10,7 +10,7 @@
 
 Καλά προγράμματα περιήγησης απορρήτου:
 - Bromite, Bromite SystemWebView
-- Mulch
+- Mulch, Mulch System WebView
 
 Πρόγραμμα περιήγησης που είναι καλύτερo από το Google Chrome:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)

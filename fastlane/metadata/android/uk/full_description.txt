@@ -10,7 +10,7 @@
 
 Добрі конфіденційні браузери:
 - Bromite, Bromite SystemWebView
-- Mulch
+- Mulch, Mulch System WebView
 
 Браузери, що кращі, ніж Google Chrome:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)

@@ -10,7 +10,7 @@ Browsere fra Mozilla eller baseret på Firefox:
 
 Gode privatlivsbrowsere:
 - Bromite, Bromite SystemWebView
-- Mulch
+- Mulch, Mulch System WebView
 
 Browsere, der er bedre end Google Chrome:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)

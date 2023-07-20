@@ -10,7 +10,7 @@ Pārlūkprogrammas no Mozilla vai uz Firefox balstītas:
 
 Pārlūkprogrammas, kas nodrošina labu privātumu:
 - Bromite, Bromite SystemWebView
-- Mulch
+- Mulch, Mulch System WebView
 
 Pārlūkprogrammas, kas ir labākas par Google Chrome:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
