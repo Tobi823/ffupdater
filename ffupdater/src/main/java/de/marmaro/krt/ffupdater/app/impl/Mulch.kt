@@ -26,7 +26,7 @@ object Mulch : AppBase() {
     override val installationWarning = R.string.mulch__warning
     override val downloadSource = "https://divestos.org/fdroid/official"
     override val icon = R.drawable.ic_logo_mulch
-    override val minApiLevel = Build.VERSION_CODES.M
+    override val minApiLevel = Build.VERSION_CODES.N
     override val supportedAbis = ARM32_ARM64
 
     @Suppress("SpellCheckingInspection")
