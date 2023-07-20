@@ -324,4 +324,17 @@
     <string name="notification__bg_update_check__unreliable_execution__channel_description">Προειδοποίηση για αναξιόπιστη εκτέλεση του ελέγχου ενημέρωσης παρασκηνίου</string>
     <string name="notification__bg_update_check__unreliable_execution__text">Ίσως προκαλείται από τις ρυθμίσεις μπαταρίας ή απόδοσης της συσκευής σας. Κάντε κλικ σε αυτήν την ειδοποίηση για να απενεργοποιήσετε τη βελτιστοποίηση μπαταρίας για αυτήν την εφαρμογή.</string>
     <string name="background__installation__when_screen_off__summary">Προσπάθεια εγκατάστασης ενημερώσεων μόνο όταν η οθόνη της συσκευής είναι απενεργοποιημένη.</string>
+    <string name="notification__uncaught_exception__channel_description">Απροσδόκητα σφάλματα που διακόπτουν το FFUpdater.</string>
+    <string name="crash_report__report_is_copied_to_clipboard">Η αναφορά σφαλμάτων αντιγράφτηκε στο πρόχειρο σας</string>
+    <string name="installer__android_too_old_for_shizuku">Το Android σας είναι πολύ παλιό για Shizuku.</string>
+    <string name="notification__uncaught_exception__title">Το FFUpdater συνετρίβη</string>
+    <string name="notification__bachground_work__channel_name">Ειδοποιήσεις Εργασίας Παρασκηνίου</string>
+    <string name="notification__bachground_work__action_title">Ακυρώστε αυτήν την εργασία στο παρασκήνιο</string>
+    <string name="notification__bachground_work__channel_description">Ειδοποιήσεις για την εργασία στο παρασκήνιο</string>
+    <string name="notification__bachground_work__text">Αυτή η ειδοποίηση απαιτείται για αξιόπιστη εκτέλεση. Ανάλογα με τις ρυθμίσεις σας, οι ενημερώσεις λαμβάνονται, κατεβαίνουν και εγκαθίστανται στο παρασκήνιο. Αυτή η ειδοποίηση μπορεί να κρυφτεί ή να τεθεί σε σίγαση χωρίς να σταματήσει η εργασία στο παρασκήνιο. Μετά την ολοκλήρωση του ελέγχου, η ειδοποίηση θα κλείσει επίσης.</string>
+    <string name="add_app_activity__title_based_on_firefox">Βασισμένο στον Firefox</string>
+    <string name="add_app_activity__title_good_security_browsers">Καλό Πρόγραμμα περιήγησης Ασφαλείας</string>
+    <string name="notification__uncaught_exception__channel_name">Ειδοποιήσεις σφαλμάτων</string>
+    <string name="notification__uncaught_exception__text">Κάντε κλικ για να δείτε την αναφορά σφάλματος.</string>
+    <string name="notification__bachground_work__title">Εκτέλεση εργασιών στο παρασκήνιο</string>
 </resources>
