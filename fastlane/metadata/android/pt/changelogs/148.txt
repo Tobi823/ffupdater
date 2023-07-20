@@ -1,0 +1,1 @@
+* Correção de "FFUpdater crasha após descarregar qualquer apk/quando tenta instalar o apk" (Tobi823/ffupdater#438)

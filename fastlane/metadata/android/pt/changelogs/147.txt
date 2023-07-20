@@ -1,0 +1,5 @@
+* Obrigado pelas contribuições do Weblate de: markov, Oğuz Ersen e Kazushi Hayama
+* Correção do erro de verificação de actualizações em segundo plano (remanescente dos testes)
+* Em dispositivos problemáticos (https://dontkillmyapp.com): pedir ao utilizador para ser ignorado da otimização da bateria (Tobi823/ffupdater#409)
+* Não avisar sobre a falta de permissão de notificação se as notificações estiverem desativadas (Tobi823/ffupdater#423)
+* Refactor e limpeza de código

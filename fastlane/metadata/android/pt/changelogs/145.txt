@@ -1,0 +1,4 @@
+* Agradecimentos pelas contribuições do Weblate de: Priit Jõerüüt
+* Melhorar o tratamento de respostas inválidas da API (Tobi823/ffupdater#434)
+* Corrigir a exibição dupla do Firefox Nightly (Tobi823/ffupdater#435)
+* Tentar configurar o Proguard para minimizar o tamanho da aplicação

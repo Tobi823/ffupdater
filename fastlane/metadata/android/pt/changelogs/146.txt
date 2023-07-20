@@ -1,0 +1,5 @@
+* Agradecemos as contribuições do Weblate de: Priit Jõerüüt, Oğuz Ersen e Kazushi Hayama
+* Atualizar apenas as aplicações em segundo plano se não forem utilizadas (requer Android 14) (Tobi823/ffupdater#400)
+* Adicionar opção para atualizar apenas as aplicações em segundo plano se o ecrã estiver desligado (Tobi823/ffupdater#400)
+* Esconder os suportes de progresso se o download não tiver sido iniciado (Tobi823/ffupdater#401)
+* Refatoração e limpeza de código

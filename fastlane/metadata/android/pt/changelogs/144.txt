@@ -1,0 +1,10 @@
+* Obrigado pelas contribuições do Weblate de: Kazushi Hayama, Retrial, nautilusx, Juraj Motuz, gallegonovato, Alexthegib, markov, Priit Jõerüüt, 109247019824, Eryk Michalak, Giovanni Donisi e Oğuz Ersen
+* Correção do Firefox Nightly
+* reduzir o uso de rede do FFUpdater melhorando o cache de rede
+* tentar configurar corretamente o Proguard (software para comprimir o tamanho do download e da instalação do FFUpdater)
+* corrigir o erro "O ficheiro não foi descarregado
+* corrigir as fugas de recursos
+* melhorar o registo e o relatório de erros
+* atualização das dependências
+* refactorização e limpeza do código
+* corrigir testes unitários
