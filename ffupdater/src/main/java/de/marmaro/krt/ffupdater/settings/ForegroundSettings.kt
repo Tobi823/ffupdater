@@ -35,7 +35,7 @@ object ForegroundSettings {
             return when {
                 theme in validAndroidThemes -> theme!!
                 // return default values because theme is invalid and could be null
-                DeviceSdkTester.supportsAndroid10() -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
+                DeviceSdkTester.supportsAndroid10Q29() -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
                 else -> AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY
             }
         }

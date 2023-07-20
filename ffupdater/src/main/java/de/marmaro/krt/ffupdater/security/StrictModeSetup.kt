@@ -33,19 +33,19 @@ object StrictModeSetup {
 
         val vmPolicy = VmPolicy.Builder()
         vmPolicy.detectActivityLeaks()
-        if (DeviceSdkTester.supportsAndroidMarshmallow()) vmPolicy.detectCleartextNetwork()
-        if (DeviceSdkTester.supportsAndroidOreo()) vmPolicy.detectContentUriWithoutPermission()
-        if (DeviceSdkTester.supportsAndroid10()) vmPolicy.detectCredentialProtectedWhileLocked()
+        if (DeviceSdkTester.supportsAndroid6M23()) vmPolicy.detectCleartextNetwork()
+        if (DeviceSdkTester.supportsAndroid8Oreo26()) vmPolicy.detectContentUriWithoutPermission()
+        if (DeviceSdkTester.supportsAndroid10Q29()) vmPolicy.detectCredentialProtectedWhileLocked()
         vmPolicy.detectFileUriExposure()
-        if (DeviceSdkTester.supportsAndroid10()) vmPolicy.detectImplicitDirectBoot()
-        if (DeviceSdkTester.supportsAndroid12()) vmPolicy.detectIncorrectContextUse()
+        if (DeviceSdkTester.supportsAndroid10Q29()) vmPolicy.detectImplicitDirectBoot()
+        if (DeviceSdkTester.supportsAndroid12S31()) vmPolicy.detectIncorrectContextUse()
         vmPolicy.detectLeakedClosableObjects()
         vmPolicy.detectLeakedRegistrationObjects()
         vmPolicy.detectLeakedSqlLiteObjects()
         // because of https://stackoverflow.com/a/53736775
 //        if (DeviceSdkTester.supportsAndroid9()) vmPolicy.detectNonSdkApiUsage()
-        if (DeviceSdkTester.supportsAndroid12()) vmPolicy.detectUnsafeIntentLaunch()
-        if (DeviceSdkTester.supportsAndroidMarshmallow()) vmPolicy.penaltyDeathOnCleartextNetwork()
+        if (DeviceSdkTester.supportsAndroid12S31()) vmPolicy.detectUnsafeIntentLaunch()
+        if (DeviceSdkTester.supportsAndroid6M23()) vmPolicy.penaltyDeathOnCleartextNetwork()
 
         StrictMode.setVmPolicy(
             vmPolicy.build()
@@ -62,7 +62,7 @@ object StrictModeSetup {
                 .build()
         )
 
-        if (DeviceSdkTester.supportsAndroidMarshmallow()) {
+        if (DeviceSdkTester.supportsAndroid6M23()) {
             StrictMode.setVmPolicy(
                 VmPolicy.Builder()
                     .penaltyDeathOnCleartextNetwork()

@@ -11,6 +11,7 @@ import android.app.PendingIntent.FLAG_UPDATE_CURRENT
 import android.content.Context
 import android.content.Context.NOTIFICATION_SERVICE
 import android.content.Intent
+import android.content.pm.ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC
 import android.graphics.BitmapFactory
 import android.graphics.drawable.Icon
 import android.net.Uri
@@ -257,7 +258,7 @@ object NotificationBuilder {
 
         val intent = WorkManager.getInstance(context.applicationContext).createCancelPendingIntent(uuid)
         val actionTitle = context.getString(notification__bachground_work__action_title)
-        val action = if (DeviceSdkTester.supportsAndroidMarshmallow()) {
+        val action = if (DeviceSdkTester.supportsAndroid6M23()) {
             val icon = Icon.createWithResource(context.applicationContext, R.mipmap.ic_launcher)
             Notification.Action.Builder(icon, actionTitle, intent).build()
         } else {
@@ -265,6 +266,9 @@ object NotificationBuilder {
         }
 
         val notification = showNotification(context, channel, notificationData, null, action)
+        if (DeviceSdkTester.supportsAndroid10Q29()) {
+            return ForegroundInfo(BACKGROUND_UPDATE_CHECK_CODE, notification, FOREGROUND_SERVICE_TYPE_DATA_SYNC)
+        }
         return ForegroundInfo(BACKGROUND_UPDATE_CHECK_CODE, notification)
     }
 
@@ -278,7 +282,7 @@ object NotificationBuilder {
     ): Notification {
         val notificationManager = getNotificationManager(context)
 
-        val notificationBuilder = if (DeviceSdkTester.supportsAndroidOreo()) {
+        val notificationBuilder = if (DeviceSdkTester.supportsAndroid8Oreo26()) {
             val channel = NotificationChannel(channelData.id, channelData.name, IMPORTANCE_DEFAULT)
             channel.description = channelData.description
             notificationManager.createNotificationChannel(channel)
@@ -295,7 +299,7 @@ object NotificationBuilder {
             .setAutoCancel(true)
 
         if (intent != null) {
-            val flags = FLAG_UPDATE_CURRENT + (if (DeviceSdkTester.supportsAndroid12()) FLAG_IMMUTABLE else 0)
+            val flags = FLAG_UPDATE_CURRENT + (if (DeviceSdkTester.supportsAndroid12S31()) FLAG_IMMUTABLE else 0)
             notificationBuilder.setContentIntent(PendingIntent.getActivity(context, 0, intent, flags))
         }
         action?.let { notificationBuilder.addAction(it) }

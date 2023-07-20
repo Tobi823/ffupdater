@@ -60,7 +60,7 @@ object Brave : AppBase() {
     }
 
     private fun findNameOfApkFile(): String {
-        return if (DeviceSdkTester.supportsAndroidNougat()) {
+        return if (DeviceSdkTester.supportsAndroid7Nougat24()) {
             when (DeviceAbiExtractor.findBestAbi(supportedAbis, DeviceSettingsHelper.prefer32BitApks)) {
                 ARMEABI_V7A -> "BraveMonoarm.apk"
                 ARM64_V8A -> "BraveMonoarm64.apk"

@@ -21,7 +21,7 @@ object PowerUtil {
 
     fun isBatteryLow(): Boolean {
         val batteryStatus = applicationContext.registerReceiver(null, IntentFilter(Intent.ACTION_BATTERY_CHANGED))!!
-        if (DeviceSdkTester.supportsAndroid9()) {
+        if (DeviceSdkTester.supportsAndroid9P28()) {
             return batteryStatus.getBooleanExtra(BatteryManager.EXTRA_BATTERY_LOW, false)
         }
         return batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, 0) <= 15

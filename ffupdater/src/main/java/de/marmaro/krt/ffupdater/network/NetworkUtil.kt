@@ -13,7 +13,7 @@ object NetworkUtil {
     }
 
     fun isDataSaverEnabled(context: Context): Boolean {
-        if (DeviceSdkTester.supportsAndroidNougat()) {
+        if (DeviceSdkTester.supportsAndroid7Nougat24()) {
             val manager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             return manager.restrictBackgroundStatus == ConnectivityManager.RESTRICT_BACKGROUND_STATUS_ENABLED
         }

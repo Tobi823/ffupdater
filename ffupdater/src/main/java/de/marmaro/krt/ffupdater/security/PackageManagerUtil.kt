@@ -29,10 +29,10 @@ object PackageManagerUtil {
             val file = File(path)
             check(file.exists()) { "File '$path' does not exists." }
             val signatures = mutableListOf<() -> Signature?>()
-            if (DeviceSdkTester.supportsAndroid13()) {
+            if (DeviceSdkTester.supportsAndroid13T33()) {
                 signatures.add { extractSignature(pm.getPackageArchiveInfo(path, getPackageInfoFlags())) }
             }
-            if (DeviceSdkTester.supportsAndroid9()) {
+            if (DeviceSdkTester.supportsAndroid9P28()) {
                 signatures.add { extractSignature(pm.getPackageArchiveInfo(path, GET_SIGNING_CERTIFICATES)) }
             }
             signatures.add { extractSignature(pm.getPackageArchiveInfo(path, GET_SIGNATURES)) }
@@ -46,10 +46,10 @@ object PackageManagerUtil {
         return withContext(Dispatchers.Default) {
             try {
                 val signatures = mutableListOf<() -> Signature?>()
-                if (DeviceSdkTester.supportsAndroid13()) {
+                if (DeviceSdkTester.supportsAndroid13T33()) {
                     signatures.add { extractSignature(pm.getPackageInfo(app.packageName, getPackageInfoFlags())) }
                 }
-                if (DeviceSdkTester.supportsAndroid9()) {
+                if (DeviceSdkTester.supportsAndroid9P28()) {
                     signatures.add { extractSignature(pm.getPackageInfo(app.packageName, GET_SIGNING_CERTIFICATES)) }
                 }
                 signatures.add { extractSignature(pm.getPackageInfo(app.packageName, GET_SIGNATURES)) }
@@ -67,7 +67,7 @@ object PackageManagerUtil {
 
     @Suppress("DEPRECATION")
     private fun extractSignature(packageInfo: PackageInfo?): Signature? {
-        if (DeviceSdkTester.supportsAndroid9() && packageInfo?.signingInfo != null) {
+        if (DeviceSdkTester.supportsAndroid9P28() && packageInfo?.signingInfo != null) {
             return extractSignature(packageInfo.signingInfo)
         }
         if (packageInfo?.signatures != null) {

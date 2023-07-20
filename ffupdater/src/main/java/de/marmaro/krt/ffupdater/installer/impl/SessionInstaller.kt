@@ -1,12 +1,21 @@
 package de.marmaro.krt.ffupdater.installer.impl
 
-import android.annotation.SuppressLint
 import android.app.PendingIntent
 import android.app.PendingIntent.FLAG_MUTABLE
 import android.app.PendingIntent.FLAG_UPDATE_CURRENT
-import android.content.*
+import android.content.ActivityNotFoundException
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Context.RECEIVER_NOT_EXPORTED
-import android.content.pm.PackageInstaller.*
+import android.content.Intent
+import android.content.IntentFilter
+import android.content.IntentSender
+import android.content.pm.PackageInstaller.EXTRA_STATUS
+import android.content.pm.PackageInstaller.STATUS_FAILURE_STORAGE
+import android.content.pm.PackageInstaller.STATUS_PENDING_USER_ACTION
+import android.content.pm.PackageInstaller.STATUS_SUCCESS
+import android.content.pm.PackageInstaller.Session
+import android.content.pm.PackageInstaller.SessionParams
 import android.content.pm.PackageInstaller.SessionParams.MODE_FULL_INSTALL
 import android.content.pm.PackageInstaller.SessionParams.USER_ACTION_NOT_REQUIRED
 import android.content.pm.PackageManager
@@ -14,14 +23,15 @@ import android.graphics.BitmapFactory
 import android.os.Bundle
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
+import de.marmaro.krt.ffupdater.BuildConfig
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.R.string.session_installer__status_failure_aborted
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.entity.Installer
+import de.marmaro.krt.ffupdater.installer.error.session.GenericSessionResultDecoder.getShortErrorMessage
+import de.marmaro.krt.ffupdater.installer.error.session.GenericSessionResultDecoder.getTranslatedErrorMessage
 import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
 import de.marmaro.krt.ffupdater.installer.exceptions.UserInteractionIsRequiredException
-import de.marmaro.krt.ffupdater.installer.manifacturer.GeneralInstallResultDecoder
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -30,49 +40,80 @@ import java.io.IOException
 
 
 @Keep
-class SessionInstaller(app: App, private val foreground: Boolean) : AbstractAppInstaller(app) {
+open class SessionInstaller(app: App, private val foreground: Boolean) : AbstractAppInstaller(app) {
     override val type = Installer.SESSION_INSTALLER
-    private val intentNameForAppInstallationCallback =
-        "de.marmaro.krt.ffupdater.installer.impl.SessionInstaller.$foreground"
-    private val installationStatus = CompletableDeferred<Boolean>()
-    private var intentReceiver: BroadcastReceiver? = null
+    protected open val intentName = "de.marmaro.krt.ffupdater.installer.impl.SessionInstaller.$foreground"
 
     override suspend fun executeInstallerSpecificLogic(context: Context, file: File) {
         require(file.exists()) { "File does not exists." }
-        registerIntentReceiver(context)
-        val possibleSessionId = install(context, file)
+        val installStatus = CompletableDeferred<Boolean>()
+        val intentReceiver = registerIntentReceiver(context, installStatus)
+        val sessionId = install(context, file)
         try {
-            installationStatus.await()
+            installStatus.await()
         } finally {
-            unregisterIntentReceiver(context)
-            possibleSessionId?.let { context.packageManager.packageInstaller.abandonSession(it) }
+            withContext(Dispatchers.Main) { context.unregisterReceiver(intentReceiver) }
+            abandonSession(context, sessionId)
         }
     }
 
-    @SuppressLint("UnspecifiedImmutableFlag")
+    private suspend fun registerIntentReceiver(
+        context: Context,
+        installStatus: CompletableDeferred<Boolean>,
+    ): BroadcastReceiver {
+        val intentReceiver = object : BroadcastReceiver() {
+            override fun onReceive(context: Context?, intent: Intent?) {
+                requireNotNull(context)
+                requireNotNull(intent)
+                val bundle = requireNotNull(intent.extras)
+                when (val status = bundle.getInt(EXTRA_STATUS)) {
+                    STATUS_PENDING_USER_ACTION -> requestInstallationPermission(context, bundle, installStatus)
+                    STATUS_SUCCESS -> installStatus.complete(true)
+                    else -> {
+                        val shortMessage = getShortErrorMessage(status, bundle)
+                        val translatedMessage = getTranslatedErrorMessage(context, status, bundle)
+                        val exception = InstallationFailedException(shortMessage, status, translatedMessage)
+                        installStatus.completeExceptionally(exception)
+                    }
+                }
+            }
+        }
+
+        val filter = IntentFilter(intentName)
+        if (DeviceSdkTester.supportsAndroid13T33()) {
+            withContext(Dispatchers.Main) { context.registerReceiver(intentReceiver, filter, RECEIVER_NOT_EXPORTED) }
+        } else {
+            withContext(Dispatchers.Main) { context.registerReceiver(intentReceiver, filter) }
+        }
+        return intentReceiver
+    }
+
     @MainThread
-    private suspend fun install(context: Context, file: File): Int? {
+    private suspend fun install(context: Context, file: File): Int {
         return withContext(Dispatchers.Default) {
-            val packageInstaller = context.packageManager.packageInstaller
-            val params = createSessionParams(context, file)
-            val sessionId = try {
-                packageInstaller.createSession(params)
-            } catch (e: IOException) {
-                val errorMessage = context.getString(R.string.session_installer__not_enough_storage, e.message)
-                fail(getShortErrorMessage(STATUS_FAILURE_STORAGE), e, STATUS_FAILURE_STORAGE, errorMessage)
-                return@withContext null
-            }
-
-            packageInstaller.openSession(sessionId).use {
-                copyApkToSession(it, file)
+            openSession(context, file) { session, sessionId ->
+                copyApkToSession(session, file)
                 val intentSender = createSessionChangeReceiver(context, sessionId)
-                it.commit(intentSender)
+                session.commit(intentSender)
             }
-            return@withContext sessionId
         }
     }
 
-    private fun createSessionParams(context: Context, file: File): SessionParams {
+    protected open suspend fun openSession(context: Context, file: File, block: suspend (Session, Int) -> Unit): Int {
+        val packageInstaller = context.packageManager.packageInstaller
+        val params = createSessionParams(context, file)
+        val sessionId = try {
+            packageInstaller.createSession(params)
+        } catch (e: IOException) {
+            val shortMessage = getShortErrorMessage(STATUS_FAILURE_STORAGE, null)
+            val errorMessage = context.getString(R.string.session_installer__not_enough_storage, e.message)
+            throw InstallationFailedException(shortMessage, e, STATUS_FAILURE_STORAGE, errorMessage)
+        }
+        packageInstaller.openSession(sessionId).use { block(it, sessionId) }
+        return sessionId
+    }
+
+    protected fun createSessionParams(context: Context, file: File): SessionParams {
         // https://gitlab.com/AuroraOSS/AuroraStore/-/blob/master/app/src/main/java/com/aurora/store/data/installer/SessionInstaller.kt
         val appImpl = app.findImpl()
         val params = SessionParams(MODE_FULL_INSTALL)
@@ -81,28 +122,29 @@ class SessionInstaller(app: App, private val foreground: Boolean) : AbstractAppI
         params.setAppLabel(context.getString(appImpl.title))
         params.setAppPackageName(appImpl.packageName)
         params.setSize(file.length())
-        if (DeviceSdkTester.supportsAndroidNougat()) {
+        if (DeviceSdkTester.supportsAndroid7Nougat24()) {
             params.setOriginatingUid(android.os.Process.myUid())
         }
-        if (DeviceSdkTester.supportsAndroidOreo()) {
+        if (DeviceSdkTester.supportsAndroid8Oreo26()) {
             params.setInstallReason(PackageManager.INSTALL_REASON_USER)
         }
-        if (DeviceSdkTester.supportsAndroid12()) {
+        if (DeviceSdkTester.supportsAndroid12S31()) {
             params.setRequireUserAction(USER_ACTION_NOT_REQUIRED)
         }
-        if (DeviceSdkTester.supportsAndroid14()) {
+        if (DeviceSdkTester.supportsAndroid14U34()) {
             params.setDontKillApp(true)
         }
         return params
     }
 
+
     private suspend fun copyApkToSession(session: Session, file: File) {
         val name = "${app.findImpl().packageName}_${System.currentTimeMillis()}"
         withContext(Dispatchers.IO) {
-            file.inputStream().buffered().use { downloadedFileStream ->
+            file.inputStream().buffered().use { downloadStream ->
                 // don't use buffered because I think this causes the 'Unrecognized stream' exception
                 session.openWrite(name, 0, file.length()).use { sessionStream ->
-                    downloadedFileStream.copyTo(sessionStream)
+                    downloadStream.copyTo(sessionStream)
                     sessionStream.flush()
                     session.fsync(sessionStream)
                 }
@@ -111,9 +153,9 @@ class SessionInstaller(app: App, private val foreground: Boolean) : AbstractAppI
     }
 
     private fun createSessionChangeReceiver(context: Context, sessionId: Int): IntentSender {
-        val intent = Intent(intentNameForAppInstallationCallback)
-        intent.`package` = "de.marmaro.krt.ffupdater"
-        val flags = if (DeviceSdkTester.supportsAndroid12()) {
+        val intent = Intent(intentName)
+        intent.`package` = BuildConfig.APPLICATION_ID
+        val flags = if (DeviceSdkTester.supportsAndroid12S31()) {
             FLAG_UPDATE_CURRENT + FLAG_MUTABLE
         } else {
             FLAG_UPDATE_CURRENT
@@ -122,68 +164,14 @@ class SessionInstaller(app: App, private val foreground: Boolean) : AbstractAppI
         return pendingIntent.intentSender
     }
 
-    private fun handleAppInstallationResult(c: Context?, intent: Intent?) {
-        requireNotNull(c)
-        requireNotNull(intent)
-        val bundle = requireNotNull(intent.extras)
-        when (val status = bundle.getInt(EXTRA_STATUS)) {
-            STATUS_PENDING_USER_ACTION -> requestInstallationPermission(c, bundle)
-            STATUS_SUCCESS -> {
-                installationStatus.complete(true)
-            }
-
-            else -> {
-                fail(
-                    getShortErrorMessage(status, bundle),
-                    status,
-                    getTranslatedErrorMessage(c, status, bundle)
-                )
-            }
-        }
-    }
-
-    private fun getShortErrorMessage(status: Int, bundle: Bundle? = null): String {
-        val errorMessage = when (status) {
-            STATUS_FAILURE -> "The installation failed in a generic way."
-            STATUS_FAILURE_ABORTED -> "The installation failed because it was actively aborted."
-            STATUS_FAILURE_BLOCKED -> "The installation failed because it was blocked."
-            STATUS_FAILURE_CONFLICT -> "The installation failed because it conflicts (or is inconsistent with) with " +
-                    "another package already installed on the device."
-
-            STATUS_FAILURE_INCOMPATIBLE -> "The installation failed because it is fundamentally incompatible with " +
-                    "this device."
-
-            STATUS_FAILURE_INVALID -> "The installation failed because one or more of the APKs was invalid."
-            STATUS_FAILURE_STORAGE -> "The installation failed because of storage issues."
-            else -> "The installation failed. Status: $status. Maybe " +
-                    "${GeneralInstallResultDecoder.getShortErrorMessage(status)} ?"
-        }
-        return when (val statusMessage = bundle?.getString(EXTRA_STATUS_MESSAGE)) {
-            null -> errorMessage
-            else -> "$statusMessage. $errorMessage"
-        }
-    }
-
-    private fun getTranslatedErrorMessage(c: Context, status: Int, bundle: Bundle? = null): String {
-        val errorMessage = when (status) {
-            STATUS_FAILURE -> c.getString(R.string.session_installer__status_failure)
-            STATUS_FAILURE_ABORTED -> c.getString(session_installer__status_failure_aborted)
-            STATUS_FAILURE_BLOCKED -> c.getString(R.string.session_installer__status_failure_blocked)
-            STATUS_FAILURE_CONFLICT -> c.getString(R.string.session_installer__status_failure_conflict)
-            STATUS_FAILURE_INCOMPATIBLE -> c.getString(R.string.session_installer__status_failure_incompatible)
-            STATUS_FAILURE_INVALID -> c.getString(R.string.session_installer__status_failure_invalid)
-            STATUS_FAILURE_STORAGE -> c.getString(R.string.session_installer__status_failure_storage)
-            else -> "The installation failed. Status: $status."
-        }
-        return when (val statusMessage = bundle?.getString(EXTRA_STATUS_MESSAGE)) {
-            null -> errorMessage
-            else -> "$statusMessage. $errorMessage"
-        }
-    }
-
-    private fun requestInstallationPermission(context: Context, bundle: Bundle) {
+    private fun requestInstallationPermission(
+        context: Context,
+        bundle: Bundle,
+        installStatus: CompletableDeferred<Boolean>,
+    ) {
         if (!foreground) {
-            fail(UserInteractionIsRequiredException(bundle.getInt(EXTRA_STATUS), context))
+            val exception = UserInteractionIsRequiredException(bundle.getInt(EXTRA_STATUS), context)
+            installStatus.completeExceptionally(exception)
             return
         }
 
@@ -191,12 +179,17 @@ class SessionInstaller(app: App, private val foreground: Boolean) : AbstractAppI
             val newIntent = createConfirmInstallationIntent(bundle)
             context.startActivity(newIntent)
         } catch (e: ActivityNotFoundException) {
-            fail("Installation failed because Activity is not available.", e, -110, e.message ?: "/")
+            installStatus.completeExceptionally(
+                InstallationFailedException(
+                    "Installation failed because Activity is not available.", e, -110, e.message ?: "/",
+                )
+            )
         }
     }
 
+
     private fun createConfirmInstallationIntent(bundle: Bundle): Intent {
-        val originalIntent = if (DeviceSdkTester.supportsAndroid13()) {
+        val originalIntent = if (DeviceSdkTester.supportsAndroid13T33()) {
             bundle.getParcelable(Intent.EXTRA_INTENT, Intent::class.java)
         } else {
             bundle.getParcelable(Intent.EXTRA_INTENT) as Intent?
@@ -215,43 +208,8 @@ class SessionInstaller(app: App, private val foreground: Boolean) : AbstractAppI
         }
     }
 
-    private fun fail(message: String, errorCode: Int, displayErrorMessage: String) {
-        installationStatus.completeExceptionally(
-            InstallationFailedException(
-                message, errorCode, displayErrorMessage,
-            )
-        )
-    }
-
-    private fun fail(message: String, cause: Throwable, errorCode: Int, displayErrorMessage: String) {
-        installationStatus.completeExceptionally(
-            InstallationFailedException(
-                message, cause, errorCode, displayErrorMessage,
-            )
-        )
-    }
-
-    private fun fail(exception: Exception) {
-        installationStatus.completeExceptionally(exception)
-    }
-
-    private suspend fun registerIntentReceiver(context: Context) {
-        withContext(Dispatchers.Main) {
-            intentReceiver = object : BroadcastReceiver() {
-                override fun onReceive(c: Context?, i: Intent?) = handleAppInstallationResult(c, i)
-            }
-            val filter = IntentFilter(intentNameForAppInstallationCallback)
-            if (DeviceSdkTester.supportsAndroid13()) {
-                context.registerReceiver(intentReceiver, filter, RECEIVER_NOT_EXPORTED)
-            } else {
-                context.registerReceiver(intentReceiver, filter)
-            }
-        }
-    }
-
-    private fun unregisterIntentReceiver(context: Context) {
-        context.unregisterReceiver(intentReceiver)
-        intentReceiver = null
+    protected open fun abandonSession(context: Context, sessionId: Int) {
+        context.packageManager.packageInstaller.abandonSession(sessionId)
     }
 
     companion object {

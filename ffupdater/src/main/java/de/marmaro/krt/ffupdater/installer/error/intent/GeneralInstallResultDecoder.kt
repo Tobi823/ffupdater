@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater.installer.manifacturer
+package de.marmaro.krt.ffupdater.installer.error.intent
 
 import androidx.annotation.Keep
 

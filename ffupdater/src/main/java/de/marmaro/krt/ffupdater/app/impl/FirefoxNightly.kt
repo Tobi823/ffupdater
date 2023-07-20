@@ -120,7 +120,7 @@ object FirefoxNightly : AppBase() {
     @Suppress("DEPRECATION")
     private fun getVersionCode(context: Context): Long {
         val packageInfo = context.packageManager.getPackageInfo(packageName, 0)
-        if (DeviceSdkTester.supportsAndroid9()) {
+        if (DeviceSdkTester.supportsAndroid9P28()) {
             return packageInfo.longVersionCode
         }
         return packageInfo.versionCode.toLong()

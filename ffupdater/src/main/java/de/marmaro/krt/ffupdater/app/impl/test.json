@@ -1,0 +1,2282 @@
+{
+  "repo": {
+    "timestamp": 1689706586000,
+    "version": 20002,
+    "name": "DivestOS Official",
+    "icon": "fdroid-icon.png",
+    "address": "https://divestos.org/apks/official/fdroid/repo",
+    "description": "\nThis repository contains apps developed or maintained by Divested Computing Group.\n",
+    "mirrors": [
+      "http://divestoseb5nncsydt7zzf5hrfg44md4bxqjs5ifcv4t7gt7u6ohjyyd.onion/apks/official/fdroid/repo",
+      "http://2ceyag7ppvhliszes2v25n5lmpwhzqrc7sv72apqka6hwggfi42y2uid.onion/apks/official/fdroid/repo"
+    ]
+  },
+  "requests": {
+    "install": [],
+    "uninstall": []
+  },
+  "apps": [
+    {
+      "authorName": "Divested Computing Group",
+      "authorWebSite": "https://divestos.org",
+      "bitcoin": "bc1qkjtp2k7cc4kuv8k9wjdlxkeuqczenrpv5mwasl",
+      "categories": [
+        "System"
+      ],
+      "suggestedVersionCode": "30",
+      "description": "A high performance free space eraser, the first on Android. Use before selling your device, after enabling encryption, or after deleting many apps/files. Warning! Due to how flash drives work and the partition layout of devices, it'll never be possible to fully fill the drive. Warning! Excessive use WILL destroy your device!",
+      "donate": "https://divested.dev/donate",
+      "issueTracker": "https://gitlab.com/divested-mobile/extirpater/issues",
+      "liberapay": "Tad",
+      "license": "GPL-3.0-or-later",
+      "name": "Extirpater",
+      "sourceCode": "https://gitlab.com/divested-mobile/extirpater",
+      "summary": "A free space eraser",
+      "added": 1505202576000,
+      "packageName": "us.spotco.extirpater",
+      "lastUpdated": 1688899460000,
+      "localized": {
+        "en-US": {
+          "featureGraphic": "featureGraphic_BxfmXj-zxIjjJ1kpcsIOnX4eWRJT9AzRkjOE-m3Rnok=.png",
+          "phoneScreenshots": [
+            "Extirpater.png"
+          ]
+        }
+      }
+    },
+    {
+      "antiFeatures": [
+        "NonFreeNet"
+      ],
+      "authorName": "Divested Computing Group",
+      "authorWebSite": "https://divestos.org",
+      "bitcoin": "bc1qkjtp2k7cc4kuv8k9wjdlxkeuqczenrpv5mwasl",
+      "categories": [
+        "Navigation"
+      ],
+      "suggestedVersionCode": "31",
+      "description": "This is a restricted WebView wrapper for accessing the web version of Google Maps. Intended for use when OpenStreetMap isn't enough.",
+      "donate": "https://divested.dev/donate",
+      "issueTracker": "https://gitlab.com/divested-mobile/maps/issues",
+      "liberapay": "Tad",
+      "license": "GPL-3.0-or-later",
+      "name": "GMaps WV",
+      "sourceCode": "https://gitlab.com/divested-mobile/maps",
+      "summary": "Google Maps WebView Wrapper",
+      "added": 1511327679000,
+      "packageName": "us.spotco.maps",
+      "lastUpdated": 1685145835000
+    },
+    {
+      "authorName": "Divested Computing Group",
+      "authorWebSite": "https://divestos.org",
+      "bitcoin": "bc1qkjtp2k7cc4kuv8k9wjdlxkeuqczenrpv5mwasl",
+      "categories": [
+        "Security"
+      ],
+      "suggestedVersionCode": "105",
+      "donate": "https://divested.dev/donate",
+      "issueTracker": "https://gitlab.com/divested-mobile/hypatia/issues",
+      "liberapay": "Tad",
+      "license": "GPL-3.0-or-later",
+      "name": "Hypatia",
+      "sourceCode": "https://gitlab.com/divested-mobile/hypatia",
+      "added": 1513267130000,
+      "packageName": "us.spotco.malwarescanner",
+      "lastUpdated": 1688899181000,
+      "localized": {
+        "de": {
+          "description": "<p>Hypatia ist der weltweit erste FOSS-Malwarescanner f\u00fcr Android. Er basiert auf Signatur-Datenbanken im Stil von ClamAV.</p>\n\n<b>Funktionen</b>\n<ul>\n<li>Nahezu keine Auswirkungen auf den Akku: Sie werden keinerlei Auswirkungen auf den Akku bemerken</li>\n<li>Extrem schnell: kleine Dateien (1MB) werden in 20ms gescannt, gro\u00dfe Dateien (40MB) in 1000ms.</li>\n<li>Speichereffizient: mit den standardm\u00e4\u00dfig aktivierten Datenbanken verbraucht Hypatia weniger als 120MB.</li>\n<li>Regelm\u00e4\u00dfiger Scan: erlaubt die Auswahl von /system, internem Speicher, externem Speicher und installierten Apps</li>\n<li>Echtzeit-Scanner: kann Malware in Echtzeit beim Schreiben/Umbenennen im internen Speicher erkennen</li>\n<li>Vollst\u00e4ndig offline: Das Internet wird nur zum Herunterladen von Signatur-Datenbanken verwendet, die Dateien verlassen niemals Ihr Ger\u00e4t</li>\n<li>Persistenz: automatischer Neustart beim Booten/Update</li>\n<li>Winzige Codebasis: mit weniger als 1000 sloc kann sie sogar von jemandem mit grundlegenden Programmierkenntnissen gepr\u00fcft werden</li>\n<li>Minimale Abh\u00e4ngigkeiten: die App verwendet nur Bibliotheken, wenn es n\u00f6tig ist</li>\n<li>Signatur-Datenbanken k\u00f6nnen auf Wunsch des Benutzers aktiviert/deaktiviert werden</li>\n</ul>\n",
+          "phoneScreenshots": [
+            "01-Main.png",
+            "02-Detection.png",
+            "03-Notification.png"
+          ]
+        },
+        "en-US": {
+          "description": "<p>Hypatia is the worlds first FOSS malware scanner for Android. It is powered by ClamAV style signature databases.</p>\n\n<b>Features</b>\n<ul>\n<li>Near zero battery impact: you'll never notice any impact on battery at all</li>\n<li>Extremely fast: it can scan small files (1MB) in 20ms, and even large files (40MB) in 1000ms.</li>\n<li>Memory efficient: with the default databases enabled it uses under 120MB.</li>\n<li>Regular scan: allowing selection of /system, internal storage, external storage, and installed apps</li>\n<li>Realtime scanner: can detect malware in realtime on write/rename in internal storage</li>\n<li>Completely offline: Internet is only used to download signature databases, files will never ever leave your device</li>\n<li>Persistence: will automatically restart on boot/update</li>\n<li>Tiny codebase: coming in at under 1000 sloc, it can be audited by even someone with basic programming experience</li>\n<li>Minimal dependencies: the app only uses libraries when necessary</li>\n<li>Signature databases can be enabled/disabled at the users demand</li>\n</ul>\n",
+          "featureGraphic": "featureGraphic_Yko6coeRAKBL3nc63qZ8qUXmA32A-MqB_nJkyhVW_ag=.png",
+          "phoneScreenshots": [
+            "01-Main.png",
+            "02-Detection.png",
+            "03-Notification.png"
+          ],
+          "summary": "A real-time malware scanner."
+        },
+        "fr": {
+          "description": "<p>Hypatia est le premier scanner de malware FOSS (logiciel libre) au monde pour Android. Il est propuls\u00e9 par les bases de donn\u00e9es de signatures de style ClamAV.</p>\n\n<b>Caract\u00e9ristiques</b>\n<ul>\n<li>Impact de la batterie proche de z\u00e9ro: vous ne remarquerez aucun impact sur la batterie</li>\n<li>Extr\u00eamement rapide: il peut scanner les petits fichiers (1MB) en 20ms, et m\u00eame les gros fichiers (40MB) en 1000ms.</li>\n<li>M\u00e9moire efficace: avec les bases de donn\u00e9es activ\u00e9es par d\u00e9faut, il utilise moins de 120 Mo.</li>\n<li>Analyse r\u00e9guli\u00e8re: permet de s\u00e9lectionner le syst\u00e8me, le m\u00e9moire interne, le m\u00e9moire externe et les applications install\u00e9es</li>\n<li>Scanner en temps r\u00e9el: peut d\u00e9tecter les malwares en temps r\u00e9el sur l'\u00e9criture ou le renommage dans le m\u00e9moire interne</li>\n<li>Compl\u00e8tement hors ligne: l'internet n'est utilis\u00e9 que pour t\u00e9l\u00e9charger des bases de donn\u00e9es de signatures, les fichiers ne quitteront jamais votre appareil</li>\n<li>Persistance: red\u00e9marre automatiquement au d\u00e9marrage/mise \u00e0 jour</li>\n<li>Une base de code minuscule: avec moins de 1000 sloc, elle peut \u00eatre v\u00e9rifi\u00e9e m\u00eame par une personne ayant une exp\u00e9rience de base en programmation</li>\n<li>D\u00e9pendances minimales: l'application n'utilise les biblioth\u00e8ques que lorsque cela est n\u00e9cessaire</li>\n<li>Les bases de donn\u00e9es de signatures peuvent \u00eatre activ\u00e9es/d\u00e9sactiv\u00e9es \u00e0 la demande des utilisateurs</li>\n</ul>\n",
+          "phoneScreenshots": [
+            "01-Main.png",
+            "02-Detection.png",
+            "03-Notification.png"
+          ]
+        }
+      }
+    },
+    {
+      "authorName": "Divested Computing Group",
+      "authorWebSite": "https://divestos.org",
+      "bitcoin": "bc1qkjtp2k7cc4kuv8k9wjdlxkeuqczenrpv5mwasl",
+      "categories": [
+        "System"
+      ],
+      "suggestedVersionCode": "26",
+      "description": "This is a UnifiedNlp backend for use with databases generated by WiFiDatabaseMerger",
+      "donate": "https://divested.dev/donate",
+      "issueTracker": "https://gitlab.com/divested-mobile/wlanbackend/issues",
+      "liberapay": "Tad",
+      "license": "GPL-3.0-or-later",
+      "name": "MergedWiFiNLP",
+      "sourceCode": "https://gitlab.com/divested-mobile/wlanbackend",
+      "summary": "A UnifiedNlp backend",
+      "added": 1481987370000,
+      "packageName": "info.spotcomms.wlanbackend",
+      "lastUpdated": 1685146236000
+    },
+    {
+      "authorName": "Divested Computing Group",
+      "authorWebSite": "https://divestos.org",
+      "bitcoin": "bc1qkjtp2k7cc4kuv8k9wjdlxkeuqczenrpv5mwasl",
+      "categories": [
+        "Security"
+      ],
+      "suggestedVersionCode": "19",
+      "description": "Super alpha! Automatically keeps your device locked when it is face down or hasn't been moved. Only monitors sensors when necessary. Powered by Sensey library licensed under Apache-2.0. Requires device admin for locking.",
+      "donate": "https://divested.dev/donate",
+      "issueTracker": "https://gitlab.com/divested-mobile/motionlock/issues",
+      "liberapay": "Tad",
+      "license": "GPL-3.0-or-later",
+      "name": "MotionLock",
+      "sourceCode": "https://gitlab.com/divested-mobile/motionlock",
+      "summary": "Keeps your device locked",
+      "added": 1512532946000,
+      "packageName": "us.spotco.motionlock",
+      "lastUpdated": 1685145920000
+    },
+    {
+      "antiFeatures": [
+        "UpstreamNonFree"
+      ],
+      "authorName": "Divested Computing Group",
+      "bitcoin": "bc1qkjtp2k7cc4kuv8k9wjdlxkeuqczenrpv5mwasl",
+      "categories": [
+        "Internet"
+      ],
+      "suggestedVersionCode": "579008504",
+      "description": "This is a security oriented and hardened web browser based on Chromium technology. Many anti-features are disabled/removed and a handful security features are enabled/added thanks to patches from the [https://github.com/GrapheneOS/Vanadium Vanadium project]. It is recommended you use Mull if you want more privacy features, or Bromite if it is up-to-date.",
+      "donate": "https://divested.dev/donate",
+      "issueTracker": "https://gitlab.com/divested-mobile/mulch/issues",
+      "liberapay": "Tad",
+      "license": "GPL-2.0-only",
+      "name": "Mulch",
+      "sourceCode": "https://gitlab.com/divested-mobile/mulch",
+      "summary": "Security oriented web browser",
+      "webSite": "https://divestos.org/",
+      "added": 1687834708000,
+      "packageName": "us.spotco.mulch",
+      "lastUpdated": 1689211122000
+    },
+    {
+      "antiFeatures": [
+        "UpstreamNonFree"
+      ],
+      "authorName": "Divested Computing Group",
+      "bitcoin": "bc1qkjtp2k7cc4kuv8k9wjdlxkeuqczenrpv5mwasl",
+      "categories": [
+        "Internet"
+      ],
+      "suggestedVersionCode": "579008501",
+      "description": "This is a security oriented and hardened system WebView based on Chromium technology. Many anti-features are disabled/removed and a handful security features are enabled/added thanks to patches from the [https://github.com/GrapheneOS/Vanadium Vanadium project].",
+      "donate": "https://divested.dev/donate",
+      "issueTracker": "https://gitlab.com/divested-mobile/mulch/issues",
+      "liberapay": "Tad",
+      "license": "GPL-2.0-only",
+      "name": "Mulch System WebView",
+      "sourceCode": "https://gitlab.com/divested-mobile/mulch",
+      "summary": "Security oriented WebView",
+      "webSite": "https://divestos.org/",
+      "added": 1687834616000,
+      "packageName": "us.spotco.mulch_wv",
+      "lastUpdated": 1689211040000
+    },
+    {
+      "antiFeatures": [
+        "UpstreamNonFree"
+      ],
+      "authorName": "Divested Computing Group",
+      "bitcoin": "bc1qkjtp2k7cc4kuv8k9wjdlxkeuqczenrpv5mwasl",
+      "categories": [
+        "Internet"
+      ],
+      "suggestedVersionCode": "21152120",
+      "description": "This is a privacy oriented and deblobbed web browser based on Mozilla technology. It enables many features upstreamed by the [https://wiki.mozilla.org/Security/Tor_Uplift Tor Uplift project] using preferences from the [https://github.com/arkenfox/user.js arkenfox-user.js project]. It is compiled from source and proprietary blobs are removed using scripts by Relan from [https://gitlab.com/relan/fennecbuild here]. It is recommended to install 'uBlock Origin'.",
+      "donate": "https://divested.dev/donate",
+      "issueTracker": "https://gitlab.com/divested-mobile/mull-fenix/issues",
+      "liberapay": "Tad",
+      "license": "MPL-2.0",
+      "name": "Mull",
+      "sourceCode": "https://gitlab.com/divested-mobile/mull-fenix",
+      "summary": "Privacy oriented web browser",
+      "webSite": "https://divestos.org/",
+      "added": 1598370384000,
+      "packageName": "us.spotco.fennec_dos",
+      "lastUpdated": 1689692129000,
+      "localized": {
+        "en-US": {
+          "featureGraphic": "featureGraphic_7eK5BtccH6hDV4-UtygwTH2cfw9GJNpvLDercDRygr0=.png",
+          "phoneScreenshots": [
+            "Mull.png"
+          ]
+        }
+      }
+    }
+  ],
+  "packages": {
+    "info.spotcomms.wlanbackend": [
+      {
+        "added": 1685146236000,
+        "apkName": "MergedWiFiNLP-2.0-26.apk",
+        "hash": "fdf3eb09112167e9929af8493b7467cc630bfe5d322d27561544be9eae8691c1",
+        "hashType": "sha256",
+        "minSdkVersion": 19,
+        "packageName": "info.spotcomms.wlanbackend",
+        "sig": "9b7ebc2ffa5e038255db83d63830285e",
+        "signer": "260e0a49678c78b70c02d6537add3b6dc0a17171bbde8ce75fd4026a8a3e18d2",
+        "size": 71142,
+        "targetSdkVersion": 27,
+        "uses-permission": [
+          [
+            "android.permission.READ_EXTERNAL_STORAGE",
+            null
+          ],
+          [
+            "android.permission.ACCESS_WIFI_STATE",
+            null
+          ],
+          [
+            "android.permission.CHANGE_WIFI_STATE",
+            null
+          ],
+          [
+            "android.permission.ACCESS_NETWORK_STATE",
+            null
+          ],
+          [
+            "android.permission.ACCESS_COARSE_LOCATION",
+            null
+          ],
+          [
+            "android.permission.ACCESS_FINE_LOCATION",
+            null
+          ],
+          [
+            "android.permission.ACCESS_BACKGROUND_LOCATION",
+            null
+          ]
+        ],
+        "versionCode": 26,
+        "versionName": "2.0"
+      },
+      {
+        "added": 1661112726000,
+        "apkName": "MergedWiFiNLP-2.0-25.apk",
+        "hash": "9f25a28bba2984802ab25af38b16fd2b4956d12da8c5efbfece40d5ac267fabb",
+        "hashType": "sha256",
+        "minSdkVersion": 19,
+        "packageName": "info.spotcomms.wlanbackend",
+        "sig": "9b7ebc2ffa5e038255db83d63830285e",
+        "signer": "260e0a49678c78b70c02d6537add3b6dc0a17171bbde8ce75fd4026a8a3e18d2",
+        "size": 71142,
+        "targetSdkVersion": 27,
+        "uses-permission": [
+          [
+            "android.permission.READ_EXTERNAL_STORAGE",
+            null
+          ],
+          [
+            "android.permission.ACCESS_WIFI_STATE",
+            null
+          ],
+          [
+            "android.permission.CHANGE_WIFI_STATE",
+            null
+          ],
+          [
+            "android.permission.ACCESS_NETWORK_STATE",
+            null
+          ],
+          [
+            "android.permission.ACCESS_COARSE_LOCATION",
+            null
+          ],
+          [
+            "android.permission.ACCESS_FINE_LOCATION",
+            null
+          ],
+          [
+            "android.permission.ACCESS_BACKGROUND_LOCATION",
+            null
+          ]
+        ],
+        "versionCode": 25,
+        "versionName": "2.0"
+      },
+      {
+        "added": 1651119146000,
+        "apkName": "MergedWiFiNLP-2.0-24.apk",
+        "hash": "e56a9076cf0285ef17c0868c4fdb43792cd5856e210b43b20c8029109fcc08a1",
+        "hashType": "sha256",
+        "minSdkVersion": 19,
+        "packageName": "info.spotcomms.wlanbackend",
+        "sig": "9b7ebc2ffa5e038255db83d63830285e",
+        "signer": "260e0a49678c78b70c02d6537add3b6dc0a17171bbde8ce75fd4026a8a3e18d2",
+        "size": 71584,
+        "targetSdkVersion": 27,
+        "uses-permission": [
+          [
+            "android.permission.READ_EXTERNAL_STORAGE",
+            null
+          ],
+          [
+            "android.permission.ACCESS_WIFI_STATE",
+            null
+          ],
+          [
+            "android.permission.CHANGE_WIFI_STATE",
+            null
+          ],
+          [
+            "android.permission.ACCESS_NETWORK_STATE",
+            null
+          ],
+          [
+            "android.permission.ACCESS_COARSE_LOCATION",
+            null
+          ],
+          [
+            "android.permission.ACCESS_FINE_LOCATION",
+            null
+          ],
+          [
+            "android.permission.ACCESS_BACKGROUND_LOCATION",
+            null
+          ]
+        ],
+        "versionCode": 24,
+        "versionName": "2.0"
+      },
+      {
+        "added": 1621310582000,
+        "apkName": "MergedWiFiNLP-2.0-22.apk",
+        "hash": "d9e6613fece821960c0fbba36ca5e3ba3e57c3ffd5b9137df607e27a6c818fbd",
+        "hashType": "sha256",
+        "minSdkVersion": 19,
+        "packageName": "info.spotcomms.wlanbackend",
+        "sig": "9b7ebc2ffa5e038255db83d63830285e",
+        "signer": "260e0a49678c78b70c02d6537add3b6dc0a17171bbde8ce75fd4026a8a3e18d2",
+        "size": 71584,
+        "targetSdkVersion": 27,
+        "uses-permission": [
+          [
+            "android.permission.READ_EXTERNAL_STORAGE",
+            null
+          ],
+          [
+            "android.permission.ACCESS_WIFI_STATE",
+            null
+          ],
+          [
+            "android.permission.CHANGE_WIFI_STATE",
+            null
+          ],
+          [
+            "android.permission.ACCESS_NETWORK_STATE",
+            null
+          ],
+          [
+            "android.permission.ACCESS_COARSE_LOCATION",
+            null
+          ],
+          [
+            "android.permission.ACCESS_FINE_LOCATION",
+            null
+          ],
+          [
+            "android.permission.ACCESS_BACKGROUND_LOCATION",
+            null
+          ]
+        ],
+        "versionCode": 22,
+        "versionName": "2.0"
+      }
+    ],
+    "us.spotco.extirpater": [
+      {
+        "added": 1688899460000,
+        "apkName": "Extirpater-1.5-30.apk",
+        "hash": "b76d16cbd4f53d7b6c22b69282ebb53cc419d4b2d082bf26ee75699363358953",
+        "hashType": "sha256",
+        "minSdkVersion": 14,
+        "packageName": "us.spotco.extirpater",
+        "sig": "9b7ebc2ffa5e038255db83d63830285e",
+        "signer": "260e0a49678c78b70c02d6537add3b6dc0a17171bbde8ce75fd4026a8a3e18d2",
+        "size": 88086,
+        "targetSdkVersion": 32,
+        "versionCode": 30,
+        "versionName": "1.5"
+      },
+      {
+        "added": 1685145757000,
+        "apkName": "Extirpater-1.5-29.apk",
+        "hash": "bce3c6353e506aa3f820c63e14280bbf0c121aba309bdadec8e757a6a4b10202",
+        "hashType": "sha256",
+        "minSdkVersion": 14,
+        "packageName": "us.spotco.extirpater",
+        "sig": "9b7ebc2ffa5e038255db83d63830285e",
+        "signer": "260e0a49678c78b70c02d6537add3b6dc0a17171bbde8ce75fd4026a8a3e18d2",
+        "size": 88086,
+        "targetSdkVersion": 32,
+        "versionCode": 29,
+        "versionName": "1.5"
+      },
+      {
+        "added": 1675198397000,
+        "apkName": "Extirpater-1.5-28.apk",
+        "hash": "08752fbb02cc2c0a7d68c8fe2ba114d5d0bed29aaa9dfe929c761c9714d95307",
+        "hashType": "sha256",
+        "minSdkVersion": 14,
+        "packageName": "us.spotco.extirpater",
+        "sig": "9b7ebc2ffa5e038255db83d63830285e",
+        "signer": "260e0a49678c78b70c02d6537add3b6dc0a17171bbde8ce75fd4026a8a3e18d2",
+        "size": 88086,
+        "targetSdkVersion": 32,
+        "versionCode": 28,
+        "versionName": "1.5"
+      },
+      {
+        "added": 1666042789000,
+        "apkName": "Extirpater-1.4-27.apk",
+        "hash": "5a61c2911b1fff5aeae3215db5c8c4c1dfdcc7027659905952bb2bc7f25d3b3a",
+        "hashType": "sha256",
+        "minSdkVersion": 14,
+        "packageName": "us.spotco.extirpater",
+        "sig": "9b7ebc2ffa5e038255db83d63830285e",
+        "signer": "260e0a49678c78b70c02d6537add3b6dc0a17171bbde8ce75fd4026a8a3e18d2",
+        "size": 2135226,
+        "targetSdkVersion": 32,
+        "versionCode": 27,
+        "versionName": "1.4"
+      }
+    ],
+    "us.spotco.fennec_dos": [
+      {
+        "added": 1689692129000,
+        "apkName": "us.spotco.fennec_dos_21152120.apk",
+        "hash": "34c98607dc4592cf725ac3fcfe58e927fb806602edea72262aca149fbea55030",
+        "hashType": "sha256",
+        "minSdkVersion": 21,
+        "nativecode": [
+          "arm64-v8a"
+        ],
+        "packageName": "us.spotco.fennec_dos",
+        "sig": "9b7ebc2ffa5e038255db83d63830285e",
+        "signer": "260e0a49678c78b70c02d6537add3b6dc0a17171bbde8ce75fd4026a8a3e18d2",
+        "size": 85271610,
+        "targetSdkVersion": 33,
+        "uses-permission": [
+          [
+            "android.permission.INTERNET",
+            null
+          ],
+          [
+            "android.permission.ACCESS_NETWORK_STATE",
+            null
+          ],
+          [
+            "android.permission.READ_EXTERNAL_STORAGE",
+            null
+          ],
+          [
+            "android.permission.WRITE_EXTERNAL_STORAGE",
+            28
+          ],
+          [
+            "android.permission.ACCESS_COARSE_LOCATION",
+            null
+          ],
+          [
+            "android.permission.ACCESS_FINE_LOCATION",
+            null
+          ],
+          [
+            "android.permission.CAMERA",
+            null
+          ],
+          [
+            "android.permission.RECORD_AUDIO",
+            null
+          ],
+          [
+            "com.android.launcher.permission.INSTALL_SHORTCUT",
+            26
+          ],
+          [
+            "android.permission.VIBRATE",
+            null
+          ],
+          [
+            "android.permission.USE_BIOMETRIC",
+            null
+          ],
+          [
+            "com.google.android.gms.permission.AD_ID",
+            null
+          ],
+          [
+            "android.permission.QUERY_ALL_PACKAGES",
+            null
+          ],
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.READ_MEDIA_VIDEO",
+            null
+          ],
+          [
+            "android.permission.READ_MEDIA_IMAGES",
+            null
+          ],
+          [
+            "android.permission.READ_MEDIA_AUDIO",
+            null
+          ],
+          [
+            "android.permission.FOREGROUND_SERVICE",
+            null
+          ],
+          [
+            "android.permission.DOWNLOAD_WITHOUT_NOTIFICATION",
+            null
+          ],
+          [
+            "android.permission.USE_FINGERPRINT",
+            null
+          ],
+          [
+            "android.permission.HIGH_SAMPLING_RATE_SENSORS",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.MODIFY_AUDIO_SETTINGS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "us.spotco.fennec_dos.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "uses-permission-sdk-23": [
+          [
+            "android.permission.REQUEST_INSTALL_PACKAGES",
+            null
+          ]
+        ],
+        "versionCode": 21152120,
+        "versionName": "115.2.1"
+      },
+      {
+        "added": 1689692112000,
+        "apkName": "us.spotco.fennec_dos_21152100.apk",
+        "hash": "38a0052c60d88df60f62250c4296e65f135f9c15a6b16874e065391822873152",
+        "hashType": "sha256",
+        "minSdkVersion": 21,
+        "nativecode": [
+          "armeabi-v7a"
+        ],
+        "packageName": "us.spotco.fennec_dos",
+        "sig": "9b7ebc2ffa5e038255db83d63830285e",
+        "signer": "260e0a49678c78b70c02d6537add3b6dc0a17171bbde8ce75fd4026a8a3e18d2",
+        "size": 78197848,
+        "targetSdkVersion": 33,
+        "uses-permission": [
+          [
+            "android.permission.INTERNET",
+            null
+          ],
+          [
+            "android.permission.ACCESS_NETWORK_STATE",
+            null
+          ],
+          [
+            "android.permission.READ_EXTERNAL_STORAGE",
+            null
+          ],
+          [
+            "android.permission.WRITE_EXTERNAL_STORAGE",
+            28
+          ],
+          [
+            "android.permission.ACCESS_COARSE_LOCATION",
+            null
+          ],
+          [
+            "android.permission.ACCESS_FINE_LOCATION",
+            null
+          ],
+          [
+            "android.permission.CAMERA",
+            null
+          ],
+          [
+            "android.permission.RECORD_AUDIO",
+            null
+          ],
+          [
+            "com.android.launcher.permission.INSTALL_SHORTCUT",
+            26
+          ],
+          [
+            "android.permission.VIBRATE",
+            null
+          ],
+          [
+            "android.permission.USE_BIOMETRIC",
+            null
+          ],
+          [
+            "com.google.android.gms.permission.AD_ID",
+            null
+          ],
+          [
+            "android.permission.QUERY_ALL_PACKAGES",
+            null
+          ],
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.READ_MEDIA_VIDEO",
+            null
+          ],
+          [
+            "android.permission.READ_MEDIA_IMAGES",
+            null
+          ],
+          [
+            "android.permission.READ_MEDIA_AUDIO",
+            null
+          ],
+          [
+            "android.permission.FOREGROUND_SERVICE",
+            null
+          ],
+          [
+            "android.permission.DOWNLOAD_WITHOUT_NOTIFICATION",
+            null
+          ],
+          [
+            "android.permission.USE_FINGERPRINT",
+            null
+          ],
+          [
+            "android.permission.HIGH_SAMPLING_RATE_SENSORS",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.MODIFY_AUDIO_SETTINGS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "us.spotco.fennec_dos.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "uses-permission-sdk-23": [
+          [
+            "android.permission.REQUEST_INSTALL_PACKAGES",
+            null
+          ]
+        ],
+        "versionCode": 21152100,
+        "versionName": "115.2.1"
+      },
+      {
+        "added": 1689086361000,
+        "apkName": "us.spotco.fennec_dos_21152020.apk",
+        "hash": "cd6eafa4e1742beea3d96eb88e818d7f7c77cb71b6a7b73c42ead4be04f42d72",
+        "hashType": "sha256",
+        "minSdkVersion": 21,
+        "nativecode": [
+          "arm64-v8a"
+        ],
+        "packageName": "us.spotco.fennec_dos",
+        "sig": "9b7ebc2ffa5e038255db83d63830285e",
+        "signer": "260e0a49678c78b70c02d6537add3b6dc0a17171bbde8ce75fd4026a8a3e18d2",
+        "size": 85271610,
+        "targetSdkVersion": 33,
+        "uses-permission": [
+          [
+            "android.permission.INTERNET",
+            null
+          ],
+          [
+            "android.permission.ACCESS_NETWORK_STATE",
+            null
+          ],
+          [
+            "android.permission.READ_EXTERNAL_STORAGE",
+            null
+          ],
+          [
+            "android.permission.WRITE_EXTERNAL_STORAGE",
+            28
+          ],
+          [
+            "android.permission.ACCESS_COARSE_LOCATION",
+            null
+          ],
+          [
+            "android.permission.ACCESS_FINE_LOCATION",
+            null
+          ],
+          [
+            "android.permission.CAMERA",
+            null
+          ],
+          [
+            "android.permission.RECORD_AUDIO",
+            null
+          ],
+          [
+            "com.android.launcher.permission.INSTALL_SHORTCUT",
+            26
+          ],
+          [
+            "android.permission.VIBRATE",
+            null
+          ],
+          [
+            "android.permission.USE_BIOMETRIC",
+            null
+          ],
+          [
+            "com.google.android.gms.permission.AD_ID",
+            null
+          ],
+          [
+            "android.permission.QUERY_ALL_PACKAGES",
+            null
+          ],
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.READ_MEDIA_VIDEO",
+            null
+          ],
+          [
+            "android.permission.READ_MEDIA_IMAGES",
+            null
+          ],
+          [
+            "android.permission.READ_MEDIA_AUDIO",
+            null
+          ],
+          [
+            "android.permission.FOREGROUND_SERVICE",
+            null
+          ],
+          [
+            "android.permission.DOWNLOAD_WITHOUT_NOTIFICATION",
+            null
+          ],
+          [
+            "android.permission.USE_FINGERPRINT",
+            null
+          ],
+          [
+            "android.permission.HIGH_SAMPLING_RATE_SENSORS",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.MODIFY_AUDIO_SETTINGS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "us.spotco.fennec_dos.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "uses-permission-sdk-23": [
+          [
+            "android.permission.REQUEST_INSTALL_PACKAGES",
+            null
+          ]
+        ],
+        "versionCode": 21152020,
+        "versionName": "115.2.0"
+      },
+      {
+        "added": 1689086356000,
+        "apkName": "us.spotco.fennec_dos_21152000.apk",
+        "hash": "bd52f04966636626b03151fd75bda9ef38cd8581f07d3f8e7a51e990424539d1",
+        "hashType": "sha256",
+        "minSdkVersion": 21,
+        "nativecode": [
+          "armeabi-v7a"
+        ],
+        "packageName": "us.spotco.fennec_dos",
+        "sig": "9b7ebc2ffa5e038255db83d63830285e",
+        "signer": "260e0a49678c78b70c02d6537add3b6dc0a17171bbde8ce75fd4026a8a3e18d2",
+        "size": 78193752,
+        "targetSdkVersion": 33,
+        "uses-permission": [
+          [
+            "android.permission.INTERNET",
+            null
+          ],
+          [
+            "android.permission.ACCESS_NETWORK_STATE",
+            null
+          ],
+          [
+            "android.permission.READ_EXTERNAL_STORAGE",
+            null
+          ],
+          [
+            "android.permission.WRITE_EXTERNAL_STORAGE",
+            28
+          ],
+          [
+            "android.permission.ACCESS_COARSE_LOCATION",
+            null
+          ],
+          [
+            "android.permission.ACCESS_FINE_LOCATION",
+            null
+          ],
+          [
+            "android.permission.CAMERA",
+            null
+          ],
+          [
+            "android.permission.RECORD_AUDIO",
+            null
+          ],
+          [
+            "com.android.launcher.permission.INSTALL_SHORTCUT",
+            26
+          ],
+          [
+            "android.permission.VIBRATE",
+            null
+          ],
+          [
+            "android.permission.USE_BIOMETRIC",
+            null
+          ],
+          [
+            "com.google.android.gms.permission.AD_ID",
+            null
+          ],
+          [
+            "android.permission.QUERY_ALL_PACKAGES",
+            null
+          ],
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.READ_MEDIA_VIDEO",
+            null
+          ],
+          [
+            "android.permission.READ_MEDIA_IMAGES",
+            null
+          ],
+          [
+            "android.permission.READ_MEDIA_AUDIO",
+            null
+          ],
+          [
+            "android.permission.FOREGROUND_SERVICE",
+            null
+          ],
+          [
+            "android.permission.DOWNLOAD_WITHOUT_NOTIFICATION",
+            null
+          ],
+          [
+            "android.permission.USE_FINGERPRINT",
+            null
+          ],
+          [
+            "android.permission.HIGH_SAMPLING_RATE_SENSORS",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.MODIFY_AUDIO_SETTINGS",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "us.spotco.fennec_dos.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "uses-permission-sdk-23": [
+          [
+            "android.permission.REQUEST_INSTALL_PACKAGES",
+            null
+          ]
+        ],
+        "versionCode": 21152000,
+        "versionName": "115.2.0"
+      }
+    ],
+    "us.spotco.malwarescanner": [
+      {
+        "added": 1688899181000,
+        "apkName": "Hypatia-2.32-105-1.apk",
+        "hash": "15eab6d52eba3e312440cd6701f3ddbb2d22617a61cc9b08a566c0a732af63aa",
+        "hashType": "sha256",
+        "minSdkVersion": 16,
+        "packageName": "us.spotco.malwarescanner",
+        "sig": "9b7ebc2ffa5e038255db83d63830285e",
+        "signer": "260e0a49678c78b70c02d6537add3b6dc0a17171bbde8ce75fd4026a8a3e18d2",
+        "size": 4607108,
+        "targetSdkVersion": 32,
+        "uses-permission": [
+          [
+            "android.permission.FOREGROUND_SERVICE",
+            null
+          ],
+          [
+            "android.permission.INTERNET",
+            null
+          ],
+          [
+            "android.permission.MANAGE_EXTERNAL_STORAGE",
+            null
+          ],
+          [
+            "android.permission.READ_EXTERNAL_STORAGE",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ]
+        ],
+        "versionCode": 105,
+        "versionName": "2.32"
+      },
+      {
+        "added": 1685146120000,
+        "apkName": "Hypatia-2.32-104-1.apk",
+        "hash": "545f413de394f17b7c9ee8c92a75fa7845a7f455dd46f14fcb38605613d920f9",
+        "hashType": "sha256",
+        "minSdkVersion": 16,
+        "packageName": "us.spotco.malwarescanner",
+        "sig": "9b7ebc2ffa5e038255db83d63830285e",
+        "signer": "260e0a49678c78b70c02d6537add3b6dc0a17171bbde8ce75fd4026a8a3e18d2",
+        "size": 4598916,
+        "targetSdkVersion": 32,
+        "uses-permission": [
+          [
+            "android.permission.FOREGROUND_SERVICE",
+            null
+          ],
+          [
+            "android.permission.INTERNET",
+            null
+          ],
+          [
+            "android.permission.MANAGE_EXTERNAL_STORAGE",
+            null
+          ],
+          [
+            "android.permission.READ_EXTERNAL_STORAGE",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ]
+        ],
+        "versionCode": 104,
+        "versionName": "2.32"
+      },
+      {
+        "added": 1684755821000,
+        "apkName": "Hypatia-2.32-103-1.apk",
+        "hash": "14f6778d43bb5b8cb853babae70578b4d4acec07d346314c06f7e44a1f3f2d6c",
+        "hashType": "sha256",
+        "minSdkVersion": 16,
+        "packageName": "us.spotco.malwarescanner",
+        "sig": "9b7ebc2ffa5e038255db83d63830285e",
+        "signer": "260e0a49678c78b70c02d6537add3b6dc0a17171bbde8ce75fd4026a8a3e18d2",
+        "size": 4598916,
+        "targetSdkVersion": 32,
+        "uses-permission": [
+          [
+            "android.permission.FOREGROUND_SERVICE",
+            null
+          ],
+          [
+            "android.permission.INTERNET",
+            null
+          ],
+          [
+            "android.permission.MANAGE_EXTERNAL_STORAGE",
+            null
+          ],
+          [
+            "android.permission.READ_EXTERNAL_STORAGE",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ]
+        ],
+        "versionCode": 103,
+        "versionName": "2.32"
+      },
+      {
+        "added": 1684194949000,
+        "apkName": "Hypatia-2.32-102-1.apk",
+        "hash": "7254b78f5d5e8a62b2734022f0d7791c49dd91e0a64fdc917134562d4b803da6",
+        "hashType": "sha256",
+        "minSdkVersion": 16,
+        "packageName": "us.spotco.malwarescanner",
+        "sig": "9b7ebc2ffa5e038255db83d63830285e",
+        "signer": "260e0a49678c78b70c02d6537add3b6dc0a17171bbde8ce75fd4026a8a3e18d2",
+        "size": 4598916,
+        "targetSdkVersion": 32,
+        "uses-permission": [
+          [
+            "android.permission.FOREGROUND_SERVICE",
+            null
+          ],
+          [
+            "android.permission.INTERNET",
+            null
+          ],
+          [
+            "android.permission.MANAGE_EXTERNAL_STORAGE",
+            null
+          ],
+          [
+            "android.permission.READ_EXTERNAL_STORAGE",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ]
+        ],
+        "versionCode": 102,
+        "versionName": "2.32"
+      }
+    ],
+    "us.spotco.maps": [
+      {
+        "added": 1685145835000,
+        "apkName": "Maps-1.8-31.apk",
+        "hash": "bb2e12238bdf78b1f72cea58d501ce0996a1b7d630118abf160d290b34c7c738",
+        "hashType": "sha256",
+        "minSdkVersion": 21,
+        "packageName": "us.spotco.maps",
+        "sig": "9b7ebc2ffa5e038255db83d63830285e",
+        "signer": "260e0a49678c78b70c02d6537add3b6dc0a17171bbde8ce75fd4026a8a3e18d2",
+        "size": 46398,
+        "targetSdkVersion": 32,
+        "uses-permission": [
+          [
+            "android.permission.ACCESS_COARSE_LOCATION",
+            null
+          ],
+          [
+            "android.permission.ACCESS_FINE_LOCATION",
+            null
+          ],
+          [
+            "android.permission.INTERNET",
+            null
+          ]
+        ],
+        "versionCode": 31,
+        "versionName": "1.8"
+      },
+      {
+        "added": 1676408721000,
+        "apkName": "Maps-1.8-30.apk",
+        "hash": "6eac13c212da608cac97e6c4e1e8cfc01cad90e6f1c4c89a9ee2eeaab1695102",
+        "hashType": "sha256",
+        "minSdkVersion": 21,
+        "packageName": "us.spotco.maps",
+        "sig": "9b7ebc2ffa5e038255db83d63830285e",
+        "signer": "260e0a49678c78b70c02d6537add3b6dc0a17171bbde8ce75fd4026a8a3e18d2",
+        "size": 46398,
+        "targetSdkVersion": 32,
+        "uses-permission": [
+          [
+            "android.permission.ACCESS_COARSE_LOCATION",
+            null
+          ],
+          [
+            "android.permission.ACCESS_FINE_LOCATION",
+            null
+          ],
+          [
+            "android.permission.INTERNET",
+            null
+          ]
+        ],
+        "versionCode": 30,
+        "versionName": "1.8"
+      },
+      {
+        "added": 1675198391000,
+        "apkName": "Maps-1.7-28.apk",
+        "hash": "0cfa9f966f62216330fc444a0618b59fc36a5647c964a628fe10e7994da6e7da",
+        "hashType": "sha256",
+        "minSdkVersion": 21,
+        "packageName": "us.spotco.maps",
+        "sig": "9b7ebc2ffa5e038255db83d63830285e",
+        "signer": "260e0a49678c78b70c02d6537add3b6dc0a17171bbde8ce75fd4026a8a3e18d2",
+        "size": 42302,
+        "targetSdkVersion": 32,
+        "uses-permission": [
+          [
+            "android.permission.INTERNET",
+            null
+          ]
+        ],
+        "versionCode": 28,
+        "versionName": "1.7"
+      },
+      {
+        "added": 1667225254000,
+        "apkName": "Maps-1.6-26.apk",
+        "hash": "eb034f4e5e3706e65ffa2f08d696050017e55af6356392d3c6dd02bdc645cf88",
+        "hashType": "sha256",
+        "minSdkVersion": 21,
+        "packageName": "us.spotco.maps",
+        "sig": "9b7ebc2ffa5e038255db83d63830285e",
+        "signer": "260e0a49678c78b70c02d6537add3b6dc0a17171bbde8ce75fd4026a8a3e18d2",
+        "size": 967531,
+        "targetSdkVersion": 32,
+        "uses-permission": [
+          [
+            "android.permission.ACCESS_FINE_LOCATION",
+            null
+          ],
+          [
+            "android.permission.INTERNET",
+            null
+          ]
+        ],
+        "versionCode": 26,
+        "versionName": "1.6"
+      }
+    ],
+    "us.spotco.motionlock": [
+      {
+        "added": 1685145920000,
+        "apkName": "MotionLock-1.1-19.apk",
+        "features": [
+          "android.software.device_admin"
+        ],
+        "hash": "53a312216629346ab5bdf4925181bd7734fb7b30aa1a20510ab7800ebe1b9868",
+        "hashType": "sha256",
+        "minSdkVersion": 14,
+        "packageName": "us.spotco.motionlock",
+        "sig": "9b7ebc2ffa5e038255db83d63830285e",
+        "signer": "260e0a49678c78b70c02d6537add3b6dc0a17171bbde8ce75fd4026a8a3e18d2",
+        "size": 102594,
+        "targetSdkVersion": 32,
+        "versionCode": 19,
+        "versionName": "1.1"
+      },
+      {
+        "added": 1675198940000,
+        "apkName": "MotionLock-1.1-18.apk",
+        "features": [
+          "android.software.device_admin"
+        ],
+        "hash": "330646d38e6817014f4d070b07468e6236c05296d7723e01d823fe685fa7e782",
+        "hashType": "sha256",
+        "minSdkVersion": 14,
+        "packageName": "us.spotco.motionlock",
+        "sig": "9b7ebc2ffa5e038255db83d63830285e",
+        "signer": "260e0a49678c78b70c02d6537add3b6dc0a17171bbde8ce75fd4026a8a3e18d2",
+        "size": 102594,
+        "targetSdkVersion": 32,
+        "versionCode": 18,
+        "versionName": "1.1"
+      },
+      {
+        "added": 1666042812000,
+        "apkName": "MotionLock-1.1-17.apk",
+        "features": [
+          "android.software.device_admin"
+        ],
+        "hash": "9d3ca8bb7ec0366cbfb050ff36d7459b484947332903555fd2cf3d5aba38518c",
+        "hashType": "sha256",
+        "minSdkVersion": 14,
+        "packageName": "us.spotco.motionlock",
+        "sig": "9b7ebc2ffa5e038255db83d63830285e",
+        "signer": "260e0a49678c78b70c02d6537add3b6dc0a17171bbde8ce75fd4026a8a3e18d2",
+        "size": 1170466,
+        "targetSdkVersion": 32,
+        "versionCode": 17,
+        "versionName": "1.1"
+      },
+      {
+        "added": 1661109865000,
+        "apkName": "MotionLock-1.1-16.apk",
+        "features": [
+          "android.software.device_admin"
+        ],
+        "hash": "10fec94e08515cd4b6a7f03987809f01647eb3af6e2a180f898f8b22195280ba",
+        "hashType": "sha256",
+        "minSdkVersion": 14,
+        "packageName": "us.spotco.motionlock",
+        "sig": "9b7ebc2ffa5e038255db83d63830285e",
+        "signer": "260e0a49678c78b70c02d6537add3b6dc0a17171bbde8ce75fd4026a8a3e18d2",
+        "size": 1162273,
+        "targetSdkVersion": 32,
+        "versionCode": 16,
+        "versionName": "1.1"
+      }
+    ],
+    "us.spotco.mulch": [
+      {
+        "added": 1689211122000,
+        "apkName": "Mulch-arm64-115.0.5790.85-1.apk",
+        "hash": "9ac643e228338b75b3b6fec7aa586e3b181671063d66857306f01a7ceba0aa78",
+        "hashType": "sha256",
+        "minSdkVersion": 24,
+        "nativecode": [
+          "arm64-v8a"
+        ],
+        "packageName": "us.spotco.mulch",
+        "sig": "9b7ebc2ffa5e038255db83d63830285e",
+        "signer": "260e0a49678c78b70c02d6537add3b6dc0a17171bbde8ce75fd4026a8a3e18d2",
+        "size": 202310114,
+        "targetSdkVersion": 33,
+        "uses-permission": [
+          [
+            "android.permission.ACCESS_COARSE_LOCATION",
+            null
+          ],
+          [
+            "android.permission.ACCESS_FINE_LOCATION",
+            null
+          ],
+          [
+            "android.permission.ACCESS_NETWORK_STATE",
+            null
+          ],
+          [
+            "android.permission.CAMERA",
+            null
+          ],
+          [
+            "android.permission.DOWNLOAD_WITHOUT_NOTIFICATION",
+            null
+          ],
+          [
+            "android.permission.FOREGROUND_SERVICE",
+            null
+          ],
+          [
+            "android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK",
+            null
+          ],
+          [
+            "android.permission.FOREGROUND_SERVICE_DATA_SYNC",
+            null
+          ],
+          [
+            "android.permission.GET_ACCOUNTS",
+            null
+          ],
+          [
+            "android.permission.INTERNET",
+            null
+          ],
+          [
+            "android.permission.MANAGE_ACCOUNTS",
+            null
+          ],
+          [
+            "android.permission.MODIFY_AUDIO_SETTINGS",
+            null
+          ],
+          [
+            "android.permission.NFC",
+            null
+          ],
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.QUERY_ALL_PACKAGES",
+            null
+          ],
+          [
+            "android.permission.READ_EXTERNAL_STORAGE",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.RECORD_AUDIO",
+            null
+          ],
+          [
+            "android.permission.USE_CREDENTIALS",
+            null
+          ],
+          [
+            "android.permission.VIBRATE",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.WRITE_EXTERNAL_STORAGE",
+            null
+          ],
+          [
+            "android.permission.CREDENTIAL_MANAGER_QUERY_CANDIDATE_CREDENTIALS",
+            null
+          ],
+          [
+            "android.permission.CREDENTIAL_MANAGER_SET_ALLOWED_PROVIDERS",
+            null
+          ],
+          [
+            "android.permission.CREDENTIAL_MANAGER_SET_ORIGIN",
+            null
+          ],
+          [
+            "us.spotco.mulch.permission.C2D_MESSAGE",
+            null
+          ],
+          [
+            "us.spotco.mulch.permission.READ_WRITE_BOOKMARK_FOLDERS",
+            null
+          ],
+          [
+            "us.spotco.mulch.TOS_ACKED",
+            null
+          ],
+          [
+            "com.chrome.permission.DEVICE_EXTRAS",
+            null
+          ],
+          [
+            "com.google.android.c2dm.permission.RECEIVE",
+            null
+          ],
+          [
+            "com.android.launcher.permission.INSTALL_SHORTCUT",
+            null
+          ],
+          [
+            "com.google.android.apps.now.CURRENT_ACCOUNT_ACCESS",
+            null
+          ]
+        ],
+        "uses-permission-sdk-23": [
+          [
+            "android.permission.ACCESS_WIFI_STATE",
+            null
+          ],
+          [
+            "android.permission.ACCESS_ADSERVICES_ATTRIBUTION",
+            null
+          ],
+          [
+            "android.permission.BLUETOOTH_ADMIN",
+            30
+          ],
+          [
+            "android.permission.BLUETOOTH_CONNECT",
+            null
+          ],
+          [
+            "android.permission.BLUETOOTH_ADVERTISE",
+            null
+          ],
+          [
+            "android.permission.BLUETOOTH",
+            null
+          ],
+          [
+            "android.permission.BLUETOOTH_SCAN",
+            null
+          ],
+          [
+            "android.permission.READ_CONTACTS",
+            null
+          ],
+          [
+            "android.permission.REORDER_TASKS",
+            null
+          ],
+          [
+            "android.permission.REQUEST_INSTALL_PACKAGES",
+            null
+          ],
+          [
+            "android.permission.READ_MEDIA_AUDIO",
+            null
+          ],
+          [
+            "android.permission.READ_MEDIA_IMAGES",
+            null
+          ],
+          [
+            "android.permission.READ_MEDIA_VIDEO",
+            null
+          ],
+          [
+            "android.permission.USE_BIOMETRIC",
+            null
+          ],
+          [
+            "android.permission.USE_FINGERPRINT",
+            null
+          ]
+        ],
+        "versionCode": 579008504,
+        "versionName": "115.0.5790.85"
+      },
+      {
+        "added": 1689211107000,
+        "apkName": "Mulch-arm-115.0.5790.85-1.apk",
+        "hash": "8f2968c5b8b36cd9ed47f6c80a51ee6e693538ae35ad043ef14de91ef5593e46",
+        "hashType": "sha256",
+        "minSdkVersion": 24,
+        "nativecode": [
+          "armeabi-v7a"
+        ],
+        "packageName": "us.spotco.mulch",
+        "sig": "9b7ebc2ffa5e038255db83d63830285e",
+        "signer": "260e0a49678c78b70c02d6537add3b6dc0a17171bbde8ce75fd4026a8a3e18d2",
+        "size": 151631080,
+        "targetSdkVersion": 33,
+        "uses-permission": [
+          [
+            "android.permission.ACCESS_COARSE_LOCATION",
+            null
+          ],
+          [
+            "android.permission.ACCESS_FINE_LOCATION",
+            null
+          ],
+          [
+            "android.permission.ACCESS_NETWORK_STATE",
+            null
+          ],
+          [
+            "android.permission.CAMERA",
+            null
+          ],
+          [
+            "android.permission.DOWNLOAD_WITHOUT_NOTIFICATION",
+            null
+          ],
+          [
+            "android.permission.FOREGROUND_SERVICE",
+            null
+          ],
+          [
+            "android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK",
+            null
+          ],
+          [
+            "android.permission.FOREGROUND_SERVICE_DATA_SYNC",
+            null
+          ],
+          [
+            "android.permission.GET_ACCOUNTS",
+            null
+          ],
+          [
+            "android.permission.INTERNET",
+            null
+          ],
+          [
+            "android.permission.MANAGE_ACCOUNTS",
+            null
+          ],
+          [
+            "android.permission.MODIFY_AUDIO_SETTINGS",
+            null
+          ],
+          [
+            "android.permission.NFC",
+            null
+          ],
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.QUERY_ALL_PACKAGES",
+            null
+          ],
+          [
+            "android.permission.READ_EXTERNAL_STORAGE",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.RECORD_AUDIO",
+            null
+          ],
+          [
+            "android.permission.USE_CREDENTIALS",
+            null
+          ],
+          [
+            "android.permission.VIBRATE",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.WRITE_EXTERNAL_STORAGE",
+            null
+          ],
+          [
+            "android.permission.CREDENTIAL_MANAGER_QUERY_CANDIDATE_CREDENTIALS",
+            null
+          ],
+          [
+            "android.permission.CREDENTIAL_MANAGER_SET_ALLOWED_PROVIDERS",
+            null
+          ],
+          [
+            "android.permission.CREDENTIAL_MANAGER_SET_ORIGIN",
+            null
+          ],
+          [
+            "us.spotco.mulch.permission.C2D_MESSAGE",
+            null
+          ],
+          [
+            "us.spotco.mulch.permission.READ_WRITE_BOOKMARK_FOLDERS",
+            null
+          ],
+          [
+            "us.spotco.mulch.TOS_ACKED",
+            null
+          ],
+          [
+            "com.chrome.permission.DEVICE_EXTRAS",
+            null
+          ],
+          [
+            "com.google.android.c2dm.permission.RECEIVE",
+            null
+          ],
+          [
+            "com.android.launcher.permission.INSTALL_SHORTCUT",
+            null
+          ],
+          [
+            "com.google.android.apps.now.CURRENT_ACCOUNT_ACCESS",
+            null
+          ]
+        ],
+        "uses-permission-sdk-23": [
+          [
+            "android.permission.ACCESS_WIFI_STATE",
+            null
+          ],
+          [
+            "android.permission.ACCESS_ADSERVICES_ATTRIBUTION",
+            null
+          ],
+          [
+            "android.permission.BLUETOOTH_ADMIN",
+            30
+          ],
+          [
+            "android.permission.BLUETOOTH_CONNECT",
+            null
+          ],
+          [
+            "android.permission.BLUETOOTH_ADVERTISE",
+            null
+          ],
+          [
+            "android.permission.BLUETOOTH",
+            null
+          ],
+          [
+            "android.permission.BLUETOOTH_SCAN",
+            null
+          ],
+          [
+            "android.permission.READ_CONTACTS",
+            null
+          ],
+          [
+            "android.permission.REORDER_TASKS",
+            null
+          ],
+          [
+            "android.permission.REQUEST_INSTALL_PACKAGES",
+            null
+          ],
+          [
+            "android.permission.READ_MEDIA_AUDIO",
+            null
+          ],
+          [
+            "android.permission.READ_MEDIA_IMAGES",
+            null
+          ],
+          [
+            "android.permission.READ_MEDIA_VIDEO",
+            null
+          ],
+          [
+            "android.permission.USE_BIOMETRIC",
+            null
+          ],
+          [
+            "android.permission.USE_FINGERPRINT",
+            null
+          ]
+        ],
+        "versionCode": 579008500,
+        "versionName": "115.0.5790.85"
+      },
+      {
+        "added": 1687834742000,
+        "apkName": "Mulch-arm64-114.0.5735.196-1.apk",
+        "hash": "35c240b9c4ff49c4da3bfe2f059c1ddbbacc10d1a169f3b5115700ac77fccd9f",
+        "hashType": "sha256",
+        "minSdkVersion": 24,
+        "nativecode": [
+          "arm64-v8a"
+        ],
+        "packageName": "us.spotco.mulch",
+        "sig": "9b7ebc2ffa5e038255db83d63830285e",
+        "signer": "260e0a49678c78b70c02d6537add3b6dc0a17171bbde8ce75fd4026a8a3e18d2",
+        "size": 200498188,
+        "targetSdkVersion": 33,
+        "uses-permission": [
+          [
+            "android.permission.ACCESS_COARSE_LOCATION",
+            null
+          ],
+          [
+            "android.permission.ACCESS_FINE_LOCATION",
+            null
+          ],
+          [
+            "android.permission.ACCESS_NETWORK_STATE",
+            null
+          ],
+          [
+            "android.permission.CAMERA",
+            null
+          ],
+          [
+            "android.permission.DOWNLOAD_WITHOUT_NOTIFICATION",
+            null
+          ],
+          [
+            "android.permission.FOREGROUND_SERVICE",
+            null
+          ],
+          [
+            "android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK",
+            null
+          ],
+          [
+            "android.permission.FOREGROUND_SERVICE_DATA_SYNC",
+            null
+          ],
+          [
+            "android.permission.GET_ACCOUNTS",
+            null
+          ],
+          [
+            "android.permission.INTERNET",
+            null
+          ],
+          [
+            "android.permission.MANAGE_ACCOUNTS",
+            null
+          ],
+          [
+            "android.permission.MODIFY_AUDIO_SETTINGS",
+            null
+          ],
+          [
+            "android.permission.NFC",
+            null
+          ],
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.QUERY_ALL_PACKAGES",
+            null
+          ],
+          [
+            "android.permission.READ_EXTERNAL_STORAGE",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.RECORD_AUDIO",
+            null
+          ],
+          [
+            "android.permission.USE_CREDENTIALS",
+            null
+          ],
+          [
+            "android.permission.VIBRATE",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.WRITE_EXTERNAL_STORAGE",
+            null
+          ],
+          [
+            "android.permission.CREDENTIAL_MANAGER_QUERY_CANDIDATE_CREDENTIALS",
+            null
+          ],
+          [
+            "android.permission.CREDENTIAL_MANAGER_SET_ALLOWED_PROVIDERS",
+            null
+          ],
+          [
+            "android.permission.CREDENTIAL_MANAGER_SET_ORIGIN",
+            null
+          ],
+          [
+            "us.spotco.mulch.permission.C2D_MESSAGE",
+            null
+          ],
+          [
+            "us.spotco.mulch.permission.READ_WRITE_BOOKMARK_FOLDERS",
+            null
+          ],
+          [
+            "us.spotco.mulch.TOS_ACKED",
+            null
+          ],
+          [
+            "com.chrome.permission.DEVICE_EXTRAS",
+            null
+          ],
+          [
+            "com.google.android.c2dm.permission.RECEIVE",
+            null
+          ],
+          [
+            "com.android.launcher.permission.INSTALL_SHORTCUT",
+            null
+          ],
+          [
+            "com.google.android.apps.now.CURRENT_ACCOUNT_ACCESS",
+            null
+          ]
+        ],
+        "uses-permission-sdk-23": [
+          [
+            "android.permission.ACCESS_WIFI_STATE",
+            null
+          ],
+          [
+            "android.permission.ACCESS_ADSERVICES_ATTRIBUTION",
+            null
+          ],
+          [
+            "android.permission.BLUETOOTH_ADMIN",
+            30
+          ],
+          [
+            "android.permission.BLUETOOTH_CONNECT",
+            null
+          ],
+          [
+            "android.permission.BLUETOOTH_ADVERTISE",
+            null
+          ],
+          [
+            "android.permission.BLUETOOTH",
+            null
+          ],
+          [
+            "android.permission.BLUETOOTH_SCAN",
+            null
+          ],
+          [
+            "android.permission.READ_CONTACTS",
+            null
+          ],
+          [
+            "android.permission.REORDER_TASKS",
+            null
+          ],
+          [
+            "android.permission.REQUEST_INSTALL_PACKAGES",
+            null
+          ],
+          [
+            "android.permission.READ_MEDIA_AUDIO",
+            null
+          ],
+          [
+            "android.permission.READ_MEDIA_IMAGES",
+            null
+          ],
+          [
+            "android.permission.READ_MEDIA_VIDEO",
+            null
+          ],
+          [
+            "android.permission.USE_BIOMETRIC",
+            null
+          ],
+          [
+            "android.permission.USE_FINGERPRINT",
+            null
+          ]
+        ],
+        "versionCode": 573519604,
+        "versionName": "114.0.5735.196"
+      },
+      {
+        "added": 1687834708000,
+        "apkName": "Mulch-arm-114.0.5735.196-1.apk",
+        "hash": "5890880718f19811b4a6460f553201091c2e889fc19bea9a6c09cf0acfb75667",
+        "hashType": "sha256",
+        "minSdkVersion": 24,
+        "nativecode": [
+          "armeabi-v7a"
+        ],
+        "packageName": "us.spotco.mulch",
+        "sig": "9b7ebc2ffa5e038255db83d63830285e",
+        "signer": "260e0a49678c78b70c02d6537add3b6dc0a17171bbde8ce75fd4026a8a3e18d2",
+        "size": 150241059,
+        "targetSdkVersion": 33,
+        "uses-permission": [
+          [
+            "android.permission.ACCESS_COARSE_LOCATION",
+            null
+          ],
+          [
+            "android.permission.ACCESS_FINE_LOCATION",
+            null
+          ],
+          [
+            "android.permission.ACCESS_NETWORK_STATE",
+            null
+          ],
+          [
+            "android.permission.CAMERA",
+            null
+          ],
+          [
+            "android.permission.DOWNLOAD_WITHOUT_NOTIFICATION",
+            null
+          ],
+          [
+            "android.permission.FOREGROUND_SERVICE",
+            null
+          ],
+          [
+            "android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK",
+            null
+          ],
+          [
+            "android.permission.FOREGROUND_SERVICE_DATA_SYNC",
+            null
+          ],
+          [
+            "android.permission.GET_ACCOUNTS",
+            null
+          ],
+          [
+            "android.permission.INTERNET",
+            null
+          ],
+          [
+            "android.permission.MANAGE_ACCOUNTS",
+            null
+          ],
+          [
+            "android.permission.MODIFY_AUDIO_SETTINGS",
+            null
+          ],
+          [
+            "android.permission.NFC",
+            null
+          ],
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ],
+          [
+            "android.permission.QUERY_ALL_PACKAGES",
+            null
+          ],
+          [
+            "android.permission.READ_EXTERNAL_STORAGE",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.RECORD_AUDIO",
+            null
+          ],
+          [
+            "android.permission.USE_CREDENTIALS",
+            null
+          ],
+          [
+            "android.permission.VIBRATE",
+            null
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.WRITE_EXTERNAL_STORAGE",
+            null
+          ],
+          [
+            "android.permission.CREDENTIAL_MANAGER_QUERY_CANDIDATE_CREDENTIALS",
+            null
+          ],
+          [
+            "android.permission.CREDENTIAL_MANAGER_SET_ALLOWED_PROVIDERS",
+            null
+          ],
+          [
+            "android.permission.CREDENTIAL_MANAGER_SET_ORIGIN",
+            null
+          ],
+          [
+            "us.spotco.mulch.permission.C2D_MESSAGE",
+            null
+          ],
+          [
+            "us.spotco.mulch.permission.READ_WRITE_BOOKMARK_FOLDERS",
+            null
+          ],
+          [
+            "us.spotco.mulch.TOS_ACKED",
+            null
+          ],
+          [
+            "com.chrome.permission.DEVICE_EXTRAS",
+            null
+          ],
+          [
+            "com.google.android.c2dm.permission.RECEIVE",
+            null
+          ],
+          [
+            "com.android.launcher.permission.INSTALL_SHORTCUT",
+            null
+          ],
+          [
+            "com.google.android.apps.now.CURRENT_ACCOUNT_ACCESS",
+            null
+          ]
+        ],
+        "uses-permission-sdk-23": [
+          [
+            "android.permission.ACCESS_WIFI_STATE",
+            null
+          ],
+          [
+            "android.permission.ACCESS_ADSERVICES_ATTRIBUTION",
+            null
+          ],
+          [
+            "android.permission.BLUETOOTH_ADMIN",
+            30
+          ],
+          [
+            "android.permission.BLUETOOTH_CONNECT",
+            null
+          ],
+          [
+            "android.permission.BLUETOOTH_ADVERTISE",
+            null
+          ],
+          [
+            "android.permission.BLUETOOTH",
+            null
+          ],
+          [
+            "android.permission.BLUETOOTH_SCAN",
+            null
+          ],
+          [
+            "android.permission.READ_CONTACTS",
+            null
+          ],
+          [
+            "android.permission.REORDER_TASKS",
+            null
+          ],
+          [
+            "android.permission.REQUEST_INSTALL_PACKAGES",
+            null
+          ],
+          [
+            "android.permission.READ_MEDIA_AUDIO",
+            null
+          ],
+          [
+            "android.permission.READ_MEDIA_IMAGES",
+            null
+          ],
+          [
+            "android.permission.READ_MEDIA_VIDEO",
+            null
+          ],
+          [
+            "android.permission.USE_BIOMETRIC",
+            null
+          ],
+          [
+            "android.permission.USE_FINGERPRINT",
+            null
+          ]
+        ],
+        "versionCode": 573519600,
+        "versionName": "114.0.5735.196"
+      }
+    ],
+    "us.spotco.mulch_wv": [
+      {
+        "added": 1689211040000,
+        "apkName": "Mulch-arm64-115.0.5790.85-1-webview.apk",
+        "hash": "d3006e611f9b0472b4fac420cd5345943b9bb2dede757af5b91e6dbaceb56b32",
+        "hashType": "sha256",
+        "minSdkVersion": 24,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a"
+        ],
+        "packageName": "us.spotco.mulch_wv",
+        "sig": "9b7ebc2ffa5e038255db83d63830285e",
+        "signer": "260e0a49678c78b70c02d6537add3b6dc0a17171bbde8ce75fd4026a8a3e18d2",
+        "size": 246194041,
+        "targetSdkVersion": 33,
+        "uses-permission": [
+          [
+            "android.permission.INTERNET",
+            null
+          ],
+          [
+            "android.permission.ACCESS_NETWORK_STATE",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.FOREGROUND_SERVICE",
+            null
+          ],
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ]
+        ],
+        "versionCode": 579008501,
+        "versionName": "115.0.5790.85"
+      },
+      {
+        "added": 1689211023000,
+        "apkName": "Mulch-arm-115.0.5790.85-1-webview.apk",
+        "hash": "83d303aeeb84021b37dcce642810b8c15d5358fcef48019477762b0af702f586",
+        "hashType": "sha256",
+        "minSdkVersion": 24,
+        "nativecode": [
+          "armeabi-v7a"
+        ],
+        "packageName": "us.spotco.mulch_wv",
+        "sig": "9b7ebc2ffa5e038255db83d63830285e",
+        "signer": "260e0a49678c78b70c02d6537add3b6dc0a17171bbde8ce75fd4026a8a3e18d2",
+        "size": 104118612,
+        "targetSdkVersion": 33,
+        "uses-permission": [
+          [
+            "android.permission.INTERNET",
+            null
+          ],
+          [
+            "android.permission.ACCESS_NETWORK_STATE",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.FOREGROUND_SERVICE",
+            null
+          ],
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ]
+        ],
+        "versionCode": 579008500,
+        "versionName": "115.0.5790.85"
+      },
+      {
+        "added": 1687834642000,
+        "apkName": "Mulch-arm64-114.0.5735.196-1-webview.apk",
+        "hash": "f19045228493eded5cfbb3230b53ecd8ef47cbc18635169344901bc8d750a464",
+        "hashType": "sha256",
+        "minSdkVersion": 24,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a"
+        ],
+        "packageName": "us.spotco.mulch_wv",
+        "sig": "9b7ebc2ffa5e038255db83d63830285e",
+        "signer": "260e0a49678c78b70c02d6537add3b6dc0a17171bbde8ce75fd4026a8a3e18d2",
+        "size": 244488354,
+        "targetSdkVersion": 33,
+        "uses-permission": [
+          [
+            "android.permission.INTERNET",
+            null
+          ],
+          [
+            "android.permission.ACCESS_NETWORK_STATE",
+            null
+          ],
+          [
+            "android.permission.FOREGROUND_SERVICE",
+            null
+          ],
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ]
+        ],
+        "versionCode": 573519601,
+        "versionName": "114.0.5735.196"
+      },
+      {
+        "added": 1687834616000,
+        "apkName": "Mulch-arm-114.0.5735.196-1-webview.apk",
+        "hash": "09537d6c2f742131612e6db7e680cf8e8d5757f818298d0bd4c1dd25facfb8de",
+        "hashType": "sha256",
+        "minSdkVersion": 24,
+        "nativecode": [
+          "armeabi-v7a"
+        ],
+        "packageName": "us.spotco.mulch_wv",
+        "sig": "9b7ebc2ffa5e038255db83d63830285e",
+        "signer": "260e0a49678c78b70c02d6537add3b6dc0a17171bbde8ce75fd4026a8a3e18d2",
+        "size": 103360823,
+        "targetSdkVersion": 33,
+        "uses-permission": [
+          [
+            "android.permission.INTERNET",
+            null
+          ],
+          [
+            "android.permission.ACCESS_NETWORK_STATE",
+            null
+          ],
+          [
+            "android.permission.FOREGROUND_SERVICE",
+            null
+          ],
+          [
+            "android.permission.POST_NOTIFICATIONS",
+            null
+          ]
+        ],
+        "versionCode": 573519600,
+        "versionName": "114.0.5735.196"
+      }
+    ]
+  }
+}

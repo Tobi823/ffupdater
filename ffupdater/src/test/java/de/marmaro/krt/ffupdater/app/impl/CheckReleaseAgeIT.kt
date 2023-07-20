@@ -111,7 +111,7 @@ class CheckReleaseAgeIT {
         every { DeviceAbiExtractor.findBestAbi(any(), false) } returns ABI.ARM64_V8A
 
         mockkObject(DeviceSdkTester)
-        every { DeviceSdkTester.supportsAndroidNougat() } returns true
+        every { DeviceSdkTester.supportsAndroid7Nougat24() } returns true
 
         FileDownloader.init(context)
     }

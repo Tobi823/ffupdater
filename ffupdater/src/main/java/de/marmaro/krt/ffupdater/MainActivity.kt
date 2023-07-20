@@ -131,7 +131,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun askForIgnoringBatteryOptimizationIfNecessary() {
-        if (DeviceSdkTester.supportsAndroidMarshmallow() &&
+        if (DeviceSdkTester.supportsAndroid6M23() &&
             !BackgroundWork.isBackgroundUpdateCheckReliableExecuted()
         ) {
             NotificationBuilder.showBackgroundUpdateCheckUnreliableExecutionNotification(this)
@@ -203,7 +203,7 @@ class MainActivity : AppCompatActivity() {
             showBriefMessage(R.string.main_activity__no_unmetered_network)
             return
         }
-        if (DeviceSdkTester.supportsAndroidOreo() && !packageManager.canRequestPackageInstalls()) {
+        if (DeviceSdkTester.supportsAndroid8Oreo26() && !packageManager.canRequestPackageInstalls()) {
             RequestInstallationPermissionDialog().show(supportFragmentManager)
             return
         }
@@ -241,7 +241,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun requestForNotificationPermissionIfNecessary() {
-        if (!DeviceSdkTester.supportsAndroid13() ||
+        if (!DeviceSdkTester.supportsAndroid13T33() ||
             ContextCompat.checkSelfPermission(this, POST_NOTIFICATIONS) == PERMISSION_GRANTED
         ) {
             return

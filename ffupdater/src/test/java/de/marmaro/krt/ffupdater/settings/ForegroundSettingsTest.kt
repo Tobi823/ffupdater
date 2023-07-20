@@ -72,13 +72,13 @@ class ForegroundSettingsTest : BaseTest() {
 
     @Test
     fun getThemePreference_userHasNotChangedSetting_AndroidPAndBelow_returnDefaultValue() {
-        every { DeviceSdkTester.supportsAndroid10() } returns false
+        every { DeviceSdkTester.supportsAndroid10Q29() } returns false
         assertEquals(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY, ForegroundSettings.themePreference)
     }
 
     @Test
     fun getThemePreference_userHasNotChangedSetting_AndroidQAndHigher_returnDefaultValue() {
-        every { DeviceSdkTester.supportsAndroid10() } returns true
+        every { DeviceSdkTester.supportsAndroid10Q29() } returns true
         assertEquals(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM, ForegroundSettings.themePreference)
     }
 
@@ -86,10 +86,10 @@ class ForegroundSettingsTest : BaseTest() {
     fun getThemePreference_withInvalidValue_null_returnDefault() {
         sharedPreferences.edit().putString("foreground__theme_preference", null).commit()
 
-        every { DeviceSdkTester.supportsAndroid10() } returns false
+        every { DeviceSdkTester.supportsAndroid10Q29() } returns false
         assertEquals(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY, ForegroundSettings.themePreference)
 
-        every { DeviceSdkTester.supportsAndroid10() } returns true
+        every { DeviceSdkTester.supportsAndroid10Q29() } returns true
         assertEquals(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM, ForegroundSettings.themePreference)
     }
 
@@ -97,10 +97,10 @@ class ForegroundSettingsTest : BaseTest() {
     fun getThemePreference_withInvalidValue_emptyString_returnDefault() {
         sharedPreferences.edit().putString("foreground__theme_preference", "").commit()
 
-        every { DeviceSdkTester.supportsAndroid10() } returns false
+        every { DeviceSdkTester.supportsAndroid10Q29() } returns false
         assertEquals(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY, ForegroundSettings.themePreference)
 
-        every { DeviceSdkTester.supportsAndroid10() } returns true
+        every { DeviceSdkTester.supportsAndroid10Q29() } returns true
         assertEquals(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM, ForegroundSettings.themePreference)
     }
 
@@ -108,10 +108,10 @@ class ForegroundSettingsTest : BaseTest() {
     fun getThemePreference_withInvalidValue_text_returnDefault() {
         sharedPreferences.edit().putString("foreground__theme_preference", "lorem ipsum").commit()
 
-        every { DeviceSdkTester.supportsAndroid10() } returns false
+        every { DeviceSdkTester.supportsAndroid10Q29() } returns false
         assertEquals(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY, ForegroundSettings.themePreference)
 
-        every { DeviceSdkTester.supportsAndroid10() } returns true
+        every { DeviceSdkTester.supportsAndroid10Q29() } returns true
         assertEquals(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM, ForegroundSettings.themePreference)
     }
 
@@ -119,10 +119,10 @@ class ForegroundSettingsTest : BaseTest() {
     fun getThemePreference_withInvalidValue_nonExistingNumber_returnDefault() {
         sharedPreferences.edit().putString("foreground__theme_preference", "6").commit()
 
-        every { DeviceSdkTester.supportsAndroid10() } returns false
+        every { DeviceSdkTester.supportsAndroid10Q29() } returns false
         assertEquals(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY, ForegroundSettings.themePreference)
 
-        every { DeviceSdkTester.supportsAndroid10() } returns true
+        every { DeviceSdkTester.supportsAndroid10Q29() } returns true
         assertEquals(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM, ForegroundSettings.themePreference)
     }
 
@@ -130,10 +130,10 @@ class ForegroundSettingsTest : BaseTest() {
     fun getThemePreference_withValidValue_MODE_NIGHT_FOLLOW_SYSTEM_returnValue() {
         sharedPreferences.edit().putString("foreground__theme_preference", "-1").commit()
 
-        every { DeviceSdkTester.supportsAndroid10() } returns false
+        every { DeviceSdkTester.supportsAndroid10Q29() } returns false
         assertEquals(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM, ForegroundSettings.themePreference)
 
-        every { DeviceSdkTester.supportsAndroid10() } returns true
+        every { DeviceSdkTester.supportsAndroid10Q29() } returns true
         assertEquals(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM, ForegroundSettings.themePreference)
     }
 
@@ -141,10 +141,10 @@ class ForegroundSettingsTest : BaseTest() {
     fun getThemePreference_withValidValue_MODE_NIGHT_NO_returnValue() {
         sharedPreferences.edit().putString("foreground__theme_preference", "1").commit()
 
-        every { DeviceSdkTester.supportsAndroid10() } returns false
+        every { DeviceSdkTester.supportsAndroid10Q29() } returns false
         assertEquals(AppCompatDelegate.MODE_NIGHT_NO, ForegroundSettings.themePreference)
 
-        every { DeviceSdkTester.supportsAndroid10() } returns true
+        every { DeviceSdkTester.supportsAndroid10Q29() } returns true
         assertEquals(AppCompatDelegate.MODE_NIGHT_NO, ForegroundSettings.themePreference)
     }
 
@@ -152,10 +152,10 @@ class ForegroundSettingsTest : BaseTest() {
     fun getThemePreference_withValidValue_MODE_NIGHT_YES_returnValue() {
         sharedPreferences.edit().putString("foreground__theme_preference", "2").commit()
 
-        every { DeviceSdkTester.supportsAndroid10() } returns false
+        every { DeviceSdkTester.supportsAndroid10Q29() } returns false
         assertEquals(AppCompatDelegate.MODE_NIGHT_YES, ForegroundSettings.themePreference)
 
-        every { DeviceSdkTester.supportsAndroid10() } returns true
+        every { DeviceSdkTester.supportsAndroid10Q29() } returns true
         assertEquals(AppCompatDelegate.MODE_NIGHT_YES, ForegroundSettings.themePreference)
     }
 
@@ -163,10 +163,10 @@ class ForegroundSettingsTest : BaseTest() {
     fun getThemePreference_withValidValue_MODE_NIGHT_AUTO_BATTERY_returnValue() {
         sharedPreferences.edit().putString("foreground__theme_preference", "3").commit()
 
-        every { DeviceSdkTester.supportsAndroid10() } returns false
+        every { DeviceSdkTester.supportsAndroid10Q29() } returns false
         assertEquals(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY, ForegroundSettings.themePreference)
 
-        every { DeviceSdkTester.supportsAndroid10() } returns true
+        every { DeviceSdkTester.supportsAndroid10Q29() } returns true
         assertEquals(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY, ForegroundSettings.themePreference)
     }
 }

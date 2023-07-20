@@ -1,50 +1,42 @@
 package de.marmaro.krt.ffupdater.installer.impl
 
 import android.content.Context
+import android.content.pm.IPackageInstaller
+import android.content.pm.IPackageInstallerSession
+import android.content.pm.IPackageManager
+import android.content.pm.PackageInstaller
+import android.content.pm.PackageInstallerHidden
 import android.content.pm.PackageManager
-import android.os.Environment
 import androidx.annotation.Keep
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.entity.Installer
 import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import dev.rikka.tools.refine.Refine
+import org.lsposed.hiddenapibypass.HiddenApiBypass
 import rikka.shizuku.Shizuku
+import rikka.shizuku.ShizukuBinderWrapper
+import rikka.shizuku.SystemServiceHelper
 import java.io.File
 
-/**
- * https://github.com/Iamlooker/Droid-ify/blob/59e4675f220520c9416b55697987ce6f374bd179/installer/src/main/java/com/looker/installer/installer/ShizukuInstaller.kt
- *
- * For further improvements: https://www.xda-developers.com/implementing-shizuku/
- */
 @Keep
-class ShizukuInstaller(app: App) : AbstractAppInstaller(app) {
-    override val type = Installer.SHIZUKU_INSTALLER
-
-    init {
-        if (!DeviceSdkTester.supportsAndroidMarshmallow()) {
-            throw RuntimeException("Shizuku is not supported on this device")
-        }
-    }
+class ShizukuInstaller(app: App) : SessionInstaller(app, false) {
+    override val type = Installer.SESSION_INSTALLER
+    override val intentName = "de.marmaro.krt.ffupdater.installer.impl.ShizukuNewInstaller"
 
     override suspend fun executeInstallerSpecificLogic(context: Context, file: File) {
-        val downloadFolder = context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
-        require(file.parentFile == downloadFolder)
-
-        val invalidChars = """\W""".toRegex()
-        val appName = app.findImpl().packageName.replace(invalidChars, "_")
-        require(file.name.startsWith(appName)) { "Invalid file prefix: ${file.name}" }
-        require(file.extension == "apk") { "Invalid file suffix: ${file.name}" }
-        require(!file.nameWithoutExtension.contains(invalidChars)) { "Invalid chars in file name: ${file.name}" }
-
+        if (DeviceSdkTester.supportsAndroid9P28()) {
+            HiddenApiBypass.addHiddenApiExemptions("")
+        }
         failIfShizukuPermissionIsMissing()
-        val size = file.length().toInt()
-        val sessionId = createInstallationSession(size)
-        installApp(sessionId, size, file)
+        super.executeInstallerSpecificLogic(context, file)
     }
 
     private fun failIfShizukuPermissionIsMissing() {
+        if (!DeviceSdkTester.supportsAndroid6M23()) {
+            throw InstallationFailedException("Shizuku is not supported on this device", -433)
+        }
+
         val permission = try {
             Shizuku.checkSelfPermission()
         } catch (e: IllegalStateException) {
@@ -59,43 +51,61 @@ class ShizukuInstaller(app: App) : AbstractAppInstaller(app) {
         }
     }
 
-    private suspend fun createInstallationSession(size: Int): Int {
-        val packageName = app.findImpl().packageName
-        val result = if (DeviceSdkTester.supportsAndroidNougat()) {
-            execute("pm install-create --user current -i $packageName -S $size")
+    override suspend fun openSession(
+        context: Context,
+        file: File,
+        block: suspend (PackageInstaller.Session, Int) -> Unit,
+    ): Int {
+        // Taken from LSPatch (https://github.com/LSPosed/LSPatch) and AuroraStore:
+        // https://gitlab.com/AuroraOSS/AuroraStore/-/blob/master/app/src/main/java/com/aurora/store/data/installer/ShizukuInstaller.kt)
+        val iPackageInstaller = getPackageInstallerInterface()
+        val packageInstaller = getPackageInstaller(iPackageInstaller, context)
+        val sessionParams = createSessionParams(context, file)
+        val sessionId = packageInstaller.createSession(sessionParams)
+        val session = getSession(iPackageInstaller, sessionId)
+        session.use {
+            block(it, sessionId)
+        }
+        return sessionId
+    }
+
+    private fun getSession(
+        iPackageInstaller: IPackageInstaller,
+        sessionId: Int,
+    ): PackageInstaller.Session {
+        val iSession = IPackageInstallerSession.Stub.asInterface(
+            ShizukuBinderWrapper(iPackageInstaller.openSession(sessionId).asBinder())
+        )
+        return Refine.unsafeCast(PackageInstallerHidden.SessionHidden(iSession))
+    }
+
+    private fun getPackageInstallerInterface(): IPackageInstaller {
+        val iPackageManager = IPackageManager.Stub.asInterface(
+            ShizukuBinderWrapper(SystemServiceHelper.getSystemService("package"))
+        )
+        return IPackageInstaller.Stub.asInterface(
+            ShizukuBinderWrapper(iPackageManager.packageInstaller.asBinder())
+        )
+    }
+
+    private fun getPackageInstaller(
+        iPackageInstaller: IPackageInstaller?,
+        context: Context,
+    ): PackageInstaller {
+        val installerPackageName = "com.android.shell"
+        val userId = 0
+        val hiddenPackageInstaller = if (DeviceSdkTester.supportsAndroid12S31()) {
+            PackageInstallerHidden(iPackageInstaller, installerPackageName, null, userId)
+        } else if (DeviceSdkTester.supportsAndroid8Oreo26()) {
+            PackageInstallerHidden(iPackageInstaller, installerPackageName, userId)
         } else {
-            execute("pm install-create -i $packageName -S $size")
+            PackageInstallerHidden(context, context.packageManager, iPackageInstaller, installerPackageName, userId)
         }
-
-        val sessionIdMatch = Regex("""\d+""").find(result)
-        checkNotNull(sessionIdMatch) { "Can't find session id with regex pattern. Output: $result" }
-
-        val sessionId = sessionIdMatch.groups[0]
-        checkNotNull(sessionId) { "Can't find match group containing the session id. Output: $result" }
-
-        return sessionId.value.toInt()
+        return Refine.unsafeCast(hiddenPackageInstaller)
     }
 
-    private suspend fun installApp(sessionId: Int, size: Int, file: File) {
-        execute("""cat "${file.absolutePath}" | pm install-write -S $size $sessionId "${file.name}"""")
-        execute("""pm install-commit $sessionId""")
-    }
 
-    private suspend fun execute(command: String): String {
-        return withContext(Dispatchers.IO) {
-            @Suppress("DEPRECATION")
-            val process = Shizuku.newProcess(arrayOf("sh", "-c", command), null, null)
-            val resultCode = process.waitFor()
-            val stdout = process.inputStream.bufferedReader().use { it.readText() }
-            val stderr = process.errorStream.bufferedReader().use { it.readText() }
-            if (resultCode != 0) {
-                throw InstallationFailedException(
-                    "Shizuku command '$command' failed. Result code is: '$resultCode', " +
-                            "stdout: '$stdout', stderr: '$stderr'",
-                    -403
-                )
-            }
-            stdout
-        }
+    override fun abandonSession(context: Context, sessionId: Int) {
+        // do nothing because calling abandonSession causes "SecurityException: Caller has no access to session"
     }
 }

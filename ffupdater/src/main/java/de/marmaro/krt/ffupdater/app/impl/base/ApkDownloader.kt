@@ -50,22 +50,22 @@ interface ApkDownloader : AppAttributes {
 
     suspend fun deleteFileCache(context: Context) {
         withContext(Dispatchers.IO) {
-            Log.i(LOG_TAG, "ApkDownloader: Delete file cache")
             getApkCacheFolder(context.applicationContext).listFiles()!!
                 .filter { it.name.startsWith("${getSanitizedPackageName()}_") }
                 .filter { it.name.endsWith(".apk") }
+                .also { if (it.isNotEmpty()) Log.i(LOG_TAG, "ApkDownloader: Delete files from ${app.name}") }
                 .forEach { it.delete() }
         }
     }
 
     suspend fun deleteFileCacheExceptLatest(context: Context, latestVersion: LatestVersion) {
         withContext(Dispatchers.IO) {
-            Log.i(LOG_TAG, "ApkDownloader: Delete file cache except latest")
             val latestFile = getApkFile(context.applicationContext, latestVersion)
             getApkCacheFolder(context.applicationContext).listFiles()!!
                 .filter { it != latestFile }
                 .filter { it.name.startsWith("${getSanitizedPackageName()}_") }
                 .filter { it.name.endsWith(".apk") }
+                .also { if (it.isNotEmpty()) Log.i(LOG_TAG, "ApkDownloader: Delete older files from ${app.name}") }
                 .forEach { it.delete() }
         }
     }

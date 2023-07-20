@@ -15,9 +15,9 @@ import androidx.lifecycle.LifecycleOwner
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.entity.Installer
+import de.marmaro.krt.ffupdater.installer.error.intent.GeneralInstallResultDecoder
+import de.marmaro.krt.ffupdater.installer.error.intent.HuaweiInstallResultDecoder
 import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
-import de.marmaro.krt.ffupdater.installer.manifacturer.GeneralInstallResultDecoder
-import de.marmaro.krt.ffupdater.installer.manifacturer.HuaweiInstallResultDecoder
 import kotlinx.coroutines.CompletableDeferred
 import java.io.File
 
@@ -75,7 +75,7 @@ class IntentInstaller(
     private fun installInternal(context: Context, file: File) {
         @Suppress("DEPRECATION")
         val intent = Intent(Intent.ACTION_INSTALL_PACKAGE)
-        intent.data = if (DeviceSdkTester.supportsAndroidNougat()) {
+        intent.data = if (DeviceSdkTester.supportsAndroid7Nougat24()) {
             FileProvider.getUriForFile(context.applicationContext, FILE_PROVIDER_AUTHORITY, file)
         } else {
             Uri.fromFile(file)

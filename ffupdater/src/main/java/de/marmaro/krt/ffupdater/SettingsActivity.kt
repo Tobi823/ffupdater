@@ -68,7 +68,7 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         private fun hideOptionsForLowerApis() {
-            if (!DeviceSdkTester.supportsAndroidMarshmallow()) {
+            if (!DeviceSdkTester.supportsAndroid6M23()) {
                 findSwitchPref("background__update_check__when_device_idle").summary =
                     getString(R.string.settings__background__update_check__when_device_idle__unsupported)
                 findSwitchPref("background__update_check__when_device_idle").isEnabled = false
@@ -137,7 +137,7 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         private fun canShizukuInstallerBeUsed(): Boolean {
-            if (!DeviceSdkTester.supportsAndroidMarshmallow()) {
+            if (!DeviceSdkTester.supportsAndroid6M23()) {
                 showBriefMessage(R.string.installer__android_too_old_for_shizuku)
                 return false
             }

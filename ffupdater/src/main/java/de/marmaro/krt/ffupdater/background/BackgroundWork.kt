@@ -7,7 +7,7 @@ import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import androidx.work.CoroutineWorker
 import androidx.work.ExistingPeriodicWorkPolicy
-import androidx.work.ExistingPeriodicWorkPolicy.KEEP
+import androidx.work.ExistingPeriodicWorkPolicy.CANCEL_AND_REENQUEUE
 import androidx.work.ExistingPeriodicWorkPolicy.UPDATE
 import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkManager
@@ -138,7 +138,7 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
         areRunRequirementsMet()
             .onFailure { return it }
 
-        if (DeviceSdkTester.supportsAndroidOreo()) {
+        if (DeviceSdkTester.supportsAndroid8Oreo26()) {
             // Only show notification on Android 8 because it can be silenced
             val foregroundInfo = NotificationBuilder.createBackgroundWorkNotification(applicationContext, id)
             setForeground(foregroundInfo)
@@ -261,13 +261,13 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
 
     private fun shouldInstallationBeAborted(): MethodWorkManagerResult {
         return when {
-            DeviceSdkTester.supportsAndroid10() && !applicationContext.packageManager.canRequestPackageInstalls() ->
+            DeviceSdkTester.supportsAndroid10Q29() && !applicationContext.packageManager.canRequestPackageInstalls() ->
                 retryRegularTimeSlot("BackgroundWork: Missing installation permission.")
 
             !BackgroundSettings.isInstallationEnabled ->
                 retryRegularTimeSlot("BackgroundWork: Automatic background app installation is not enabled.")
 
-            !DeviceSdkTester.supportsAndroid12() && InstallerSettings.getInstallerMethod() == SESSION_INSTALLER ->
+            !DeviceSdkTester.supportsAndroid12S31() && InstallerSettings.getInstallerMethod() == SESSION_INSTALLER ->
                 retryRegularTimeSlot("BackgroundWork: The current installer can not update apps in the background")
 
             InstallerSettings.getInstallerMethod() == NATIVE_INSTALLER ->
@@ -286,7 +286,7 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
     }
 
     private suspend fun shouldUpdateBeInstalled(app: App): Boolean {
-        if (DeviceSdkTester.supportsAndroid14()) {
+        if (DeviceSdkTester.supportsAndroid14U34()) {
             val gentleUpdatePossible = CompletableDeferred<Boolean>()
             val value = try {
                 val installer = applicationContext.packageManager.packageInstaller
@@ -350,12 +350,14 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
         private const val WORK_MANAGER_KEY = "update_checker"
         private val MAX_RETRIES = getRetriesForTotalBackoffTime(Duration.ofHours(8))
 
-        fun start(context: Context) {
-            internalStart(context.applicationContext, KEEP)
+        fun enqueueAgain(context: Context) {
+            Log.i(LOG_TAG, "BackgroundWork: Enqueue BackgroundWork again")
+            internalStart(context.applicationContext, UPDATE, BackgroundSettings.updateCheckInterval)
         }
 
-        fun enqueueAgain(context: Context) {
-            internalStart(context.applicationContext, UPDATE, BackgroundSettings.updateCheckInterval)
+        fun forceRestart(context: Context) {
+            Log.i(LOG_TAG, "BackgroundWork: Force restart BackgroundWork")
+            internalStart(context.applicationContext, CANCEL_AND_REENQUEUE)
         }
 
         private fun internalStart(
