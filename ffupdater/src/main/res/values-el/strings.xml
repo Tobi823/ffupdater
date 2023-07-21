@@ -337,4 +337,5 @@
     <string name="notification__uncaught_exception__channel_name">Ειδοποιήσεις σφαλμάτων</string>
     <string name="notification__uncaught_exception__text">Κάντε κλικ για να δείτε την αναφορά σφάλματος.</string>
     <string name="notification__bachground_work__title">Εκτέλεση εργασιών στο παρασκήνιο</string>
+    <string name="mulch_wv__title">Mulch System WebView</string>
 </resources>
