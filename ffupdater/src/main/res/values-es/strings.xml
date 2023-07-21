@@ -337,4 +337,5 @@
     <string name="notification__bachground_work__channel_name">Notificación de trabajo en segundo plano</string>
     <string name="notification__bachground_work__title">Ejecutando el trabajo en segundo plano</string>
     <string name="notification__bachground_work__action_title">Cancelar este trabajo en segundo plano</string>
+    <string name="mulch_wv__title">Sistema Mulch WebView</string>
 </resources>
