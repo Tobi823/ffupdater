@@ -332,4 +332,6 @@
     <string name="notification__bg_update_check__unreliable_execution__text">Möglicherweise liegt es an den Akku- oder Leistungseinstellungen deines Geräts. Klicke auf diese Benachrichtigung, um die Akkuoptimierung für diese App zu deaktivieren.</string>
     <string name="background__installation__when_screen_off__summary">Versuche Updates nur zu installieren, wenn der Gerätebildschirm ausgeschaltet ist.</string>
     <string name="background__installation__when_screen_off__title">Nur installieren, wenn der Bildschirm ausgeschaltet ist</string>
+    <string name="mulch_wv__title">Mulch System WebView</string>
+    <string name="mulch_wv__description">Dies ist ein sicherheitsorientiertes und gehärtetes System WebView, das auf Chromium-Technologie basiert. Viele Anti-Funktionen wurden deaktiviert/entfernt und eine handvoll Sicherheitsfunktionen wurden dank der Patches des [https://github.com/GrapheneOS/Vanadium Vanadium-Projekts] aktiviert/hinzugefügt.</string>
 </resources>
