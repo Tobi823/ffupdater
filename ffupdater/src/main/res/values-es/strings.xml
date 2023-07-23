@@ -338,4 +338,5 @@
     <string name="notification__bachground_work__title">Ejecutando el trabajo en segundo plano</string>
     <string name="notification__bachground_work__action_title">Cancelar este trabajo en segundo plano</string>
     <string name="mulch_wv__title">Sistema Mulch WebView</string>
+    <string name="mulch_wv__description">Se trata deun sistema WebView reforzado y orientado a la seguridad basado en Chromium. Se han deshabilitado/eliminado muchas antifunciones y se han habilitado/agregado un puñado de funciones de seguridad gracias a los parches del [https://github.com/GrapheneOS/Vanadium Vanadium Project].</string>
 </resources>
