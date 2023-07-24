@@ -85,7 +85,6 @@ object PackageManagerUtil {
         return checkNotNull(signatures[0])
     }
 
-    @Suppress("DEPRECATION")
     private fun extractSignature(signatures: Array<Signature>): Signature {
         check(signatures.isNotEmpty()) { "Signatures must not be empty." }
         check(signatures.size == 1) { "Found multiple signatures." }
@@ -95,7 +94,6 @@ object PackageManagerUtil {
     suspend fun getInstalledAppVersionName(pm: PackageManager, packageName: String): String? {
         return withContext(Dispatchers.IO) {
             try {
-                @Suppress("DEPRECATION")
                 pm.getPackageInfo(packageName, 0)?.versionName
             } catch (e: PackageManager.NameNotFoundException) {
                 null

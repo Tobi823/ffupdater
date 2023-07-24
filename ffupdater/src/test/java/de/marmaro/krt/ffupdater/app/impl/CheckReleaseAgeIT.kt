@@ -94,7 +94,6 @@ class CheckReleaseAgeIT {
         every { context.packageName } returns "de.marmaro.krt.ffupdater"
         every { context.getString(R.string.available_version, any()) } returns "/"
         every {
-            @Suppress("DEPRECATION")
             packageManager.getPackageInfo(any<String>(), 0)
         } throws PackageManager.NameNotFoundException()
         every { context.getSharedPreferences(any(), any()) } returns sharedPreferences

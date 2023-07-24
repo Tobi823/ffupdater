@@ -70,6 +70,4 @@ object StrictModeSetup {
             )
         }
     }
-
-    val INSTANCE = StrictModeSetup
 }
