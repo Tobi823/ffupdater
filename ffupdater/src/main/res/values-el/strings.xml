@@ -335,4 +335,5 @@
     <string name="notification__bachground_work__title">Εκτέλεση εργασιών στο παρασκήνιο</string>
     <string name="mulch_wv__title">Mulch System WebView</string>
     <string name="mulch_wv__description">Πρόκειται για ένα σύστημα WebView προσανατολισμένο στην ασφάλεια και βασίζεται στην τεχνολογία Chromium. Πολλά αντι-χαρακτηριστικά έχουν απενεργοποιηθεί/αφαιρεθεί και αρκετά λειτουργίες προστασίας έχουν ενεργοποιηθεί/προστεθεί χάρη σε ενημερώσεις κώδικα από το [https://github.com/GrapheneOS/Vanadium Vanadium έργο].</string>
+    <string name="app_installer__failed_to_validate_signature_of_download">Αποτυχία επικύρωσης της υπογραφής της λήψης.</string>
 </resources>
