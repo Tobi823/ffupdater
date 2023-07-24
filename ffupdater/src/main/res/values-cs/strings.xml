@@ -65,7 +65,7 @@
     <string name="download_activity__download_app_with_status">Stahování aplikace</string>
     <string name="download_activity__download_failed">Stahování selhalo</string>
     <string name="download_activity__downloaded_application_from">Aplikace stažená z:</string>
-    <string name="download_activity__downloaded_application_is_not_verified">Stažená aplikace NEBYLA ověřena</string>
+    <string name="app_installer__signature_of_download_is_invalid">Stažená aplikace NEBYLA ověřena</string>
     <string name="download_activity__exception__show_button">"<u>Zobrazit detailní chybové hlášení.</u>"</string>
     <string name="download_activity__external_storage_not_accessible">Externí úložiště není k dispozici - stahování nelze spustit. Součastný status je:</string>
     <string name="download_activity__fetch_url_for_download">Načítání metadat pro stahování z %1$s</string>

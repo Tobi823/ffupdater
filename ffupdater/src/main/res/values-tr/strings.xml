@@ -90,7 +90,7 @@
     <string name="download_activity__download_app_with_status">Uygulama indiriliyor</string>
     <string name="download_activity__download_failed">İndirme başarısız</string>
     <string name="download_activity__downloaded_application_from">Şuradan indirilen uygulama:</string>
-    <string name="download_activity__downloaded_application_is_not_verified">İndirilen uygulama doğrulanmadı</string>
+    <string name="app_installer__signature_of_download_is_invalid">İndirilen uygulama doğrulanmadı</string>
     <string name="download_activity__exception__show_button">"<u>Ayrıntılı hata raporunu göster.</u>"</string>
     <string name="download_activity__external_storage_not_accessible">Harici depolama kullanılamıyor - indirme başlatılamıyor. Geçerli durum:</string>
     <string name="download_activity__fetch_url_for_download">Üst verileri %1$s değerinden getir</string>

@@ -150,7 +150,7 @@
     <string name="download_activity__download_app_with_status">Λήψη εφαρμογής</string>
     <string name="download_activity__download_failed">Η λήψη απέτυχε</string>
     <string name="download_activity__downloaded_application_from">Κατέβασε την εφαρμογή από:</string>
-    <string name="download_activity__downloaded_application_is_not_verified">Η εφαρμογή που κατεβάσατε ΔΕΝ έχει επαληθευτεί</string>
+    <string name="app_installer__signature_of_download_is_invalid">Η εφαρμογή που κατεβάσατε ΔΕΝ έχει επαληθευτεί</string>
     <string name="download_activity__github_rate_limit_exceeded">Υπέρβαση του ορίου ρυθμού GitHub-API. Δοκιμάστε τη λήψη ξανά την επόμενη ώρα.</string>
     <string name="download_activity__open_cache_folder_button_text">ανοίξτε το φάκελο της προσωρινής μνήμης</string>
     <string name="download_activity__open_folder">Άνοιγμα φακέλου</string>

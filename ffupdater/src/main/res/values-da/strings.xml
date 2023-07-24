@@ -91,7 +91,7 @@
     <string name="download_activity__download_app_with_status">Downloader app</string>
     <string name="download_activity__download_failed">Download fejlede</string>
     <string name="download_activity__downloaded_application_from">Hentede app fra:</string>
-    <string name="download_activity__downloaded_application_is_not_verified">Den downloadede app er IKKE verificeret</string>
+    <string name="app_installer__signature_of_download_is_invalid">Den downloadede app er IKKE verificeret</string>
     <string name="download_activity__exception__show_button"><u>Vis den detaljerede fejlrapport.</u></string>
     <string name="download_activity__external_storage_not_accessible">Eksternt lager er ikke tilgængeligt - kan ikke starte download. Status er:</string>
     <string name="download_activity__fetched_url_for_download_successfully">Hentede metadata fra %1$s</string>

@@ -77,7 +77,7 @@
     <string name="download_activity__download_app_with_status">Downloading application</string>
     <string name="download_activity__download_failed">Download failed</string>
     <string name="download_activity__downloaded_application_from">Downloaded application from:</string>
-    <string name="download_activity__downloaded_application_is_not_verified">Downloaded application is NOT verified</string>
+    <string name="app_installer__signature_of_download_is_invalid">Downloaded application is NOT verified</string>
     <string name="download_activity__exception__show_button">"<u>Show the detailed error report.</u>"</string>
     <string name="download_activity__external_storage_not_accessible">External storage is not available - can\'t start download. Current status is:</string>
     <string name="download_activity__fetch_url_for_download">Fetch metadata from %1$s</string>
@@ -298,4 +298,5 @@
     <string name="notification__bachground_work__action_title">Cancel this background work</string>
     <string name="mulch_wv__title">Mulch System WebView</string>
     <string name="mulch_wv__description">This is a security oriented and hardened system WebView based on Chromium technology. Many anti-features are disabled/removed and a handful security features are enabled/added thanks to patches from the [https://github.com/GrapheneOS/Vanadium Vanadium project].</string>
+    <string name="app_installer__failed_to_validate_signature_of_download">Failed to validate the signature of the download.</string>
 </resources>

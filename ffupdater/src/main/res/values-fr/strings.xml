@@ -71,7 +71,7 @@
     <string name="download_activity__download_app_with_status">Téléchargement de l\'application</string>
     <string name="download_activity__download_failed">Echec du téléchargement</string>
     <string name="download_activity__downloaded_application_from">Application téléchargée à partir de :</string>
-    <string name="download_activity__downloaded_application_is_not_verified">La demande téléchargée n\'est PAS vérifiée</string>
+    <string name="app_installer__signature_of_download_is_invalid">La demande téléchargée n\'est PAS vérifiée</string>
     <string name="download_activity__exception__show_button">"<u>Afficher le rapport d\'erreur détaillé.</u>"</string>
     <string name="download_activity__external_storage_not_accessible">Le stockage externe n\'est pas disponible - ne peut pas commencer le téléchargement. L\'état actuel est :</string>
     <string name="download_activity__fetch_url_for_download">Récupérer l\'url de téléchargement de %1$s</string>
