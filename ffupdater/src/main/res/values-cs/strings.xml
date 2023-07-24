@@ -325,4 +325,5 @@
     <string name="notification__bg_update_check__unreliable_execution__title">Kontrola aktualizací na pozadí nefunguje spolehlivě</string>
     <string name="background__installation__when_screen_off__summary">Zkusit nainstalovat aktualizace pouze pokud je obrazovka vypnutá.</string>
     <string name="background__installation__when_screen_off__title">Instalace pouze při vypnuté obrazovce</string>
+    <string name="mulch_wv__title">Mulch System WebView</string>
 </resources>
