@@ -17,7 +17,7 @@ object Migrator {
         val lastVersionCode = preferences.getInt(FFUPDATER_VERSION_CODE, 0)
 
         if (lastVersionCode != BuildConfig.VERSION_CODE) {
-            BackgroundWork.start(context.applicationContext)
+            BackgroundWork.forceRestart(context.applicationContext)
         }
 
         if (lastVersionCode < 148) { // 78.0.6
