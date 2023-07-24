@@ -38,8 +38,6 @@
     <string name="crash_report__go_to_github">GitHub öffnen</string>
     <string name="crash_report__go_to_gitlab">GitLab öffnen</string>
     <string name="crash_report__got_to_notabug_org">notabug.org öffnen</string>
-    <string name="device_too_old_dialog__message">Die App erfordert Android %1$s. Aber auf deinem Gerät läuft nur Android %2$s. Wähle entweder eine andere App, aktualisiere dein Betriebssystem oder wechsele zu einem neueren Smartphone.</string>
-    <string name="device_too_old_dialog__title">Gerät ist zu alt</string>
     <string name="dialog_button__do_not_install">Nein, nicht installieren</string>
     <string name="dialog_button__yes">Ja</string>
     <string name="notification__download_running__channel_descr">Zeigt an, wann Downloads im Hintergrund heruntergeladen werden.</string>
@@ -131,7 +129,6 @@
     <string name="running_downloads_dialog__negative">Nein, nicht herunterladen</string>
     <string name="running_downloads_dialog__title">Laufende Downloads</string>
     <string name="running_downloads_dialog__yes">Ja</string>
-    <string name="session_installer__not_enough_storage">Der Vorgang ist fehlgeschlagen, weil nicht genügend Speicherplatz vorhanden ist: %1$s</string>
     <string name="session_installer__require_user_interaction">Benutzerinteraktion erforderlich. Du musst zuerst die App über die FFUpdater-Benutzeroberfläche aktualisieren. Erst danach darf die App im Hintergrund aktualisiert werden.</string>
     <string name="session_installer__status_failure">Der Vorgang ist auf eine allgemeine Weise fehlgeschlagen. Das System wird immer versuchen, einen genaueren Grund für das Scheitern anzugeben, aber in einigen seltenen Fällen kann dieser auch geliefert werden.</string>
     <string name="session_installer__status_failure_aborted">Der Vorgang ist fehlgeschlagen, weil er aktiv abgebrochen wurde. Beispielsweise hat der Benutzer aktiv die angeforderten Berechtigungen abgelehnt, oder die Sitzung wurde abgebrochen.</string>
@@ -310,7 +307,6 @@
 \n- Es gab eine Kontroverse darüber, dass nicht alle Cookies von Microsoft blockiert werden - dies wurde jedoch behoben.</string>
     <string name="privacy_browser__description">Die einzige Möglichkeit, den Missbrauch von Daten zu verhindern, besteht darin, sie gar nicht erst zu sammeln. Privacy Browser hat zwei Hauptziele: Minimierung der Daten, die an das Internet gesendet werden und Minimierung der Daten, die auf dem Gerät gespeichert werden.</string>
     <string name="duckduckgo_android__description">Die DuckDuckGo-App bietet den umfassendsten Online-Datenschutz mit nur einem Tastendruck. Mit einem Download erhältst du einen neuen, alltäglichen Browser, der nahtlosen Schutz bietet, während du suchst und browst, und Zugriff auf Tracking-Schutz für E-Mails, die du erhältst, und Apps, die du nutzt. Viele dieser Schutzmaßnahmen werden in den meisten gängigen Browsern standardmäßig nicht angeboten.</string>
-    <string name="main_activity__denied_notification_permission">FFUpdater benötigt die Berechtigung, dich über Updates zu informieren.</string>
     <string name="main_activity__an_error_occurred"><u>Ein Fehler ist aufgetreten. Versuche es später erneut.</u></string>
     <string name="eol_reason__browser_no_longer_maintained">Der Browser wird nicht mehr gewartet.</string>
     <string name="crash_report__report_is_copied_to_clipboard">Absturzbericht wird in die Zwischenablage kopiert</string>

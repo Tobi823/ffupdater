@@ -20,11 +20,9 @@
 \nPróbálja ki a legújabb funkciókat és küldjön visszajelzést: https://brave.com/msupport
 \nA Brave Nightly-t a Brave jelenlegi verziója mellé telepítheti.</string>
     <string name="bromite_systemwebview__description">A SystemWebView csomag tartalmazza a Bromite alapvető böngésző/megjelenítő motorját és ugyanazokat a funkciókat. Lehetőséget kínál az alapértelmezett böngésző komponens helyettesítésére az egész Android rendszerben.</string>
-    <string name="device_too_old_dialog__message">Az alkalmazáshoz Android %1$s szükséges. De az Ön készülékén csak Android %2$s fut. Válasszon másik alkalmazást, vagy frissítse az operációs rendszerét, vagy váltson újabb okostelefonra.</string>
     <string name="app_card__download_the_app">az alkalmazás letöltése</string>
     <string name="app_card__app_warning_button_description">Figyelmeztetések megjelenítése erről az alkalmazásról</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Összeomlási jelentés másolása a vágólapra</string>
-    <string name="device_too_old_dialog__title">A készülék túl régi</string>
     <string name="dialog_button__do_not_install">Nem, ne telepítse</string>
     <string name="crash_report__go_to_github">GitHub megnyitása</string>
     <string name="crash_report__go_to_gitlab">GitLab megnyitása</string>

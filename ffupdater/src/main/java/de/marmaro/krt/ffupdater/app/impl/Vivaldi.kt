@@ -33,7 +33,6 @@ object Vivaldi : AppBase() {
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86_64)
 
-    @Suppress("SpellCheckingInspection")
     override val signatureHash = "e8a78544655ba8c09817f732768f5689b1662ec4b2bc5a0bc0ec138d33ca3d1e"
     override val projectPage = "https://vivaldi.com/de/download/"
     override val displayCategory = listOf(BETTER_THAN_GOOGLE_CHROME)

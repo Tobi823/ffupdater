@@ -37,8 +37,6 @@
     <string name="crash_report__go_to_github">Към Гитхъб</string>
     <string name="crash_report__go_to_gitlab">Към Гитлаб</string>
     <string name="crash_report__got_to_notabug_org">Към notabug.org</string>
-    <string name="device_too_old_dialog__message">Приложението работи под Андроид %1$s, но устройството работи само с Андроид %2$s. Изберете друго приложение, обновете операционната система или сменете устройството с по-ново.</string>
-    <string name="device_too_old_dialog__title">Остаряло устройство</string>
     <string name="dialog_button__do_not_install">Не, без инсталиране</string>
     <string name="dialog_button__yes">Да</string>
     <string name="notification__download_error__channel_descr">Категория известия за неуспешни изтегляния на обновяване във фонов режим.</string>
@@ -145,7 +143,6 @@
     <string name="running_downloads_dialog__negative">Не, без изтегляне</string>
     <string name="running_downloads_dialog__title">Текущи изтегляния</string>
     <string name="running_downloads_dialog__yes">Да</string>
-    <string name="session_installer__not_enough_storage">Операцията е неуспешна, защото няма достатъчно свободно пространство: %1$s</string>
     <string name="session_installer__require_user_interaction">Необходимо е взаимодействие с потребителя. Първо трябва да обновите приложението от интерфейса на FFUpdater. Само тогава обновяването във фонов режим е разрешено.</string>
     <string name="session_installer__status_failure">Операцията е неуспешна поради неясна причина. Системата винаги се опитва да предостави конкретна причина за грешката, но в редки случаи това може да се окаже невъзможно.</string>
     <string name="session_installer__status_failure_aborted">Операцията е неуспешна, защото е прекъсната нарочно. Например, потребителят активно е отказал исканите разрешения или сесията е била прекратена.</string>
@@ -264,7 +261,6 @@
     <string name="device__prefer_32bit_apks__summary">Отметнете ако устройството е с малко памет. Така ще бъдат инсталирани 32 разрядни пакети, които обикновено използват по-малко памет.</string>
     <string name="device__prefer_32bit_apks__title">Предпочитане на 32 разрядни приложения</string>
     <string name="installer__method__root_not_granted">Не е даден достъп до суперпотребителя!</string>
-    <string name="main_activity__denied_notification_permission">За да ви информира за обновявания FFUpdater се нуждае от разрешение.</string>
     <string name="network__dns_provider__digital_society_ch">DNS през HTTPS: Цифрово общество Швейцария</string>
     <string name="network__dns_provider__cloudflare">DNS през HTTPS: Cloudflare</string>
     <string name="installer__method__shizuku_not_installed">Приложението Shizuku не е инсталирано!</string>

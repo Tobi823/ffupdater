@@ -36,8 +36,6 @@
     <string name="crash_report__go_to_github">Ir a GitHub</string>
     <string name="crash_report__go_to_gitlab">Ir a GitLab</string>
     <string name="crash_report__got_to_notabug_org">Ir a notabug.org</string>
-    <string name="device_too_old_dialog__message">La aplicación requiere Android %1$s. Sin embargo, su dispositivo está ejecutando Android %2$s. Elija una aplicación diferente, actualice su sistema operativo o cambie a un smartphone más nuevo.</string>
-    <string name="device_too_old_dialog__title">El dispositivo es muy antiguo</string>
     <string name="dialog_button__do_not_install">No, no lo instales</string>
     <string name="dialog_button__yes">Sí</string>
     <string name="notification__download_running__channel_descr">Aparece cuando las actualizaciones de la aplicación se descargan en segundo plano.</string>
@@ -134,7 +132,6 @@
     <string name="running_downloads_dialog__negative">No, no lo descargues</string>
     <string name="running_downloads_dialog__title">Descargas en curso</string>
     <string name="running_downloads_dialog__yes">Sí</string>
-    <string name="session_installer__not_enough_storage">La operación ha fallado porque no hay suficiente espacio disponible: %1$s</string>
     <string name="session_installer__require_user_interaction">Requiere la interacción del usuario. Primero debes actualizar la aplicación a través de la interfaz de usuario de FFUpdater. Solo entonces se permiten las actualizaciones silenciosas en segundo plano de la aplicación correspondiente.</string>
     <string name="session_installer__status_failure">La operación ha fallado de forma genérica. El sistema siempre tratará de proporcionar una razón de fallo más específica, pero en algunos casos raros esto puede ser entregado.</string>
     <string name="session_installer__status_failure_aborted">La operación ha fallado porque ha sido cancelada. Por ejemplo, el usuario rechazó los permisos solicitados o se abandonó la sesión.</string>
@@ -315,7 +312,6 @@
     <string name="privacy_browser__warning">FFUpdater descarga los archivos de los servidores de F-Droid y por lo tanto no es más rápido.</string>
     <string name="duckduckgo_android__description">La aplicación DuckDuckGo proporciona la protección de privacidad en línea más completa con sólo pulsar un botón. Con una sola descarga, obtienes un nuevo navegador de uso diario que ofrece protección sin fisuras mientras buscas y navegas, y acceso a protecciones de rastreo para los correos electrónicos que recibes y las aplicaciones que utilizas. Muchas de estas protecciones no se ofrecen por defecto en los navegadores más populares.</string>
     <string name="privacy_browser__description">La única forma de evitar que se abuse de los datos es impedir que se recojan en primer lugar. Privacy Browser tiene dos objetivos principales: Minimizar los datos que se envían a Internet y minimizar los datos que se almacenan en el dispositivo.</string>
-    <string name="main_activity__denied_notification_permission">FFUpdater necesita el permiso para informarle sobre las actualizaciones.</string>
     <string name="main_activity__an_error_occurred"><u>Se ha producido un error. Vuelve a intentarlo más tarde.</u></string>
     <string name="eol_reason__browser_no_longer_maintained">El navegador ya no se actualiza.</string>
     <string name="background__installation__when_screen_off__summary">Intenta instalar las actualizaciones solo cuando la pantalla del dispositivo esté apagada.</string>

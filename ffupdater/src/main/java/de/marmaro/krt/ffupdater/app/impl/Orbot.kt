@@ -31,8 +31,6 @@ object Orbot : AppBase() {
     override val icon = R.drawable.ic_logo_orbot
     override val minApiLevel = Build.VERSION_CODES.JELLY_BEAN
     override val supportedAbis = ARM32_ARM64_X86_X64
-
-    @Suppress("SpellCheckingInspection")
     override val signatureHash = "a454b87a1847a89ed7f5e70fba6bba96f3ef29c26e0981204fe347bf231dfd5b"
     override val projectPage = "https://github.com/guardianproject/orbot"
     override val displayCategory = listOf(OTHER)

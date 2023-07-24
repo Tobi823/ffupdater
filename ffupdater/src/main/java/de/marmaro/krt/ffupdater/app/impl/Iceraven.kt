@@ -31,8 +31,6 @@ object Iceraven : AppBase() {
     override val icon = R.drawable.ic_logo_iceraven
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = ARM32_ARM64_X86_X64
-
-    @Suppress("SpellCheckingInspection")
     override val signatureHash = "9c0d22379f487b70a4f9f8bec0173cf91a1644f08f93385b5b782ce37660ba81"
     override val projectPage = "https://github.com/fork-maintainers/iceraven-browser"
     override val displayCategory = listOf(BASED_ON_FIREFOX)

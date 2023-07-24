@@ -33,8 +33,6 @@
     <string name="crash_report__go_to_gitlab">Go to GitLab</string>
     <string name="crash_report__got_to_notabug_org">Go to notabug.org</string>
     <string name="default_theme_preference" translatable="false">3</string>
-    <string name="device_too_old_dialog__message">The application requires Android %1$s. But your device is only running Android %2$s. Either choose a different app, update your operating system or switch to a newer smartphone.</string>
-    <string name="device_too_old_dialog__title">Device is too old</string>
     <string name="dialog_button__do_not_install">No, don\'t install it</string>
     <string name="dialog_button__yes">Yes</string>
     <string name="notification__download_error__channel_descr">Shows when update downloads in the background fail.</string>
@@ -133,7 +131,6 @@
     <string name="running_downloads_dialog__negative">No, don\'t download it</string>
     <string name="running_downloads_dialog__title">Running downloads</string>
     <string name="running_downloads_dialog__yes">Yes</string>
-    <string name="session_installer__not_enough_storage">The operation failed because not enough storage is available: %1$s</string>
     <string name="session_installer__require_user_interaction">Require user interaction. You must first update the app via the FFUpdater user interface. Only then are silent background updates for the respective app allowed.</string>
     <string name="session_installer__status_failure">The operation failed in a generic way. The system will always try to provide a more specific failure reason, but in some rare cases this may be delivered.</string>
     <string name="session_installer__status_failure_aborted">The operation failed because it was actively aborted. For example, the user actively declined requested permissions, or the session was abandoned.</string>
@@ -275,7 +272,6 @@
     <string name="privacy_browser__title">Privacy Browser</string>
     <string name="privacy_browser__warning">FFUpdater downloads the files from the F-Droid servers and is therefore not faster.</string>
     <string name="privacy_browser__description">The only way to prevent data from being abused is to prevent it from being collected in the first place. Privacy Browser has two primary goals: Minimize the data that is sent to the internet and minimize the data that is stored on the device.</string>
-    <string name="main_activity__denied_notification_permission">FFUpdater needs the permission to inform you about updates.</string>
     <string name="eol_reason__browser_no_longer_maintained">The browser is no longer maintained.</string>
     <string name="background__installation__when_screen_off__summary">Try to install updates only when the device screen is off.</string>
     <string name="background__installation__when_screen_off__title">Install only when screen off</string>

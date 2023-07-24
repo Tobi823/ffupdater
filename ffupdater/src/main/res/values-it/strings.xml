@@ -33,8 +33,6 @@
     <string name="crash_report__go_to_github">Vai su GitHub</string>
     <string name="crash_report__go_to_gitlab">Vai su GitLab</string>
     <string name="crash_report__got_to_notabug_org">Vai su notabug.org</string>
-    <string name="device_too_old_dialog__message">L\'applicazione richiede Android %1$s. Ma il tuo dispositivo ha Android %2$s. Scegli un\'app diversa, aggiorna il tuo sistema operativo o passa a uno smartphone più recente.</string>
-    <string name="device_too_old_dialog__title">Il dispositivo è troppo vecchio</string>
     <string name="dialog_button__do_not_install">No, non installarlo</string>
     <string name="dialog_button__yes">Sì</string>
     <string name="notification__download_error__channel_descr">Mostra quando gli aggiornamenti dei download in background falliscono.</string>
@@ -133,7 +131,6 @@
     <string name="running_downloads_dialog__negative">No, non scaricarlo</string>
     <string name="running_downloads_dialog__title">Download in corso</string>
     <string name="running_downloads_dialog__yes">Sì</string>
-    <string name="session_installer__not_enough_storage">L\'operazione è fallita perché non è disponibile abbastanza spazio di archiviazione: %1$s</string>
     <string name="session_installer__require_user_interaction">Richiede l\'interazione dell\'utente. Devi prima aggiornare l\'app tramite l\'interfaccia utente di FFUpdater. Solo allora sono consentiti aggiornamenti in background silenziosi per la rispettiva app.</string>
     <string name="session_installer__status_failure">L\'operazione è fallita in modo generico. Il sistema cercherà sempre di fornire un motivo di errore più specifico, ma in alcuni casi rari questo può essere emesso.</string>
     <string name="session_installer__status_failure_aborted">L\'operazione è fallita perché è stata interrotta attivamente. Ad esempio, l\'utente ha rifiutato attivamente le autorizzazioni richieste o la sessione è stata abbandonata.</string>
@@ -301,7 +298,6 @@
 \n
 \nPer sapere come segnalare i bug e fornire feedback, visita il sito: https://support.torproject.org/misc/bug-or-feedback/</string>
     <string name="duckduckgo_android__description">L\'app DuckDuckGo offre la più completa protezione della privacy online con la semplice pressione di un pulsante. Con un solo download, si ottiene un nuovo browser quotidiano che offre una protezione continua durante la ricerca e la navigazione e l\'accesso alle protezioni per il tracciamento delle e-mail ricevute e delle app utilizzate. Molte di queste protezioni non sono disponibili di default nei browser più diffusi.</string>
-    <string name="main_activity__denied_notification_permission">FFUpdater ha bisogno dell\'autorizzazione per informarti sugli aggiornamenti.</string>
     <string name="main_activity__an_error_occurred"><u>Si è verificato un errore. Riprovaìpiù tardi.</u></string>
     <string name="eol_reason__browser_no_longer_maintained">Il browser non viene più mantenuto.</string>
 </resources>

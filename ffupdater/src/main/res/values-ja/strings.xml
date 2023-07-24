@@ -33,8 +33,6 @@
     <string name="crash_report__go_to_github">GitHub に移動</string>
     <string name="crash_report__go_to_gitlab">GitLab に移動</string>
     <string name="crash_report__got_to_notabug_org">notabug.org に移動</string>
-    <string name="device_too_old_dialog__message">このアプリは Android %1$s 以上が必要ですが、このデバイスでは Android %2$s が実行されています。別のアプリを選択するか、OS を更新するか、より新しい端末を使用してください。</string>
-    <string name="device_too_old_dialog__title">端末が古すぎます</string>
     <string name="dialog_button__do_not_install">いいえ、このアプリをインストールしません</string>
     <string name="dialog_button__yes">はい</string>
     <string name="notification__download_running__channel_descr">アプリの更新をバックグラウンドでダウンロードしたときに表示されます。</string>
@@ -116,7 +114,6 @@
     <string name="running_downloads_dialog__negative">いいえ、ダウンロードしません</string>
     <string name="running_downloads_dialog__title">実行中のダウンロード</string>
     <string name="running_downloads_dialog__yes">はい</string>
-    <string name="session_installer__not_enough_storage">必要なストレージを使用できないため、操作に失敗しました: %1$s</string>
     <string name="session_installer__require_user_interaction">ユーザーの操作が必要です。最初に FFUpdater の画面からアプリを更新してください。その後、アプリのサイレントバックグラウンド更新が許可されます。</string>
     <string name="session_installer__status_failure">一般的な方法での操作に失敗しました。常に、システムはより具体的な失敗理由を提供できるよう努めていますが、稀にこれが配信されることがあります。</string>
     <string name="session_installer__status_failure_aborted">積極的な中止により、操作に失敗しました。要求された権限をユーザーが積極的に拒否したことや、セッションが放棄されたことが考えられます。</string>
@@ -214,7 +211,6 @@
     <string name="mulch__warning">- Mulch は Google Chrome と同じ技術的基盤を使用しているため、Chromium レンダリングエンジンの独占的地位を間接的に支えることになります。</string>
     <string name="main_activity__app_was_signed_by_different_certificate">このアプリは異なる証明書で署名されており、FFUpdater で更新できません。</string>
     <string name="tor_browser__description">Tor Browser for Android は、プライバシーとオンラインの自由のための世界最強のツールの開発者である Tor プロジェクトによってサポートされている唯一の公式モバイル ブラウザです。</string>
-    <string name="main_activity__denied_notification_permission">FFUpdater には、更新について通知する権限が必要です。</string>
     <string name="add_app_activity__title_better_than_google_chrome">Google Chrome より優秀</string>
     <string name="lockwise__eol_reason">Mozilla は 2021 年 12 月にサポートを終了しました。他のパスワード管理アプリに移行してください。</string>
     <string name="lockwise__description">あなただけのためのパスワードアクセス

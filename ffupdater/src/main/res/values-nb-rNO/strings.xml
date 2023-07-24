@@ -29,8 +29,6 @@
     <string name="crash_report__go_to_github">Gå til GitHub</string>
     <string name="crash_report__go_to_gitlab">Gå til GitLab</string>
     <string name="crash_report__got_to_notabug_org">Surf til notabug.org</string>
-    <string name="device_too_old_dialog__message">Din enhet kjører Android %2$s, men programmet krever %1$s. Enten velg et annet program, oppgrader operativsystemet, eller bytt til en nyere smarttelefon.</string>
-    <string name="device_too_old_dialog__title">Enheten er for gammel</string>
     <string name="dialog_button__do_not_install">Nei, ikke installer</string>
     <string name="dialog_button__yes">Ja</string>
     <string name="notification__download_running__channel_descr">Viser når programoppgraderinger lastes ned i bakgrunnen.</string>
@@ -94,7 +92,6 @@
     <string name="running_downloads_dialog__negative">Nei, ikke last ned</string>
     <string name="running_downloads_dialog__title">Kjørende nedlastinger</string>
     <string name="running_downloads_dialog__yes">Ja</string>
-    <string name="session_installer__not_enough_storage">Operasjonen mislyktes fordi det ikke er nok lagringsplass tilgjengelig: %1$s</string>
     <string name="session_installer__require_user_interaction">Krev brukerinteraksjon.</string>
     <string name="session_installer__status_failure">Operasjonen mislyktes på generisk måte. Systemet vil alltid prøve å tilby en mer spesifikk grunn, men i sjeldne tilfeller kan det altså gå slik.</string>
     <string name="session_installer__status_failure_aborted">Operasjonen mislyktes fordi den ble aktivt avbrutt. Brukeren kan for eksempel ha avslått forespurte tilganger, eller økten kan ha blitt forlatt.</string>
