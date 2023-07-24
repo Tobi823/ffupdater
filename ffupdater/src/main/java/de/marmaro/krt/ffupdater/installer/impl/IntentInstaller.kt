@@ -29,26 +29,28 @@ class IntentInstaller(
 ) : AbstractAppInstaller(app) {
     override val type = Installer.NATIVE_INSTALLER
     private lateinit var appInstallationCallback: ActivityResultLauncher<Intent>
-    private val installationStatusFromCallback = CompletableDeferred<Boolean>()
+    private val installResult = CompletableDeferred<Boolean>()
 
     private val appResultCallback = lambda@{ activityResult: ActivityResult ->
         if (activityResult.resultCode == Activity.RESULT_OK) {
-            installationStatusFromCallback.complete(true)
+            installResult.complete(true)
             return@lambda
         }
+        val exception = createInstallationFailedException(activityResult, context)
+        this.installResult.completeExceptionally(exception)
+    }
 
+    private fun createInstallationFailedException(
+        activityResult: ActivityResult,
+        context: Context,
+    ): InstallationFailedException {
         val bundle = activityResult.data?.extras
         val resultCode = activityResult.resultCode
         val installResult = bundle?.getInt("android.intent.extra.INSTALL_RESULT")
-        val shortErrorMessage = getShortErrorMessage(installResult)
-        val translatedErrorMessage = getTranslatedErrorMessage(context.applicationContext, installResult)
-        installationStatusFromCallback.completeExceptionally(
-            InstallationFailedException(
-                "$shortErrorMessage ResultCode: $resultCode, INSTALL_RESULT: $installResult",
-                activityResult.resultCode,
-                "$translatedErrorMessage ResultCode: $resultCode, INSTALL_RESULT: $installResult",
-            )
-        )
+        val resultCodeString = "ResultCode: $resultCode, INSTALL_RESULT: $installResult"
+        val shortErrorMessage = "${getShortErrorMessage(installResult)} $resultCodeString"
+        val translatedErrorMessage = "${getTranslatedErrorMessage(context, installResult)} $resultCodeString"
+        return InstallationFailedException(shortErrorMessage, resultCode, translatedErrorMessage)
     }
 
     override fun onCreate(owner: LifecycleOwner) {
@@ -64,7 +66,7 @@ class IntentInstaller(
         require(this::appInstallationCallback.isInitialized) { "Call lifecycle.addObserver(...) first!" }
         require(file.exists()) { "File does not exists." }
         installApkFileHelper(context.applicationContext, file)
-        installationStatusFromCallback.await()
+        installResult.await()
     }
 
     /**

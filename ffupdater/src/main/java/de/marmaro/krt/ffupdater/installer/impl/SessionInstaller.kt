@@ -48,7 +48,7 @@ open class SessionInstaller(app: App, private val foreground: Boolean) : Abstrac
         require(file.exists()) { "File does not exists." }
         val installStatus = CompletableDeferred<Boolean>()
         val intentReceiver = registerIntentReceiver(context, installStatus)
-        val sessionId = install(context, file)
+        val sessionId = installApkFileHelper(context, file)
         try {
             installStatus.await()
         } finally {
@@ -89,7 +89,7 @@ open class SessionInstaller(app: App, private val foreground: Boolean) : Abstrac
     }
 
     @MainThread
-    private suspend fun install(context: Context, file: File): Int {
+    private suspend fun installApkFileHelper(context: Context, file: File): Int {
         return withContext(Dispatchers.Default) {
             openSession(context, file) { session, sessionId ->
                 copyApkToSession(session, file)
