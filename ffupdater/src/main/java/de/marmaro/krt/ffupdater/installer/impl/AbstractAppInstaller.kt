@@ -21,7 +21,7 @@ abstract class AbstractAppInstaller(protected val app: App) : AppInstaller {
     override suspend fun startInstallation(context: Context, file: File): InstallResult {
         val appImpl = app.findImpl()
         val fileCertHash = hasApkCorrectCertificate(context.applicationContext, file, appImpl)
-        installApkFile(context, file)
+        installApkFile(context /* must be activity and not application context */, file)
         hasInstalledAppCorrectCertificate(context.applicationContext, appImpl, fileCertHash)
         return InstallResult(fileCertHash)
     }
