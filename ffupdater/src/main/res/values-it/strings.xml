@@ -214,7 +214,7 @@
     <string name="add_app_activity__title_good_privacy_browsers">Browser buoni per la privacy</string>
     <string name="add_app_activity__title_better_than_google_chrome">Meglio di Google Chrome</string>
     <string name="add_app_activity__title_other_applications">Altre applicazioni</string>
-    <string name="add_app_activity__add_new_application">Aggiungi nuova applicazione</string>
+    <string name="add_app_activity__add_new_application">Aggiungi nuova app</string>
     <string name="add_app_activity__label">Aggiungi nuova applicazione</string>
     <string name="add_app_activity__title_from_mozilla">Da Mozilla</string>
     <string name="settings__network__trust_user_cas__summary">Abilita se il traffico dati deve essere ispezionato e modificato da altre app. Se non sei sicuro, mantieni questa opzione disabilitata.</string>
