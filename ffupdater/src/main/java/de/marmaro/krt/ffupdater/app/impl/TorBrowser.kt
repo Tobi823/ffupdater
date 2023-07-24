@@ -30,7 +30,7 @@ object TorBrowser : AppBase() {
     override val title = R.string.tor_browser__title
     override val description = R.string.tor_browser__description
     override val installationWarning: Int? = null
-    override val downloadSource = "https://www.torproject.org/download"
+    override val downloadSource = "https://www.torproject.org"
     override val icon = R.drawable.ic_logo_tor_browser
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = ARM32_ARM64_X86_X64
@@ -115,5 +115,5 @@ object TorBrowser : AppBase() {
         }
     }
 
-    private const val MAIN_URL = "https://www.torproject.org/download"
+    private const val MAIN_URL = "https://www.torproject.org/download/"
 }
