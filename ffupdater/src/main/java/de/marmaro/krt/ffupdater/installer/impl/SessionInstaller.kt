@@ -24,7 +24,6 @@ import android.os.Bundle
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.BuildConfig
-import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.entity.Installer
@@ -69,12 +68,7 @@ open class SessionInstaller(app: App, private val foreground: Boolean) : Abstrac
                 when (val status = bundle.getInt(EXTRA_STATUS)) {
                     STATUS_PENDING_USER_ACTION -> requestInstallationPermission(context, bundle, installStatus)
                     STATUS_SUCCESS -> installStatus.complete(true)
-                    else -> {
-                        val shortMessage = getShortErrorMessage(status, bundle)
-                        val translatedMessage = getTranslatedErrorMessage(context, status, bundle)
-                        val exception = InstallationFailedException(shortMessage, status, translatedMessage)
-                        installStatus.completeExceptionally(exception)
-                    }
+                    else -> installStatus.completeExceptionally(createInstallFailedException(status, bundle, context))
                 }
             }
         }
@@ -86,6 +80,16 @@ open class SessionInstaller(app: App, private val foreground: Boolean) : Abstrac
             withContext(Dispatchers.Main) { context.registerReceiver(intentReceiver, filter) }
         }
         return intentReceiver
+    }
+
+    private fun createInstallFailedException(
+        status: Int,
+        bundle: Bundle?,
+        context: Context,
+    ): InstallationFailedException {
+        val shortMessage = getShortErrorMessage(status, bundle)
+        val translatedMessage = getTranslatedErrorMessage(context, status, bundle)
+        return InstallationFailedException(shortMessage, status, translatedMessage)
     }
 
     @MainThread
@@ -105,9 +109,7 @@ open class SessionInstaller(app: App, private val foreground: Boolean) : Abstrac
         val sessionId = try {
             packageInstaller.createSession(params)
         } catch (e: IOException) {
-            val shortMessage = getShortErrorMessage(STATUS_FAILURE_STORAGE, null)
-            val errorMessage = context.getString(R.string.session_installer__not_enough_storage, e.message)
-            throw InstallationFailedException(shortMessage, e, STATUS_FAILURE_STORAGE, errorMessage)
+            throw createInstallFailedException(STATUS_FAILURE_STORAGE, null, context.applicationContext)
         }
         packageInstaller.openSession(sessionId).use { block(it, sessionId) }
         return sessionId
@@ -122,18 +124,10 @@ open class SessionInstaller(app: App, private val foreground: Boolean) : Abstrac
         params.setAppLabel(context.getString(appImpl.title))
         params.setAppPackageName(appImpl.packageName)
         params.setSize(file.length())
-        if (DeviceSdkTester.supportsAndroid7Nougat24()) {
-            params.setOriginatingUid(android.os.Process.myUid())
-        }
-        if (DeviceSdkTester.supportsAndroid8Oreo26()) {
-            params.setInstallReason(PackageManager.INSTALL_REASON_USER)
-        }
-        if (DeviceSdkTester.supportsAndroid12S31()) {
-            params.setRequireUserAction(USER_ACTION_NOT_REQUIRED)
-        }
-        if (DeviceSdkTester.supportsAndroid14U34()) {
-            params.setDontKillApp(true)
-        }
+        if (DeviceSdkTester.supportsAndroid7Nougat24()) params.setOriginatingUid(android.os.Process.myUid())
+        if (DeviceSdkTester.supportsAndroid8Oreo26()) params.setInstallReason(PackageManager.INSTALL_REASON_USER)
+        if (DeviceSdkTester.supportsAndroid12S31()) params.setRequireUserAction(USER_ACTION_NOT_REQUIRED)
+        if (DeviceSdkTester.supportsAndroid14U34()) params.setDontKillApp(true)
         return params
     }
 
@@ -179,11 +173,8 @@ open class SessionInstaller(app: App, private val foreground: Boolean) : Abstrac
             val newIntent = createConfirmInstallationIntent(bundle)
             context.startActivity(newIntent)
         } catch (e: ActivityNotFoundException) {
-            installStatus.completeExceptionally(
-                InstallationFailedException(
-                    "Installation failed because Activity is not available.", e, -110, e.message ?: "/",
-                )
-            )
+            val message = "Installation failed because Activity is not available."
+            installStatus.completeExceptionally(InstallationFailedException(message, e, -110, e.message ?: "/"))
         }
     }
 
