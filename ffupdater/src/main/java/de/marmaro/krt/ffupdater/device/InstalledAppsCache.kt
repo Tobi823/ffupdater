@@ -12,9 +12,9 @@ import okhttp3.internal.toImmutableList
 
 @Keep
 object InstalledAppsCache {
-    private var isInitialized = false
     private var installedCorrectFingerprint = mutableListOf<App>()
     private var installedDifferentFingerprint = mutableListOf<App>()
+    private var isInitialized = false
     private val mutex = Mutex()
     private var lastUpdate = 0L
 
@@ -31,6 +31,7 @@ object InstalledAppsCache {
     private suspend fun initializeCacheIfNecessary(context: Context) {
         if (!isInitialized) {
             updateCache(context)
+            isInitialized = true
         }
     }
 
