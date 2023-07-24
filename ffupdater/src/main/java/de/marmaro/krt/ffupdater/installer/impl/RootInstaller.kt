@@ -24,7 +24,12 @@ class RootInstaller(app: App) : AbstractAppInstaller(app) {
         failIfRootPermissionIsMissing()
         val size = file.length().toInt()
         val sessionId = createInstallationSession(size)
-        installApp(sessionId, size, file.canonicalPath, file.name)
+        installApkFileHelper(sessionId, size, file.canonicalPath, file.name)
+    }
+
+    private fun restartInternalShellToGetAlwaysRootPermission() {
+        Shell.getShell().waitAndClose()
+        Shell.getShell().waitAndClose()
     }
 
     private fun fileIsSafeOrThrow(context: Context, file: File) {
@@ -41,9 +46,11 @@ class RootInstaller(app: App) : AbstractAppInstaller(app) {
         require(!file.nameWithoutExtension.contains(invalidChars)) { "Invalid chars in file name: ${file.name}" }
     }
 
-    private fun restartInternalShellToGetAlwaysRootPermission() {
-        Shell.getShell().waitAndClose()
-        Shell.getShell().waitAndClose()
+    private fun hasDangerousCharacter(value: String): Boolean {
+        val dangerous = listOf(
+            "`", ";", "(", ")", "$", "\"", " ", "&", "|", "<", ">", "*", "?", "{", "}", "[", "]", "!", "#"
+        )
+        return dangerous.any { it in value }
     }
 
     private fun failIfRootPermissionIsMissing() {
@@ -66,29 +73,20 @@ class RootInstaller(app: App) : AbstractAppInstaller(app) {
         return sessionId.value.toInt()
     }
 
-    private suspend fun installApp(sessionId: Int, size: Int, filePath: String, fileName: String) {
-        execute("cat \"$filePath\" | pm install-write -S $size $sessionId \"${fileName}\"")
-        execute("pm install-commit $sessionId")
+    private suspend fun installApkFileHelper(sessionId: Int, size: Int, filePath: String, fileName: String) {
+        execute("""cat "$filePath" | pm install-write -S $size $sessionId "$fileName"""")
+        execute(""""pm install-commit $sessionId""")
     }
 
     private suspend fun execute(command: String): List<String> {
         return withContext(Dispatchers.IO) {
             val result = Shell.cmd(command).exec()
             if (result.code != 0) {
-                throw InstallationFailedException(
-                    "Root command '$command' failed. Result code is: '${result.code}', " +
-                            "stdout: '${result.out}', stderr: '${result.err}'",
-                    -403
-                )
+                val resultString = "Result code: ${result.code}. Stdout: '${result.out}'. Stderr: '${result.err}'."
+                val message = "Root command '$command' failed. $resultString"
+                throw InstallationFailedException(message, -403)
             }
             result.out
         }
-    }
-
-    private fun hasDangerousCharacter(value: String): Boolean {
-        val dangerous = listOf(
-            "`", ";", "(", ")", "$", "\"", " ", "&", "|", "<", ">", "*", "?", "{", "}", "[", "]", "!", "#"
-        )
-        return dangerous.any { it in value }
     }
 }

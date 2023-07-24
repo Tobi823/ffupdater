@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import android.os.Build
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.ActivityResultRegistry
@@ -54,7 +53,7 @@ class IntentInstaller(
 
     override fun onCreate(owner: LifecycleOwner) {
         appInstallationCallback = activityResultRegistry.register(
-            "IntentInstaller_app_installation_callback",
+            ACTIVITY_RESULT_NAME,
             owner,
             StartActivityForResult(),
             appResultCallback
@@ -64,7 +63,7 @@ class IntentInstaller(
     override suspend fun installApkFile(context: Context, file: File) {
         require(this::appInstallationCallback.isInitialized) { "Call lifecycle.addObserver(...) first!" }
         require(file.exists()) { "File does not exists." }
-        installInternal(context.applicationContext, file)
+        installApkFileHelper(context.applicationContext, file)
         installationStatusFromCallback.await()
     }
 
@@ -72,7 +71,7 @@ class IntentInstaller(
      * See org.fdroid.fdroid.installer.DefaultInstallerActivity.java from
      * https://github.com/f-droid/fdroidclient
      */
-    private fun installInternal(context: Context, file: File) {
+    private fun installApkFileHelper(context: Context, file: File) {
         @Suppress("DEPRECATION")
         val intent = Intent(Intent.ACTION_INSTALL_PACKAGE)
         intent.data = if (DeviceSdkTester.supportsAndroid7Nougat24()) {
@@ -88,30 +87,23 @@ class IntentInstaller(
     }
 
     private fun getShortErrorMessage(installResult: Int?): String {
-        // https://dev.to/devwithzachary/what-do-mobile-app-installation-result-codes-on-huawei-devices-mean-and-how-to-resolve-them-2a3g
-        var message: String? = null
-        if (Build.MANUFACTURER.equals("HUAWEI", ignoreCase = true)) {
-            message = HuaweiInstallResultDecoder.getShortErrorMessage(installResult)
-        }
-        if (message == null) {
-            message = GeneralInstallResultDecoder.getShortErrorMessage(installResult)
-        }
-        return message ?: "Installation failed."
+        return listOf(
+            { HuaweiInstallResultDecoder.getShortErrorMessage(installResult) },
+            { GeneralInstallResultDecoder.getShortErrorMessage(installResult) },
+            { "Installation failed." })
+            .firstNotNullOf { it() }
     }
 
     private fun getTranslatedErrorMessage(context: Context, installResult: Int?): String {
-        // https://dev.to/devwithzachary/what-do-mobile-app-installation-result-codes-on-huawei-devices-mean-and-how-to-resolve-them-2a3g
-        var message: String? = null
-        if (Build.MANUFACTURER.equals("HUAWEI", ignoreCase = true)) {
-            message = HuaweiInstallResultDecoder.getTranslatedErrorMessage(context.applicationContext, installResult)
-        }
-        if (message == null) {
-            message = GeneralInstallResultDecoder.getShortErrorMessage(installResult)
-        }
-        return message ?: "Installation failed."
+        return listOf(
+            { HuaweiInstallResultDecoder.getTranslatedErrorMessage(context.applicationContext, installResult) },
+            { GeneralInstallResultDecoder.getShortErrorMessage(installResult) },
+            { "Installation failed." })
+            .firstNotNullOf { it() }
     }
 
     companion object {
         const val FILE_PROVIDER_AUTHORITY = "de.marmaro.krt.ffupdater.fileprovider"
+        const val ACTIVITY_RESULT_NAME = "IntentInstaller_app_installation_callback"
     }
 }
