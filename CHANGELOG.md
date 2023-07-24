@@ -1,5 +1,7 @@
 # 2023-07-24 Release 78.1.0 (149)
 
+* Thanks for the Weblate contributions from: Tangy Wrecker, Retrial, Alexthegib, gallegonovato, Juraj Motuz,
+  nautilusx, 109247019824, Oğuz Ersen and atilluF
 * Add automatic check if the background update check is regularly executed
 * Fix "InvalidForegroundServiceTypeException" (Tobi823/ffupdater#450)
 * Improve handling of errors
