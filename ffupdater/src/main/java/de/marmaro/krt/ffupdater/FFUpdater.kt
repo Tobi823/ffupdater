@@ -49,8 +49,8 @@ class FFUpdater : Application() {
 
     private fun startBackgroundJob() {
         CoroutineScope(Job() + Dispatchers.IO).launch {
-            delay(30 * 1000)
-            BackgroundWork.forceRestart(applicationContext)
+            delay(60 * 1000)
+            BackgroundWork.start(applicationContext)
         }
     }
 

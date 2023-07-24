@@ -350,6 +350,11 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
         private const val WORK_MANAGER_KEY = "update_checker"
         private val MAX_RETRIES = getRetriesForTotalBackoffTime(Duration.ofHours(8))
 
+        fun start(context: Context) {
+            Log.i(LOG_TAG, "BackgroundWork: Start BackgroundWork")
+            internalStart(context.applicationContext, UPDATE)
+        }
+
         fun enqueueAgain(context: Context) {
             Log.i(LOG_TAG, "BackgroundWork: Enqueue BackgroundWork again")
             internalStart(context.applicationContext, UPDATE, BackgroundSettings.updateCheckInterval)

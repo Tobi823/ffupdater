@@ -1,4 +1,4 @@
-# 2023-07-?? Release 78.1.0 (149)
+# 2023-07-24 Release 78.1.0 (149)
 
 * Add automatic check if the background update check is regularly executed
 * Fix "InvalidForegroundServiceTypeException" (Tobi823/ffupdater#450)
