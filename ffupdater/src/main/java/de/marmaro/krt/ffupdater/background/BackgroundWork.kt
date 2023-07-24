@@ -319,7 +319,7 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
         val appImpl = app.findImpl()
         val file = appImpl.getApkFile(applicationContext, installedAppStatus.latestVersion)
 
-        val installer = createBackgroundAppInstaller(applicationContext, app)
+        val installer = createBackgroundAppInstaller(app)
         try {
             Log.i(LOG_TAG, "BackgroundWork: Update $app.")
             installer.startInstallation(applicationContext, file)

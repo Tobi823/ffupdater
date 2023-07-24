@@ -96,7 +96,7 @@
     <string name="notification__install_success__channel_name">%1$s powiadomienie o udanej aktualizacji</string>
     <string name="notification__install_success__text">Aplikacja została zaktualizowana w tle.</string>
     <string name="notification__install_success__title">%1$s został zaktualizowany</string>
-    <string name="installed_app_is_not_verified">Zainstalowana aplikacja NIE została zweryfikowana</string>
+    <string name="app_installer__installed_app_has_invalid_signature">Zainstalowana aplikacja NIE została zweryfikowana</string>
     <string name="installed_application_is_verified">Zainstalowana aplikacja została zweryfikowana</string>
     <string name="installed_version">Zainstalowane: %1$s</string>
     <string name="lockwise__description">DOSTĘP DO HASEŁ DLA CIEBIE - TYLKO DLA CIEBIE

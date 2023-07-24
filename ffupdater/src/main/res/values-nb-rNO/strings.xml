@@ -78,7 +78,7 @@
     <string name="notification__install_success__channel_descr">Merknadskanal for %1$s-oppgraderinger.</string>
     <string name="notification__install_success__text">Programmet ble oppgradert i bakgrunnen.</string>
     <string name="notification__install_success__title">%1$s har blitt oppgradert.</string>
-    <string name="installed_app_is_not_verified">Det installerte programmet er IKKE bekreftet</string>
+    <string name="app_installer__installed_app_has_invalid_signature">Det installerte programmet er IKKE bekreftet</string>
     <string name="installed_application_is_verified">Det installerte programmet er bekreftet</string>
     <string name="installed_version">Installert: %1$s</string>
     <string name="lockwise__title">Firefox Lockwise</string>

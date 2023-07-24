@@ -61,7 +61,7 @@ class IntentInstaller(
         )
     }
 
-    override suspend fun executeInstallerSpecificLogic(context: Context, file: File) {
+    override suspend fun installApkFile(context: Context, file: File) {
         require(this::appInstallationCallback.isInitialized) { "Call lifecycle.addObserver(...) first!" }
         require(file.exists()) { "File does not exists." }
         installInternal(context.applicationContext, file)

@@ -118,7 +118,7 @@
     <string name="notification__install_success__channel_name">Известие при успешно обновяване на %1$s</string>
     <string name="notification__install_success__text">Приложение е обновено във фонов режим.</string>
     <string name="notification__install_success__title">Приложението %1$s е обновено</string>
-    <string name="installed_app_is_not_verified">Инсталираното приложение НЕ е проверено</string>
+    <string name="app_installer__installed_app_has_invalid_signature">Инсталираното приложение НЕ е проверено</string>
     <string name="installed_application_is_verified">Инсталираното приложение е проверено</string>
     <string name="installed_version">Инсталирано: %1$s</string>
     <string name="kiwi__description">Четецът Киви е създаден за разглеждане, четене на новини, гледане на видеоклипове и слушане на музика без досадните неща.</string>

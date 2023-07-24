@@ -18,7 +18,7 @@ import java.io.File
 class RootInstaller(app: App) : AbstractAppInstaller(app) {
     override val type = Installer.ROOT_INSTALLER
 
-    override suspend fun executeInstallerSpecificLogic(context: Context, file: File) {
+    override suspend fun installApkFile(context: Context, file: File) {
         restartInternalShellToGetAlwaysRootPermission()
         fileIsSafeOrThrow(context, file)
         failIfRootPermissionIsMissing()

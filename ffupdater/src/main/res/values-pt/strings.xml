@@ -118,7 +118,7 @@
     <string name="notification__install_success__channel_name">Notificação de atualização com sucesso de %1$s</string>
     <string name="notification__install_success__text">A aplicação foi atualizada em segundo plano.</string>
     <string name="notification__install_success__title">%1$s foi atualizado</string>
-    <string name="installed_app_is_not_verified">O aplicativo instalado NÃO é verificado</string>
+    <string name="app_installer__installed_app_has_invalid_signature">O aplicativo instalado NÃO é verificado</string>
     <string name="installed_application_is_verified">A aplicação instalada é verificada</string>
     <string name="installed_version">Instalado: %1$s</string>
     <string name="kiwi__description">O Kiwi Browser é feito para navegar na Internet, ler notícias, ver vídeos e ouvir música, sem aborrecimentos.</string>

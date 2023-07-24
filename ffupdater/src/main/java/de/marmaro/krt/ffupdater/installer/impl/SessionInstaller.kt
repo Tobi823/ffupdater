@@ -44,7 +44,7 @@ open class SessionInstaller(app: App, private val foreground: Boolean) : Abstrac
     override val type = Installer.SESSION_INSTALLER
     protected open val intentName = "de.marmaro.krt.ffupdater.installer.impl.SessionInstaller.$foreground"
 
-    override suspend fun executeInstallerSpecificLogic(context: Context, file: File) {
+    override suspend fun installApkFile(context: Context, file: File) {
         require(file.exists()) { "File does not exists." }
         val installStatus = CompletableDeferred<Boolean>()
         val intentReceiver = registerIntentReceiver(context, installStatus)

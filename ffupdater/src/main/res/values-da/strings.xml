@@ -224,7 +224,7 @@
     <string name="vivaldi__description">Oplev en lynhurtig internetbrowser! Vivaldi er en ny, gratis og privat webbrowser bygget med fleksibilitet i tankerne. Den kommer spækket med nyttige funktioner, herunder en indbygget AdBlocker (pop-up-blokering), sporingsbeskyttelse og privat oversættelse. Browserindstillinger såsom rigtige faner i skrivebordsstil, mørke/lyse temaer og layoutvalg hjælper dig med at gøre den til din.</string>
     <string name="vivaldi__warning">- Vivaldi er kun delvist open source.
 \n- Den bruger også Google Chromes tekniske fundament og understøtter dermed indirekte Chromium-gengivelsesmotorens monopolposition.</string>
-    <string name="installed_app_is_not_verified">Installeret app er IKKE verificeret</string>
+    <string name="app_installer__installed_app_has_invalid_signature">Installeret app er IKKE verificeret</string>
     <string name="firefox_focus_beta__description">Brug Firefox Focus til alt, hvad du vil holde adskilt fra din hovedbrowser - for alle \'ind, ud, glem det\'-øjeblikke. Ingen faner, ingen ballade. Bloker også online trackere. Et tryk, og din browserhistorik er fuldstændig ødelagt.
 \n
 \nFirefox Focus er den perfekte \'ind/ud, search and destroy, jeg er på en mission, der ikke vedkommer dig\'-webbrowser.</string>

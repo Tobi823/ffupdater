@@ -34,7 +34,6 @@ interface AppInstaller : DefaultLifecycleObserver {
         }
 
         fun createBackgroundAppInstaller(
-            context: Context,
             app: App,
         ): AppInstaller {
             return when (InstallerSettings.getInstallerMethod()) {

@@ -98,7 +98,7 @@
     <string name="notification__install_success__channel_name">Notification de mise à jour réussie de %1$s</string>
     <string name="notification__install_success__text">L\'application a été mise à jour avec succès en arrière-plan.</string>
     <string name="notification__install_success__title">%1$s a été mis à jour</string>
-    <string name="installed_app_is_not_verified">L\'application installée n\'est PAS vérifiée</string>
+    <string name="app_installer__installed_app_has_invalid_signature">L\'application installée n\'est PAS vérifiée</string>
     <string name="installed_application_is_verified">La demande installée est vérifiée</string>
     <string name="installed_version">Installé : %1$s</string>
     <string name="lockwise__description">ACCÈS AUX MOTS DE PASSE POUR VOUS, ET SEULEMENT POUR VOUS

@@ -13,7 +13,7 @@
     <string name="brave__title">Brave Private Browser</string>
     <string name="installed_version">Asennettu: %1$s</string>
     <string name="installed_application_is_verified">Asennettu sovellus on varmistettu</string>
-    <string name="installed_app_is_not_verified">Asennettu sovellus EI OLE varmistettu</string>
+    <string name="app_installer__installed_app_has_invalid_signature">Asennettu sovellus EI OLE varmistettu</string>
     <string name="notification__install_success__title">%1$s on päivitetty</string>
     <string name="notification__install_success__text">Sovellus on päivitetty taustalla.</string>
     <string name="notification__install_success__channel_name">%1$s onnistunut päivitysilmoitus</string>

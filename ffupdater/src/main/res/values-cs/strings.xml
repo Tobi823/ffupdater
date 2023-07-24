@@ -93,7 +93,7 @@
     <string name="notification__install_success__channel_name">Oznámení o úspěšné aktualizaci %1$s</string>
     <string name="notification__install_success__text">Aplikace byla aktualizována na pozadí.</string>
     <string name="notification__install_success__title">Aplikace %1$s byla aktualizována</string>
-    <string name="installed_app_is_not_verified">Nainstalovaná aplikace NEBYLA ověřena</string>
+    <string name="app_installer__installed_app_has_invalid_signature">Nainstalovaná aplikace NEBYLA ověřena</string>
     <string name="installed_application_is_verified">Nainstalovaná aplikace je ověřena</string>
     <string name="installed_version">Instalovaná: %1$s</string>
     <string name="lockwise__description">PŘÍSTUP K HESLŮM POUZE PRO VÁS

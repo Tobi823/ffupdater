@@ -99,7 +99,7 @@
     <string name="notification__install_success__channel_name">%1$s の更新完了の通知</string>
     <string name="notification__install_success__text">アプリはバックグラウンドで正常に更新されました。</string>
     <string name="notification__install_success__title">%1$s が更新されました</string>
-    <string name="installed_app_is_not_verified">インストールされたアプリは検証されていません</string>
+    <string name="app_installer__installed_app_has_invalid_signature">インストールされたアプリは検証されていません</string>
     <string name="installed_application_is_verified">インストールされたアプリは検証済みです</string>
     <string name="installed_version">インストール済み: %1$s</string>
     <string name="lockwise__title">Firefox Lockwise</string>

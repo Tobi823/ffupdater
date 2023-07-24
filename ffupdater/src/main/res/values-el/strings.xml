@@ -158,7 +158,7 @@
     <string name="download_activity__use_cached_downloaded_apk">Χρησιμοποιήστε ένα ήδη ληφθέν αρχείο από:</string>
     <string name="download_activity__label">Λήψη Εφαρμογής</string>
     <string name="notification__install_success__title">Το %1$s ενημερώθηκε</string>
-    <string name="installed_app_is_not_verified">Η εγκατεστημένη εφαρμογή ΔΕΝ έχει επαληθευτεί</string>
+    <string name="app_installer__installed_app_has_invalid_signature">Η εγκατεστημένη εφαρμογή ΔΕΝ έχει επαληθευτεί</string>
     <string name="installed_application_is_verified">Η εγκατεστημένη εφαρμογή έχει επαληθευτεί</string>
     <string name="installed_version">Εγκατεστημένο: %1$s</string>
     <string name="kiwi__description">Το Kiwi Browser είναι φτιαγμένο για να περιηγείται στο διαδίκτυο, να διαβάζει ειδήσεις, να παρακολουθεί βίντεο και να ακούει μουσική, χωρίς ενοχλήσεις.</string>
