@@ -70,6 +70,11 @@ class MainActivity : AppCompatActivity() {
         requestForNotificationPermissionIfNecessary()
         askForIgnoringBatteryOptimizationIfNecessary()
 
+        if (Migrator.isBackgroundWorkRestartNecessary()) {
+            BackgroundWork.forceRestart(this)
+            Migrator.backgroundWorkHasBeenRestarted()
+        }
+
         findViewById<View>(R.id.installAppButton).setOnClickListener {
             lifecycleScope.launch(Dispatchers.Default) {
                 InstalledAppsCache.updateCache(applicationContext)
