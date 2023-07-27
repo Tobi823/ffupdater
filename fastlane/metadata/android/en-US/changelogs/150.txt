@@ -1,0 +1,2 @@
+* Thanks for the Weblate contributions from: gallegonovato, nautilusx, Juraj Motuz, Retrial and atilluF
+* Fix "Background update check failed" (Tobi823/ffupdater#452)

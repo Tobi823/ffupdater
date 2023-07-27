@@ -1,3 +1,8 @@
+# 2023-07-27 Release 78.1.1 (150)
+
+* Thanks for the Weblate contributions from: gallegonovato, nautilusx, Juraj Motuz, Retrial and atilluF
+* Fix "Background update check failed" (Tobi823/ffupdater#452)
+
 # 2023-07-24 Release 78.1.0 (149)
 
 * Thanks for the Weblate contributions from: Tangy Wrecker, Retrial, Alexthegib, gallegonovato, Juraj Motuz,
