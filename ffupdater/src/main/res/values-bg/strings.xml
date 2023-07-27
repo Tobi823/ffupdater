@@ -327,4 +327,8 @@
     <string name="notification__bg_update_check__unreliable_execution__channel_description">Категория известия за ненадеждна проверка за обновяване във фонов режим.</string>
     <string name="notification__bg_update_check__unreliable_execution__channel_name">Известие при неизпълнено обновяване във фонов режим</string>
     <string name="notification__bg_update_check__unreliable_execution__title">Проверката за обновяване във фонов режим не се изпълнява надеждно</string>
+    <string name="mulch_wv__title">Системен WebView от Мулч</string>
+    <string name="app_installer__failed_to_verify_signature_of_installed_app">Инсталираното приложение НЕ е проверено.</string>
+    <string name="app_installer__failed_to_validate_signature_of_download">Неуспешна проверка на подписа на изтегления файл.</string>
+    <string name="mulch_wv__description">Това е ориентиран към сигурността и подсилен системен WebView, на технологичната основа на Хромиум. Много нежеланите възможности са изключени/премахнати, а няколко възможности за сигурност са включени/добавени благодарение на кръпки от проекта [https://github.com/GrapheneOS/Vanadium Vanadium].</string>
 </resources>
