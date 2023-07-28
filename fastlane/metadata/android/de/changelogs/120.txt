@@ -3,11 +3,11 @@
   Avoult, Eric
 * Unterstützung für HTTP/SOCKS-Proxies mit und ohne Authentifizierung hinzufügen (Tobi823/ffupdater#229)
 * Unterstützung für DNS-over-HTTPS-Server hinzufügen (Tobi823/ffupdater#229)
-* Option hinzufügen, um 32-bit Versionen von Anwendungen zu bevorzugen (Tobi823/ffupdater#280)
+* Option hinzufügt, um 32-bit Versionen von Apps zu bevorzugen (Tobi823/ffupdater#280)
 * Behebung einer Race Condition, die einen falschen Grund für einen Installationsfehler anzeigt
 * Anzeige von zusätzlichen Informationen über einen Installationsfehler
 * Anzeige und Aktualisierung nur von Apps, die die ABI des aktuellen Smartphones unterstützen
 * Fehler behoben: Nach der Installation des ersten Updates (mit einer Benachrichtigung), wird bei der zweiten Installation (mit einer
   Benachrichtigung) das erste Update erneut installiert
 * Verbesserte Fehlerbehandlung des Hintergrund-Jobs
-* Fehlende Unit-Tests hinzufügen
+* Fehlende Unit-Tests hinzufügt

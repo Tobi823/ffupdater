@@ -1,0 +1,9 @@
+* Danke für die Weblate-Beiträge von: Tangy Wrecker, Retrial, Alexthegib, gallegonovato, Juraj Motuz,
+  nautilusx, 109247019824, Oğuz Ersen und atilluF
+* Automatische Prüfung hinzugefügt, ob die Hintergrundaktualisierungsprüfung regelmäßig ausgeführt wird
+* Behebung der "InvalidForegroundServiceTypeException" (Tobi823/ffupdater#450)
+* Verbesserte Fehlerbehandlung
+* Behebung des Fehlers "Job was cancelled;" (Tobi832/ffupdater#442)
+* Unterstützung für Mulch System WebView hinzugefügt
+* Unterstützung des neuen Shizuku Installers (Version 13) (Tobi823/ffupdater#448)
+* Verbessertes Logging, aufgeräumter Code, verbessertes Build-Skript
