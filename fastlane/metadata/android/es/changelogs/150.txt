@@ -1,0 +1,2 @@
+* Gracias por las contribuciones en Weblate de: gallegonovato, nautilusx, Juraj Motuz, Retrial y atilluF
+* Corrección del "Error en la comprobación de la actualización en segundo plano" (Tobi823/ffupdater#452)

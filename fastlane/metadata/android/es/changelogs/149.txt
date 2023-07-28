@@ -1,9 +1,9 @@
 * Gracias por las contribuciones de Weblate: Tangy Wrecker, Retrial, Alexthegib, gallegonovato, Juraj Motuz,
   nautilusx, 109247019824, Oguz Ersen y atilluF
-* Comprobación automática si la actualización de fondo se ejecuta regularmente
+* Comprobar si la actualización de fondo se ejecuta regularmente
 * Corregido "InvalidForegroundServiceTypeException" (Tobi823/ffupdater#450)
 * Mejorar el manejo de errores
-* Arreglar el "Trabajo cancelado"; (Tobi832/ffupdater#442)
-* Soporte para Mulch System WebView
-* Compatible con el instalador de Shizuku (versión 13) (Tobi823/ffupdater#448)
-* Mejorar el registro, código de limpieza, mejorar el script de compilación
+* Corregido "Trabajo cancelado"; (Tobi832/ffupdater#442)
+* Soporta Mulch System WebView
+* Soporta Shizuku (versión 13) (Tobi823/ffupdater#448)
+* Mejoras en la aplicación
