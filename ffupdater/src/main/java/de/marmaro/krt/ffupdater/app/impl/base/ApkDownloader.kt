@@ -35,8 +35,9 @@ interface ApkDownloader : AppAttributes {
         }
     }
 
-    fun isApkDownloaded(context: Context, latestVersion: LatestVersion): Boolean {
-        return getApkFile(context.applicationContext, latestVersion).exists()
+    suspend fun isApkDownloaded(context: Context, latestVersion: LatestVersion): Boolean {
+        val file = getApkFile(context.applicationContext, latestVersion)
+        return file.exists() && StorageUtil.isValidZipOrApkFile(file)
     }
 
     fun getApkCacheFolder(context: Context): File {
@@ -145,7 +146,7 @@ interface ApkDownloader : AppAttributes {
     private suspend fun checkApkFile(file: File) {
         if (file.extension != "apk") throw InvalidApkException("Wrong file downloaded: $file")
         if (!file.exists()) throw InvalidApkException("Missing file: $file")
-        require(StorageUtil.isValidZipFile(file)) { "Downloaded or extracted APK file is not a valid ZIP file." }
+        require(StorageUtil.isValidZipOrApkFile(file)) { "Downloaded or extracted APK file is not a valid ZIP file." }
     }
 
 }

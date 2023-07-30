@@ -25,7 +25,7 @@ object StorageUtil {
         return StatFs(folder.absolutePath).availableBytes / BYTES_IN_MEBIBYTE
     }
 
-    suspend fun isValidZipFile(file: File): Boolean {
+    suspend fun isValidZipOrApkFile(file: File): Boolean {
         return try {
             withContext(Dispatchers.IO) {
                 // ZipFile must be closed

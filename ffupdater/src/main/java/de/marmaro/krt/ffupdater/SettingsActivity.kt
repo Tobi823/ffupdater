@@ -181,7 +181,7 @@ class SettingsActivity : AppCompatActivity() {
             super.onPause()
             if (restartBackgroundJobAfterClosingActivity) {
                 restartBackgroundJobAfterClosingActivity = false
-                BackgroundWork.enqueueAgain(requireContext().applicationContext)
+                BackgroundWork.forceRestart(requireContext().applicationContext)
             }
         }
     }

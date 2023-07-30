@@ -6,8 +6,10 @@ import androidx.annotation.Keep
 import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.InstallationStatus
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
+import kotlinx.coroutines.withContext
 import okhttp3.internal.toImmutableList
 
 @Keep
@@ -36,10 +38,14 @@ object InstalledAppsCache {
     }
 
     suspend fun updateCache(context: Context) {
-        if (wasCacheUpdatedRecently()) return
-        mutex.withLock {
-            if (wasCacheUpdatedRecently()) return
-            updateCacheHelper(context)
+        withContext(Dispatchers.Default) {
+            if (!wasCacheUpdatedRecently()) {
+                mutex.withLock {
+                    if (!wasCacheUpdatedRecently()) {
+                        updateCacheHelper(context)
+                    }
+                }
+            }
         }
     }
 

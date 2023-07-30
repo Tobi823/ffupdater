@@ -14,6 +14,7 @@ import android.os.Bundle
 import android.text.format.DateUtils
 import android.util.Log
 import android.view.*
+import android.view.View.OnClickListener
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
@@ -28,6 +29,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
 import com.google.android.material.snackbar.Snackbar
 import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
 import de.marmaro.krt.ffupdater.R.string.crash_report__explain_text__download_activity_update_check
@@ -61,6 +63,7 @@ import java.util.*
 @Keep
 class MainActivity : AppCompatActivity() {
     private lateinit var recycleViewAdapter: InstalledAppsAdapter
+    private var firstStart = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,38 +73,40 @@ class MainActivity : AppCompatActivity() {
         requestForNotificationPermissionIfNecessary()
         askForIgnoringBatteryOptimizationIfNecessary()
 
-        if (Migrator.isBackgroundWorkRestartNecessary()) {
-            BackgroundWork.forceRestart(this)
-            Migrator.backgroundWorkHasBeenRestarted()
-        }
+        findViewById<View>(R.id.installAppButton).setOnClickListener(userClickedInstallAppButton)
+        findViewById<SwipeRefreshLayout>(R.id.swipeContainer)
+            .also { it.setOnRefreshListener(userRefreshAppList) }
+            .also { it.setColorSchemeResources(holo_blue_light, holo_blue_dark) }
 
-        findViewById<View>(R.id.installAppButton).setOnClickListener {
-            lifecycleScope.launch(Dispatchers.Default) {
-                InstalledAppsCache.updateCache(applicationContext)
-                val intent = AddAppActivity.createIntent(applicationContext)
-                startActivity(intent)
-            }
-        }
-        val swipeContainer = findViewById<SwipeRefreshLayout>(R.id.swipeContainer)
-        swipeContainer.setOnRefreshListener {
-            lifecycleScope.launch(Dispatchers.Main) {
-                InstalledAppsCache.updateCache(applicationContext)
-                showInstalledAppsInRecyclerView(useNetworkCache = false)
-            }
-        }
-        swipeContainer.setColorSchemeResources(holo_blue_light, holo_blue_dark)
-        lifecycleScope.launch(Dispatchers.Default) {
-            InstalledAppsCache.updateCache(applicationContext)
-        }
         initRecyclerView()
     }
 
-    @MainThread
+    private var userClickedInstallAppButton = OnClickListener {
+        lifecycleScope.launch(Dispatchers.Main) {
+            InstalledAppsCache.updateCache(applicationContext)
+            val intent = AddAppActivity.createIntent(applicationContext)
+            startActivity(intent)
+        }
+    }
+
+    private var userRefreshAppList = OnRefreshListener {
+        lifecycleScope.launch(Dispatchers.Main) {
+            InstalledAppsCache.updateCache(applicationContext)
+            showInstalledAppsInRecyclerView(useNetworkCache = false)
+        }
+    }
+
     override fun onResume() {
         super.onResume()
-        lifecycleScope.launch(Dispatchers.Main) {
-            showInstalledAppsInRecyclerView(useNetworkCache = true)
-        }
+        lifecycleScope.launch(Dispatchers.Main) { onResumeSuspended() }
+    }
+
+    @MainThread
+    private suspend fun onResumeSuspended() {
+        if (firstStart) InstalledAppsCache.updateCache(applicationContext)
+        showInstalledAppsInRecyclerView(useNetworkCache = true)
+        if (firstStart) startOrRestartBackgroundWork()
+        firstStart = false
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -180,6 +185,15 @@ class MainActivity : AppCompatActivity() {
             updateMetadataOf(it, cacheBehaviour)
         }
         setLoadAnimationState(false)
+    }
+
+    private fun startOrRestartBackgroundWork() {
+        if (Migrator.isBackgroundWorkRestartNecessary()) {
+            BackgroundWork.forceRestart(this@MainActivity)
+            Migrator.backgroundWorkHasBeenRestarted()
+        } else {
+            BackgroundWork.start(this@MainActivity)
+        }
     }
 
     private suspend fun updateMetadataOf(app: App, cacheBehaviour: CacheBehaviour): InstalledAppStatus? {

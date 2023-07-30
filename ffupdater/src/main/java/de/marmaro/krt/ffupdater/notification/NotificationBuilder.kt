@@ -11,16 +11,12 @@ import android.app.PendingIntent.FLAG_UPDATE_CURRENT
 import android.content.Context
 import android.content.Context.NOTIFICATION_SERVICE
 import android.content.Intent
-import android.content.pm.ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC
 import android.graphics.BitmapFactory
-import android.graphics.drawable.Icon
 import android.net.Uri
 import android.os.Build
 import android.provider.Settings
 import androidx.annotation.Keep
 import androidx.annotation.RequiresApi
-import androidx.work.ForegroundInfo
-import androidx.work.WorkManager
 import de.marmaro.krt.ffupdater.*
 import de.marmaro.krt.ffupdater.R.string.*
 import de.marmaro.krt.ffupdater.app.App
@@ -29,7 +25,6 @@ import de.marmaro.krt.ffupdater.crash.LogReader
 import de.marmaro.krt.ffupdater.crash.ThrowableAndLogs
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.settings.BackgroundSettings
-import java.util.UUID
 
 
 @Keep
@@ -128,7 +123,7 @@ object NotificationBuilder {
         showNotification(context, channel, notification, null)
     }
 
-    fun showDownloadNotification(context: Context, app: App, exception: DisplayableException) {
+    fun showDownloadFailedNotification(context: Context, app: App, exception: DisplayableException) {
         val appContext = context.applicationContext
         val appTitle = appContext.getString(app.findImpl().title)
         val channel = ChannelData(
@@ -242,34 +237,6 @@ object NotificationBuilder {
         )
         val intent = CrashReportActivity.createIntent(context.applicationContext, throwableAndLogs, description)
         showNotification(context, channel, notification, intent)
-    }
-
-    fun createBackgroundWorkNotification(context: Context, uuid: UUID): ForegroundInfo {
-        val channel = ChannelData(
-            id = "background_work_notification",
-            name = context.getString(notification__bachground_work__channel_name),
-            description = context.getString(notification__bachground_work__channel_description)
-        )
-        val notificationData = NotificationData(
-            id = BACKGROUND_UPDATE_CHECK_CODE,
-            title = context.getString(notification__bachground_work__title),
-            text = context.getString(notification__bachground_work__text),
-        )
-
-        val intent = WorkManager.getInstance(context.applicationContext).createCancelPendingIntent(uuid)
-        val actionTitle = context.getString(notification__bachground_work__action_title)
-        val action = if (DeviceSdkTester.supportsAndroid6M23()) {
-            val icon = Icon.createWithResource(context.applicationContext, R.mipmap.ic_launcher)
-            Notification.Action.Builder(icon, actionTitle, intent).build()
-        } else {
-            Notification.Action.Builder(R.mipmap.ic_launcher, actionTitle, intent).build()
-        }
-
-        val notification = showNotification(context, channel, notificationData, null, action)
-        if (DeviceSdkTester.supportsAndroid10Q29()) {
-            return ForegroundInfo(BACKGROUND_UPDATE_CHECK_CODE, notification, FOREGROUND_SERVICE_TYPE_DATA_SYNC)
-        }
-        return ForegroundInfo(BACKGROUND_UPDATE_CHECK_CODE, notification)
     }
 
     @SuppressLint("UnspecifiedImmutableFlag")

@@ -3,7 +3,6 @@ package de.marmaro.krt.ffupdater
 import android.app.Application
 import androidx.annotation.Keep
 import androidx.preference.PreferenceManager
-import de.marmaro.krt.ffupdater.background.BackgroundWork
 import de.marmaro.krt.ffupdater.crash.CrashListener
 import de.marmaro.krt.ffupdater.device.PowerUtil
 import de.marmaro.krt.ffupdater.device.StorageCleaner
@@ -41,15 +40,7 @@ class FFUpdater : Application() {
         FileDownloader.init(applicationContext)
         Migrator.migrate(applicationContext)
 
-        startBackgroundJob()
         cleanupUnusedApkFiles()
-    }
-
-    private fun startBackgroundJob() {
-        CoroutineScope(Job() + Dispatchers.IO).launch {
-            delay(60 * 1000)
-            BackgroundWork.start(applicationContext)
-        }
     }
 
     private fun cleanupUnusedApkFiles() {
