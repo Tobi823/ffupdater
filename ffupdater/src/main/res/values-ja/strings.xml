@@ -223,7 +223,7 @@
     <string name="main_activity__an_error_occurred"><u>エラーが発生しました。時間を置いて再試行してください。</u></string>
     <string name="settings__b_f__delete_cache_if_install_successful">インストールを正常に完了したとき、ダウンロードした更新を削除</string>
     <string name="mull__description">Mozilla の技術をベースに、プライバシーを重視し、デブロブされたウェブブラウザーです。arkenfox-user.js プロジェクトの構成を使用する、Tor Uplift プロジェクトによりアップストリームされた多くの機能を有効にしています。uBlock Origin のインストールを推奨します。</string>
-    <string name="add_app_activity__title_good_privacy_browsers">優れたプライバシーブラウザー</string>
+    <string name="add_app_activity__title_good_privacy_browsers">プライバシー保護に優れたブラウザー</string>
     <string name="add_app_activity__title_other_applications">その他のアプリ</string>
     <string name="add_app_activity__title_end_of_live_browser">サポートの終了したブラウザー</string>
     <string name="add_app_activity__add_new_application">新しいアプリの追加</string>
@@ -318,4 +318,25 @@
     <string name="privacy_browser__title">Privacy Browser</string>
     <string name="background__installation__when_screen_off__summary">端末の画面が消灯中のみインストールを試みます。</string>
     <string name="background__installation__when_screen_off__title">画面消灯中のみインストール</string>
+    <string name="mulch_wv__title">Mulch System WebView</string>
+    <string name="notification__uncaught_exception__text">タップしてエラー報告を表示</string>
+    <string name="notification__uncaught_exception__channel_description">予期せぬエラーにより FFUpdater がクラッシュしました。</string>
+    <string name="notification__uncaught_exception__title">FFUpdater がクラッシュしました</string>
+    <string name="notification__bg_update_check__unreliable_execution__title">バックグラウンドでの更新確認が不確実にし実行された場合の通知</string>
+    <string name="crash_report__report_is_copied_to_clipboard">クラッシュレポートがクリップボードにコピーされました</string>
+    <string name="installer__android_too_old_for_shizuku">Android のバージョンが古すぎるため、Shizuku を利用できません。</string>
+    <string name="add_app_activity__title_based_on_firefox">Firefox ベースのブラウザー</string>
+    <string name="add_app_activity__title_good_security_browsers">セキュリティーに優れたブラウザー</string>
+    <string name="notification__uncaught_exception__channel_name">クラッシュ通知</string>
+    <string name="notification__bachground_work__channel_name">バックグラウンド動作通知</string>
+    <string name="notification__bachground_work__channel_description">バックグラウンド動作に関する通知</string>
+    <string name="notification__bachground_work__title">実行中のバックグラウンド動作</string>
+    <string name="notification__bachground_work__action_title">このバックグラウンド動作をキャンセル</string>
+    <string name="app_installer__failed_to_validate_signature_of_download">ダウンロードしたファイルの署名を確認できませんでした。</string>
+    <string name="app_installer__failed_to_verify_signature_of_installed_app">インストール済みのアプリを確認できませんでした。</string>
+    <string name="notification__bg_update_check__unreliable_execution__channel_name">バックグラウンドでの更新確認が実行されなかった場合の通知</string>
+    <string name="notification__bg_update_check__unreliable_execution__channel_description">信頼できないバックグラウンドでの更新確認の実行に関する警告</string>
+    <string name="notification__bg_update_check__unreliable_execution__text">バッテリーやパフォーマンスに関する設定が原因の可能性があります。通知をタップして、このアプリのバッテリー最適化を無効にしてください。</string>
+    <string name="notification__bachground_work__text">この通知は、安定した処理の実行に必要です。設定に従い、バックグラウンドでのダウンロードまたはインストールが行われています。確認が完了すると通知も閉じられます。この通知はバックグラウンド動作を妨げることなく非表示にすることができます。</string>
+    <string name="mulch_wv__description">これは Chromium の技術をベースとした、セキュリティ重視の強化されたシステム WebView です。[https://github.com/GrapheneOS/Vanadium Vanadium project] のパッチにより、多くの不要な機能が無効化/削除され、いくつかのセキュリティ機能が有効化/追加されています。</string>
 </resources>
