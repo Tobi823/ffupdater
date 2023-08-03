@@ -25,26 +25,44 @@ import de.marmaro.krt.ffupdater.installer.entity.Installer.*
 import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
 import de.marmaro.krt.ffupdater.installer.exceptions.UserInteractionIsRequiredException
 import de.marmaro.krt.ffupdater.network.NetworkUtil
+import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour.USE_CACHE
 import de.marmaro.krt.ffupdater.network.file.DownloadStatus
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.notification.NotificationBuilder.showDownloadFailedNotification
 import de.marmaro.krt.ffupdater.notification.NotificationBuilder.showDownloadRunningNotification
+import de.marmaro.krt.ffupdater.notification.NotificationBuilder.showErrorNotification
 import de.marmaro.krt.ffupdater.notification.NotificationBuilder.showInstallFailureNotification
 import de.marmaro.krt.ffupdater.notification.NotificationBuilder.showInstallSuccessNotification
+import de.marmaro.krt.ffupdater.notification.NotificationBuilder.showNetworkErrorNotification
 import de.marmaro.krt.ffupdater.notification.NotificationBuilder.showUpdateAvailableNotification
 import de.marmaro.krt.ffupdater.notification.NotificationRemover.removeDownloadRunningNotification
 import de.marmaro.krt.ffupdater.settings.BackgroundSettings
 import de.marmaro.krt.ffupdater.settings.InstallerSettings
 import de.marmaro.krt.ffupdater.storage.StorageUtil
+import de.marmaro.krt.ffupdater.utils.WorkManagerTiming.calcBackoffTime
 import kotlinx.coroutines.CompletableDeferred
 
 @Keep
-class BackgroundDownloadAndInstallAppWork(context: Context, workerParams: WorkerParameters) :
+class BackgroundDownloaderAndInstaller(context: Context, workerParams: WorkerParameters) :
     CoroutineWorker(context.applicationContext, workerParams) {
 
     override suspend fun doWork(): Result {
-        return doWorkInternal()
+        try {
+            return doWorkInternal()
+        } catch (e: Exception) {
+            if (runAttemptCount < MAX_RETRIES) {
+                Log.w(LOG_TAG, "$LOGTAG Job failed. Restart in ${calcBackoffTime(runAttemptCount)}.", e)
+                return Result.retry()
+            }
+            val exception = BackgroundDownloaderAndInstallerException(e)
+            Log.e(LOG_TAG, "$LOGTAG Job failed.", exception)
+            when (e) {
+                is NetworkException -> showNetworkErrorNotification(applicationContext, exception)
+                else -> showErrorNotification(applicationContext, exception)
+            }
+            return Result.failure() // cancel this and following jobs from the WorkContinuation chain
+        }
     }
 
     private suspend fun doWorkInternal(): Result {
@@ -211,12 +229,14 @@ class BackgroundDownloadAndInstallAppWork(context: Context, workerParams: Worker
 
     companion object {
         private const val APP_NAME_KEY = "app_name"
-        private const val LOGTAG = "BackgroundDownload:"
+        private const val LOGTAG = "BackgroundDownloaderAndInstaller:"
+        private const val MAX_RETRIES = 6 // waiting time of all previous retries = about 1 hour
+
         fun createWorkRequest(app: App): OneTimeWorkRequest {
             val data = Data.Builder()
                 .putString(APP_NAME_KEY, app.name)
                 .build()
-            return OneTimeWorkRequest.Builder(BackgroundDownloadAndInstallAppWork::class.java)
+            return OneTimeWorkRequest.Builder(BackgroundDownloaderAndInstaller::class.java)
                 .setInputData(data)
                 .build()
         }

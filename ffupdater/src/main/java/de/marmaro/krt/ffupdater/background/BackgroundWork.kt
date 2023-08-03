@@ -11,8 +11,6 @@ import androidx.work.ExistingPeriodicWorkPolicy.UPDATE
 import androidx.work.ExistingWorkPolicy.KEEP
 import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkManager
-import androidx.work.WorkRequest
-import androidx.work.WorkRequest.Companion.DEFAULT_BACKOFF_DELAY_MILLIS
 import androidx.work.WorkerParameters
 import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
 import de.marmaro.krt.ffupdater.app.App
@@ -28,10 +26,13 @@ import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour.USE_CACHE
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
-import de.marmaro.krt.ffupdater.notification.NotificationBuilder
+import de.marmaro.krt.ffupdater.notification.NotificationBuilder.showErrorNotification
+import de.marmaro.krt.ffupdater.notification.NotificationBuilder.showNetworkErrorNotification
 import de.marmaro.krt.ffupdater.notification.NotificationRemover
 import de.marmaro.krt.ffupdater.settings.BackgroundSettings
 import de.marmaro.krt.ffupdater.settings.DataStoreHelper
+import de.marmaro.krt.ffupdater.utils.WorkManagerTiming.calcBackoffTime
+import de.marmaro.krt.ffupdater.utils.WorkManagerTiming.getRetriesForTotalBackoffTime
 import java.time.Duration
 import java.util.concurrent.TimeUnit.MINUTES
 import java.util.concurrent.TimeUnit.SECONDS
@@ -81,10 +82,8 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
             val backgroundException = BackgroundException(e)
             Log.e(LOG_TAG, "BackgroundWorker: Job failed.", backgroundException)
             when (e) {
-                is NetworkException ->
-                    NotificationBuilder.showNetworkErrorNotification(applicationContext, backgroundException)
-
-                else -> NotificationBuilder.showErrorNotification(applicationContext, backgroundException)
+                is NetworkException -> showNetworkErrorNotification(applicationContext, backgroundException)
+                else -> showErrorNotification(applicationContext, backgroundException)
             }
             return Result.success() // BackgroundJob should not be removed from WorkManager schedule
         }
@@ -132,7 +131,7 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
             outdatedApps.add(App.FFUPDATER)
         }
         val workRequests = outdatedApps
-            .map { BackgroundDownloadAndInstallAppWork.createWorkRequest(it) }
+            .map { BackgroundDownloaderAndInstaller.createWorkRequest(it) }
             .toMutableList()
         val firstWorkRequest = workRequests.removeFirst()
         val workManager = WorkManager.getInstance(applicationContext)
@@ -232,24 +231,6 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
             return timeSinceExecution < intervalWithErrorMargin
         }
 
-        private fun calcBackoffTime(runAttempts: Int): Duration {
-            val unlimitedBackoffTime = Math.scalb(DEFAULT_BACKOFF_DELAY_MILLIS.toDouble(), runAttempts)
-            val limitedBackoffTime = unlimitedBackoffTime.coerceIn(
-                WorkRequest.MIN_BACKOFF_MILLIS.toDouble(),
-                WorkRequest.MAX_BACKOFF_MILLIS.toDouble()
-            )
-            return Duration.ofMillis(limitedBackoffTime.toLong())
-        }
 
-        private fun getRetriesForTotalBackoffTime(totalTime: Duration): Int {
-            var totalTimeMs = 0L
-            repeat(1000) { runAttempt -> // runAttempt is zero-based
-                totalTimeMs += calcBackoffTime(runAttempt).toMillis()
-                if (totalTimeMs >= totalTime.toMillis()) {
-                    return runAttempt + 1
-                }
-            }
-            throw RuntimeException("Endless loop")
-        }
     }
 }
