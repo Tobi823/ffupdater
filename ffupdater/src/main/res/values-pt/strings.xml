@@ -333,4 +333,8 @@
     <string name="notification__bg_update_check__unreliable_execution__title">A verificação da atualização em segundo plano não é executada de forma fiável</string>
     <string name="background__installation__when_screen_off__summary">Tente instalar as atualizações apenas quando o ecrã do dispositivo estiver desligado.</string>
     <string name="background__installation__when_screen_off__title">Instalar apenas com o ecrã desligado</string>
+    <string name="mulch_wv__title">Mulch System WebView</string>
+    <string name="app_installer__failed_to_validate_signature_of_download">Falha ao validar a assinatura da transferência.</string>
+    <string name="app_installer__failed_to_verify_signature_of_installed_app">Falha ao verificar a aplicação instalada.</string>
+    <string name="mulch_wv__description">Trata-se de um WebView de sistema reforçado e orientado para a segurança, baseado na tecnologia Chromium. Muitas características anti-sistema foram desativadas/removidas e algumas características de segurança foram ativadas/adicionadas graças aos patches do [https://github.com/GrapheneOS/Vanadium Vanadium project].</string>
 </resources>

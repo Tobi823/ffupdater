@@ -1,0 +1,2 @@
+* Danke für die Weblate Beiträge von: gallegonovato, nautilusx, Juraj Motuz, Retrial und atilluF
+* "Hintergrundaktualisierungsprüfung fehlgeschlagen" behoben (Tobi823/ffupdater#452)

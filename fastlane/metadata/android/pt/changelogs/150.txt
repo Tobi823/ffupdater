@@ -1,0 +1,2 @@
+* Obrigado pelas contribuições do Weblate de: gallegonovato, nautilusx, Juraj Motuz, Retrial e atilluF
+* Correção de "Falha na verificação de atualização em segundo plano" (Tobi823/ffupdater#452)

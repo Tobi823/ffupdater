@@ -300,4 +300,27 @@
     <string name="duckduckgo_android__description">L\'app DuckDuckGo offre la più completa protezione della privacy online con la semplice pressione di un pulsante. Con un solo download, si ottiene un nuovo browser quotidiano che offre una protezione continua durante la ricerca e la navigazione e l\'accesso alle protezioni per il tracciamento delle e-mail ricevute e delle app utilizzate. Molte di queste protezioni non sono disponibili di default nei browser più diffusi.</string>
     <string name="main_activity__an_error_occurred"><u>Si è verificato un errore. Riprovaìpiù tardi.</u></string>
     <string name="eol_reason__browser_no_longer_maintained">Il browser non viene più mantenuto.</string>
+    <string name="add_app_activity__title_based_on_firefox">Basato su Firefox</string>
+    <string name="notification__bg_update_check__unreliable_execution__channel_name">Controllo aggiornamento in background non eseguito</string>
+    <string name="notification__bg_update_check__unreliable_execution__text">Forse è causato dalle impostazioni della batteria o delle prestazioni del dispositivo. Clicca su questa notifica per disattivare l\'ottimizzazione della batteria per questa applicazione.</string>
+    <string name="notification__bg_update_check__unreliable_execution__channel_description">Avviso riguardante l\'esecuzione inaffidabile del controllo aggiornamento in background</string>
+    <string name="notification__bg_update_check__unreliable_execution__title">Il controllo degli aggiornamenti in background non viene eseguito in modo affidabile</string>
+    <string name="installer__android_too_old_for_shizuku">Il tuo Android è troppo vecchio per Shizuku.</string>
+    <string name="add_app_activity__title_good_security_browsers">Un buon browser per la sicurezza</string>
+    <string name="notification__uncaught_exception__text">Clicca per visualizzare il rapporto di errore.</string>
+    <string name="notification__bachground_work__channel_description">Notifiche del lavoro in background</string>
+    <string name="notification__bachground_work__channel_name">Notifiche lavoro in background</string>
+    <string name="notification__bachground_work__title">Esecuzione del lavoro in background</string>
+    <string name="notification__bachground_work__action_title">Annulla questo lavoro in background</string>
+    <string name="mulch_wv__title">Mulch System WebView</string>
+    <string name="crash_report__report_is_copied_to_clipboard">Il rapporto di arresto anomalo è stato copiato negli appunti</string>
+    <string name="notification__uncaught_exception__channel_name">Notifiche sugli arresti</string>
+    <string name="notification__uncaught_exception__channel_description">Errori imprevisti che mandano in crash FFUpdater.</string>
+    <string name="notification__uncaught_exception__title">FFUpdater si è arrestato in modo anomalo</string>
+    <string name="mulch_wv__description">Si tratta di un sistema WebView protetto e orientato alla sicurezza, basato sulla tecnologia Chromium. Molte anti-caratteristiche sono state disabilitate/rimosse e una manciata di funzioni di sicurezza sono state abilitate/aggiunte grazie alle patch del [https://github.com/GrapheneOS/Vanadium Progetto Vanadium].</string>
+    <string name="app_installer__failed_to_validate_signature_of_download">Impossibile convalidare la firma del download.</string>
+    <string name="app_installer__failed_to_verify_signature_of_installed_app">Impossibile verificare l\'app installata.</string>
+    <string name="background__installation__when_screen_off__title">Installa solo quando lo schermo è spento</string>
+    <string name="background__installation__when_screen_off__summary">Prova a installare gli aggiornamenti solo quando lo schermo del dispositivo è spento.</string>
+    <string name="notification__bachground_work__text">Questa notifica è necessaria per un\'esecuzione affidabile. A seconda delle impostazioni, gli aggiornamenti vengono recuperati, scaricati e installati in background. Questa notifica può essere nascosta o silenziata senza interrompere il lavoro in background. Al termine del controllo, anche la notifica verrà chiusa.</string>
 </resources>

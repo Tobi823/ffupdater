@@ -1,0 +1,9 @@
+* Ευχαριστούμε για τις συνεισφορές τους Weblate τους: Tangy Wrecker, Retrial, Alexthegib, gallegonovato, Juraj Motuz,
+   nautilusx, 109247019824, Oğuz Ersen και atilluF
+* Προσθήκη αυτόματου ελέγχου εάν ο έλεγχος ενημέρωσης παρασκηνίου εκτελείται τακτικά
+* Διόρθωση του "InvalidForegroundServiceTypeException" (Tobi823/ffupdater#450)
+* Βελτίωση του χειρισμού των λαθών
+* Διόρθωση του "Η εργασία ακυρώθηκε. σφάλμα (Tobi832/ffupdater#442)
+* Προσθήκη υποστήριξης για το σύστημα Mulch System WebView
+* Υποστήριξη νέου προγράμματος εγκατάστασης Shizuku (έκδοση 13) (Tobi823/ffupdater#448)
+* Βελτίωση της καταγραφής, του κώδικα εκκαθάρισης, βελτίωση του script κατασκευής
