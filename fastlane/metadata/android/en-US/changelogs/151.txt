@@ -1,0 +1,3 @@
+* Thanks for the Weblate contributions from: nautilusx, Giovanni Donisi, Alexthegib, Retrial, gallegonovato,
+  109247019824 and Kazushi Hayama
+* Hot fix: Fix broken background update checker

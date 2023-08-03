@@ -1,3 +1,9 @@
+# 2023-08-03 Release 78.1.2 (151)
+
+* Thanks for the Weblate contributions from: nautilusx, Giovanni Donisi, Alexthegib, Retrial, gallegonovato,
+  109247019824 and Kazushi Hayama
+* Hot fix: Fix broken background update checker
+
 # 2023-07-27 Release 78.1.1 (150)
 
 * Thanks for the Weblate contributions from: gallegonovato, nautilusx, Juraj Motuz, Retrial and atilluF
