@@ -8,6 +8,7 @@ import androidx.work.CoroutineWorker
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.ExistingPeriodicWorkPolicy.CANCEL_AND_REENQUEUE
 import androidx.work.ExistingPeriodicWorkPolicy.UPDATE
+import androidx.work.ExistingWorkPolicy.KEEP
 import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkManager
 import androidx.work.WorkRequest
@@ -134,7 +135,8 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
             .map { BackgroundDownloadAndInstallAppWork.createWorkRequest(it) }
             .toMutableList()
         val firstWorkRequest = workRequests.removeFirst()
-        var workContinuation = WorkManager.getInstance(applicationContext).beginWith(firstWorkRequest)
+        val workManager = WorkManager.getInstance(applicationContext)
+        var workContinuation = workManager.beginUniqueWork(DOWNLOADER_INSTALLER_KEY, KEEP, firstWorkRequest)
         for (workRequest in workRequests) {
             workContinuation = workContinuation.then(workRequest)
         }
@@ -179,7 +181,8 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
     }
 
     companion object {
-        private const val WORK_MANAGER_KEY = "update_checker"
+        private const val CHECK_FOR_UPDATES_KEY = "update_checker"
+        private const val DOWNLOADER_INSTALLER_KEY = "ffupdater_downloader_and_installer"
         private val MAX_RETRIES = getRetriesForTotalBackoffTime(Duration.ofHours(8))
 
         fun start(context: Context) {
@@ -199,7 +202,7 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
         ) {
             val instance = WorkManager.getInstance(context.applicationContext)
             if (!BackgroundSettings.isUpdateCheckEnabled) {
-                instance.cancelUniqueWork(WORK_MANAGER_KEY)
+                instance.cancelUniqueWork(CHECK_FOR_UPDATES_KEY)
                 return
             }
 
@@ -207,7 +210,7 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
             val workRequest = PeriodicWorkRequest.Builder(BackgroundWork::class.java, minutes, MINUTES)
                 .setInitialDelay(initialDelay.seconds, SECONDS)
                 .build()
-            instance.enqueueUniquePeriodicWork(WORK_MANAGER_KEY, policy, workRequest)
+            instance.enqueueUniquePeriodicWork(CHECK_FOR_UPDATES_KEY, policy, workRequest)
         }
 
         fun isBackgroundUpdateCheckReliableExecuted(): Boolean {
