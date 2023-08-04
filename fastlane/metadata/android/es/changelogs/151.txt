@@ -1,0 +1,3 @@
+* Gracias por las contribuciones a Weblate de: nautilusx, Giovanni Donisi, Alexthegib, Retrial, gallegonovato,
+  109247019824 y Kazushi Hayama
+* Solucionado: el comprobador de actualizaciones en segundo plano
