@@ -201,9 +201,11 @@ open class SessionInstaller(app: App, private val foreground: Boolean) : Abstrac
 
     protected open fun abandonSession(context: Context, sessionId: Int) {
         val packageInstaller = context.packageManager.packageInstaller
-        if (packageInstaller.getSessionInfo(sessionId) != null) {
+        if (packageInstaller.getSessionInfo(sessionId) == null) return
+        try {
             packageInstaller.abandonSession(sessionId)
-        }
+        } catch (_: SecurityException) {
+        } // ignore exception
     }
 
     companion object {
