@@ -1,0 +1,3 @@
+* Dank für die Weblate-Beiträge von: nautilusx, Giovanni Donisi, Alexthegib, Retrial, gallegonovato,
+  109247019824 und Kazushi Hayama
+* Korrektur: Fehlerhafte Überprüfung der Hintergrundaktualisierung behoben
