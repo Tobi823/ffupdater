@@ -1,0 +1,3 @@
+* Ευχαριστούμε για τις συνεισφορές τους στο Weblate, τους: nautilusx, Giovanni Donisi, Alexthegib, Retrial, gallegonovato,
+   109247019824 και Kazushi Hayama
+ * Κύρια επιδιόρθωση: Διόρθωση του κατεστραμμένου ελέγχου ενημέρωσης φόντου
