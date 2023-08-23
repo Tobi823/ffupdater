@@ -1,0 +1,5 @@
+* Gracias por las contribuciones en Weblate de: Giovanni Donisi, 109247019824, Alexthegib, Retrial,
+  gallegonovato, nautilusx y Trond Kjetil Bremnes
+* Ignorar el error al abandonar la sesión de instalación (Tobi823/ffupdater#474)
+* Se corrigió el fallo en Android 6.0 al descargar Firefox Nightly (el método MatchGroup.get(String) está solo
+  disponible en API 26 o superior) (Tobi823/ffupdater#477)
