@@ -1,3 +1,11 @@
+# 2023-08-23 Release 78.1.3 (152)
+
+* Thanks for the Weblate contributions from: Giovanni Donisi, 109247019824, Alexthegib, Retrial,
+  gallegonovato, nautilusx and Trond Kjetil Bremnes
+* Ignore error when abandon install session (Tobi823/ffupdater#474)
+* Fix crash on Android 6.0 when downloading Firefox Nightly (the method MatchGroup.get(String) is only
+  available on API 26 or higher) (Tobi823/ffupdater#477)
+
 # 2023-08-03 Release 78.1.2 (151)
 
 * Thanks for the Weblate contributions from: nautilusx, Giovanni Donisi, Alexthegib, Retrial, gallegonovato,

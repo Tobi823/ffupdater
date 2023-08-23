@@ -338,5 +338,5 @@
     <string name="notification__bg_update_check__unreliable_execution__channel_description">信頼できないバックグラウンドでの更新確認の実行に関する警告</string>
     <string name="notification__bg_update_check__unreliable_execution__text">バッテリーやパフォーマンスに関する設定が原因の可能性があります。通知をタップして、このアプリのバッテリー最適化を無効にしてください。</string>
     <string name="notification__bachground_work__text">この通知は、安定した処理の実行に必要です。設定に従い、バックグラウンドでのダウンロードまたはインストールが行われています。確認が完了すると通知も閉じられます。この通知はバックグラウンド動作を妨げることなく非表示にすることができます。</string>
-    <string name="mulch_wv__description">これは Chromium の技術をベースとした、セキュリティ重視の強化されたシステム WebView です。[https://github.com/GrapheneOS/Vanadium Vanadium project] のパッチにより、多くの不要な機能が無効化/削除され、いくつかのセキュリティ機能が有効化/追加されています。</string>
+    <string name="mulch_wv__description">これは Chromium の技術をベースとした、セキュリティ重視の強化されたシステム WebView です。Vanadium プロジェクト のパッチにより、多くの不要な機能が無効化/削除され、いくつかのセキュリティ機能が有効化/追加されています。</string>
 </resources>
