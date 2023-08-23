@@ -23,13 +23,15 @@ object MozillaCiJsonConsumer {
                 """IndexedTask(${'$'}indexPath: String!) {indexedTask(indexPath: ${'$'}indexPath) {taskId}}"}"""
         val requestBody = requestJson.toRequestBody("application/json".toMediaType())
         val responseString = FileDownloader.downloadStringWithCache(pageUrl, cacheBehaviour, "POST", requestBody)
-        val regex = """taskId":"(?<taskId>[\w-]+)"""".toRegex()
-        val matches = regex.find(responseString)
-        val taskId = matches?.groups?.get("taskId")?.value
-        checkNotNull(taskId) {
-            "Missing taskId. Data: $responseString, Matches: $matches."
+        val regex = """taskId":"([\w-]+)"""".toRegex()
+        val matchResult = checkNotNull(regex.find(responseString)) {
+            "Missing taskId. Data: $responseString"
         }
-        return taskId
+        // get matchGroup for taskId
+        val matchGroup = checkNotNull(matchResult.groups[1]) {
+            "Missing taskId. Data: $responseString"
+        }
+        return matchGroup.value
     }
 
     suspend fun findChainOfTrustJson(
