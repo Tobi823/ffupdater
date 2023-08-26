@@ -1,0 +1,5 @@
+* Obrigado pelas contribuições Weblate de: Giovanni Donisi, 109247019824, Alexthegib, Retrial,
+  gallegonovato, nautilusx e Trond Kjetil Bremnes
+* Ignorar erro ao abandonar a sessão de instalação (Tobi823/ffupdater#474)
+* Corrigir falha no Android 6.0 ao descarregar o Firefox Nightly (o método MatchGroup.get(String) só está
+  disponível na API 26 ou superior) (Tobi823/ffupdater#477)
