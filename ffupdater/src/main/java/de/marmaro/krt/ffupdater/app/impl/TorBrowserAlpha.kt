@@ -57,12 +57,13 @@ object TorBrowserAlpha : AppBase() {
     }
 
     private suspend fun findVersionAndDownloadUrl(cacheBehaviour: CacheBehaviour): Pair<String, String> {
+        // https://dist.torproject.org/torbrowser/13.0a3/tor-browser-android-aarch64-13.0a3.apk
         val content = FileDownloader.downloadStringWithCache(MAIN_URL, cacheBehaviour)
         val pattern = Regex.escape("https://dist.torproject.org/torbrowser/") +
                 "([0-9a-z.]{4,})" +
-                Regex.escape("/tor-browser-") +
-                "[0-9a-z.]{4,}+" +
-                Regex.escape("-android-${getAbiString()}-multi.apk")
+                Regex.escape("/tor-browser-android-${getAbiString()}-") +
+                "[0-9a-z.]{4,}" +
+                Regex.escape(".apk")
 
         val match = Regex(pattern).find(content)
         checkNotNull(match) { "Can't find download url with regex pattern: $pattern." }
@@ -77,7 +78,7 @@ object TorBrowserAlpha : AppBase() {
     }
 
     private suspend fun findDateTime(version: String, cacheBehaviour: CacheBehaviour): String {
-        val url = "https://dist.torproject.org/torbrowser/$version/?P=*android-${getAbiString()}-multi.apk"
+        val url = "https://dist.torproject.org/torbrowser/$version/?P=tor-browser-android-${getAbiString()}-*.apk"
         val content = FileDownloader.downloadStringWithCache(url, cacheBehaviour)
         val spaces = """\s+"""
         val pattern = Regex.escape("</a>") +
