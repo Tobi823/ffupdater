@@ -1,3 +1,9 @@
+# 2023-08-31 Release 78.1.5 (154)
+
+* Fix Brave, Brave Beta, Brave Nightly for newer phones (use Bravearm64Universal.apk instead of
+  BraveMonoarm64.ap) (Tobi823/ffupdater#475)
+* Remove obsolete Android 6 version of Brave, Brave Beta, Brave Nightly
+
 # 2023-08-31 Release 78.1.4 (153)
 
 * Thanks for the Weblate contributions from: gallegonovato, Alexthegib, 109247019824 and Giovanni Donisi

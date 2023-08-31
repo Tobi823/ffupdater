@@ -2,6 +2,7 @@ package de.marmaro.krt.ffupdater.app.impl
 
 import android.content.Context
 import android.os.Build
+import android.util.Log
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
@@ -10,7 +11,6 @@ import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.BETTER_THAN_GOOGLE_CH
 import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.device.ABI.*
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
-import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
@@ -30,7 +30,7 @@ object Brave : AppBase() {
     override val installationWarning = R.string.brave__warning
     override val downloadSource = "GitHub"
     override val icon = R.drawable.ic_logo_brave
-    override val minApiLevel = Build.VERSION_CODES.M
+    override val minApiLevel = Build.VERSION_CODES.N
     override val supportedAbis = ARM32_ARM64_X86_X64
 
     @Suppress("SpellCheckingInspection")
@@ -42,6 +42,7 @@ object Brave : AppBase() {
     @Throws(NetworkException::class)
     override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
         val fileName = findNameOfApkFile()
+        Log.e("test", "|${fileName}|")
         val result = GithubConsumer.findLatestRelease(
             repository = GithubConsumer.REPOSITORY__BRAVE__BRAVE_BROWSER,
             resultsPerApiCall = GithubConsumer.RESULTS_PER_API_CALL__BRAVE_BROWSER,
@@ -60,20 +61,12 @@ object Brave : AppBase() {
     }
 
     private fun findNameOfApkFile(): String {
-        return if (DeviceSdkTester.supportsAndroid7Nougat24()) {
-            when (DeviceAbiExtractor.findBestAbi(supportedAbis, DeviceSettingsHelper.prefer32BitApks)) {
-                ARMEABI_V7A -> "BraveMonoarm.apk"
-                ARM64_V8A -> "BraveMonoarm64.apk"
-                X86 -> "BraveMonox86.apk"
-                X86_64 -> "BraveMonox64.apk"
-                else -> throw IllegalArgumentException("ABI for Android 7+ is not supported")
-            }
-        } else {
-            when (DeviceAbiExtractor.findBestAbi(ARM32_X86, DeviceSettingsHelper.prefer32BitApks)) {
-                ARMEABI_V7A -> "Bravearm.apk"
-                X86 -> "Bravex86.apk"
-                else -> throw IllegalArgumentException("ABI for Android 6 is not supported")
-            }
+        return when (DeviceAbiExtractor.findBestAbi(supportedAbis, DeviceSettingsHelper.prefer32BitApks)) {
+            ARMEABI_V7A -> "BraveMonoarm.apk"
+            ARM64_V8A -> "Bravearm64Universal.apk"
+            X86 -> "BraveMonox86.apk"
+            X86_64 -> "BraveMonox64.apk"
+            else -> throw IllegalArgumentException("ABI for Android 7+ is not supported")
         }
     }
 }

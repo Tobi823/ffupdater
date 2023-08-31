@@ -10,7 +10,6 @@ import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.BETTER_THAN_GOOGLE_CH
 import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
-import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
@@ -30,7 +29,7 @@ object BraveNightly : AppBase() {
     override val installationWarning = R.string.brave__warning
     override val downloadSource = "GitHub"
     override val icon = R.drawable.ic_logo_brave_nightly
-    override val minApiLevel = Build.VERSION_CODES.M
+    override val minApiLevel = Build.VERSION_CODES.N
     override val supportedAbis = ARM32_ARM64_X86_X64
 
     @Suppress("SpellCheckingInspection")
@@ -60,20 +59,12 @@ object BraveNightly : AppBase() {
     }
 
     private fun findNameOfApkFile(): String {
-        return if (DeviceSdkTester.supportsAndroid7Nougat24()) {
-            when (DeviceAbiExtractor.findBestAbi(supportedAbis, DeviceSettingsHelper.prefer32BitApks)) {
-                ABI.ARMEABI_V7A -> "BraveMonoarm.apk"
-                ABI.ARM64_V8A -> "BraveMonoarm64.apk"
-                ABI.X86 -> "BraveMonox86.apk"
-                ABI.X86_64 -> "BraveMonox64.apk"
-                else -> throw IllegalArgumentException("ABI for Android 7+ is not supported")
-            }
-        } else {
-            when (DeviceAbiExtractor.findBestAbi(ARM32_X86, DeviceSettingsHelper.prefer32BitApks)) {
-                ABI.ARMEABI_V7A -> "Bravearm.apk"
-                ABI.X86 -> "Bravex86.apk"
-                else -> throw IllegalArgumentException("ABI for Android 6 is not supported")
-            }
+        return when (DeviceAbiExtractor.findBestAbi(supportedAbis, DeviceSettingsHelper.prefer32BitApks)) {
+            ABI.ARMEABI_V7A -> "BraveMonoarm.apk"
+            ABI.ARM64_V8A -> "Bravearm64Universal.apk"
+            ABI.X86 -> "BraveMonox86.apk"
+            ABI.X86_64 -> "BraveMonox64.apk"
+            else -> throw IllegalArgumentException("ABI for Android 7+ is not supported")
         }
     }
 }
