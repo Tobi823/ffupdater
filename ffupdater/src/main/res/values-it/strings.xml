@@ -317,7 +317,7 @@
     <string name="notification__uncaught_exception__channel_name">Notifiche sugli arresti</string>
     <string name="notification__uncaught_exception__channel_description">Errori imprevisti che mandano in crash FFUpdater.</string>
     <string name="notification__uncaught_exception__title">FFUpdater si è arrestato in modo anomalo</string>
-    <string name="mulch_wv__description">Si tratta di un sistema WebView protetto e orientato alla sicurezza, basato sulla tecnologia Chromium. Molte anti-caratteristiche sono state disabilitate/rimosse e una manciata di funzioni di sicurezza sono state abilitate/aggiunte grazie alle patch del [https://github.com/GrapheneOS/Vanadium Progetto Vanadium].</string>
+    <string name="mulch_wv__description">Si tratta di un sistema WebView protetto e orientato alla sicurezza, basato sulla tecnologia Chromium. Molte anti-caratteristiche sono state disabilitate/rimosse e una manciata di funzioni di sicurezza sono state abilitate/aggiunte grazie alle patch del Progetto Vanadium.</string>
     <string name="app_installer__failed_to_validate_signature_of_download">Impossibile convalidare la firma del download.</string>
     <string name="app_installer__failed_to_verify_signature_of_installed_app">Impossibile verificare l\'app installata.</string>
     <string name="background__installation__when_screen_off__title">Installa solo quando lo schermo è spento</string>

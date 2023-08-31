@@ -104,8 +104,8 @@
     <string name="download_activity__too_low_memory_title">Недостатъчно свободно пространство</string>
     <string name="download_activity__use_cached_downloaded_apk">Използва се изтегления файл:</string>
     <string name="download_activity__you_can_now_close_this_window">Можете да затворите прозореца</string>
-    <string name="download_activity__label">Инсталиране</string>
-    <string name="install_new_app">Инсталиране</string>
+    <string name="download_activity__label">Изтегляне на приложение</string>
+    <string name="install_new_app">Инсталиране на ново приложение</string>
     <string name="install_same_version_dialog__message">Последното издание на приложението вече е инсталирано. Желаете ли да бъде изтеглено и инсталирано отново\?</string>
     <string name="install_same_version_dialog__title">Инсталирано е същото издание</string>
     <string name="notification__install_error__channel_descr">Категория известия за неуспешни обновявания на %1$s.</string>
@@ -330,5 +330,5 @@
     <string name="mulch_wv__title">Системен WebView от Мулч</string>
     <string name="app_installer__failed_to_verify_signature_of_installed_app">Инсталираното приложение НЕ е проверено.</string>
     <string name="app_installer__failed_to_validate_signature_of_download">Неуспешна проверка на подписа на изтегления файл.</string>
-    <string name="mulch_wv__description">Това е ориентиран към сигурността и подсилен системен WebView, на технологичната основа на Хромиум. Много нежеланите възможности са изключени/премахнати, а няколко възможности за сигурност са включени/добавени благодарение на кръпки от проекта [https://github.com/GrapheneOS/Vanadium Vanadium].</string>
+    <string name="mulch_wv__description">Това е ориентиран към сигурността и подсилен системен WebView, на технологичната основа на Хромиум. Много от нежеланите възможности са изключени/премахнати, а няколко възможности за сигурност са включени/добавени благодарение на кръпки от проекта Ванадий.</string>
 </resources>
