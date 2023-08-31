@@ -1,3 +1,8 @@
+# 2023-08-31 Release 78.1.4 (153)
+
+* Thanks for the Weblate contributions from: gallegonovato, Alexthegib, 109247019824 and Giovanni Donisi
+* fix Tor Browser Alpha (Tobi823/ffupdater#485)
+
 # 2023-08-23 Release 78.1.3 (152)
 
 * Thanks for the Weblate contributions from: Giovanni Donisi, 109247019824, Alexthegib, Retrial,
