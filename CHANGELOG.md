@@ -1,3 +1,8 @@
+# 2023-09-09 Release 78.1.6 (155)
+
+* Thanks for the Weblate contributions from: gallegonovato, MkQtS, Retrial and Eryk Michalak
+* Fix crash with Fennec (Tobi823/ffupdater#491)
+
 # 2023-08-31 Release 78.1.5 (154)
 
 * Fix Brave, Brave Beta, Brave Nightly for newer phones (use Bravearm64Universal.apk instead of
