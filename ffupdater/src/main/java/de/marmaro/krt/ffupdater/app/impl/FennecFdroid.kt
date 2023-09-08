@@ -39,8 +39,7 @@ object FennecFdroid : AppBase() {
     @MainThread
     @Throws(NetworkException::class)
     override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
-        val index = findIndex()
-        val result = FdroidConsumer.getLatestUpdate(packageName, index, cacheBehaviour)
+        val result = FdroidConsumer.getLatestUpdate(packageName, getVersionAcceptor(), cacheBehaviour)
         return LatestVersion(
             downloadUrl = result.downloadUrl,
             version = result.versionName,
@@ -50,12 +49,11 @@ object FennecFdroid : AppBase() {
         )
     }
 
-    private fun findIndex(): Int {
-        val index = when (DeviceAbiExtractor.findBestAbi(supportedAbis, DeviceSettingsHelper.prefer32BitApks)) {
-            ABI.ARMEABI_V7A -> 1
-            ABI.ARM64_V8A -> 2
+    private fun getVersionAcceptor(): (FdroidConsumer.Package) -> Boolean {
+        return when (DeviceAbiExtractor.findBestAbi(supportedAbis, DeviceSettingsHelper.prefer32BitApks)) {
+            ABI.ARMEABI_V7A -> { p: FdroidConsumer.Package -> p.versionCode % 100 == 0L }
+            ABI.ARM64_V8A -> { p: FdroidConsumer.Package -> p.versionCode % 100 == 20L }
             else -> throw IllegalArgumentException("ABI is not supported")
         }
-        return index
     }
 }

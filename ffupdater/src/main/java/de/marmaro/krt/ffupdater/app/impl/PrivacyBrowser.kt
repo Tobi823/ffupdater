@@ -34,7 +34,7 @@ object PrivacyBrowser : AppBase() {
     @MainThread
     @Throws(NetworkException::class)
     override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
-        val result = FdroidConsumer.getLatestUpdate(packageName, 1, cacheBehaviour)
+        val result = FdroidConsumer.getLatestUpdate(packageName, { true }, cacheBehaviour)
         return LatestVersion(
             downloadUrl = result.downloadUrl,
             version = result.versionName,

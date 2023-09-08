@@ -14,14 +14,17 @@ import kotlinx.coroutines.withContext
 object FdroidConsumer {
 
     @MainThread
-    suspend fun getLatestUpdate(packageName: String, index: Int, cacheBehaviour: CacheBehaviour): Result {
-        require(index >= 1)
+    suspend fun getLatestUpdate(
+        packageName: String,
+        versionAcceptor: (Package) -> Boolean,
+        cacheBehaviour: CacheBehaviour,
+    ): Result {
         val url = "https://f-droid.org/api/v1/packages/$packageName"
         val rootJson = FileDownloader.downloadJsonObjectWithCache(url, cacheBehaviour)
 
         val appInfo = parseJson(rootJson)
 
-        val latestVersion = getLatestUpdate(appInfo, index)
+        val latestVersion = getLatestUpdate(appInfo, versionAcceptor)
         val commitId = getLastCommitId(packageName, cacheBehaviour)
         val createdAt = getCreateDate(commitId, cacheBehaviour)
 
@@ -68,19 +71,10 @@ object FdroidConsumer {
      * The first version is for ARMEABI_V7A devices and the second version for ARM64_V8A.
      * This method helps to extract a specific version from the APi response.
      */
-    private fun getLatestUpdate(appInfo: AppInfo, index: Int): Package {
-        val latestVersionCode = appInfo.packages
-            .maxOf { p -> p.versionCode }
-        val latestVersionName = appInfo.packages
-            .firstOrNull { p -> p.versionCode == latestVersionCode }
-            ?.versionName
-            ?: throw Exception("Can't find version with code $latestVersionCode")
-        val latestVersions = appInfo.packages
-            .filter { p -> p.versionName == latestVersionName }
-            .sortedBy { p -> p.versionCode }
-
-        check(latestVersions.size >= index)
-        return latestVersions[index - 1]
+    private fun getLatestUpdate(appInfo: AppInfo, versionAcceptor: (Package) -> Boolean): Package {
+        return appInfo.packages
+            .filter(versionAcceptor)
+            .maxBy { it.versionCode }
     }
 
     private suspend fun getLastCommitId(packageName: String, cacheBehaviour: CacheBehaviour): String {
@@ -103,7 +97,7 @@ object FdroidConsumer {
     )
 
     @Keep
-    private data class Package(
+    data class Package(
         val versionName: String,
         val versionCode: Long,
     )
