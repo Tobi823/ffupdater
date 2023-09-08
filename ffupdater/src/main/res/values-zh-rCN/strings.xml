@@ -313,4 +313,28 @@
 \n
 \nFirefox Focus 是打开、退出、搜索和销毁的完美工具，我正在执行一项与您无关的任务——网络浏览器。</string>
     <string name="main_activity__an_error_occurred"><u>发生错误。请稍后重试。</u></string>
+    <string name="crash_report__report_is_copied_to_clipboard">崩溃报告已复制到剪贴板</string>
+    <string name="eol_reason__browser_no_longer_maintained">此浏览器已停止维护。</string>
+    <string name="app_installer__failed_to_verify_signature_of_installed_app">检查已安装的应用程序失败。</string>
+    <string name="background__installation__when_screen_off__title">仅在屏幕关闭时安装</string>
+    <string name="notification__bg_update_check__unreliable_execution__channel_name">未执行后台检查更新</string>
+    <string name="notification__bg_update_check__unreliable_execution__channel_description">对不可靠运行的后台更新检查的警告</string>
+    <string name="notification__bg_update_check__unreliable_execution__title">后台更新检测的执行不可靠</string>
+    <string name="installer__android_too_old_for_shizuku">您的 Android 版本过低，无法使用 Shizuku。</string>
+    <string name="add_app_activity__title_based_on_firefox">基于 Firefox</string>
+    <string name="add_app_activity__title_good_security_browsers">良好的安全浏览器</string>
+    <string name="notification__uncaught_exception__channel_name">崩溃通知</string>
+    <string name="notification__uncaught_exception__channel_description">FFUpdater 因意外错误崩溃。</string>
+    <string name="notification__uncaught_exception__title">FFUpdater 崩溃了</string>
+    <string name="notification__uncaught_exception__text">点击以查看错误报告。</string>
+    <string name="notification__bachground_work__channel_name">后台任务通知</string>
+    <string name="notification__bachground_work__channel_description">后台任务的通知</string>
+    <string name="notification__bachground_work__title">执行后台任务</string>
+    <string name="app_installer__failed_to_validate_signature_of_download">验证此下载的签名失败。</string>
+    <string name="notification__bachground_work__action_title">取消后台任务</string>
+    <string name="mulch_wv__title">覆盖系统 WebView</string>
+    <string name="mulch_wv__description">这是一个基于 Chromium 技术的面向安全的、加固的系统 WebView。由于 Vanadium 项目的补丁，许多不受欢迎的特性被禁用/删除，而一些安全功能被启用/添加。</string>
+    <string name="background__installation__when_screen_off__summary">仅在设备屏幕关闭时尝试安装更新。</string>
+    <string name="notification__bg_update_check__unreliable_execution__text">这可能是由您设备的电池或性能设置造成的。点击此通知以禁用对此 App 的电池优化。</string>
+    <string name="notification__bachground_work__text">此通知是可靠的执行所必需的。根据您的设置，更新的获取、下载和安装在后台完成。这一通知可在不停止后台任务的情况下被隐藏或静音。在检查结束后，通知也将关闭。</string>
 </resources>

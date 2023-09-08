@@ -334,7 +334,7 @@
     <string name="notification__uncaught_exception__text">Κάντε κλικ για να δείτε την αναφορά σφάλματος.</string>
     <string name="notification__bachground_work__title">Εκτέλεση εργασιών στο παρασκήνιο</string>
     <string name="mulch_wv__title">Mulch System WebView</string>
-    <string name="mulch_wv__description">Πρόκειται για ένα σύστημα WebView προσανατολισμένο στην ασφάλεια και βασίζεται στην τεχνολογία Chromium. Πολλά αντι-χαρακτηριστικά έχουν απενεργοποιηθεί/αφαιρεθεί και αρκετά λειτουργίες προστασίας έχουν ενεργοποιηθεί/προστεθεί χάρη σε ενημερώσεις κώδικα από το [https://github.com/GrapheneOS/Vanadium Vanadium έργο].</string>
+    <string name="mulch_wv__description">Πρόκειται για ένα σύστημα WebView προσανατολισμένο στην ασφάλεια και βασίζεται στην τεχνολογία Chromium. Πολλά χαρακτηριστικά έχουν απενεργοποιηθεί/αφαιρεθεί και αρκετά λειτουργίες προστασίας έχουν ενεργοποιηθεί/προστεθεί χάρη σε ενημερώσεις κώδικα από το Vanadium έργο.</string>
     <string name="app_installer__failed_to_validate_signature_of_download">Αποτυχία επικύρωσης της υπογραφής της λήψης.</string>
     <string name="app_installer__failed_to_verify_signature_of_installed_app">Ο έλεγχος της εγκατεστημένης εφαρμογής απέτυχε.</string>
 </resources>
