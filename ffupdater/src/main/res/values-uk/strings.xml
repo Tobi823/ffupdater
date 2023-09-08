@@ -61,12 +61,12 @@
     <string name="app_card__information_about_the_app">інформація про додаток</string>
     <string name="download_activity__delete_cache_button_text">очистити кеш</string>
     <string name="download_activity__delete_cache_explanation">"Якщо ви вважаєте, що FFUpdater кешував несправне оновлення програми, натисніть кнопку «очистити кеш», щоб видалити кеш цієї програми."</string>
-    <string name="download_activity__download_app_with_status">Завантажити програму %1$s</string>
+    <string name="download_activity__download_app_with_status">Завантажування програми</string>
     <string name="download_activity__download_failed">Не вдалося завантажити</string>
     <string name="download_activity__downloaded_application_from">Завантажена програма від:</string>
     <string name="app_installer__signature_of_download_is_invalid">Завантажена програма НЕ перевірена</string>
     <string name="download_activity__exception__show_button">"<u>Показати докладний звіт про помилку.</u>"</string>
-    <string name="download_activity__external_storage_not_accessible">Зовнішня пам’ять недоступна - завантажити не вдається. Поточний статус:</string>
+    <string name="download_activity__external_storage_not_accessible">Зовнішня пам’ять недоступна - не вдається завантажити. Поточний статус:</string>
     <string name="download_activity__fetch_url_for_download">Вилучити URL-адресу для завантаження з %1$s</string>
     <string name="download_activity__fetched_url_for_download_successfully">Вибрано URL-адресу завантаження від %1$s</string>
     <string name="download_activity__github_rate_limit_exceeded">Перевищено ліміт швидкості GitHub-API. Спробуйте завантажити знову протягом наступної години.</string>
