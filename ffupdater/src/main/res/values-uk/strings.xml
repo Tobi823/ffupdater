@@ -11,15 +11,15 @@
     <string name="notification__error__title">Не вдалося перевірити фонове оновлення</string>
     <string name="brave__description">Brave Browser — це ваш приватний захищений  веб-браузер, який безкоштовно блокує зовнішні рекламні оголошення. \n\nBrave Browser — це швидкий, безпечний веб-браузер для Android із вбудованим блокуванням зовнішніх оголошень. Brave — це значно швидший, більш захищений та приватний додаток, який запобігає моніторингу активності з боку рекламних трекерів або зараженню шкідливими програмами і спливаючими вікнами. Завантажте найкращий веб-браузер уже сьогодні.</string>
     <string name="brave__title">Brave Browser</string>
-    <string name="brave__warning">- Сміливий використовує технічну основу Google Chrome (Chromium) - деяким людям це не подобається. Ви хочете встановити Brave\?
+    <string name="brave__warning">- Brave використовує технічну основу Google Chrome (Chromium) - деяким людям це не подобається. Ви хочете встановити Brave\?
 \n- Завдяки своїй основній уваги маркуванню на блокчейні Ethereum проект має зв\'язки з криптовалютою. Блокчейн має багато проблем, і слід уникати, на мій погляд.</string>
     <string name="brave_beta__description">Ласкаво просимо до Brave Beta для Android!\nСпробуйте новітні функції та надайте попередній відгук: https://brave.com/msupport\nВи можете встановити Brave Beta разом із поточною версією Brave для Android.</string>
     <string name="brave_beta__title">Brave Browser (бета-версія)</string>
     <string name="brave_nightly__description">Ласкаво просимо до Brave Nightly (розробник) для Android!\nСпробуйте новітні функції та надайте попередній відгук: https://brave.com/msupport\nВи можете встановити Brave Nightly разом із поточною версією Brave для Android.</string>
-    <string name="brave_nightly__title">Brave Browser (на ніч)</string>
+    <string name="brave_nightly__title">Brave Browser (Nightly)</string>
     <string name="bromite__description">Bromite націлений на те, щоб забезпечити безперешкодний перегляд веб-сторінок без функцій, що заважають конфіденційності, та з додаванням швидкого механізму блокування реклами. Мінімальні зміни користувальницького інтерфейсу застосовуються, щоб допомогти приборкати ідею \"браузер як рекламна платформа\".</string>
     <string name="bromite__title">Bromite</string>
-    <string name="bromite__warning">- Броміт використовує технічну основу Google Chrome і, таким чином, опосередковано підтримує монопольне положення двигуна візуалізації хрому.</string>
+    <string name="bromite__warning">- Bromite використовує технічну основу Google Chrome і, таким чином, опосередковано підтримує монопольне положення рушія візуалізації Chromium.</string>
     <string name="bromite_systemwebview__description">Пакет SystemWebView містить основний браузер і механізм візуалізації Bromite та ті самі функції. Він пропонує можливість замінити компонент браузера за замовчуванням для всієї системи Android.</string>
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Скопіюйте звіт про аварійне завершення роботи в буфер обміну</string>
@@ -27,7 +27,7 @@
     <string name="crash_report__explain_text__download_activity_update_check">Під час перевірки оновлень у головному вікні сталася така помилка. Якщо ця помилка виникає часто, не соромтеся повідомляти про це на notabug.org, GitHub або GitLab. Не забудьте додати звіт про збій із буфера обміну та опис того, як ви відтворюєте цю помилку.</string>
     <string name="crash_report__explain_text__uncaught_throwable">На жаль, FFUpdater минулого разу вийшов з ладу і зареєстрував зазначену помилку. Будь ласка, повідомте про неї на notabug.org, GitHub або GitLab. Для цього скопіюйте звіт про збій із буфера обміну у ваше повідомлення та додайте опис того, як відтворити помилку.</string>
     <string name="crash_report__go_to_github">Перейдіть на GitHub</string>
-    <string name="crash_report__go_to_gitlab">Перейдіть до GitLab</string>
+    <string name="crash_report__go_to_gitlab">Перейдіть на GitLab</string>
     <string name="crash_report__got_to_notabug_org">Перейдіть на сторінку notabug.org</string>
     <string name="dialog_button__do_not_install">Ні, поверніться до \'Release\'</string>
     <string name="dialog_button__yes">Так</string>
@@ -54,19 +54,19 @@
     <string name="firefox_release__title">Веб-браузер Firefox</string>
     <string name="firefox_release__warning">- Покращена версія Firefox під назвою Fennec F-Droid також доступна на F-Droid.</string>
     <string name="iceraven__description">Безумовно, вас не привезла Mozilla! \n\nIceraven Browser - це веб-браузер для Android, заснований на версії Firefox, GeckoView та Mozilla Android Components від Mozilla Fenix. \n\nНаша мета - стати близьким розвитком нового Firefox для Android, який прагне надати користувачам більше можливостей, більше можливостей для налаштування (включаючи широку бібліотеку розширень) і більше інформації про сторінки, які вони відвідують, і про взаємодію їх браузерів ці сторінки.</string>
-    <string name="iceraven__title">Ицеравен Браузер</string>
+    <string name="iceraven__title">Iceraven Browser</string>
     <string name="infobox">Це оновлювач для браузерів, дружніх до конфіденційності. Натисніть кнопку \"плюс\", щоб встановити нові застосунки. Проведіть вниз, щоб примусово перевірити наявність нових оновлень. За замовчуванням застосунок періодично перевірятиме наявність оновлень у фоновому режимі, які потім будуть завантажені та зрештою встановлені. Натисніть на шестерню, щоб налаштувати поведінку.
 \n
 \nОстання успішна перевірка оновлень у фоновому режимі: %1$s</string>
     <string name="app_card__information_about_the_app">інформація про додаток</string>
     <string name="download_activity__delete_cache_button_text">очистити кеш</string>
     <string name="download_activity__delete_cache_explanation">"Якщо ви вважаєте, що FFUpdater кешував несправне оновлення програми, натисніть кнопку «очистити кеш», щоб видалити кеш цієї програми."</string>
-    <string name="download_activity__download_app_with_status">Завантажити програму %1$s</string>
+    <string name="download_activity__download_app_with_status">Завантажування програми</string>
     <string name="download_activity__download_failed">Не вдалося завантажити</string>
     <string name="download_activity__downloaded_application_from">Завантажена програма від:</string>
     <string name="app_installer__signature_of_download_is_invalid">Завантажена програма НЕ перевірена</string>
     <string name="download_activity__exception__show_button">"<u>Показати докладний звіт про помилку.</u>"</string>
-    <string name="download_activity__external_storage_not_accessible">Зовнішня пам’ять недоступна - завантажити не вдається. Поточний статус:</string>
+    <string name="download_activity__external_storage_not_accessible">Зовнішня пам’ять недоступна - не вдається почати завантаження. Поточний статус:</string>
     <string name="download_activity__fetch_url_for_download">Вилучити URL-адресу для завантаження з %1$s</string>
     <string name="download_activity__fetched_url_for_download_successfully">Вибрано URL-адресу завантаження від %1$s</string>
     <string name="download_activity__github_rate_limit_exceeded">Перевищено ліміт швидкості GitHub-API. Спробуйте завантажити знову протягом наступної години.</string>
@@ -92,7 +92,7 @@
     <string name="notification__install_success__title">%1$s оновлено</string>
     <string name="app_installer__installed_app_has_invalid_signature">Встановлений додаток НЕ підтверджений</string>
     <string name="installed_application_is_verified">Встановлена програма перевірена</string>
-    <string name="installed_version">встановлено: %1$s</string>
+    <string name="installed_version">Встановлено: %1$s</string>
     <string name="lockwise__description">ДОСТУП ПАРОЛЯ ДЛЯ ВАС, І ТОЛЬКО ВАС
 \n
 \nБезпечно відстежуйте ваші паролі Firefox та отримуйте доступ до них будь-де. Швидко відкрийте будь-який веб-сайт із програми, щоб увійти до своїх облікових записів.</string>
@@ -146,7 +146,7 @@
     <string name="settings__theme_system_default">Використовувати налаштування системи</string>
     <string name="ungoogled_chromium__description">Google Chromium, без інтеграції з Google.\n\nБез входу в обліковий запис Google Chromium працює досить добре з точки зору безпеки та конфіденційності. Однак Chromium все ще певна залежність від веб-сервісів і бінарних файлів Google. Крім того, Google створив Chromium, щоб він був простим та інтуїтивно зрозумілим для користувачів, що означає, що вони йдуть на компроміс щодо прозорості та контролю внутрішніх операцій.</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
-    <string name="ungoogled_chromium__warning">- Ungoogled Chromium використовує технічну основу Google Chrome і, таким чином, опосередковано підтримує монопольне положення двигуна візуалізації хрому.</string>
+    <string name="ungoogled_chromium__warning">- Ungoogled Chromium використовує технічну основу Google Chrome і, таким чином, опосередковано підтримує монопольне положення двигуна візуалізації Chromium.</string>
     <string name="unsupported_abi_dialog__message">Вибраний браузер несумісний з процесором вашого смартфона. Виберіть інший веб-переглядач.</string>
     <string name="unsupported_abi_dialog__title">Непідтримуваний пристрій</string>
     <string name="update_interval__12h">12 годин</string>
@@ -173,8 +173,8 @@
     <string name="update_notification__title">Наявне оновлення для %1$s</string>
     <string name="vivaldi__description">Vivaldi - це новий приватний браузер з унікальною гнучкістю в налаштуванні. Він має такі корисні інстументи, як блокувальник реклами (вимкнений за промовчанням), захист від стеження та приватний перекладач. Нотатки та знімки сторінок прискорюють та полегшують робочий процес. Налаштування теми оформлення та вигляду й розташування вкладок додають індивідуальність браузерові. Завантажте безкоштовно та переглядайте сайти з насолодою.</string>
     <string name="vivaldi__title">Браузер Vivaldi</string>
-    <string name="vivaldi__warning">- Vivaldi є лише частково відкритим кодом.
-\n- Він також використовує технічну основу Google Chrome і, таким чином, опосередковано підтримує монопольне положення двигуна візуалізації хрому.</string>
+    <string name="vivaldi__warning">- Vivaldi є лише частково відкритим.
+\n- Він також використовує технічну основу Google Chrome і, таким чином, опосередковано підтримує монопольне положення двигуна візуалізації Chromium.</string>
     <string name="app_card__app_warning_button_description">Показати попередження про цей застосунок</string>
     <string name="iceraven__warning">- Супроводжувач не дає жодних гарантій чи гарантій безпеки, оновлень чи навіть стабільності.
 \n - Проект потребує більше часу, ніж зазвичай, для надання оновлень безпеки.</string>
