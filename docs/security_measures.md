@@ -8,5 +8,4 @@
 - Prevent command injection in the RootInstaller.kt by validating and sanitizing commands.
 - Git commits will be signed with the GPG key
   CE72BFF6A293A85762D4901E426C5FB1C7840C5F [public key](ffupdater_gpg_public.key)
-- APK will be signed with the key
-  f4e642bb85cbbcfd7302b2cbcbd346993a41067c27d995df492c9d0d38747e62 [apk_signature](dev/signatures/apk_signature.txt)
+- APK will be signed with the key [apk_signature](../dev/signatures/apk_signature.txt)
