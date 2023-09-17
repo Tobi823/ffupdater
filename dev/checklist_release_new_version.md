@@ -21,6 +21,9 @@ git fetch --tags
 - build signed APK file
 - copy message of the release commit
 - `,ff_release "???"` to tag, push, create releases on GitHub/GitLab, start repomaker+Docker
+- upload signature, create PR, update metadata in PR -
+  see https://gitlab.com/fdroid/fdroiddata/-/merge_requests/13713.
+  - `apksigcopier extract --v1-only=auto ffupdater-release.apk .`
 
 ```
 Changelogs:
