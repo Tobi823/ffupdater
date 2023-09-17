@@ -75,7 +75,7 @@ class RootInstaller(app: App) : AbstractAppInstaller(app) {
 
     private suspend fun installApkFileHelper(sessionId: Int, size: Int, filePath: String, fileName: String) {
         execute("""cat "$filePath" | pm install-write -S $size $sessionId "$fileName"""")
-        execute(""""pm install-commit $sessionId""")
+        execute("""pm install-commit $sessionId""")
     }
 
     private suspend fun execute(command: String): List<String> {
