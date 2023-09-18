@@ -329,7 +329,7 @@
     <string name="background__installation__when_screen_off__summary">Versuche Updates nur zu installieren, wenn der Gerätebildschirm ausgeschaltet ist.</string>
     <string name="background__installation__when_screen_off__title">Nur installieren, wenn der Bildschirm ausgeschaltet ist</string>
     <string name="mulch_wv__title">Mulch System WebView</string>
-    <string name="mulch_wv__description">Dies ist ein sicherheitsorientiertes und gehärtetes System WebView, das auf Chromium-Technologie basiert. Viele Anti-Funktionen wurden deaktiviert/entfernt und eine handvoll Sicherheitsfunktionen wurden dank der Patches des [https://github.com/GrapheneOS/Vanadium Vanadium-Projekts] aktiviert/hinzugefügt.</string>
+    <string name="mulch_wv__description">Dies ist ein sicherheitsorientiertes und gehärtetes System WebView, das auf Chromium-Technologie basiert. Viele Anti-Funktionen wurden deaktiviert/entfernt und eine handvoll Sicherheitsfunktionen wurden dank der Patches des Vanadium-Projekts aktiviert/hinzugefügt.</string>
     <string name="app_installer__failed_to_verify_signature_of_installed_app">Die installierte App konnte nicht überprüft werden.</string>
     <string name="app_installer__failed_to_validate_signature_of_download">Die Signatur des Downloads konnte nicht überprüft werden.</string>
 </resources>
