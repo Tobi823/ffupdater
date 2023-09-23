@@ -25,7 +25,7 @@
     <string name="crash_report__copy_crash_report_to_clipboard">Скопіюйте звіт про аварійне завершення роботи в буфер обміну</string>
     <string name="crash_report__explain_text__download_activity_fetching_url">Під час отримання URL -адреси завантаження сталася така помилка. Якщо ця помилка виникає часто, не соромтеся повідомляти про це на notabug.org, GitHub або GitLab. Не забудьте додати звіт про збій із буфера обміну та опис того, як ви відтворюєте цю помилку.</string>
     <string name="crash_report__explain_text__download_activity_update_check">Під час перевірки оновлень у головному вікні сталася така помилка. Якщо ця помилка виникає часто, не соромтеся повідомляти про це на notabug.org, GitHub або GitLab. Не забудьте додати звіт про збій із буфера обміну та опис того, як ви відтворюєте цю помилку.</string>
-    <string name="crash_report__explain_text__uncaught_throwable">На жаль, FFUpdater минулого разу вийшов з ладу і зареєстрував зазначену помилку. Будь ласка, повідомте про неї на notabug.org, GitHub або GitLab. Для цього скопіюйте звіт про збій із буфера обміну у ваше повідомлення та додайте опис того, як відтворити помилку.</string>
+    <string name="crash_report__explain_text__uncaught_throwable">На жаль, минулого разу FFUpdater аварійно завершив роботу та зареєстрував цю помилку. Надішліть звіт про збій на notabug.org, GitHub або GitLab.</string>
     <string name="crash_report__go_to_github">Перейдіть на GitHub</string>
     <string name="crash_report__go_to_gitlab">Перейдіть на GitLab</string>
     <string name="crash_report__got_to_notabug_org">Перейдіть на сторінку notabug.org</string>
