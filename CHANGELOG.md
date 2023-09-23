@@ -1,3 +1,8 @@
+# 2023-09-23 Release 78.1.7 (156)
+
+* Thanks for the Weblate contributions from: Eryk Michalak, nautilusx, Juraj Motuz and gallegonovato
+* Fix root installer (Tobi823/ffupdater#462)
+
 # 2023-09-09 Release 78.1.6 (155)
 
 * Thanks for the Weblate contributions from: gallegonovato, MkQtS, Retrial and Eryk Michalak
