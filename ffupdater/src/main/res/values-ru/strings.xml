@@ -281,4 +281,46 @@
     <string name="network__dns_provider__google">DNS через HTTPS: Google</string>
     <string name="installer__method__shizuku">Shizuku installer: Обновление приложений без диалогового окна подтверждения. Для этого требуется приложение Shizuku или модуль Sui Magisk.</string>
     <string name="orbot__description">Orbot - это бесплатное прокси-приложение, которое позволяет другим приложениям использовать интернет более безопасно. Orbot использует Tor для шифрования вашего интернет-трафика, а затем скрывает его, пропуская через ряд компьютеров по всему миру. Tor - это свободное программное обеспечение и открытая сеть, которая помогает защититься от формы сетевого наблюдения, угрожающей личной свободе и неприкосновенности частной жизни, конфиденциальным деловым операциям и отношениям, а также государственной безопасности, известной как анализ трафика.</string>
+    <string name="notification__network_error__title">Ошибка сети в фоновом задании</string>
+    <string name="notification__bachground_work__channel_description">Уведомления фоновой работы</string>
+    <string name="mulch_wv__description">Это ориентированная на безопасность и усиленная система WebView, основанная на технологии Chromium. Многие антифункции отключены/удалены, а несколько функций безопасности включены/добавлены благодаря патчам проекта Vanadium.</string>
+    <string name="duckduckgo_android__warning">- DuckDuckGo использует системный webview для отображения веб-сайтов.
+\n- Был спор о том, чтобы не блокировать все файлы cookie от Microsoft, - но это было исправлено.</string>
+    <string name="privacy_browser__description">Единственный способ предотвратить злоупотребление данными — это вообще предотвратить их сбор. Приватный браузер преследует две основные цели: минимизировать объём данных, отправляемых в Интернет, и минимизировать объём данных, хранящихся на устройстве.</string>
+    <string name="notification__network_error__text">Эта ошибка должна возникать только изредка. Однако, если это происходит часто, вам следует сообщить об этом. Нажмите здесь, чтобы просмотреть подробное сообщение об ошибке.</string>
+    <string name="app_installer__failed_to_verify_signature_of_installed_app">Не удалось проверить установленное приложение.</string>
+    <string name="duckduckgo_android__title">Приватный браузер DuckDuckGo</string>
+    <string name="notification__uncaught_exception__channel_name">Уведомления о сбоях</string>
+    <string name="privacy_browser__title">Privacy Browser</string>
+    <string name="notification__bachground_work__text">Это уведомление необходимо для надежного выполнения. В зависимости от ваших настроек обновления загружаются, загружаются и устанавливаются в фоновом режиме. Это уведомление можно скрыть или отключить, не останавливая фоновую работу. После завершения проверки уведомление также закроется.</string>
+    <string name="firefox_focus_beta__description">Используйте Firefox Focus для всего, что вы хотите хранить отдельно от основного браузера — чтобы все, кто вошёл, вышли и забыли об этом в мгновение ока. Никаких вкладок и лишней суеты. Заблокируйте онлайн-трекеры. Одно касание, и ваша история просмотров полностью удалена.
+\n
+\nFirefox Focus — идеальное средство для входа и выхода, поиска и уничтожения. У меня не ваше дело — веб-браузер.</string>
+    <string name="notification__uncaught_exception__title">Сбой FFUpdater</string>
+    <string name="notification__uncaught_exception__channel_description">Неожиданные ошибки, приводящие к сбою FFUpdater.</string>
+    <string name="background__installation__when_screen_off__summary">Старайтесь устанавливать обновления только при выключенном экране устройства.</string>
+    <string name="notification__bachground_work__title">Выполнение фоновой работы</string>
+    <string name="tor_browser_alpha__title">Tor Браузер Альфа</string>
+    <string name="notification__bachground_work__action_title">Отменить эту фоновую работу</string>
+    <string name="privacy_browser__warning">FFUpdater загружает файлы с серверов F-Droid и поэтому работает не быстрее.</string>
+    <string name="notification__install_error__generic_channel_name">Уведомление об ошибке обновления приложения</string>
+    <string name="firefox_focus_beta__title">Firefox Focus Бета</string>
+    <string name="notification__bg_update_check__unreliable_execution__channel_name">Фоновая проверка обновлений не выполнена</string>
+    <string name="main_activity__app_was_signed_by_different_certificate">Это приложение подписано другим сертификатом и не может быть обновлено с помощью FFUpdater.</string>
+    <string name="duckduckgo_android__description">Приложение DuckDuckGo обеспечивает наиболее полную защиту конфиденциальности в Интернете одним нажатием кнопки. Всего за одну загрузку вы получаете новый повседневный браузер, обеспечивающий надёжную защиту при поиске и просмотре страниц, а также доступ к средствам защиты от отслеживания получаемых вами электронных писем и используемых вами приложений. Многие из этих средств защиты по умолчанию не предлагаются в большинстве популярных браузеров.</string>
+    <string name="foreground__hide_apps_signed_by_different_certificate__title">Скрыть приложения, подписанные другим сертификатом.</string>
+    <string name="settings__network__trust_user_cas__title">Доверять добавленным пользователем центрам сертификации</string>
+    <string name="app_installer__failed_to_validate_signature_of_download">Не удалось проверить подпись загрузки.</string>
+    <string name="tor_browser_alpha__description">Tor Browser — единственный официальный мобильный браузер, поддерживаемый проектом Tor Project, разработчиком самого мощного в мире инструмента для обеспечения конфиденциальности и свободы в Интернете.
+\n
+\nБраузер Tor ВСЕГДА будет бесплатным, но это возможно благодаря пожертвованиям. Проект Tor — это некоммерческая организация 501©(3), базирующаяся в США. Пожалуйста, рассмотрите возможность внесения пожертвования сегодня. Каждый подарок имеет значение: https://donate.torproject.org.
+\n
+\nУзнайте, как сообщать об ошибках и оставлять отзывы на https://support.torproject.org/misc/bug-or-feedback/!</string>
+    <string name="notification__uncaught_exception__text">Нажмите, чтобы просмотреть отчёт об ошибке.</string>
+    <string name="generic_app_warning__beta_version">- Это приложение предназначено для разработчиков и тестировщиков. Оно может содержать различные ошибки, которые могут повлиять на вашу обычную работу с браузером.</string>
+    <string name="eol_reason__browser_no_longer_maintained">Браузер больше не поддерживается.</string>
+    <string name="notification__install_error__generic_channel_descr">Канал уведомлений о неудачных обновлениях приложений.</string>
+    <string name="mulch_wv__title">Системный WebView Mulch</string>
+    <string name="notification__bachground_work__channel_name">Уведомления о фоновой работе</string>
+    <string name="background__installation__when_screen_off__title">Устанавливать только при выключенном экране</string>
 </resources>
