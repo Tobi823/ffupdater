@@ -324,5 +324,5 @@
     <string name="mulch_wv__title">Mulch System WebView</string>
     <string name="app_installer__failed_to_verify_signature_of_installed_app">Selhala kontrola instalované aplikace.</string>
     <string name="app_installer__failed_to_validate_signature_of_download">Selhala kontrola podpisu stahovaní.</string>
-    <string name="mulch_wv__description">Tohle je prohlížeč zaměřený na ochranu soukromí založený na technologii Chromium. Mnoho antifunkcí je zakázáno/odstraněno a několik bezpečnostních funkcí je povoleno/přidáno díky záplatam z [https://github.com/GrapheneOS/Vanadium Vanadium projektu].</string>
+    <string name="mulch_wv__description">Tohle je prohlížeč zaměřený na ochranu soukromí založený na technologii Chromium. Mnoho antifunkcí je zakázáno/odstraněno a několik bezpečnostních funkcí je povoleno/přidáno díky záplatam z Vanadium projektu.</string>
 </resources>

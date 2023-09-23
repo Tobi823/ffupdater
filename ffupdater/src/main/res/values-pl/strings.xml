@@ -311,4 +311,12 @@
     <string name="notification__uncaught_exception__channel_name">Powiadomienie o awarii</string>
     <string name="add_app_activity__title_based_on_firefox">Oparte na Firefoxie</string>
     <string name="notification__uncaught_exception__title">Awaria FFUpdater</string>
+    <string name="add_app_activity__title_good_security_browsers">Przeglądarka dbająca o prywatność</string>
+    <string name="notification__uncaught_exception__channel_description">Niespodziewany błąd spowodował awarię FFUpdater.</string>
+    <string name="notification__bachground_work__title">Wykonywanie działań w tle</string>
+    <string name="notification__bachground_work__action_title">Anuluj to działanie w tle</string>
+    <string name="notification__bg_update_check__unreliable_execution__channel_name">Sprawdzanie aktualizacji w tle nie powiodło się</string>
+    <string name="mulch_wv__title">Mulch System WebView</string>
+    <string name="notification__bachground_work__channel_name">Powiadomienia o działaniu w tle</string>
+    <string name="background__installation__when_screen_off__title">Instaluj tylko wtedy gdy ekran jest wyłączony</string>
 </resources>
