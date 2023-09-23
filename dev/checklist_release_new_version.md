@@ -34,6 +34,7 @@ Changelogs:
 - upload signed APK to repomaker
 - test release with "Foxy Droid"
 - mark older changelogs in Weblate as read-only
+- use different branch when working on fdroiddata
 
 # delete all remote branches except master
 
