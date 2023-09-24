@@ -1,0 +1,5 @@
+* Ευχαριστούμε για τις συνεισφορές τους στο Weblate τους: Giovanni Donisi, 109247019824, Alexthegib, Retrial,
+   gallegonovato, nautilusx και Trond Kjetil Bremnes
+* Παράβλεψη σφάλματος κατά την εγκατάλειψη της συνεδρίας εγκατάστασης (Tobi823/ffupdater#474)
+* Διόρθωση του σφάλματος στο Android 6.0 κατά τη λήψη του Firefox Nightly (η μέθοδος MatchGroup.get(String) είναι μόνο
+   διαθέσιμο σε API 26 ή νεότερη έκδοση) (Tobi823/ffupdater#477)
