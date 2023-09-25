@@ -96,7 +96,7 @@
     <string name="notification__install_success__title">%1$s został zaktualizowany</string>
     <string name="app_installer__installed_app_has_invalid_signature">Zainstalowana aplikacja NIE została zweryfikowana</string>
     <string name="installed_application_is_verified">Zainstalowana aplikacja została zweryfikowana</string>
-    <string name="installed_version">Zainstalowane: %1$s</string>
+    <string name="installed_version">Zainstalowano: %1$s</string>
     <string name="lockwise__description">DOSTĘP DO HASEŁ DLA CIEBIE - TYLKO DLA CIEBIE
 \n
 \nBezpiecznie śledź swoje hasła do Firefoksa i uzyskuj do nich dostęp w dowolnym miejscu. Szybko otwórz dowolną stronę internetową z poziomu aplikacji, aby dostać się do swoich kont.</string>
