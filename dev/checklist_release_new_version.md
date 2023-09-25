@@ -11,6 +11,7 @@ git fetch --tags
 - fix and add unit tests
 - ,ff_weblate
 - build.gradle: versionCode + versionName
+- sync gradle
 - CHANGELOG.md: Weblate (https://hosted.weblate.org/projects/ffupdater/#reports) + changelog + supporter
 - copy changelog to `fastlane/metadata/android/en-US/changelogs/VERSION_CODE.txt`
 - commit changes:
