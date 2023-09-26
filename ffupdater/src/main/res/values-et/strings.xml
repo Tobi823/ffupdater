@@ -11,4 +11,9 @@
     <string name="available_version">Saadaval: %1$s</string>
     <string name="notification__error__title">Taustateenusena toimiv uuenduste kontroll ei õnnestunud</string>
     <string name="notification__error__text">Palun teata meile sellest veast. Veateate vaatamiseks klõpsa.</string>
+    <string name="app_installer__failed_to_verify_signature_of_installed_app">Paigaldatud rakenduse kontrollimine ei õnnestunud.</string>
+    <string name="app_installer__signature_of_download_is_invalid">Allalaaditud rakendus POLE verifitseeritud</string>
+    <string name="notification__bachground_work__action_title">Katkesta selle taustaprotsessi töö</string>
+    <string name="app_installer__installed_app_has_invalid_signature">Paigaldatud rakendus POLE verifitseeritud</string>
+    <string name="app_installer__failed_to_validate_signature_of_download">Allalaaditud faili allkirja kontrollimine ei õnnestunud.</string>
 </resources>
