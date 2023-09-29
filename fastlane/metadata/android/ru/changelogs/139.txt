@@ -1,0 +1,3 @@
+* Спасибо авторам Weblate: Kazushi Hayama, nautilusx, gallegonovato и MkQtS
+* Бета-версии и выпуски Firefox будут загружены с GitHub
+* Киви теперь поддерживается

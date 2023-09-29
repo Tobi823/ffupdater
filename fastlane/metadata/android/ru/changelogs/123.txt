@@ -1,0 +1,2 @@
+* Спасибо авторам Weblate: Giovanni Donisi, Retrial, gallegonovato, Jacek, Oğuz Ersen, MkQtS
+* Исправлен сбой, когда версия установленного браузера Tor отличается от ожидаемой

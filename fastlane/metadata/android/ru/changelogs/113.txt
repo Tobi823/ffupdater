@@ -1,0 +1,6 @@
+* Спасибо авторам Weblate: John doe, Oğuz Ersen, atilluF, Vitor Henrique, 109247019824, nautilusx, Juraj Motuz, MkQtS, Giovanni Donisi, Artem и Eduardo Malaspina
+* Добавить Chromium, Orbot, Tor,
+* Улучшен пользовательский интерфейс для добавления новых приложений
+* Не доверяться CA пользователя по умолчанию (это можно отключить)
+* Исправление ошибок
+* Очистка и рефакторинг кода

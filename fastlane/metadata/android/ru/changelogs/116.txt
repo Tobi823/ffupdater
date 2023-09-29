@@ -1,0 +1,3 @@
+* Спасибо авторам Weblate:  Jacek, nautilusx, 109247019824, gallegonovato, Juraj Motuz, Oğuz
+  Ersen и atilluF
+* Исправлено проверку обновлений Kiwi

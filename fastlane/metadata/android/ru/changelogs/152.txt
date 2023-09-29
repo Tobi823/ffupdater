@@ -1,0 +1,5 @@
+* Спасибо авторам Weblate: Giovanni Donisi, 109247019824, Alexthegib, Retrial,
+  gallegonovato, nautilusx и Trond Kjetil Bremnes
+* Игнорируется ошибку при прекращении сеанса установки (Tobi823/ffupdater#474)
+* Исправлен сбой на Android 6.0 при загрузке Firefox Nightly (метод MatchGroup.get(String) доступен только
+   доступно по API 26 или выше) (Tobi823/ffupdater#477)

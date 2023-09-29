@@ -1,0 +1,2 @@
+* Спасибо авторам Weblate: gallegonovato, nautilusx, Juraj Motuz, Retrial и atilluF
+* Исправлена ошибка «Фоновая проверка обновлений не удалась» (Tobi823/ffupdater#452)

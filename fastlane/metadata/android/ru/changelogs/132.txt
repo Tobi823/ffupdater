@@ -1,0 +1,2 @@
+* Спасибо авторам Weblate: nautilusx, gallegonovato, Juraj Motuz, MkQtS, Retrial и gnu-ewm
+* Исправление root-установщика

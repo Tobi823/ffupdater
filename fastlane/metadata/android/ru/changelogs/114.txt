@@ -1,0 +1,7 @@
+* Спасибо авторам Weblate:  gallegonovato, atilluF, WhiredPlanck, Oğuz Ersen, Juraj Motuz,
+  109247019824, ppvnf, nautilusx, Giovanni Donisi, Eduardo Malaspina
+* Если фоновое обновление не удалось (из-за отсутствия взаимодействия с пользователем), будет показываться 
+уведомление «доступно обновление»
+* Исправлен сбой при проверке обновлений Mull (из F-Droid).
+* Добавлен Fennec из F-Droid
+* Добавлен Mulch

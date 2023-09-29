@@ -1,0 +1,2 @@
+* Спасибо авторам Weblate: Dan, nautilusx, Retrial, gallegonovato, MkQtS и Oğuz Ersen
+* Исправлено ошибку root-установщика в Firefox Nightly

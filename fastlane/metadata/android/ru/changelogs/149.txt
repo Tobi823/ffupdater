@@ -1,0 +1,9 @@
+* Спасибо авторам Weblate: Tangy Wrecker, Retrial, Alexthegib, gallegonovato, Juraj Motuz,
+  nautilusx, 109247019824, Oğuz Ersen и atilluF
+* Добавлена автоматическая проверка, регулярно ли выполняется фоновая проверка обновлений
+* Исправлено «InvalidForegroundServiceTypeException» (Tobi823/ffupdater#450)
+* Улучшена обработка ошибок
+* Фикс "Задание отменено"; ошибка (Tobi832/ffupdater#442)
+* Добавлена поддержка Mulch System WebView.
+* Поддержка нового установщика Shizuku (версия 13) (Tobi823/ffupdater#448)
+* Улучшение ведения журнала, очистка кода, улучшение сценария сборки

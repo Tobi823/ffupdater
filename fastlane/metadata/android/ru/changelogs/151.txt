@@ -1,0 +1,3 @@
+* Спасибо авторам Weblate: nautilusx, Giovanni Donisi, Alexthegib, Retrial, gallegonovato,
+  109247019824 и Kazushi Hayama
+* Оперативное исправление: исправление неработающей проверки фоновых обновлений

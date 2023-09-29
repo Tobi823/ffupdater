@@ -1,0 +1,3 @@
+* Спасибо авторам Weblate: Juraj Motuz, Retrial, gallegonovato и MkQtS
+* исправлена ошибка загрузки Tor Browser/Tor Browser Alpha (Tobi823/ffupdater#336)
+* реорганизовано DownloadActivity.kt, чтобы сделать его более надежным
