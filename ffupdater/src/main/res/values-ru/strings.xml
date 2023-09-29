@@ -7,7 +7,7 @@
     <string name="app_warning_dialog__title">Предупреждение</string>
     <string name="application_installation_was_not_successful">Не удалось установить приложение</string>
     <string name="application_successfully_installed">Приложение успешно установлено</string>
-    <string name="available_version">Доступен: %1$s</string>
+    <string name="available_version">Доступно: %1$s</string>
     <string name="notification__error__text">Пожалуйста, сообщите об этой ошибке. Нажмите, чтобы просмотреть отчет об ошибке.</string>
     <string name="notification__error__title">Фоновая проверка обновлений не удалась</string>
     <string name="brave__description">Веб-браузер Brave — это ваш личный бесплатный и безопасный браузер, блокирующий постороннюю рекламу. \n\nВеб-браузер Brave — это быстрое и безопасное приложение для Android со встроенным блокировщиком сторонней рекламы. Brave — это молниеносный, безопасный и приватный браузер. Он защищает вас от отслеживания рекламой, заражения вредоносными программами и всплывающих окон.</string>
@@ -96,7 +96,7 @@
     <string name="notification__install_success__title">%1$s был обновлен</string>
     <string name="app_installer__installed_app_has_invalid_signature">Установленное приложение НЕ проверено</string>
     <string name="installed_application_is_verified">Установленное приложение проверено</string>
-    <string name="installed_version">Установлен: %1$s</string>
+    <string name="installed_version">Установлено: %1$s</string>
     <string name="kiwi__description">Kiwi Browser сделан, чтобы обозревать интернет, читать новости, смотреть видео и слушать музыку без раздражающих элементов.</string>
     <string name="kiwi__title">Kiwi Browser Next</string>
     <string name="kiwi__warning">- Kiwi использует техническую основу Google Chrome и тем самым косвенно поддерживает монопольное положение движка рендеринга Chromium
