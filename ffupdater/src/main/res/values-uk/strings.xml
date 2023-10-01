@@ -233,7 +233,7 @@
     <string name="network__dns_provider__quad9">DNS через HTTPS: Quad9</string>
     <string name="network__dns_provider__digital_society_ch">DNS через HTTPS: Digital Society Switzerland</string>
     <string name="network__dns_provider__no">Без DNS (тільки для тестування)</string>
-    <string name="installer__method__shizuku">Встановлювач Shizuku: оновлюйте застосунки без діалогового вікна підтвердження. Для цього потрібен застосунок Shizuku або Magisk-модуль Sui.</string>
+    <string name="installer__method__shizuku">Shizuku installer: оновлюйте застосунки без діалогового вікна підтвердження. Для цього потрібен застосунок Shizuku або Magisk-модуль Sui.</string>
     <string name="add_app_activity__add_new_application">Додати новий застосунок</string>
     <string name="tor_browser_alpha__title">Tor Browser Alpha</string>
     <string name="foreground__hide_apps_signed_by_different_certificate__title">Приховати застосунки, підписані іншим сертифікатом.</string>
@@ -295,4 +295,5 @@
 \nОбмеження: якщо ви змінюєте «Налаштування DNS» у налаштуваннях на сервер DNS через HTTPS, вам потрібно ввести домен проксі-сервера. IP-адреси не працюватимуть.</string>
     <string name="orbot__description">Orbot — це безкоштовна проксі-застосунок, яка дозволяє іншим застосункам безпечніше користуватися Інтернетом. Orbot використовує Tor для шифрування вашого інтернет-трафіку, а потім приховує його, переходячи через ряд комп’ютерів по всьому світу. Tor — це безкоштовне програмне забезпечення та відкрита мережа, яка допомагає вам захиститися від форми мережевого стеження, яка загрожує особистій свободі та конфіденційності, конфіденційній діловій діяльності та стосункам, а також державній безпеці, відомій як аналіз трафіку.</string>
     <string name="installer__method__root_not_granted">Root-права не надані!</string>
+    <string name="installer__method__title">Метод встановлення</string>
 </resources>
