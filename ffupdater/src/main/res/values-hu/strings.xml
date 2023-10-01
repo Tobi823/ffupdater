@@ -53,4 +53,10 @@
     <string name="crash_report__explain_text__download_activity_fetching_url">Ez a hiba a letöltési metaadatok lekérdezésekor lépett fel. Ha ez a hiba gyakran fordul elő, küldje el a hibajelentést a notabug.org, a GitHub vagy a GitLab oldalra.</string>
     <string name="crash_report__explain_text__download_activity_install_file">Ez a hiba a telepítés során lépett fel. Ha ez a hiba gyakran előfordul, küldje el a hibajelentést a notabug.org, a GitHub vagy a GitLab oldalra.</string>
     <string name="crash_report__explain_text__download_activity_update_check">Ez a hiba a fő nézetben a frissítések ellenőrzése során jelentkezett. Ha ez a hiba gyakran fordul elő, küldje el a hibajelentést a notabug.org, a GitHub vagy a GitLab oldalra.</string>
+    <string name="notification__error__channel_name">Háttérbeli hibák</string>
+    <string name="firefox_beta__description">A Firefox Böngésző Androidra automatikusan privát és hihetetlenül gyors. Követők ezrei követik Önt naponta, információt gyűjtenek arról, hol jár online, és lelassítják. A Firefox több, mint 2000 ilyen követőt blokkol alapból, valamint elérhetők reklámblokkoló kiegészítők, ha még személyre szabottabb böngészőt szeretne. A Firefoxszal megkapja a megérdemelt biztonságot és a szükséges sebességet egy privát mobilböngészőben.</string>
+    <string name="firefox_focus__title">Firefox Focus</string>
+    <string name="firefox_beta__title">Firefox Androidra Béta</string>
+    <string name="firefox_beta__warning">- Ezt az alkalmazást feljesztőknek és tesztelőknek tervezték. Különböző hibákat tartalmazhat, amik befolyásolhatják a böngészőben végzett mindennapi munkát.</string>
+    <string name="firefox_focus__description">Ez a Firefox böngésző egy változata, ami a magánélet védelmének növelését célozza meg.</string>
 </resources>
