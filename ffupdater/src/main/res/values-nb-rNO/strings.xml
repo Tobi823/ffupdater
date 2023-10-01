@@ -143,4 +143,5 @@
     <string name="update_notification__text">Klikk for å installere</string>
     <string name="update_notification__title">Ny versjon av %1$s tilgjengelig</string>
     <string name="vivaldi__title">Vivaldi-nettleseren</string>
+    <string name="app_card__app_warning_button_description">Vis advarsler om denne applikasjonen</string>
 </resources>
