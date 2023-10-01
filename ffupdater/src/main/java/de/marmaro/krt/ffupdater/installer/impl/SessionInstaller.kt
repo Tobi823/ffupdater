@@ -18,7 +18,9 @@ import android.content.pm.PackageInstaller.Session
 import android.content.pm.PackageInstaller.SessionParams
 import android.content.pm.PackageInstaller.SessionParams.MODE_FULL_INSTALL
 import android.content.pm.PackageInstaller.SessionParams.USER_ACTION_NOT_REQUIRED
+import android.content.pm.PackageInstallerHidden
 import android.content.pm.PackageManager
+import android.content.pm.PackageManagerHidden
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import androidx.annotation.Keep
@@ -31,6 +33,7 @@ import de.marmaro.krt.ffupdater.installer.error.session.GenericSessionResultDeco
 import de.marmaro.krt.ffupdater.installer.error.session.GenericSessionResultDecoder.getTranslatedErrorMessage
 import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
 import de.marmaro.krt.ffupdater.installer.exceptions.UserInteractionIsRequiredException
+import dev.rikka.tools.refine.Refine
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -128,9 +131,15 @@ open class SessionInstaller(app: App, private val foreground: Boolean) : Abstrac
         if (DeviceSdkTester.supportsAndroid8Oreo26()) params.setInstallReason(PackageManager.INSTALL_REASON_USER)
         if (DeviceSdkTester.supportsAndroid12S31()) params.setRequireUserAction(USER_ACTION_NOT_REQUIRED)
         if (DeviceSdkTester.supportsAndroid14U34()) params.setDontKillApp(true)
+        allowAppReplacement(params)
         return params
     }
 
+    private fun allowAppReplacement(params: SessionParams) {
+        Refine.unsafeCast<PackageInstallerHidden.SessionParamsHidden>(params).installFlags =
+            Refine.unsafeCast<PackageInstallerHidden.SessionParamsHidden>(params).installFlags or
+                    PackageManagerHidden.INSTALL_REPLACE_EXISTING
+    }
 
     private suspend fun copyApkToSession(session: Session, file: File) {
         val name = "${app.findImpl().packageName}_${System.currentTimeMillis()}"
