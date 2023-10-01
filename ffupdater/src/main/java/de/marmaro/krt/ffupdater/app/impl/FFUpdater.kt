@@ -27,10 +27,11 @@ object FFUpdater : AppBase() {
     override val supportedAbis = ALL_ABIS
 
     @Suppress("SpellCheckingInspection")
-    override val signatureHash = "f4e642bb85cbbcfd7302b2cbcbd346993a41067c27d995df492c9d0d38747e62"
+    override val signatureHash = "f4e642bb85cbbcfd7302b2cbcbd346993a41067c27d995df492c9d0d38747e63"
     override val installableByUser = false
     override val projectPage = "https://github.com/Tobi823/ffupdater"
     override val displayCategory = listOf(OTHER)
+    override val differentSignatureMessage = R.string.ffupdater__different_signature_message
 
     @MainThread
     @Throws(NetworkException::class)

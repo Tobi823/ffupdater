@@ -22,6 +22,7 @@ interface AppAttributes {
     val eolReason: Int?
     val displayCategory: List<DisplayCategory>
     val fileNameInZipArchive: String?
+    val differentSignatureMessage: Int
 
     fun isEol() = (eolReason != null)
 }

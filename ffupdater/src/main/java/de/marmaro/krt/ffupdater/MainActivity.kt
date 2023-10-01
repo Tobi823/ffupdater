@@ -33,9 +33,9 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
 import com.google.android.material.snackbar.Snackbar
 import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
 import de.marmaro.krt.ffupdater.R.string.crash_report__explain_text__download_activity_update_check
-import de.marmaro.krt.ffupdater.R.string.main_activity__app_was_signed_by_different_certificate
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.InstalledAppStatus
+import de.marmaro.krt.ffupdater.app.impl.AppBase
 import de.marmaro.krt.ffupdater.background.BackgroundWork
 import de.marmaro.krt.ffupdater.crash.CrashReportActivity
 import de.marmaro.krt.ffupdater.crash.LogReader
@@ -52,6 +52,7 @@ import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.notification.NotificationBuilder
 import de.marmaro.krt.ffupdater.settings.DataStoreHelper
 import de.marmaro.krt.ffupdater.settings.ForegroundSettings
+import de.marmaro.krt.ffupdater.settings.NoUnmeteredNetworkException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.time.DateTimeException
@@ -173,7 +174,11 @@ class MainActivity : AppCompatActivity() {
         if (!ForegroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
             setLoadAnimationState(false)
             apps.forEach {
-                recycleViewAdapter.notifyErrorForApp(it, R.string.main_activity__no_unmetered_network, null)
+                recycleViewAdapter.notifyErrorForApp(
+                    it,
+                    R.string.main_activity__no_unmetered_network,
+                    NoUnmeteredNetworkException("Unmetered network is necessary but not available.")
+                )
             }
             showBriefMessage(R.string.main_activity__no_unmetered_network)
             return
@@ -274,7 +279,7 @@ class MainActivity : AppCompatActivity() {
         RecyclerView.Adapter<InstalledAppsAdapter.AppHolder>() {
 
         @Keep
-        private data class ExceptionWrapper(val message: Int, val exception: Exception?)
+        private data class ExceptionWrapper(val message: Int, val exception: Exception)
 
         private var elements = listOf<App>()
 
@@ -309,7 +314,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         @UiThread
-        fun notifyErrorForApp(app: App, message: Int, exception: Exception?) {
+        fun notifyErrorForApp(app: App, message: Int, exception: Exception) {
             errors[app] = ExceptionWrapper(message, exception)
 
             val index = elements.indexOf(app)
@@ -352,19 +357,13 @@ class MainActivity : AppCompatActivity() {
                 val metadata = appAndUpdateStatus.getOrDefault(app, null)
                 val error = errors[app]
                 val fragmentManager = activity.supportFragmentManager
-                val hasDifferentSignature = appsWithWrongFingerprint.contains(app)
-                val hasError = (error != null)
                 val hideWarningButtons = ForegroundSettings.isHideWarningButtonForInstalledApps
                 val appHasWarning = appImpl.installationWarning == null
 
                 view.title.setText(appImpl.title)
                 view.icon.setImageResource(appImpl.icon)
 
-                when {
-                    hasDifferentSignature -> showDifferentAppSignature(view)
-                    hasError -> showError(view, app, error!!)
-                    else -> showInstalledAndAvailableVersions(view, app, metadata)
-                }
+                showAppInfo(view, app, error, metadata)
 
                 view.downloadButton.setOnClickListener {
                     activity.lifecycleScope.launch(Dispatchers.Main) {
@@ -386,43 +385,57 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        private fun showDifferentAppSignature(view: AppHolder) {
-            view.installedVersion.text = activity.getString(main_activity__app_was_signed_by_different_certificate)
-            view.availableVersion.text = ""
-            view.downloadButton.visibility = View.GONE
-            view.availableVersion.visibility = View.GONE
-            view.eolReason.visibility = View.GONE
-        }
-
-        private suspend fun showError(view: AppHolder, app: App, error: ExceptionWrapper) {
-            view.installedVersion.visibility = View.VISIBLE
-            view.installedVersion.text = app.findImpl().getDisplayInstalledVersion(activity)
-            view.availableVersion.visibility = View.VISIBLE
-            view.availableVersion.setText(error.message)
-            error.exception?.let { showException(view, it) }
-            view.downloadButton.setImageResource(R.drawable.ic_file_download_grey)
-            view.eolReason.visibility = if (app.findImpl().isEol()) View.VISIBLE else View.GONE
-            app.findImpl().eolReason?.let { view.eolReason.setText(it) }
-        }
-
-        private fun showException(view: AppHolder, exception: Exception) {
-            val throwableAndLogs = ThrowableAndLogs(exception, LogReader.readLogs())
-            view.availableVersion.setOnClickListener {
-                val description = activity.getString(crash_report__explain_text__download_activity_update_check)
-                val context = activity.applicationContext
-                val intent = CrashReportActivity.createIntent(context, throwableAndLogs, description)
-                activity.startActivity(intent)
+        private suspend fun showAppInfo(
+            view: AppHolder,
+            app: App,
+            error: ExceptionWrapper?,
+            metadata: InstalledAppStatus?,
+        ) {
+            when {
+                appsWithWrongFingerprint.contains(app) -> showAppInfoForDifferentSignature(view, app)
+                error != null -> showAppInfoForError(view, app, error)
+                else -> showAppInfo(view, app, metadata)
             }
         }
 
-        private suspend fun showInstalledAndAvailableVersions(
+        private fun showAppInfoForDifferentSignature(view: AppHolder, app: App) {
+            showViews(view.installedVersion)
+            hideViews(view.availableVersion, view.downloadButton, view.eolReason)
+            view.installedVersion.text = activity.getString(app.findImpl().differentSignatureMessage)
+        }
+
+        private fun hideViews(vararg elements: View) {
+            elements.forEach { it.visibility = View.GONE }
+        }
+
+        private fun showViews(vararg elements: View) {
+            elements.forEach { it.visibility = View.VISIBLE }
+        }
+
+        private suspend fun showAppInfoForError(view: AppHolder, app: App, error: ExceptionWrapper) {
+            showViews(view.installedVersion, view.availableVersion, view.downloadButton)
+            val findImpl = app.findImpl()
+            view.installedVersion.text = findImpl.getDisplayInstalledVersion(activity)
+            view.availableVersion.setText(error.message)
+            view.availableVersion.setOnClickListener {
+                val description = activity.getString(crash_report__explain_text__download_activity_update_check)
+                val context = activity.applicationContext
+                val throwableAndLogs = ThrowableAndLogs(error.exception, LogReader.readLogs())
+                val intent = CrashReportActivity.createIntent(context, throwableAndLogs, description)
+                activity.startActivity(intent)
+            }
+            view.downloadButton.setImageResource(R.drawable.ic_file_download_grey)
+            showOrHideEolReason(findImpl, view)
+        }
+
+        private suspend fun showAppInfo(
             view: AppHolder,
             app: App,
             metadata: InstalledAppStatus?,
         ) {
-            view.installedVersion.visibility = View.VISIBLE
-            view.installedVersion.text = app.findImpl().getDisplayInstalledVersion(activity)
-            view.availableVersion.visibility = View.VISIBLE
+            showViews(view.installedVersion, view.availableVersion, view.downloadButton)
+            val findImpl = app.findImpl()
+            view.installedVersion.text = findImpl.getDisplayInstalledVersion(activity)
             view.availableVersion.text = getDisplayAvailableVersionWithAge(metadata)
             view.downloadButton.setImageResource(
                 if (metadata?.isUpdateAvailable == true) {
@@ -431,10 +444,17 @@ class MainActivity : AppCompatActivity() {
                     R.drawable.ic_file_download_grey
                 }
             )
-            view.eolReason.visibility = if (app.findImpl().isEol()) View.VISIBLE else View.GONE
-            app.findImpl().eolReason?.let { view.eolReason.setText(it) }
+            showOrHideEolReason(findImpl, view)
         }
 
+        private fun showOrHideEolReason(findImpl: AppBase, view: AppHolder) {
+            if (findImpl.isEol()) {
+                showViews(view.eolReason)
+                view.eolReason.setText(findImpl.eolReason!!)
+            } else {
+                hideViews(view.eolReason)
+            }
+        }
 
         private fun getDisplayAvailableVersionWithAge(metadata: InstalledAppStatus?): String {
             val version = metadata?.displayVersion ?: "..."
