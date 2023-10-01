@@ -298,7 +298,7 @@
 \nFirefox Focus — идеальное средство для входа и выхода, поиска и уничтожения. У меня не ваше дело — веб-браузер.</string>
     <string name="notification__uncaught_exception__title">Сбой FFUpdater</string>
     <string name="notification__uncaught_exception__channel_description">Неожиданные ошибки, приводящие к сбою FFUpdater.</string>
-    <string name="background__installation__when_screen_off__summary">Старайтесь устанавливать обновления только при выключенном экране устройства.</string>
+    <string name="background__installation__when_screen_off__summary">Установка обновлений только при выключенном экране.</string>
     <string name="notification__bachground_work__title">Выполнение фоновой работы</string>
     <string name="tor_browser_alpha__title">Tor Браузер Альфа</string>
     <string name="notification__bachground_work__action_title">Отменить эту фоновую работу</string>
@@ -323,4 +323,6 @@
     <string name="mulch_wv__title">Системный WebView Mulch</string>
     <string name="notification__bachground_work__channel_name">Уведомления о фоновой работе</string>
     <string name="background__installation__when_screen_off__title">Устанавливать только при выключенном экране</string>
+    <string name="installer__method__title">Метод установки</string>
+    <string name="ffupdater__different_signature_message">Эта версия FFUpdater подписана F-Droid, поэтому только F-Droid может распространять обновления. Чтобы получать обновления быстрее, удалите FFUpdater и установите версию, подписанную разработчиком. В этой версии FFUpdater может обновляться самостоятельно, не дожидаясь F-Droid.</string>
 </resources>
