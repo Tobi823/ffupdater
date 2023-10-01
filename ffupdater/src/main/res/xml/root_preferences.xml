@@ -161,7 +161,7 @@
             app:entryValues="@array/installer__method__values"
             app:key="installer__method"
             app:singleLineTitle="false"
-            app:title="Installer method"
+            app:title="@string/installer__method__title"
             app:useSimpleSummaryProvider="true" />
 
     </de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory>

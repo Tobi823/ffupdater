@@ -297,4 +297,5 @@
     <string name="app_installer__failed_to_validate_signature_of_download">Failed to validate the signature of the download.</string>
     <string name="app_installer__failed_to_verify_signature_of_installed_app">Failed to check installed app.</string>
     <string name="ffupdater__different_signature_message">This version of FFUpdater has been signed by F-Droid, so only F-Droid can distribute updates. To get updates faster, uninstall FFUpdater and install the developer signed version. With this version FFUpdater can update itself without waiting for F-Droid.</string>
+    <string name="installer__method__title">Installer method</string>
 </resources>
