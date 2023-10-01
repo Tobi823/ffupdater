@@ -89,4 +89,8 @@
     <string name="settings__background_category__title">Tausta</string>
     <string name="request_installation_permission_dialog__title">Asentajan lupa</string>
     <string name="request_installation_permission_dialog__grant_permission">Salli lupa</string>
+    <string name="crash_report__go_to_github">Mene GitHubiin</string>
+    <string name="crash_report__go_to_gitlab">Mene GitLabiin</string>
+    <string name="bromite__title">Bromite</string>
+    <string name="brave_beta__title">Brave Selain (Beta)</string>
 </resources>
