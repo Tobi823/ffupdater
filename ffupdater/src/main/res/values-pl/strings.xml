@@ -12,13 +12,9 @@
     <string name="brave__description">Przeglądaj internet prywatnie, za darmo! Brave to Twoja szybka, darmowa i bezpieczna przeglądarka internetowa z blokadą reklam i wyskakujących okienek. Prywatne przeglądanie i wyszukiwanie w Internecie bez śledzenia przez reklamodawców, złośliwego oprogramowania i wyskakujących okienek.</string>
     <string name="brave__title">Brave</string>
     <string name="brave__warning">- Brave wykorzystuje techniczne fundamenty Google Chrome, a więc pośrednio wspiera monopolistyczną pozycję silnika renderującego Chromium. \n- Ze względu na Basic Attention Token BAT na blockchainie Ethereum projekt ten ma powiązania z kryptowalutami. Blockchainy mają wiele problemów i moim zdaniem należy ich unikać.</string>
-    <string name="brave_beta__description">Witamy w programie Brave Beta dla systemu Android!
-\nWypróbuj najnowsze funkcje i przekaż wczesne opinie: https://brave.com/msupport
-\nMożesz zainstalować Brave Beta równolegle z obecną wersją Brave na Androida.</string>
+    <string name="brave_beta__description">Witamy w programie Brave Beta dla systemu Android! \nWypróbuj najnowsze funkcje i przekaż wczesne opinie: https://brave.com/msupport \nMożesz zainstalować Brave Beta równolegle z obecną wersją Brave na Androida.</string>
     <string name="brave_beta__title">Brave (Beta)</string>
-    <string name="brave_nightly__description">Witamy w Brave Nightly (Developer) dla systemu Android!
-\nWypróbuj najnowsze funkcje i przekaż wczesną opinię: https://brave.com/msupport
-\nMożesz zainstalować Brave Nightly obok swojej obecnej wersji Brave dla Androida.</string>
+    <string name="brave_nightly__description">Witamy w Brave Nightly (Developer) dla systemu Android! \nWypróbuj najnowsze funkcje i przekaż wczesną opinię: https://brave.com/msupport \nMożesz zainstalować Brave Nightly obok swojej obecnej wersji Brave dla Androida.</string>
     <string name="brave_nightly__title">Brave (Nightly)</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Skopiuj raport o błędzie do schowka</string>
     <string name="crash_report__explain_text__download_activity_fetching_url">Ten błąd wystąpił podczas pobierania adresu URL pobierania. Jeśli ten błąd pojawia się często, zapraszamy do zgłoszenia go na notabug.org, GitHub lub GitLab.</string>
