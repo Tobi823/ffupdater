@@ -319,4 +319,7 @@
     <string name="mulch_wv__title">Mulch System WebView</string>
     <string name="notification__bachground_work__channel_name">Powiadomienia o działaniu w tle</string>
     <string name="background__installation__when_screen_off__title">Instaluj tylko wtedy gdy ekran jest wyłączony</string>
+    <string name="notification__bg_update_check__unreliable_execution__channel_description">Ostrzeżenie o niepowodzeniu sprawdzania aktualizacji w tle</string>
+    <string name="background__installation__when_screen_off__summary">Próbować instalować aktualizacje tylko wtedy, gdy ekran urządzenia jest wyłączony.</string>
+    <string name="notification__bg_update_check__unreliable_execution__title">Zawodzi sprawdzanie aktualizacji w tle</string>
 </resources>
