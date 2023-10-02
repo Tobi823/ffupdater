@@ -331,4 +331,6 @@
     <string name="app_installer__failed_to_verify_signature_of_installed_app">Инсталираното приложение НЕ е проверено.</string>
     <string name="app_installer__failed_to_validate_signature_of_download">Неуспешна проверка на подписа на изтегления файл.</string>
     <string name="mulch_wv__description">Това е ориентиран към сигурността и подсилен системен WebView, на технологичната основа на Хромиум. Много от нежеланите възможности са изключени/премахнати, а няколко възможности за сигурност са включени/добавени благодарение на кръпки от проекта Ванадий.</string>
+    <string name="installer__method__title">Метод на инсталиране</string>
+    <string name="ffupdater__different_signature_message">Това издание на FFUpdater е подписано от F-Droid и за това само F-Droid може да разпространява обновявания. За да получавате по-бързо обновяванията, премахнете FFUpdarer и инсталирайте изданието, подписано от автора. То се обновява само без да чака F-Droid.</string>
 </resources>
