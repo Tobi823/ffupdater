@@ -1,0 +1,2 @@
+* Vielen Dank für die Weblate-Beiträge von: gallegonovato, MkQtS, Retrial und Eryk Michalak
+ * Absturz mit Fennec behoben (Tobi823/ffupdater#491)

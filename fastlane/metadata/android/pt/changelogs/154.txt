@@ -1,0 +1,2 @@
+* Correção do Brave, Brave Beta, Brave Nightly para telemóveis mais recentes (usar Bravearm64Universal.apk em vez de BraveMonoarm64.ap) (Tobi823/ffupdater#475)
+* Remover a versão obsoleta do Android 6 do Brave, Brave Beta, Brave Nightly

@@ -1,0 +1,2 @@
+* Obrigado pelas contribuições do Weblate de: gallegonovato, Alexthegib, 109247019824 e Giovanni Donisi
+* Correção do Navegador Tor Alpha (Tobi823/ffupdater#485)

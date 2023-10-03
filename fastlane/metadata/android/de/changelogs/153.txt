@@ -1,0 +1,2 @@
+* Vielen Dank für die Beiträge von: Gallegonovato, Alexthegib, 109247019824 und Giovanni Donisi
+ * Tor Browser Alpha behebung (Tobi823/ffupdater#485)

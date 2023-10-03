@@ -89,4 +89,30 @@
     <string name="settings__background_category__title">Tausta</string>
     <string name="request_installation_permission_dialog__title">Asentajan lupa</string>
     <string name="request_installation_permission_dialog__grant_permission">Salli lupa</string>
+    <string name="crash_report__go_to_github">Mene GitHubiin</string>
+    <string name="crash_report__go_to_gitlab">Mene GitLabiin</string>
+    <string name="bromite__title">Bromite</string>
+    <string name="brave_beta__title">Brave Selain (Beta)</string>
+    <string name="running_downloads_dialog__message">Sovellus on lataamassa päivityksiä taustalla. Haluatko aloittaa uuden latauksen joka voi kestää pidempään\?</string>
+    <string name="app_installer__signature_of_download_is_invalid">Ladattua sovellusta EI ole varmistettu</string>
+    <string name="download_activity__delete_cache_button_text">tyhjennä välimuisti</string>
+    <string name="notification__download_error__title">Päivityksen lataus taustalla epäonnistui</string>
+    <string name="notification__download_running__title">Ladataan sovelluksen päivityksiä</string>
+    <string name="dialog_button__do_not_install">Ei, älä asenna sitä</string>
+    <string name="notification__download_running__channel_name">Ilmoitus latauksista taustalla</string>
+    <string name="dialog_button__yes">Kyllä</string>
+    <string name="install_same_version_dialog__message">Sovelluksen viimeisin versio on jo asennettu. Haluatko ladata ja asentaa viimeisimmän version uudestaan\?</string>
+    <string name="firefox_release__title">Firefox Selain</string>
+    <string name="app_card__information_about_the_app">Tietoa sovelluksesta</string>
+    <string name="settings__b_f__delete_cache_if_install_failed">Poista ladattu päivitys, jos asennus epäonnistuu.</string>
+    <string name="download_activity__download_app_with_status">Ladataan sovellusta</string>
+    <string name="app_card__download_the_app">lataa sovellus</string>
+    <string name="vivaldi__warning">- Vivaldi on osittain avointa lähdekoodia.
+\n- Se käyttää myös Google Chromen teknistä perustaa ja tukee täten epäsuorasti Chromium-renderöintimoottorin monopoliasemaa.</string>
+    <string name="settings__b_f__delete_cache_if_install_successful">Poista ladattu päivitys, jos asennus onnistuu.</string>
+    <string name="update_notification__title">%1$s päivitys on saatavilla</string>
+    <string name="update_notification__text">Klikkaa asentaaksesi päivitys</string>
+    <string name="mull__title">Mull Selain</string>
+    <string name="vivaldi__title">Vivaldi Selain</string>
+    <string name="update_interval__8h">8 tuntia</string>
 </resources>

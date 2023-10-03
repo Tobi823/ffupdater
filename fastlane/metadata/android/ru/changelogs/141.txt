@@ -1,0 +1,3 @@
+* Спасибо авторам Weblate: SiniKraft, Kazushi Hayama, 109247019824, Retrial, Alexthegib,
+  Meiru, Juraj Motuz, atilluF, gallegonovato, nautilusx, MkQtS, Eryk Michalak, Ettore Atalan и Oğuz Ersen
+* Исправлена ошибка при загрузке Firefox Nightly (Tobi823/ffupdater#428)

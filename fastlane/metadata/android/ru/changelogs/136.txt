@@ -1,0 +1,6 @@
+* Спасибо авторам Weblate: gallegonovato, Juraj Motuz, Retrial, MkQtS, 109247019824,
+  Giovanni Donisi, gnu-ewm, nautilusx, Oğuz Ersen и meep
+* Не загружается обновления в фоновом режиме, когда включена экономия трафика
+* Kiwi теперь не поддерживается
+* Улучшение сообщений об ошибках
+* Исправление ошибок

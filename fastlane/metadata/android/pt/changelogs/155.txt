@@ -1,0 +1,2 @@
+* Obrigado pelas contribuições do Weblate de: gallegonovato, MkQtS, Retrial e Eryk Michalak
+* Correção de falha com o Fennec (Tobi823/ffupdater#491)

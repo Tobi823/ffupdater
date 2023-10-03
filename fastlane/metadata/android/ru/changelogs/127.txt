@@ -1,0 +1,7 @@
+* Спасибо авторам Weblate: 109247019824, Retrial, gallegonovato, Juraj Motuz, MkQtS, Snow,
+  Oğuz Ersen и Giovanni Donisi
+* Исправлено «Владельцы жизненного цикла должны вызвать регистр перед его ЗАПУСКОМ». в DownloadActivity.kt
+   (Tobi823/ffupdater#327, Tobi823/ffupdater#328, Tobi823/ffupdater#319)
+* Попытались исправить ошибку «PackageManagerUtil.getPackageArchiveInfo не может проанализировать APK-файл» с помощью флеш(), буферизованного().
+   и fsync() (Tobiwan/ffupdater#116)
+* Исправлена ошибка «Невыполненное требование» в ShizukuInstaller.kt (Tobi823/ffupdater#330)

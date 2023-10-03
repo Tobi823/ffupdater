@@ -1,0 +1,4 @@
+* Спасибо авторам Weblate: Kazushi Hayama, gallegonovato, Alexthegib и Oğuz Ersen
+* Исправлена ошибка «файл не был загружен» (используется для каждого запроса OkHttp новый перехватчик)
+* Улучшена проверка обновлений с GitHub (используйте JsonReader вместо Gson)
+* Bromite и Bromite SystemWebView больше не поддерживаются

@@ -1,0 +1,4 @@
+* Спасибо авторам Weblate:  Giovanni Donisi, nautilusx, Jacek, Retrial, gallegonovato, Juraj
+  Motuz, MkQtS, Oğuz Ersen
+* Исправлена ошибка: если пользователь хочет добавить новое приложение, значок предупреждения должен отображаться только для приложений с
+   предупреждение об установке (Tobi823/ffupdater#306)

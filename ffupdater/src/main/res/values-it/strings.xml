@@ -321,6 +321,6 @@
     <string name="app_installer__failed_to_validate_signature_of_download">Impossibile convalidare la firma del download.</string>
     <string name="app_installer__failed_to_verify_signature_of_installed_app">Impossibile verificare l\'app installata.</string>
     <string name="background__installation__when_screen_off__title">Installa solo quando lo schermo è spento</string>
-    <string name="background__installation__when_screen_off__summary">Prova a installare gli aggiornamenti solo quando lo schermo del dispositivo è spento.</string>
+    <string name="background__installation__when_screen_off__summary">Prova ad installare gli aggiornamenti solo quando lo schermo del dispositivo è spento.</string>
     <string name="notification__bachground_work__text">Questa notifica è necessaria per un\'esecuzione affidabile. A seconda delle impostazioni, gli aggiornamenti vengono recuperati, scaricati e installati in background. Questa notifica può essere nascosta o silenziata senza interrompere il lavoro in background. Al termine del controllo, anche la notifica verrà chiusa.</string>
 </resources>

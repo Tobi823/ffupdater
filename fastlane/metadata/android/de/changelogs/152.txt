@@ -1,0 +1,4 @@
+* Vielen Dank für die Weblate-Beiträge von: Giovanni Donisi, 109247019824, Alexthegib, Retrial, gallegonovato, nautilusx und Trond Kjetil Bremnes
+ * Fehler ignorieren, wenn Installationssitzung abgebrochen wird (Tobi823/ffupdater#474)
+ * Absturz unter Android 6.0 beim Herunterladen von Firefox Nightly behoben (die Methode MatchGroup.get(String) ist nur verfügbar).
+   verfügbar auf API 26 oder höher) (Tobi823/ffupdater#477)
