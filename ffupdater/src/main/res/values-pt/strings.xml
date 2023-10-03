@@ -337,4 +337,6 @@
     <string name="app_installer__failed_to_validate_signature_of_download">Falha ao validar a assinatura da transferência.</string>
     <string name="app_installer__failed_to_verify_signature_of_installed_app">Falha ao verificar a aplicação instalada.</string>
     <string name="mulch_wv__description">Trata-se de um WebView de sistema reforçado e orientado para a segurança, baseado na tecnologia Chromium. Muitas características anti-sistema foram desativadas/removidas e algumas características de segurança foram ativadas/adicionadas graças aos patches do Vanadium project.</string>
+    <string name="installer__method__title">Método do instalador</string>
+    <string name="ffupdater__different_signature_message">Esta versão do FFUpdater foi assinada pelo F-Droid, portanto, apenas o F-Droid pode distribuir atualizações. Para obter atualizações mais rapidamente, desinstale o FFUpdater e instale a versão assinada pelo desenvolvedor. Com esta versão, o FFUpdater pode atualizar-se a si próprio sem esperar pelo F-Droid.</string>
 </resources>
