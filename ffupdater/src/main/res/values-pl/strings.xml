@@ -250,8 +250,8 @@
     <string name="network__dns_provider__quad9">DNS przez HTTPS: Quad9</string>
     <string name="network__dns_provider__google">DNS przez HTTPS: Google</string>
     <string name="network__dns_provider__no">Bez DNS (tylko do testów)</string>
-    <string name="installer__method__native">Instalator natywny: Rezerwowy, jeśli instalator sesji nie działa na twoim smartfonie.</string>
-    <string name="installer__method__root">Instalator root: Aktualizacja aplikacji bez potwierdzania. Wymaga to posiadania zrootowanego smartfona.</string>
+    <string name="installer__method__native">Natywny: Rezerwowy, jeśli instalator Session nie działa na twoim smartfonie.</string>
+    <string name="installer__method__root">ROOT: Aktualizuje aplikacje bez potwierdzania. Wymagany jest zrootowany smartfon.</string>
     <string name="background__separate_notification_channels__summary">Używanie różnych kanałów powiadomień dla poszczególnych aplikacji</string>
     <string name="background__separate_notification_channels__title">Różne kanały powiadomień</string>
     <string name="notification__update_available__generic_channel_name">Powiadomienie o aktualizacji aplikacji</string>
@@ -275,8 +275,8 @@
     <string name="installer__method__root_not_granted">Nie przyznano uprawnień roota!</string>
     <string name="network__dns_provider__cloudflare">DNS przez HTTPS: Cloudflare</string>
     <string name="network__dns_provider__custom">Własny DNS przez serwer HTTPS</string>
-    <string name="installer__method__shizuku">Instalator Shizuku: Aktualizacja aplikacji potwierdzania. Wymaga to aplikacji Shizuku lub modułu Sui Magisk.</string>
-    <string name="installer__method__session">Instalator sesji: Zalecane dla większości urządzeń. W systemie Android 12 lub nowszym aplikacje można aktualizować w tle po zatwierdzeniu przez użytkownika.</string>
+    <string name="installer__method__shizuku">Shizuku: Aktualizuje aplikacje bez potwierdzania. Wymagany Shizuku lub moduł Sui dla Magiska.</string>
+    <string name="installer__method__session">Session: Zalecany. Od Androida 12 aplikacje są aktualizowane w tle po cichu, po jednym zatwierdzeniu.</string>
     <string name="network__proxy__dialog_message">Jeśli chcesz użyć proxy SOCKS lub HTTP, wprowadź tutaj szczegóły połączenia. Użyj jednego z tych formatów:
 \n
 \nSOCKS/HTTP;ip/domena;port
@@ -322,4 +322,15 @@
     <string name="notification__bg_update_check__unreliable_execution__channel_description">Ostrzeżenie o niepowodzeniu sprawdzania aktualizacji w tle</string>
     <string name="background__installation__when_screen_off__summary">Próbować instalować aktualizacje tylko wtedy, gdy ekran urządzenia jest wyłączony.</string>
     <string name="notification__bg_update_check__unreliable_execution__title">Zawodzi sprawdzanie aktualizacji w tle</string>
+    <string name="notification__bachground_work__channel_description">Powiadomienia z pracy w tle</string>
+    <string name="mulch_wv__description">Jest to zorientowany na bezpieczeństwo i wzmocniony system WebView oparty na technologii Chromium. Wiele anty-funkcji zostało wyłączonych/usuniętych, oraz kilka funkcji bezpieczeństwa zostało włączonych/dodanych dzięki łatkom z projektu Vanadium.</string>
+    <string name="notification__bg_update_check__unreliable_execution__text">Może być to spowodowane ustawieniami baterii lub wydajności. Kliknij, aby wyłączyć optymalizację baterii dla tej aplikacji.</string>
+    <string name="app_installer__failed_to_verify_signature_of_installed_app">Nie udało się sprawdzić zainstalowanej aplikacji.</string>
+    <string name="notification__bachground_work__text">To powiadomienie jest wymagane do niezawodnego działania. W zależności od ustawień, aktualizacje są sprawdzane, pobierane i instalowane w tle. To powiadomienie można ukryć lub wyciszyć bez ograniczania pracy w tle. Po zakończeniu sprawdzania powiadomienie zostanie usunięte.</string>
+    <string name="crash_report__report_is_copied_to_clipboard">Skopiowano raport awarii do schowka</string>
+    <string name="installer__method__title">Metoda instalacji</string>
+    <string name="app_installer__failed_to_validate_signature_of_download">Nie udało się zweryfikować podpisu pobierania.</string>
+    <string name="notification__uncaught_exception__text">Kliknij, aby wyświetlić raport błędu.</string>
+    <string name="ffupdater__different_signature_message">Ta wersja FFUpdater została podpisana przez F-Droid, więc tylko F-Droid może dystrybuować aktualizacje. Aby szybciej otrzymywać aktualizacje, odinstaluj FFUpdater i zainstaluj wersję podpisaną przez twórcę. W tej wersji FFUpdater może aktualizować się samodzielnie, bez czekania na F-Droid.</string>
+    <string name="installer__android_too_old_for_shizuku">Ten Android jest zbyt stary dla Shizuku.</string>
 </resources>
