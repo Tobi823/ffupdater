@@ -1,0 +1,1 @@
+- disable Dependency Info Block because F-Droid wants it and to fix reproducible builds

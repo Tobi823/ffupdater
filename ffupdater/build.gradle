@@ -64,9 +64,9 @@ android {
     compileSdk 34
 
     defaultConfig {
-        versionCode 158
+        versionCode 159
         // (incompatible changes) . (backwards compatible functionality) . (backwards compatible bug fixes)
-        versionName '78.2.1'
+        versionName '78.2.2'
         minSdk 21
         targetSdk 34
         vectorDrawables.useSupportLibrary = true
@@ -122,4 +122,12 @@ android {
         additionalParameters '--warn-manifest-validation'
     }
 
+    // remove the Dependency Info Block
+    // https://gitlab.com/fdroid/fdroiddata/-/merge_requests/13812#note_1592074265
+    dependenciesInfo {
+        // Disables dependency metadata when building APKs.
+        includeInApk = false
+        // Disables dependency metadata when building Android App Bundles.
+        includeInBundle = false
+    }
 }
