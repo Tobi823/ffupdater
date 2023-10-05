@@ -58,7 +58,7 @@ object Cromite : AppBase() {
 
     private fun findFileName(): String {
         val fileName =
-            when (DeviceAbiExtractor.findBestAbi(Bromite.supportedAbis, DeviceSettingsHelper.prefer32BitApks)) {
+            when (DeviceAbiExtractor.findBestAbi(supportedAbis, DeviceSettingsHelper.prefer32BitApks)) {
                 ABI.ARM64_V8A -> "arm64_ChromePublic.apk"
                 ABI.X86_64 -> "x64_ChromePublic.apk"
                 else -> throw IllegalArgumentException("ABI is not supported")
