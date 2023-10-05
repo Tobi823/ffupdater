@@ -1,0 +1,1 @@
+- fix false warning about using FFUpdater signed by F-Droid

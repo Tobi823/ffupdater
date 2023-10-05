@@ -1,0 +1,2 @@
+* Thanks for the Weblate contributions from: Eryk Michalak, nautilusx, Juraj Motuz and gallegonovato
+* Fix root installer (Tobi823/ffupdater#462)
