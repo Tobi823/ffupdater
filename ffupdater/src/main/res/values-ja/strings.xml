@@ -341,4 +341,7 @@
     <string name="mulch_wv__description">これは Chromium の技術をベースとした、セキュリティ重視の強化されたシステム WebView です。Vanadium プロジェクト のパッチにより、多くの不要な機能が無効化/削除され、いくつかのセキュリティ機能が有効化/追加されています。</string>
     <string name="installer__method__title">インストーラーの選択</string>
     <string name="ffupdater__different_signature_message">この FFUpdater は F-Droid で署名されたバージョンのため、F-Droid からのみ更新できます。一度 FFUpdater をアンインストールして開発者が署名したバージョンをインストールすると、より早く更新できるようになります。開発者が署名したバージョンでは、F-Droid での配布を待たずに FFUpdater 自身で更新できます。</string>
+    <string name="cromite__description">Cromite は 広告をブロックしプライバシーを重視する Bromite ベースの Chromium フォークです。</string>
+    <string name="cromite__warning">- Cromite は Google Chrome と同じ技術的基盤を使用しているため、Chromium レンダリングエンジンの独占的地位を間接的に支えることになります。</string>
+    <string name="cromite__title">Cromite</string>
 </resources>
