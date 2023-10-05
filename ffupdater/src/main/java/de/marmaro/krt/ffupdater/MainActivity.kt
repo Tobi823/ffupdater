@@ -399,21 +399,21 @@ class MainActivity : AppCompatActivity() {
         }
 
         private fun showAppInfoForDifferentSignature(view: AppHolder, app: App) {
-            showViews(view.installedVersion)
-            hideViews(view.availableVersion, view.downloadButton, view.eolReason)
+            showViews(listOf(view.installedVersion))
+            hideViews(listOf(view.availableVersion, view.downloadButton, view.eolReason))
             view.installedVersion.text = activity.getString(app.findImpl().differentSignatureMessage)
         }
 
-        private fun hideViews(vararg elements: View) {
+        private fun hideViews(elements: List<View>) {
             elements.forEach { it.visibility = View.GONE }
         }
 
-        private fun showViews(vararg elements: View) {
+        private fun showViews(elements: List<View>) {
             elements.forEach { it.visibility = View.VISIBLE }
         }
 
         private suspend fun showAppInfoForError(view: AppHolder, app: App, error: ExceptionWrapper) {
-            showViews(view.installedVersion, view.availableVersion, view.downloadButton)
+            showViews(listOf(view.installedVersion, view.availableVersion, view.downloadButton))
             val findImpl = app.findImpl()
             view.installedVersion.text = findImpl.getDisplayInstalledVersion(activity)
             view.availableVersion.setText(error.message)
@@ -433,7 +433,7 @@ class MainActivity : AppCompatActivity() {
             app: App,
             metadata: InstalledAppStatus?,
         ) {
-            showViews(view.installedVersion, view.availableVersion, view.downloadButton)
+            showViews(listOf(view.installedVersion, view.availableVersion, view.downloadButton))
             val findImpl = app.findImpl()
             view.installedVersion.text = findImpl.getDisplayInstalledVersion(activity)
             view.availableVersion.text = getDisplayAvailableVersionWithAge(metadata)
@@ -449,10 +449,10 @@ class MainActivity : AppCompatActivity() {
 
         private fun showOrHideEolReason(findImpl: AppBase, view: AppHolder) {
             if (findImpl.isEol()) {
-                showViews(view.eolReason)
+                showViews(listOf(view.eolReason))
                 view.eolReason.setText(findImpl.eolReason!!)
             } else {
-                hideViews(view.eolReason)
+                hideViews(listOf(view.eolReason))
             }
         }
 
