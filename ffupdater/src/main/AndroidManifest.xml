@@ -45,6 +45,7 @@
         <package android:name="mozilla.lockbox" />
         <package android:name="org.bromite.bromite" />
         <package android:name="org.bromite.webview" />
+        <package android:name="org.cromite.cromite" />
         <package android:name="org.chromium.chrome" />
         <package android:name="org.mozilla.fenix" />
         <package android:name="org.mozilla.fennec_fdroid" />

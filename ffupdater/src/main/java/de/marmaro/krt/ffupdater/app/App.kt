@@ -11,6 +11,7 @@ enum class App {
     BROMITE,
     BROMITE_SYSTEMWEBVIEW,
     CHROMIUM,
+    CROMITE,
     DUCKDUCKGO_ANDROID,
     FENNEC_FDROID,
     FFUPDATER,
@@ -43,6 +44,7 @@ enum class App {
             BROMITE -> Bromite
             BROMITE_SYSTEMWEBVIEW -> BromiteSystemWebView
             CHROMIUM -> Chromium
+            CROMITE -> Cromite
             DUCKDUCKGO_ANDROID -> DuckDuckGoAndroid
             FENNEC_FDROID -> FennecFdroid
             FFUPDATER -> FFUpdater

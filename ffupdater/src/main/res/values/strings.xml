@@ -298,4 +298,7 @@
     <string name="app_installer__failed_to_verify_signature_of_installed_app">Failed to check installed app.</string>
     <string name="ffupdater__different_signature_message">This version of FFUpdater has been signed by F-Droid, so only F-Droid can distribute updates. To get updates faster, uninstall FFUpdater and install the developer signed version. With this version FFUpdater can update itself without waiting for F-Droid.</string>
     <string name="installer__method__title">Installer method</string>
+    <string name="cromite__title">Cromite</string>
+    <string name="cromite__description">Cromite is a Chromium fork based on Bromite with built-in support for ad blocking and an eye for privacy.</string>
+    <string name="cromite__warning">- Bromite uses the technical foundation of Google Chrome and thus indirectly supports the monopoly position of the Chromium render engine.</string>
 </resources>

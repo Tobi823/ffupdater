@@ -46,6 +46,7 @@ class CheckReleaseAgeIT {
 //            TestData(Bromite, 112),
 //            TestData(BromiteSystemWebView, 112),
             TestData(Chromium, 56),
+            TestData(Cromite, 56),
             TestData(DuckDuckGoAndroid, 28),
             TestData(FennecFdroid, 28),
             TestData(FFUpdater, 365),

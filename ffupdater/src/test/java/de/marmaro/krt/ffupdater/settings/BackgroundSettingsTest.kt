@@ -208,6 +208,7 @@ class BackgroundSettingsTest : BaseTest() {
                 "BROMITE",
                 "BROMITE_SYSTEMWEBVIEW",
                 "CHROMIUM",
+                "CROMITE",
                 "DUCKDUCKGO_ANDROID",
                 "FENNEC_FDROID",
                 "FFUPDATER",
