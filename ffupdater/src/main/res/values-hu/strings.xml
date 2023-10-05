@@ -292,4 +292,7 @@
     <string name="add_app_activity__title_from_mozilla"></string>
     <string name="installer__android_too_old_for_shizuku"></string>
     <string name="cromite__title"></string>
+    <string name="cromite__warning"></string>
+    <string name="thorium__description"></string>
+    <string name="add_app_activity__title_good_security_browsers"></string>
 </resources>
