@@ -31,6 +31,7 @@ Browser which are better than Google Chrome:
   [Brave Browser (Beta)](https://play.google.com/store/apps/details?id=com.brave.browser_beta&gl=US),
   [Brave Browser (Nightly)](https://play.google.com/store/apps/details?id=com.brave.browser_nightly&gl=US)
   ([GitHub Repository](https://github.com/brave/brave-browser))
+- [Cromite](https://github.com/uazo/cromite)
 - [Chromium](https://www.chromium.org/chromium-projects/)
 - [DuckDuckGo Browser](https://github.com/duckduckgo/Android)
 - [Kiwi Browser Next](https://github.com/kiwibrowser/src.next)

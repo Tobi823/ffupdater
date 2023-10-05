@@ -37,6 +37,8 @@ get certificate hash / signature
 
 `keytool -list -printcert -jarfile *.apk`
 
+`apksigner verify -print-certs -v arm64_ChromePublic.apk`
+
 ## F-Droid build updates
 
 https://monitor.f-droid.org/builds

@@ -5,6 +5,7 @@ The apps are downloaded from these locations:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (
   Nightly): <https://api.github.com/repos/brave/brave-browser/releases/latest>
 - Bromite, Bromite SystemWebView: <https://api.github.com/repos/bromite/bromite/releases/latest>
+- Cromite: <https://api.github.com/repos/uazo/cromite/releases/latest>
 - Chromium: <https://storage.googleapis.com/chromium-browser-snapshots/index.html?prefix=Android%2F>
 - DuckDuckGo Browser: <https://api.github.com/repos/duckduckgo/Android/releases/latest>
 - Fennec F-Droid: <https://f-droid.org/repo/org.mozilla.fennec_fdroid_XXXXXXX.apk>

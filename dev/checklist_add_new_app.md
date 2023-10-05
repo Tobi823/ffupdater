@@ -10,7 +10,7 @@
 - resolved all TODOs?
 - add it to CHANGELOG.md?
 
-Extract certificate hash with: `keytool -printcert -jarfile *.apk`
+Extract certificate hash with: `apksigner verify -print-certs -v *.apk`
 
 3.13
 
