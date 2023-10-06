@@ -6,7 +6,8 @@ git fetch --tags
 
 - on master branch?
 - optional:
-  - `gradle wrapper --gradle-version 8.3 --distribution-type all`
+  - change Gradle version in gradle/wrapper/gradle-wrapper.properties
+  - `gradle wrapper`
   - `./gradlew clean adviceRelease`
 - fix and add unit tests
 - ,ff_weblate
