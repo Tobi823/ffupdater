@@ -14,8 +14,7 @@ git fetch --tags
 - ,ff_weblate
 - build.gradle: versionCode + versionName
 - sync gradle
-- CHANGELOG.md: Weblate (https://hosted.weblate.org/projects/ffupdater/#reports) + changelog + supporter
-- copy changelog to `fastlane/metadata/android/en-US/changelogs/VERSION_CODE.txt`
+- `fastlane/metadata/android/en-US/changelogs/VERSION_CODE.txt`: Weblate, changelog, supporter
 - commit changes:
   - Release version xx (xx)
   - `Tobiwan/ffupdater#XXX` for issues/pull requests from notabug.org
