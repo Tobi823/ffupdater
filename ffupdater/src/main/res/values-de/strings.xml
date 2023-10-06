@@ -332,4 +332,9 @@
     <string name="mulch_wv__description">Dies ist ein sicherheitsorientiertes und gehärtetes System WebView, das auf Chromium-Technologie basiert. Viele Anti-Funktionen wurden deaktiviert/entfernt und eine handvoll Sicherheitsfunktionen wurden dank der Patches des Vanadium-Projekts aktiviert/hinzugefügt.</string>
     <string name="app_installer__failed_to_verify_signature_of_installed_app">Die installierte App konnte nicht überprüft werden.</string>
     <string name="app_installer__failed_to_validate_signature_of_download">Die Signatur des Downloads konnte nicht überprüft werden.</string>
+    <string name="cromite__description">Cromite ist ein auf Bromite basierender Chromium-Fork mit eingebauter Unterstützung für Werbeblocker und einem Auge für den Datenschutz.</string>
+    <string name="cromite__warning">- Cromite nutzt die technische Grundlage von Google Chrome und unterstützt damit indirekt die Monopolstellung der Chromium-Rendering-Engine.</string>
+    <string name="installer__method__title">Installationsmethode</string>
+    <string name="cromite__title">Cromite</string>
+    <string name="ffupdater__different_signature_message">Diese Version von FFUpdater ist von F-Droid signiert worden, so dass nur F-Droid Updates verteilen kann. Um Updates schneller zu erhalten, deinstalliere FFUpdater und installiere die vom Entwickler signierte Version. Mit dieser Version kann sich FFUpdater selbst aktualisieren, ohne auf F-Droid zu warten.</string>
 </resources>

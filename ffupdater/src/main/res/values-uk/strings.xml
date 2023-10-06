@@ -134,7 +134,7 @@
     <string name="settings__background_category__summary">Налаштування, коли програма працює у фоновому режимі та невидима для користувача.</string>
     <string name="settings__background_category__title">Фон</string>
     <string name="settings__foreground__download__metered__title">Завантажувати оновлення в тарифікованих мережах</string>
-    <string name="settings__foreground__theme_preference__summary">Обирайте між світлою та темною темою</string>
+    <string name="settings__foreground__theme_preference__summary">Обирiть між світлою та темною темою</string>
     <string name="settings__foreground__theme_preference__title">Обрати тему</string>
     <string name="settings__foreground__update_check__metered__summary">Дозволити перевірку оновлень у мережах із тарифікацією трафіку, як-от мобільні дані.</string>
     <string name="settings__foreground__update_check__metered__title">Перевірка оновлень у тарифікованих мережах</string>

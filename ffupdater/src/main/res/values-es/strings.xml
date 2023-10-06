@@ -339,4 +339,7 @@
     <string name="app_installer__failed_to_validate_signature_of_download">No se ha podido validar la firma de la descarga.</string>
     <string name="installer__method__title">Método de instalación</string>
     <string name="ffupdater__different_signature_message">Esta versión de FFUpdater ha sido firmada por F-Droid, por lo que sólo F-Droid puede distribuir actualizaciones. Para obtener actualizaciones más rápidamente, desinstala FFUpdater e instala la versión firmada por el desarrollador. Con esta versión FFUpdater puede actualizarse por sí mismo sin esperar a F-Droid.</string>
+    <string name="cromite__description">Cromite es una bifurcación de Chromium basada en Bromite con soporte integrado para el bloqueo de anuncios y un ojo en la privacidad.</string>
+    <string name="cromite__warning">- Cromite utiliza la base de Google Chrome y apoya así indirectamente la posición de monopolio del motor de renderizado Chromium.</string>
+    <string name="cromite__title">Cromite</string>
 </resources>

@@ -10,7 +10,7 @@
     <string name="available_version">Доступно: %1$s</string>
     <string name="notification__error__text">Пожалуйста, сообщите об этой ошибке. Нажмите, чтобы просмотреть отчет об ошибке.</string>
     <string name="notification__error__title">Фоновая проверка обновлений не удалась</string>
-    <string name="brave__description">Веб-браузер Brave — это ваш личный бесплатный и безопасный браузер, блокирующий постороннюю рекламу. \n\nВеб-браузер Brave — это быстрое и безопасное приложение для Android со встроенным блокировщиком сторонней рекламы. Brave — это молниеносный, безопасный и приватный браузер. Он защищает вас от отслеживания рекламой, заражения вредоносными программами и всплывающих окон.</string>
+    <string name="brave__description">Brave — это быстрый, безопасный и приватный браузер со встроенным блокировщиком сторонней рекламы. Он защищает вас от отслеживания рекламой, заражения вредоносными программами и всплывающих окон.</string>
     <string name="brave__title">Браузер Brave</string>
     <string name="brave__warning">-Brave использует техническую основу Google Chrome и тем самым косвенно поддерживает монопольное положение движка рендеринга Chromium
 \n- В связи с тем, что токен Basic Attention Token BAT находится на блокчейне Ethereum, проект имеет отношение к криптовалютам. У блокчейнов много проблем, и, на мой взгляд, их следует избегать.</string>
@@ -325,4 +325,7 @@
     <string name="background__installation__when_screen_off__title">Устанавливать только при выключенном экране</string>
     <string name="installer__method__title">Метод установки</string>
     <string name="ffupdater__different_signature_message">Эта версия FFUpdater подписана F-Droid, поэтому только F-Droid может распространять обновления. Чтобы получать обновления быстрее, удалите FFUpdater и установите версию, подписанную разработчиком. В этой версии FFUpdater может обновляться самостоятельно, не дожидаясь F-Droid.</string>
+    <string name="cromite__description">Cromite — это форк Chromium на основе Bromite со встроенной поддержкой блокировки рекламы и обеспечением конфиденциальности.</string>
+    <string name="cromite__warning">- Cromite использует техническую основу Google Chrome и тем самым косвенно поддерживает монопольное положение движка рендеринга Chromium.</string>
+    <string name="cromite__title">Cromite</string>
 </resources>
