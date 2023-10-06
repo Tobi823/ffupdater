@@ -9,6 +9,7 @@ git fetch --tags
   - change Gradle version in gradle/wrapper/gradle-wrapper.properties
   - `gradle wrapper`
   - `./gradlew clean adviceRelease`
+  - double check that Android Studio wont reformat gradlew
 - fix and add unit tests
 - ,ff_weblate
 - build.gradle: versionCode + versionName
