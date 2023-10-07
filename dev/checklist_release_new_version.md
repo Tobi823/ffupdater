@@ -13,24 +13,15 @@ git fetch --tags
 - fix and add unit tests
 - ,ff_weblate
 - build.gradle: versionCode + versionName
-- sync gradle
-- `fastlane/metadata/android/en-US/changelogs/VERSION_CODE.txt`: Weblate, changelog, supporter
 - commit changes:
   - Release version xx (xx)
   - `Tobiwan/ffupdater#XXX` for issues/pull requests from notabug.org
   - `Tobi823/ffupdater#XXX` for issues/pull requests from Github
   - `Tobiwan/ffupdater_gitlab#XXX` for issues/merge requests from Gitlab
-- build signed APK file
-- copy message of the release commit
-- `,ff_release "version_name" "version_code"` to tag, push, create releases on GitHub/GitLab, start repomaker+Docker
-- upload APK in repomaker
-- upload signature, create PR, update metadata in PR -
-  see https://gitlab.com/fdroid/fdroiddata/-/merge_requests/13713.
-  - `cd /home/hacker/Documents/Code/kein_backup/gitlab.com/Tobiwan/fdroiddata/metadata/de.marmaro.krt.ffupdater/signatures/`
-  - `mkdir $versionCode`
-  - `cp /home/hacker/Documents/Code/github.com/Tobi823/ffupdater/ffupdater/release/ffupdater-release.apk .`
-  - `apksigcopier extract --v1-only=auto ffupdater-release.apk .`
-  - `rm ffupdater-release.apk`
+  - (fastlane changelog will be managed by ,ff_release)
+- `,ff_release`
+- in Firefox upload APK in repomaker
+- create Gitlab merge request (see https://gitlab.com/fdroid/fdroiddata/-/merge_requests/13713)
 
 ```
 Changelogs:
@@ -38,7 +29,6 @@ Changelogs:
 * https://github.com/Tobi823/ffupdater/compare/75.5.1...75.5.2
 ```
 
-- upload signed APK to repomaker
 - test release with "Foxy Droid"
 - mark older changelogs in Weblate as read-only
 - use different branch when working on fdroiddata
