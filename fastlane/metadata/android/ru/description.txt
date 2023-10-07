@@ -1,0 +1,30 @@
+Устанавливает и обновляет следующие браузеры:
+
+Браузеры от Mozilla или на базе Firefox:
+- Fennec F-Droid
+- Firefox Browser, Firefox для Android Beta, Firefox Nightly
+- Firefox Focus, Firefox Focus Beta, Firefox Klar
+- Iceraven
+- Mull Browser
+- Tor Browser, Tor Browser Alpha
+
+хорошие браузеры для обеспечения конфиденциальности:
+- Bromite, Bromite SystemWebView
+- Mulch, Mulch System WebView
+
+браузеры, которые лучше, чем Google Chrome:
+- Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
+- Chromium
+- DuckDuckGo Browser
+- Kiwi Browser Next
+- Privacy Browser (F-Droid)
+- Vivaldi
+
+Другие приложения:
+- Орбот
+
+FFUpdater проверяет наличие обновлений в фоновом режиме и также загружает их. На устройствах с Android 12+ или root FFUpdater также может обновлять приложения без участия пользователя.
+
+Посетите сайт https://notabug.org/Tobiwan/ffupdater/src/master/README.md или воспользуйтесь ссылкой "Исходный код" ниже для получения дополнительной информации о мерах безопасности, других каналах распространения, ограничениях, ошибках, FAQ, инструкциях по сборке, используемых сторонних библиотеках, технических деталях и т.д.
+
+Переведенный журнал изменений: https://notabug.org/Tobiwan/ffupdater/src/master/fastlane/metadata/android/ru/changelogs

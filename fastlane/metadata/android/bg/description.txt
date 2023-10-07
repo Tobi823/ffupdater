@@ -1,0 +1,30 @@
+Инсталира и обновява следните мрежови четци:
+
+От Mozilla или на основата на Firefox:
+- Fennec F-Droid
+- Firefox Browser, Firefox за Android Beta, Firefox Nightly
+- Firefox Focus, Firefox Focus Beta, Firefox Klar
+- Iceraven
+- Четецът Мул
+- Четецът Тор, Tor Browser Alpha
+
+поверителни четци:
+- Bromite, Bromite SystemWebView
+- Mulch, Mulch System WebView
+
+четци, по-добри от Google Chrome:
+- Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
+- Хромиум
+- DuckDuckGo Browser
+- Kiwi Browser Next
+- Privacy Browser (F-Droid)
+- Вивалди
+
+Други приложения:
+- Orbot
+
+FFUpdater проверява за обновявания във фонов режим и ги изтегля. При устройства с Android 12+ или достъп до суперпотребителя, FFUpdater може да обновява приложенията и без действие от страна на потребителя.
+
+Посетете https://notabug.org/Tobiwan/ffupdater/src/master/README.md за повече информация.
+
+Преведен списък с промените: https://notabug.org/Tobiwan/ffupdater/src/master/fastlane/metadata/android/bg/changelogs

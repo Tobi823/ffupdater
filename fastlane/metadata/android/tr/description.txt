@@ -1,0 +1,30 @@
+Aşağıdaki tarayıcıları kurar ve günceller:
+
+Mozilla veya Firefox tabanlı tarayıcılar
+- Fennec F-Droid
+- Firefox Tarayıcı, Android için Firefox Beta, Firefox Nightly
+- Firefox Focus, Firefox Focus Beta, Firefox Klar
+- Iceraven
+- Mull Tarayıcı
+- Tor Browser, Tor Browser Alpha
+
+Gizlilik açısından iyi tarayıcılar:
+- Bromit, Bromit SystemWebView
+- Mulch, Mulch System WebView
+
+Google Chrome'dan daha iyi olan tarayıcılar:
+- Brave Gizli Tarayıcı, Brave Tarayıcı (Beta), Brave Tarayıcı (Gecelik)
+- DuckDuckGo Browser
+- Chromium
+- Kiwi Browser Next
+- Privacy Browser (F-Droid)
+- Vivaldi
+
+Diğer uygulamalar:
+- Orbot
+
+FFUpdater arka planda güncellemeleri denetler ve ayrıca onları indirir. Android 12+ veya root yapılmış aygıtlarda, FFUpdater kullanıcı etkileşimi olmadan da uygulamaları güncelleyebilir.
+
+Daha fazla bilgi için https://notabug.org/Tobiwan/ffupdater/src/master/README.md adresini ziyaret edin.
+
+Çevrilmiş değişiklik günlüğü: https://notabug.org/Tobiwan/ffupdater/src/master/fastlane/metadata/android/tr/changelogs
