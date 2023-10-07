@@ -333,4 +333,7 @@
     <string name="notification__uncaught_exception__text">Kliknij, aby wyświetlić raport błędu.</string>
     <string name="ffupdater__different_signature_message">Ta wersja FFUpdater została podpisana przez F-Droid, więc tylko F-Droid może dystrybuować aktualizacje. Aby szybciej otrzymywać aktualizacje, odinstaluj FFUpdater i zainstaluj wersję podpisaną przez twórcę. W tej wersji FFUpdater może aktualizować się samodzielnie, bez czekania na F-Droid.</string>
     <string name="installer__android_too_old_for_shizuku">Ten Android jest zbyt stary dla Shizuku.</string>
+    <string name="cromite__description">Cromite jest forkiem Chromium opartym na Bromite dbającym o prywatność, z wbudowanym blokerem reklam.</string>
+    <string name="cromite__warning">- Cromite wykorzystuje techniczne podstawy Google Chrome, a tym samym pośrednio wspiera monopolistyczną pozycję silnika renderującego Chromium.</string>
+    <string name="cromite__title">Cromite</string>
 </resources>
