@@ -1,0 +1,3 @@
+Release version 78.2.4
+- Thanks for the Weblate contributions from: winver, nautilusx, gallegonovato, Kazushi Hayama and 109247019824
+- Try to fix reproducible builds in F-Droid
