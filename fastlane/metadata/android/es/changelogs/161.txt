@@ -1,0 +1,2 @@
+- Gracias por las contribuciones en Weblate de: winver, nautilusx, gallegonovato, Kazushi Hayama y 109247019824
+- Intentar arreglar las builds reproducibles en F-Droid
