@@ -22,7 +22,7 @@ git fetch --tags
   - `Tobiwan/ffupdater_gitlab#XXX` for issues/merge requests from Gitlab
 - build signed APK file
 - copy message of the release commit
-- `,ff_release "???"` to tag, push, create releases on GitHub/GitLab, start repomaker+Docker
+- `,ff_release "version_name" "version_code"` to tag, push, create releases on GitHub/GitLab, start repomaker+Docker
 - upload APK in repomaker
 - upload signature, create PR, update metadata in PR -
   see https://gitlab.com/fdroid/fdroiddata/-/merge_requests/13713.
