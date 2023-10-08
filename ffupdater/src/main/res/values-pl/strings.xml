@@ -250,7 +250,7 @@
     <string name="network__dns_provider__quad9">DNS przez HTTPS: Quad9</string>
     <string name="network__dns_provider__google">DNS przez HTTPS: Google</string>
     <string name="network__dns_provider__no">Bez DNS (tylko do testów)</string>
-    <string name="installer__method__native">Natywny: Rezerwowy, jeśli instalator Session nie działa na twoim smartfonie.</string>
+    <string name="installer__method__native">Natywna: Rezerwowa, jeśli instalator Session nie działa na twoim smartfonie.</string>
     <string name="installer__method__root">ROOT: Aktualizuje aplikacje bez potwierdzania. Wymagany jest zrootowany smartfon.</string>
     <string name="background__separate_notification_channels__summary">Używanie różnych kanałów powiadomień dla poszczególnych aplikacji</string>
     <string name="background__separate_notification_channels__title">Różne kanały powiadomień</string>
@@ -276,7 +276,7 @@
     <string name="network__dns_provider__cloudflare">DNS przez HTTPS: Cloudflare</string>
     <string name="network__dns_provider__custom">Własny DNS przez serwer HTTPS</string>
     <string name="installer__method__shizuku">Shizuku: Aktualizuje aplikacje bez potwierdzania. Wymagany Shizuku lub moduł Sui dla Magiska.</string>
-    <string name="installer__method__session">Session: Zalecany. Od Androida 12 aplikacje są aktualizowane w tle po cichu, po jednym zatwierdzeniu.</string>
+    <string name="installer__method__session">Session: Zalecana. Od Androida 12 aplikacje są aktualizowane w tle po cichu, po jednym zatwierdzeniu.</string>
     <string name="network__proxy__dialog_message">Jeśli chcesz użyć proxy SOCKS lub HTTP, wprowadź tutaj szczegóły połączenia. Użyj jednego z tych formatów:
 \n
 \nSOCKS/HTTP;ip/domena;port
