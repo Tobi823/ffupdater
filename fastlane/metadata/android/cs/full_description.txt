@@ -1,0 +1,30 @@
+Instaluje a aktualizuje následující prohlížeče:
+
+Prohlížeče od společnosti Mozilla nebo založené na Firefoxu:
+- Fennec F-Droid
+- Firefox prohlížeč, Firefox Beta pro Android, Firefox Nightly
+- Firefox Focus, Firefox Focus Beta, Firefox Klar
+- Iceraven
+- Mull Browser
+- Tor Browser, Tor Browser Alpha
+
+Prohlížeče dobré pro ochranu soukromí:
+- Bromite, Bromite SystemWebView
+- Mulch, Mulch System WebView
+
+Prohlížeče, které jsou lepší než Google Chrome:
+- Brave Soukromý prohlížeč, Brave Browser (Beta), Brave Browser (Nightly)
+- Chromium
+- DuckDuckGo Browser
+- Kiwi Browser Next
+- Privacy Browser (F-Droid)
+- Vivaldi
+
+Ostatní aplikace:
+- Orbot
+
+FFUpdater kontroluje aktualizace na pozadí a také je stahuje. V zařízeních se systémem Android 12+ nebo s rootnutým zařízením může FFUpdater aktualizovat aplikace i bez interakce uživatele.
+
+Navštivte stránku https://notabug.org/Tobiwan/ffupdater/src/master/README.md pro více informací.
+
+Přeložený seznam změn: https://notabug.org/Tobiwan/ffupdater/src/master/fastlane/metadata/android/cs/changelogs
