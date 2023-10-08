@@ -11,7 +11,7 @@
     <string name="notification__error__text">Пожалуйста, сообщите об этой ошибке. Нажмите, чтобы просмотреть отчет об ошибке.</string>
     <string name="notification__error__title">Фоновая проверка обновлений не удалась</string>
     <string name="brave__description">Brave — это быстрый, безопасный и приватный браузер со встроенным блокировщиком сторонней рекламы. Он защищает вас от отслеживания рекламой, заражения вредоносными программами и всплывающих окон.</string>
-    <string name="brave__title">Браузер Brave</string>
+    <string name="brave__title">Brave Browser</string>
     <string name="brave__warning">-Brave использует техническую основу Google Chrome и тем самым косвенно поддерживает монопольное положение движка рендеринга Chromium
 \n- В связи с тем, что токен Basic Attention Token BAT находится на блокчейне Ethereum, проект имеет отношение к криптовалютам. У блокчейнов много проблем, и, на мой взгляд, их следует избегать.</string>
     <string name="brave_beta__description">Добро пожаловать в Brave Beta для Android!\nОпробуйте новейшие функции и оставьте свой отзыв: https://brave.com/msupport\nВы можете установить Brave Beta вместе с текущей версией Brave для Android.</string>
