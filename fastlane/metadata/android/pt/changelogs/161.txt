@@ -1,0 +1,2 @@
+- Obrigado pelas contribuições Weblate de: winver, nautilusx, gallegonovato, Kazushi Hayama e 109247019824
+- Tentar corrigir compilações reprodutíveis no F-Droid
