@@ -12,6 +12,7 @@ import de.marmaro.krt.ffupdater.device.InstalledAppsCache
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.utils.MeasureExecutionTime
+import java.lang.IllegalStateException
 
 @Keep
 interface InstalledAppStatusFetcher : InstalledVersionFetcher, LatestVersionFetcher, VersionDisplay {
@@ -35,6 +36,9 @@ interface InstalledAppStatusFetcher : InstalledVersionFetcher, LatestVersionFetc
         } catch (e: DisplayableException) {
             Log.d(LOG_TAG, "InstalledAppStatusFetcher: Can't find latest update for ${app.name}.", e)
             throw DisplayableException("can't find latest update for ${app.name}.", e)
+        } catch (e: IllegalStateException) {
+            Log.d(LOG_TAG, "InstalledAppStatusFetcher: Can't find latest update for ${app.name}.", e)
+            throw IllegalStateException("can't find latest update for ${app.name}.", e)
         }
         return InstalledAppStatus(
             app = app,
