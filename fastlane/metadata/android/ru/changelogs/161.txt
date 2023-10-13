@@ -1,0 +1,2 @@
+- Спасибо авторам Weblate: winver, nautilusx, gallegonovato, Kazushi Hayama и 109247019824
+- Исправлены воспроизводимые сборки в F-Droid

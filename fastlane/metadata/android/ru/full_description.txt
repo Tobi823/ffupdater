@@ -1,27 +1,18 @@
-Устанавливает и обновляет следующие браузеры:
-
-Браузеры от Mozilla или на базе Firefox:
-- Fennec F-Droid
+Загружайте, устанавливайте и обновляйте браузеры от Mozilla или основанные на Firefox:
 - Firefox Browser, Firefox для Android Beta, Firefox Nightly
-- Firefox Focus, Firefox Focus Beta, Firefox Klar
+- Firefox Focus, Firefox Klar
 - Iceraven
 - Mull Browser
-- Tor Browser, Tor Browser Alpha
+- Tor Browser
 
 хорошие браузеры для обеспечения конфиденциальности:
 - Bromite, Bromite SystemWebView
-- Mulch, Mulch System WebView
 
 браузеры, которые лучше, чем Google Chrome:
-- Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
+- Brave Browser, Brave Browser (Beta), Brave Browser (Nightly)
 - Chromium
-- DuckDuckGo Browser
 - Kiwi Browser Next
-- Privacy Browser (F-Droid)
 - Vivaldi
-
-Другие приложения:
-- Орбот
 
 FFUpdater проверяет наличие обновлений в фоновом режиме и также загружает их. На устройствах с Android 12+ или root FFUpdater также может обновлять приложения без участия пользователя.
 

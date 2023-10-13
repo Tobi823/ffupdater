@@ -1,11 +1,11 @@
-Nainstaluje a aktualizuje následující prohlížeče:
+Instaluje a aktualizuje následující prohlížeče:
 
 Prohlížeče od společnosti Mozilla nebo založené na Firefoxu:
 - Fennec F-Droid
 - Firefox prohlížeč, Firefox Beta pro Android, Firefox Nightly
 - Firefox Focus, Firefox Focus Beta, Firefox Klar
 - Iceraven
-- Mull prohlížeč
+- Mull Browser
 - Tor Browser, Tor Browser Alpha
 
 Prohlížeče dobré pro ochranu soukromí:
@@ -20,7 +20,7 @@ Prohlížeče, které jsou lepší než Google Chrome:
 - Privacy Browser (F-Droid)
 - Vivaldi
 
-Další aplikace:
+Ostatní aplikace:
 - Orbot
 
 FFUpdater kontroluje aktualizace na pozadí a také je stahuje. V zařízeních se systémem Android 12+ nebo s rootnutým zařízením může FFUpdater aktualizovat aplikace i bez interakce uživatele.

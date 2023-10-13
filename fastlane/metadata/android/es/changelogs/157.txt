@@ -1,0 +1,5 @@
+- gracias por las contribuciones a Weblate de: winver, Макар Разин, Daviteusz, Retrial, Alexthegib, Frau Gülle, Juraj Motuz, Eduardo Malaspina, 109247019824, Priit Jõerüüt, Kazushi Hayama y Trond Kjetil Bremnes
+- Soporta Cromite (Tobi823/ffupdater#447)
+- corregir el error Shizuku al actualizar (Tobi823/ffupdater#456)
+- la versión F-Droid, mostrará un texto para que desinstales FFUpdater e instales el FFUpdater del desarrollador (Tobi823/ffupdater#320)
+- instalación root (Tobi823/ffupdater#462)

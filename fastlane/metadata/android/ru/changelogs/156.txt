@@ -1,0 +1,2 @@
+* Спасибо авторам Weblate: Eryk Michalak, nautilusx, Juraj Motuz и gallegonovato
+* Исправлен root-установщик (Tobi823/ffupdater#462)
