@@ -62,7 +62,7 @@ object TorBrowserAlpha : AppBase() {
         val pattern = Regex.escape("https://dist.torproject.org/torbrowser/") +
                 "([0-9a-z.]{4,})" +
                 Regex.escape("/tor-browser-android-${getAbiString()}-") +
-                "[0-9a-z.]{4,}" +
+                "([0-9a-z.]{4,})" +
                 Regex.escape(".apk")
 
         val match = Regex(pattern).find(content)
