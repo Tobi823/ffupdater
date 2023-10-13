@@ -24,8 +24,7 @@ Repository address with fingerprint: `https://raw.githubusercontent.com/Tobi823/
 
 Copy the address and paste it into F-Droid.
 
-[![Video](fdroid_repo_method1.mp4)](fdroid_repo_method1.mp4)
-
+[![Video](https://tobi823.github.io/fdroid_repo_method1.mp4)](https://tobi823.github.io/fdroid_repo_method1.mp4)
 
 ### Method 2
 
