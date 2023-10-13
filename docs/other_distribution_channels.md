@@ -34,9 +34,7 @@ Scan the QR-Code and open the link with F-Droid.
 
 ### Method 3
 
-(This method might be broken). Follow the link and click on the link.
-
-[Add the repository to F-Droid](https://tobi823.github.io/ffupdaterrepo.html)
+Follow this link ([Add the repository to F-Droid](https://tobi823.github.io/ffupdaterrepo.html)) and click on the next link.
 
 ### Debug
 
