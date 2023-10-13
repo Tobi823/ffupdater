@@ -1,0 +1,1 @@
+- substituir varargs por lista para corrigir compilações reprodutíveis

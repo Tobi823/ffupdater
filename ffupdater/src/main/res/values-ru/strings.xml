@@ -11,7 +11,7 @@
     <string name="notification__error__text">Пожалуйста, сообщите об этой ошибке. Нажмите, чтобы просмотреть отчет об ошибке.</string>
     <string name="notification__error__title">Фоновая проверка обновлений не удалась</string>
     <string name="brave__description">Brave — это быстрый, безопасный и приватный браузер со встроенным блокировщиком сторонней рекламы. Он защищает вас от отслеживания рекламой, заражения вредоносными программами и всплывающих окон.</string>
-    <string name="brave__title">Браузер Brave</string>
+    <string name="brave__title">Brave Browser</string>
     <string name="brave__warning">-Brave использует техническую основу Google Chrome и тем самым косвенно поддерживает монопольное положение движка рендеринга Chromium
 \n- В связи с тем, что токен Basic Attention Token BAT находится на блокчейне Ethereum, проект имеет отношение к криптовалютам. У блокчейнов много проблем, и, на мой взгляд, их следует избегать.</string>
     <string name="brave_beta__description">Добро пожаловать в Brave Beta для Android!\nОпробуйте новейшие функции и оставьте свой отзыв: https://brave.com/msupport\nВы можете установить Brave Beta вместе с текущей версией Brave для Android.</string>
@@ -199,7 +199,7 @@
     <string name="mulch__warning">- Mulch использует техническую основу Google Chrome и тем самым косвенно поддерживает монопольное положение движка рендеринга Chromium.</string>
     <string name="installer__android_too_old_for_shizuku">Ваш Android слишком стар для Shizuku.</string>
     <string name="network__dns_provider__no">Без DNS (только для тестирования)</string>
-    <string name="installer__method__native">Native installer: Резервный вариант, если session installer не работает на смартфоне.</string>
+    <string name="installer__method__native">Родной установщик: Резервный вариант, если session установщик не работает на смартфоне.</string>
     <string name="network__dns_provider__custom">Пользовательский сервер DNS по HTTPS</string>
     <string name="installer__method__root">Root-установщик: Обновление приложений без диалогового окна подтверждения. Для этого требуется рутированный смартфон.</string>
     <string name="notification__update_available__generic_channel_descr">Канал уведомлений о доступных обновлениях приложения.</string>
@@ -241,7 +241,7 @@
     <string name="settings__device_category__title">Устройство</string>
     <string name="installer__method__root_not_granted">Root-права не выданы!</string>
     <string name="device__prefer_32bit_apks__title">Предпочитать 32-Bit АПК</string>
-    <string name="installer__method__session">Session installer: Рекомендуется для большинства устройств. На Android 12 и выше приложения могут обновляться без звука после одного подтверждения пользователя.</string>
+    <string name="installer__method__session">Session установщик: Рекомендуется для большинства устройств. На Android 12 и выше приложения могут обновляться без звука после одного подтверждения пользователя.</string>
     <string name="add_app_activity__title_based_on_firefox">На основе Firefox</string>
     <string name="background__separate_notification_channels__title">Различные каналы уведомления</string>
     <string name="add_app_activity__title_good_security_browsers">Хороший Безопасный Браузер</string>
@@ -258,7 +258,7 @@
     <string name="main_activity__an_error_occurred"><u>Произошла ошибка. Повторите попытку позже.</u></string>
     <string name="app_card__open_project_page">Открыть страницу проекта в браузере</string>
     <string name="tor_browser__title">Tor Browser</string>
-    <string name="crash_report_activity__label">Репорт падения</string>
+    <string name="crash_report_activity__label">Отчёт о сбое</string>
     <string name="add_app_activity__label">Добавить Новое Приложение</string>
     <string name="add_app_activity__title_other_applications">Другие приложения</string>
     <string name="add_app_activity__title_end_of_live_browser">Браузеры с оконченной поддержкой</string>
@@ -279,7 +279,7 @@
     <string name="network__dns_provider__quad9">DNS через HTTPS: Quad9</string>
     <string name="network__dns_provider__cloudflare">DNS через HTTPS: Cloudflare</string>
     <string name="network__dns_provider__google">DNS через HTTPS: Google</string>
-    <string name="installer__method__shizuku">Shizuku installer: Обновление приложений без диалогового окна подтверждения. Для этого требуется приложение Shizuku или модуль Sui Magisk.</string>
+    <string name="installer__method__shizuku">Shizuku установщик: Обновление приложений без диалогового окна подтверждения. Для этого требуется приложение Shizuku или модуль Sui Magisk.</string>
     <string name="orbot__description">Orbot - это бесплатное прокси-приложение, которое позволяет другим приложениям использовать интернет более безопасно. Orbot использует Tor для шифрования вашего интернет-трафика, а затем скрывает его, пропуская через ряд компьютеров по всему миру. Tor - это свободное программное обеспечение и открытая сеть, которая помогает защититься от формы сетевого наблюдения, угрожающей личной свободе и неприкосновенности частной жизни, конфиденциальным деловым операциям и отношениям, а также государственной безопасности, известной как анализ трафика.</string>
     <string name="notification__network_error__title">Ошибка сети в фоновом задании</string>
     <string name="notification__bachground_work__channel_description">Уведомления фоновой работы</string>

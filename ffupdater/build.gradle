@@ -64,9 +64,9 @@ android {
     compileSdk 34
 
     defaultConfig {
-        versionCode 161
+        versionCode 162
         // (incompatible changes) . (backwards compatible functionality) . (backwards compatible bug fixes)
-        versionName '78.2.4'
+        versionName '78.2.5'
         minSdk 21
         targetSdk 34
         vectorDrawables.useSupportLibrary = true
@@ -129,5 +129,17 @@ android {
         includeInApk = false
         // Disables dependency metadata when building Android App Bundles.
         includeInBundle = false
+    }
+}
+
+tasks.register('printVersionName') {
+    doLast {
+        println android.defaultConfig.versionName
+    }
+}
+
+tasks.register('printVersionCode') {
+    doLast {
+        println android.defaultConfig.versionCode
     }
 }

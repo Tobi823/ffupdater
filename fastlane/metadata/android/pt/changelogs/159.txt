@@ -1,0 +1,1 @@
+- desativar o Bloco de Informação de Dependência porque o F-Droid o quer e para corrigir compilações reprodutíveis
