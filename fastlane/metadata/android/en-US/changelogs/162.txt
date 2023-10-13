@@ -1,1 +1,1 @@
-- update regex for tor browser
+- update regex for tor browser (to fix the crash at app startup)
