@@ -258,7 +258,7 @@
     <string name="main_activity__an_error_occurred"><u>Произошла ошибка. Повторите попытку позже.</u></string>
     <string name="app_card__open_project_page">Открыть страницу проекта в браузере</string>
     <string name="tor_browser__title">Tor Browser</string>
-    <string name="crash_report_activity__label">Репорт падения</string>
+    <string name="crash_report_activity__label">Отчёт о сбое</string>
     <string name="add_app_activity__label">Добавить Новое Приложение</string>
     <string name="add_app_activity__title_other_applications">Другие приложения</string>
     <string name="add_app_activity__title_end_of_live_browser">Браузеры с оконченной поддержкой</string>
