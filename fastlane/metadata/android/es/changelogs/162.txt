@@ -1,0 +1,1 @@
+- Actualizar las expresiones regulares para el navegador Tor (para solucionar el problema al iniciar la aplicación)
