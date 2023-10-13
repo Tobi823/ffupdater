@@ -81,7 +81,7 @@ object TorBrowser : AppBase() {
     }
 
     private suspend fun findDateTime(version: String, cacheBehaviour: CacheBehaviour): String {
-        val url = "https://dist.torproject.org/torbrowser/$version/?P=tor-browser-android-${getAbiString()}-*.apk"
+        val url = "https://dist.torproject.org/torbrowser/$version/?P=tor-browser-android-${getAbiString()}-$version.apk"
         val content = FileDownloader.downloadStringWithCache(url, cacheBehaviour)
         val spaces = """\s+"""
         val pattern = Regex.escape("</a>") +
