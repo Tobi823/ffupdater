@@ -3,8 +3,6 @@ name: Android CI
 on:
   push:
     branches: [ master ]
-  schedule:
-    - cron: '10 19 * * *'
 
 jobs:
   build:
