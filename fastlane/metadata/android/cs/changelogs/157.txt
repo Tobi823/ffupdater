@@ -1,0 +1,5 @@
+- děkujeme za překlady na Weblate: winver, Макар Разин, Daviteusz, Retrial, Alexthegib, Frau Gülle, Juraj Motuz, Eduardo Malaspina, 109247019824, Priit Jõerüüt, Kazushi Hayama a Trond Kjetil Bremnes
+- přidána podpora pro Cromite (Tobi823/ffupdater#447)
+- oprava Shizuku chyby při aktualizování aplikace (Tobi823/ffupdater#456)
+- při použití F-Droid verze se zobrazí text, který má přesvědčit uživatele, aby odinstaloval FFUpdater a nainstaloval verzi podepsanou vývojářem (Tobi823/ffupdater#320)
+- oprava root instalátoru (Tobi823/ffupdater#462)

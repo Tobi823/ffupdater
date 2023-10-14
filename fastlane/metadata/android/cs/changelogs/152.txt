@@ -1,0 +1,5 @@
+* Děkujeme za překlady na Weblate: Giovanni Donisi, 109247019824, Alexthegib, Retrial,
+  gallegonovato, nautilusx a Trond Kjetil Bremnes
+* Ignorování chyby pří opuštění relace instalace (Tobi823/ffupdater#474)
+* Oprava chyby v Androidu 6.0 při stahovaní Firefoxu Nightly (metoda MatchGroup.get(String) je
+  dostupná pouze od API 26) (Tobi823/ffupdater#477)

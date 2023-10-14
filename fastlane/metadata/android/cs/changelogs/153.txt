@@ -1,0 +1,2 @@
+* Děkujeme za překlady na Weblate: gallegonovato, Alexthegib, 109247019824 a Giovanni Donisi
+* oprava stahování Tor Browser Alpha (Tobi823/ffupdater#485)
