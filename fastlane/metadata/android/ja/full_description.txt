@@ -1,0 +1,30 @@
+以下のブラウザーをインストール・更新できます:
+
+Mozilla のブラウザー及び Firefox ベースのブラウザー:
+- Fennec F-Droid
+- Firefox ブラウザー、Firefox Beta、Firefox Nightly
+- Firefox Focus, Firefox Focus Beta, Firefox Klar
+- Iceraven
+- Mull Browser
+- Tor Browser, Tor Browser Alpha
+
+プライバシー保護に優れたブラウザー:
+- Bromite、Bromite SystemWebView
+- Mulch、Mulch System WebView
+
+Google Chrome より優れたブラウザー:
+- Brave プライベートブラウザ、Brave ブラウザ (ベータ版)、Brave ブラウザ (Nightly)
+- Chromium
+- DuckDuckGo Browser
+- Kiwi Browser Next
+- Privacy Browser (F-Droid)
+- Vivaldi
+
+その他のアプリ:
+- Orbot
+
+FFUpdater はバックグラウンドで更新を確認してダウンロードします。Android 12 以上またはルート化された端末では、FFUpdater がユーザーの操作なしでアプリを更新します。
+
+その他の情報は https://notabug.org/Tobiwan/ffupdater/src/master/README.md をご確認ください。
+
+更新履歴: https://notabug.org/Tobiwan/ffupdater/src/master/fastlane/metadata/android/en-US/changelogs
