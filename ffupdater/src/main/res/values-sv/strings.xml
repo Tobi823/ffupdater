@@ -1,2 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_description">Uppdaterare för integritetsvänliga webbläsare</string>
+    <string name="crash_report__go_to_github">Gå till GitHub</string>
+    <string name="crash_report__go_to_gitlab">Gå till GitLab</string>
+    <string name="action_about_title">Om FFUpdater</string>
+    <string name="app_card__app_warning_button_description">Visa varningar om denna app</string>
+    <string name="app_icon">appikon</string>
+    <string name="bromite__title">Bromite</string>
+    <string name="dialog_button__do_not_install">Nej, installera det inte</string>
+    <string name="dialog_button__yes">Ja</string>
+    <string name="app_warning_dialog__title">Varning</string>
+    <string name="application_successfully_installed">Applikationsinstallation lyckades</string>
+    <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
+    <string name="crash_report__got_to_notabug_org">Gå till notabug.org</string>
+    <string name="app_name">FFUpdater</string>
+    <string name="available_version">Tillgänglig: %1$s</string>
+</resources>
