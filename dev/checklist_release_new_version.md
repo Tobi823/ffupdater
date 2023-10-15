@@ -15,6 +15,7 @@ git fetch --tags
 - build.gradle: versionCode + versionName
 - commit changes:
   - Release version xx (xx)
+  - Weblate contributors
   - `Tobiwan/ffupdater#XXX` for issues/pull requests from notabug.org
   - `Tobi823/ffupdater#XXX` for issues/pull requests from Github
   - `Tobiwan/ffupdater_gitlab#XXX` for issues/merge requests from Gitlab
