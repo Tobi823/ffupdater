@@ -152,7 +152,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private suspend fun fetchLatestUpdates(apps: List<App>, cacheBehaviour: CacheBehaviour) {
-        if (!ForegroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
+        if (isNetworkMeterStatusOk()) {
             showErrorUnmeteredNetwork(apps)
             return
         }
@@ -203,11 +203,11 @@ class MainActivity : AppCompatActivity() {
 
     @MainThread
     suspend fun installOrDownloadApp(app: App) {
-        if (!ForegroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
+        if (isNetworkMeterStatusOk()) {
             showBriefMessage(R.string.main_activity__no_unmetered_network)
             return
         }
-        if (DeviceSdkTester.supportsAndroid8Oreo26() && !packageManager.canRequestPackageInstalls()) {
+        if (hasAppInstallPermission()) {
             RequestInstallationPermissionDialog().show(supportFragmentManager)
             return
         }
@@ -226,6 +226,10 @@ class MainActivity : AppCompatActivity() {
         val intent = DownloadActivity.createIntent(this@MainActivity, app)
         startActivity(intent)
     }
+
+    private fun hasAppInstallPermission() = DeviceSdkTester.supportsAndroid8Oreo26() && !packageManager.canRequestPackageInstalls()
+
+    private fun isNetworkMeterStatusOk() = !ForegroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)
 
     @UiThread
     private fun showBriefMessage(message: Int) {
@@ -250,9 +254,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun requestForNotificationPermissionIfNecessary() {
-        if (!DeviceSdkTester.supportsAndroid13T33() ||
-            ContextCompat.checkSelfPermission(this, POST_NOTIFICATIONS) == PERMISSION_GRANTED
-        ) {
+        if (!DeviceSdkTester.supportsAndroid13T33()) {
+            return
+        }
+        if (ContextCompat.checkSelfPermission(this, POST_NOTIFICATIONS) == PERMISSION_GRANTED) {
             return
         }
 
