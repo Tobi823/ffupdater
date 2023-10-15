@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_description">Uppdaterare för integritetsvänliga webbläsare</string>
+    <string name="crash_report__go_to_github">Gå till GitHub</string>
+    <string name="crash_report__go_to_gitlab">Gå till GitLab</string>
+    <string name="action_about_title">Om FFUpdater</string>
+    <string name="app_card__app_warning_button_description">Visa varningar om denna app</string>
+    <string name="app_icon">appikon</string>
+    <string name="bromite__title">Bromite</string>
+    <string name="dialog_button__do_not_install">Nej, installera det inte</string>
+    <string name="dialog_button__yes">Ja</string>
+    <string name="app_warning_dialog__title">Varning</string>
+    <string name="application_successfully_installed">Applikationsinstallation lyckades</string>
+    <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
+    <string name="crash_report__got_to_notabug_org">Gå till notabug.org</string>
+    <string name="app_name">FFUpdater</string>
+    <string name="available_version">Tillgänglig: %1$s</string>
+    <string name="notification__error__text">Rapportera detta fel. Klicka här för att visa felrapporten.</string>
+    <string name="brave__title">Brave Private Browser</string>
+    <string name="notification__error__title">Bakgrundsuppdateringskoll misslyckades</string>
+    <string name="notification__eol_apps__channel_name">Utgånga appar-avisering</string>
+    <string name="notification__download_error__title">Bakgrundshämtning för uppdatering misslyckades</string>
+    <string name="notification__download_running__title">Hämtar appuppdateringar</string>
+    <string name="brave_beta__title">Brave Browser (Beta)</string>
+    <string name="crash_report__copy_crash_report_to_clipboard">Kopiera krashlogg till urklipp</string>
+    <string name="notification__download_error__channel_name">Aviseringar om fel vid hämtningar i bakgrunden</string>
+    <string name="notification__download_error__channel_descr">Visar när uppdateringshämtningar i bakgrunden misslyckas.</string>
+    <string name="notification__eol_apps__text">Du har utgångna appar som inte bör användas längre. Klicka här för mer information.</string>
+    <string name="application_installation_was_not_successful">Applikationsinstallation misslyckades</string>
+    <string name="brave_nightly__title">Brave Browser (Nightly)</string>
+    <string name="notification__download_running__channel_descr">Visar när appuppdateringar laddas ner i bakgrunden.</string>
+    <string name="app_card__download_the_app">ladda ner appen</string>
+</resources>

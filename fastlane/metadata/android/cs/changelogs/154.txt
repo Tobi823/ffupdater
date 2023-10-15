@@ -1,0 +1,2 @@
+* Oprava prohlížečů Brave, Brave Beta a Brave Nightly pro novější zařízení (použití Bravearm64Universal.apk namísto BraveMonoarm64.apk) (Tobi823/ffupdater#475)
+* Odstraněny zastaralé Android 6 verze prohlížečů Brave, Brave Beta a Brave Nightly

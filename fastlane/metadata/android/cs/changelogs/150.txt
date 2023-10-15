@@ -1,0 +1,2 @@
+* Děkujeme za překlady na Weblate: gallegonovato, nautilusx, Juraj Motuz, Retrial a atilluF
+* Oprava chyby "Aktualizace na pozadí se nezdařila" (Tobi823/ffupdater#452)

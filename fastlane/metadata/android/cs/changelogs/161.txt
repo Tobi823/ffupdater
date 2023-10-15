@@ -1,0 +1,2 @@
+- Děkujeme za překlady na Weblate: winver, nautilusx, gallegonovato, Kazushi Hayama a 109247019824
+- Pokus o opravu reprodukovatelných sestavení v F-Droidu

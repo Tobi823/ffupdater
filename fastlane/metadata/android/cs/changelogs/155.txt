@@ -1,0 +1,2 @@
+* Děkujeme za překlady na Weblate: gallegonovato, MkQtS, Retrial a Eryk Michalak
+* Oprava pádu Fennecu (Tobi823/ffupdater#491)
