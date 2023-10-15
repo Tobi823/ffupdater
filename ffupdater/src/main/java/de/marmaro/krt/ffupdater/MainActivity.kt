@@ -85,15 +85,14 @@ class MainActivity : AppCompatActivity() {
     private var userClickedInstallAppButton = OnClickListener {
         lifecycleScope.launch(Dispatchers.Main) {
             InstalledAppsCache.updateCache(applicationContext)
-            val intent = AddAppActivity.createIntent(applicationContext)
-            startActivity(intent)
+            startActivity(AddAppActivity.createIntent(applicationContext))
         }
     }
 
     private var userRefreshAppList = OnRefreshListener {
         lifecycleScope.launch(Dispatchers.Main) {
             InstalledAppsCache.updateCache(applicationContext)
-            showInstalledAppsInRecyclerView(useNetworkCache = false)
+            showInstalledAppsInRecyclerView(FORCE_NETWORK)
         }
     }
 
@@ -105,7 +104,7 @@ class MainActivity : AppCompatActivity() {
     @MainThread
     private suspend fun onResumeSuspended() {
         if (firstStart) InstalledAppsCache.updateCache(applicationContext)
-        showInstalledAppsInRecyclerView(useNetworkCache = true)
+        showInstalledAppsInRecyclerView(USE_CACHE)
         if (firstStart) startOrRestartBackgroundWork()
         firstStart = false
     }
@@ -156,40 +155,35 @@ class MainActivity : AppCompatActivity() {
         view.layoutManager = LinearLayoutManager(this@MainActivity)
     }
 
-    private suspend fun showInstalledAppsInRecyclerView(useNetworkCache: Boolean) {
-        val appsWithCorrectFingerprint = InstalledAppsCache.getInstalledAppsWithCorrectFingerprint(applicationContext)
-        val appsWithWrongFingerprint = if (ForegroundSettings.isHideAppsSignedByDifferentCertificate) {
-            listOf()
-        } else {
-            InstalledAppsCache.getInstalledAppsWithDifferentFingerprint(applicationContext)
-        }
+    private suspend fun showInstalledAppsInRecyclerView(cacheBehaviour: CacheBehaviour) {
+        val correctFingerprintApps = InstalledAppsCache.getInstalledAppsWithCorrectFingerprint(applicationContext)
+        val wrongFingerprintApps = InstalledAppsCache.getInstalledAppsWithDifferentFingerprint(applicationContext)
         recycleViewAdapter.notifyInstalledApps(
-            appsWithCorrectFingerprint,
-            appsWithWrongFingerprint
+            correctFingerprintApps,
+            if (ForegroundSettings.isHideAppsSignedByDifferentCertificate) listOf() else wrongFingerprintApps
         )
-        fetchLatestUpdates(appsWithCorrectFingerprint, useNetworkCache)
+        fetchLatestUpdates(correctFingerprintApps, cacheBehaviour)
     }
 
-    private suspend fun fetchLatestUpdates(apps: List<App>, useNetworkCache: Boolean) {
+    private suspend fun fetchLatestUpdates(apps: List<App>, cacheBehaviour: CacheBehaviour) {
         if (!ForegroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)) {
-            setLoadAnimationState(false)
-            apps.forEach {
-                recycleViewAdapter.notifyErrorForApp(
-                    it,
-                    R.string.main_activity__no_unmetered_network,
-                    NoUnmeteredNetworkException("Unmetered network is necessary but not available.")
-                )
-            }
-            showBriefMessage(R.string.main_activity__no_unmetered_network)
+            showErrorUnmeteredNetwork(apps)
             return
         }
 
-        setLoadAnimationState(true)
-        val cacheBehaviour = if (useNetworkCache) USE_CACHE else FORCE_NETWORK
-        apps.forEach {
-            updateMetadataOf(it, cacheBehaviour)
+        showLoadAnimationDuringExecution {
+            apps.forEach {
+                updateMetadataOf(it, cacheBehaviour)
+            }
         }
-        setLoadAnimationState(false)
+    }
+
+    private fun showErrorUnmeteredNetwork(apps: List<App>) {
+        val e = NoUnmeteredNetworkException("Unmetered network is necessary but not available.")
+        apps.forEach {
+            recycleViewAdapter.notifyErrorForApp(it, R.string.main_activity__no_unmetered_network, e)
+        }
+        showBriefMessage(R.string.main_activity__no_unmetered_network)
     }
 
     private fun startOrRestartBackgroundWork() {
@@ -260,8 +254,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     @UiThread
-    private fun setLoadAnimationState(visible: Boolean) {
-        findViewById<SwipeRefreshLayout>(R.id.swipeContainer).isRefreshing = visible
+    private suspend fun showLoadAnimationDuringExecution(block: suspend () -> Unit) {
+        findViewById<SwipeRefreshLayout>(R.id.swipeContainer).isRefreshing = true
+        try {
+            block()
+        } finally {
+            findViewById<SwipeRefreshLayout>(R.id.swipeContainer).isRefreshing = false
+        }
     }
 
     private fun requestForNotificationPermissionIfNecessary() {
