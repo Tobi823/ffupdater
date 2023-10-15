@@ -25,6 +25,8 @@ dependencies {
     // has coordinatorlayout, constraintlayout, cardview and more
     implementation 'com.google.android.material:material:1.9.0'
 
+    implementation 'androidx.annotation:annotation:1.7.0'
+
     // additional layout for then main screen
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 

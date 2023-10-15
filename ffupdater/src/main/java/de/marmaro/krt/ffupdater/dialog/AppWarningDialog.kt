@@ -17,6 +17,7 @@ import de.marmaro.krt.ffupdater.app.App
  */
 @Keep
 class AppWarningDialog : DialogFragment() {
+    @Throws(IllegalArgumentException::class)
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val appName = requireNotNull(requireArguments().getString(BUNDLE_APP_NAME))
         val app = App.valueOf(appName)
@@ -41,6 +42,7 @@ class AppWarningDialog : DialogFragment() {
     companion object {
         private const val BUNDLE_APP_NAME = "app_name"
 
+        @Throws(IllegalArgumentException::class)
         fun newInstance(app: App): AppWarningDialog {
             requireNotNull(app.findImpl().installationWarning) { "$app has no installation warning!" }
             val bundle = Bundle()

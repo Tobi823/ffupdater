@@ -17,6 +17,7 @@ import okhttp3.RequestBody.Companion.toRequestBody
 @Keep
 object MozillaCiJsonConsumer {
 
+    @Throws(IllegalStateException::class)
     suspend fun findTaskId(indexPath: String, cacheBehaviour: CacheBehaviour): String {
         val pageUrl = "https://firefox-ci-tc.services.mozilla.com/graphql"
         val requestJson = """{"operationName":"IndexedTask","variables":{"indexPath":"$indexPath"},"query":"query """ +

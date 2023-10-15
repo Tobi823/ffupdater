@@ -24,6 +24,7 @@ class ShizukuInstaller(app: App) : SessionInstaller(app, false) {
     override val type = Installer.SESSION_INSTALLER
     override val intentName = "de.marmaro.krt.ffupdater.installer.impl.ShizukuNewInstaller"
 
+    @Throws(IllegalArgumentException::class)
     override suspend fun installApkFile(context: Context, file: File) {
         if (DeviceSdkTester.supportsAndroid9P28()) {
             HiddenApiBypass.addHiddenApiExemptions("")

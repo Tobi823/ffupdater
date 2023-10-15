@@ -33,6 +33,7 @@ import de.marmaro.krt.ffupdater.installer.error.session.GenericSessionResultDeco
 import de.marmaro.krt.ffupdater.installer.error.session.GenericSessionResultDecoder.getTranslatedErrorMessage
 import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
 import de.marmaro.krt.ffupdater.installer.exceptions.UserInteractionIsRequiredException
+import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import dev.rikka.tools.refine.Refine
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
@@ -46,6 +47,7 @@ open class SessionInstaller(app: App, private val foreground: Boolean) : Abstrac
     override val type = Installer.SESSION_INSTALLER
     protected open val intentName = "de.marmaro.krt.ffupdater.installer.impl.SessionInstaller.$foreground"
 
+    @Throws(IllegalArgumentException::class)
     override suspend fun installApkFile(context: Context, file: File) {
         require(file.exists()) { "File does not exists." }
         val installStatus = CompletableDeferred<Boolean>()
@@ -64,6 +66,7 @@ open class SessionInstaller(app: App, private val foreground: Boolean) : Abstrac
         installStatus: CompletableDeferred<Boolean>,
     ): BroadcastReceiver {
         val intentReceiver = object : BroadcastReceiver() {
+            @Throws(IllegalArgumentException::class)
             override fun onReceive(context: Context?, intent: Intent?) {
                 requireNotNull(context)
                 requireNotNull(intent)
@@ -188,6 +191,7 @@ open class SessionInstaller(app: App, private val foreground: Boolean) : Abstrac
     }
 
 
+    @Throws(IllegalArgumentException::class)
     private fun createConfirmInstallationIntent(bundle: Bundle): Intent {
         val originalIntent = if (DeviceSdkTester.supportsAndroid13T33()) {
             bundle.getParcelable(Intent.EXTRA_INTENT, Intent::class.java)

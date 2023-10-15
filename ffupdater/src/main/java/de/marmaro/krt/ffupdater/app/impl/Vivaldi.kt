@@ -51,6 +51,7 @@ object Vivaldi : AppBase() {
         )
     }
 
+    @Throws(IllegalStateException::class)
     private suspend fun extractVersionAndDownloadUrl(content: String): Pair<String, String> {
         return withContext(Dispatchers.Default) {
             val abiString = when (DeviceAbiExtractor.findBestAbi(supportedAbis, DeviceSettingsHelper.prefer32BitApks)) {

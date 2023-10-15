@@ -60,6 +60,7 @@ object TorBrowser : AppBase() {
         )
     }
 
+    @Throws(IllegalStateException::class)
     private suspend fun findVersionAndDownloadUrl(cacheBehaviour: CacheBehaviour): Pair<String, String> {
         val content = FileDownloader.downloadStringWithCache(MAIN_URL, cacheBehaviour)
         val pattern = Regex.escape("https://dist.torproject.org/torbrowser/") +
@@ -80,6 +81,7 @@ object TorBrowser : AppBase() {
         return availableVersion.value to downloadUrl.value
     }
 
+    @Throws(IllegalStateException::class)
     private suspend fun findDateTime(version: String, cacheBehaviour: CacheBehaviour): String {
         val url = "https://dist.torproject.org/torbrowser/$version/?P=tor-browser-android-${getAbiString()}-$version.apk"
         val content = FileDownloader.downloadStringWithCache(url, cacheBehaviour)

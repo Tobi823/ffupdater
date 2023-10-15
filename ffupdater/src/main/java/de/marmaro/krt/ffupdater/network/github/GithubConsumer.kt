@@ -14,7 +14,7 @@ import java.util.function.Predicate
 object GithubConsumer {
 
     @MainThread
-    @Throws(NetworkException::class)
+    @Throws(NetworkException::class, IllegalStateException::class)
     suspend fun findLatestRelease(
         repository: GithubRepo,
         resultsPerApiCall: Int,

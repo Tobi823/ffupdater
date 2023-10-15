@@ -302,6 +302,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         @UiThread
+        @Throws(IllegalArgumentException::class)
         fun notifyAppChange(app: App, updateStatus: InstalledAppStatus?) {
             if (updateStatus == null) {
                 appAndUpdateStatus.remove(app)
@@ -314,6 +315,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         @UiThread
+        @Throws(IllegalArgumentException::class)
         fun notifyErrorForApp(app: App, message: Int, exception: Exception) {
             errors[app] = ExceptionWrapper(message, exception)
 
@@ -323,6 +325,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         @UiThread
+        @Throws(IllegalArgumentException::class)
         fun notifyClearedErrorForApp(app: App) {
             if (errors.containsKey(app)) {
                 errors.remove(app)

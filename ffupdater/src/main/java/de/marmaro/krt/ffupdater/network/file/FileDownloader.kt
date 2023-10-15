@@ -181,6 +181,7 @@ object FileDownloader {
         return response.body ?: throw NetworkException("Response is unsuccessful. Body is null.")
     }
 
+    @Throws(IllegalArgumentException::class)
     private suspend fun callUrl(
         url: String,
         method: String,
@@ -219,6 +220,7 @@ object FileDownloader {
         }
     }
 
+    @Throws(IllegalArgumentException::class)
     private suspend fun callUrlWithCache(
         url: String,
         cacheBehaviour: CacheBehaviour,

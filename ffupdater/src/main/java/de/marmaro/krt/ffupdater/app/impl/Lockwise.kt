@@ -36,7 +36,7 @@ object Lockwise : AppBase() {
     override val displayCategory = listOf(OTHER, EOL)
 
     @MainThread
-    @Throws(NetworkException::class)
+    @Throws(NetworkException::class, IllegalStateException::class)
     override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
         val result = GithubConsumer.findLatestRelease(
             repository = GithubConsumer.GithubRepo("mozilla-lockwise", "lockwise-android"),

@@ -17,6 +17,7 @@ import de.marmaro.krt.ffupdater.app.App
  */
 @Keep
 class AppInfoDialog : DialogFragment() {
+    @Throws(IllegalArgumentException::class)
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val appName = requireNotNull(requireArguments().getString(BUNDLE_APP_NAME))
         val app = App.valueOf(appName)

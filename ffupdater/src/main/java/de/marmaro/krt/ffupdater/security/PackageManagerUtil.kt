@@ -23,7 +23,7 @@ object PackageManagerUtil {
 
     @Suppress("DEPRECATION")
     @MainThread
-    @Throws(FileNotFoundException::class)
+    @Throws(FileNotFoundException::class, IllegalStateException::class)
     suspend fun getPackageArchiveInfo(pm: PackageManager, path: String): Signature {
         return withContext(Dispatchers.Default) {
             val file = File(path)
@@ -77,6 +77,7 @@ object PackageManagerUtil {
     }
 
     @RequiresApi(Build.VERSION_CODES.P)
+    @Throws(IllegalStateException::class)
     private fun extractSignature(signingInfo: SigningInfo): Signature {
         check(!signingInfo.hasMultipleSigners()) { "Multiple signers are not allowed." }
         val signatures = signingInfo.signingCertificateHistory
@@ -85,6 +86,7 @@ object PackageManagerUtil {
         return checkNotNull(signatures[0])
     }
 
+    @Throws(IllegalStateException::class)
     private fun extractSignature(signatures: Array<Signature>): Signature {
         check(signatures.isNotEmpty()) { "Signatures must not be empty." }
         check(signatures.size == 1) { "Found multiple signatures." }

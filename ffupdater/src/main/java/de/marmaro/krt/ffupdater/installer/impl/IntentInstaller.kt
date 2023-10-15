@@ -62,6 +62,7 @@ class IntentInstaller(
         )
     }
 
+    @Throws(IllegalArgumentException::class)
     override suspend fun installApkFile(context: Context, file: File) {
         require(this::appInstallationCallback.isInitialized) { "Call lifecycle.addObserver(...) first!" }
         require(file.exists()) { "File does not exists." }

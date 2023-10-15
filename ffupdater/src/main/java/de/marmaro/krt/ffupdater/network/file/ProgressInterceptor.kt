@@ -8,7 +8,7 @@ import okhttp3.Response
 @Keep
 class ProgressInterceptor : Interceptor {
 
-
+    @Throws(IllegalArgumentException::class)
     override fun intercept(chain: Interceptor.Chain): Response {
         val original = chain.proceed(chain.request())
         val responseBody = requireNotNull(original.body) { "original.body is null! Maybe called by cache?" }

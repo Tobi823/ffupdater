@@ -19,6 +19,7 @@ object StorageUtil {
         return getFreeStorageInMebibytes(context) > REQUIRED_MEBIBYTES
     }
 
+    @Throws(IllegalStateException::class)
     fun getFreeStorageInMebibytes(context: Context): Long {
         val folder = context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
         checkNotNull(folder) { "The external 'Download' folder of the app should exists." }

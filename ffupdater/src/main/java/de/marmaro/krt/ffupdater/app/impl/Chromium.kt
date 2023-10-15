@@ -82,6 +82,7 @@ object Chromium : AppBase() {
         return parseJson(storageObjects, platform, revision)
     }
 
+    @Throws(IllegalStateException::class)
     private suspend fun parseJson(
         storageObjects: JsonObject,
         platform: String,

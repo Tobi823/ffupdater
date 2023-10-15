@@ -143,6 +143,7 @@ interface ApkDownloader : AppAttributes {
         downloadFile.renameTo(apkFile)
     }
 
+    @Throws(IllegalArgumentException::class)
     private suspend fun checkApkFile(file: File) {
         if (file.extension != "apk") throw InvalidApkException("Wrong file downloaded: $file")
         if (!file.exists()) throw InvalidApkException("Missing file: $file")

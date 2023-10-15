@@ -32,6 +32,7 @@ class RootInstaller(app: App) : AbstractAppInstaller(app) {
         Shell.getShell().waitAndClose()
     }
 
+    @Throws(IllegalArgumentException::class)
     private fun fileIsSafeOrThrow(context: Context, file: File) {
         require(!hasDangerousCharacter(file.canonicalPath)) { "File path has dangerous characters: ${file.canonicalPath}" }
         require(!hasDangerousCharacter(file.name)) { "File name has dangerous characters: ${file.name}" }
@@ -60,6 +61,7 @@ class RootInstaller(app: App) : AbstractAppInstaller(app) {
         }
     }
 
+    @Throws(IllegalStateException::class)
     private suspend fun createInstallationSession(size: Int): Int {
         val response = execute("pm install-create -i com.android.vending --user 0 -r -S $size")
         val result = response[0]
