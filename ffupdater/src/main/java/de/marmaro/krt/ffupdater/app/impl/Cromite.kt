@@ -28,7 +28,7 @@ object Cromite : AppBase() {
     override val downloadSource = "GitHub"
     override val icon = R.drawable.id_logo_cromite
     override val minApiLevel = Build.VERSION_CODES.N
-    override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.X86_64)
+    override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.X86_64, ABI.ARMEABI_V7A)
     override val signatureHash = "633fa41d8211d6d0916a819b89668c6de92e64232da67f9d16fd81c3b7e923ff"
     override val projectPage = "https://github.com/uazo/cromite"
     override val displayCategory = listOf(DisplayCategory.GOOD_PRIVACY_BROWSER)
@@ -60,6 +60,7 @@ object Cromite : AppBase() {
         val fileName =
             when (DeviceAbiExtractor.findBestAbi(supportedAbis, DeviceSettingsHelper.prefer32BitApks)) {
                 ABI.ARM64_V8A -> "arm64_ChromePublic.apk"
+                ABI.ARMEABI_V7A -> "arm_ChromePublic.apk"
                 ABI.X86_64 -> "x64_ChromePublic.apk"
                 else -> throw IllegalArgumentException("ABI is not supported")
             }
