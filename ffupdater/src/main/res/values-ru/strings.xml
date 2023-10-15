@@ -278,11 +278,7 @@
     <string name="foreground__hide_apps_signed_by_different_certificate__title">Скрыть приложения, подписанные другим сертификатом.</string>
     <string name="settings__network__trust_user_cas__title">Доверять добавленным пользователем центрам сертификации</string>
     <string name="app_installer__failed_to_validate_signature_of_download">Не удалось проверить подпись загрузки.</string>
-    <string name="tor_browser_alpha__description">Tor Browser — единственный официальный мобильный браузер, поддерживаемый проектом Tor Project, разработчиком самого мощного в мире инструмента для обеспечения конфиденциальности и свободы в Интернете.
-\n
-\nTor Browser ВСЕГДА будет бесплатным, но это возможно благодаря пожертвованиям. Проект Tor — это некоммерческая организация 501©(3), базирующаяся в США. Пожалуйста, рассмотрите возможность внесения пожертвования сегодня. Каждый подарок имеет значение: https://donate.torproject.org.
-\n
-\nУзнайте, как сообщать об ошибках и оставлять отзывы на https://support.torproject.org/misc/bug-or-feedback/!</string>
+    <string name="tor_browser_alpha__description">Tor Browser — единственный официальный мобильный браузер, поддерживаемый проектом Tor Project, разработчиком самого мощного в мире инструмента для обеспечения конфиденциальности и свободы в Интернете. \n \nTor Browser ВСЕГДА будет бесплатным, но это возможно благодаря пожертвованиям. Проект Tor — это некоммерческая организация 501©(3), базирующаяся в США. Пожалуйста, рассмотрите возможность внесения пожертвования сегодня. Каждый подарок имеет значение: https://donate.torproject.org. \n \nУзнайте, как сообщать об ошибках и оставлять отзывы на https://support.torproject.org/misc/bug-or-feedback/!</string>
     <string name="notification__uncaught_exception__text">Нажмите, чтобы просмотреть отчёт об ошибке.</string>
     <string name="generic_app_warning__beta_version">- Это приложение предназначено для разработчиков и тестировщиков. Оно может содержать различные ошибки, которые могут повлиять на вашу обычную работу с браузером.</string>
     <string name="eol_reason__browser_no_longer_maintained">Браузер больше не поддерживается.</string>
