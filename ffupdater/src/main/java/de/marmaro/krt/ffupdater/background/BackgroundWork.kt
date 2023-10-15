@@ -230,7 +230,5 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
             val timeSinceExecution = Duration.ofMillis(System.currentTimeMillis() - lastExecutionTime)
             return timeSinceExecution < intervalWithErrorMargin
         }
-
-
     }
 }
