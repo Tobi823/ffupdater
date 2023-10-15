@@ -301,4 +301,5 @@
     <string name="cromite__title">Cromite</string>
     <string name="cromite__description">Cromite is a Chromium fork based on Bromite with built-in support for ad blocking and an eye for privacy.</string>
     <string name="cromite__warning">- Cromite uses the technical foundation of Google Chrome and thus indirectly supports the monopoly position of the Chromium render engine.</string>
+    <string name="main_activity__unexpected_error">Unexpected error occurred.</string>
 </resources>

@@ -75,9 +75,9 @@ class MainActivity : AppCompatActivity() {
         askForIgnoringBatteryOptimizationIfNecessary()
 
         findViewById<View>(R.id.installAppButton).setOnClickListener(userClickedInstallAppButton)
-        findViewById<SwipeRefreshLayout>(R.id.swipeContainer)
-            .also { it.setOnRefreshListener(userRefreshAppList) }
-            .also { it.setColorSchemeResources(holo_blue_light, holo_blue_dark) }
+        val swipeContainer = findViewById<SwipeRefreshLayout>(R.id.swipeContainer)
+        swipeContainer.setOnRefreshListener(userRefreshAppList)
+        swipeContainer.setColorSchemeResources(holo_blue_light, holo_blue_dark)
 
         initRecyclerView()
     }
@@ -213,12 +213,12 @@ class MainActivity : AppCompatActivity() {
                 is ApiRateLimitExceededException -> R.string.main_activity__github_api_limit_exceeded
                 is NetworkException -> R.string.main_activity__temporary_network_issue
                 is DisplayableException -> R.string.main_activity__an_error_occurred
-                else -> throw e
+                else -> R.string.main_activity__unexpected_error
             }
             recycleViewAdapter.notifyErrorForApp(app, textId, e)
             showBriefMessage(getString(textId))
+            return null
         }
-        return null
     }
 
     @MainThread
