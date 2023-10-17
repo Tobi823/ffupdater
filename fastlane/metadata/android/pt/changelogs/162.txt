@@ -1,0 +1,1 @@
+- atualizar o regex para o browser tor (para corrigir a falha no arranque da aplicação)
