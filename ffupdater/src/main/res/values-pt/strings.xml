@@ -342,4 +342,5 @@
     <string name="cromite__description">O Cromite é um fork do Chromium baseado no Bromite com suporte incorporado para bloqueio de anúncios e uma preocupação com a privacidade.</string>
     <string name="cromite__warning">- A Cromite utiliza a base técnica do Google Chrome e, assim, apoia indiretamente a posição de monopólio do motor de processamento Chromium.</string>
     <string name="cromite__title">Cromite</string>
+    <string name="main_activity__unexpected_error">Ocorreu um erro inesperado.</string>
 </resources>
