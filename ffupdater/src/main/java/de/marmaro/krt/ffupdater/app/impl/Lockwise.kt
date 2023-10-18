@@ -39,11 +39,9 @@ object Lockwise : AppBase() {
     @Throws(NetworkException::class, IllegalStateException::class)
     override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
         val result = GithubConsumer.findLatestRelease(
-            repository = GithubConsumer.GithubRepo("mozilla-lockwise", "lockwise-android"),
-            resultsPerApiCall = 5,
+            repository = GithubConsumer.GithubRepo("mozilla-lockwise", "lockwise-android", 0),
             isValidRelease = { !it.isPreRelease },
             isSuitableAsset = { it.name.endsWith(".apk") },
-            dontUseApiForLatestRelease = false,
             cacheBehaviour = cacheBehaviour,
             requireReleaseDescription = false,
         )

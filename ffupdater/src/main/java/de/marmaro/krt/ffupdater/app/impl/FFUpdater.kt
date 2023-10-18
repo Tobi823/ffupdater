@@ -37,11 +37,9 @@ object FFUpdater : AppBase() {
     @Throws(NetworkException::class)
     override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
         val result = GithubConsumer.findLatestRelease(
-            repository = GithubConsumer.GithubRepo("Tobi823", "ffupdater"),
-            resultsPerApiCall = 5,
+            repository = GithubConsumer.GithubRepo("Tobi823", "ffupdater", 0),
             isValidRelease = { !it.isPreRelease },
             isSuitableAsset = { it.name.endsWith(".apk") },
-            dontUseApiForLatestRelease = false,
             cacheBehaviour = cacheBehaviour,
             requireReleaseDescription = false,
         )

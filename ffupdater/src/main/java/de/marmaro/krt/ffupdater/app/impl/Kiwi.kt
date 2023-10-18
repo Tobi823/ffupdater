@@ -1,15 +1,12 @@
 package de.marmaro.krt.ffupdater.app.impl
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
-import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.BETTER_THAN_GOOGLE_CHROME
-import de.marmaro.krt.ffupdater.app.entity.InstalledAppStatus
 import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
@@ -47,11 +44,9 @@ object Kiwi : AppBase() {
                 Regex.escape("-github.apk")
 
         val result = GithubConsumer.findLatestRelease(
-            repository = GithubConsumer.GithubRepo("kiwibrowser", "src.next"),
-            resultsPerApiCall = 3,
+            repository = GithubConsumer.GithubRepo("kiwibrowser", "src.next", 0),
             isValidRelease = { true },
             isSuitableAsset = { Regex(fileRegex).matches(it.name) },
-            dontUseApiForLatestRelease = true,
             cacheBehaviour = cacheBehaviour,
             requireReleaseDescription = true,
         )

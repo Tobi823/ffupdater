@@ -41,11 +41,9 @@ object UngoogledChromium : AppBase() {
     @Throws(NetworkException::class)
     override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
         val result = GithubConsumer.findLatestRelease(
-            repository = GithubConsumer.GithubRepo("ungoogled-software", "ungoogled-chromium-android"),
-            resultsPerApiCall = 2,
+            repository = GithubConsumer.GithubRepo("ungoogled-software", "ungoogled-chromium-android", 0),
             isValidRelease = { !it.isPreRelease && "webview" !in it.name },
             isSuitableAsset = { it.name == findFileName() },
-            dontUseApiForLatestRelease = true,
             cacheBehaviour = cacheBehaviour,
             requireReleaseDescription = false,
         )

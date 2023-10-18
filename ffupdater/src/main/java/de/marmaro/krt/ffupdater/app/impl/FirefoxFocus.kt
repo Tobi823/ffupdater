@@ -42,11 +42,9 @@ object FirefoxFocus : AppBase() {
     override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
         val fileSuffix = findFileName()
         val result = GithubConsumer.findLatestRelease(
-            repository = GithubConsumer.REPOSITORY__MOZILLA_MOBILE__FIREFOX_ANDROID,
-            resultsPerApiCall = GithubConsumer.RESULTS_PER_API_CALL__FIREFOX_ANDROID,
+            repository = FirefoxRelease.REPOSITORY,
             isValidRelease = { !it.isPreRelease && """^Focus \d""".toRegex().containsMatchIn(it.name) },
             isSuitableAsset = { it.nameStartsAndEndsWith("focus-", fileSuffix) },
-            dontUseApiForLatestRelease = true,
             cacheBehaviour = cacheBehaviour,
             requireReleaseDescription = false,
         )

@@ -37,6 +37,7 @@ object Brave : AppBase() {
     override val signatureHash = "9c2db70513515fdbfbbc585b3edf3d7123d4dc67c94ffd306361c1d79bbf18ac"
     override val projectPage = "https://github.com/brave/brave-browser"
     override val displayCategory = listOf(BETTER_THAN_GOOGLE_CHROME)
+    val REPOSITORY = GithubConsumer.GithubRepo("brave", "brave-browser", 27)
 
     @MainThread
     @Throws(NetworkException::class)
@@ -44,11 +45,9 @@ object Brave : AppBase() {
         val fileName = findNameOfApkFile()
         Log.e("test", "|${fileName}|")
         val result = GithubConsumer.findLatestRelease(
-            repository = GithubConsumer.REPOSITORY__BRAVE__BRAVE_BROWSER,
-            resultsPerApiCall = GithubConsumer.RESULTS_PER_API_CALL__BRAVE_BROWSER,
+            repository = REPOSITORY,
             isValidRelease = { !it.isPreRelease && it.name.startsWith("Release v") },
             isSuitableAsset = { it.name == fileName },
-            dontUseApiForLatestRelease = true,
             cacheBehaviour = cacheBehaviour,
             requireReleaseDescription = false,
         )

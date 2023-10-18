@@ -39,11 +39,9 @@ object Thorium : AppBase() {
     override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
         val fileName = findFileName()
         val result = GithubConsumer.findLatestRelease(
-            repository = GithubConsumer.GithubRepo("Alex313031", "Thorium-Android"),
-            resultsPerApiCall = 3,
+            repository = GithubConsumer.GithubRepo("Alex313031", "Thorium-Android", 0),
             isValidRelease = { !it.isPreRelease },
             isSuitableAsset = { it.name == fileName },
-            dontUseApiForLatestRelease = false,
             cacheBehaviour = cacheBehaviour,
             requireReleaseDescription = false,
         )

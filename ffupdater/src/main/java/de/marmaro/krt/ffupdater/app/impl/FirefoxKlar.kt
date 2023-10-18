@@ -41,11 +41,9 @@ object FirefoxKlar : AppBase() {
     override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
         val fileSuffix = findfileSuffix()
         val result = GithubConsumer.findLatestRelease(
-            repository = GithubConsumer.REPOSITORY__MOZILLA_MOBILE__FIREFOX_ANDROID,
-            resultsPerApiCall = GithubConsumer.RESULTS_PER_API_CALL__FIREFOX_ANDROID,
+            repository = FirefoxRelease.REPOSITORY,
             isValidRelease = { !it.isPreRelease && """^Klar \d""".toRegex().containsMatchIn(it.name) },
             isSuitableAsset = { it.nameStartsAndEndsWith("klar-", fileSuffix) },
-            dontUseApiForLatestRelease = true,
             cacheBehaviour = cacheBehaviour,
             requireReleaseDescription = false,
         )

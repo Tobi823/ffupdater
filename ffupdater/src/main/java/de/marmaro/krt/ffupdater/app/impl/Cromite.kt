@@ -38,11 +38,9 @@ object Cromite : AppBase() {
     override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
         val fileName = findFileName()
         val result = GithubConsumer.findLatestRelease(
-            repository = GithubConsumer.GithubRepo("uazo", "cromite"),
-            resultsPerApiCall = 2,
+            repository = GithubConsumer.GithubRepo("uazo", "cromite", 0),
             isValidRelease = { !it.isPreRelease },
             isSuitableAsset = { it.name == fileName },
-            dontUseApiForLatestRelease = false,
             cacheBehaviour = cacheBehaviour,
             requireReleaseDescription = false,
         )

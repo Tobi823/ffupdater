@@ -45,11 +45,9 @@ object Iceraven : AppBase() {
     override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
         val fileSuffix = findFileSuffix()
         val result = GithubConsumer.findLatestRelease(
-            repository = GithubConsumer.GithubRepo("fork-maintainers", "iceraven-browser"),
-            resultsPerApiCall = 3,
+            repository = GithubConsumer.GithubRepo("fork-maintainers", "iceraven-browser", 0),
             isValidRelease = { !it.isPreRelease },
             isSuitableAsset = { it.name.endsWith(fileSuffix) },
-            dontUseApiForLatestRelease = false,
             cacheBehaviour = cacheBehaviour,
             requireReleaseDescription = false,
         )

@@ -16,27 +16,18 @@ object GithubConsumer {
     @Throws(NetworkException::class, IllegalStateException::class)
     suspend fun findLatestRelease(
         repository: GithubRepo,
-        resultsPerApiCall: Int,
         isValidRelease: Predicate<SearchParameterForRelease>,
         isSuitableAsset: Predicate<SearchParameterForAsset>,
-        dontUseApiForLatestRelease: Boolean = false,
         cacheBehaviour: CacheBehaviour,
         requireReleaseDescription: Boolean,
     ): Result {
-        check(resultsPerApiCall > 0)
-        if (!dontUseApiForLatestRelease) {
+        if (repository.irrelevantReleasesBetweenRelevant == 0) {
             findWithFirstApi(repository, isValidRelease, isSuitableAsset, cacheBehaviour, requireReleaseDescription)
                 ?.let { return it } // return if not null
         }
 
-        findWithSecondApi(
-            repository,
-            resultsPerApiCall,
-            isValidRelease,
-            isSuitableAsset,
-            cacheBehaviour,
-            requireReleaseDescription
-        )?.let { return it } // return if not null
+        findWithSecondApi(repository, isValidRelease, isSuitableAsset, cacheBehaviour, requireReleaseDescription)
+            ?.let { return it } // return if not null
 
         throw InvalidApiResponseException("can't find latest release")
     }
@@ -58,12 +49,12 @@ object GithubConsumer {
 
     private suspend fun findWithSecondApi(
         repository: GithubRepo,
-        resultsPerApiCall: Int,
         isValidRelease: Predicate<SearchParameterForRelease>,
         isSuitableAsset: Predicate<SearchParameterForAsset>,
         cacheBehaviour: CacheBehaviour,
         requireReleaseDescription: Boolean,
     ): Result? {
+        val resultsPerApiCall = (repository.irrelevantReleasesBetweenRelevant + 1)
         for (page in 1..10) {
             val url = "https://api.github.com/repos/${repository.owner}/${repository.name}/releases?" +
                     "per_page=$resultsPerApiCall&page=$page"
@@ -101,12 +92,5 @@ object GithubConsumer {
     )
 
     @Keep
-    data class GithubRepo(val owner: String, val name: String)
-
-    val REPOSITORY__MOZILLA_MOBILE__FIREFOX_ANDROID = GithubRepo("mozilla-mobile", "firefox-android")
-    val REPOSITORY__BRAVE__BRAVE_BROWSER = GithubRepo("brave", "brave-browser")
-    val REPOSITORY__BROMITE__BROMITE = GithubRepo("bromite", "bromite")
-    const val RESULTS_PER_API_CALL__FIREFOX_ANDROID = 20
-    const val RESULTS_PER_API_CALL__BRAVE_BROWSER = 40
-    const val RESULTS_PER_API_CALL__BROMITE = 5
+    data class GithubRepo(val owner: String, val name: String, val irrelevantReleasesBetweenRelevant: Int)
 }

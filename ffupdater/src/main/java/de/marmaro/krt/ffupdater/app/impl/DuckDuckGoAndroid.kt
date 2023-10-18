@@ -38,11 +38,9 @@ object DuckDuckGoAndroid : AppBase() {
     @Throws(NetworkException::class)
     override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
         val result = GithubConsumer.findLatestRelease(
-            repository = GithubConsumer.GithubRepo("duckduckgo", "Android"),
-            resultsPerApiCall = 3,
+            repository = GithubConsumer.GithubRepo("duckduckgo", "Android", 0),
             isValidRelease = { true },
             isSuitableAsset = { it.nameStartsAndEndsWith("duckduckgo-", "-play-release.apk") },
-            dontUseApiForLatestRelease = false,
             cacheBehaviour = cacheBehaviour,
             requireReleaseDescription = false,
         )

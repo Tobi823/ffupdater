@@ -42,11 +42,9 @@ object BraveBeta : AppBase() {
     override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
         val fileName = findNameOfApkFile()
         val result = GithubConsumer.findLatestRelease(
-            repository = GithubConsumer.REPOSITORY__BRAVE__BRAVE_BROWSER,
-            resultsPerApiCall = GithubConsumer.RESULTS_PER_API_CALL__BRAVE_BROWSER,
+            repository = Brave.REPOSITORY,
             isValidRelease = { !it.isPreRelease && it.name.startsWith("Beta v") },
             isSuitableAsset = { it.name == fileName },
-            dontUseApiForLatestRelease = true,
             cacheBehaviour = cacheBehaviour,
             requireReleaseDescription = false,
         )

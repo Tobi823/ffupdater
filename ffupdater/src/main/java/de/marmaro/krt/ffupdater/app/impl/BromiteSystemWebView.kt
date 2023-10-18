@@ -43,11 +43,9 @@ object BromiteSystemWebView : AppBase() {
     override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
         val fileName = findFileName()
         val result = GithubConsumer.findLatestRelease(
-            repository = GithubConsumer.REPOSITORY__BROMITE__BROMITE,
-            resultsPerApiCall = GithubConsumer.RESULTS_PER_API_CALL__BROMITE,
+            repository = Bromite.REPOSITORY,
             isValidRelease = { !it.isPreRelease },
             isSuitableAsset = { it.name == fileName },
-            dontUseApiForLatestRelease = true,
             cacheBehaviour = cacheBehaviour,
             requireReleaseDescription = false,
         )

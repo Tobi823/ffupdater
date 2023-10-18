@@ -37,17 +37,16 @@ object Bromite : AppBase() {
     override val signatureHash = "e1ee5cd076d7b0dc84cb2b45fb78b86df2eb39a3b6c56ba3dc292a5e0c3b9504"
     override val projectPage = "https://github.com/bromite/bromite"
     override val displayCategory = listOf(GOOD_PRIVACY_BROWSER, EOL)
+    val REPOSITORY = GithubConsumer.GithubRepo("bromite", "bromite", 0)
 
     @MainThread
     @Throws(NetworkException::class)
     override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
         val fileName = findFileName()
         val result = GithubConsumer.findLatestRelease(
-            repository = GithubConsumer.REPOSITORY__BROMITE__BROMITE,
-            resultsPerApiCall = GithubConsumer.RESULTS_PER_API_CALL__BROMITE,
+            repository = REPOSITORY,
             isValidRelease = { !it.isPreRelease },
             isSuitableAsset = { it.name == fileName },
-            dontUseApiForLatestRelease = true,
             cacheBehaviour = cacheBehaviour,
             requireReleaseDescription = false,
         )

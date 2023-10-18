@@ -40,11 +40,9 @@ object Orbot : AppBase() {
     override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
         val assetSuffix = getAssetSuffix()
         val result = GithubConsumer.findLatestRelease(
-            repository = GithubConsumer.GithubRepo("guardianproject", "orbot"),
-            resultsPerApiCall = 3,
+            repository = GithubConsumer.GithubRepo("guardianproject", "orbot", 0),
             isValidRelease = { !it.isPreRelease },
             isSuitableAsset = { it.nameStartsAndEndsWith("Orbot", assetSuffix) },
-            dontUseApiForLatestRelease = false,
             cacheBehaviour = cacheBehaviour,
             requireReleaseDescription = false,
         )

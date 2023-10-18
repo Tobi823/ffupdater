@@ -13,6 +13,7 @@ import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
+import de.marmaro.krt.ffupdater.network.github.GithubConsumer.GithubRepo
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 
 /**
@@ -36,17 +37,16 @@ object FirefoxRelease : AppBase() {
     override val signatureHash = "a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04"
     override val projectPage = "https://github.com/mozilla-mobile/firefox-android"
     override val displayCategory = listOf(FROM_MOZILLA)
+    val REPOSITORY = GithubRepo("mozilla-mobile", "firefox-android", 13)
 
     @MainThread
     @Throws(NetworkException::class)
     override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
         val fileSuffix = findFileSuffix()
         val result = GithubConsumer.findLatestRelease(
-            repository = GithubConsumer.REPOSITORY__MOZILLA_MOBILE__FIREFOX_ANDROID,
-            resultsPerApiCall = GithubConsumer.RESULTS_PER_API_CALL__FIREFOX_ANDROID,
+            repository = REPOSITORY,
             isValidRelease = { !it.isPreRelease && """^Firefox \d""".toRegex().containsMatchIn(it.name) },
             isSuitableAsset = { it.nameStartsAndEndsWith("fenix-", "-$fileSuffix") },
-            dontUseApiForLatestRelease = true,
             cacheBehaviour = cacheBehaviour,
             requireReleaseDescription = false,
         )
