@@ -18,6 +18,7 @@ Google Chrome より優れたブラウザー:
 - DuckDuckGo Browser
 - Kiwi Browser Next
 - Privacy Browser (F-Droid)
+- Thorium
 - Vivaldi
 
 その他のアプリ:

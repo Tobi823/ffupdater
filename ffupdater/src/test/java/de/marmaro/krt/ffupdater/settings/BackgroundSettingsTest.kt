@@ -228,6 +228,7 @@ class BackgroundSettingsTest : BaseTest() {
                 "MULL_FROM_REPO",
                 "ORBOT",
                 "PRIVACY_BROWSER",
+                "THORIUM",
                 "TOR_BROWSER",
                 "TOR_BROWSER_ALPHA",
                 "UNGOOGLED_CHROMIUM",

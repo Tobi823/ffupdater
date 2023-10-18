@@ -63,6 +63,7 @@ class CheckReleaseAgeIT {
             TestData(MullFromRepo, 56),
             TestData(Orbot, 4 * 30),
             TestData(PrivacyBrowser, 56),
+            TestData(Thorium, 56),
             TestData(TorBrowserAlpha, 56),
             TestData(TorBrowser, 56),
 //            TestData(UngoogledChromium, 56),

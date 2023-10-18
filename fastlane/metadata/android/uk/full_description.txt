@@ -18,6 +18,7 @@
 - DuckDuckGo Browser
 - Kiwi Browser Next
 - Privacy Browser (F-Droid)
+- Thorium
 - Vivaldi
 
 Інші застосунки:

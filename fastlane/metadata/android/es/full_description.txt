@@ -18,6 +18,7 @@ Navegadores mejores que Google Chrome
 - Navegador DuckDuckGo
 - Navegador Kiwi Siguiente
 - Navegador de privacidad (F-Droid)
+- Thorium
 - Vivaldi
 
 Otras aplicaciones:

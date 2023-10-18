@@ -29,6 +29,7 @@ enum class App {
     MULL_FROM_REPO,
     ORBOT,
     PRIVACY_BROWSER,
+    THORIUM,
     TOR_BROWSER,
     TOR_BROWSER_ALPHA,
     UNGOOGLED_CHROMIUM,
@@ -62,6 +63,7 @@ enum class App {
             MULL_FROM_REPO -> MullFromRepo
             ORBOT -> Orbot
             PRIVACY_BROWSER -> PrivacyBrowser
+            THORIUM -> Thorium
             TOR_BROWSER -> TorBrowser
             TOR_BROWSER_ALPHA -> TorBrowserAlpha
             UNGOOGLED_CHROMIUM -> UngoogledChromium
