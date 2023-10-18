@@ -27,7 +27,7 @@ object TorBrowserAlpha : AppBase() {
     override val title = R.string.tor_browser_alpha__title
     override val description = R.string.tor_browser_alpha__description
     override val installationWarning = R.string.generic_app_warning__beta_version
-    override val downloadSource = "https://www.torproject.org/download/alpha/"
+    override val downloadSource = "https://dist.torproject.org/torbrowser"
     override val icon = R.drawable.ic_logo_tor_browser_alpha
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = ARM32_ARM64_X86_X64
@@ -46,7 +46,8 @@ object TorBrowserAlpha : AppBase() {
     @MainThread
     @Throws(NetworkException::class)
     override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
-        val (version, downloadUrl) = findVersionAndDownloadUrl(cacheBehaviour)
+        val version = findLatestVersion(cacheBehaviour)
+        val downloadUrl = getDownloadUrl(version)
         return LatestVersion(
             downloadUrl = downloadUrl,
             version = version,
@@ -56,31 +57,33 @@ object TorBrowserAlpha : AppBase() {
         )
     }
 
-    @Throws(IllegalStateException::class)
-    private suspend fun findVersionAndDownloadUrl(cacheBehaviour: CacheBehaviour): Pair<String, String> {
-        // https://dist.torproject.org/torbrowser/13.0a3/tor-browser-android-aarch64-13.0a3.apk
-        val content = FileDownloader.downloadStringWithCache(MAIN_URL, cacheBehaviour)
-        val pattern = Regex.escape("https://dist.torproject.org/torbrowser/") +
-                "([0-9a-z.]{4,})" +
-                Regex.escape("/tor-browser-android-${getAbiString()}-") +
-                "([0-9a-z.]{4,})" +
-                Regex.escape(".apk")
+    private suspend fun findLatestVersion(cacheBehaviour: CacheBehaviour): String {
+        val content = FileDownloader.downloadStringWithCache("$MAIN_BASE_URL/", cacheBehaviour)
+        val pattern = Regex.escape("<a href=\"") +
+                VERSION_PATTERN +
+                Regex.escape("/\">") +
+                VERSION_PATTERN +
+                Regex.escape("/</a>")
 
         val match = Regex(pattern).find(content)
-        checkNotNull(match) { "Can't find download url with regex pattern: $pattern." }
+        checkNotNull(match) { "Can't find latest version regex pattern '$pattern'." }
 
-        val downloadUrl = match.groups[0]
-        checkNotNull(downloadUrl) { "Can't extract download url from regex match." }
+        val version = match.groups[1]?.value
+        checkNotNull(version) { "Can't extract latest version from regex match." }
+        check(version == match.groups[2]?.value) { "Extract different versions." }
 
-        val availableVersion = match.groups[1]
-        checkNotNull(availableVersion) { "Can't extract available version from regex match." }
+        return version
+    }
 
-        return availableVersion.value to downloadUrl.value
+    private fun getDownloadUrl(version: String): String {
+        val abi = getAbiString()
+        return "$MAIN_BASE_URL/$version/tor-browser-android-$abi-$version.apk"
     }
 
     @Throws(IllegalStateException::class)
     private suspend fun findDateTime(version: String, cacheBehaviour: CacheBehaviour): String {
-        val url = "https://dist.torproject.org/torbrowser/$version/?P=tor-browser-android-${getAbiString()}-*.apk"
+        val abi = getAbiString()
+        val url = "$MAIN_BASE_URL/$version/?P=tor-browser-android-$abi-$version.apk"
         val content = FileDownloader.downloadStringWithCache(url, cacheBehaviour)
         val spaces = """\s+"""
         val pattern = Regex.escape("</a>") +
@@ -114,5 +117,6 @@ object TorBrowserAlpha : AppBase() {
         }
     }
 
-    private const val MAIN_URL = "https://www.torproject.org/download/alpha/"
+    private const val MAIN_BASE_URL = "https://dist.torproject.org/torbrowser"
+    private const val VERSION_PATTERN = "([\\d\\.]+\\w\\d+)"
 }
