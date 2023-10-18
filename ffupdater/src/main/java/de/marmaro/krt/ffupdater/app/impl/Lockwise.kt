@@ -45,6 +45,7 @@ object Lockwise : AppBase() {
             isSuitableAsset = { it.name.endsWith(".apk") },
             dontUseApiForLatestRelease = false,
             cacheBehaviour = cacheBehaviour,
+            requireReleaseDescription = false,
         )
 
         val extractVersion = {

@@ -40,10 +40,11 @@ object Cromite : AppBase() {
         val result = GithubConsumer.findLatestRelease(
             repository = GithubConsumer.GithubRepo("uazo", "cromite"),
             resultsPerApiCall = 2,
-            dontUseApiForLatestRelease = false,
             isValidRelease = { !it.isPreRelease },
             isSuitableAsset = { it.name == fileName },
+            dontUseApiForLatestRelease = false,
             cacheBehaviour = cacheBehaviour,
+            requireReleaseDescription = false,
         )
         val tagNameWithoutPrefix = result.tagName.removePrefix("v")
         val version = tagNameWithoutPrefix.split("-")[0]

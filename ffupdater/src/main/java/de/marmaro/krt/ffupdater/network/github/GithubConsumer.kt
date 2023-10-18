@@ -7,7 +7,6 @@ import de.marmaro.krt.ffupdater.network.exceptions.InvalidApiResponseException
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
-import java.util.*
 import java.util.function.Predicate
 
 @Keep
@@ -22,15 +21,22 @@ object GithubConsumer {
         isSuitableAsset: Predicate<SearchParameterForAsset>,
         dontUseApiForLatestRelease: Boolean = false,
         cacheBehaviour: CacheBehaviour,
+        requireReleaseDescription: Boolean,
     ): Result {
         check(resultsPerApiCall > 0)
         if (!dontUseApiForLatestRelease) {
-            findWithFirstApi(repository, isValidRelease, isSuitableAsset, cacheBehaviour)
+            findWithFirstApi(repository, isValidRelease, isSuitableAsset, cacheBehaviour, requireReleaseDescription)
                 ?.let { return it } // return if not null
         }
 
-        findWithSecondApi(repository, resultsPerApiCall, isValidRelease, isSuitableAsset, cacheBehaviour)
-            ?.let { return it } // return if not null
+        findWithSecondApi(
+            repository,
+            resultsPerApiCall,
+            isValidRelease,
+            isSuitableAsset,
+            cacheBehaviour,
+            requireReleaseDescription
+        )?.let { return it } // return if not null
 
         throw InvalidApiResponseException("can't find latest release")
     }
@@ -40,10 +46,12 @@ object GithubConsumer {
         isValidRelease: Predicate<SearchParameterForRelease>,
         isSuitableAsset: Predicate<SearchParameterForAsset>,
         cacheBehaviour: CacheBehaviour,
+        requireReleaseDescription: Boolean,
     ): Result? {
         val url = "https://api.github.com/repos/${repository.owner}/${repository.name}/releases/latest"
         return FileDownloader.downloadWithCache(url, cacheBehaviour) {
-            val jsonConsumer = GithubReleaseJsonConsumer(JsonReader(it), isValidRelease, isSuitableAsset)
+            val jsonConsumer =
+                GithubReleaseJsonConsumer(JsonReader(it), isValidRelease, isSuitableAsset, requireReleaseDescription)
             jsonConsumer.parseReleaseJson()
         }
     }
@@ -54,12 +62,18 @@ object GithubConsumer {
         isValidRelease: Predicate<SearchParameterForRelease>,
         isSuitableAsset: Predicate<SearchParameterForAsset>,
         cacheBehaviour: CacheBehaviour,
+        requireReleaseDescription: Boolean,
     ): Result? {
         for (page in 1..10) {
             val url = "https://api.github.com/repos/${repository.owner}/${repository.name}/releases?" +
                     "per_page=$resultsPerApiCall&page=$page"
             val possibleResult = FileDownloader.downloadWithCache(url, cacheBehaviour) {
-                val jsonConsumer = GithubReleaseJsonConsumer(JsonReader(it), isValidRelease, isSuitableAsset)
+                val jsonConsumer = GithubReleaseJsonConsumer(
+                    JsonReader(it),
+                    isValidRelease,
+                    isSuitableAsset,
+                    requireReleaseDescription
+                )
                 jsonConsumer.parseReleaseArrayJson()
             }
             possibleResult?.let { return it }
@@ -83,6 +97,7 @@ object GithubConsumer {
         val url: String,
         val fileSizeBytes: Long,
         val releaseDate: String,
+        val releaseDescription: String?,
     )
 
     @Keep

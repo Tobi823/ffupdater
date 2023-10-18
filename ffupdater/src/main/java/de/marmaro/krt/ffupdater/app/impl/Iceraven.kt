@@ -51,6 +51,7 @@ object Iceraven : AppBase() {
             isSuitableAsset = { it.name.endsWith(fileSuffix) },
             dontUseApiForLatestRelease = false,
             cacheBehaviour = cacheBehaviour,
+            requireReleaseDescription = false,
         )
         return LatestVersion(
             downloadUrl = result.url,

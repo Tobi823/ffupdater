@@ -7,8 +7,6 @@ import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.BETTER_THAN_GOOGLE_CHROME
-import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.EOL
-import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.GOOD_PRIVACY_BROWSER
 import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
@@ -43,10 +41,11 @@ object Thorium : AppBase() {
         val result = GithubConsumer.findLatestRelease(
             repository = GithubConsumer.GithubRepo("Alex313031", "Thorium-Android"),
             resultsPerApiCall = 3,
-            dontUseApiForLatestRelease = false,
             isValidRelease = { !it.isPreRelease },
             isSuitableAsset = { it.name == fileName },
+            dontUseApiForLatestRelease = false,
             cacheBehaviour = cacheBehaviour,
+            requireReleaseDescription = false,
         )
         return LatestVersion(
             downloadUrl = result.url,

@@ -13,6 +13,7 @@ class GithubReleaseJsonConsumer(
     private val reader: JsonReader,
     private val correctRelease: Predicate<GithubConsumer.SearchParameterForRelease>,
     private val correctAsset: Predicate<GithubConsumer.SearchParameterForAsset>,
+    private val requireReleaseDescription: Boolean,
 ) {
 
     suspend fun parseReleaseArrayJson(): GithubConsumer.Result? {
@@ -53,6 +54,13 @@ class GithubReleaseJsonConsumer(
                 "published_at" -> currentRelease.publishedAt = reader.nextString()
                 "name" -> currentRelease.name = reader.nextString()
                 "prerelease" -> currentRelease.prerelease = reader.nextBoolean()
+                "body" -> {
+                    if (requireReleaseDescription) {
+                        currentRelease.body = reader.nextString()
+                    } else {
+                        skipNextJsonEntry(reader)
+                    }
+                }
                 "assets" -> {
                     if (currentRelease.isDataSetForSearchParameterConversion()) {
                         val release = currentRelease.toSearchParameterForRelease()
@@ -75,13 +83,15 @@ class GithubReleaseJsonConsumer(
         if (currentRelease.isDataSetForSearchParameterConversion() &&
             correctRelease.test(currentRelease.toSearchParameterForRelease()) &&
             foundAsset != null &&
-            correctAsset.test(foundAsset.toSearchParameterForAsset())
+            correctAsset.test(foundAsset.toSearchParameterForAsset()) &&
+            !(requireReleaseDescription && currentRelease.body == null)
         ) {
             return GithubConsumer.Result(
                 tagName = currentRelease.tagName!!,
                 url = foundAsset.downloadUrl,
                 fileSizeBytes = foundAsset.size,
-                releaseDate = currentRelease.publishedAt!!
+                releaseDate = currentRelease.publishedAt!!,
+                releaseDescription = currentRelease.body
             )
         }
 
@@ -176,6 +186,7 @@ class GithubReleaseJsonConsumer(
         var prerelease: Boolean? = null,
         var tagName: String? = null,
         var publishedAt: String? = null,
+        var body: String? = null,
     ) {
         fun isDataSetForSearchParameterConversion(): Boolean {
             return name != null && prerelease != null

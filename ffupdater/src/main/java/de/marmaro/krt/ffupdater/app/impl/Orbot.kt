@@ -46,6 +46,7 @@ object Orbot : AppBase() {
             isSuitableAsset = { it.nameStartsAndEndsWith("Orbot", assetSuffix) },
             dontUseApiForLatestRelease = false,
             cacheBehaviour = cacheBehaviour,
+            requireReleaseDescription = false,
         )
         return LatestVersion(
             downloadUrl = result.url,

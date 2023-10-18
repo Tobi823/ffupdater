@@ -44,6 +44,7 @@ object DuckDuckGoAndroid : AppBase() {
             isSuitableAsset = { it.nameStartsAndEndsWith("duckduckgo-", "-play-release.apk") },
             dontUseApiForLatestRelease = false,
             cacheBehaviour = cacheBehaviour,
+            requireReleaseDescription = false,
         )
         return LatestVersion(
             downloadUrl = result.url,

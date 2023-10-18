@@ -53,10 +53,20 @@ object Kiwi : AppBase() {
             isSuitableAsset = { Regex(fileRegex).matches(it.name) },
             dontUseApiForLatestRelease = true,
             cacheBehaviour = cacheBehaviour,
+            requireReleaseDescription = true,
         )
+
+        val versionPattern = """([\d\.]+)"""
+        val versionRegex = Regex("""^\s*Version\s+$versionPattern\s*\n""")
+        checkNotNull(result.releaseDescription) { "releaseDescription is null" }
+        val match = versionRegex.find(result.releaseDescription)
+        checkNotNull(match) { "Did not find a match." }
+        val version = match.groups[1]?.value
+        checkNotNull(version) { "Did not find version." }
+
         return LatestVersion(
             downloadUrl = result.url,
-            version = result.tagName,
+            version = version,
             publishDate = result.releaseDate,
             exactFileSizeBytesOfDownload = result.fileSizeBytes,
             fileHash = null,
@@ -73,27 +83,4 @@ object Kiwi : AppBase() {
         }
         return abiString
     }
-
-    override suspend fun isInstalledAppOutdated(
-        context: Context,
-        available: LatestVersion,
-    ): Boolean {
-        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
-        val runnerId = preferences.getString(BUILD_RUNNER_ID, null)
-        val fileSize = preferences.getLong(APK_FILE_SIZE, -1)
-        return runnerId != available.version || fileSize != available.exactFileSizeBytesOfDownload
-    }
-
-    @SuppressLint("ApplySharedPref")
-    override suspend fun appWasInstalledCallback(context: Context, available: InstalledAppStatus) {
-        PreferenceManager.getDefaultSharedPreferences(context).edit()
-            .putString(BUILD_RUNNER_ID, available.latestVersion.version)
-            .putLong(APK_FILE_SIZE, available.latestVersion.exactFileSizeBytesOfDownload!!)
-            .commit()
-        // this must be called last because the update is only recognized after setting the other values
-        super.appWasInstalledCallback(context, available)
-    }
-
-    private const val BUILD_RUNNER_ID = "kiwi__build_runner_id"
-    private const val APK_FILE_SIZE = "kiwi__file_size"
 }

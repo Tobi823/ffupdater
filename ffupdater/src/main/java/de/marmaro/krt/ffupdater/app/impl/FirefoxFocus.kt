@@ -44,10 +44,11 @@ object FirefoxFocus : AppBase() {
         val result = GithubConsumer.findLatestRelease(
             repository = GithubConsumer.REPOSITORY__MOZILLA_MOBILE__FIREFOX_ANDROID,
             resultsPerApiCall = GithubConsumer.RESULTS_PER_API_CALL__FIREFOX_ANDROID,
-            dontUseApiForLatestRelease = true,
             isValidRelease = { !it.isPreRelease && """^Focus \d""".toRegex().containsMatchIn(it.name) },
             isSuitableAsset = { it.nameStartsAndEndsWith("focus-", fileSuffix) },
+            dontUseApiForLatestRelease = true,
             cacheBehaviour = cacheBehaviour,
+            requireReleaseDescription = false,
         )
         val version = result.tagName
             .removePrefix("focus-v") //convert v108.1.1 or focus-v108.1.1 to 108.1.1

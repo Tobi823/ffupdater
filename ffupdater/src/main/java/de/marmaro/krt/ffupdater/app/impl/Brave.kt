@@ -46,10 +46,11 @@ object Brave : AppBase() {
         val result = GithubConsumer.findLatestRelease(
             repository = GithubConsumer.REPOSITORY__BRAVE__BRAVE_BROWSER,
             resultsPerApiCall = GithubConsumer.RESULTS_PER_API_CALL__BRAVE_BROWSER,
-            dontUseApiForLatestRelease = true,
             isValidRelease = { !it.isPreRelease && it.name.startsWith("Release v") },
             isSuitableAsset = { it.name == fileName },
+            dontUseApiForLatestRelease = true,
             cacheBehaviour = cacheBehaviour,
+            requireReleaseDescription = false,
         )
         return LatestVersion(
             downloadUrl = result.url,

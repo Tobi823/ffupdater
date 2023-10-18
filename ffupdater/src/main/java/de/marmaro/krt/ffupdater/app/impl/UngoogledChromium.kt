@@ -47,6 +47,7 @@ object UngoogledChromium : AppBase() {
             isSuitableAsset = { it.name == findFileName() },
             dontUseApiForLatestRelease = true,
             cacheBehaviour = cacheBehaviour,
+            requireReleaseDescription = false,
         )
         return LatestVersion(
             downloadUrl = result.url,
