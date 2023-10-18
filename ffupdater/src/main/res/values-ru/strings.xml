@@ -141,7 +141,7 @@
     <string name="settings__background__update_check__enabled__title">Проверка обновления</string>
     <string name="settings__background__update_check__excluded_apps__summary">Полезно, если вы не хотите обновлять приложение и не хотите получать уведомления о его обновлении.</string>
     <string name="settings__background__update_check__excluded_apps__title">Исключённые приложения из проверки обновлений</string>
-    <string name="settings__background__update_check__interval__title">Интервал проверки обновления</string>
+    <string name="settings__background__update_check__interval__title">Интервал проверки обновлений</string>
     <string name="settings__background__update_check__metered__title">Проверка обновлений в сетях с тарификацией</string>
     <string name="settings__background_category__summary">Настройки, когда приложение работает в фоновом режиме и невидимо для пользователя.</string>
     <string name="settings__background_category__title">Фон</string>
@@ -151,7 +151,7 @@
     <string name="settings__foreground__theme_preference__title">Выбор темы</string>
     <string name="settings__foreground__update_check__metered__summary">Разрешить проверку обновлений в дозированных сетях, таких как мобильные данные.</string>
     <string name="settings__foreground__update_check__metered__title">Проверка обновлений в сетях с тарификацией</string>
-    <string name="settings__foreground_category__summary">Настройки, когда пользовательский интерфейс виден.</string>
+    <string name="settings__foreground_category__summary">Настройки, когда виден пользовательский интерфейс.</string>
     <string name="settings__foreground_category__title">Передний план</string>
     <string name="settings__installer_category__title">Установщик</string>
     <string name="settings__theme_battery_saver">Тёмная, когда активна экономия батареи</string>
@@ -240,7 +240,7 @@
 \nНапример: https://dns.google/dns-query;8.8.8.8 или https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
     <string name="settings__device_category__title">Устройство</string>
     <string name="installer__method__root_not_granted">Root-права не выданы!</string>
-    <string name="device__prefer_32bit_apks__title">Предпочитать 32-Bit АПК</string>
+    <string name="device__prefer_32bit_apks__title">Предпочитать 32-битные АПК</string>
     <string name="installer__method__session">Session установщик: Рекомендуется для большинства устройств. На Android 12 и выше приложения могут обновляться без звука после одного подтверждения пользователя.</string>
     <string name="add_app_activity__title_based_on_firefox">На основе Firefox</string>
     <string name="background__separate_notification_channels__title">Различные каналы уведомления</string>
@@ -328,4 +328,5 @@
     <string name="cromite__description">Cromite — это форк Chromium на основе Bromite со встроенной поддержкой блокировки рекламы и обеспечением конфиденциальности.</string>
     <string name="cromite__warning">- Cromite использует техническую основу Google Chrome и тем самым косвенно поддерживает монопольное положение движка рендеринга Chromium.</string>
     <string name="cromite__title">Cromite</string>
+    <string name="main_activity__unexpected_error">Произошла непредвиденная ошибка.</string>
 </resources>

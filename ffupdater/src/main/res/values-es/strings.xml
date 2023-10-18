@@ -342,4 +342,5 @@
     <string name="cromite__description">Cromite es una bifurcación de Chromium basada en Bromite con soporte integrado para el bloqueo de anuncios y un ojo en la privacidad.</string>
     <string name="cromite__warning">- Cromite utiliza la base de Google Chrome y apoya así indirectamente la posición de monopolio del motor de renderizado Chromium.</string>
     <string name="cromite__title">Cromite</string>
+    <string name="main_activity__unexpected_error">Se ha producido un error inesperado.</string>
 </resources>
