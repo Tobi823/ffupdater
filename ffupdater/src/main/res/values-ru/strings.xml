@@ -41,7 +41,7 @@
     <string name="notification__error__channel_descr">Показать ошибки проверки фонового обновления</string>
     <string name="notification__error__channel_name">Ошибки фонового режима</string>
     <string name="firefox_beta__description">Firefox для Android — это по умолчанию конфиденциальный и невероятно быстрый браузер. Тысячи онлайн-трекеров следят за вами каждый день, собирая информацию о вашей жизни в Интернете и замедляя скорость вашей работы. Firefox блокирует более 2000 из этих трекеров автоматически и позволяет установить дополнения, блокирующие рекламу, на случай, если вы захотите настроить свой браузер под себя. С Firefox вы получите безопасность, которую заслуживаете, а также высокую скорость работы — и всё это в конфиденциальном мобильном браузере.</string>
-    <string name="firefox_beta__title">Firefox Бета для Android</string>
+    <string name="firefox_beta__title">Firefox Бета</string>
     <string name="firefox_beta__warning">- Это приложение предназначено для разработчиков и тестировщиков. Оно может содержать различные ошибки, которые могут повлиять на вашу обычную работу с браузером.</string>
     <string name="firefox_focus__description">Это модификация браузера Firefox, направленная на повышение уровня конфиденциальности.</string>
     <string name="firefox_focus__title">Firefox Focus</string>
