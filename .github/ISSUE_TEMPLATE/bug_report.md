@@ -10,7 +10,7 @@ assignees: ''
 **Before you create a new issue please verify:**
 
 - [ ] I am using the latest version of FFUpdater (latest version for F-Droid users: https://f-droid.org/packages/de.marmaro.krt.ffupdater/, for all other users: https://github.com/Tobi823/ffupdater/releases/latest
-- [ ] There are no other similar issues. If you have any doubts, you can create a new problem. However, if there is a similar problem, please add your information to the existing issue.
+- [ ] There are no other similar issues - please check the latest ten bug issues (https://github.com/Tobi823/ffupdater/issues?q=is%3Aissue+label%3Abug+sort%3Aupdated). If you have any doubts, you can create a new problem. However, if there is a similar problem, please add your information to the existing issue.
 - [x] You can tick boxes with an `x`
 
 **Describe the bug**
