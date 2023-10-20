@@ -1,0 +1,5 @@
+- ευχαριστούμε για τις συνεισφορές τους στο Weblate τους: winver, Макар Разин, Daviteusz, Retrial, Alexthegib, Frau Gülle, Juraj Motuz, Eduardo Malaspina, 109247019824, Priit Jõerüüt, Kazushi Hayama και Trond Kjetil Bremnes
+- προσθήκη υποστήριξης για το Cromite (Tobi823/ffupdater#447)
+- διορθώθηκε το σφάλμα του Shizuku κατά την ενημέρωση μιας εφαρμογής (Tobi823/ffupdater#456)
+- όταν χρησιμοποιείται η έκδοση F-Droid, θα εμφανιστεί ένα κείμενο που θα πείθει τον χρήστη να απεγκαταστήσει το FFUpdater και να εγκαταστήσει το υπογεγραμμένο από τον προγραμματιστή FFUpdater (Tobi823/ffupdater#320)
+- διορθώθηκε το πρόγραμμα εγκατάστασης root (Tobi823/ffupdater#462)
