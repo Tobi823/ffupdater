@@ -9,7 +9,7 @@ assignees: ''
 
 **Before you create a new issue please verify:**
 
-- [ ] I am using the latest version of FFUpdater
+- [ ] I am using the latest version of FFUpdater.
   - Latest version for F-Droid users: https://f-droid.org/packages/de.marmaro.krt.ffupdater/
   - For all other users: https://github.com/Tobi823/ffupdater/releases/latest
 - [ ] There are no other similar issues.
