@@ -88,7 +88,7 @@
     <string name="notification__install_error__channel_descr">Canal de notificação para atualizações de %1$s falhadas.</string>
     <string name="notification__install_error__channel_name">%1$s notificação de falha de atualização</string>
     <string name="notification__install_error__text">Erro (%1$d): %2$s</string>
-    <string name="notification__install_error__title">%1$s não puderam ser atualizados.</string>
+    <string name="notification__install_error__title">%1$s não puderam ser atualizados</string>
     <string name="notification__install_success__channel_descr">Canal de notificação para atualizações bem sucedidas de %1$s.</string>
     <string name="notification__install_success__channel_name">%1$s notificação de atualização bem sucedida</string>
     <string name="notification__install_success__text">O aplicativo foi atualizado com sucesso em segundo plano.</string>
@@ -236,4 +236,15 @@
     <string name="orbot__title">Orbot: Tor para Android</string>
     <string name="notification__bachground_work__channel_name">Notificações de Trabalho em Segundo Plano</string>
     <string name="network__dns_provider__cloudflare">DNS sobre HTTPS: Cloudflare</string>
+    <string name="app_installer__failed_to_verify_signature_of_installed_app">Falha ao verificar aplicativo instalado.</string>
+    <string name="background__installation__when_screen_off__summary">Tentar instalar atualizações somente quando a tela do dispositivo está desligada.</string>
+    <string name="tor_browser__description">Navegador Tor para Android é o único navegador móvel suportado pelo Projeto Tor, desenvolvedores da ferramenta de privacidade e liberdade online mais forte do mundo.</string>
+    <string name="cromite__title">Cromite</string>
+    <string name="background__separate_notification_channels__summary">Usar canais de notificação diferentes para cada aplicativo individual</string>
+    <string name="app_installer__failed_to_validate_signature_of_download">Falha ao validar a assinatura do download.</string>
+    <string name="tor_browser_alpha__description">O Navegador Tor é o único navegador móvel suportado pelo Projeto Tor, desenvolvedores da ferramenta de privacidade e liberdade online mais forte do mundo.
+\n
+\nO Navegador Tor SEMPRE vai ser grátis, mas doações o fazem possível, O Projeto Tor é uma organização sem fins lucrativos 501©(3) baseada nos EUA. Por favor, considere fazer uma doação hoje. Cada presente faz diferença: https://donate.torproject.org.
+\n
+\nAprenda como relatar erros e prover opiniões em https://support.torproject.org/pt-BR/misc/bug-or-feedback/!</string>
 </resources>
