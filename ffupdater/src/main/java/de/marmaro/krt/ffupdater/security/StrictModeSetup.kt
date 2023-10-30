@@ -53,21 +53,12 @@ object StrictModeSetup {
     }
 
     private fun enableStrictModeForRelease() {
-        StrictMode.setThreadPolicy(
-            ThreadPolicy.Builder()
-                .detectAll()
-                .permitDiskReads() // for storing preferences
-                .permitDiskWrites() // for downloading apps which will be installed
-                .penaltyDialog()
-                .build()
-        )
-
-        if (DeviceSdkTester.supportsAndroid6M23()) {
-            StrictMode.setVmPolicy(
-                VmPolicy.Builder()
-                    .penaltyDeathOnCleartextNetwork()
-                    .build()
-            )
+        if (!DeviceSdkTester.supportsAndroid6M23()) {
+            return
         }
+        val vmPolicy = VmPolicy.Builder()
+            .penaltyDeathOnCleartextNetwork()
+            .build()
+        StrictMode.setVmPolicy(vmPolicy)
     }
 }
