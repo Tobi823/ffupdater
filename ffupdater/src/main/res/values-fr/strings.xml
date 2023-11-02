@@ -293,4 +293,6 @@
     <string name="settings__network__use_cloudflare_mirrors__title"></string>
     <string name="thorium__title"></string>
     <string name="k9mail__title"></string>
+    <string name="thorium__description"></string>
+    <string name="cromite__warning"></string>
 </resources>
