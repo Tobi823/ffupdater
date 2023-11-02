@@ -345,5 +345,5 @@
     <string name="main_activity__unexpected_error">Se ha producido un error inesperado.</string>
     <string name="thorium__warning">- Thorium utiliza la base técnica de Google Chrome y apoya así indirectamente la posición de monopolio del motor de renderizado Chromium.</string>
     <string name="thorium__title">Thorium Browser para Android</string>
-    <string name="thorium__description">El navegador más rápido de la Tierra. El fork de Chromium para Linux lleva el nombre del elemento radiactivo nº 90.</string>
+    <string name="thorium__description">El navegador más rápido del mundo. El fork de Chromium para Linux lleva el nombre del elemento radiactivo nº 90.</string>
 </resources>
