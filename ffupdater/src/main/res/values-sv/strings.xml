@@ -293,4 +293,6 @@
     <string name="chromium__warning"></string>
     <string name="fennecfdroid__warning"></string>
     <string name="update_all_activity__all_apps_updated"></string>
+    <string name="thorium__description"></string>
+    <string name="add_app_activity__title_good_security_browsers"></string>
 </resources>
