@@ -109,7 +109,7 @@
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>Превышен лимит GitHub-API. Повторите попытку через час.</u>"</string>
     <string name="main_activity__no_unmetered_network">Отсутствуют сети без тарификации</string>
-    <string name="main_activity__subtitle">Программа обновления приватных браузеров</string>
+    <string name="main_activity__subtitle">Программа обновления конфиденциальных браузеров</string>
     <string name="main_activity__temporary_network_issue">"<u>Временная проблема сети. Повторите попытку позже.</u>"</string>
     <string name="ok">ОК</string>
     <string name="request_installation_permission_dialog__abort">Прервать</string>
