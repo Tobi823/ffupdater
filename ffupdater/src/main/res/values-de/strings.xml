@@ -337,4 +337,8 @@
     <string name="installer__method__title">Installationsmethode</string>
     <string name="cromite__title">Cromite</string>
     <string name="ffupdater__different_signature_message">Diese Version von FFUpdater ist von F-Droid signiert worden, so dass nur F-Droid Updates verteilen kann. Um Updates schneller zu erhalten, deinstalliere FFUpdater und installiere die vom Entwickler signierte Version. Mit dieser Version kann sich FFUpdater selbst aktualisieren, ohne auf F-Droid zu warten.</string>
+    <string name="thorium__warning">- Thorium nutzt die technische Grundlage von Google Chrome und unterstützt damit indirekt die Monopolstellung der Chromium-Rendering-Engine.</string>
+    <string name="main_activity__unexpected_error">Unerwarteter Fehler ist aufgetreten.</string>
+    <string name="thorium__title">Thorium Browser für Android</string>
+    <string name="thorium__description">Der schnellste Browser der Welt. Chromium-Fork für Linux, benannt nach dem radioaktiven Element Nr. 90.</string>
 </resources>
