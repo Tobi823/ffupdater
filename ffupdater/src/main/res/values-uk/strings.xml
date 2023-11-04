@@ -340,4 +340,6 @@
     <string name="notification__bachground_work__channel_name">Сповіщення про фонову роботу</string>
     <string name="thorium__description">Найшвидший браузер на Землі. Chromium fork для Linux названий на честь радіоактивного елемента під номером 90.</string>
     <string name="background__installation__when_screen_off__title">Встановлювати тільки при вимкненому екрані</string>
+    <string name="cromite__title">Cromite</string>
+    <string name="mulch_wv__title">Mulch System WebView</string>
 </resources>
