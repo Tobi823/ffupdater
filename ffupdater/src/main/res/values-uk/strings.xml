@@ -199,7 +199,7 @@
     <string name="install_activity__download_file_failed__crash_text">Під час завантаження виникла наступна помилка. Якщо ця помилка виникає часто, не соромтеся надіслати звіт про збій на notabug.org, GitHub або GitLab.</string>
     <string name="crash_report__explain_text__download_activity_install_file">Ця помилка виникла під час інсталяції. Якщо ця помилка виникає часто, не соромтеся надіслати звіт про збій на notabug.org, GitHub або GitLab.</string>
     <string name="app_card__open_project_page">Відкрити сторінку проєкту в браузері</string>
-    <string name="ungoogled_chromium__eol_reason">Розробник опублікував: \"Я не зможу оновлювати версії протягом деякого часу. Якщо це можливо, будь ласка, використовуйте один з браузерів [який підтримує FFUpdater] у цей час.\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
+    <string name="ungoogled_chromium__eol_reason">Розробник опублікував: \"Я не зможу оновлювати версії протягом деякого часу. Якщо це можливо, будь ласка, використовуйте один з браузерів [який підтримується FFUpdater] у цей час.\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
     <string name="kiwi__title">Kiwi Next</string>
     <string name="lockwise__eol_reason">Mozilla припинила підтримку в грудні 2021 року. Будь ласка, перейдіть на інший сейф для зберігання паролів.</string>
     <string name="settings__foreground__hide_warning_buttons">Приховати кнопку попередження для встановленого застосунку.</string>
