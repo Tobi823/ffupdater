@@ -206,7 +206,7 @@
     <string name="lockwise__eol_reason">Mozilla прекратила поддержку в декабре 2021 года. Пожалуйста, перейдите на другой менеджер паролей.</string>
     <string name="mull__title">Mull</string>
     <string name="mull__description">Это ориентированный на конфиденциальность и деблобированный веб-браузер, основанный на технологии Mozilla. Он поддерживает многие функции, реализованные в проекте Tor Uplift, используя настройки из проекта arkenfox-user.js. Рекомендуется установить \'uBlock Origin\'.</string>
-    <string name="ungoogled_chromium__eol_reason">Разработчик написал: \"Я не смогу обновлять версии в течение некоторого времени. Если возможно, используйте один из браузеров [которые поддерживает FFUpdater] в это время.\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
+    <string name="ungoogled_chromium__eol_reason">Разработчик написал: \"Я не смогу обновлять версии в течение некоторого времени. Если возможно, используйте один из браузеров [которые поддерживается FFUpdater] в это время.\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
     <string name="add_app_activity__title_from_mozilla">От Mozilla</string>
     <string name="add_app_activity__title_better_than_google_chrome">Лучше, чем Google Chrome</string>
     <string name="settings__network__trust_user_cas__summary">Включите опцию, если трафик данных должен проверяться и изменяться другими приложениями. Если вы не уверены, отключите эту опцию.</string>
