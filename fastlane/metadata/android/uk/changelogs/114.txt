@@ -1,0 +1,7 @@
+* Дякуємо за внесок Weblate від: Gallegonovato, atilluF, WhiredPlanck, Oğuz Ersen, Juraj Motuz,
+109247019824, ppvnf, nautilusx, Giovanni Donisi, Eduardo Malaspina
+* Якщо оновлення фону не виходить (за відсутності взаємодії користувача), показується повідомлення 
+  "доступне оновлення"
+* Виправлення збою при перевірці Mull (від F-Droid) оновлення
+* Додано Fennec з F-Droid
+* Додано Mulch
