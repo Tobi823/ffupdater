@@ -343,4 +343,7 @@
     <string name="cromite__warning">- A Cromite utiliza a base técnica do Google Chrome e, assim, apoia indiretamente a posição de monopólio do motor de processamento Chromium.</string>
     <string name="cromite__title">Cromite</string>
     <string name="main_activity__unexpected_error">Ocorreu um erro inesperado.</string>
+    <string name="thorium__warning">- O Thorium utiliza a base técnica do Google Chrome e, por conseguinte, apoia indiretamente a posição de monopólio do motor de processamento Chromium.</string>
+    <string name="thorium__title">Thorium Browser para Android</string>
+    <string name="thorium__description">O browser mais rápido do mundo. Fork do Chromium para Linux com o nome do elemento radioativo n.º 90.</string>
 </resources>
