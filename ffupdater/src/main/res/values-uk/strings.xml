@@ -82,7 +82,7 @@
     <string name="download_activity__temporary_network_issue">Виникла тимчасова проблема з мережею. Повторіть спробу пізніше.</string>
     <string name="download_activity__too_low_memory_description">На вашому пристрої доступно лише %1$d МБ місця. Це може призвести до збою завантаження або встановлення.</string>
     <string name="download_activity__too_low_memory_title">Мало місця на диску</string>
-    <string name="download_activity__use_cached_downloaded_apk">Використовуйте вже завантажений файл із:</string>
+    <string name="download_activity__use_cached_downloaded_apk">Використайте вже завантажений файл із:</string>
     <string name="download_activity__you_can_now_close_this_window">Тепер ви можете закрити це вікно</string>
     <string name="download_activity__label">Встановити застосунок</string>
     <string name="install_new_app">Встановіть новий застосунок</string>
