@@ -83,11 +83,11 @@
     <string name="download_activity__temporary_network_issue">一時的なネットワークの問題が発生しました。後でもう一度お試しください。</string>
     <string name="download_activity__too_low_memory_description">このデバイスには %1$d MB の空き容量しかありません。これにより、ダウンロードやインストールに失敗する可能性があります。</string>
     <string name="download_activity__too_low_memory_title">ストレージ容量不足</string>
-    <string name="download_activity__use_cached_downloaded_apk">すでにダウンロード済みのファイルを使用します:</string>
+    <string name="download_activity__use_cached_downloaded_apk">既にダウンロード済みのファイルを使用します:</string>
     <string name="download_activity__you_can_now_close_this_window">ウィンドウを閉じても構いません</string>
     <string name="download_activity__label">アプリをダウンロード</string>
     <string name="install_new_app">新しいアプリをインストール</string>
-    <string name="install_same_version_dialog__message">このアプリの最新版はすでにインストールされています。再度、最新版をダウンロードしてインストールしますか？</string>
+    <string name="install_same_version_dialog__message">このアプリの最新版は既にインストールされています。再度、最新版をダウンロードしてインストールしますか？</string>
     <string name="install_same_version_dialog__title">同じバージョンがインストール済み</string>
     <string name="notification__install_error__channel_descr">%1$s の更新失敗の通知チャンネル。</string>
     <string name="notification__install_error__channel_name">%1$s の更新失敗の通知</string>
@@ -274,8 +274,7 @@
 \n
 \nSOCKS/HTTP;ip/domain;port;username;password
 \n
-\n例: SOCKS;1.2.3.4;22、 HTTP;5.6.7.8;80;user1;pw123、HTTP;p.webshare.io;80;u;p
-\nシステムのプロキシー設定を使用したい場合は、空白にしてください。
+\n例: SOCKS;1.2.3.4;22、 HTTP;5.6.7.8;80;user1;pw123、HTTP;p.webshare.io;80;u;p システムのプロキシー設定を使用したい場合は、空白にしてください。
 \n
 \n制約:「DNS 設定」でDNS over HTTPS サーバーを設定した場合、プロキシーサーバーのドメインを入力してください。IP アドレスでは動作しません。</string>
     <string name="network__dns_provider__google">DNS over HTTPS: Google</string>
@@ -300,8 +299,7 @@
     <string name="installer__method__session">セッションインストーラー: ほとんどの端末で推奨。Android 12 以上では、一度ユーザーが同意すると、バックグラウンドでアプリを更新できます。</string>
     <string name="tor_browser_alpha__description">Tor Browser for Android は、プライバシーとオンラインの自由のための世界最強のツールの開発者である Tor プロジェクトによってサポートされている唯一の公式モバイル ブラウザです。
 \n
-\nTor Browser が無料であり続けるためには、寄付が必要です。Tor プロジェクトは、アメリカ合衆国の 501©(3) 非営利プロジェクトです。今日、貢献することを考えてみてください。すべてのギフトが変化を産み出します。
-\nhttps://donate.torproject.org
+\nTor Browser が無料であり続けるためには、寄付が必要です。Tor プロジェクトは、アメリカ合衆国の 501©(3) 非営利プロジェクトです。今日、貢献することを考えてみてください。すべてのギフトが変化を産み出します。 https://donate.torproject.org
 \n
 \nバグ報告とフィードバックの方法は、https://support.torproject.org/misc/bug-or-feedback/ からご確認ください！</string>
     <string name="mulch__title">Mulch</string>
