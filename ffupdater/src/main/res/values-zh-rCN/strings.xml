@@ -229,7 +229,7 @@
     <string name="add_app_activity__label">添加新应用</string>
     <string name="crash_report_activity__label">崩溃报告器</string>
     <string name="add_app_activity__title_good_privacy_browsers">优秀的隐私浏览器</string>
-    <string name="add_app_activity__title_better_than_google_chrome">比 Google Chrome 更优良</string>
+    <string name="add_app_activity__title_better_than_google_chrome">比 Google Chrome 更好</string>
     <string name="add_app_activity__title_from_mozilla">Mozilla 出品</string>
     <string name="add_app_activity__title_other_applications">其他应用</string>
     <string name="add_app_activity__title_end_of_live_browser">停止更新的浏览器</string>
@@ -337,4 +337,13 @@
     <string name="background__installation__when_screen_off__summary">仅在设备屏幕关闭时尝试安装更新。</string>
     <string name="notification__bg_update_check__unreliable_execution__text">这可能是由您设备的电池或性能设置造成的。点击此通知以禁用对此 App 的电池优化。</string>
     <string name="notification__bachground_work__text">此通知是可靠的执行所必需的。根据您的设置，更新的获取、下载和安装在后台完成。这一通知可在不停止后台任务的情况下被隐藏或静音。在检查结束后，通知也将关闭。</string>
+    <string name="thorium__warning">- Thorium 使用了 Google Chrome 的技术基础，因而间接支持了 Chromium 渲染引擎的垄断地位。</string>
+    <string name="main_activity__unexpected_error">发生了意外错误。</string>
+    <string name="cromite__description">Cromite 是基于 Bromite 的 Chromium 修改版，支持广告拦截和隐私保护。</string>
+    <string name="thorium__title">适用于 Android 的 Thorium 浏览器</string>
+    <string name="cromite__warning">- Cromite 使用了 Google Chrome 的技术基础，因而间接支持了 Chromium 渲染引擎的垄断地位。</string>
+    <string name="installer__method__title">安装器策略</string>
+    <string name="cromite__title">Cromite</string>
+    <string name="ffupdater__different_signature_message">此版本的 FFUpdater 已由 F-Droid 签名，因此只有 F-Droid 能够发布更新。若要更快地更新 FFUpdater，卸载 FFUpdater 并安装由开发者签名的版本。使用这一版本，FFUpdater 能够自我更新而不必等待 F-Droid。</string>
+    <string name="thorium__description">地球上最快的浏览器。适用于 Linux 的 Chromium 修改版，以 90 号放射性元素（钍）命名。</string>
 </resources>
