@@ -176,7 +176,7 @@
     <string name="notification__update_available__channel_descr">利用できる %1$s の更新の通知チャンネル。</string>
     <string name="notification__update_available__channel_name">%1$s 更新の通知</string>
     <string name="update_notification__text">タップすると更新をインストールします</string>
-    <string name="update_notification__title">%1$s の更新が利用可能です</string>
+    <string name="update_notification__title">%1$s を更新できます</string>
     <string name="vivaldi__description">Vivaldi は思い通りにカスタマイズできる新しいプライベートなウェブブラウザです。内蔵の広告ブロッカー、トラッキング防止機能、プライベートな翻訳機能をはじめ、便利な機能をたくさん搭載しています。メモやページキャプチャーのような機能を使えば使うほど毎日の効率が良くなります。デスクトップと同じスタイルのタブやダーク/ライトテーマなどのレイアウト設定で、あなただけのブラウザにしましょう。ダウンロードは無料。いますぐダウンロードして、快適で安全なブラウジングをはじめましょう。</string>
     <string name="vivaldi__title">Vivaldi ブラウザ</string>
     <string name="vivaldi__warning">- Vivaldi は部分的なオープンソースに過ぎません。
