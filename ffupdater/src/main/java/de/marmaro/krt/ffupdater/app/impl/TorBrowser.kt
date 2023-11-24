@@ -87,8 +87,11 @@ object TorBrowser : AppBase() {
     @Throws(IllegalStateException::class)
     private suspend fun findDateTime(version: String, cacheBehaviour: CacheBehaviour): String {
         val abi = getAbiString()
-        val url = "$MAIN_BASE_URL/$version/?P=tor-browser-android-$abi-$version.apk"
+        val fileName = "tor-browser-android-$abi-$version.apk"
+        val url = "$MAIN_BASE_URL/$version/?P=$fileName"
         val content = FileDownloader.downloadStringWithCache(url, cacheBehaviour)
+        check(fileName !in content) { "$fileName is not available on $url" }
+
         val spaces = """\s+"""
         val pattern = Regex.escape("</a>") +
                 spaces +
@@ -98,13 +101,14 @@ object TorBrowser : AppBase() {
                 """((\d){2,3})M""" + //for 82M
                 spaces +
                 """\n"""
-
         val match = Regex(pattern).find(content)
-        checkNotNull(match) { "Can't find creation date or size with regex pattern: $pattern" }
-
+        checkNotNull(match) {
+            "Can't extract creation date from website: $url\n" +
+                    "with regex pattern: $pattern\n" +
+                    "content: " + content.lines().joinToString("")
+        }
         val date = match.groups[1]
         checkNotNull(date) { "Can't extract date from regex match." }
-
         val time = match.groups[2]
         checkNotNull(time) { "Can't extract time from regex match." }
 
