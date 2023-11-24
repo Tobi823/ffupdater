@@ -57,6 +57,7 @@ class CheckReleaseAgeIT {
             TestData(FirefoxKlar, 56),
             TestData(FirefoxNightly, 7),
             TestData(FirefoxRelease, 42),
+            TestData(K9Mail, 28),
             TestData(Iceraven, 84),
 //            TestData(Lockwise(GithubConsumer.INSTANCE), 84),
             TestData(Mulch, 56),

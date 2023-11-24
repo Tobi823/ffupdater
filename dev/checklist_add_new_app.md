@@ -6,7 +6,7 @@
 - update README.md
 - update fastlane/metadata/android/en-US/{full_description.txt,short_description.txt}
   - update description in repomaker
-- update/add unit tests
+- update/add unit tests (CheckReleaseAgeIT, )
 - resolved all TODOs?
 - add it to CHANGELOG.md?
 
