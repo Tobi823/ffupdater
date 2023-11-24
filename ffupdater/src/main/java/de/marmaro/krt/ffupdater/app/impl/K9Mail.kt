@@ -15,7 +15,7 @@ import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 /**
  * https://github.com/k9mail/k9mail.app
  * https://github.com/thunderbird/thunderbird-android/releases
- * https://api.github.com/repos/fork-maintainers/iceraven-browser/releases
+ * https://api.github.com/repos/thunderbird/thunderbird-android/releases
  */
 @Keep
 object K9Mail : AppBase() {
