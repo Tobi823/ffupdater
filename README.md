@@ -40,6 +40,7 @@ Browser which are better than Google Chrome:
 
 Other applications:
 
+- [K9-Mail / Thunderbird Android](https://github.com/k9mail/k9mail.app)
 - [Orbot](https://github.com/guardianproject/orbot)
 
 FFUpdater checks for updates in the background and downloads them as well. Apps can be updated without user

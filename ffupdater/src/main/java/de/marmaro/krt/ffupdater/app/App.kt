@@ -22,6 +22,7 @@ enum class App {
     FIREFOX_NIGHTLY,
     FIREFOX_RELEASE,
     ICERAVEN,
+    K9MAIL,
     KIWI,
     LOCKWISE,
     MULCH,
@@ -56,6 +57,7 @@ enum class App {
             FIREFOX_NIGHTLY -> FirefoxNightly
             FIREFOX_RELEASE -> FirefoxRelease
             ICERAVEN -> Iceraven
+            K9MAIL -> K9Mail
             KIWI -> Kiwi
             LOCKWISE -> Lockwise
             MULCH -> Mulch

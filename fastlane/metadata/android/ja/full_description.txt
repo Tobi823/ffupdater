@@ -22,6 +22,7 @@ Google Chrome より優れたブラウザー:
 - Vivaldi
 
 その他のアプリ:
+- K-9 Mail / Thunderbird Mail
 - Orbot
 
 FFUpdater はバックグラウンドで更新を確認してダウンロードします。Android 12 以上またはルート化された端末では、FFUpdater がユーザーの操作なしでアプリを更新します。

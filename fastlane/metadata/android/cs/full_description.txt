@@ -22,6 +22,7 @@ Prohlížeče, které jsou lepší než Google Chrome:
 - Vivaldi
 
 Ostatní aplikace:
+- K-9 Mail / Thunderbird Mail
 - Orbot
 
 FFUpdater kontroluje aktualizace na pozadí a také je stahuje. V zařízeních se systémem Android 12+ nebo s rootnutým zařízením může FFUpdater aktualizovat aplikace i bez interakce uživatele.

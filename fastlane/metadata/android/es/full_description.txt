@@ -22,6 +22,7 @@ Navegadores mejores que Google Chrome
 - Vivaldi
 
 Otras aplicaciones:
+- K-9 Mail / Thunderbird Mail
 - Orbot
 
 FFUpdater busca actualizaciones en segundo plano y también las descarga. En dispositivos Android 12+ o root, FFUpdater también puede actualizar las aplicaciones sin interacción del usuario.

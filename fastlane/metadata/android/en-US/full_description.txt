@@ -22,6 +22,7 @@ Browser which are better than Google Chrome:
 - Vivaldi
 
 Other applications:
+- K-9 Mail / Thunderbird Mail
 - Orbot
 
 FFUpdater checks for updates in the background and downloads them as well. On Android 12+ or root devices, FFUpdater can also update the apps without user interaction.

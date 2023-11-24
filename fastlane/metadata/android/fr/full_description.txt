@@ -21,6 +21,7 @@ Navigateurs plus performants que Google Chrome :
 - Vivaldi
 
 Autres applications :
+- K-9 Mail / Thunderbird Mail
 - Orbot
 
 FFUpdater vérifie les mises à jour en arrière-plan et les télécharge également. Sur les appareils Android 12+ ou rootés, FFUpdater peut également mettre à jour les applications sans interaction de l'utilisateur.

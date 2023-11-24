@@ -37,6 +37,7 @@
         <package android:name="com.brave.browser_beta" />
         <package android:name="com.brave.browser_nightly" />
         <package android:name="com.duckduckgo.mobile.android" />
+        <package android:name="com.fsck.k9" />
         <package android:name="com.kiwibrowser.browser" />
         <package android:name="com.stoutner.privacybrowser.standard" />
         <package android:name="com.vivaldi.browser" />
@@ -45,9 +46,9 @@
         <package android:name="mozilla.lockbox" />
         <package android:name="org.bromite.bromite" />
         <package android:name="org.bromite.webview" />
-        <package android:name="org.cromite.cromite" />
         <package android:name="org.chromium.chrome" />
         <package android:name="org.chromium.thorium" />
+        <package android:name="org.cromite.cromite" />
         <package android:name="org.mozilla.fenix" />
         <package android:name="org.mozilla.fennec_fdroid" />
         <package android:name="org.mozilla.firefox" />

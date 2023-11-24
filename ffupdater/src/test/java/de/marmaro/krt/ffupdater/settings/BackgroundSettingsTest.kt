@@ -219,6 +219,7 @@ class BackgroundSettingsTest : BaseTest() {
                 "FIREFOX_NIGHTLY",
                 "FIREFOX_RELEASE",
                 "ICERAVEN",
+                "K9MAIL",
                 "KIWI",
                 "LOCKWISE",
                 "MULCH",
