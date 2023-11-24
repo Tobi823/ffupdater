@@ -86,7 +86,7 @@ object TorBrowserAlpha : AppBase() {
         val fileName = "tor-browser-android-$abi-$version.apk"
         val url = "$MAIN_BASE_URL/$version/?P=$fileName"
         val content = FileDownloader.downloadStringWithCache(url, cacheBehaviour)
-        check(fileName !in content) { "$fileName is not available on $url" }
+        check(content.contains(fileName)) { "$fileName is not available on $url" }
 
         val spaces = """\s+"""
         val pattern = Regex.escape("</a>") +

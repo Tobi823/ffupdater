@@ -210,6 +210,7 @@ class BackgroundSettingsTest : BaseTest() {
                 "CHROMIUM",
                 "CROMITE",
                 "DUCKDUCKGO_ANDROID",
+                "FAIREMAIL",
                 "FENNEC_FDROID",
                 "FFUPDATER",
                 "FIREFOX_BETA",
