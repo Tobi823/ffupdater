@@ -22,6 +22,7 @@ Browser which are better than Google Chrome:
 - Vivaldi
 
 Other applications:
+- FairEmail
 - K-9 Mail / Thunderbird Mail
 - Orbot
 

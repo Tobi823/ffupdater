@@ -22,6 +22,7 @@ Przeglądarki, które są lepsze niż Google Chrome:
 - Vivaldi
 
 Inne zastosowania:
+- FairEmail
 - K-9 Mail / Thunderbird Mail
 - Orbot
 

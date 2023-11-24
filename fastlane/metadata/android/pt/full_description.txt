@@ -22,6 +22,7 @@ Navegadores que são melhores do que o Google Chrome:
 - Vivaldi
 
 Outras aplicações:
+- FairEmail
 - K-9 Mail / Thunderbird Mail
 - Orbot
 

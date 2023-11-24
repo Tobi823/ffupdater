@@ -22,6 +22,7 @@ Google Chrome より優れたブラウザー:
 - Vivaldi
 
 その他のアプリ:
+- FairEmail
 - K-9 Mail / Thunderbird Mail
 - Orbot
 

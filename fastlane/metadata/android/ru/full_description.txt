@@ -16,6 +16,7 @@
 - Vivaldi
 
 другие:
+- FairEmail
 - K-9 Mail / Thunderbird Mail
 - Orbot
 

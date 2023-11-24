@@ -22,6 +22,7 @@ Prohlížeče, které jsou lepší než Google Chrome:
 - Vivaldi
 
 Ostatní aplikace:
+- FairEmail
 - K-9 Mail / Thunderbird Mail
 - Orbot
 

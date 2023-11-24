@@ -21,6 +21,7 @@ Navigateurs plus performants que Google Chrome :
 - Vivaldi
 
 Autres applications :
+- FairEmail
 - K-9 Mail / Thunderbird Mail
 - Orbot
 
