@@ -42,6 +42,7 @@
         <package android:name="com.stoutner.privacybrowser.standard" />
         <package android:name="com.vivaldi.browser" />
         <package android:name="de.marmaro.krt.ffupdater" />
+        <package android:name="eu.faircode.email" />
         <package android:name="io.github.forkmaintainers.iceraven" />
         <package android:name="mozilla.lockbox" />
         <package android:name="org.bromite.bromite" />

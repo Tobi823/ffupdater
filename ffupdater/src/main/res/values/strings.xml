@@ -307,4 +307,6 @@
     <string name="thorium__warning">- Thorium uses the technical foundation of Google Chrome and thus indirectly supports the monopoly position of the Chromium render engine.</string>
     <string name="k9mail__title">K-9 Mail</string>
     <string name="k9mail__description">Full-featured email client</string>
+    <string name="fairemail__title">FairEmail</string>
+    <string name="fairmail__description">Fully featured, open source, privacy friendly email app for Android</string>
 </resources>

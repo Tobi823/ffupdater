@@ -13,6 +13,7 @@ enum class App {
     CHROMIUM,
     CROMITE,
     DUCKDUCKGO_ANDROID,
+    FAIREMAIL,
     FENNEC_FDROID,
     FFUPDATER,
     FIREFOX_BETA,
@@ -48,6 +49,7 @@ enum class App {
             CHROMIUM -> Chromium
             CROMITE -> Cromite
             DUCKDUCKGO_ANDROID -> DuckDuckGoAndroid
+            FAIREMAIL -> FairEmail
             FENNEC_FDROID -> FennecFdroid
             FFUPDATER -> FFUpdater
             FIREFOX_BETA -> FirefoxBeta

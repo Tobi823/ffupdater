@@ -48,6 +48,7 @@ class CheckReleaseAgeIT {
             TestData(Chromium, 56),
             TestData(Cromite, 56),
             TestData(DuckDuckGoAndroid, 28),
+            TestData(FairEmail, 28),
             TestData(FennecFdroid, 28),
             TestData(FFUpdater, 365),
             TestData(FirefoxBeta, 21),
