@@ -1,0 +1,5 @@
+Release version 78.4.0 (165)
+- Thanks for the Weblate contributions from: winver, Retrial, 109247019824, Gérson da Fonseca Henzel, gallegonovato, Alexthegib, Kazushi Hayama, Daviteusz, MkQtS and nautilusx
+- Add K-9 Mail and FairMail
+- Improve update checking for Tor Browser / Tor Browser Alpha
+- Update dependencies
