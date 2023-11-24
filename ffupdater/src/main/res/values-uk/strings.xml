@@ -1,29 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_about_title">Про FFUpdater</string>
-    <string name="app_description">Програма оновлення для конфіденційних браузерів</string>
-    <string name="app_icon">значок програми</string>
+    <string name="app_description">Оновлювач для конфіденційних браузерів</string>
+    <string name="app_icon">піктограма застосунка</string>
     <string name="app_name">FFUpdater</string>
-    <string name="application_installation_was_not_successful">Установка програми не вдалася</string>
-    <string name="application_successfully_installed">Програма успішно встановлена</string>
+    <string name="application_installation_was_not_successful">Установка застосунка не вдалася</string>
+    <string name="application_successfully_installed">Застосунок успішно встановлено</string>
     <string name="available_version">У наявності: %1$s</string>
     <string name="notification__error__text">Повідомте про цю помилку. Натисніть, щоб переглянути звіт про помилку.</string>
     <string name="notification__error__title">Не вдалося перевірити фонове оновлення</string>
-    <string name="brave__description">Brave Browser — це ваш приватний захищений  веб-браузер, який безкоштовно блокує зовнішні рекламні оголошення. \n\nBrave Browser — це швидкий, безпечний веб-браузер для Android із вбудованим блокуванням зовнішніх оголошень. Brave — це значно швидший, більш захищений та приватний додаток, який запобігає моніторингу активності з боку рекламних трекерів або зараженню шкідливими програмами і спливаючими вікнами. Завантажте найкращий веб-браузер уже сьогодні.</string>
-    <string name="brave__title">Brave Browser</string>
-    <string name="brave__warning">- Brave використовує технічну основу Google Chrome (Chromium) - деяким людям це не подобається. Ви хочете встановити Brave\?
+    <string name="brave__description">Безкоштовно переглядайте Інтернет конфіденційно! Brave — це ваш швидкий, безкоштовний і безпечний приватний веб-браузер із блокувальником реклами та спливаючих вікон. Конфіденційно переглядайте та шукайте в Інтернеті без відстеження рекламодавців, зловмисного програмного забезпечення та спливаючих вікон.</string>
+    <string name="brave__title">Brave</string>
+    <string name="brave__warning">- Brave використовує технічну основу Google Chrome і, таким чином, опосередковано підтримує монопольне положення рушія візуалізації Chromium.
 \n- Завдяки своїй основній уваги маркуванню на блокчейні Ethereum проект має зв\'язки з криптовалютою. Блокчейн має багато проблем, і слід уникати, на мій погляд.</string>
     <string name="brave_beta__description">Ласкаво просимо до Brave Beta для Android!\nСпробуйте новітні функції та надайте попередній відгук: https://brave.com/msupport\nВи можете встановити Brave Beta разом із поточною версією Brave для Android.</string>
-    <string name="brave_beta__title">Brave Browser (бета-версія)</string>
-    <string name="brave_nightly__description">Ласкаво просимо до Brave Nightly (розробник) для Android!\nСпробуйте новітні функції та надайте попередній відгук: https://brave.com/msupport\nВи можете встановити Brave Nightly разом із поточною версією Brave для Android.</string>
-    <string name="brave_nightly__title">Brave Browser (Nightly)</string>
+    <string name="brave_beta__title">Brave (Beta)</string>
+    <string name="brave_nightly__description">Ласкаво просимо до Brave Nightly (Developer) для Android!
+\nСпробуйте новітні функції та надайте попередній відгук: https://brave.com/msupport
+\nВи можете встановити Brave Nightly разом із поточною версією Brave для Android.</string>
+    <string name="brave_nightly__title">Brave (Nightly)</string>
     <string name="bromite__description">Bromite націлений на те, щоб забезпечити безперешкодний перегляд веб-сторінок без функцій, що заважають конфіденційності, та з додаванням швидкого механізму блокування реклами. Мінімальні зміни користувальницького інтерфейсу застосовуються, щоб допомогти приборкати ідею \"браузер як рекламна платформа\".</string>
     <string name="bromite__title">Bromite</string>
     <string name="bromite__warning">- Bromite використовує технічну основу Google Chrome і, таким чином, опосередковано підтримує монопольне положення рушія візуалізації Chromium.</string>
     <string name="bromite_systemwebview__description">Пакет SystemWebView містить основний браузер і механізм візуалізації Bromite та ті самі функції. Він пропонує можливість замінити компонент браузера за замовчуванням для всієї системи Android.</string>
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Скопіюйте звіт про аварійне завершення роботи в буфер обміну</string>
-    <string name="crash_report__explain_text__download_activity_fetching_url">Під час отримання URL -адреси завантаження сталася така помилка. Якщо ця помилка виникає часто, не соромтеся повідомляти про це на notabug.org, GitHub або GitLab. Не забудьте додати звіт про збій із буфера обміну та опис того, як ви відтворюєте цю помилку.</string>
+    <string name="crash_report__explain_text__download_activity_fetching_url">Під час отримання URL-адреси завантаження сталася така помилка. Якщо ця помилка виникає часто, не соромтеся повідомляти про це на notabug.org, GitHub або GitLab. Не забудьте додати звіт про збій із буфера обміну та опис того, як ви відтворюєте цю помилку.</string>
     <string name="crash_report__explain_text__download_activity_update_check">Під час перевірки оновлень у головному вікні сталася така помилка. Якщо ця помилка виникає часто, не соромтеся повідомляти про це на notabug.org, GitHub або GitLab. Не забудьте додати звіт про збій із буфера обміну та опис того, як ви відтворюєте цю помилку.</string>
     <string name="crash_report__explain_text__uncaught_throwable">На жаль, минулого разу FFUpdater аварійно завершив роботу та зареєстрував цю помилку. Надішліть звіт про збій на notabug.org, GitHub або GitLab.</string>
     <string name="crash_report__go_to_github">Перейдіть на GitHub</string>
@@ -31,40 +33,44 @@
     <string name="crash_report__got_to_notabug_org">Перейдіть на сторінку notabug.org</string>
     <string name="dialog_button__do_not_install">Ні, поверніться до \'Release\'</string>
     <string name="dialog_button__yes">Так</string>
-    <string name="notification__download_running__channel_descr">Показує, коли оновлення програми завантажуються у фоновому режимі.</string>
+    <string name="notification__download_running__channel_descr">Показує, коли оновлення застосунка завантажуються у фоновому режимі.</string>
     <string name="notification__download_running__channel_name">Повідомлення про завантаження у фоновому режимі</string>
-    <string name="notification__download_running__title">Завантаження оновлень програми</string>
-    <string name="app_card__download_the_app">завантажити додаток</string>
+    <string name="notification__download_running__title">Завантаження оновлень застосунку</string>
+    <string name="app_card__download_the_app">завантажити застосунок</string>
     <string name="notification__error__channel_descr">Показати помилки перевірки фонового оновлення</string>
     <string name="notification__error__channel_name">Фонові помилки</string>
     <string name="firefox_beta__description">Firefox для Android — це за замовчуванням конфіденційний і неймовірно швидкий браузер. Щодня тисячі онлайн-трекерів стежать за тобою, збираючи інформацію про твоє життя в Інтернеті і уповільнюючи швидкість твоєї роботи. Firefox за замовчуванням блокує більше 2000 таких трекерів і дозволяє встановити доповнення, що блокують рекламу, якщо ти захочеш настроювати свій браузер ще більше. З Firefox ти отримаєш безпеку, на яку заслуговуєш, а також високу швидкість роботи, — і все це в конфіденційному мобільному браузері.</string>
-    <string name="firefox_beta__title">Firefox для Android Beta</string>
-    <string name="firefox_beta__warning">- Ця програма призначена для розробників і тестерів. Він може містити різні помилки, які можуть вплинути на вашу звичайну роботу з браузером.</string>
+    <string name="firefox_beta__title">Firefox Beta</string>
+    <string name="firefox_beta__warning">- Цей застосунок призначена для розробників і тестерів. Він може містити різні помилки, які можуть вплинути на вашу звичайну роботу з браузером.</string>
     <string name="firefox_focus__description">Це модифікація браузера Firefox, спрямована на підвищення конфіденційності.</string>
     <string name="firefox_focus__title">Firefox Focus</string>
     <string name="firefox_klar__description">Firefox Klar розроблено для Німеччини, Австрії та Швейцарії, але може використовуватися користувачами з будь-якої країни. Він дуже схожий на Firefox Focus, але назву було змінено в німецькомовних країнах, щоб уникнути плутанини з журналом Focus від Hubert Burda Media group. На відміну від Firefox Focus, у Firefox Klar телеметрія вимкнена за замовчуванням через суворі німецькі закони про конфіденційність.</string>
     <string name="firefox_klar__title">Firefox Klar</string>
-    <string name="firefox_nightly__description">Зауважте, що раніше ця програма мала назву Firefox Preview. Тепер його переведено на Firefox Nightly.
+    <string name="firefox_nightly__description">Зауважте, що раніше цей застосунок мав назву Firefox Preview. Тепер його переведено на Firefox Nightly.
 \n
 \nFirefox Nightly — це канал розробки нових випусків Mozilla Firefox.
 \n
 \nFirefox Nightly розроблено для демонстрації більш експериментальних збірок Firefox. Канал Nightly дозволяє користувачам випробувати новітні інновації Firefox у нестабільному середовищі та надати відгук про функції та продуктивність, щоб допомогти визначити, що робить остаточний випуск.</string>
     <string name="firefox_nightly__title">Firefox Nightly</string>
     <string name="firefox_release__description">Firefox для Android — це за замовчуванням конфіденційний і неймовірно швидкий браузер. Щодня тисячі онлайн-трекерів стежать за тобою, збираючи інформацію про твоє життя в Інтернеті і уповільнюючи швидкість твоєї роботи. Firefox за замовчуванням блокує більше 2000 таких трекерів і дозволяє встановити доповнення, що блокують рекламу, якщо ти захочеш настроювати свій браузер ще більше. З Firefox ти отримаєш безпеку, на яку заслуговуєш, а також високу швидкість роботи, — і все це в конфіденційному мобільному браузері.</string>
-    <string name="firefox_release__title">Веб-браузер Firefox</string>
+    <string name="firefox_release__title">Firefox</string>
     <string name="firefox_release__warning">- Покращена версія Firefox під назвою Fennec F-Droid також доступна на F-Droid.</string>
-    <string name="iceraven__description">Безумовно, вас не привезла Mozilla! \n\nIceraven Browser - це веб-браузер для Android, заснований на версії Firefox, GeckoView та Mozilla Android Components від Mozilla Fenix. \n\nНаша мета - стати близьким розвитком нового Firefox для Android, який прагне надати користувачам більше можливостей, більше можливостей для налаштування (включаючи широку бібліотеку розширень) і більше інформації про сторінки, які вони відвідують, і про взаємодію їх браузерів ці сторінки.</string>
-    <string name="iceraven__title">Iceraven Browser</string>
+    <string name="iceraven__description">Безумовно, вас не привезла Mozilla!
+\n
+\nIceraven - це веб-браузер для Android, заснований на версії Firefox, GeckoView та Mozilla Android Components від Mozilla Fenix.
+\n
+\nНаша мета - стати близьким розвитком нового Firefox для Android, який прагне надати користувачам більше можливостей, більше можливостей для налаштування (включаючи широку бібліотеку розширень) і більше інформації про сторінки, які вони відвідують, і про взаємодію їх браузерів ці сторінки.</string>
+    <string name="iceraven__title">Iceraven</string>
     <string name="infobox">Це оновлювач для браузерів, дружніх до конфіденційності. Натисніть кнопку \"плюс\", щоб встановити нові застосунки. Проведіть вниз, щоб примусово перевірити наявність нових оновлень. За замовчуванням застосунок періодично перевірятиме наявність оновлень у фоновому режимі, які потім будуть завантажені та зрештою встановлені. Натисніть на шестерню, щоб налаштувати поведінку.
 \n
 \nОстання успішна перевірка оновлень у фоновому режимі: %1$s</string>
-    <string name="app_card__information_about_the_app">інформація про додаток</string>
+    <string name="app_card__information_about_the_app">інформація про застосунок</string>
     <string name="download_activity__delete_cache_button_text">очистити кеш</string>
-    <string name="download_activity__delete_cache_explanation">"Якщо ви вважаєте, що FFUpdater кешував несправне оновлення програми, натисніть кнопку «очистити кеш», щоб видалити кеш цієї програми."</string>
-    <string name="download_activity__download_app_with_status">Завантажування програми</string>
+    <string name="download_activity__delete_cache_explanation">Якщо ви вважаєте, що FFUpdater кешував несправне оновлення застосунка, натисніть кнопку «очистити кеш», щоб видалити кеш цього застосунка.</string>
+    <string name="download_activity__download_app_with_status">Завантажування застосунка</string>
     <string name="download_activity__download_failed">Не вдалося завантажити</string>
-    <string name="download_activity__downloaded_application_from">Завантажена програма від:</string>
-    <string name="app_installer__signature_of_download_is_invalid">Завантажена програма НЕ перевірена</string>
+    <string name="download_activity__downloaded_application_from">Завантажений застосунок від:</string>
+    <string name="app_installer__signature_of_download_is_invalid">Завантажений застосунок НЕ перевірений</string>
     <string name="download_activity__exception__show_button">"<u>Показати докладний звіт про помилку.</u>"</string>
     <string name="download_activity__external_storage_not_accessible">Зовнішня пам’ять недоступна - не вдається почати завантаження. Поточний статус:</string>
     <string name="download_activity__fetch_url_for_download">Вилучити URL-адресу для завантаження з %1$s</string>
@@ -76,11 +82,11 @@
     <string name="download_activity__temporary_network_issue">Виникла тимчасова проблема з мережею. Повторіть спробу пізніше.</string>
     <string name="download_activity__too_low_memory_description">На вашому пристрої доступно лише %1$d МБ місця. Це може призвести до збою завантаження або встановлення.</string>
     <string name="download_activity__too_low_memory_title">Мало місця на диску</string>
-    <string name="download_activity__use_cached_downloaded_apk">Використовуйте вже завантажений файл із:</string>
+    <string name="download_activity__use_cached_downloaded_apk">Використайте вже завантажений файл із:</string>
     <string name="download_activity__you_can_now_close_this_window">Тепер ви можете закрити це вікно</string>
-    <string name="download_activity__label">Встановити програму</string>
-    <string name="install_new_app">Встановіть новий додаток</string>
-    <string name="install_same_version_dialog__message">Останню версію цього додатка вже встановлено. Завантажити та встановити останню версію знову?</string>
+    <string name="download_activity__label">Встановити застосунок</string>
+    <string name="install_new_app">Встановіть новий застосунок</string>
+    <string name="install_same_version_dialog__message">Останню версію цього застосунок вже встановлено. Завантажити та встановити останню версію знову\?</string>
     <string name="install_same_version_dialog__title">Встановлена та сама версія</string>
     <string name="notification__install_error__channel_descr">Канал сповіщень про невдалі оновлення %1$s.</string>
     <string name="notification__install_error__channel_name">Повідомлення про помилку оновлення %1$s</string>
@@ -88,34 +94,34 @@
     <string name="notification__install_error__title">Не вдалося оновити %1$s</string>
     <string name="notification__install_success__channel_descr">Канал сповіщень про успішні оновлення %1$s.</string>
     <string name="notification__install_success__channel_name">%1$s сповіщення про успішне оновлення</string>
-    <string name="notification__install_success__text">Додаток успішно оновлено у фоновому режимі.</string>
+    <string name="notification__install_success__text">Застосунок успішно оновлено у фоновому режимі.</string>
     <string name="notification__install_success__title">%1$s оновлено</string>
-    <string name="app_installer__installed_app_has_invalid_signature">Встановлений додаток НЕ підтверджений</string>
-    <string name="installed_application_is_verified">Встановлена програма перевірена</string>
+    <string name="app_installer__installed_app_has_invalid_signature">Встановлений застосунок НЕ підтверджений</string>
+    <string name="installed_application_is_verified">Встановлений застосунок перевірений</string>
     <string name="installed_version">Встановлено: %1$s</string>
     <string name="lockwise__description">ДОСТУП ПАРОЛЯ ДЛЯ ВАС, І ТОЛЬКО ВАС
 \n
-\nБезпечно відстежуйте ваші паролі Firefox та отримуйте доступ до них будь-де. Швидко відкрийте будь-який веб-сайт із програми, щоб увійти до своїх облікових записів.</string>
+\nБезпечно відстежуйте ваші паролі Firefox та отримуйте доступ до них будь-де. Швидко відкривайте будь-який веб-сайт із застосунка, щоб увійти до своїх облікових записів.</string>
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>Перевищено ліміт GitHub-API. Повторіть спробу наступної години.</u>"</string>
-    <string name="main_activity__no_unmetered_network">Немає мережі без обліку</string>
-    <string name="main_activity__subtitle">Оновлювач для браузерів, що поважають приватність</string>
+    <string name="main_activity__no_unmetered_network">Немає мережі без тарифікації трафіку</string>
+    <string name="main_activity__subtitle">Оновлювач для конфіденційних браузерів</string>
     <string name="main_activity__temporary_network_issue">"<u>Тимчасова проблема з мережею. Повторіть спробу пізніше.</u>"</string>
     <string name="ok">Гаразд</string>
     <string name="request_installation_permission_dialog__abort">Перервати</string>
     <string name="request_installation_permission_dialog__grant_permission">Надати дозвіл</string>
-    <string name="request_installation_permission_dialog__message">FFUpdater не має дозволу на встановлення та оновлення програм. </string>
-    <string name="request_installation_permission_dialog__title">Дозвіл інсталятора</string>
-    <string name="running_downloads_dialog__message">Додаток завантажує оновлення у фоновому режимі. Ви хочете почати нове завантаження, яке може зайняти більше часу?</string>
+    <string name="request_installation_permission_dialog__message">FFUpdater не має дозволу на встановлення та оновлення застосунків. Ви маєте надати ці дозволи, або ж FFUpdater не буде працювати.</string>
+    <string name="request_installation_permission_dialog__title">Дозвіл установлювача</string>
+    <string name="running_downloads_dialog__message">Застосунок завантажує оновлення у фоновому режимі. Ви хочете почати нове завантаження, яке може зайняти більше часу\?</string>
     <string name="running_downloads_dialog__negative">Ні, не завантажуйте</string>
-    <string name="running_downloads_dialog__title">164 / 5000 Translation results Завантаження завантажень</string>
+    <string name="running_downloads_dialog__title">Виконуються завантаження</string>
     <string name="running_downloads_dialog__yes">Так</string>
     <string name="session_installer__require_user_interaction">Потребується взаємодії з користувачем. Ви повинні спочатку оновити застосунок через інтерфейс FFUpdater. Лише потім будуть доступні фонові оновлення для обраного застосунку.</string>
     <string name="session_installer__status_failure">Операція загалом провалилася. Система завжди намагатиметься надати більш конкретну причину збою, але в деяких рідкісних випадках це може бути доставлено.</string>
     <string name="session_installer__status_failure_aborted">Операція не вдалася, оскільки її активно перервали. Наприклад, користувач активно відхилив запитувані дозволи або сеанс був перерваний.</string>
-    <string name="session_installer__status_failure_blocked">Операцію не вдалося виконати, оскільки вона була заблокована. Наприклад, політика пристрою може блокувати операцію, перевірка пакетів може заблокувати операцію, або програма може знадобитися для роботи основної системи.</string>
-    <string name="session_installer__status_failure_conflict">Операцію не вдалося виконати, оскільки вона конфліктує (або не узгоджується) з іншим пакетом, уже встановленим на пристрої. Наприклад, наявний дозвіл, несумісні сертифікати тощо. Користувач може видалити іншу програму, щоб вирішити проблему.</string>
-    <string name="session_installer__status_failure_incompatible">Операція не вдалася, оскільки вона принципово несумісна з цим пристроєм. Наприклад, для програми може знадобитися апаратна функція, якої не існує, у ній може бути відсутній рідний код для ABI, що підтримується пристроєм, або потрібна новіша версія SDK тощо.</string>
+    <string name="session_installer__status_failure_blocked">Операцію не вдалося виконати, оскільки вона була заблокована. Наприклад, політика пристрою може блокувати операцію, перевірка пакетів може заблокувати операцію, або застосунок може знадобитися для роботи основної системи.</string>
+    <string name="session_installer__status_failure_conflict">Операцію не вдалося виконати, оскільки вона конфліктує (або не узгоджується) з іншим пакетом, уже встановленим на пристрої. Наприклад, наявний дозвіл, несумісні сертифікати тощо. Користувач може видалити інший застосунок, щоб вирішити проблему.</string>
+    <string name="session_installer__status_failure_incompatible">Операція не вдалася, оскільки вона принципово несумісна з цим пристроєм. Наприклад, для застосунка може знадобитися апаратна функція, якої не існує, у ній може бути відсутній нативний код для ABI, що підтримується пристроєм, або потрібна новіша версія SDK тощо.</string>
     <string name="session_installer__status_failure_invalid">Не вдалося виконати операцію, оскільки один або кілька файлів .apk були недійсними. Наприклад, вони можуть бути неправильно сформованими, пошкодженими, неправильно підписаними, невідповідними тощо.</string>
     <string name="session_installer__status_failure_storage">Операцію не вдалося виконати через проблеми зі зберіганням. Наприклад, на пристрої може не вистачати місця, або зовнішній носій може бути недоступний. Користувач може допомогти звільнити місце або вставити різні зовнішні носії.</string>
     <string name="settings_activity__label">Налаштування</string>
@@ -131,22 +137,22 @@
     <string name="settings__background__update_check__excluded_apps__title">Виключити застосунки з перевірки оновлень</string>
     <string name="settings__background__update_check__interval__title">Інтервал перевірки оновлень</string>
     <string name="settings__background__update_check__metered__title">Перевірка оновлень у тарифікованих мережах</string>
-    <string name="settings__background_category__summary">Налаштування, коли програма працює у фоновому режимі та невидима для користувача.</string>
-    <string name="settings__background_category__title">Фон</string>
+    <string name="settings__background_category__summary">Налаштування, коли застосунок працює у фоновому режимі та невидимий для користувача.</string>
+    <string name="settings__background_category__title">У фоні</string>
     <string name="settings__foreground__download__metered__title">Завантажувати оновлення в тарифікованих мережах</string>
     <string name="settings__foreground__theme_preference__summary">Оберiть між світлою та темною темою</string>
     <string name="settings__foreground__theme_preference__title">Обрати тему</string>
     <string name="settings__foreground__update_check__metered__summary">Дозволити перевірку оновлень у мережах із тарифікацією трафіку, як-от мобільні дані.</string>
     <string name="settings__foreground__update_check__metered__title">Перевірка оновлень у тарифікованих мережах</string>
     <string name="settings__foreground_category__summary">Налаштування, коли інтерфейс користувача є видимим.</string>
-    <string name="settings__foreground_category__title">Передній план</string>
+    <string name="settings__foreground_category__title">У застосунку</string>
     <string name="settings__theme_battery_saver">Темна, коли ввімкнено режим енергозбереження</string>
     <string name="settings__theme_dark">Темна</string>
     <string name="settings__theme_light">Світла</string>
     <string name="settings__theme_system_default">Використовувати налаштування системи</string>
     <string name="ungoogled_chromium__description">Google Chromium, без інтеграції з Google.\n\nБез входу в обліковий запис Google Chromium працює досить добре з точки зору безпеки та конфіденційності. Однак Chromium все ще певна залежність від веб-сервісів і бінарних файлів Google. Крім того, Google створив Chromium, щоб він був простим та інтуїтивно зрозумілим для користувачів, що означає, що вони йдуть на компроміс щодо прозорості та контролю внутрішніх операцій.</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
-    <string name="ungoogled_chromium__warning">- Ungoogled Chromium використовує технічну основу Google Chrome і, таким чином, опосередковано підтримує монопольне положення двигуна візуалізації Chromium.</string>
+    <string name="ungoogled_chromium__warning">- Ungoogled Chromium використовує технічну основу Google Chrome і, таким чином, опосередковано підтримує монопольне положення рушія візуалізації Chromium.</string>
     <string name="unsupported_abi_dialog__message">Вибраний браузер несумісний з процесором вашого смартфона. Виберіть інший веб-переглядач.</string>
     <string name="unsupported_abi_dialog__title">Непідтримуваний пристрій</string>
     <string name="update_interval__12h">12 годин</string>
@@ -172,12 +178,12 @@
     <string name="update_notification__text">Клацніть, щоб встановити оновлення</string>
     <string name="update_notification__title">Наявне оновлення для %1$s</string>
     <string name="vivaldi__description">Vivaldi - це новий приватний браузер з унікальною гнучкістю в налаштуванні. Він має такі корисні інстументи, як блокувальник реклами (вимкнений за промовчанням), захист від стеження та приватний перекладач. Нотатки та знімки сторінок прискорюють та полегшують робочий процес. Налаштування теми оформлення та вигляду й розташування вкладок додають індивідуальність браузерові. Завантажте безкоштовно та переглядайте сайти з насолодою.</string>
-    <string name="vivaldi__title">Браузер Vivaldi</string>
+    <string name="vivaldi__title">Vivaldi</string>
     <string name="vivaldi__warning">- Vivaldi є лише частково відкритим.
-\n- Він також використовує технічну основу Google Chrome і, таким чином, опосередковано підтримує монопольне положення двигуна візуалізації Chromium.</string>
+\n- Він також використовує технічну основу Google Chrome і, таким чином, опосередковано підтримує монопольне положення рушія візуалізації Chromium.</string>
     <string name="app_card__app_warning_button_description">Показати попередження про цей застосунок</string>
     <string name="iceraven__warning">- Супроводжувач не дає жодних гарантій чи гарантій безпеки, оновлень чи навіть стабільності.
-\n - Проект потребує більше часу, ніж зазвичай, для надання оновлень безпеки.</string>
+\n- Проект потребує більше часу, ніж зазвичай, для надання оновлень безпеки.</string>
     <string name="app_warning_dialog__title">Увага</string>
     <string name="notification__download_error__channel_name">Сповіщення про помилки завантаження у фоновому режимі</string>
     <string name="notification__download_error__title">Не вдалося завантажити оновлення у фоновому режимі</string>
@@ -186,27 +192,27 @@
     <string name="notification__download_error__channel_descr">Відображається, коли завантаження оновлень у фоновому режимі не вдається.</string>
     <string name="notification__download_error__descr">Не вдалося виконати фонове завантаження оновлення %1$s. Якщо ця помилка виникає часто, не соромтеся повідомити про неї на notabug.org, GitHub або GitLab.</string>
     <string name="notification__download_error__text">Не вдалося виконати фонове завантаження оновлення %1$s. Якщо ця помилка виникає часто, натисніть тут, щоб переглянути звіт про помилку.</string>
-    <string name="notification__eol_apps__text">У вас є застарілі програми, якими більше не слід користуватися. Натисніть для отримання додаткової інформації.</string>
+    <string name="notification__eol_apps__text">У вас є застарілі застосунки, якими більше не слід користуватися. Натисніть для отримання додаткової інформації.</string>
     <string name="notification__eol_apps__channel_name">Сповіщення про застарілі застосунки</string>
-    <string name="download_activity__different_installer_info__text">Якщо встановлення часто зазнає помилок, спробуйте переключитися на \"рідний інсталятор\" у налаштуваннях.</string>
-    <string name="download_activity__file_uri_exposed_toast">Неможливо відкрити шлях до файлу іншим програмам. Будь ласка, відкрийте теку самостійно за допомогою вашого улюбленого файлового менеджера.</string>
+    <string name="download_activity__different_installer_info__text">Якщо встановлення часто зазнає помилок, спробуйте переключитися на \"нативний встановлювач\" у налаштуваннях.</string>
+    <string name="download_activity__file_uri_exposed_toast">Неможливо відкрити шлях до файлу іншим застосункам. Будь ласка, відкрийте теку самостійно за допомогою вашого улюбленого файлового менеджера.</string>
     <string name="install_activity__download_file_failed__crash_text">Під час завантаження виникла наступна помилка. Якщо ця помилка виникає часто, не соромтеся надіслати звіт про збій на notabug.org, GitHub або GitLab.</string>
     <string name="crash_report__explain_text__download_activity_install_file">Ця помилка виникла під час інсталяції. Якщо ця помилка виникає часто, не соромтеся надіслати звіт про збій на notabug.org, GitHub або GitLab.</string>
     <string name="app_card__open_project_page">Відкрити сторінку проєкту в браузері</string>
-    <string name="ungoogled_chromium__eol_reason">Розробник опублікував: \"Я не зможу оновлювати версії протягом деякого часу. Якщо це можливо, будь ласка, використовуйте один з браузерів [який підтримує FFUpdater] у цей час.\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
-    <string name="kiwi__title">Kiwi Browser Next</string>
+    <string name="ungoogled_chromium__eol_reason">Розробник опублікував: \"Я не зможу оновлювати версії протягом деякого часу. Якщо це можливо, будь ласка, використовуйте один з браузерів [який підтримується FFUpdater] у цей час.\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
+    <string name="kiwi__title">Kiwi Next</string>
     <string name="lockwise__eol_reason">Mozilla припинила підтримку в грудні 2021 року. Будь ласка, перейдіть на інший сейф для зберігання паролів.</string>
     <string name="settings__foreground__hide_warning_buttons">Приховати кнопку попередження для встановленого застосунку.</string>
     <string name="settings__b_f__delete_cache_if_install_successful">Видаляти завантажене оновлення, якщо встановлення пройшло успішно.</string>
     <string name="settings__b_f__delete_cache_if_install_failed">Видаляти завантажене оновлення, якщо встановлення завершилося невдало.</string>
-    <string name="settings__installer_category__title">Інсталятор</string>
+    <string name="settings__installer_category__title">Встановлювач</string>
     <string name="download_activity__open_folder">Відкрити теку</string>
-    <string name="kiwi__description">Kiwi Browser створений для перегляду веб-сторінок, читання новин, перегляду відео та прослуховування музики без зайвих роздратувань.</string>
-    <string name="kiwi__warning">- Kiwi використовує технічну базу Google Chrome і таким чином опосередковано підтримує монопольне становище рушія рендерингу Chromium.
+    <string name="kiwi__description">Kiwi створений для перегляду веб-сторінок, читання новин, перегляду відео та прослуховування музики без зайвих роздратувань.</string>
+    <string name="kiwi__warning">- Kiwi використовує технічну основу Google Chrome і, таким чином, опосередковано підтримує монопольне положення рушія візуалізації Chromium.
 \n- Kiwi не є ідеальним браузером для забезпечення конфіденційності, але має хорошу підтримку аддонів.
 \n- Браузер отримує плату від пошукових систем за кожен пошук, здійснений за допомогою Kiwi Browser. Залежно від вибору пошукової системи, запити можуть йти через сервери Kiwibrowser / Kiwisearchservices.
 \n- Google Ads в Kiwi може використовувати дані про місцезнаходження для реклами - але ви можете відключити її, вимкнувши функцію Discovery. Але це скоро зміниться. Дивіться https://privacy.kiwibrowser.org/ для більш детальної інформації.</string>
-    <string name="mull__title">Mull Browser</string>
+    <string name="mull__title">Mull</string>
     <string name="mull__description">Це орієнтований на конфіденційність і deblobbed веб-браузер, заснований на технології Mozilla. Він дозволяє використовувати багато функцій, що надаються проектом Tor Uplift, використовуючи налаштування з проекту arkenfox-user.js. Рекомендується встановити \"uBlock Origin\".</string>
     <string name="tor_browser__description">Tor Browser для Android - єдиний офіційний мобільний браузер, що підтримується проєктом Tor, розробником найсильнішого в світі інструменту для забезпечення конфіденційності та свободи в Інтернеті.</string>
     <string name="tor_browser__title">Tor Browser</string>
@@ -220,9 +226,9 @@
     <string name="settings__background__update_check__when_device_idle__title">Перевірки оновлень тільки якщо пристрій простоює</string>
     <string name="settings__background__update_check__when_device_idle__unsupported">Ця опція доступна лише на Android Marshmallow або новішої версії.</string>
     <string name="privacy_browser__warning">FFUpdater завантажує файли з серверів F-Droid і тому не швидше.</string>
-    <string name="settings__network__trust_user_cas__summary">Увімкніть, якщо трафік повинен перевірятися та змінюватися іншими програмами. Якщо ви не впевнені, залиште цю опцію вимкненою.</string>
+    <string name="settings__network__trust_user_cas__summary">Увімкніть, якщо трафік повинен перевірятися та змінюватися іншими застосункам. Якщо ви не впевнені, залиште цю опцію вимкненою.</string>
     <string name="device__prefer_32bit_apks__summary">Увімкніть, якщо на вашому пристрої зазвичай не вистачає пам\'яті. Тоді FFUpdater використовуватиме 32-бітні APK, які зазвичай вимагають менше пам\'яті.</string>
-    <string name="add_app_activity__title_end_of_live_browser">Браузер із завершеним терміном служби</string>
+    <string name="add_app_activity__title_end_of_live_browser">Браузер із завершеною підтримкою</string>
     <string name="network__dns_provider__title">Налаштування DNS</string>
     <string name="settings__network_category__title">Мережа</string>
     <string name="orbot__title">Orbot: Tor для Android</string>
@@ -233,7 +239,7 @@
     <string name="network__dns_provider__quad9">DNS через HTTPS: Quad9</string>
     <string name="network__dns_provider__digital_society_ch">DNS через HTTPS: Digital Society Switzerland</string>
     <string name="network__dns_provider__no">Без DNS (тільки для тестування)</string>
-    <string name="installer__method__shizuku">Shizuku інсталятор: оновлюйте застосунки без діалогового вікна підтвердження. Для цього потрібен застосунок Shizuku або Magisk-модуль Sui.</string>
+    <string name="installer__method__shizuku">Shizuku встановлювач: оновлюйте застосунки без діалогового вікна підтвердження. Для цього потрібен застосунок Shizuku або Magisk-модуль Sui.</string>
     <string name="add_app_activity__add_new_application">Додати новий застосунок</string>
     <string name="tor_browser_alpha__title">Tor Browser Alpha</string>
     <string name="foreground__hide_apps_signed_by_different_certificate__title">Приховати застосунки, підписані іншим сертифікатом.</string>
@@ -242,7 +248,7 @@
     <string name="add_app_activity__title_other_applications">Інші застосунки</string>
     <string name="add_app_activity__label">Додати новий застосунок</string>
     <string name="settings__network__trust_user_cas__title">Довіряти доданим користувачем центрам сертифікації</string>
-    <string name="add_app_activity__title_better_than_google_chrome">Кращий за Google Chrome</string>
+    <string name="add_app_activity__title_better_than_google_chrome">Кращі за Google Chrome</string>
     <string name="privacy_browser__title">Privacy Browser</string>
     <string name="network__dns_provider__system">Використовувати системний DNS</string>
     <string name="background__separate_notification_channels__title">Різні канали сповіщень</string>
@@ -257,10 +263,10 @@
     <string name="settings__background__update_check__when_device_idle__summary">Увімкніть це, якщо ви не хочете, щоб ваші застосунки перезапускалися через фонове оновлення. Вимкніть це, якщо хочете мати більш передбачуваний графік фонових перевірок оновлень.</string>
     <string name="notification__network_error__text">Ця помилка має виникати лише рідко. Однак, якщо це трапляється часто, ви повинні повідомити про це. Натисніть тут, щоб переглянути детальне повідомлення про помилку.</string>
     <string name="chromium__description">Chromium — це проект браузера з відкритим вихідним кодом, метою якого є створення безпечнішого, швидшого та стабільнішого способу роботи в Інтернеті для всіх користувачів. Цей сайт містить проектні документи, огляди архітектури, інформацію про тестування та багато іншого, щоб допомогти вам навчитися створювати вихідний код Chromium і працювати з ним.</string>
-    <string name="chromium__warning">- Chromium використовує технічну основу Google Chrome (Chromium) - деяким людям це не подобається, через її монопольне становище.</string>
+    <string name="chromium__warning">- Chromium використовує технічну основу Google Chrome і, таким чином, опосередковано підтримує монопольне положення рушія візуалізації Chromium.</string>
     <string name="main_activity__an_error_occurred"><u>Сталася помилка. Спробуйте пізніше.</u></string>
     <string name="fennecfdroid__description">Fennec F-Droid базується на останній версії Firefox (під кодовою назвою Fenix). З нього видалено пропрієтарні біти та телеметрію, але він все ще підключається до різних служб Mozilla та Google, які можуть відстежувати користувачів.</string>
-    <string name="installer__method__session">Session інсталятор: рекомендовано для більшості пристроїв. На Android 12 або новішої версії програми можна оновлювати у фоні після одного підтвердження користувача.</string>
+    <string name="installer__method__session">Session встановлювач: рекомендовано для більшості пристроїв. На Android 12 або новішої версії застосунки можна оновлювати у фоні після одного підтвердження користувача.</string>
     <string name="network__custom_doh_server__dialog_message">Введіть дані з’єднання для користувацького сервера DoH в одному з таких форматів:
 \n
 \nurl;ip1
@@ -272,16 +278,16 @@
 \nurl;ip1;ip2;ip3;ip4
 \n
 \nНаприклад: https://dns.google/dns-query;8.8.8.8 or https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
-    <string name="installer__method__native">Рідний інсталятор: резервний варіант, якщо session інсталятор не працює на вашому смартфоні.</string>
+    <string name="installer__method__native">Нативний встановлювач: резервний варіант, якщо session встановлювач не працює на вашому смартфоні.</string>
     <string name="mulch__title">Mulch</string>
-    <string name="firefox_focus_beta__title">Firefox Focus Бета</string>
-    <string name="installer__method__root">Root-інсталятор: оновлюйте програми без діалогового вікна підтвердження. Для цього потрібен рутований смартфон.</string>
+    <string name="firefox_focus_beta__title">Firefox Focus Beta</string>
+    <string name="installer__method__root">Root-встановлювач: оновлюйте застосунки без діалогового вікна підтвердження. Для цього потрібен рутований смартфон.</string>
     <string name="tor_browser_alpha__description">Tor Browser— це єдиний офіційний мобільний браузер, який підтримується компанією Tor Project, розробниками найпотужнішого в світі інструмента для забезпечення конфіденційності та свободи в Інтернеті.
 \n
 \nTor Browser ЗАВЖДИ буде безкоштовним, але пожертви роблять це можливим. Проект Tor є неприбутковою організацією 501©(3), що базується в США. Будь ласка, зробіть внесок сьогодні. Кожен подарунок має значення: https://donate.torproject.org.
 \n
 \nДізнайтеся, як повідомляти про помилки та залишати відгуки на https://support.torproject.org/misc/bug-or-feedback/!</string>
-    <string name="mulch__warning">- Mulch використовує технічну основу Google Chrome (Chromium) - деяким людям це не подобається, через її монопольне становище.</string>
+    <string name="mulch__warning">- Mulch використовує технічну основу Google Chrome і, таким чином, опосередковано підтримує монопольне положення рушія візуалізації Chromium.</string>
     <string name="generic_app_warning__beta_version">- Цей застосунок призначений для розробників і тестувальників. Він може містити різні помилки, які можуть вплинути на вашу звичну роботу з браузером.</string>
     <string name="mulch__description">Це надійний і орієнтований на безпеку браузер на основі технології Chromium. Багато антифункцій вимкнено/видалено, а декілька функцій безпеки ввімкнено/додано завдяки виправленням від проекту Vanadium. Репозиторій вихідного коду також включає попередньо зібрані та make-файли, щоб дозволити іншим операційним системам включати Mulch як свою систему WebView.</string>
     <string name="network__proxy__dialog_message">Якщо ви хочете використовувати проксі-сервер SOCKS або HTTP, введіть тут дані підключення. Використовуйте один із цих форматів:
@@ -293,11 +299,47 @@
 \nНаприклад: SOCKS;1.2.3.4;22 або HTTP;5.6.7.8;80;user1;pw123 або HTTP;p.webshare.io;80;u;p. Залиште поле порожнім, якщо ви хочете використовувати конфігурацію проксі-сервера системи.
 \n
 \nОбмеження: якщо ви змінюєте «Налаштування DNS» у налаштуваннях на сервер DNS через HTTPS, вам потрібно ввести домен проксі-сервера. IP-адреси не працюватимуть.</string>
-    <string name="orbot__description">Orbot — це безкоштовна проксі-застосунок, яка дозволяє іншим застосункам безпечніше користуватися Інтернетом. Orbot використовує Tor для шифрування вашого інтернет-трафіку, а потім приховує його, переходячи через ряд комп’ютерів по всьому світу. Tor — це безкоштовне програмне забезпечення та відкрита мережа, яка допомагає вам захиститися від форми мережевого стеження, яка загрожує особистій свободі та конфіденційності, конфіденційній діловій діяльності та стосункам, а також державній безпеці, відомій як аналіз трафіку.</string>
+    <string name="orbot__description">Orbot — це безкоштовний проксі-застосунок, який дозволяє іншим застосункам безпечніше користуватися Інтернетом. Orbot використовує Tor для шифрування вашого інтернет-трафіку, а потім приховує його, переходячи через ряд комп’ютерів по всьому світу. Tor — це безкоштовне програмне забезпечення та відкрита мережа, яка допомагає вам захиститися від форми мережевого стеження, яка загрожує особистій свободі та конфіденційності, конфіденційній діловій діяльності та стосункам, а також державній безпеці, відомій як аналіз трафіку.</string>
     <string name="installer__method__root_not_granted">Root-права не надані!</string>
     <string name="installer__method__title">Метод встановлення</string>
     <string name="eol_reason__browser_no_longer_maintained">Браузер більше не підтримується.</string>
     <string name="app_installer__failed_to_verify_signature_of_installed_app">Не вдалося перевірити встановлений застосунок.</string>
     <string name="app_installer__failed_to_validate_signature_of_download">Не вдалося перевірити підпис завантаження.</string>
     <string name="installer__android_too_old_for_shizuku">Ваш Android занадто старий для Shizuku.</string>
+    <string name="add_app_activity__title_good_security_browsers">Хороший безпечний браузер</string>
+    <string name="thorium__warning">- Thorium використовує технічну основу Google Chrome і, таким чином, опосередковано підтримує монопольне положення рушія візуалізації Chromium.</string>
+    <string name="notification__bachground_work__channel_description">Повідомлення про фонову роботу</string>
+    <string name="mulch_wv__description">Це орієнтована на безпеку та посилена система WebView на основі технології Chromium. Багато антифункцій вимкнено/видалено, а декілька функцій безпеки ввімкнено/додано завдяки виправленням від проекту Vanadium.</string>
+    <string name="notification__bg_update_check__unreliable_execution__text">Можливо, це викликано налаштуваннями акумулятора або продуктивності вашого пристрою. Натисніть на це сповіщення, щоб вимкнути оптимізацію акумулятора для цього застосунка.</string>
+    <string name="main_activity__unexpected_error">Сталася неочікувана помилка.</string>
+    <string name="duckduckgo_android__warning">- DuckDuckGo використовує системний веб-перегляд для відображення веб-сайтів.
+\n- Була суперечка про те, що DuckDuckGo не блокує всі файли cookie від Microsoft, але це було виправлено.</string>
+    <string name="privacy_browser__description">Єдиний спосіб запобігти зловживанню даними – це в першу чергу запобігти їх збиранню. Privacy Browser має дві основні цілі: мінімізувати дані, які надсилаються в Інтернет, і мінімізувати дані, які зберігаються на пристрої.</string>
+    <string name="duckduckgo_android__title">DuckDuckGo Browser</string>
+    <string name="notification__uncaught_exception__channel_name">Сповіщення про збої</string>
+    <string name="cromite__description">Cromite — це форк Chromium на базі Bromite із вбудованою підтримкою блокування реклами та забезпеченням конфіденційності.</string>
+    <string name="notification__bachground_work__text">Це сповіщення потрібне для надійного виконання. Залежно від ваших налаштувань, оновлення завантажуються та встановлюються у фоновому режимі. Це сповіщення можна приховати або вимкнути, не припиняючи фонову роботу. Після завершення перевірки сповіщення також буде закрито.</string>
+    <string name="firefox_focus_beta__description">Використовуйте Firefox Focus для всього, що хочете тримати окремо від основного браузера — для всіх, хто заходить, виходить і миттєво забуває про це. Без вкладок, без метушні, без плутанини. Також блокуйте онлайн-трекери. Один дотик, і вашу історію веб-перегляду буде повністю видаленною.
+\n
+\nFirefox Focus — ідеальний засіб для входу/виходу, пошуку та очищення історії пошуку.</string>
+    <string name="notification__uncaught_exception__title">Збій FFUpdater</string>
+    <string name="crash_report__report_is_copied_to_clipboard">Звіт про збій скопійовано в буфер обміну</string>
+    <string name="notification__uncaught_exception__channel_description">Неочікувані помилки, які призводять до збою FFUpdater.</string>
+    <string name="notification__bg_update_check__unreliable_execution__channel_description">Попередження про ненадійне виконання фонової перевірки оновлень</string>
+    <string name="background__installation__when_screen_off__summary">Встановлення оновлень тільки при вимкненому екрані пристрою.</string>
+    <string name="notification__bachground_work__title">Виконання фонової роботи</string>
+    <string name="notification__bachground_work__action_title">Скасувати цю фонову роботу</string>
+    <string name="add_app_activity__title_based_on_firefox">На основі Firefox</string>
+    <string name="notification__bg_update_check__unreliable_execution__title">Фонова перевірка оновлень виконується ненадійно</string>
+    <string name="thorium__title">Thorium</string>
+    <string name="notification__bg_update_check__unreliable_execution__channel_name">Фонова перевірка оновлень не виконано</string>
+    <string name="cromite__warning">- Cromite використовує технічну основу Google Chrome і, таким чином, опосередковано підтримує монопольне положення рушія візуалізації Chromium.</string>
+    <string name="duckduckgo_android__description">Застосунок DuckDuckGo забезпечує найповніший захист конфіденційності в Інтернеті одним натисканням кнопки. З одним завантаженням ви отримуєте новий повсякденний браузер, який пропонує бездоганний захист під час пошуку та перегляду, а також доступ до захисту від відстеження електронних листів, які ви отримуєте, і застосунків, якими ви користуєтеся. Багато з цих засобів захисту не пропонуються в більшості популярних браузерів за замовчуванням.</string>
+    <string name="notification__uncaught_exception__text">Натисніть, щоб переглянути звіт про помилку.</string>
+    <string name="ffupdater__different_signature_message">Ця версія FFUpdater була підписана F-Droid, тому лише F-Droid може поширювати оновлення. Щоб швидше отримувати оновлення, видаліть FFUpdater і встановіть версію, підписану розробником. З цією версією FFUpdater може оновлюватися самостійно, не чекаючи F-Droid.</string>
+    <string name="notification__bachground_work__channel_name">Сповіщення про фонову роботу</string>
+    <string name="thorium__description">Найшвидший браузер на Землі. Chromium fork для Linux названий на честь радіоактивного елемента під номером 90.</string>
+    <string name="background__installation__when_screen_off__title">Встановлювати тільки при вимкненому екрані</string>
+    <string name="cromite__title">Cromite</string>
+    <string name="mulch_wv__title">Mulch System WebView</string>
 </resources>

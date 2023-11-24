@@ -2,10 +2,10 @@
 
 Браузери з Mozilla або на основі Firefox:
 - Fennec F-Droid
-- Firefox браузер, Firefox для Android Beta, Firefox Nightly
+- Firefox, Firefox Beta, Firefox Nightly
 - Firefox Focus, Firefox Focus Beta, Firefox Klar
 - Iceraven
-- Mull Browser
+- Mull
 - Tor Browser, Tor Browser Alpha
 
 Добрі конфіденційні браузери:
@@ -13,16 +13,16 @@
 - Mulch, Mulch System WebView
 
 Браузери, що кращі, ніж Google Chrome:
-- Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
+- Brave, Brave (Beta), Brave (Nightly)
 - Chromium
 - DuckDuckGo Browser
-- Kiwi Browser Next
+- Kiwi Next
 - Privacy Browser (F-Droid)
 - Thorium
 - Vivaldi
 
 Інші застосунки:
-- Орбот
+- Orbot
 
 FFUpdater перевіряє оновлення у фоновому режимі й завантажує їх. На Android 12+ або пристроях з root FFUPDater також може оновити програми без взаємодії з користувачем.
 

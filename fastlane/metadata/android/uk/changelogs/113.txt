@@ -1,0 +1,6 @@
+* Дякую за внесок Weblate від: Джон До, Oğuz Ersen, atilluF, Vitor Henrique, 109247019824, nautilusx, Juraj Motuz, MkQtS, Giovanni Donisi, Artem і Eduardo Malaspina
+* Додано Chromium, Orbot, Tor,
+* Покращено UI для додавання нових додатків
+* Не довіряється CA користувача за замовчуванням (це може бути вимкнено)
+* Виправлено баги
+* Очищення та рефакторнг коду

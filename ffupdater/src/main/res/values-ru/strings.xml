@@ -41,7 +41,7 @@
     <string name="notification__error__channel_descr">Показать ошибки проверки фонового обновления</string>
     <string name="notification__error__channel_name">Ошибки фонового режима</string>
     <string name="firefox_beta__description">Firefox для Android — это по умолчанию конфиденциальный и невероятно быстрый браузер. Тысячи онлайн-трекеров следят за вами каждый день, собирая информацию о вашей жизни в Интернете и замедляя скорость вашей работы. Firefox блокирует более 2000 из этих трекеров автоматически и позволяет установить дополнения, блокирующие рекламу, на случай, если вы захотите настроить свой браузер под себя. С Firefox вы получите безопасность, которую заслуживаете, а также высокую скорость работы — и всё это в конфиденциальном мобильном браузере.</string>
-    <string name="firefox_beta__title">Firefox Бета для Android</string>
+    <string name="firefox_beta__title">Firefox Бета</string>
     <string name="firefox_beta__warning">- Это приложение предназначено для разработчиков и тестировщиков. Оно может содержать различные ошибки, которые могут повлиять на вашу обычную работу с браузером.</string>
     <string name="firefox_focus__description">Это модификация браузера Firefox, направленная на повышение уровня конфиденциальности.</string>
     <string name="firefox_focus__title">Firefox Focus</string>
@@ -60,8 +60,8 @@
 \n
 \nПоследняя успешная проверка обновлений в фоновом режиме: %1$s</string>
     <string name="app_card__information_about_the_app">информация о приложении</string>
-    <string name="download_activity__delete_cache_button_text">очистить кеш</string>
-    <string name="download_activity__delete_cache_explanation">Если вы считаете, что FFUpdater ошибочно сохранил в кеше обновление приложения или просто желаете очистить место, нажмите кнопку \"очистить кеш\", для удаления загруженного файла.</string>
+    <string name="download_activity__delete_cache_button_text">очистить кэш</string>
+    <string name="download_activity__delete_cache_explanation">Если вы считаете, что FFUpdater ошибочно сохранил в кэше обновление приложения или просто желаете очистить место, нажмите кнопку \"очистить кэш\", для удаления загруженного файла.</string>
     <string name="download_activity__different_installer_info__text">Если установка часто проваливается, попробуйте переключиться на \"Родной установщик\" в настройках.</string>
     <string name="download_activity__download_app_with_status">Загрузка приложения</string>
     <string name="download_activity__download_failed">Не удалось загрузить</string>
@@ -73,8 +73,8 @@
     <string name="download_activity__fetched_url_for_download_successfully">Получена ссылка для скачивания с %1$s</string>
     <string name="download_activity__file_uri_exposed_toast">Не удалось определить путь к другим приложениям. Пожалуйста, откройте каталог с помощью предпочитаемого вами файлового менеджера.</string>
     <string name="download_activity__github_rate_limit_exceeded">Превышен лимит скорости GitHub-API. Пожалуйста, повторите попытку загрузки в течение следующего часа.</string>
-    <string name="download_activity__open_cache_explanation">Вы можете открыть папку кеша, чтобы скопировать APK-файл в место с большим объемом свободного пространства. К сожалению, на Android 11+ лишь немногие файловые менеджеры имеют доступ к этому каталогу в Android/data.</string>
-    <string name="download_activity__open_cache_folder_button_text">открыть папку кеша</string>
+    <string name="download_activity__open_cache_explanation">Вы можете открыть папку кэша, чтобы скопировать APK-файл в место с большим объемом свободного пространства. К сожалению, на Android 11+ лишь немногие файловые менеджеры имеют доступ к этому каталогу в Android/data.</string>
+    <string name="download_activity__open_cache_folder_button_text">открыть папку кэша</string>
     <string name="download_activity__open_folder">Открыть каталог</string>
     <string name="download_activity__sha_256_certificate_fingerprint">Отпечаток сертификата SHA-256:</string>
     <string name="download_activity__temporary_network_issue">Возникла временная проблема сети. Пожалуйста, повторите попытку позже.</string>
@@ -108,8 +108,8 @@
 \nНадежно отслеживайте свои пароли Firefox и получайте доступ к ним в любом месте. Быстро откройте любой сайт из приложения, чтобы попасть в свои учетные записи.</string>
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>Превышен лимит GitHub-API. Повторите попытку через час.</u>"</string>
-    <string name="main_activity__no_unmetered_network">Отсутствие сети без оплаты</string>
-    <string name="main_activity__subtitle">Программа для обновления браузеров, уважающих конфиденциальность</string>
+    <string name="main_activity__no_unmetered_network">Отсутствуют сети без тарификации</string>
+    <string name="main_activity__subtitle">Программа обновления конфиденциальных браузеров</string>
     <string name="main_activity__temporary_network_issue">"<u>Временная проблема сети. Повторите попытку позже.</u>"</string>
     <string name="ok">ОК</string>
     <string name="request_installation_permission_dialog__abort">Прервать</string>
@@ -149,10 +149,10 @@
     <string name="settings__foreground__hide_warning_buttons">Скрыть предупреждения для установленных приложений.</string>
     <string name="settings__foreground__theme_preference__summary">Выбор между светлой и тёмной темой</string>
     <string name="settings__foreground__theme_preference__title">Выбор темы</string>
-    <string name="settings__foreground__update_check__metered__summary">Разрешить проверку обновлений в дозированных сетях, таких как мобильные данные.</string>
+    <string name="settings__foreground__update_check__metered__summary">Разрешить проверку обновлений в сетях c тарификацией, таких как мобильные данные.</string>
     <string name="settings__foreground__update_check__metered__title">Проверка обновлений в сетях с тарификацией</string>
     <string name="settings__foreground_category__summary">Настройки, когда виден пользовательский интерфейс.</string>
-    <string name="settings__foreground_category__title">Передний план</string>
+    <string name="settings__foreground_category__title">В приложении</string>
     <string name="settings__installer_category__title">Установщик</string>
     <string name="settings__theme_battery_saver">Тёмная, когда активна экономия батареи</string>
     <string name="settings__theme_dark">Тёмная</string>
@@ -206,7 +206,7 @@
     <string name="lockwise__eol_reason">Mozilla прекратила поддержку в декабре 2021 года. Пожалуйста, перейдите на другой менеджер паролей.</string>
     <string name="mull__title">Mull</string>
     <string name="mull__description">Это ориентированный на конфиденциальность и деблобированный веб-браузер, основанный на технологии Mozilla. Он поддерживает многие функции, реализованные в проекте Tor Uplift, используя настройки из проекта arkenfox-user.js. Рекомендуется установить \'uBlock Origin\'.</string>
-    <string name="ungoogled_chromium__eol_reason">Разработчик написал: \"Я не смогу обновлять версии в течение некоторого времени. Если возможно, используйте один из браузеров [которые поддерживает FFUpdater] в это время.\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
+    <string name="ungoogled_chromium__eol_reason">Разработчик написал: \"Я не смогу обновлять версии в течение некоторого времени. Если возможно, используйте один из браузеров [которые поддерживается FFUpdater] в это время.\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
     <string name="add_app_activity__title_from_mozilla">От Mozilla</string>
     <string name="add_app_activity__title_better_than_google_chrome">Лучше, чем Google Chrome</string>
     <string name="settings__network__trust_user_cas__summary">Включите опцию, если трафик данных должен проверяться и изменяться другими приложениями. Если вы не уверены, отключите эту опцию.</string>
@@ -300,7 +300,7 @@
     <string name="notification__uncaught_exception__channel_description">Неожиданные ошибки, приводящие к сбою FFUpdater.</string>
     <string name="background__installation__when_screen_off__summary">Установка обновлений только при выключенном экране.</string>
     <string name="notification__bachground_work__title">Выполнение фоновой работы</string>
-    <string name="tor_browser_alpha__title">Tor Браузер Альфа</string>
+    <string name="tor_browser_alpha__title">Tor Browser Alpha</string>
     <string name="notification__bachground_work__action_title">Отменить эту фоновую работу</string>
     <string name="privacy_browser__warning">FFUpdater загружает файлы с серверов F-Droid и поэтому работает не быстрее.</string>
     <string name="notification__install_error__generic_channel_name">Уведомление об ошибке обновления приложения</string>
@@ -313,7 +313,7 @@
     <string name="app_installer__failed_to_validate_signature_of_download">Не удалось проверить подпись загрузки.</string>
     <string name="tor_browser_alpha__description">Tor Browser — единственный официальный мобильный браузер, поддерживаемый проектом Tor Project, разработчиком самого мощного в мире инструмента для обеспечения конфиденциальности и свободы в Интернете.
 \n
-\nБраузер Tor ВСЕГДА будет бесплатным, но это возможно благодаря пожертвованиям. Проект Tor — это некоммерческая организация 501©(3), базирующаяся в США. Пожалуйста, рассмотрите возможность внесения пожертвования сегодня. Каждый подарок имеет значение: https://donate.torproject.org.
+\nTor Browser ВСЕГДА будет бесплатным, но это возможно благодаря пожертвованиям. Проект Tor — это некоммерческая организация 501©(3), базирующаяся в США. Пожалуйста, рассмотрите возможность внесения пожертвования сегодня. Каждый подарок имеет значение: https://donate.torproject.org.
 \n
 \nУзнайте, как сообщать об ошибках и оставлять отзывы на https://support.torproject.org/misc/bug-or-feedback/!</string>
     <string name="notification__uncaught_exception__text">Нажмите, чтобы просмотреть отчёт об ошибке.</string>
@@ -329,4 +329,7 @@
     <string name="cromite__warning">- Cromite использует техническую основу Google Chrome и тем самым косвенно поддерживает монопольное положение движка рендеринга Chromium.</string>
     <string name="cromite__title">Cromite</string>
     <string name="main_activity__unexpected_error">Произошла непредвиденная ошибка.</string>
+    <string name="thorium__warning">- Thorium использует техническую основу Google Chrome и тем самым косвенно поддерживает монопольное положение движка рендеринга Chromium.</string>
+    <string name="thorium__title">Thorium</string>
+    <string name="thorium__description">Самый быстрый браузер на планете. Форк Chromium для Linux, названный в честь радиоактивного элемента под номером 90.</string>
 </resources>

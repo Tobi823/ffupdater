@@ -1,0 +1,2 @@
+* Ευχαριστούμε για τις συνεισφορές τους στο Weblate τους: Eryk Michalak, nautilusx, Juraj Motuz και gallegonovato
+* Διορθώθηκε το πρόγραμμα εγκατάστασης root (Tobi823/ffupdater#462)

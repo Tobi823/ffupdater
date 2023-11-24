@@ -1,0 +1,1 @@
+* Виправлено неправильний signatureHash для Mull (divestos.org версія)

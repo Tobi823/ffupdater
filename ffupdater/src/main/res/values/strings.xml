@@ -303,6 +303,6 @@
     <string name="cromite__warning">- Cromite uses the technical foundation of Google Chrome and thus indirectly supports the monopoly position of the Chromium render engine.</string>
     <string name="main_activity__unexpected_error">Unexpected error occurred.</string>
     <string name="thorium__title">Thorium Browser for Android</string>
-    <string name="thorium__description">The fastest browser on Earth. Chromium fork for linux named after radioactive element No. 90.</string>
+    <string name="thorium__description">The fastest browser on Earth. Chromium fork for Linux named after radioactive element No. 90.</string>
     <string name="thorium__warning">- Thorium uses the technical foundation of Google Chrome and thus indirectly supports the monopoly position of the Chromium render engine.</string>
 </resources>

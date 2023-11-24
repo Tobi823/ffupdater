@@ -1,0 +1,3 @@
+Έκδοση 78.3.0
+- Ευχαριστούμε για τις συνεισφορές τους στο Weblate τους: P.O, Alexthegib, winver και gallegonovato
+- Προσθήκη υποστήριξης για το Thorium https://github.com/Alex313031/Thorium-Android (Tobi823/ffupdater#414)

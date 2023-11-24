@@ -197,7 +197,7 @@
     <string name="settings__b_f__delete_cache_if_install_failed">Usuń pobraną aktualizację, jeśli instalacja nie powiedzie się.</string>
     <string name="settings__b_f__delete_cache_if_install_successful">Usuń pobraną aktualizację, jeśli instalacja zakończy się pomyślnie.</string>
     <string name="add_app_activity__title_better_than_google_chrome">Lepsze niż Google Chrome</string>
-    <string name="add_app_activity__title_end_of_live_browser">Przeglądarki które nie są już rozwijane</string>
+    <string name="add_app_activity__title_end_of_live_browser">Przeglądarki, które nie są już rozwijane</string>
     <string name="add_app_activity__add_new_application">Dodaj nową aplikację</string>
     <string name="chromium__title">Chromium</string>
     <string name="mulch__title">Mulch</string>
@@ -223,7 +223,7 @@
     <string name="install_activity__download_file_failed__crash_text">Ten błąd wystąpił podczas pobierania aplikacji. Jeśli ten błąd występuje często, nie krępuj się zgłosić go na notabug.org, GitHub lub GitLab.</string>
     <string name="download_activity__file_uri_exposed_toast">Nie można udostępnić ścieżki pliku innym aplikacjom. Otwórz folder samodzielnie za pomocą preferowanego menedżera plików.</string>
     <string name="notification__eol_apps__title">Zainstalowane nieaktualne aplikacje</string>
-    <string name="tor_browser__title">Przeglądarka Tor</string>
+    <string name="tor_browser__title">Tor</string>
     <string name="chromium__description">Chromium to projekt przeglądarki o otwartym kodzie źródłowym, którego celem jest stworzenie bezpieczniejszego, szybszego i bardziej stabilnego sposobu korzystania z sieci przez wszystkich użytkowników. Ta strona zawiera dokumenty projektowe, przegląd architektury, informacje o testach i wiele innych informacji, które pomogą Ci nauczyć się budować i pracować z kodem źródłowym Chromium.</string>
     <string name="crash_report__explain_text__download_activity_install_file">Ten błąd wystąpił podczas instalowania aplikacji. Jeśli ten błąd występuje często, nie krępuj się zgłosić go na notabug.org, GitHub lub GitLab.</string>
     <string name="notification__download_error__descr">Pobieranie w tle aktualizacji %1$s nie powiodło się. Jeśli ten błąd występuje często, nie krępuj się zgłosić go na notabug.org, GitHub lub GitLab.</string>
@@ -286,7 +286,7 @@
 \nNa przykład: SOCKS;1.2.3.4;22 or HTTP;5.6.7.8;80;użytkownik123;hasło123 or HTTP;p.webshare.io;80;u;h. Pozostaw to puste, jeśli chcesz użyć systemowej konfiguracji proxy.
 \n
 \nOgraniczenie: Jeśli zmienisz \"Ustawienia DNS\" w ustawieniach na serwer DNS over HTTPS, musisz podać domenę serwera proxy. IP nie będzie działać.</string>
-    <string name="tor_browser_alpha__title">Przeglądarka Tor Alpha</string>
+    <string name="tor_browser_alpha__title">Tor Alpha</string>
     <string name="tor_browser_alpha__description">Przeglądarka Tor dla Androida to jedyna oficjalna przeglądarka mobilna wspierana przez projekt Tor, twórców najsilniejszego na świecie narzędzia do ochrony prywatności i wolności online.
 \n
 \nDobrowolne darowizny sprawiają, że Przeglądarka Tor ZAWSZE będzie darmowa. Projekt Tor jest 501©(3) organizacją non-profit z siedzibą w USA. Proszę rozważyć wsparcie projektu dobrowolną wpłatą: https://donate.torproject.org.
@@ -294,11 +294,11 @@
 \nMożesz dowiedzieć się jak zgłaszać błędy i opinie na stronie https://support.torproject.org/misc/bug-or-feedback/!</string>
     <string name="duckduckgo_android__warning">- DuckDuckGo wykorzystuje systemowy silnik webview do wyświetlania stron internetowych.
 \n- Były kontrowersje związane z nie blokowaniem wszystkich ciasteczek od Microsoftu - ale zostało to naprawione.</string>
-    <string name="privacy_browser__title">Przeglądarka Privacy Browser</string>
+    <string name="privacy_browser__title">Privacy Browser</string>
     <string name="main_activity__app_was_signed_by_different_certificate">Ta aplikacja została podpisana innym certyfikatem i nie może być aktualizowana za pomocą FFUpdater.</string>
     <string name="foreground__hide_apps_signed_by_different_certificate__title">Ukryj aplikacje, które są podpisane innym certyfikatem.</string>
     <string name="firefox_focus_beta__title">Firefox Focus Beta</string>
-    <string name="duckduckgo_android__title">Przeglądarka DuckDuckGo</string>
+    <string name="duckduckgo_android__title">DuckDuckGo</string>
     <string name="privacy_browser__description">Jedynym sposobem, aby zapobiec wyciekom danych jest zapobieganie ich gromadzenia w pierwszej kolejności. Privacy Browser ma dwa podstawowe cele: Minimalizacja danych, które są wysyłane do Internetu i minimalizacja danych, które są przechowywane na urządzeniu.</string>
     <string name="privacy_browser__warning">FFUpdater pobiera pliki z serwerów F-Droid i dlatego nie jest szybszy.</string>
     <string name="generic_app_warning__beta_version">- Ta aplikacja jest przeznaczona dla programistów i testerów. Może ona zawierać różne błędy, które mogą wpływać na zwykłą pracę z przeglądarką.</string>
@@ -311,7 +311,7 @@
     <string name="notification__uncaught_exception__channel_name">Powiadomienie o awarii</string>
     <string name="add_app_activity__title_based_on_firefox">Oparte na Firefoxie</string>
     <string name="notification__uncaught_exception__title">Awaria FFUpdater</string>
-    <string name="add_app_activity__title_good_security_browsers">Przeglądarka dbająca o prywatność</string>
+    <string name="add_app_activity__title_good_security_browsers">Dobre bezpieczne przeglądarki</string>
     <string name="notification__uncaught_exception__channel_description">Niespodziewany błąd spowodował awarię FFUpdater.</string>
     <string name="notification__bachground_work__title">Wykonywanie działań w tle</string>
     <string name="notification__bachground_work__action_title">Anuluj to działanie w tle</string>
@@ -336,4 +336,8 @@
     <string name="cromite__description">Cromite jest forkiem Chromium opartym na Bromite dbającym o prywatność, z wbudowanym blokerem reklam.</string>
     <string name="cromite__warning">- Cromite wykorzystuje techniczne podstawy Google Chrome, a tym samym pośrednio wspiera monopolistyczną pozycję silnika renderującego Chromium.</string>
     <string name="cromite__title">Cromite</string>
+    <string name="thorium__warning">- Thorium wykorzystuje techniczne podstawy Google Chrome, a tym samym pośrednio wspiera monopolistyczną pozycję silnika renderującego Chromium.</string>
+    <string name="main_activity__unexpected_error">Wystąpił nieoczekiwany błąd.</string>
+    <string name="thorium__title">Thorium</string>
+    <string name="thorium__description">Najszybsza przeglądarka na ziemi. Fork Chromium dla Linuksa nazwany na cześć radioaktywnego pierwiastka nr 90.</string>
 </resources>
