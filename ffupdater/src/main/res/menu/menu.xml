@@ -6,12 +6,19 @@
       tools:context=".activities.MainActivity">
 
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/main_view_toolbar__add_app"
+        android:icon="@drawable/ic_install_mobile_24"
+        android:title="Install app"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/main_view_toolbar__settings"
         android:icon="@drawable/ic_settings_white_24dp"
         android:title="@string/settings_activity__label"
         app:showAsAction="ifRoom"/>
+
     <item
-        android:id="@+id/action_about"
+        android:id="@+id/main_view_toolbar__about"
         android:icon="@drawable/ic_info_white_24dp"
         android:title="@string/action_about_title"
         app:showAsAction="ifRoom"/>

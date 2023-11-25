@@ -25,6 +25,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
+import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.snackbar.Snackbar
 import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
 import de.marmaro.krt.ffupdater.activity.MainActivityRecyclerView
@@ -55,15 +56,44 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setSupportActionBar(findViewById(R.id.toolbar))
         AppCompatDelegate.setDefaultNightMode(ForegroundSettings.themePreference)
         requestForNotificationPermissionIfNecessary()
         askForIgnoringBatteryOptimizationIfNecessary()
 
-        findViewById<View>(R.id.installAppButton).setOnClickListener(userClickedInstallAppButton)
+//        findViewById<View>(R.id.installAppButton).setOnClickListener(userClickedInstallAppButton)
         val swipeContainer = findViewById<SwipeRefreshLayout>(R.id.swipeContainer)
         swipeContainer.setOnRefreshListener(userRefreshAppList)
         swipeContainer.setColorSchemeResources(holo_blue_light, holo_blue_dark)
+
+        findViewById<MaterialToolbar>(R.id.materialToolbar).setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.main_view_toolbar__about -> {
+                    val lastBackgroundUpdateCheckTime = DataStoreHelper.lastBackgroundCheck2
+                    val lastBackgroundUpdateCheckText = if (lastBackgroundUpdateCheckTime != 0L) {
+                        DateUtils.getRelativeDateTimeString(
+                            this,
+                            lastBackgroundUpdateCheckTime,
+                            DateUtils.SECOND_IN_MILLIS,
+                            DateUtils.WEEK_IN_MILLIS,
+                            0
+                        )
+                    } else "/"
+                    AlertDialog.Builder(this@MainActivity)
+                        .setTitle(R.string.action_about_title)
+                        .setMessage(getString(R.string.infobox, lastBackgroundUpdateCheckText))
+                        .setNeutralButton(R.string.ok) { dialog: DialogInterface, _: Int -> dialog.dismiss() }
+                        .create()
+                        .show()
+                    true
+                }
+                R.id.main_view_toolbar__settings -> {
+                    //start settings activity where we use select firefox product and release type;
+                    startActivity(Intent(this, SettingsActivity::class.java))
+                    true
+                }
+                else -> false
+            }
+        }
 
         initRecyclerView()
     }
@@ -93,37 +123,6 @@ class MainActivity : AppCompatActivity() {
         showInstalledApps(USE_CACHE)
         if (firstStart) startOrRestartBackgroundWork()
         firstStart = false
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val itemId = item.itemId
-        if (itemId == R.id.action_about) {
-            val lastBackgroundUpdateCheckTime = DataStoreHelper.lastBackgroundCheck2
-            val lastBackgroundUpdateCheckText = if (lastBackgroundUpdateCheckTime != 0L) {
-                DateUtils.getRelativeDateTimeString(
-                    this,
-                    lastBackgroundUpdateCheckTime,
-                    DateUtils.SECOND_IN_MILLIS,
-                    DateUtils.WEEK_IN_MILLIS,
-                    0
-                )
-            } else "/"
-            AlertDialog.Builder(this@MainActivity)
-                .setTitle(R.string.action_about_title)
-                .setMessage(getString(R.string.infobox, lastBackgroundUpdateCheckText))
-                .setNeutralButton(R.string.ok) { dialog: DialogInterface, _: Int -> dialog.dismiss() }
-                .create()
-                .show()
-        } else if (itemId == R.id.action_settings) {
-            //start settings activity where we use select firefox product and release type;
-            startActivity(Intent(this, SettingsActivity::class.java))
-        }
-        return super.onOptionsItemSelected(item)
     }
 
     private fun askForIgnoringBatteryOptimizationIfNecessary() {
