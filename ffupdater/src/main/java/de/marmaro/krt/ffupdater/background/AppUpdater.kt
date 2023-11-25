@@ -44,7 +44,7 @@ import de.marmaro.krt.ffupdater.utils.WorkManagerTiming.calcBackoffTime
 import kotlinx.coroutines.CompletableDeferred
 
 @Keep
-class BackgroundDownloaderAndInstaller(context: Context, workerParams: WorkerParameters) :
+class AppUpdater(context: Context, workerParams: WorkerParameters) :
     CoroutineWorker(context.applicationContext, workerParams) {
 
     override suspend fun doWork(): Result {
@@ -55,7 +55,7 @@ class BackgroundDownloaderAndInstaller(context: Context, workerParams: WorkerPar
                 Log.w(LOG_TAG, "$LOGTAG Job failed. Restart in ${calcBackoffTime(runAttemptCount)}.", e)
                 return Result.retry()
             }
-            val exception = BackgroundDownloaderAndInstallerException(e)
+            val exception = AppUpdaterException(e)
             Log.e(LOG_TAG, "$LOGTAG Job failed.", exception)
             when (e) {
                 is NetworkException -> showNetworkErrorNotification(applicationContext, exception)
@@ -236,7 +236,7 @@ class BackgroundDownloaderAndInstaller(context: Context, workerParams: WorkerPar
             val data = Data.Builder()
                 .putString(APP_NAME_KEY, app.name)
                 .build()
-            return OneTimeWorkRequest.Builder(BackgroundDownloaderAndInstaller::class.java)
+            return OneTimeWorkRequest.Builder(AppUpdater::class.java)
                 .setInputData(data)
                 .build()
         }

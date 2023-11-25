@@ -129,7 +129,7 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
             outdatedApps.add(App.FFUPDATER)
         }
         val workRequests = outdatedApps
-            .map { BackgroundDownloaderAndInstaller.createWorkRequest(it) }
+            .map { AppUpdater.createWorkRequest(it) }
             .toMutableList()
         val firstWorkRequest = workRequests.removeFirst()
         val workManager = WorkManager.getInstance(applicationContext)
