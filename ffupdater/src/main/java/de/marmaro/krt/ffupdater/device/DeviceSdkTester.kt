@@ -29,6 +29,10 @@ object DeviceSdkTester {
         return SDK_INT >= Build.VERSION_CODES.Q
     }
 
+    fun supportsAndroid11Q30(): Boolean {
+        return SDK_INT >= Build.VERSION_CODES.R
+    }
+
     fun supportsAndroid12S31(): Boolean {
         return SDK_INT >= Build.VERSION_CODES.S
     }
