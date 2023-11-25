@@ -108,7 +108,7 @@ class BackgroundDownloaderAndInstaller(context: Context, workerParams: WorkerPar
         return App.valueOf(appName)
     }
 
-    private suspend fun isAppStillOutdated(installedAppStatus: InstalledAppStatus): OneTimeWorkMethodResult {
+    private fun isAppStillOutdated(installedAppStatus: InstalledAppStatus): OneTimeWorkMethodResult {
         if (!installedAppStatus.isUpdateAvailable) {
             return executeNextOneTimeDownload("$LOGTAG ${installedAppStatus.app.name} was already updated.")
         }

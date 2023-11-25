@@ -40,10 +40,16 @@ object GithubConsumer {
         requireReleaseDescription: Boolean,
     ): Result? {
         val url = "https://api.github.com/repos/${repository.owner}/${repository.name}/releases/latest"
-        return FileDownloader.downloadWithCache(url, cacheBehaviour) {
-            val jsonConsumer =
-                GithubReleaseJsonConsumer(JsonReader(it), isValidRelease, isSuitableAsset, requireReleaseDescription)
-            jsonConsumer.parseReleaseJson()
+        return try {
+            FileDownloader.downloadWithCache(url, cacheBehaviour) {
+                val reader = JsonReader(it)
+                val c = GithubReleaseJsonConsumer(reader, isValidRelease, isSuitableAsset, requireReleaseDescription)
+                c.parseReleaseJson()
+            }
+        } catch (e: NetworkException) {
+            // sometimes GitHub can't determine the latest release and returns 404.
+            // solution: return null to retry with findWithSecondApi()
+            null
         }
     }
 

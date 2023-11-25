@@ -118,10 +118,8 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
         NotificationRemover.removeDownloadErrorNotification(applicationContext)
         NotificationRemover.removeAppStatusNotifications(applicationContext)
 
-        checkUpdateCheckAllowed().onFailure {
-            return@internalDoWork it
-        }
-        val outdatedApps = findForOutdatedApps().toMutableList()
+        checkUpdateCheckAllowed().onFailure { return@internalDoWork it }
+        val outdatedApps = findOutdatedApps().toMutableList()
         if (outdatedApps.isEmpty()) {
             return Result.success()
         }
@@ -159,7 +157,7 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
         }
     }
 
-    private suspend fun findForOutdatedApps(): List<App> {
+    private suspend fun findOutdatedApps(): List<App> {
         InstalledAppsCache.updateCache(applicationContext)
         val installedAppStatusList = InstalledAppsCache.getInstalledAppsWithCorrectFingerprint(applicationContext)
             .filter { it !in BackgroundSettings.excludedAppsFromUpdateCheck }
