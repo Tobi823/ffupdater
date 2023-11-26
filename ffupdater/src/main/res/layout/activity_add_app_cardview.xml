@@ -1,10 +1,13 @@
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
-    app:cardBackgroundColor="@color/main_activity__cardview_background_color"
-    app:cardUseCompatPadding="true">
+    style="@style/Widget.Material3.CardView.Outlined"
+    app:cardUseCompatPadding="false"
+    android:layout_marginTop="2dp"
+    android:layout_marginBottom="2dp"
+    app:cardBackgroundColor="@color/main_activity__cardview_background_color">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -35,55 +38,8 @@
             android:fontFamily="sans-serif-light"
             android:gravity="start"
             android:tag="title"
-            app:layout_constraintEnd_toStartOf="@id/warning_icon"
             app:layout_constraintStart_toEndOf="@id/icon"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageButton
-            android:id="@+id/warning_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/app_card__app_warning_button_description"
-            android:tag="warning_icon"
-            android:visibility="invisible"
-            app:layout_constraintEnd_toStartOf="@id/info_button"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_baseline_warning" />
-
-        <ImageButton
-            android:id="@+id/info_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/app_card__information_about_the_app"
-            android:tag="info_button"
-            app:layout_constraintEnd_toStartOf="@id/open_project_page"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_info_outline_blue" />
-
-        <ImageButton
-            android:id="@+id/open_project_page"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/app_card__open_project_page"
-            android:tag="open_project_page"
-            app:layout_constraintEnd_toStartOf="@id/add_app"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_open_in_browser_24" />
-
-        <TextView
-            android:id="@+id/eol_reason"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:autoLink="web"
-            android:tag="eol_reason"
-            android:textColor="@color/main_activity__red_for_eol_reason"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/warning_icon" />
 
         <ImageButton
             android:id="@+id/add_app"
@@ -98,4 +54,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>

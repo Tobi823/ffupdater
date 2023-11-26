@@ -31,6 +31,7 @@ import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.values
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.dialog.AppInfoDialog
+import de.marmaro.krt.ffupdater.dialog.AppInstallationInfoDialog
 import de.marmaro.krt.ffupdater.dialog.AppWarningDialog
 import de.marmaro.krt.ffupdater.dialog.RequestInstallationPermissionDialog
 import de.marmaro.krt.ffupdater.dialog.RunningDownloadsDialog
@@ -136,10 +137,6 @@ class AddAppActivity : AppCompatActivity() {
         inner class AppHolder(itemView: View) : ViewHolder(itemView) {
             val title: TextView = itemView.findViewWithTag("title")
             val icon: ImageView = itemView.findViewWithTag("icon")
-            val warningIcon: ImageButton = itemView.findViewWithTag("warning_icon")
-            val eolReason: TextView = itemView.findViewWithTag("eol_reason")
-            val infoButton: ImageButton = itemView.findViewWithTag("info_button")
-            val openProjectPageButton: ImageButton = itemView.findViewWithTag("open_project_page")
             val addAppButton: ImageButton = itemView.findViewWithTag("add_app")
         }
 
@@ -184,53 +181,14 @@ class AddAppActivity : AppCompatActivity() {
             val appImpl = app.findImpl()
             viewHolder.title.setText(appImpl.title)
             viewHolder.icon.setImageResource(appImpl.icon)
-
-            val warning = appImpl.installationWarning != null
-            viewHolder.warningIcon.visibility = if (warning) View.VISIBLE else View.INVISIBLE
-
-            viewHolder.eolReason.visibility = if (appImpl.isEol()) View.VISIBLE else View.GONE
-            appImpl.eolReason?.let { viewHolder.eolReason.setText(it) }
-
-            viewHolder.warningIcon.setOnClickListener {
-                AppWarningDialog.newInstance(app).show(activity.supportFragmentManager)
-            }
-
-            viewHolder.infoButton.setOnClickListener {
-                AppInfoDialog.newInstance(app).show(activity.supportFragmentManager)
-            }
-
-            viewHolder.openProjectPageButton.setOnClickListener {
-                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(appImpl.projectPage))
-                activity.startActivity(browserIntent)
-            }
-
             viewHolder.addAppButton.setOnClickListener {
-                installApp(app)
+                AppInstallationInfoDialog.newInstance(app).show(activity.supportFragmentManager)
             }
         }
 
         private fun onBindViewHolderTitle(viewHolder: HeadingHolder, position: Int) {
             val heading = elements[position] as WrappedTitle
             viewHolder.text.text = heading.text
-        }
-
-        private fun installApp(app: App) {
-            if (!ForegroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(activity)) {
-                showToast(R.string.main_activity__no_unmetered_network)
-                return
-            }
-            if (DeviceSdkTester.supportsAndroid8Oreo26() && !activity.packageManager.canRequestPackageInstalls()) {
-                RequestInstallationPermissionDialog().show(activity.supportFragmentManager)
-                return
-            }
-            if (FileDownloader.areDownloadsCurrentlyRunning()) {
-                // this may updates the app
-                RunningDownloadsDialog.newInstance(app, true).show(activity.supportFragmentManager)
-                return
-            }
-            val intent = DownloadActivity.createIntent(activity, app)
-            activity.startActivity(intent)
-            activity.finish()
         }
 
         @UiThread

@@ -11,9 +11,7 @@
         <item name="colorAccent">@color/crash_report__color_accent</item>
     </style>
 
-    <style name="add_app__theme" parent="Theme.AppCompat.DayNight.DarkActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <style name="add_app__theme" parent="Theme.Material3.DayNight">
     </style>
 
     <style name="main_activity__main_title">

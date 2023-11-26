@@ -313,4 +313,5 @@
     <string name="cardview_dialog__warnings_label">Warnings:</string>
     <string name="cardview_dialog__auto_bg_update">Automatic background update</string>
     <string name="cardview_dialog__exit">Close</string>
+    <string name="app_install_info_dialog__install">Install</string>
 </resources>

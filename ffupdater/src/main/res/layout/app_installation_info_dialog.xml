@@ -36,53 +36,54 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:text="@string/cardview_dialog__self_description_label"
-                    android:textAppearance="?attr/textAppearanceTitleSmall" />
+                    android:textAppearance="?attr/textAppearanceTitleSmall"
+                    android:text="@string/cardview_dialog__self_description_label" />
 
                 <TextView
                     android:id="@+id/cardview_dialog__description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="@string/kiwi__description" />
+                    android:layout_marginTop="4dp" />
 
                 <TextView
                     android:id="@+id/cardview_dialog__warnings_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:text="@string/cardview_dialog__warnings_label"
-                    android:textAppearance="?attr/textAppearanceTitleSmall" />
+                    android:textAppearance="?attr/textAppearanceTitleSmall"
+                    android:text="@string/cardview_dialog__warnings_label" />
 
                 <TextView
                     android:id="@+id/cardview_dialog__warnings"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp" />
-
-                <com.google.android.material.materialswitch.MaterialSwitch
-                    android:id="@+id/cardview_dialog__auto_bg_updates_switch"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="24dp"
-                    android:text="@string/cardview_dialog__auto_bg_update" />
-
+                    android:layout_marginTop="4dp"
+                    android:text="@string/kiwi__warning" />
 
             </LinearLayout>
 
-            <LinearLayout
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                style="?attr/borderlessButtonStyle"
+                android:id="@+id/cardview_dialog__exit_button"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="@string/cardview_dialog__exit" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/cardview_dialog__exit_button"
-                    style="?attr/borderlessButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/cardview_dialog__exit" />
+            <com.google.android.material.button.MaterialButton
+                style="?attr/borderlessButtonStyle"
+                android:id="@+id/cardview_dialog__install_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_install_info_dialog__install" />
 
-            </LinearLayout>
+        </LinearLayout>
 
         </LinearLayout>
 
