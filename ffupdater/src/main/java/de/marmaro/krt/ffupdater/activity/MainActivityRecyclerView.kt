@@ -96,10 +96,8 @@ class MainActivityRecyclerView(private val activity: MainActivity) :
     inner class AppHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val title: TextView = itemView.findViewWithTag("appCardTitle")
         val icon: ImageView = itemView.findViewWithTag("appIcon")
-        val warningIcon: ImageButton = itemView.findViewWithTag("appWarningButton")
         val eolReason: TextView = itemView.findViewWithTag("eolReason")
         val infoButton: ImageButton = itemView.findViewWithTag("appInfoButton")
-        val openProjectPageButton: ImageButton = itemView.findViewWithTag("appOpenProjectPage")
         val installedVersion: TextView = itemView.findViewWithTag("appInstalledVersion")
         val availableVersion: TextView = itemView.findViewWithTag("appAvailableVersion")
         val downloadButton: ImageButton = itemView.findViewWithTag("appDownloadButton")
@@ -118,8 +116,6 @@ class MainActivityRecyclerView(private val activity: MainActivity) :
             val metadata = appAndUpdateStatus.getOrDefault(app, null)
             val error = errors[app]
             val fragmentManager = activity.supportFragmentManager
-            val hideWarningButtons = ForegroundSettings.isHideWarningButtonForInstalledApps
-            val appHasWarning = appImpl.installationWarning == null
 
             view.title.setText(appImpl.title)
             view.icon.setImageResource(appImpl.icon)
@@ -133,17 +129,6 @@ class MainActivityRecyclerView(private val activity: MainActivity) :
             }
 
             view.infoButton.setOnClickListener { CardviewOptionsDialog.newInstance(app).show(fragmentManager) }
-
-            when {
-                hideWarningButtons -> view.warningIcon.visibility = View.GONE
-                appHasWarning -> view.warningIcon.visibility = View.GONE
-                else -> AppWarningDialog.newInstanceOnClick(view.warningIcon, app, fragmentManager)
-            }
-
-            view.openProjectPageButton.setOnClickListener {
-                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(appImpl.projectPage))
-                activity.startActivity(browserIntent)
-            }
         }
     }
 
