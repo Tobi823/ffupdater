@@ -60,13 +60,24 @@ class MainActivity : AppCompatActivity() {
         requestForNotificationPermissionIfNecessary()
         askForIgnoringBatteryOptimizationIfNecessary()
 
-//        findViewById<View>(R.id.installAppButton).setOnClickListener(userClickedInstallAppButton)
         val swipeContainer = findViewById<SwipeRefreshLayout>(R.id.swipeContainer)
         swipeContainer.setOnRefreshListener(userRefreshAppList)
         swipeContainer.setColorSchemeResources(holo_blue_light, holo_blue_dark)
 
         findViewById<MaterialToolbar>(R.id.materialToolbar).setOnMenuItemClickListener {
             when (it.itemId) {
+                R.id.main_view_toolbar__add_app -> {
+                    lifecycleScope.launch(Dispatchers.Main) {
+                        InstalledAppsCache.updateCache(applicationContext)
+                        startActivity(AddAppActivity.createIntent(applicationContext))
+                    }
+                    true
+                }
+                R.id.main_view_toolbar__settings -> {
+                    //start settings activity where we use select firefox product and release type;
+                    startActivity(Intent(this, SettingsActivity::class.java))
+                    true
+                }
                 R.id.main_view_toolbar__about -> {
                     val lastBackgroundUpdateCheckTime = DataStoreHelper.lastBackgroundCheck2
                     val lastBackgroundUpdateCheckText = if (lastBackgroundUpdateCheckTime != 0L) {
@@ -86,23 +97,11 @@ class MainActivity : AppCompatActivity() {
                         .show()
                     true
                 }
-                R.id.main_view_toolbar__settings -> {
-                    //start settings activity where we use select firefox product and release type;
-                    startActivity(Intent(this, SettingsActivity::class.java))
-                    true
-                }
                 else -> false
             }
         }
 
         initRecyclerView()
-    }
-
-    private var userClickedInstallAppButton = OnClickListener {
-        lifecycleScope.launch(Dispatchers.Main) {
-            InstalledAppsCache.updateCache(applicationContext)
-            startActivity(AddAppActivity.createIntent(applicationContext))
-        }
     }
 
     private var userRefreshAppList = OnRefreshListener {

@@ -36,7 +36,7 @@ object BackgroundSettings {
      *
      * @return the regular background update check should ignore these apps
      */
-    val excludedAppsFromUpdateCheck: List<App>
+    var excludedAppsFromUpdateCheck: List<App>
         get() {
             val disableApps = preferences.getStringSet("background__update_check__excluded_apps", null)
                 ?: setOf()
@@ -48,6 +48,22 @@ object BackgroundSettings {
                 }
             }
         }
+        set(value) {
+            val appNames = value.map { it.name }.toSet()
+            preferences.edit()
+                .putStringSet("background__update_check__excluded_apps", appNames)
+                .apply()
+        }
+
+    fun setAppToBeExcludedFromUpdateCheck(app: App, excluded: Boolean) {
+        val apps = excludedAppsFromUpdateCheck.toMutableList()
+        if (excluded) {
+            apps.add(app)
+        } else {
+            apps.remove(app)
+        }
+        excludedAppsFromUpdateCheck = apps
+    }
 
     val isUpdateCheckOnMeteredAllowed
         get() = preferences.getBoolean("background__update_check__metered", true)

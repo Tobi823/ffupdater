@@ -24,6 +24,7 @@ import de.marmaro.krt.ffupdater.crash.LogReader
 import de.marmaro.krt.ffupdater.crash.ThrowableAndLogs
 import de.marmaro.krt.ffupdater.dialog.AppInfoDialog
 import de.marmaro.krt.ffupdater.dialog.AppWarningDialog
+import de.marmaro.krt.ffupdater.dialog.CardviewOptionsDialog
 import de.marmaro.krt.ffupdater.settings.ForegroundSettings
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -131,7 +132,8 @@ class MainActivityRecyclerView(private val activity: MainActivity) :
                 }
             }
 
-            AppInfoDialog.newInstanceOnClick(view.infoButton, app, fragmentManager)
+            view.infoButton.setOnClickListener { CardviewOptionsDialog.newInstance(app).show(fragmentManager) }
+
             when {
                 hideWarningButtons -> view.warningIcon.visibility = View.GONE
                 appHasWarning -> view.warningIcon.visibility = View.GONE

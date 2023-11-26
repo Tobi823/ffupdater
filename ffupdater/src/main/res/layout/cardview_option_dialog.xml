@@ -1,74 +1,82 @@
-<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    style="@style/Theme.Material3.DayNight.Dialog"
-    android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginRight="12dp"
-        android:layout_marginBottom="12dp">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fadeScrollbars="false">
 
-        <ImageView
-            android:id="@+id/icon"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginBottom="24dp"
-            android:contentDescription="@string/app_icon"
-            android:src="@drawable/ic_logo_fairmail"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/appTitle"
-            style="@style/TextAppearance.AppCompat.Large"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="4dp"
-            android:fontFamily="sans-serif-light"
-            android:gravity="start"
-            android:text="FairEmail"
-            app:layout_constraintStart_toEndOf="@id/icon"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/info_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:drawableStart="@drawable/ic_info_outline_blue"
-            android:drawablePadding="8dp"
-            android:text="Show information"
-            app:layout_constraintStart_toStartOf="@id/info_button"
-            app:layout_constraintTop_toBottomOf="@id/icon"/>
-
-        <Button
-            android:id="@+id/open_project_page"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Open project page"
-            android:textSize="12sp"
-            style="@style/Widget.Material3.Button.ElevatedButton"
-            app:layout_constraintStart_toStartOf="@id/info_button"
-            app:layout_constraintTop_toBottomOf="@id/info_button"/>
-
-
-        <com.google.android.material.switchmaterial.SwitchMaterial
-            android:id="@+id/background_update"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="16dp"
-            android:text="Automatic background updates"
-            app:layout_constraintStart_toStartOf="@id/info_button"
-            app:layout_constraintTop_toBottomOf="@id/open_project_page"/>
+            android:orientation="vertical">
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/cardview_dialog__title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?attr/textAppearanceTitleMedium" />
 
-</HorizontalScrollView>
+                <TextView
+                    android:id="@+id/cardview_dialog__url"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:autoLink="web" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/cardview_dialog__self_description_label" />
+
+                <TextView
+                    android:id="@+id/cardview_dialog__description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/kiwi__description" />
+
+                <TextView
+                    android:id="@+id/cardview_dialog__warnings_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/cardview_dialog__warnings_label" />
+
+                <TextView
+                    android:id="@+id/cardview_dialog__warnings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/kiwi__warning" />
+
+                <com.google.android.material.materialswitch.MaterialSwitch
+                    android:id="@+id/cardview_dialog__auto_bg_updates_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/cardview_dialog__auto_bg_update" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/cardview_dialog__exit_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/cardview_dialog__exit" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

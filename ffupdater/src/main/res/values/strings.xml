@@ -309,4 +309,8 @@
     <string name="k9mail__description">Full-featured email client</string>
     <string name="fairemail__title">FairEmail</string>
     <string name="fairmail__description">Fully featured, open source, privacy friendly email app for Android</string>
+    <string name="cardview_dialog__self_description_label">Self description:</string>
+    <string name="cardview_dialog__warnings_label">Warnings:</string>
+    <string name="cardview_dialog__auto_bg_update">Automatic background update</string>
+    <string name="cardview_dialog__exit">Close</string>
 </resources>
