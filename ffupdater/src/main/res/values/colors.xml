@@ -7,6 +7,9 @@
     <color name="colorPrimaryDark">#003eaa</color>
     <color name="crash_report__color_accent">#FFC107</color>
     <color name="crash_report__error_red">#D32F2F</color>
+    <color name="cardview_options__eol__background_tint_color">#E6CDD5</color>
+    <color name="cardview_options__different_signature__background_tint_color">#E6C8A6</color>
+    <color name="cardview_options__no_auto_updates__background_tint_color">#ADC2E6</color>
     <color name="install_activity__red_background_for_text">#FFCDD2</color>
     <color name="install_activity__success_green">#8BC34A</color>
     <color name="install_activity__warning_orange">#FF9800</color>

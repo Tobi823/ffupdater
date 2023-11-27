@@ -1,7 +1,9 @@
 package de.marmaro.krt.ffupdater.activity
 
 import android.annotation.SuppressLint
+import android.content.res.ColorStateList
 import android.text.format.DateUtils
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,8 +12,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.Keep
 import androidx.annotation.UiThread
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.card.MaterialCardView
 import de.marmaro.krt.ffupdater.MainActivity
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
@@ -21,6 +26,8 @@ import de.marmaro.krt.ffupdater.crash.CrashReportActivity
 import de.marmaro.krt.ffupdater.crash.LogReader
 import de.marmaro.krt.ffupdater.crash.ThrowableAndLogs
 import de.marmaro.krt.ffupdater.dialog.CardviewOptionsDialog
+import de.marmaro.krt.ffupdater.dialog.CardviewOptionsDialog.Companion.AUTO_UPDATE_CHANGED
+import de.marmaro.krt.ffupdater.settings.BackgroundSettings
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.time.DateTimeException
@@ -89,9 +96,9 @@ class MainActivityRecyclerView(private val activity: MainActivity) :
     }
 
     inner class AppHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val card: MaterialCardView = itemView.findViewWithTag("appCard")
         val title: TextView = itemView.findViewWithTag("appCardTitle")
         val icon: ImageView = itemView.findViewWithTag("appIcon")
-        val eolReason: TextView = itemView.findViewWithTag("eolReason")
         val infoButton: ImageButton = itemView.findViewWithTag("appInfoButton")
         val installedVersion: TextView = itemView.findViewWithTag("appInstalledVersion")
         val availableVersion: TextView = itemView.findViewWithTag("appAvailableVersion")
@@ -117,9 +124,38 @@ class MainActivityRecyclerView(private val activity: MainActivity) :
 
             showAppInfo(view, app, error, metadata)
 
+            view.availableVersion.visibility = if (app in appsWithWrongFingerprint) View.GONE else View.VISIBLE
+
+            setCardColor(appImpl, app, view)
+
             view.downloadButton.setOnClickListener { activity.installOrDownloadApp(app) }
-            view.infoButton.setOnClickListener { CardviewOptionsDialog.newInstance(app).show(fragmentManager) }
+            view.infoButton.setOnClickListener {
+                val dialog = CardviewOptionsDialog(app)
+                if (app in appsWithWrongFingerprint) {
+                    dialog.showDifferentSignatureMessage = true
+                }
+                dialog.show(fragmentManager)
+                dialog.setFragmentResultListener(AUTO_UPDATE_CHANGED) { _, _ ->
+                    Log.e("test", "change")
+                    notifyItemChanged(elements.indexOf(app))
+                }
+            }
         }
+    }
+
+    private fun setCardColor(
+        appImpl: AppBase,
+        app: App,
+        view: AppHolder,
+    ) {
+        val backgroundTintColor = when {
+            appImpl.isEol() -> R.color.cardview_options__eol__background_tint_color
+            app in appsWithWrongFingerprint -> R.color.cardview_options__different_signature__background_tint_color
+            app in BackgroundSettings.excludedAppsFromUpdateCheck -> R.color.cardview_options__no_auto_updates__background_tint_color
+            else -> R.color.main_activity__cardview_background_color
+        }
+        val color = ContextCompat.getColor(activity, backgroundTintColor)
+        view.card.backgroundTintList = ColorStateList.valueOf(color)
     }
 
     private suspend fun showAppInfo(
@@ -129,16 +165,9 @@ class MainActivityRecyclerView(private val activity: MainActivity) :
         metadata: InstalledAppStatus?,
     ) {
         when {
-            appsWithWrongFingerprint.contains(app) -> showAppInfoForDifferentSignature(view, app)
             error != null -> showAppInfoForError(view, app, error)
             else -> showAppInfo(view, app, metadata)
         }
-    }
-
-    private fun showAppInfoForDifferentSignature(view: AppHolder, app: App) {
-        showViews(listOf(view.installedVersion))
-        hideViews(listOf(view.availableVersion, view.downloadButton, view.eolReason))
-        view.installedVersion.text = activity.getString(app.findImpl().differentSignatureMessage)
     }
 
     private fun hideViews(elements: List<View>) {
@@ -162,7 +191,6 @@ class MainActivityRecyclerView(private val activity: MainActivity) :
             val intent = CrashReportActivity.createIntent(context, throwableAndLogs, description)
             activity.startActivity(intent)
         }
-        showOrHideEolReason(findImpl, view)
     }
 
     private suspend fun showAppInfo(
@@ -175,16 +203,6 @@ class MainActivityRecyclerView(private val activity: MainActivity) :
         view.installedVersion.text = findImpl.getDisplayInstalledVersion(activity)
         view.availableVersion.text = getDisplayAvailableVersionWithAge(metadata)
         view.downloadButton.visibility = if (metadata?.isUpdateAvailable == true) View.VISIBLE else View.GONE
-        showOrHideEolReason(findImpl, view)
-    }
-
-    private fun showOrHideEolReason(findImpl: AppBase, view: AppHolder) {
-        if (findImpl.isEol()) {
-            showViews(listOf(view.eolReason))
-            view.eolReason.setText(findImpl.eolReason!!)
-        } else {
-            hideViews(listOf(view.eolReason))
-        }
     }
 
     private fun getDisplayAvailableVersionWithAge(metadata: InstalledAppStatus?): String {

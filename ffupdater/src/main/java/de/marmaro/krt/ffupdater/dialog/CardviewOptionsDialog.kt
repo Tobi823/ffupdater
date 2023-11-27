@@ -1,7 +1,6 @@
 package de.marmaro.krt.ffupdater.dialog
 
 import android.os.Bundle
-import android.text.method.LinkMovementMethod
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -11,17 +10,16 @@ import android.widget.Toast
 import androidx.annotation.Keep
 import androidx.appcompat.app.AppCompatDialogFragment
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.materialswitch.MaterialSwitch
-import com.google.android.material.snackbar.Snackbar
 import de.marmaro.krt.ffupdater.DownloadActivity
 import de.marmaro.krt.ffupdater.FFUpdater
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.R.layout.cardview_option_dialog
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.app.entity.InstallationStatus
 import de.marmaro.krt.ffupdater.app.entity.InstallationStatus.INSTALLED
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.network.NetworkUtil
@@ -39,6 +37,7 @@ import kotlinx.coroutines.launch
 class CardviewOptionsDialog(private val app: App) : AppCompatDialogFragment() {
 
     var hideAutomaticUpdateSwitch: Boolean = false
+    var showDifferentSignatureMessage: Boolean = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(cardview_option_dialog, container)
@@ -52,6 +51,7 @@ class CardviewOptionsDialog(private val app: App) : AppCompatDialogFragment() {
         val textViewDescription = view.findViewById<TextView>(R.id.cardview_dialog__description)
         val textViewEolLabel = view.findViewById<TextView>(R.id.cardview_dialog__eol_label)
         val textViewEol = view.findViewById<TextView>(R.id.cardview_dialog__eol)
+        val textViewDiffSignatureLabel = view.findViewById<TextView>(R.id.cardview_dialog__different_signature_label)
         val textViewWarningsLabel = view.findViewById<TextView>(R.id.cardview_dialog__warnings_label)
         val textViewWarnings = view.findViewById<TextView>(R.id.cardview_dialog__warnings)
         val switchUpdate = view.findViewById<MaterialSwitch>(R.id.cardview_dialog__auto_bg_updates_switch)
@@ -65,6 +65,8 @@ class CardviewOptionsDialog(private val app: App) : AppCompatDialogFragment() {
         textViewEol.visibility = if (appImpl.isEol()) View.VISIBLE else View.GONE
         textViewEol.text = appImpl.eolReason?.let { getString(it) }
 
+        textViewDiffSignatureLabel.visibility = if (showDifferentSignatureMessage) View.VISIBLE else View.GONE
+
         textViewDescription.text = getString(appImpl.description)
 
         val warnings = appImpl.installationWarning?.let { getString(it) }
@@ -76,6 +78,7 @@ class CardviewOptionsDialog(private val app: App) : AppCompatDialogFragment() {
         switchUpdate.isChecked = app !in BackgroundSettings.excludedAppsFromUpdateCheck
         switchUpdate.setOnCheckedChangeListener { _, isChecked ->
             val excludeApp = !isChecked
+            setFragmentResult(AUTO_UPDATE_CHANGED, Bundle())
             BackgroundSettings.setAppToBeExcludedFromUpdateCheck(app, excludeApp)
         }
         lifecycleScope.launch(Dispatchers.Main) {
@@ -83,6 +86,7 @@ class CardviewOptionsDialog(private val app: App) : AppCompatDialogFragment() {
         }
 
         buttonExit.setOnClickListener { dismiss() }
+        buttonInstall.isEnabled = !showDifferentSignatureMessage
         buttonInstall.setOnClickListener { installLatestUpdate() }
     }
 
@@ -121,10 +125,6 @@ class CardviewOptionsDialog(private val app: App) : AppCompatDialogFragment() {
     }
 
     companion object {
-        fun newInstance(app: App): CardviewOptionsDialog {
-            val fragment = CardviewOptionsDialog(app)
-            fragment.setStyle(STYLE_NO_FRAME, R.style.Theme_Material3_DayNight_Dialog_Alert)
-            return fragment
-        }
+        const val AUTO_UPDATE_CHANGED = "AUTO_UPDATE_CHANGED"
     }
 }
