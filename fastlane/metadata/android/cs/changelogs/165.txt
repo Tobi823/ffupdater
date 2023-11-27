@@ -1,0 +1,5 @@
+Vydání verze 78.4.0 (165)
+- Děkujeme za překlady na Weblate: winver, Retrial, 109247019824, Gérson da Fonseca Henzel, gallegonovato, Alexthegib, Kazushi Hayama, Daviteusz, MkQtS a nautilusx
+- Přidání K-9 Mail a FairMail
+- Vylepšení kontroly aktualizací pro Tor Browser / Tor Browser Alpha
+- Aktualizace závislostí
