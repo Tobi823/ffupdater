@@ -66,10 +66,9 @@ class CardviewOptionsDialog(private val app: App) : AppCompatDialogFragment() {
         buttonInstall.setOnClickListener { installLatestUpdate() }
     }
 
-    override fun onStart() {
-        super.onStart()
-        dialog?.findViewById<TextView>(android.R.id.message)?.movementMethod =
-            LinkMovementMethod.getInstance()
+    fun show(manager: FragmentManager) {
+        setStyle(STYLE_NO_FRAME, R.style.Theme_Material3_DayNight_Dialog_Alert)
+        show(manager, "cardview_options_dialog")
     }
 
     private fun installLatestUpdate() {
@@ -99,10 +98,6 @@ class CardviewOptionsDialog(private val app: App) : AppCompatDialogFragment() {
             return false
         }
         return NetworkUtil.isNetworkMetered(requireContext())
-    }
-
-    fun show(manager: FragmentManager) {
-        show(manager, "cardview_options_dialog")
     }
 
     companion object {

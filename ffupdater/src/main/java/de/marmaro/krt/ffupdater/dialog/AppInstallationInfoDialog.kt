@@ -55,9 +55,9 @@ class AppInstallationInfoDialog(private val app: App) : AppCompatDialogFragment(
         buttonInstall.setOnClickListener { installApp(app) }
     }
 
-    override fun show(manager: FragmentManager, tag: String?) {
+    fun show(manager: FragmentManager) {
         setStyle(STYLE_NO_FRAME, R.style.Theme_Material3_DayNight_Dialog_Alert)
-        super.show(manager, tag)
+        show(manager, "cardview_options_dialog")
     }
 
     private fun installApp(app: App) {
@@ -78,9 +78,5 @@ class AppInstallationInfoDialog(private val app: App) : AppCompatDialogFragment(
         val intent = DownloadActivity.createIntent(context, app)
         context.startActivity(intent)
         dismiss()
-    }
-
-    fun show(manager: FragmentManager) {
-        show(manager, "cardview_options_dialog")
     }
 }

@@ -23,12 +23,6 @@ class UnsupportedAbiDialog : DialogFragment() {
             .create()
     }
 
-    override fun onStart() {
-        super.onStart()
-        dialog?.findViewById<TextView>(android.R.id.message)?.movementMethod =
-            LinkMovementMethod.getInstance()
-    }
-
     fun show(manager: FragmentManager) {
         show(manager, "unsupported_abi_dialog")
     }

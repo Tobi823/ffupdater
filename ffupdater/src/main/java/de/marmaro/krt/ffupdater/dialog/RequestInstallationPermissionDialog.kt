@@ -34,12 +34,6 @@ class RequestInstallationPermissionDialog : DialogFragment() {
             .create()
     }
 
-    override fun onStart() {
-        super.onStart()
-        dialog?.findViewById<TextView>(android.R.id.message)?.movementMethod =
-            LinkMovementMethod.getInstance()
-    }
-
     fun show(manager: FragmentManager) {
         show(manager, "request_installation_permission_dialog")
     }
