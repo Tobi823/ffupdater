@@ -12,6 +12,7 @@ import androidx.annotation.Keep
 import androidx.appcompat.app.AppCompatDialogFragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.setFragmentResultListener
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.materialswitch.MaterialSwitch
 import com.google.android.material.snackbar.Snackbar
@@ -20,11 +21,15 @@ import de.marmaro.krt.ffupdater.FFUpdater
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.R.layout.cardview_option_dialog
 import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.entity.InstallationStatus
+import de.marmaro.krt.ffupdater.app.entity.InstallationStatus.INSTALLED
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.network.NetworkUtil
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.settings.BackgroundSettings
 import de.marmaro.krt.ffupdater.settings.ForegroundSettings
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 /**
@@ -32,6 +37,9 @@ import de.marmaro.krt.ffupdater.settings.ForegroundSettings
  */
 @Keep
 class CardviewOptionsDialog(private val app: App) : AppCompatDialogFragment() {
+
+    var hideAutomaticUpdateSwitch: Boolean = false
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(cardview_option_dialog, container)
     }
@@ -41,6 +49,9 @@ class CardviewOptionsDialog(private val app: App) : AppCompatDialogFragment() {
         val appImpl = app.findImpl()
         val textViewTitle = view.findViewById<TextView>(R.id.cardview_dialog__title)
         val textViewUrl = view.findViewById<TextView>(R.id.cardview_dialog__url)
+        val textViewDescription = view.findViewById<TextView>(R.id.cardview_dialog__description)
+        val textViewEolLabel = view.findViewById<TextView>(R.id.cardview_dialog__eol_label)
+        val textViewEol = view.findViewById<TextView>(R.id.cardview_dialog__eol)
         val textViewWarningsLabel = view.findViewById<TextView>(R.id.cardview_dialog__warnings_label)
         val textViewWarnings = view.findViewById<TextView>(R.id.cardview_dialog__warnings)
         val switchUpdate = view.findViewById<MaterialSwitch>(R.id.cardview_dialog__auto_bg_updates_switch)
@@ -49,17 +60,26 @@ class CardviewOptionsDialog(private val app: App) : AppCompatDialogFragment() {
 
         textViewTitle.text = getString(appImpl.title)
         textViewUrl.text = appImpl.projectPage
-        view.findViewById<TextView>(R.id.cardview_dialog__description).text = getString(appImpl.description)
+
+        textViewEolLabel.visibility = if (appImpl.isEol()) View.VISIBLE else View.GONE
+        textViewEol.visibility = if (appImpl.isEol()) View.VISIBLE else View.GONE
+        textViewEol.text = appImpl.eolReason?.let { getString(it) }
+
+        textViewDescription.text = getString(appImpl.description)
 
         val warnings = appImpl.installationWarning?.let { getString(it) }
         textViewWarningsLabel.visibility = if (warnings == null) View.GONE else View.VISIBLE
         textViewWarnings.visibility = if (warnings == null) View.GONE else View.VISIBLE
         textViewWarnings.text = warnings ?: ""
 
+        switchUpdate.visibility = if (hideAutomaticUpdateSwitch) View.GONE else View.VISIBLE
         switchUpdate.isChecked = app !in BackgroundSettings.excludedAppsFromUpdateCheck
         switchUpdate.setOnCheckedChangeListener { _, isChecked ->
             val excludeApp = !isChecked
             BackgroundSettings.setAppToBeExcludedFromUpdateCheck(app, excludeApp)
+        }
+        lifecycleScope.launch(Dispatchers.Main) {
+            switchUpdate.isEnabled = !appImpl.isEol() && appImpl.isInstalled(requireContext()) == INSTALLED
         }
 
         buttonExit.setOnClickListener { dismiss() }

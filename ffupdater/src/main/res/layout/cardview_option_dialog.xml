@@ -33,6 +33,23 @@
                     android:autoLink="web" />
 
                 <TextView
+                    android:id="@+id/cardview_dialog__eol_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="This app should no longer be used:"
+                    android:textColor="@color/crash_report__error_red"
+                    android:textAppearance="?attr/textAppearanceTitleSmall" />
+
+                <TextView
+                    android:id="@+id/cardview_dialog__eol"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/crash_report__error_red"
+                    android:autoLink="web"
+                    android:layout_marginTop="4dp" />
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
@@ -44,7 +61,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="@string/kiwi__description" />
+                    android:autoLink="web" />
 
                 <TextView
                     android:id="@+id/cardview_dialog__warnings_label"
@@ -58,6 +75,7 @@
                     android:id="@+id/cardview_dialog__warnings"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:autoLink="web"
                     android:layout_marginTop="4dp" />
 
                 <com.google.android.material.materialswitch.MaterialSwitch

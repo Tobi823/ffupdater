@@ -28,7 +28,7 @@ import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.GOOD_SECURITY_BROWSER
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.OTHER
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.values
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
-import de.marmaro.krt.ffupdater.dialog.AppInstallationInfoDialog
+import de.marmaro.krt.ffupdater.dialog.CardviewOptionsDialog
 import de.marmaro.krt.ffupdater.settings.ForegroundSettings
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -174,7 +174,9 @@ class AddAppActivity : AppCompatActivity() {
             viewHolder.title.setText(appImpl.title)
             viewHolder.icon.setImageResource(appImpl.icon)
             viewHolder.addAppButton.setOnClickListener {
-                AppInstallationInfoDialog(app).show(activity.supportFragmentManager)
+                val dialog = CardviewOptionsDialog(app)
+                dialog.hideAutomaticUpdateSwitch = true
+                dialog.show(activity.supportFragmentManager)
             }
         }
 
