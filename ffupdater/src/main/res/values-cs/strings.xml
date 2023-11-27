@@ -330,4 +330,12 @@
     <string name="cromite__description">Cromite je Chromium fork založený na Bromitu s vestavěnou podporou blokování reklam a ochranu soukromí.</string>
     <string name="cromite__warning">- Cromite používá technický základ Google Chrome, a tak nepřímo podporuje monopolní renderovací jádro Chromium.</string>
     <string name="cromite__title">Cromite</string>
+    <string name="thorium__warning">- Thorium používá technický základ Google Chrome, a tak nepřímo podporuje monopolní renderovací jádro Chromium.</string>
+    <string name="main_activity__unexpected_error">Objevila se nečekaná chyba.</string>
+    <string name="k9mail__title">K-9 Mail</string>
+    <string name="k9mail__description">Emailový klient se všemi funkcemi</string>
+    <string name="fairemail__title">FairEmail</string>
+    <string name="thorium__title">Thorium Browser pro Android</string>
+    <string name="thorium__description">Nejrychlejší prohlížeč na světě. Linuxový fork Chromiumu pojmenovaný po radioaktivním prvku č. 90.</string>
+    <string name="fairmail__description">Emailový klient pro Android, který je plně funkční, open source a šetrný k soukromí</string>
 </resources>
