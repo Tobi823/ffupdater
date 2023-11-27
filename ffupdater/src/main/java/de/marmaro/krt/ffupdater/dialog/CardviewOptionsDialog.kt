@@ -7,9 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.Keep
 import androidx.appcompat.app.AppCompatDialogFragment
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.setFragmentResultListener
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.materialswitch.MaterialSwitch
 import com.google.android.material.snackbar.Snackbar
@@ -56,11 +58,12 @@ class CardviewOptionsDialog(private val app: App) : AppCompatDialogFragment() {
 
         switchUpdate.isChecked = app !in BackgroundSettings.excludedAppsFromUpdateCheck
         switchUpdate.setOnCheckedChangeListener { _, isChecked ->
-            BackgroundSettings.setAppToBeExcludedFromUpdateCheck(app, isChecked)
+            val excludeApp = !isChecked
+            BackgroundSettings.setAppToBeExcludedFromUpdateCheck(app, excludeApp)
         }
 
         buttonExit.setOnClickListener { dismiss() }
-        buttonInstall.setOnClickListener { dismiss(); installLatestUpdate() }
+        buttonInstall.setOnClickListener { installLatestUpdate() }
     }
 
     override fun onStart() {
@@ -72,7 +75,7 @@ class CardviewOptionsDialog(private val app: App) : AppCompatDialogFragment() {
     private fun installLatestUpdate() {
         val context = requireContext()
         if (isNetworkUnsuitableForDownload()) {
-            Snackbar.make(requireView(), R.string.main_activity__no_unmetered_network, Snackbar.LENGTH_LONG).show()
+            Toast.makeText(context, R.string.main_activity__no_unmetered_network, Toast.LENGTH_LONG).show()
             return
         }
         if (DeviceSdkTester.supportsAndroid8Oreo26() && !context.packageManager.canRequestPackageInstalls()) {
@@ -80,13 +83,15 @@ class CardviewOptionsDialog(private val app: App) : AppCompatDialogFragment() {
             return
         }
         if (FileDownloader.areDownloadsCurrentlyRunning()) {
-            // this may updates the app
-            RunningDownloadsDialog.newInstance(app, false).show(childFragmentManager)
+            val dialog = RunningDownloadsDialog(app)
+            dialog.show(childFragmentManager)
+            dialog.setFragmentResultListener(RunningDownloadsDialog.DOWNLOAD_ACTIVITY_WAS_STARTED) { _, _ -> dismiss() }
             return
         }
         Log.d(FFUpdater.LOG_TAG, "MainActivity: Start DownloadActivity to install or update ${app.name}.")
         val intent = DownloadActivity.createIntent(context, app)
         startActivity(intent)
+        dismiss()
     }
 
     private fun isNetworkUnsuitableForDownload(): Boolean {

@@ -2,7 +2,6 @@ package de.marmaro.krt.ffupdater
 
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -29,14 +28,7 @@ import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.GOOD_SECURITY_BROWSER
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.OTHER
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.values
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
-import de.marmaro.krt.ffupdater.device.DeviceSdkTester
-import de.marmaro.krt.ffupdater.dialog.AppInfoDialog
 import de.marmaro.krt.ffupdater.dialog.AppInstallationInfoDialog
-import de.marmaro.krt.ffupdater.dialog.AppWarningDialog
-import de.marmaro.krt.ffupdater.dialog.RequestInstallationPermissionDialog
-import de.marmaro.krt.ffupdater.dialog.RunningDownloadsDialog
-import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
-import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.settings.ForegroundSettings
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -182,7 +174,7 @@ class AddAppActivity : AppCompatActivity() {
             viewHolder.title.setText(appImpl.title)
             viewHolder.icon.setImageResource(appImpl.icon)
             viewHolder.addAppButton.setOnClickListener {
-                AppInstallationInfoDialog.newInstance(app).show(activity.supportFragmentManager)
+                AppInstallationInfoDialog(app).show(activity.supportFragmentManager)
             }
         }
 

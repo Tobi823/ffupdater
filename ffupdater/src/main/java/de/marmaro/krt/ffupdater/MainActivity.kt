@@ -211,7 +211,7 @@ class MainActivity : AppCompatActivity() {
         }
         if (FileDownloader.areDownloadsCurrentlyRunning()) {
             // this may updates the app
-            RunningDownloadsDialog.newInstance(app, false).show(supportFragmentManager)
+            RunningDownloadsDialog(app).show(supportFragmentManager)
             return
         }
         Log.d(LOG_TAG, "MainActivity: Start DownloadActivity to install or update ${app.name}.")

@@ -1,8 +1,6 @@
 package de.marmaro.krt.ffupdater.activity
 
 import android.annotation.SuppressLint
-import android.content.Intent
-import android.net.Uri
 import android.text.format.DateUtils
 import android.view.LayoutInflater
 import android.view.View
@@ -22,10 +20,7 @@ import de.marmaro.krt.ffupdater.app.impl.AppBase
 import de.marmaro.krt.ffupdater.crash.CrashReportActivity
 import de.marmaro.krt.ffupdater.crash.LogReader
 import de.marmaro.krt.ffupdater.crash.ThrowableAndLogs
-import de.marmaro.krt.ffupdater.dialog.AppInfoDialog
-import de.marmaro.krt.ffupdater.dialog.AppWarningDialog
 import de.marmaro.krt.ffupdater.dialog.CardviewOptionsDialog
-import de.marmaro.krt.ffupdater.settings.ForegroundSettings
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.time.DateTimeException

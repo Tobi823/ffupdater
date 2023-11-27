@@ -55,6 +55,11 @@ class AppInstallationInfoDialog(private val app: App) : AppCompatDialogFragment(
         buttonInstall.setOnClickListener { installApp(app) }
     }
 
+    override fun show(manager: FragmentManager, tag: String?) {
+        setStyle(STYLE_NO_FRAME, R.style.Theme_Material3_DayNight_Dialog_Alert)
+        super.show(manager, tag)
+    }
+
     private fun installApp(app: App) {
         val context = requireContext()
         if (!ForegroundSettings.isUpdateCheckOnMeteredAllowed && NetworkUtil.isNetworkMetered(context)) {
@@ -67,7 +72,7 @@ class AppInstallationInfoDialog(private val app: App) : AppCompatDialogFragment(
         }
         if (FileDownloader.areDownloadsCurrentlyRunning()) {
             // this may updates the app
-            RunningDownloadsDialog.newInstance(app, true).show(childFragmentManager)
+            RunningDownloadsDialog(app).show(childFragmentManager)
             return
         }
         val intent = DownloadActivity.createIntent(context, app)
@@ -75,21 +80,7 @@ class AppInstallationInfoDialog(private val app: App) : AppCompatDialogFragment(
         dismiss()
     }
 
-    override fun onStart() {
-        super.onStart()
-        dialog?.findViewById<TextView>(android.R.id.message)?.movementMethod =
-            LinkMovementMethod.getInstance()
-    }
-
     fun show(manager: FragmentManager) {
         show(manager, "cardview_options_dialog")
-    }
-
-    companion object {
-        fun newInstance(app: App): AppInstallationInfoDialog {
-            val fragment = AppInstallationInfoDialog(app)
-            fragment.setStyle(STYLE_NO_FRAME, R.style.Theme_Material3_DayNight_Dialog_Alert)
-            return fragment
-        }
     }
 }
