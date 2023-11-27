@@ -90,7 +90,7 @@
             android:tag="appDownloadButton"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/ic_file_download_grey" />
+            app:srcCompat="@drawable/ic_file_download_orange" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

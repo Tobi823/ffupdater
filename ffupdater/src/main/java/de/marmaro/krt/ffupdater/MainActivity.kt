@@ -200,19 +200,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     @MainThread
-    suspend fun installOrDownloadApp(app: App) {
+    fun installOrDownloadApp(app: App) {
         if (isNetworkMeterStatusOk()) {
             showBriefMessage(R.string.main_activity__no_unmetered_network)
             return
         }
         if (hasAppInstallPermission()) {
             RequestInstallationPermissionDialog().show(supportFragmentManager)
-            return
-        }
-        val metadata = updateMetadataOf(app, USE_CACHE) ?: return
-        if (!metadata.isUpdateAvailable) {
-            // this may displays RunningDownloadsDialog and updates the app
-            InstallSameVersionDialog.newInstance(app).show(supportFragmentManager)
             return
         }
         if (FileDownloader.areDownloadsCurrentlyRunning()) {

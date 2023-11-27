@@ -122,12 +122,7 @@ class MainActivityRecyclerView(private val activity: MainActivity) :
 
             showAppInfo(view, app, error, metadata)
 
-            view.downloadButton.setOnClickListener {
-                activity.lifecycleScope.launch(Dispatchers.Main) {
-                    activity.installOrDownloadApp(app)
-                }
-            }
-
+            view.downloadButton.setOnClickListener { activity.installOrDownloadApp(app) }
             view.infoButton.setOnClickListener { CardviewOptionsDialog.newInstance(app).show(fragmentManager) }
         }
     }
@@ -160,7 +155,8 @@ class MainActivityRecyclerView(private val activity: MainActivity) :
     }
 
     private suspend fun showAppInfoForError(view: AppHolder, app: App, error: ExceptionWrapper) {
-        showViews(listOf(view.installedVersion, view.availableVersion, view.downloadButton))
+        showViews(listOf(view.installedVersion, view.availableVersion))
+        hideViews(listOf(view.downloadButton))
         val findImpl = app.findImpl()
         view.installedVersion.text = findImpl.getDisplayInstalledVersion(activity)
         view.availableVersion.setText(error.message)
@@ -171,7 +167,6 @@ class MainActivityRecyclerView(private val activity: MainActivity) :
             val intent = CrashReportActivity.createIntent(context, throwableAndLogs, description)
             activity.startActivity(intent)
         }
-        view.downloadButton.setImageResource(R.drawable.ic_file_download_grey)
         showOrHideEolReason(findImpl, view)
     }
 
@@ -180,17 +175,11 @@ class MainActivityRecyclerView(private val activity: MainActivity) :
         app: App,
         metadata: InstalledAppStatus?,
     ) {
-        showViews(listOf(view.installedVersion, view.availableVersion, view.downloadButton))
+        showViews(listOf(view.installedVersion, view.availableVersion))
         val findImpl = app.findImpl()
         view.installedVersion.text = findImpl.getDisplayInstalledVersion(activity)
         view.availableVersion.text = getDisplayAvailableVersionWithAge(metadata)
-        view.downloadButton.setImageResource(
-            if (metadata?.isUpdateAvailable == true) {
-                R.drawable.ic_file_download_orange
-            } else {
-                R.drawable.ic_file_download_grey
-            }
-        )
+        view.downloadButton.visibility = if (metadata?.isUpdateAvailable == true) View.VISIBLE else View.GONE
         showOrHideEolReason(findImpl, view)
     }
 
