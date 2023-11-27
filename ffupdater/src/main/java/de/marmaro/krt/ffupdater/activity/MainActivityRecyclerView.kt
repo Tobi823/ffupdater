@@ -132,7 +132,7 @@ class MainActivityRecyclerView(private val activity: MainActivity) :
             view.infoButton.setOnClickListener {
                 val dialog = CardviewOptionsDialog(app)
                 if (app in appsWithWrongFingerprint) {
-                    dialog.showDifferentSignatureMessage = true
+                    dialog.appHasDifferentSignature = true
                 }
                 dialog.show(fragmentManager)
                 dialog.setFragmentResultListener(AUTO_UPDATE_CHANGED) { _, _ ->
