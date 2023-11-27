@@ -27,7 +27,7 @@
     <string name="bromite_systemwebview__description">SystemWebView パッケージは Bromite のコアブラウザ／レンダリングエンジンを含み、同じ機能を持ちます。Android システム全体のデフォルトブラウザコンポーネントを置き換える可能性を提供します。</string>
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">クラッシュレポートをクリップボードにコピー</string>
-    <string name="crash_report__explain_text__download_activity_fetching_url">ダウンロードメタデータの取得中に以下のエラーが発生しました。同様のエラーが頻繁に発生する場合は、notabug.org、GitHub、または GitLab にクラッシュレポートを提出してください。</string>
+    <string name="crash_report__explain_text__download_activity_fetching_url">ダウンロードメタデータ (URL) の取得中に以下のエラーが発生しました。同様のエラーが頻繁に発生する場合は、notabug.org、GitHub、または GitLab にクラッシュレポートを提出してください。</string>
     <string name="crash_report__explain_text__download_activity_update_check">メインビューでの更新の確認中に以下のエラーが発生しました。同様のエラーが頻繁に発生する場合は、notabug.org、GitHub、または GitLab にクラッシュレポートを提出してください。</string>
     <string name="crash_report__explain_text__uncaught_throwable">残念ながら、最終使用時に FFUpdater がクラッシュし、このエラーを記録しました。クラッシュレポートを notabug.org、GitHub、または GitLab に提出してください。</string>
     <string name="crash_report__go_to_github">GitHub に移動</string>
