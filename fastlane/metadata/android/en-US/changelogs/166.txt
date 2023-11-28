@@ -1,0 +1,4 @@
+Release version 79.0.0 (166)
+- Thanks for the Weblate contributions from: winver, Juraj Motuz, gallegonovato and Kazushi Hayama
+- only automatic update apps installed or updated by FFUpdater
+- improve UI
