@@ -159,23 +159,23 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
 
     private suspend fun findOutdatedApps(): List<App> {
         InstalledAppsCache.updateCache(applicationContext)
-        val installedAppStatusList = InstalledAppsCache.getInstalledAppsWithCorrectFingerprint(applicationContext)
+        val appsToCheck = InstalledAppsCache.getInstalledAppsWithCorrectFingerprint(applicationContext)
             .filter { it !in BackgroundSettings.excludedAppsFromUpdateCheck }
-            .filter { it.findImpl().wasInstalledByFFUpdater(applicationContext) }
             .filter { DeviceAbiExtractor.supportsOneOf(it.findImpl().supportedAbis) }
-            // query latest available update
-            .map { it.findImpl().findInstalledAppStatus(applicationContext, USE_CACHE) }
+            .filter { it.findImpl().wasInstalledByFFUpdater(applicationContext) }
+
+        // check for updates
+        val appStatusList = appsToCheck.map { it.findImpl().findInstalledAppStatus(applicationContext, USE_CACHE) }
+
+        val outdatedApps = appStatusList
+            .filter { it.isUpdateAvailable }
+            .map { it.app }
 
         // delete old cached APK files
-        installedAppStatusList.forEach {
-            it.app.findImpl().deleteFileCacheExceptLatest(applicationContext, it.latestVersion)
-        }
+        appStatusList.forEach { it.app.findImpl().deleteFileCacheExceptLatest(applicationContext, it.latestVersion) }
 
-        val outdatedApps = installedAppStatusList
-            .filter { it.isUpdateAvailable }
-
-        Log.d(LOG_TAG, "BackgroundWork: [${outdatedApps.map { it.app }.joinToString(",")}] are outdated.")
-        return outdatedApps.map { it.app }
+        Log.d(LOG_TAG, "BackgroundWork: [${outdatedApps.joinToString(",")}] are outdated.")
+        return outdatedApps
     }
 
     companion object {
