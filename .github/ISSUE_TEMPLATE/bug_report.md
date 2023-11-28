@@ -7,28 +7,23 @@ assignees: ''
 
 ---
 
-**Before you create a new issue please verify:**
+**Important first questions**
 
-- [ ] I am using the latest version of FFUpdater.
-  - Latest version for F-Droid users: https://f-droid.org/packages/de.marmaro.krt.ffupdater/
-  - For all other users: https://github.com/Tobi823/ffupdater/releases/latest
-- [ ] There are no other similar issues.
-  - Please check the latest 5 bug issues (https://github.com/Tobi823/ffupdater/issues?q=is%3Aissue+label%3Abug+sort%3Aupdated). 
-  - If you have any doubts, you can create a new problem. 
-  - However, if there is a similar problem, please add your information to the existing issue.
-- [x] You can tick boxes with an `x`
+1. Is your FFUpdater up-to-date? If not, please abort and update FFUpdater.
+
+2. Do you spot similar issues in https://github.com/Tobi823/ffupdater/issues? If yes, please abort and add your error message as a comment to the existing issue.
 
 **Describe the bug**
-A clear and concise description of what the bug is.
+Replace this paragraph with a clear and concise description of what the bug is.
 
 **To Reproduce**
-Steps to reproduce the behavior:
+Please insert the steps to reproduce the behavior here:
 1. ...
 2. ...
 3. ...
 
 **Expected behavior**
-A clear and concise description of what you expected to happen.
+Please give a clear and concise description of what you expected to happen.
 
 **Error message from FFUpdater**
 Please copy and paste the error message with the stacktrace and error log here:

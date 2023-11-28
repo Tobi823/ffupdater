@@ -332,4 +332,8 @@
     <string name="thorium__warning">- Thorium использует техническую основу Google Chrome и тем самым косвенно поддерживает монопольное положение движка рендеринга Chromium.</string>
     <string name="thorium__title">Thorium</string>
     <string name="thorium__description">Самый быстрый браузер на планете. Форк Chromium для Linux, названный в честь радиоактивного элемента под номером 90.</string>
+    <string name="k9mail__title">Почта K-9</string>
+    <string name="k9mail__description">Полнофункциональный почтовый клиент</string>
+    <string name="fairemail__title">FairEmail</string>
+    <string name="fairmail__description">Полнофункциональный и конфиденциальность дружественное приложение для электронной почты с открытым кодом для Android</string>
 </resources>

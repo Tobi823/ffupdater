@@ -346,4 +346,8 @@
     <string name="thorium__warning">- Thorium utiliza la base técnica de Google Chrome y apoya así indirectamente la posición de monopolio del motor de renderizado Chromium.</string>
     <string name="thorium__title">Thorium Browser para Android</string>
     <string name="thorium__description">El navegador más rápido del mundo. El fork de Chromium para Linux lleva el nombre del elemento radiactivo nº 90.</string>
+    <string name="k9mail__title">K-9 Mail</string>
+    <string name="k9mail__description">Cliente de correo electrónico completo</string>
+    <string name="fairemail__title">FairEmail</string>
+    <string name="fairmail__description">Aplicación de correo electrónico para Android con todas las funciones, de código abierto y respetuosa con la privacidad</string>
 </resources>

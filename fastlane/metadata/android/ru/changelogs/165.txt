@@ -1,0 +1,5 @@
+Версия выпуска 78.4.0 (165)
+- Спасибо авторам Weblate: winver, Retrial, 109247019824, Gérson da Fonseca Henzel, gallegonovato, Alexthegib, Kazushi Hayama, Daviteusz, MkQtS и nautilusx
+- Добавлено Почту K-9 и FairMail
+- Улучшено проверку обновления для Tor Browser / Tor Browser Alpha
+- Обновлены зависимости

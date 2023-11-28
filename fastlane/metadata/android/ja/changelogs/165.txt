@@ -1,0 +1,5 @@
+リリースバージョン 78.4.0 (165)
+- Weblate の貢献者による翻訳に感謝します: winver, Retrial, 109247019824, Gérson da Fonseca Henzel, gallegonovato, Alexthegib, Kazushi Hayama, Daviteusz, MkQtS, nautilusx
+- K-9 Mail と FairEmail を追加
+- Tor Browser / Tor Browser Alpha の更新確認を改善
+- 依存関係を更新

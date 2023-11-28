@@ -1,0 +1,1 @@
+- přesunutí MainActiviy RecylerView do jiné třidy

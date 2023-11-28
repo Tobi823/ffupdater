@@ -1,0 +1,5 @@
+Versión de lanzamiento 78.4.0 (165)
+- Gracias por las contribuciones a Weblate de: winver, Retrial, 109247019824, Gérson da Fonseca Henzel, gallegonovato, Alexthegib, Kazushi Hayama, Daviteusz, MkQtS y nautilusx
+- Añadir K-9 Mail y FairMail
+- Mejorar la comprobación de las actualizaciones para Tor Browser / Tor Browser Alpha
+- Actualizar dependencias

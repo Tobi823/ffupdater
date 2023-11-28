@@ -342,4 +342,8 @@
     <string name="background__installation__when_screen_off__title">Встановлювати тільки при вимкненому екрані</string>
     <string name="cromite__title">Cromite</string>
     <string name="mulch_wv__title">Mulch System WebView</string>
+    <string name="k9mail__title">K-9 Mail</string>
+    <string name="k9mail__description">Повнофункціональний клієнт електронної пошти</string>
+    <string name="fairemail__title">FairEmail</string>
+    <string name="fairmail__description">Повнофункціональний, відкритий і конфіденційний застосунок для електронної пошти</string>
 </resources>

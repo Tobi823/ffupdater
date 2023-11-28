@@ -27,7 +27,7 @@
     <string name="bromite_systemwebview__description">SystemWebView パッケージは Bromite のコアブラウザ／レンダリングエンジンを含み、同じ機能を持ちます。Android システム全体のデフォルトブラウザコンポーネントを置き換える可能性を提供します。</string>
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">クラッシュレポートをクリップボードにコピー</string>
-    <string name="crash_report__explain_text__download_activity_fetching_url">ダウンロードメタデータの取得中に以下のエラーが発生しました。同様のエラーが頻繁に発生する場合は、notabug.org、GitHub、または GitLab にクラッシュレポートを提出してください。</string>
+    <string name="crash_report__explain_text__download_activity_fetching_url">ダウンロードメタデータ (URL) の取得中に以下のエラーが発生しました。同様のエラーが頻繁に発生する場合は、notabug.org、GitHub、または GitLab にクラッシュレポートを提出してください。</string>
     <string name="crash_report__explain_text__download_activity_update_check">メインビューでの更新の確認中に以下のエラーが発生しました。同様のエラーが頻繁に発生する場合は、notabug.org、GitHub、または GitLab にクラッシュレポートを提出してください。</string>
     <string name="crash_report__explain_text__uncaught_throwable">残念ながら、最終使用時に FFUpdater がクラッシュし、このエラーを記録しました。クラッシュレポートを notabug.org、GitHub、または GitLab に提出してください。</string>
     <string name="crash_report__go_to_github">GitHub に移動</string>
@@ -346,4 +346,8 @@
     <string name="main_activity__unexpected_error">予期せぬエラーが発生しました。</string>
     <string name="thorium__title">Thorium Browser for Android</string>
     <string name="thorium__description">地球上最速のブラウザ。原子番号 90 の放射性元素トリウムから名付けられた Linux 向け Chromium フォーク。</string>
+    <string name="k9mail__title">K-9 Mail</string>
+    <string name="k9mail__description">フル機能のメールクライアント</string>
+    <string name="fairemail__title">FairEmail</string>
+    <string name="fairmail__description">フル機能でオープンソース、プライバシーを尊重する Android のメールアプリ</string>
 </resources>
