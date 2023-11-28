@@ -69,7 +69,7 @@ android {
 
     defaultConfig {
         versionCode 166
-        // (incompatible changes) . (backwards compatible functionality) . (backwards compatible bug fixes)
+        //  (incompatible changes) . (backwards compatible functionality) . (backwards compatible bug fixes)
         versionName '79.0.0'
         minSdk 21
         targetSdk 34
