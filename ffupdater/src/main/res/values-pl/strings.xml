@@ -340,4 +340,18 @@
     <string name="main_activity__unexpected_error">Wystąpił nieoczekiwany błąd.</string>
     <string name="thorium__title">Thorium</string>
     <string name="thorium__description">Najszybsza przeglądarka na ziemi. Fork Chromium dla Linuksa nazwany na cześć radioaktywnego pierwiastka nr 90.</string>
+    <string name="cardview_dialog__exit">Zamknij</string>
+    <string name="cardview_dialog__self_description_label">Opis:</string>
+    <string name="fairemail__warning">- Ta wersja nie obsługuje OAuth i dlatego nie obsługuje Gmaila.</string>
+    <string name="cardview_dialog__auto_bg_update">Automatyczna aktualizacja w tle</string>
+    <string name="cardview_dialog__warnings_label">Ostrzeżenia:</string>
+    <string name="k9mail__title">K-9 Mail</string>
+    <string name="cardview_dialog__eol">Ta aplikacja nie powinna być dłużej używana:</string>
+    <string name="k9mail__description">W pełni funkcjonalny klient poczty e-mail</string>
+    <string name="fairemail__title">FairEmail</string>
+    <string name="cardview_dialog__not_installed_by_ffupdater">Ta aplikacja nie została zainstalowana ani zaktualizowana przez FFUpdater. Aby uniknąć konfliktów z innymi aplikacjami, automatyczna aktualizacja jest wyłączona.</string>
+    <string name="fairemail__description">W pełni funkcjonalna, otwartoźródłowa, przyjazna dla prywatności aplikacja e-mail na Androida</string>
+    <string name="app_install_info_dialog__install">Instaluj</string>
+    <string name="cardview_dialog__install">Instaluj najnowszą wersję</string>
+    <string name="cardview_dialog__different_signature">FFUpdater nie może zaktualizować tej aplikacji, ponieważ sygnatura APK jest inna. Możesz to naprawić, odinstalowując aplikację i instalując ją ponownie za pomocą FFUpdater.</string>
 </resources>
