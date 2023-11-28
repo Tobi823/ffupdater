@@ -22,7 +22,7 @@ object FairEmail : AppBase() {
     override val packageName = "eu.faircode.email"
     override val title = R.string.fairemail__title
     override val description = R.string.fairemail__description
-    override val installationWarning = R.string.fairemail__description
+    override val installationWarning = R.string.fairemail__warning
     override val downloadSource = "GitHub"
     override val icon = R.drawable.ic_logo_fairmail
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
