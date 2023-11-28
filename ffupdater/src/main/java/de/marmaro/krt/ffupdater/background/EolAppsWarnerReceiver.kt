@@ -1,9 +1,10 @@
-package de.marmaro.krt.ffupdater
+package de.marmaro.krt.ffupdater.background
 
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import androidx.annotation.Keep
+import de.marmaro.krt.ffupdater.BuildConfig
 import de.marmaro.krt.ffupdater.device.InstalledAppsCache
 import de.marmaro.krt.ffupdater.notification.NotificationBuilder
 import kotlinx.coroutines.CoroutineScope

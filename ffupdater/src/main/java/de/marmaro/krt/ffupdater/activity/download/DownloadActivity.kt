@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater
+package de.marmaro.krt.ffupdater.activity.download
 
 import android.content.Context
 import android.content.Intent
@@ -23,7 +23,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
 import com.google.android.material.snackbar.Snackbar
+import de.marmaro.krt.ffupdater.DisplayableException
 import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
+import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.R.string.application_installation_was_not_successful
 import de.marmaro.krt.ffupdater.R.string.crash_report__explain_text__download_activity_fetching_url
 import de.marmaro.krt.ffupdater.R.string.crash_report__explain_text__download_activity_install_file

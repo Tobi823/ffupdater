@@ -87,11 +87,11 @@
             android:label="@string/crash_report_activity__label"
             android:theme="@style/crash_report__theme" />
         <activity
-            android:name=".SettingsActivity"
+            android:name=".activity.settings.SettingsActivity"
             android:label="@string/settings_activity__label"
             android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
         <activity
-            android:name=".DownloadActivity"
+            android:name=".activity.download.DownloadActivity"
             android:label="@string/download_activity__label"
             android:launchMode="singleTop"
             android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
@@ -125,7 +125,7 @@
             tools:ignore="MissingClass" />
 
         <receiver
-            android:name=".EolAppsWarnerReceiver"
+            android:name=".background.EolAppsWarnerReceiver"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />

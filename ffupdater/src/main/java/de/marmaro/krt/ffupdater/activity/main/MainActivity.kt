@@ -28,11 +28,11 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.snackbar.Snackbar
 import de.marmaro.krt.ffupdater.activity.add.AddAppActivity
 import de.marmaro.krt.ffupdater.DisplayableException
-import de.marmaro.krt.ffupdater.DownloadActivity
+import de.marmaro.krt.ffupdater.activity.download.DownloadActivity
 import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
 import de.marmaro.krt.ffupdater.Migrator
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.SettingsActivity
+import de.marmaro.krt.ffupdater.activity.settings.SettingsActivity
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.InstalledAppStatus
 import de.marmaro.krt.ffupdater.background.BackgroundWork

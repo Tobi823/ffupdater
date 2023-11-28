@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:scrollbarFadeDuration="0"
     android:scrollbars="vertical"
-    tools:context=".DownloadActivity">
+    tools:context=".activity.download.DownloadActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
