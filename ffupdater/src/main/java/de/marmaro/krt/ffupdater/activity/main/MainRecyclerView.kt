@@ -12,6 +12,7 @@ import android.widget.TextView
 import androidx.annotation.Keep
 import androidx.annotation.UiThread
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
@@ -33,18 +34,14 @@ import java.time.Duration
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
-class MainRecyclerView(private val activity: MainActivity) :
-    RecyclerView.Adapter<MainRecyclerView.AppHolder>() {
+class MainRecyclerView(private val activity: MainActivity) : RecyclerView.Adapter<MainRecyclerView.AppHolder>() {
 
     @Keep
     private data class ExceptionWrapper(val message: Int, val exception: Exception)
 
     private var elements = listOf<App>()
-
     private var errors = mutableMapOf<App, ExceptionWrapper>()
-
     private var appsWithWrongFingerprint = listOf<App>()
-
     private var appAndUpdateStatus = mutableMapOf<App, InstalledAppStatus>()
 
 
@@ -110,96 +107,43 @@ class MainRecyclerView(private val activity: MainActivity) :
     }
 
     override fun onBindViewHolder(view: AppHolder, position: Int) {
-
         val app = elements[position]
         val appImpl = app.findImpl()
-        val metadata = appAndUpdateStatus.getOrDefault(app, null)
-        val error = errors[app]
-        val fragmentManager = activity.supportFragmentManager
 
-        view.title.setText(appImpl.title)
-        view.icon.setImageResource(appImpl.icon)
+        configureTitle(view, appImpl)
+        configureIcon(view, appImpl)
         activity.lifecycleScope.launch(Dispatchers.Main) {
-            showAppInfo(view, app, error, metadata)
+            configureInstalledVersion(view, appImpl)
+            configureAvailableVersion(view, appImpl)
         }
+        configureDownloadButton(view, appImpl)
+        configureInfoButton(view, appImpl, activity.supportFragmentManager)
 
-        view.availableVersion.visibility = if (app in appsWithWrongFingerprint) View.GONE else View.VISIBLE
+        setCardColor(view, appImpl)
+    }
 
-        setCardColor(appImpl, app, view)
+    private fun configureTitle(view: AppHolder, appImpl: AppBase) {
+        view.title.setText(appImpl.title)
+    }
 
-        view.downloadButton.setOnClickListener { activity.installOrDownloadApp(app) }
-        view.infoButton.setOnClickListener {
-            activity.lifecycleScope.launch(Dispatchers.Main) {
-                val dialog = CardviewOptionsDialog(app)
-                dialog.show(fragmentManager, activity.applicationContext)
-                dialog.setFragmentResultListener(AUTO_UPDATE_CHANGED) { _, _ ->
-                    notifyItemChanged(elements.indexOf(app))
-                }
-            }
+    private fun configureIcon(view: AppHolder, appImpl: AppBase) {
+        view.icon.setImageResource(appImpl.icon)
+    }
+
+    private suspend fun configureInstalledVersion(view: AppHolder, appImpl: AppBase) {
+        view.installedVersion.text = appImpl.getDisplayInstalledVersion(activity)
+    }
+
+    private fun configureAvailableVersion(view: AppHolder, appImpl: AppBase) {
+        val error = errors[appImpl.app]
+        if (error != null) {
+            view.availableVersion.setText(error.message)
+            view.availableVersion.setOnClickListener { startCrashActivity(error) }
+        } else {
+            val metadata = appAndUpdateStatus.getOrDefault(appImpl.app, null)
+            view.availableVersion.text = getDisplayAvailableVersionWithAge(metadata)
         }
-    }
-
-    private fun setCardColor(
-        appImpl: AppBase,
-        app: App,
-        view: AppHolder,
-    ) {
-        val backgroundTintColor = when {
-            appImpl.isEol() -> R.color.cardview_options__eol__background_tint_color
-            app in appsWithWrongFingerprint -> R.color.cardview_options__different_signature__background_tint_color
-            app in BackgroundSettings.excludedAppsFromUpdateCheck -> R.color.cardview_options__no_auto_updates__background_tint_color
-            !appImpl.wasInstalledByFFUpdater(activity) -> R.color.cardview_options__not_installed_by_ffupdater__background_tint_color
-            else -> R.color.main_activity__cardview_background_color
-        }
-        val color = ContextCompat.getColor(activity, backgroundTintColor)
-        view.card.backgroundTintList = ColorStateList.valueOf(color)
-    }
-
-    private suspend fun showAppInfo(
-        view: AppHolder,
-        app: App,
-        error: ExceptionWrapper?,
-        metadata: InstalledAppStatus?,
-    ) {
-        when {
-            error != null -> showAppInfoForError(view, app, error)
-            else -> showAppInfo(view, app, metadata)
-        }
-    }
-
-    private fun hideViews(elements: List<View>) {
-        elements.forEach { it.visibility = View.GONE }
-    }
-
-    private fun showViews(elements: List<View>) {
-        elements.forEach { it.visibility = View.VISIBLE }
-    }
-
-    private suspend fun showAppInfoForError(view: AppHolder, app: App, error: ExceptionWrapper) {
-        showViews(listOf(view.installedVersion, view.availableVersion))
-        hideViews(listOf(view.downloadButton))
-        val findImpl = app.findImpl()
-        view.installedVersion.text = findImpl.getDisplayInstalledVersion(activity)
-        view.availableVersion.setText(error.message)
-        view.availableVersion.setOnClickListener {
-            val description = activity.getString(R.string.crash_report__explain_text__download_activity_update_check)
-            val context = activity.applicationContext
-            val throwableAndLogs = ThrowableAndLogs(error.exception, LogReader.readLogs())
-            val intent = CrashReportActivity.createIntent(context, throwableAndLogs, description)
-            activity.startActivity(intent)
-        }
-    }
-
-    private suspend fun showAppInfo(
-        view: AppHolder,
-        app: App,
-        metadata: InstalledAppStatus?,
-    ) {
-        showViews(listOf(view.installedVersion, view.availableVersion))
-        val findImpl = app.findImpl()
-        view.installedVersion.text = findImpl.getDisplayInstalledVersion(activity)
-        view.availableVersion.text = getDisplayAvailableVersionWithAge(metadata)
-        view.downloadButton.visibility = if (metadata?.isUpdateAvailable == true) View.VISIBLE else View.GONE
+        view.availableVersion.visibility = if (appImpl.app in appsWithWrongFingerprint) View.GONE else View.VISIBLE
     }
 
     private fun getDisplayAvailableVersionWithAge(metadata: InstalledAppStatus?): String {
@@ -215,6 +159,51 @@ class MainRecyclerView(private val activity: MainActivity) :
         val max = Duration.ofDays(100).toMillis()
         val relative = DateUtils.getRelativeDateTimeString(activity, unixMillis, min, max, 0)
         return "$version ($relative)"
+    }
+
+    private fun startCrashActivity(error: ExceptionWrapper) {
+        val description = activity.getString(R.string.crash_report__explain_text__download_activity_update_check)
+        val context = activity.applicationContext
+        val throwableAndLogs = ThrowableAndLogs(error.exception, LogReader.readLogs())
+        val intent = CrashReportActivity.createIntent(context, throwableAndLogs, description)
+        activity.startActivity(intent)
+    }
+
+    private fun configureDownloadButton(view: AppHolder, appImpl: AppBase) {
+        val metadata = appAndUpdateStatus.getOrDefault(appImpl.app, null)
+        view.downloadButton.visibility = if (metadata?.isUpdateAvailable == true) View.VISIBLE else View.GONE
+        view.downloadButton.setOnClickListener { activity.installOrDownloadApp(appImpl.app) }
+    }
+
+
+    private fun configureInfoButton(view: AppHolder, appImpl: AppBase, fragmentManager: FragmentManager) {
+        view.infoButton.setOnClickListener { showDialog(appImpl.app, fragmentManager) }
+    }
+
+    private fun showDialog(app: App, fragmentManager: FragmentManager) {
+        activity.lifecycleScope.launch(Dispatchers.Main) {
+            val dialog = CardviewOptionsDialog(app)
+            dialog.show(fragmentManager, activity.applicationContext)
+            dialog.setFragmentResultListener(AUTO_UPDATE_CHANGED) { _, _ ->
+                notifyItemChanged(elements.indexOf(app))
+            }
+        }
+    }
+
+    private fun setCardColor(
+        view: AppHolder,
+        appImpl: AppBase,
+    ) {
+        val app = appImpl.app
+        val backgroundTintColor = when {
+            appImpl.isEol() -> R.color.cardview_options__eol__background_tint_color
+            app in appsWithWrongFingerprint -> R.color.cardview_options__different_signature__background_tint_color
+            app in BackgroundSettings.excludedAppsFromUpdateCheck -> R.color.cardview_options__no_auto_updates__background_tint_color
+            !appImpl.wasInstalledByFFUpdater(activity) -> R.color.cardview_options__not_installed_by_ffupdater__background_tint_color
+            else -> R.color.main_activity__cardview_background_color
+        }
+        val color = ContextCompat.getColor(activity, backgroundTintColor)
+        view.card.backgroundTintList = ColorStateList.valueOf(color)
     }
 
     override fun getItemCount(): Int {
