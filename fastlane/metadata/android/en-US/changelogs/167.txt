@@ -1,0 +1,3 @@
+Release version 79.0.1
+- Thanks for the Weblate contributions from: gallegonovato and Daviteusz
+- fix crash when installing new app (Tobi823/ffupdater#538)
