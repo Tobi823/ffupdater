@@ -40,7 +40,7 @@ class CardviewOptionsDialog(private val app: App) : AppCompatDialogFragment() {
     private val isExcluded = app in BackgroundSettings.excludedAppsFromUpdateCheck
 
     private var wrongFingerprint = false
-    private var installedByFFUpdater = true
+    private var installedByOtherApp = true
     var hideAutomaticUpdateSwitch: Boolean = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -79,7 +79,7 @@ class CardviewOptionsDialog(private val app: App) : AppCompatDialogFragment() {
 
     private fun configureNotInstalledByFFUpdaterLabel(view: View) {
         val label = view.findViewById<TextView>(R.id.cardview_dialog__not_installed_by_ffupdater_label)
-        label.visibility = if (!installedByFFUpdater && !isEol && !wrongFingerprint) View.VISIBLE else View.GONE
+        label.visibility = if (installedByOtherApp && !isEol && !wrongFingerprint) View.VISIBLE else View.GONE
     }
 
     private fun configureDiffSignature(view: View) {
@@ -104,8 +104,8 @@ class CardviewOptionsDialog(private val app: App) : AppCompatDialogFragment() {
     private fun configureUpdateSwitch(view: View) {
         val switchUpdate = view.findViewById<MaterialSwitch>(R.id.cardview_dialog__auto_bg_updates_switch)
         switchUpdate.visibility = if (hideAutomaticUpdateSwitch) View.GONE else View.VISIBLE
-        switchUpdate.isChecked = !isExcluded && !isEol && !wrongFingerprint && installedByFFUpdater
-        switchUpdate.isEnabled = !isEol && !wrongFingerprint && installedByFFUpdater
+        switchUpdate.isChecked = !isExcluded && !isEol && !wrongFingerprint && !installedByOtherApp
+        switchUpdate.isEnabled = !isEol && !wrongFingerprint && !installedByOtherApp
         switchUpdate.setOnCheckedChangeListener { _, isChecked ->
             val excludeApp = !isChecked
             setFragmentResult(AUTO_UPDATE_CHANGED, Bundle())
@@ -131,7 +131,7 @@ class CardviewOptionsDialog(private val app: App) : AppCompatDialogFragment() {
         runBlocking {
             wrongFingerprint = impl.isInstalled(tempContext) == INSTALLED_WITH_DIFFERENT_FINGERPRINT
         }
-        installedByFFUpdater = impl.wasInstalledByFFUpdater(tempContext)
+        installedByOtherApp = impl.wasInstalledByOtherApp(tempContext)
         show(manager, "cardview_options_dialog")
     }
 

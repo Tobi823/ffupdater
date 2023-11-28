@@ -37,14 +37,20 @@ interface InstalledVersionFetcher : AppAttributes {
     }
 
     @Suppress("DEPRECATION")
-    fun wasInstalledByFFUpdater(context: Context): Boolean {
-        val installerApp: String? = if (DeviceSdkTester.supportsAndroid11Q30()) {
-            context.packageManager.getInstallSourceInfo(packageName).initiatingPackageName
-        } else {
-            context.packageManager.getInstallerPackageName(packageName)
+    fun wasInstalledByOtherApp(context: Context): Boolean {
+        return try {
+            val installerApp: String? = if (DeviceSdkTester.supportsAndroid11Q30()) {
+                context.packageManager.getInstallSourceInfo(packageName).initiatingPackageName
+            } else {
+                context.packageManager.getInstallerPackageName(packageName)
+            }
+            // installerApp == null or installerApp == de.marmaro.krt.ffupdater is correct because if FFUpdater was
+            // removed, installerApp will be null
+            installerApp != null && installerApp != BuildConfig.APPLICATION_ID
+        } catch (e: PackageManager.NameNotFoundException) {
+            // if app is not installed
+            false
         }
-        // if FFUpdater was removed, the installerApp will be null
-        return installerApp == null || installerApp == BuildConfig.APPLICATION_ID
     }
 
 }

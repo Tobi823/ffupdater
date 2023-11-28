@@ -162,7 +162,7 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
         val appsToCheck = InstalledAppsCache.getInstalledAppsWithCorrectFingerprint(applicationContext)
             .filter { it !in BackgroundSettings.excludedAppsFromUpdateCheck }
             .filter { DeviceAbiExtractor.supportsOneOf(it.findImpl().supportedAbis) }
-            .filter { it.findImpl().wasInstalledByFFUpdater(applicationContext) }
+            .filter { !it.findImpl().wasInstalledByOtherApp(applicationContext) }
 
         // check for updates
         val appStatusList = appsToCheck.map { it.findImpl().findInstalledAppStatus(applicationContext, USE_CACHE) }

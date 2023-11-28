@@ -198,7 +198,7 @@ class MainRecyclerView(private val activity: MainActivity) : RecyclerView.Adapte
             appImpl.isEol() -> R.color.cardview_options__eol__background_tint_color
             app in appsWithWrongFingerprint -> R.color.cardview_options__different_signature__background_tint_color
             app in BackgroundSettings.excludedAppsFromUpdateCheck -> R.color.cardview_options__no_auto_updates__background_tint_color
-            !appImpl.wasInstalledByFFUpdater(activity) -> R.color.cardview_options__not_installed_by_ffupdater__background_tint_color
+            appImpl.wasInstalledByOtherApp(activity) -> R.color.cardview_options__not_installed_by_ffupdater__background_tint_color
             else -> R.color.main_activity__cardview_background_color
         }
         val color = ContextCompat.getColor(activity, backgroundTintColor)
