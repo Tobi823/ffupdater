@@ -149,6 +149,7 @@ class CardviewOptionsDialog(private val app: App) : AppCompatDialogFragment() {
             val dialog = RunningDownloadsDialog(app)
             dialog.show(childFragmentManager)
             dialog.setFragmentResultListener(RunningDownloadsDialog.DOWNLOAD_ACTIVITY_WAS_STARTED) { _, _ ->
+                setFragmentResult(DOWNLOAD_ACTIVITY_WAS_STARTED, Bundle())
                 dismiss()
             }
             return
@@ -156,6 +157,7 @@ class CardviewOptionsDialog(private val app: App) : AppCompatDialogFragment() {
         Log.d(FFUpdater.LOG_TAG, "MainActivity: Start DownloadActivity to install or update ${app.name}.")
         val intent = DownloadActivity.createIntent(context, app)
         startActivity(intent)
+        setFragmentResult(DOWNLOAD_ACTIVITY_WAS_STARTED, Bundle())
         dismiss()
     }
 
