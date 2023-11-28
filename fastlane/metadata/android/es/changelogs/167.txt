@@ -1,0 +1,3 @@
+Versión 79.0.1
+- Gracias por las contribuciones en Weblate de: gallegonovato y Daviteusz
+- corregido un fallo al instalar una nueva aplicación (Tobi823/ffupdater#538)
