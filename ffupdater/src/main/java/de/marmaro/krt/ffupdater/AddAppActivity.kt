@@ -13,6 +13,7 @@ import androidx.annotation.Keep
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -106,7 +107,7 @@ class AddAppActivity : AppCompatActivity() {
 
     class AvailableAppsAdapter(
         private val elements: List<ItemWrapper>,
-        private val activity: AppCompatActivity
+        private val activity: AppCompatActivity,
     ) :
         RecyclerView.Adapter<ViewHolder>() {
 
@@ -143,10 +144,12 @@ class AddAppActivity : AppCompatActivity() {
                     val appView = inflater.inflate(R.layout.activity_add_app_cardview, parent, false)
                     AppHolder(appView)
                 }
+
                 ItemType.TITLE.id -> {
                     val titleView = inflater.inflate(R.layout.activity_add_app_title, parent, false)
                     HeadingHolder(titleView)
                 }
+
                 else -> throw IllegalArgumentException()
             }
         }
@@ -174,9 +177,14 @@ class AddAppActivity : AppCompatActivity() {
             viewHolder.title.setText(appImpl.title)
             viewHolder.icon.setImageResource(appImpl.icon)
             viewHolder.addAppButton.setOnClickListener {
-                val dialog = CardviewOptionsDialog(app)
-                dialog.hideAutomaticUpdateSwitch = true
-                dialog.show(activity.supportFragmentManager)
+                activity.lifecycleScope.launch(Dispatchers.Main) {
+                    val dialog = CardviewOptionsDialog(app)
+                    dialog.hideAutomaticUpdateSwitch = true
+                    dialog.show(activity.supportFragmentManager, activity.applicationContext)
+                    dialog.setFragmentResultListener(CardviewOptionsDialog.DOWNLOAD_ACTIVITY_WAS_STARTED) { _, _ ->
+                        activity.finish()
+                    }
+                }
             }
         }
 

@@ -1,5 +1,6 @@
 package de.marmaro.krt.ffupdater.dialog
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -17,14 +18,17 @@ import com.google.android.material.materialswitch.MaterialSwitch
 import de.marmaro.krt.ffupdater.DownloadActivity
 import de.marmaro.krt.ffupdater.FFUpdater
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.R.layout.cardview_option_dialog
+import de.marmaro.krt.ffupdater.R.layout.cardview_dialog
 import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.entity.InstallationStatus.INSTALLED_WITH_DIFFERENT_FINGERPRINT
 import de.marmaro.krt.ffupdater.app.impl.AppBase
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.network.NetworkUtil
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.settings.BackgroundSettings
 import de.marmaro.krt.ffupdater.settings.ForegroundSettings
+import kotlinx.coroutines.runBlocking
+import org.w3c.dom.Text
 
 
 /**
@@ -33,54 +37,64 @@ import de.marmaro.krt.ffupdater.settings.ForegroundSettings
 @Keep
 class CardviewOptionsDialog(private val app: App) : AppCompatDialogFragment() {
 
+    private val appImpl = app.findImpl()
+    private val isEol = appImpl.isEol()
+    private val isExcluded = app in BackgroundSettings.excludedAppsFromUpdateCheck
+
+    private var wrongFingerprint = false
+    private var installedByFFUpdater = true
     var hideAutomaticUpdateSwitch: Boolean = false
-    var appHasDifferentSignature: Boolean = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(cardview_option_dialog, container)
+        return inflater.inflate(cardview_dialog, container)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val appImpl = app.findImpl()
-        configureTitle(view, appImpl)
-        configureUrl(view, appImpl)
-        configureEoL(view, appImpl)
+        configureTitle(view)
+        configureUrl(view)
+        configureEoL(view)
+        configureNotInstalledByFFUpdaterLabel(view)
         configureDiffSignature(view)
-        configureDescription(view, appImpl)
-        configureWarnings(view, appImpl)
-        configureUpdateSwitch(view, appImpl)
+        configureDescription(view)
+        configureWarnings(view)
+        configureUpdateSwitch(view)
         configureExitButton(view)
         configureInstallButton(view)
     }
 
-    private fun configureTitle(view: View, appImpl: AppBase) {
+    private fun configureTitle(view: View) {
         view.findViewById<TextView>(R.id.cardview_dialog__title).text = getString(appImpl.title)
     }
 
-    private fun configureUrl(view: View, appImpl: AppBase) {
+    private fun configureUrl(view: View) {
         view.findViewById<TextView>(R.id.cardview_dialog__url).text = appImpl.projectPage
     }
 
-    private fun configureEoL(view: View, appImpl: AppBase) {
+    private fun configureEoL(view: View) {
         val label = view.findViewById<TextView>(R.id.cardview_dialog__eol_label)
         val text = view.findViewById<TextView>(R.id.cardview_dialog__eol)
-        label.visibility = if (appImpl.isEol()) View.VISIBLE else View.GONE
-        text.visibility = if (appImpl.isEol()) View.VISIBLE else View.GONE
+        label.visibility = if (isEol) View.VISIBLE else View.GONE
+        text.visibility = if (isEol) View.VISIBLE else View.GONE
         text.text = appImpl.eolReason?.let { getString(it) }
+    }
+
+    private fun configureNotInstalledByFFUpdaterLabel(view: View) {
+        val label = view.findViewById<TextView>(R.id.cardview_dialog__not_installed_by_ffupdater_label)
+        label.visibility = if (!installedByFFUpdater && !isEol && !wrongFingerprint) View.VISIBLE else View.GONE
     }
 
     private fun configureDiffSignature(view: View) {
         val label = view.findViewById<TextView>(R.id.cardview_dialog__different_signature_label)
-        label.visibility = if (appHasDifferentSignature) View.VISIBLE else View.GONE
+        label.visibility = if (wrongFingerprint) View.VISIBLE else View.GONE
     }
 
-    private fun configureDescription(view: View, appImpl: AppBase) {
+    private fun configureDescription(view: View) {
         val textViewDescription = view.findViewById<TextView>(R.id.cardview_dialog__description)
         textViewDescription.text = getString(appImpl.description)
     }
 
-    private fun configureWarnings(view: View, appImpl: AppBase) {
+    private fun configureWarnings(view: View) {
         val label = view.findViewById<TextView>(R.id.cardview_dialog__warnings_label)
         val text = view.findViewById<TextView>(R.id.cardview_dialog__warnings)
         val warnings = appImpl.installationWarning?.let { getString(it) }
@@ -89,11 +103,11 @@ class CardviewOptionsDialog(private val app: App) : AppCompatDialogFragment() {
         text.text = warnings ?: ""
     }
 
-    private fun configureUpdateSwitch(view: View, appImpl: AppBase) {
+    private fun configureUpdateSwitch(view: View) {
         val switchUpdate = view.findViewById<MaterialSwitch>(R.id.cardview_dialog__auto_bg_updates_switch)
         switchUpdate.visibility = if (hideAutomaticUpdateSwitch) View.GONE else View.VISIBLE
-        switchUpdate.isChecked = app !in BackgroundSettings.excludedAppsFromUpdateCheck
-        switchUpdate.isEnabled = !appImpl.isEol() && !appHasDifferentSignature
+        switchUpdate.isChecked = !isExcluded && !isEol && !wrongFingerprint && installedByFFUpdater
+        switchUpdate.isEnabled = !isEol && !wrongFingerprint && installedByFFUpdater
         switchUpdate.setOnCheckedChangeListener { _, isChecked ->
             val excludeApp = !isChecked
             setFragmentResult(AUTO_UPDATE_CHANGED, Bundle())
@@ -108,12 +122,18 @@ class CardviewOptionsDialog(private val app: App) : AppCompatDialogFragment() {
 
     private fun configureInstallButton(view: View) {
         val buttonInstall = view.findViewById<MaterialButton>(R.id.cardview_dialog__install_button)
-        buttonInstall.isEnabled = !appHasDifferentSignature
+        buttonInstall.isEnabled = !wrongFingerprint
         buttonInstall.setOnClickListener { installLatestUpdate() }
     }
 
-    fun show(manager: FragmentManager) {
+    suspend fun show(manager: FragmentManager, tempContext: Context) {
         setStyle(STYLE_NO_FRAME, R.style.Theme_Material3_DayNight_Dialog_Alert)
+
+        val impl = app.findImpl()
+        runBlocking {
+            wrongFingerprint = impl.isInstalled(tempContext) == INSTALLED_WITH_DIFFERENT_FINGERPRINT
+        }
+        installedByFFUpdater = impl.wasInstalledByFFUpdater(tempContext)
         show(manager, "cardview_options_dialog")
     }
 
@@ -130,7 +150,9 @@ class CardviewOptionsDialog(private val app: App) : AppCompatDialogFragment() {
         if (FileDownloader.areDownloadsCurrentlyRunning()) {
             val dialog = RunningDownloadsDialog(app)
             dialog.show(childFragmentManager)
-            dialog.setFragmentResultListener(RunningDownloadsDialog.DOWNLOAD_ACTIVITY_WAS_STARTED) { _, _ -> dismiss() }
+            dialog.setFragmentResultListener(RunningDownloadsDialog.DOWNLOAD_ACTIVITY_WAS_STARTED) { _, _ ->
+                dismiss()
+            }
             return
         }
         Log.d(FFUpdater.LOG_TAG, "MainActivity: Start DownloadActivity to install or update ${app.name}.")
@@ -148,5 +170,6 @@ class CardviewOptionsDialog(private val app: App) : AppCompatDialogFragment() {
 
     companion object {
         const val AUTO_UPDATE_CHANGED = "AUTO_UPDATE_CHANGED"
+        const val DOWNLOAD_ACTIVITY_WAS_STARTED = "DOWNLOAD_ACTIVITY_WAS_STARTED"
     }
 }

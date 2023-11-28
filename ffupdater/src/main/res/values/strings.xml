@@ -315,5 +315,7 @@
     <string name="cardview_dialog__exit">Close</string>
     <string name="app_install_info_dialog__install">Install</string>
     <string name="cardview_dialog__install">Install latest version</string>
-    <string name="crash_report__different_signature">FFUpdater can not update this app because the APK signature is different. You can fix it by uninstalling the app and reinstalling it with FFUpdater.</string>
+    <string name="cardview_dialog__different_signature">FFUpdater can not update this app because the APK signature is different. You can fix it by uninstalling the app and reinstalling it with FFUpdater.</string>
+    <string name="cardview_dialog__eol">This app should no longer be used:</string>
+    <string name="cardview_dialog__not_installed_by_ffupdater">This app was not installed or updated by FFUpdater. To avoid conflicts with other applications, automatic updating is disabled.</string>
 </resources>

@@ -112,31 +112,29 @@ class MainActivityRecyclerView(private val activity: MainActivity) :
     }
 
     override fun onBindViewHolder(view: AppHolder, position: Int) {
+
+        val app = elements[position]
+        val appImpl = app.findImpl()
+        val metadata = appAndUpdateStatus.getOrDefault(app, null)
+        val error = errors[app]
+        val fragmentManager = activity.supportFragmentManager
+
+        view.title.setText(appImpl.title)
+        view.icon.setImageResource(appImpl.icon)
         activity.lifecycleScope.launch(Dispatchers.Main) {
-            val app = elements[position]
-            val appImpl = app.findImpl()
-            val metadata = appAndUpdateStatus.getOrDefault(app, null)
-            val error = errors[app]
-            val fragmentManager = activity.supportFragmentManager
-
-            view.title.setText(appImpl.title)
-            view.icon.setImageResource(appImpl.icon)
-
             showAppInfo(view, app, error, metadata)
+        }
 
-            view.availableVersion.visibility = if (app in appsWithWrongFingerprint) View.GONE else View.VISIBLE
+        view.availableVersion.visibility = if (app in appsWithWrongFingerprint) View.GONE else View.VISIBLE
 
-            setCardColor(appImpl, app, view)
+        setCardColor(appImpl, app, view)
 
-            view.downloadButton.setOnClickListener { activity.installOrDownloadApp(app) }
-            view.infoButton.setOnClickListener {
+        view.downloadButton.setOnClickListener { activity.installOrDownloadApp(app) }
+        view.infoButton.setOnClickListener {
+            activity.lifecycleScope.launch(Dispatchers.Main) {
                 val dialog = CardviewOptionsDialog(app)
-                if (app in appsWithWrongFingerprint) {
-                    dialog.appHasDifferentSignature = true
-                }
-                dialog.show(fragmentManager)
+                dialog.show(fragmentManager, activity.applicationContext)
                 dialog.setFragmentResultListener(AUTO_UPDATE_CHANGED) { _, _ ->
-                    Log.e("test", "change")
                     notifyItemChanged(elements.indexOf(app))
                 }
             }
@@ -152,6 +150,7 @@ class MainActivityRecyclerView(private val activity: MainActivity) :
             appImpl.isEol() -> R.color.cardview_options__eol__background_tint_color
             app in appsWithWrongFingerprint -> R.color.cardview_options__different_signature__background_tint_color
             app in BackgroundSettings.excludedAppsFromUpdateCheck -> R.color.cardview_options__no_auto_updates__background_tint_color
+            !appImpl.wasInstalledByFFUpdater(activity) -> R.color.cardview_options__not_installed_by_ffupdater__background_tint_color
             else -> R.color.main_activity__cardview_background_color
         }
         val color = ContextCompat.getColor(activity, backgroundTintColor)

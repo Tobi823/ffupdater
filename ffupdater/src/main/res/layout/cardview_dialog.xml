@@ -37,7 +37,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:text="This app should no longer be used:"
+                    android:text="@string/cardview_dialog__eol"
+                    android:textColor="@color/crash_report__error_red"
+                    android:textAppearance="?attr/textAppearanceTitleSmall" />
+
+                <TextView
+                    android:id="@+id/cardview_dialog__not_installed_by_ffupdater_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/cardview_dialog__not_installed_by_ffupdater"
                     android:textColor="@color/crash_report__error_red"
                     android:textAppearance="?attr/textAppearanceTitleSmall" />
 
@@ -54,7 +63,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:text="@string/crash_report__different_signature"
+                    android:text="@string/cardview_dialog__different_signature"
                     android:textColor="@color/crash_report__error_red"
                     android:textAppearance="?attr/textAppearanceTitleSmall" />
 

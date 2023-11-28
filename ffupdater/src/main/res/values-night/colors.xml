@@ -9,6 +9,7 @@
     <color name="install_activity__warning_orange">#EF6C00</color>
     <color name="main_activity__cardview_background_color">@color/cardview_dark_background</color>
     <color name="cardview_options__no_auto_updates__background_tint_color">#163466</color>
+    <color name="cardview_options__not_installed_by_ffupdater__background_tint_color">#665B0D</color>
     <color name="main_activity__red_for_eol_reason">#FFC9CF</color>
     <color name="button_green">#4CAF50</color>
     <color name="cardview_options__eol__background_tint_color">#66434F</color>
