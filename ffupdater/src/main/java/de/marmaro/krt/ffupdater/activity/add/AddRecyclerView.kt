@@ -57,12 +57,10 @@ class AddRecyclerView(
                 val appView = inflater.inflate(R.layout.activity_add_app_cardview, parent, false)
                 AppHolder(appView)
             }
-
             ItemType.TITLE.id -> {
                 val titleView = inflater.inflate(R.layout.activity_add_app_title, parent, false)
                 HeadingHolder(titleView)
             }
-
             else -> throw IllegalArgumentException()
         }
     }
