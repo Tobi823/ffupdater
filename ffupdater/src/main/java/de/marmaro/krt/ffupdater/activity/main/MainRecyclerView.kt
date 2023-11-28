@@ -118,7 +118,6 @@ class MainRecyclerView(private val activity: MainActivity) : RecyclerView.Adapte
         }
         configureDownloadButton(view, appImpl)
         configureInfoButton(view, appImpl, activity.supportFragmentManager)
-
         setCardColor(view, appImpl)
     }
 
