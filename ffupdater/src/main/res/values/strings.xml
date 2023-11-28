@@ -308,7 +308,7 @@
     <string name="k9mail__title">K-9 Mail</string>
     <string name="k9mail__description">Full-featured email client</string>
     <string name="fairemail__title">FairEmail</string>
-    <string name="fairmail__description">Fully featured, open source, privacy friendly email app for Android</string>
+    <string name="fairemail__description">Fully featured, open source, privacy friendly email app for Android</string>
     <string name="cardview_dialog__self_description_label">Self description:</string>
     <string name="cardview_dialog__warnings_label">Warnings:</string>
     <string name="cardview_dialog__auto_bg_update">Automatic background update</string>
@@ -318,4 +318,5 @@
     <string name="cardview_dialog__different_signature">FFUpdater can not update this app because the APK signature is different. You can fix it by uninstalling the app and reinstalling it with FFUpdater.</string>
     <string name="cardview_dialog__eol">This app should no longer be used:</string>
     <string name="cardview_dialog__not_installed_by_ffupdater">This app was not installed or updated by FFUpdater. To avoid conflicts with other applications, automatic updating is disabled.</string>
+    <string name="fairemail__description">- This version does not support OAuth and therefore does not support Gmail.</string>
 </resources>

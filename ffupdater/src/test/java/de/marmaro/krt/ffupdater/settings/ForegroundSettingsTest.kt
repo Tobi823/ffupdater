@@ -62,15 +62,6 @@ class ForegroundSettingsTest : BaseTest() {
     }
 
     @Test
-    fun isHideWarningButtonForInstalledApps() {
-        SettingsTestHelper.testBooleanSetting(
-            sharedPreferences,
-            "foreground__hide_warning_button_for_installed_apps",
-            false
-        ) { ForegroundSettings.isHideWarningButtonForInstalledApps }
-    }
-
-    @Test
     fun getThemePreference_userHasNotChangedSetting_AndroidPAndBelow_returnDefaultValue() {
         every { DeviceSdkTester.supportsAndroid10Q29() } returns false
         assertEquals(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY, ForegroundSettings.themePreference)
