@@ -16,4 +16,5 @@
     <string name="notification__bachground_work__action_title">Katkesta selle taustaprotsessi töö</string>
     <string name="app_installer__installed_app_has_invalid_signature">Paigaldatud rakendus POLE verifitseeritud</string>
     <string name="app_installer__failed_to_validate_signature_of_download">Allalaaditud faili allkirja kontrollimine ei õnnestunud.</string>
+    <string name="brave__title">Brave privaatne brauser</string>
 </resources>
