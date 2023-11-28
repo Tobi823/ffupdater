@@ -1,9 +1,8 @@
-package de.marmaro.krt.ffupdater.activity
+package de.marmaro.krt.ffupdater.activity.main
 
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.text.format.DateUtils
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +16,6 @@ import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
-import de.marmaro.krt.ffupdater.MainActivity
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.InstalledAppStatus
@@ -35,8 +33,8 @@ import java.time.Duration
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
-class MainActivityRecyclerView(private val activity: MainActivity) :
-    RecyclerView.Adapter<MainActivityRecyclerView.AppHolder>() {
+class MainRecyclerView(private val activity: MainActivity) :
+    RecyclerView.Adapter<MainRecyclerView.AppHolder>() {
 
     @Keep
     private data class ExceptionWrapper(val message: Int, val exception: Exception)

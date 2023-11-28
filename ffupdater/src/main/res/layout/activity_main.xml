@@ -5,7 +5,7 @@
     android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".activity.main.MainActivity"
     tools:ignore="PrivateResource">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -33,7 +33,7 @@
         android:layout_height="match_parent"
         android:layout_marginTop="8dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context=".MainActivity"
+        tools:context=".activity.main.MainActivity"
         tools:showIn="@layout/activity_main">
 
         <!-- layout_height must be match_parent-->

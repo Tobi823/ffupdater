@@ -78,7 +78,7 @@
         android:usesCleartextTraffic="false"
         tools:targetApi="S">
         <activity
-            android:name=".AddAppActivity"
+            android:name=".activity.add.AddAppActivity"
             android:label="@string/add_app_activity__label"
             android:launchMode="singleTop"
             android:theme="@style/add_app__theme" />
@@ -96,7 +96,7 @@
             android:launchMode="singleTop"
             android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.main.MainActivity"
             android:exported="true"
             android:theme="@style/main_activity__theme">
             <intent-filter>

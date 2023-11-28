@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".AddAppActivity"
+    tools:context=".activity.add.AddAppActivity"
     tools:ignore="PrivateResource">
 
     <!-- layout_height must be match_parent-->

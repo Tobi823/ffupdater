@@ -19,6 +19,7 @@ import androidx.annotation.Keep
 import androidx.annotation.RequiresApi
 import de.marmaro.krt.ffupdater.*
 import de.marmaro.krt.ffupdater.R.string.*
+import de.marmaro.krt.ffupdater.activity.main.MainActivity
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.crash.CrashReportActivity
 import de.marmaro.krt.ffupdater.crash.LogReader

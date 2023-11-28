@@ -1,4 +1,4 @@
-package de.marmaro.krt.ffupdater
+package de.marmaro.krt.ffupdater.activity.main
 
 import android.Manifest.permission.POST_NOTIFICATIONS
 import android.R.color.holo_blue_dark
@@ -12,7 +12,6 @@ import android.os.Bundle
 import android.text.format.DateUtils
 import android.util.Log
 import android.view.*
-import android.view.View.OnClickListener
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
@@ -27,8 +26,13 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.snackbar.Snackbar
+import de.marmaro.krt.ffupdater.activity.add.AddAppActivity
+import de.marmaro.krt.ffupdater.DisplayableException
+import de.marmaro.krt.ffupdater.DownloadActivity
 import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
-import de.marmaro.krt.ffupdater.activity.MainActivityRecyclerView
+import de.marmaro.krt.ffupdater.Migrator
+import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.SettingsActivity
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.InstalledAppStatus
 import de.marmaro.krt.ffupdater.background.BackgroundWork
@@ -50,7 +54,7 @@ import kotlinx.coroutines.launch
 
 @Keep
 class MainActivity : AppCompatActivity() {
-    private lateinit var recyclerView: MainActivityRecyclerView
+    private lateinit var recyclerView: MainRecyclerView
     private var firstStart = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -133,7 +137,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initRecyclerView() {
-        recyclerView = MainActivityRecyclerView(this@MainActivity)
+        recyclerView = MainRecyclerView(this@MainActivity)
         val view = findViewById<RecyclerView>(R.id.main_activity__apps)
         view.adapter = recyclerView
         view.layoutManager = LinearLayoutManager(this@MainActivity)
