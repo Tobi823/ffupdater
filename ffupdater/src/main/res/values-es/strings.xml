@@ -349,4 +349,15 @@
     <string name="k9mail__title">K-9 Mail</string>
     <string name="k9mail__description">Cliente de correo electrónico completo</string>
     <string name="fairemail__title">FairEmail</string>
+    <string name="cardview_dialog__exit">Cerrar</string>
+    <string name="cardview_dialog__self_description_label">Auto descripcion:</string>
+    <string name="fairemail__warning">- Esta versión no es compatible con OAuth y, por tanto, no es compatible con Gmail.</string>
+    <string name="cardview_dialog__auto_bg_update">Actualización automática en segundo plano</string>
+    <string name="cardview_dialog__warnings_label">Avisos:</string>
+    <string name="cardview_dialog__eol">Esta aplicación ya no debería utilizarse:</string>
+    <string name="cardview_dialog__not_installed_by_ffupdater">Esta aplicación no ha sido instalada ni actualizada por FFUpdater. Para evitar conflictos con otras aplicaciones, la actualización automática está desactivada.</string>
+    <string name="fairemail__description">Aplicación de correo electrónico para Android con todas las funciones, de código abierto y respetuosa con la privacidad</string>
+    <string name="app_install_info_dialog__install">Instalar</string>
+    <string name="cardview_dialog__install">Instalar la última versión</string>
+    <string name="cardview_dialog__different_signature">FFUpdater no puede actualizar esta aplicación porque la firma del APK es diferente. Puedes solucionarlo desinstalando la aplicación y volviéndola a instalar con FFUpdater.</string>
 </resources>
