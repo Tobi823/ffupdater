@@ -349,4 +349,14 @@
     <string name="k9mail__title">K-9 Mail</string>
     <string name="k9mail__description">フル機能のメールクライアント</string>
     <string name="fairemail__title">FairEmail</string>
+    <string name="cardview_dialog__exit">閉じる</string>
+    <string name="cardview_dialog__self_description_label">紹介:</string>
+    <string name="cardview_dialog__auto_bg_update">自動バックグラウンド更新</string>
+    <string name="cardview_dialog__warnings_label">警告:</string>
+    <string name="cardview_dialog__eol">このアプリの使用は推奨しません:</string>
+    <string name="cardview_dialog__not_installed_by_ffupdater">このアプリは FFUpdater からインストールや更新をしたものではありません。他のアプリとの競合を防ぐため、自動更新は無効になっています。</string>
+    <string name="fairemail__description">完璧でオープンソース、プライバシーを尊重する Android 用のメールアプリ</string>
+    <string name="app_install_info_dialog__install">インストール</string>
+    <string name="cardview_dialog__install">最新版をインストール</string>
+    <string name="cardview_dialog__different_signature">APK 署名が異なるため、FFUpdater はこのアプリを更新できません。一度アプリをアンインストールして、FFUpdater から再インストールすると修正できます。</string>
 </resources>
