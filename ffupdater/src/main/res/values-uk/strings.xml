@@ -345,4 +345,13 @@
     <string name="k9mail__title">K-9 Mail</string>
     <string name="k9mail__description">Повнофункціональний клієнт електронної пошти</string>
     <string name="fairemail__title">FairEmail</string>
+    <string name="cardview_dialog__exit">Закрити</string>
+    <string name="cardview_dialog__self_description_label">Опис:</string>
+    <string name="cardview_dialog__auto_bg_update">Автоматичні оновлення у фоні</string>
+    <string name="cardview_dialog__warnings_label">Увага:</string>
+    <string name="cardview_dialog__eol">Цей застосунок не повинен більше використовуватися:</string>
+    <string name="fairemail__description">Повнофункціональний, відкритий і конфіденційний застосунок для електронної пошти</string>
+    <string name="app_install_info_dialog__install">Встановити</string>
+    <string name="cardview_dialog__install">Встановити останню версію</string>
+    <string name="cardview_dialog__different_signature">FFUpdater не може оновити цей застосунок, оскільки підпис APK-файлу відрізняється. Ви можете виправити це шляхом видалення застосунку та перевстановлення його з FFUpdater.</string>
 </resources>
