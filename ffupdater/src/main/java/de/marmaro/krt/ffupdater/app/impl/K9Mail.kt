@@ -29,7 +29,7 @@ object K9Mail : AppBase() {
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = ARM32_ARM64_X86_X64
     override val signatureHash = "55c8a523b97335f5bf60dfe8a9f3e1dde744516d9357e80a925b7b22e4f55524"
-    override val projectPage = "https://github.com/k9mail/k9mail.app"
+    override val projectPage = "https://github.com/thunderbird/thunderbird-android"
     override val displayCategory = listOf(OTHER)
 
     @MainThread
