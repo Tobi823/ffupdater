@@ -12,7 +12,7 @@
     <string name="notification__error__text">请报告此错误。点击查看错误报告。</string>
     <string name="notification__error__title">后台检查更新失败</string>
     <string name="brave__description">无痕浏览互联网，不收一文！Brave 隐私浏览器是一款快速、免费和安全的隐私网页浏览器，附带了广告拦截器和弹窗拦截器。可以在不受广告商、恶意软件和弹窗跟踪侵扰下无痕浏览和搜索互联网。</string>
-    <string name="brave__title">Brave 私人浏览器</string>
+    <string name="brave__title">Brave 私密浏览器</string>
     <string name="brave__warning">- Brave 使用了 Google Chrome 的技术基础，因而间接支持了 Chromium 渲染引擎的垄断地位。
 \n- 由于其以太坊区块链上的 Basic Attention Token（BAT）技术，该项目与加密货币有联系。 区块链有很多问题，在我看来应该避免。</string>
     <string name="brave_beta__description">欢迎使用 Brave 浏览器 Android 公测版！
@@ -346,4 +346,18 @@
     <string name="cromite__title">Cromite</string>
     <string name="ffupdater__different_signature_message">此版本的 FFUpdater 已由 F-Droid 签名，因此只有 F-Droid 能够发布更新。若要更快地更新 FFUpdater，卸载 FFUpdater 并安装由开发者签名的版本。使用这一版本，FFUpdater 能够自我更新而不必等待 F-Droid。</string>
     <string name="thorium__description">地球上最快的浏览器。适用于 Linux 的 Chromium 修改版，以 90 号放射性元素（钍）命名。</string>
+    <string name="cardview_dialog__exit">关闭</string>
+    <string name="cardview_dialog__self_description_label">自述：</string>
+    <string name="fairemail__warning">- 此版本不支持 OAuth，因此不支持 Gmail。</string>
+    <string name="cardview_dialog__auto_bg_update">后台自动更新</string>
+    <string name="cardview_dialog__warnings_label">警告：</string>
+    <string name="k9mail__title">K-9 邮件</string>
+    <string name="cardview_dialog__eol">该应用不该再使用：</string>
+    <string name="k9mail__description">功能齐全的电子邮件客户端</string>
+    <string name="fairemail__title">FairEmail</string>
+    <string name="cardview_dialog__not_installed_by_ffupdater">此应用没有通过 FFUpdater 安装或更新。为避免和其他应用冲突，自动更新已禁用。</string>
+    <string name="fairemail__description">功能齐全、开源且隐私友好的 Android 电子邮件应用</string>
+    <string name="app_install_info_dialog__install">安装</string>
+    <string name="cardview_dialog__install">安装最新版本</string>
+    <string name="cardview_dialog__different_signature">由于 APK 签名不同，FFUpdater 无法更新该应用。您可以通过卸载该应用并用 FFUpdater 重新安装来解决此问题。</string>
 </resources>
