@@ -23,16 +23,16 @@
 \n尝试最新功能并给予早期反馈：https://brave.com/msupport
 \n您可以在安装了当前版本的 Brave Android 正式版的同时，另外安装 Brave 每夜版。</string>
     <string name="brave_nightly__title">Brave 浏览器（每夜版）</string>
-    <string name="bromite__description">Bromite 致力于提供清爽的浏览体验，无隐私侵害性功能，并附带一个快速的广告拦截引擎。应用了精简的用户界面，帮助抑制浏览器成为广告泛滥的平台。</string>
+    <string name="bromite__description">Bromite 致力于提供清爽的浏览体验，无侵害隐私功能，并带有快速的广告拦截引擎。微调用户界面，以助阻遏浏览器成为广告泛滥的平台的企图。</string>
     <string name="bromite__title">Bromite</string>
     <string name="bromite__warning">- Bromite 使用了 Google Chrome 的技术基础，因而间接支持了 Chromium 渲染引擎的垄断地位。</string>
-    <string name="bromite_systemwebview__description">SystemWebView 软件包包含了 Bromite 的核心浏览器/渲染引擎和相同功能。这使其代替成为 Android 系统默认浏览器成为可能。</string>
+    <string name="bromite_systemwebview__description">SystemWebView 软件包包含了 Bromite 的核心浏览器/渲染引擎及其相同功能。这使其可代替成为 Android 系统默认浏览器。</string>
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">复制崩溃报告到剪贴板</string>
-    <string name="install_activity__download_file_failed__crash_text">下载过程中出现以下错误。如果这个错误频繁出现，请尽管在 notabug.org、GitHub 或 GitLab 上提交崩溃报告。</string>
-    <string name="crash_report__explain_text__download_activity_fetching_url">在拉取下载元数据时出现错误。如果这个错误频繁出现，请尽管在 notabug.org、GitHub 或 GitLab 上提交崩溃报告。</string>
-    <string name="crash_report__explain_text__download_activity_install_file">安装过程中出现以下错误。如果这个错误频繁出现，请尽管在 notabug.org、GitHub 或 GitLab 上提交崩溃报告。</string>
-    <string name="crash_report__explain_text__download_activity_update_check">在主视图中检查更新时出现错误。如果这个错误频繁出现，请尽管在 notabug.org、GitHub 或 GitLab 上提交崩溃报告。</string>
+    <string name="install_activity__download_file_failed__crash_text">下载过程中出现以下错误。如果这个错误频繁出现，请随时在 notabug.org、GitHub 或 GitLab 上提交崩溃报告。</string>
+    <string name="crash_report__explain_text__download_activity_fetching_url">在拉取下载元数据时出现错误。如果这个错误频繁出现，请随时在 notabug.org、GitHub 或 GitLab 上提交崩溃报告。</string>
+    <string name="crash_report__explain_text__download_activity_install_file">安装过程中出现以下错误。如果这个错误频繁出现，请随时在 notabug.org、GitHub 或 GitLab 上提交崩溃报告。</string>
+    <string name="crash_report__explain_text__download_activity_update_check">在主视图中检查更新时出现错误。如果这个错误频繁出现，请随时在 notabug.org、GitHub 或 GitLab 上提交崩溃报告。</string>
     <string name="crash_report__explain_text__uncaught_throwable">上次 FFUpdater 不幸崩溃了，此错误已被记录。请在 notabug.org、GitHub 或 GitLab 上提交崩溃报告。</string>
     <string name="crash_report__go_to_github">跳转到 GitHub</string>
     <string name="crash_report__go_to_gitlab">跳转到 GitLab</string>
@@ -41,60 +41,60 @@
     <string name="dialog_button__yes">是</string>
     <string name="notification__download_error__channel_descr">当在后台下载更新失败时显示。</string>
     <string name="notification__download_error__channel_name">后台下载错误通知</string>
-    <string name="notification__download_error__descr">后台下载 %1$s 的更新失败。如果这个错误频繁出现，可以尽管在 notabug.org、GitHub 或 GitLab 上报告。</string>
+    <string name="notification__download_error__descr">后台下载 %1$s 的更新失败。如果这个错误频繁出现，请随时在 notabug.org、GitHub 或 GitLab 上报告。</string>
     <string name="notification__download_error__text">后台下载 %1$s 的更新失败。如果此错误频繁发生，请单击此处查看错误报告。</string>
     <string name="notification__download_error__title">后台下载更新失败</string>
-    <string name="notification__download_running__channel_descr">显示何时在后台下载了更新。</string>
+    <string name="notification__download_running__channel_descr">当后台下载了更新时显示。</string>
     <string name="notification__download_running__channel_name">后台下载通知</string>
     <string name="notification__download_running__title">正在下载应用程序更新</string>
     <string name="app_card__download_the_app">下载应用程序</string>
-    <string name="notification__eol_apps__channel_description">用于警告过时应用有关信息的通知通道。</string>
+    <string name="notification__eol_apps__channel_description">用于警告过时应用有关信息的通知频道。</string>
     <string name="notification__eol_apps__channel_name">过时应用通知</string>
     <string name="notification__eol_apps__text">您有不应当再继续使用的过时应用。点击了解更多信息。</string>
     <string name="notification__eol_apps__title">已安装的过时应用</string>
     <string name="notification__error__channel_descr">显示后台更新检查器错误</string>
     <string name="notification__error__channel_name">后台错误</string>
     <string name="firefox_beta__description">Firefox 浏览器 Android 版天生私密，并且难以置信得快。成千上万的在线追踪器每天都在跟踪你，收集你的上网信息还减慢浏览速度。Firefox 默认拦截了超 2000 个追踪器，并且支持广告屏蔽插件，能让你进一步定制您的浏览器。使用 Firefox，您能在这一私密的移动浏览器中兼顾您需要的安全与速度。</string>
-    <string name="firefox_beta__title">Firefox 公测版</string>
+    <string name="firefox_beta__title">Firefox Android 公测版</string>
     <string name="firefox_beta__warning">- 此应用是为开发和测试人员设计的。它可能包含各种能影响您正常使用浏览器的缺陷。</string>
     <string name="firefox_focus__description">这是 Firefox 的一个衍生修改版，旨在增强隐私。</string>
     <string name="firefox_focus__title">Firefox Focus</string>
     <string name="firefox_klar__description">Firefox Klar 是为德国、奥地利和瑞士开发的浏览器，但任何国家的用户都可以使用。它与 Firefox Focus 非常相似，但在德语国家改了名字，以避免与布尔达传媒集团（Hubert Burda Media group）出版的《焦点周刊（Focus）》杂志相混淆。与 Firefox Focus 不同，Firefox Klar 由于德国严格的隐私法律而默认禁用了遥测功能。</string>
     <string name="firefox_klar__title">Firefox Klar</string>
-    <string name="firefox_nightly__description">请注意，这个应用曾用名为 Firefox Preview（预览版）。 它现在已过渡到 Firefox Nightly（每夜版）。
+    <string name="firefox_nightly__description">请注意，这个应用曾用名为 Firefox 预览版（Preview）。 它现在已过渡到 Firefox 每夜版（Nightly）。
 \n
-\nFirefox Nightly（每夜版） 是 Mozilla Firefox 新版本的开发者通道。
+\nFirefox 每夜版是 Mozilla 新版本 Firefox 的开发者通道。
 \n
 \nFirefox 每夜版旨在展示 Firefox 的更多实验特性。 每夜版通道允许用户在不稳定的环境中体验最新的 Firefox 创新内容，并提供功能和性能方面的反馈，以帮助确定最终版本的内容。</string>
     <string name="firefox_nightly__title">Firefox 每夜版</string>
     <string name="firefox_release__description">Firefox 浏览器 Android 版天生私密，并且难以置信得快。成千上万的在线追踪器每天都在跟踪你，收集你的上网信息还减慢浏览速度。Firefox 默认拦截了超 2000 个追踪器，并且支持广告屏蔽插件，能让你进一步定制您的浏览器。使用 Firefox，您能在这一私密的移动浏览器中兼顾您需要的安全与速度。</string>
     <string name="firefox_release__title">Firefox 浏览器</string>
-    <string name="firefox_release__warning">- F-Droid上还有一个改进版的 Firefox，名为 Fennec F-Droid。</string>
+    <string name="firefox_release__warning">- F-Droid 上还提供了一款名为 Fennec F-Droid 的改进版 Firefox。</string>
     <string name="iceraven__description">此应用程序并非由 Mozilla 提供！
 \n
 \nIceraven 浏览器是一款适用于 Android 的网络浏览器，基于 Mozilla 的 Fenix 版 Firefox、GeckoView 和 Mozilla Android 组件。
 \n
-\n我们的目标是成为新版 Firefox for Android 的亲密分支，追求为用户提供更多选项和更多自定义能力（包括广泛的扩展库），以及提供更多关于他们访问的网页的信息和让他们了解浏览器如何与这些网页互动。</string>
+\n我们的目标是成为新版 Firefox Android 的亲密分支，追求为用户提供更多选项和更多自定义能力（包括广泛的扩展库），提供更多访问网页的信息，并让用户决定浏览器如何与这些网页交互。</string>
     <string name="iceraven__title">Iceraven 浏览器</string>
-    <string name="iceraven__warning">- 维护者不提供安全性、更新或稳定性的保证。
-\n- 该项目需要比平时更长的时间来提供安全更新。</string>
+    <string name="iceraven__warning">- 维护者不保证或担保此应用的安全性、更新或稳定性。
+\n- 该项目需要更长的时间来提供安全更新。</string>
     <string name="infobox">这是一款为隐私友好型浏览器打造的更新器。点击加号按钮安装新应用。向下滑动以立刻检查新的更新。 默认情况下，该应用程序会定期在后台检查更新、下载并最终安装更新。点击小齿轮以在设置中自定义行为。
 \n
-\n上次成功后台更新检查时间：%1$s</string>
-    <string name="app_card__information_about_the_app">关于此应用程序</string>
+\n上次成功后台检查更新时间：%1$s</string>
+    <string name="app_card__information_about_the_app">应用程序信息</string>
     <string name="download_activity__delete_cache_button_text">清除缓存</string>
-    <string name="download_activity__delete_cache_explanation">如果您认为 FFUpdater 缓存了错误的应用更新，或者您想节省存储空间，请单击按钮删除已下载的文件。</string>
+    <string name="download_activity__delete_cache_explanation">如果您认为 FFUpdater 缓存了缺损的应用更新，或者您想节省存储空间，请单击按钮删除已下载的文件。</string>
     <string name="download_activity__different_installer_info__text">如果安装频繁失败，请尝试在设置中切换到“原生安装器”。</string>
-    <string name="download_activity__download_app_with_status">下载应用程序</string>
+    <string name="download_activity__download_app_with_status">正在下载应用程序</string>
     <string name="download_activity__download_failed">下载失败</string>
-    <string name="download_activity__downloaded_application_from">从此处下载程序：</string>
+    <string name="download_activity__downloaded_application_from">已从此处下载程序：</string>
     <string name="app_installer__signature_of_download_is_invalid">下载的应用未经验证</string>
     <string name="download_activity__exception__show_button"><u>显示详细的错误报告。</u></string>
-    <string name="download_activity__external_storage_not_accessible">内部存储不可用——无法开始下载。当前状态：</string>
+    <string name="download_activity__external_storage_not_accessible">外部存储不可用——无法开始下载。当前状态：</string>
     <string name="download_activity__fetch_url_for_download">从 %1$s 获取元数据</string>
     <string name="download_activity__fetched_url_for_download_successfully">已从 %1$s 获取元数据</string>
     <string name="download_activity__file_uri_exposed_toast">无法将文件路径暴露给其他应用。请使用您喜欢的文件管理器自行打开该文件夹。</string>
-    <string name="download_activity__github_rate_limit_exceeded">已超出 GitHub API 访问率限制。 请在一个小时后尝试下载。</string>
+    <string name="download_activity__github_rate_limit_exceeded">已超出 GitHub API 访问率限制。 请在一个小时后尝试重新下载。</string>
     <string name="download_activity__open_cache_explanation">您可以打开缓存文件夹来将 APK 文件复制到有存储空间更大的位置。遗憾的是，在 Android 11+ 上，只有非常少的文件管理器可以访问 Android/data 中的这个文件夹。</string>
     <string name="download_activity__open_cache_folder_button_text">打开缓存文件夹</string>
     <string name="download_activity__open_folder">打开文件夹</string>
@@ -104,34 +104,34 @@
     <string name="download_activity__too_low_memory_title">磁盘空间不足</string>
     <string name="download_activity__use_cached_downloaded_apk">使用此处已下载的文件：</string>
     <string name="download_activity__you_can_now_close_this_window">现在您可以关闭此窗口</string>
-    <string name="download_activity__label">安装应用程序</string>
+    <string name="download_activity__label">下载应用程序</string>
     <string name="install_new_app">安装新应用</string>
     <string name="install_same_version_dialog__message">已安装此应用程序的最新版本。是否要再次下载并安装最新版本？</string>
     <string name="install_same_version_dialog__title">已安装相同版本</string>
-    <string name="notification__install_error__channel_descr">%1$s 更新失败通知通道。</string>
+    <string name="notification__install_error__channel_descr">%1$s 更新失败通知频道。</string>
     <string name="notification__install_error__channel_name">%1$s 更新失败通知</string>
     <string name="notification__install_error__text">错误（%1$d）：%2$s</string>
     <string name="notification__install_error__title">无法更新 %1$s</string>
-    <string name="notification__install_success__channel_descr">%1$s 更新成功的通知通道。</string>
+    <string name="notification__install_success__channel_descr">%1$s 更新成功的通知频道。</string>
     <string name="notification__install_success__channel_name">%1$s 更新成功的通知</string>
     <string name="notification__install_success__text">应用已在后台更新。</string>
     <string name="notification__install_success__title">%1$s 已更新</string>
-    <string name="app_installer__installed_app_has_invalid_signature">未验证已安装的应用</string>
-    <string name="installed_application_is_verified">已验证已安装的应用</string>
+    <string name="app_installer__installed_app_has_invalid_signature">未验证安装的应用</string>
+    <string name="installed_application_is_verified">已验证安装的应用</string>
     <string name="installed_version">已安装：%1$s</string>
-    <string name="kiwi__description">Kiwi 浏览器可以轻松浏览互联网、阅读新闻、观看视频和听音乐。</string>
+    <string name="kiwi__description">Kiwi 浏览器可以无扰浏览互联网、阅读新闻、观看视频和听音乐。</string>
     <string name="kiwi__title">Kiwi Next 浏览器</string>
     <string name="kiwi__warning">- Kiwi 使用了 Google Chrome 的技术基础，因而间接支持了 Chromium 渲染引擎的垄断地位。
-\n- Kiwi 不是一个理想的隐私浏览器，但其有良好的插件支持。
+\n- Kiwi 不是理想的隐私浏览器，但其有良好的插件支持。
 \n- 搜索引擎会为使用 Kiwi 浏览器完成的每一次搜索而对其付费。根据选择的搜索引擎，请求可能会通过 Kiwibrowser / Kiwisearchservices 服务器。
-\n- Kiwi 中的 Google Ads 可能会将位置数据用于广告——但您可以通过禁用发现功能来禁用它。但这一行为将很快发生变化。请参阅 https://privacy.kiwibrowser.org/ 了解更多详情。</string>
+\n- Kiwi 中的 Google 广告可能会将位置数据用于广告业务——但您可以通过禁用发现功能来禁用它。但这一行为将很快发生变化。请参阅 https://privacy.kiwibrowser.org/ 了解更多详情。</string>
     <string name="lockwise__description">访问密码，为且只为您
 \n
 \n安全地跟踪您的 Firefox 密码变化并在任何地方访问它们。快速从应用程序中打开任何网站并登入您的帐户。</string>
-    <string name="lockwise__eol_reason">Mozilla 在 2021 年 12 月放弃了对它的支持。请切换到其他密码管理器。</string>
+    <string name="lockwise__eol_reason">Mozilla 于 2021 年 12 月结束支持。请切换到其他密码管理器。</string>
     <string name="lockwise__title">Firefox Lockwise</string>
-    <string name="main_activity__github_api_limit_exceeded"><u>超过 GitHub API 限制。请在下一小时重试。</u></string>
-    <string name="main_activity__no_unmetered_network">没有不按流量计费的网络</string>
+    <string name="main_activity__github_api_limit_exceeded"><u>超出 GitHub API 限制。请在下一小时重试。</u></string>
+    <string name="main_activity__no_unmetered_network">无非流量计费网络</string>
     <string name="main_activity__subtitle">隐私友好的浏览器的更新器</string>
     <string name="main_activity__temporary_network_issue"><u>临时网络问题。请稍后重试。</u></string>
     <string name="ok">好的</string>
@@ -290,7 +290,7 @@
     <string name="notification__network_error__text">此错误应该很少发生。但是，如果它经常发生，您应该向我们报告。单击此处查看详细的错误消息。</string>
     <string name="installer__method__shizuku">Shizuku 安装器：在没有确认对话框的情况下更新应用程序。这需要 Shizuku APP 或 Sui Magisk 模块。</string>
     <string name="notification__install_error__generic_channel_name">APP 更新失败通知</string>
-    <string name="installer__method__native">本机安装器：如果会话安装程序在您的智能手机上不起作用，则进行回退。</string>
+    <string name="installer__method__native">原生安装器：作为会话安装器在您的智能手机上无法工作时的后备。</string>
     <string name="device__prefer_32bit_apks__title">32 位安装包优先</string>
     <string name="main_activity__app_was_signed_by_different_certificate">此应用使用了不同的证书签名，无法使用 FFUpdater 更新。</string>
     <string name="tor_browser_alpha__title">Tor 浏览器 Alpha 版本</string>
@@ -342,7 +342,7 @@
     <string name="cromite__description">Cromite 是基于 Bromite 的 Chromium 修改版，支持广告拦截和隐私保护。</string>
     <string name="thorium__title">适用于 Android 的 Thorium 浏览器</string>
     <string name="cromite__warning">- Cromite 使用了 Google Chrome 的技术基础，因而间接支持了 Chromium 渲染引擎的垄断地位。</string>
-    <string name="installer__method__title">安装器策略</string>
+    <string name="installer__method__title">安装器方式</string>
     <string name="cromite__title">Cromite</string>
     <string name="ffupdater__different_signature_message">此版本的 FFUpdater 已由 F-Droid 签名，因此只有 F-Droid 能够发布更新。若要更快地更新 FFUpdater，卸载 FFUpdater 并安装由开发者签名的版本。使用这一版本，FFUpdater 能够自我更新而不必等待 F-Droid。</string>
     <string name="thorium__description">地球上最快的浏览器。适用于 Linux 的 Chromium 修改版，以 90 号放射性元素（钍）命名。</string>
