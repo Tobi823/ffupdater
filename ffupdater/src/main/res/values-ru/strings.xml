@@ -264,9 +264,7 @@
     <string name="duckduckgo_android__title">Приватный браузер DuckDuckGo</string>
     <string name="notification__uncaught_exception__channel_name">Уведомления о сбоях</string>
     <string name="privacy_browser__title">Privacy Browser</string>
-    <string name="firefox_focus_beta__description">Используйте Firefox Focus для всего, что вы хотите хранить отдельно от основного браузера — чтобы все, кто вошёл, вышли и забыли об этом в мгновение ока. Никаких вкладок и лишней суеты. Заблокируйте онлайн-трекеры. Одно касание, и ваша история просмотров полностью удалена.
-\n
-\nFirefox Focus — идеальное средство для входа и выхода, поиска и уничтожения. У меня не ваше дело — веб-браузер.</string>
+    <string name="firefox_focus_beta__description">Используйте Firefox Focus для всего, что вы хотите хранить отдельно от основного браузера — чтобы все, кто вошёл, вышли и забыли об этом в мгновение ока. Никаких вкладок и лишней суеты. Заблокируйте онлайн-трекеры. Одно касание, и ваша история просмотров полностью удалена. \n \nFirefox Focus — идеальное средство для входа и выхода, поиска и уничтожения. У меня не ваше дело — веб-браузер.</string>
     <string name="notification__uncaught_exception__title">Сбой FFUpdater</string>
     <string name="notification__uncaught_exception__channel_description">Неожиданные ошибки, приводящие к сбою FFUpdater.</string>
     <string name="background__installation__when_screen_off__summary">Установка обновлений только при выключенном экране.</string>
