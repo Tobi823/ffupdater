@@ -13,13 +13,9 @@
     <string name="brave__title">Brave 私密浏览器</string>
     <string name="brave__warning">- Brave 使用了 Google Chrome 的技术基础，因而间接支持了 Chromium 渲染引擎的垄断地位。
 \n- 由于其以太坊区块链上的 Basic Attention Token（BAT）技术，该项目与加密货币有联系。 区块链有很多问题，在我看来应该避免。</string>
-    <string name="brave_beta__description">欢迎使用 Brave 浏览器 Android 公测版！
-\n尝试最新功能并给予早期反馈：https://brave.com/msupport
-\n您可以在安装了当前版本的 Brave Android 正式版的同时，另外安装 Brave 公测版。</string>
+    <string name="brave_beta__description">欢迎使用 Brave 浏览器 Android 公测版！ \n尝试最新功能并给予早期反馈：https://brave.com/msupport \n您可以在安装了当前版本的 Brave Android 正式版的同时，另外安装 Brave 公测版。</string>
     <string name="brave_beta__title">Brave 浏览器（公测版）</string>
-    <string name="brave_nightly__description">欢迎使用 Brave 浏览器 Android 每夜版（开发者版）！
-\n尝试最新功能并给予早期反馈：https://brave.com/msupport
-\n您可以在安装了当前版本的 Brave Android 正式版的同时，另外安装 Brave 每夜版。</string>
+    <string name="brave_nightly__description">欢迎使用 Brave 浏览器 Android 每夜版（开发者版）！ \n尝试最新功能并给予早期反馈：https://brave.com/msupport \n您可以在安装了当前版本的 Brave Android 正式版的同时，另外安装 Brave 每夜版。</string>
     <string name="brave_nightly__title">Brave 浏览器（每夜版）</string>
     <string name="crash_report__copy_crash_report_to_clipboard">复制崩溃报告到剪贴板</string>
     <string name="install_activity__download_file_failed__crash_text">下载过程中出现以下错误。如果这个错误频繁出现，请随时在 notabug.org、GitHub 或 GitLab 上提交崩溃报告。</string>
@@ -46,26 +42,15 @@
     <string name="firefox_focus__title">Firefox Focus</string>
     <string name="firefox_klar__description">Firefox Klar 是为德国、奥地利和瑞士开发的浏览器，但任何国家的用户都可以使用。它与 Firefox Focus 非常相似，但在德语国家改了名字，以避免与布尔达传媒集团（Hubert Burda Media group）出版的《焦点周刊（Focus）》杂志相混淆。与 Firefox Focus 不同，Firefox Klar 由于德国严格的隐私法律而默认禁用了遥测功能。</string>
     <string name="firefox_klar__title">Firefox Klar</string>
-    <string name="firefox_nightly__description">请注意，这个应用曾用名为 Firefox 预览版（Preview）。 它现在已过渡到 Firefox 每夜版（Nightly）。
-\n
-\nFirefox 每夜版是 Mozilla 新版本 Firefox 的开发者通道。
-\n
-\nFirefox 每夜版旨在展示 Firefox 的更多实验特性。 每夜版通道允许用户在不稳定的环境中体验最新的 Firefox 创新内容，并提供功能和性能方面的反馈，以帮助确定最终版本的内容。</string>
+    <string name="firefox_nightly__description">请注意，这个应用曾用名为 Firefox 预览版（Preview）。 它现在已过渡到 Firefox 每夜版（Nightly）。 \n \nFirefox 每夜版是 Mozilla 新版本 Firefox 的开发者通道。 \n \nFirefox 每夜版旨在展示 Firefox 的更多实验特性。 每夜版通道允许用户在不稳定的环境中体验最新的 Firefox 创新内容，并提供功能和性能方面的反馈，以帮助确定最终版本的内容。</string>
     <string name="firefox_nightly__title">Firefox 每夜版</string>
     <string name="firefox_release__description">Firefox 浏览器 Android 版天生私密，并且难以置信得快。成千上万的在线追踪器每天都在跟踪你，收集你的上网信息还减慢浏览速度。Firefox 默认拦截了超 2000 个追踪器，并且支持广告屏蔽插件，能让你进一步定制您的浏览器。使用 Firefox，您能在这一私密的移动浏览器中兼顾您需要的安全与速度。</string>
     <string name="firefox_release__title">Firefox 浏览器</string>
     <string name="firefox_release__warning">- F-Droid 上还提供了一款名为 Fennec F-Droid 的改进版 Firefox。</string>
-    <string name="iceraven__description">此应用程序并非由 Mozilla 提供！
-\n
-\nIceraven 浏览器是一款适用于 Android 的网络浏览器，基于 Mozilla 的 Fenix 版 Firefox、GeckoView 和 Mozilla Android 组件。
-\n
-\n我们的目标是成为新版 Firefox Android 的亲密分支，追求为用户提供更多选项和更多自定义能力（包括广泛的扩展库），提供更多访问网页的信息，并让用户决定浏览器如何与这些网页交互。</string>
+    <string name="iceraven__description">此应用程序并非由 Mozilla 提供！ \n \nIceraven 浏览器是一款适用于 Android 的网络浏览器，基于 Mozilla 的 Fenix 版 Firefox、GeckoView 和 Mozilla Android 组件。 \n \n我们的目标是成为新版 Firefox Android 的亲密分支，追求为用户提供更多选项和更多自定义能力（包括广泛的扩展库），提供更多访问网页的信息，并让用户决定浏览器如何与这些网页交互。</string>
     <string name="iceraven__title">Iceraven 浏览器</string>
-    <string name="iceraven__warning">- 维护者不保证或担保此应用的安全性、更新或稳定性。
-\n- 该项目需要更长的时间来提供安全更新。</string>
-    <string name="infobox">这是一款为隐私友好型浏览器打造的更新器。点击加号按钮安装新应用。向下滑动以立刻检查新的更新。 默认情况下，该应用程序会定期在后台检查更新、下载并最终安装更新。点击小齿轮以在设置中自定义行为。
-\n
-\n上次成功后台检查更新时间：%1$s</string>
+    <string name="iceraven__warning">- 维护者不保证或担保此应用的安全性、更新或稳定性。 \n- 该项目需要更长的时间来提供安全更新。</string>
+    <string name="infobox">这是一款为隐私友好型浏览器打造的更新器。点击加号按钮安装新应用。向下滑动以立刻检查新的更新。 默认情况下，该应用程序会定期在后台检查更新、下载并最终安装更新。点击小齿轮以在设置中自定义行为。 \n \n上次成功后台检查更新时间：%1$s</string>
     <string name="app_card__information_about_the_app">应用程序信息</string>
     <string name="download_activity__delete_cache_button_text">清除缓存</string>
     <string name="download_activity__delete_cache_explanation">如果您认为 FFUpdater 缓存了缺损的应用更新，或者您想节省存储空间，请单击按钮删除已下载的文件。</string>
