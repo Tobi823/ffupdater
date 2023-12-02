@@ -359,5 +359,5 @@
     <string name="app_install_info_dialog__install">インストール</string>
     <string name="cardview_dialog__install">最新版をインストール</string>
     <string name="cardview_dialog__different_signature">APK 署名が異なるため、FFUpdater はこのアプリを更新できません。一度アプリをアンインストールして、FFUpdater から再インストールすると修正できます。</string>
-    <string name="fairemail__warning">- GitHub 版 FairEmail 以外を使用中の場合、FFUpdater を使用して更新すると問題が発生することがあります。</string>
+    <string name="fairemail__warning">- このバージョンは OAuth に対応していないため Gmail に対応しません</string>
 </resources>
