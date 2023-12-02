@@ -1,0 +1,6 @@
+Release version 79.1.0 (168)
+- Thanks for the Weblate contributions from: WhiredPlanck, gallegonovato, Daviteusz, Макар Разин, winver and Kazushi Hayama
+- apps can be hidden in the main view with the "hide" button (in the app dialog) or with the "Hidden apps" setting (Tobi823/ffupdater#540)
+- fix crash when installing new app on Android 10 (Tobi823/ffupdater#548)
+- add warning that uninstalling will delete user data (Tobi823/ffupdater#546)
+- improve FairEmail warning (Tobi823/ffupdater#539)
