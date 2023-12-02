@@ -144,8 +144,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private suspend fun showInstalledApps(cacheBehaviour: CacheBehaviour) {
+        val hiddenApps = ForegroundSettings.hiddenApps
         val correctFingerprintApps = InstalledAppsCache.getInstalledAppsWithCorrectFingerprint(applicationContext)
+            .filter { it !in hiddenApps }
         val wrongFingerprintApps = InstalledAppsCache.getInstalledAppsWithDifferentFingerprint(applicationContext)
+            .filter { it !in hiddenApps }
+
         recyclerView.notifyInstalledApps(
             correctFingerprintApps,
             if (ForegroundSettings.isHideAppsSignedByDifferentCertificate) listOf() else wrongFingerprintApps

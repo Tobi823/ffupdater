@@ -41,7 +41,8 @@ class CardviewOptionsDialog(private val app: App) : AppCompatDialogFragment() {
 
     private var wrongFingerprint = false
     private var installedByOtherApp = true
-    var hideAutomaticUpdateSwitch: Boolean = false
+    var hideAutomaticUpdateSwitch = false
+    var showHideButton = true
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(cardview_dialog, container)
@@ -58,6 +59,7 @@ class CardviewOptionsDialog(private val app: App) : AppCompatDialogFragment() {
         configureWarnings(view)
         configureUpdateSwitch(view)
         configureExitButton(view)
+        configureHideButton(view)
         configureInstallButton(view)
     }
 
@@ -118,6 +120,16 @@ class CardviewOptionsDialog(private val app: App) : AppCompatDialogFragment() {
         buttonExit.setOnClickListener { dismiss() }
     }
 
+    private fun configureHideButton(view: View) {
+        val hideButton = view.findViewById<MaterialButton>(R.id.cardview_dialog__hide_button)
+        hideButton.visibility = if (showHideButton) View.VISIBLE else View.GONE
+        hideButton.setOnClickListener {
+            setFragmentResult(APP_WAS_HIDDEN, Bundle())
+            ForegroundSettings.hideApp(app)
+            dismiss()
+        }
+    }
+
     private fun configureInstallButton(view: View) {
         val buttonInstall = view.findViewById<MaterialButton>(R.id.cardview_dialog__install_button)
         buttonInstall.isEnabled = !wrongFingerprint
@@ -171,5 +183,6 @@ class CardviewOptionsDialog(private val app: App) : AppCompatDialogFragment() {
     companion object {
         const val AUTO_UPDATE_CHANGED = "AUTO_UPDATE_CHANGED"
         const val DOWNLOAD_ACTIVITY_WAS_STARTED = "DOWNLOAD_ACTIVITY_WAS_STARTED"
+        const val APP_WAS_HIDDEN = "APP_WAS_HIDDEN"
     }
 }

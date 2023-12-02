@@ -31,6 +31,7 @@ import de.marmaro.krt.ffupdater.notification.NotificationBuilder.showNetworkErro
 import de.marmaro.krt.ffupdater.notification.NotificationRemover
 import de.marmaro.krt.ffupdater.settings.BackgroundSettings
 import de.marmaro.krt.ffupdater.settings.DataStoreHelper
+import de.marmaro.krt.ffupdater.settings.ForegroundSettings
 import de.marmaro.krt.ffupdater.utils.WorkManagerTiming.calcBackoffTime
 import de.marmaro.krt.ffupdater.utils.WorkManagerTiming.getRetriesForTotalBackoffTime
 import java.time.Duration
@@ -161,6 +162,7 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
         InstalledAppsCache.updateCache(applicationContext)
         val appsToCheck = InstalledAppsCache.getInstalledAppsWithCorrectFingerprint(applicationContext)
             .filter { it !in BackgroundSettings.excludedAppsFromUpdateCheck }
+            .filter { it !in ForegroundSettings.hiddenApps }
             .filter { DeviceAbiExtractor.supportsOneOf(it.findImpl().supportedAbis) }
             .filter { !it.findImpl().wasInstalledByOtherApp(applicationContext) }
 

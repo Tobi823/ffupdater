@@ -319,4 +319,7 @@
     <string name="cardview_dialog__eol">This app should no longer be used:</string>
     <string name="cardview_dialog__not_installed_by_ffupdater">This app was not installed or updated by FFUpdater. To avoid conflicts with other applications, automatic updating is disabled.</string>
     <string name="fairemail__warning">- This version does not support OAuth and therefore does not support Gmail.</string>
+    <string name="foreground__hidden_apps__summary">Hidden apps will be hidden in the UI and will not be updated automatically.</string>
+    <string name="foreground__hidden_apps__title">Hidden apps</string>
+    <string name="cardview_dialog__hide">Hide</string>
 </resources>

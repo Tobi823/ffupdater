@@ -45,6 +45,12 @@
             app:singleLineTitle="false"
             app:title="@string/foreground__hide_apps_signed_by_different_certificate__title" />
 
+        <MultiSelectListPreference
+            app:key="foreground__hidden_apps"
+            app:singleLineTitle="false"
+            app:summary="@string/foreground__hidden_apps__summary"
+            app:title="@string/foreground__hidden_apps__title" />
+
     </de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory>
 
 

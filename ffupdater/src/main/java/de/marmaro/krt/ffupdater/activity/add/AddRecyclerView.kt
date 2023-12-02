@@ -94,6 +94,7 @@ class AddRecyclerView(
         activity.lifecycleScope.launch(Dispatchers.Main) {
             val dialog = CardviewOptionsDialog(app)
             dialog.hideAutomaticUpdateSwitch = true
+            dialog.showHideButton = false
             dialog.show(activity.supportFragmentManager, activity.applicationContext)
             dialog.setFragmentResultListener(CardviewOptionsDialog.DOWNLOAD_ACTIVITY_WAS_STARTED) { _, _ ->
                 activity.finish()

@@ -120,6 +120,14 @@
                     android:text="@string/cardview_dialog__exit" />
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/cardview_dialog__hide_button"
+                    style="?attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/cardview_dialog__hide" />
+
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/cardview_dialog__install_button"
                     style="?attr/borderlessButtonStyle"
                     android:layout_width="wrap_content"

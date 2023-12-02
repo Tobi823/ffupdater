@@ -60,6 +60,7 @@ class SettingsActivity : AppCompatActivity() {
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey)
             hideOptionsForLowerApis()
+            loadHiddenAppNames()
             loadExcludedAppNames()
             listenForBackgroundJobRestarts()
             listenForThemeChanges()
@@ -74,6 +75,16 @@ class SettingsActivity : AppCompatActivity() {
                     getString(R.string.settings__background__update_check__when_device_idle__unsupported)
                 findSwitchPref("background__update_check__when_device_idle").isEnabled = false
             }
+        }
+
+        private fun loadHiddenAppNames() {
+            val hiddenApps = findMultiPref("foreground__hidden_apps")
+            hiddenApps.entries = App.values()
+                .map { getString(it.findImpl().title) }
+                .toTypedArray()
+            hiddenApps.entryValues = App.values()
+                .map { it.name }
+                .toTypedArray()
         }
 
         private fun loadExcludedAppNames() {

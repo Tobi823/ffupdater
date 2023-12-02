@@ -25,6 +25,7 @@ import de.marmaro.krt.ffupdater.crash.CrashReportActivity
 import de.marmaro.krt.ffupdater.crash.LogReader
 import de.marmaro.krt.ffupdater.crash.ThrowableAndLogs
 import de.marmaro.krt.ffupdater.dialog.CardviewOptionsDialog
+import de.marmaro.krt.ffupdater.dialog.CardviewOptionsDialog.Companion.APP_WAS_HIDDEN
 import de.marmaro.krt.ffupdater.dialog.CardviewOptionsDialog.Companion.AUTO_UPDATE_CHANGED
 import de.marmaro.krt.ffupdater.settings.BackgroundSettings
 import kotlinx.coroutines.Dispatchers
@@ -39,9 +40,9 @@ class MainRecyclerView(private val activity: MainActivity) : RecyclerView.Adapte
     @Keep
     private data class ExceptionWrapper(val message: Int, val exception: Exception)
 
-    private var elements = listOf<App>()
+    private var elements = mutableListOf<App>()
     private var errors = mutableMapOf<App, ExceptionWrapper>()
-    private var appsWithWrongFingerprint = listOf<App>()
+    private var appsWithWrongFingerprint = setOf<App>()
     private var appAndUpdateStatus = mutableMapOf<App, InstalledAppStatus>()
 
 
@@ -50,8 +51,8 @@ class MainRecyclerView(private val activity: MainActivity) : RecyclerView.Adapte
     fun notifyInstalledApps(appsWithCorrectFingerprint: List<App>, appsWithWrongFingerprint: List<App>) {
         val allElements = appsWithCorrectFingerprint + appsWithWrongFingerprint
         if (elements != allElements || this.appsWithWrongFingerprint != appsWithWrongFingerprint) {
-            elements = allElements
-            this.appsWithWrongFingerprint = appsWithWrongFingerprint
+            elements = allElements.toMutableList()
+            this.appsWithWrongFingerprint = appsWithWrongFingerprint.toSet()
             notifyDataSetChanged()
         }
     }
@@ -185,6 +186,10 @@ class MainRecyclerView(private val activity: MainActivity) : RecyclerView.Adapte
             dialog.show(fragmentManager, activity.applicationContext)
             dialog.setFragmentResultListener(AUTO_UPDATE_CHANGED) { _, _ ->
                 notifyItemChanged(elements.indexOf(app))
+            }
+            dialog.setFragmentResultListener(APP_WAS_HIDDEN) { _, _ ->
+                notifyItemRemoved(elements.indexOf(app))
+                elements.remove(app)
             }
         }
     }

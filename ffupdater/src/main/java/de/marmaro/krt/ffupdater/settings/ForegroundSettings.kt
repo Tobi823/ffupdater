@@ -3,6 +3,7 @@ package de.marmaro.krt.ffupdater.settings
 import android.content.SharedPreferences
 import androidx.annotation.Keep
 import androidx.appcompat.app.AppCompatDelegate
+import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 
 @Keep
@@ -48,5 +49,29 @@ object ForegroundSettings {
 
     val isHideAppsSignedByDifferentCertificate
         get() = preferences.getBoolean("foreground__hide_apps_signed_by_different_certificate", false)
+
+    var hiddenApps: List<App>
+        get() {
+            return (preferences.getStringSet("foreground__hidden_apps", null) ?: setOf())
+                .mapNotNull {
+                    try {
+                        App.valueOf(it)
+                    } catch (e: IllegalArgumentException) {
+                        null
+                    }
+                }
+        }
+        set(value) {
+            val appNames = value.map { it.name }.toSet()
+            preferences.edit()
+                .putStringSet("foreground__hidden_apps", appNames)
+                .apply()
+        }
+
+    fun hideApp(app: App) {
+        val apps = hiddenApps.toMutableList()
+        apps.add(app)
+        hiddenApps = apps
+    }
 
 }
