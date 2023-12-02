@@ -9,6 +9,7 @@ import de.marmaro.krt.ffupdater.app.entity.InstallationStatus
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.security.FingerprintValidator
 import de.marmaro.krt.ffupdater.security.PackageManagerUtil
+import java.lang.IllegalArgumentException
 
 @Keep
 interface InstalledVersionFetcher : AppAttributes {
@@ -48,7 +49,10 @@ interface InstalledVersionFetcher : AppAttributes {
             // removed, installerApp will be null
             installerApp != null && installerApp != BuildConfig.APPLICATION_ID
         } catch (e: PackageManager.NameNotFoundException) {
-            // if app is not installed
+            // if app is not installed (when using getInstallSourceInfo())
+            false
+        } catch (e: IllegalArgumentException) {
+            // if app is not installed (when using getInstallerPackageName())
             false
         }
     }
