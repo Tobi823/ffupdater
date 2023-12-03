@@ -1,0 +1,5 @@
+Έκδοση 78.4.0 (165)
+- Ευχαριστούμε για τις συνεισφορές τους στο Weblate τους: winver, Retrial, 109247019824, Gérson da Fonseca Henzel, gallegonovato, Alexthegib, Kazushi Hayama, Daviteusz, MkQtS και nautilusx
+- Προσθήκη K-9 Mail και FairMail
+- Βελτίωση του ελέγχου ενημέρωσης για Tor Browser / Tor Browser Alpha
+- Ενημέρωση εξαρτήσεων
