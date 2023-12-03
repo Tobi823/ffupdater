@@ -346,4 +346,21 @@
     <string name="cromite__title">Cromite</string>
     <string name="ffupdater__different_signature_message">Αυτή η έκδοση του FFUpdater έχει υπογραφεί από το F-Droid, επομένως μόνο το F-Droid μπορεί να διανέμει ενημερώσεις. Για να λαμβάνετε ενημερώσεις πιο γρήγορα, απεγκαταστήστε το FFUpdater και εγκαταστήστε την υπογεγραμμένη έκδοση προγραμματιστή. Με αυτήν την έκδοση, το FFUpdater μπορεί να ενημερωθεί χωρίς να περιμένει το F-Droid.</string>
     <string name="thorium__description">Το πιο γρήγορο πρόγραμμα περιήγησης στη Γη. Chromium fork για Linux που πήρε το όνομά του από το ραδιενεργό στοιχείο Νο. 90.</string>
+    <string name="cardview_dialog__exit">Κλείσιμο</string>
+    <string name="cardview_dialog__self_description_label">Αυτοπεριγραφή:</string>
+    <string name="fairemail__warning">- Η ενημέρωση της έκδοσης του FairEmail στο Google Play Store με το FFUpdater μπορεί να οδηγήσει σε προβλήματα, όπως π.χ. μια μη λειτουργική υποστήριξη OAuth/Google Mail. Μην ζητάτε βοήθεια από τον προγραμματιστή του FairEmail για προβλήματα που προκαλούνται από το FFUpdater.</string>
+    <string name="cardview_dialog__auto_bg_update">Αυτόματη ενημέρωση στο παρασκήνιο</string>
+    <string name="cardview_dialog__warnings_label">Προειδοποιήσεις:</string>
+    <string name="k9mail__title">K-9 Mail</string>
+    <string name="cardview_dialog__eol">Αυτή η εφαρμογή δεν θα πρέπει πλέον να χρησιμοποιείται:</string>
+    <string name="k9mail__description">Email client πλήρης δυνατοτήτων</string>
+    <string name="fairemail__title">FairEmail</string>
+    <string name="cardview_dialog__not_installed_by_ffupdater">Αυτή η εφαρμογή δεν εγκαταστάθηκε ούτε ενημερώθηκε από το FFUpdater. Για την αποφυγή διενέξεων με άλλες εφαρμογές, η αυτόματη ενημέρωση είναι απενεργοποιημένη.</string>
+    <string name="fairemail__description">Πλήρες δυνατοτήτων, ανοιχτού κώδικα, φιλική προς το απόρρητο εφαρμογή email για Android</string>
+    <string name="app_install_info_dialog__install">Εγκατάσταση</string>
+    <string name="cardview_dialog__install">Εγκατάσταση τελευταίας έκδοσης</string>
+    <string name="cardview_dialog__different_signature">Το FFUpdater δεν μπορεί να ενημερώσει αυτήν την εφαρμογή επειδή η υπογραφή APK είναι διαφορετική. Μπορείτε να το διορθώσετε καταργώντας την εγκατάσταση της εφαρμογής και επανεγκαθιστώντας την με το FFUpdater. Ωστόσο, αυτό θα διαγράψει όλα τα δεδομένα σας στην εφαρμογή. Επομένως, θυμηθείτε να δημιουργήσετε αντίγραφα ασφαλείας των δεδομένων σας εκ των προτέρων.</string>
+    <string name="cardview_dialog__hide">Απόκρυψη</string>
+    <string name="foreground__hidden_apps__title">Κρυφές εφαρμογές</string>
+    <string name="foreground__hidden_apps__summary">Οι κρυφές εφαρμογές θα είναι κρυφές στη διεπαφή χρήστη και δεν θα ενημερώνονται αυτόματα.</string>
 </resources>
