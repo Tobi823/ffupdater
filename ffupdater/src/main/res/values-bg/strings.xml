@@ -340,4 +340,21 @@
     <string name="thorium__title">Четецът Ториум за Андроид</string>
     <string name="cromite__warning">- Хромит използва техническата основа на Гугъл Хром и така косвено поддържа монопола на машината за изчертаване на Хромиум.</string>
     <string name="thorium__description">Най-бързият четец в света. Разклонение на Хромиум за Линукс, с името на радиоактивния елемент № 90.</string>
+    <string name="cardview_dialog__exit">Затваряне</string>
+    <string name="cardview_dialog__self_description_label">Описание:</string>
+    <string name="fairemail__warning">- Обновяването на FairEmail от Google Play с FFUpdater може да доведе до проблеми, като например неработеща поддръжка на OAuth или Google Mail. Не се обръщайте към автора на FairEmail за помощ при проблеми, причинени от FFUpdater.</string>
+    <string name="cardview_dialog__auto_bg_update">Автом. обнов. във фонов режим</string>
+    <string name="cardview_dialog__warnings_label">Предупреждения:</string>
+    <string name="k9mail__title">Поща K-9</string>
+    <string name="cardview_dialog__eol">Приложението не трябва да бъде използвано:</string>
+    <string name="k9mail__description">Пълнофункционален пощенски клиент</string>
+    <string name="fairemail__title">FairEmail</string>
+    <string name="cardview_dialog__not_installed_by_ffupdater">Приложението не е инсталирано от FFUpdater. С цел избягване на конфликти с други приложения автоматичното обновяване е изключено.</string>
+    <string name="fairemail__description">Пълнофункционално, поверително приложение за електронна поща с отворен код</string>
+    <string name="app_install_info_dialog__install">Инсталиране</string>
+    <string name="cardview_dialog__install">Инсталиране последно издание</string>
+    <string name="cardview_dialog__different_signature">FFUpdater не може да обнови това приложение, защото подписът му е различен. Можете да премахнете приложението и да го инсталирате отново с FFUpdater. Така, обаче ще загубите данните. Направете резервно копие преди това.</string>
+    <string name="cardview_dialog__hide">Скриване</string>
+    <string name="foreground__hidden_apps__title">Скрити приложения</string>
+    <string name="foreground__hidden_apps__summary">Скритите приложения ще бъдат недостъпни и няма да бъдат обновявани автоматично.</string>
 </resources>
