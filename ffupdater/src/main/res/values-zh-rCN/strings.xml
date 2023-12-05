@@ -348,7 +348,7 @@
     <string name="thorium__description">地球上最快的浏览器。适用于 Linux 的 Chromium 修改版，以 90 号放射性元素（钍）命名。</string>
     <string name="cardview_dialog__exit">关闭</string>
     <string name="cardview_dialog__self_description_label">自述：</string>
-    <string name="fairemail__warning">- 此版本不支持 OAuth，因此不支持 Gmail。</string>
+    <string name="fairemail__warning">- 使用 FFUpdater 升级 Google Play 商店版的 FairEmail 会引起一些问题，例如：对 OAuth/Google Mail 的支持无法正常工作。请不要就 FFUpdater 造成的问题向 FairEmail 作者寻求帮助。</string>
     <string name="cardview_dialog__auto_bg_update">后台自动更新</string>
     <string name="cardview_dialog__warnings_label">警告：</string>
     <string name="k9mail__title">K-9 邮件</string>
@@ -359,5 +359,8 @@
     <string name="fairemail__description">功能齐全、开源且隐私友好的 Android 电子邮件应用</string>
     <string name="app_install_info_dialog__install">安装</string>
     <string name="cardview_dialog__install">安装最新版本</string>
-    <string name="cardview_dialog__different_signature">由于 APK 签名不同，FFUpdater 无法更新该应用。您可以通过卸载该应用并用 FFUpdater 重新安装来解决此问题。</string>
+    <string name="cardview_dialog__different_signature">由于 APK 签名不同，FFUpdater 无法更新该应用。您可以通过卸载该应用并用 FFUpdater 重新安装来解决此问题，但这会删除您在该应用中的所有数据，请提前备份您的数据。</string>
+    <string name="cardview_dialog__hide">隐藏</string>
+    <string name="foreground__hidden_apps__title">已隐藏的 App</string>
+    <string name="foreground__hidden_apps__summary">已隐藏的 app 将不会在用户界面中显示，并且不会被自动升级。</string>
 </resources>
