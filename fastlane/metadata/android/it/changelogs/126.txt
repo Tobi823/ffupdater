@@ -1,0 +1,6 @@
+* Si ringraziano per il contributo Weblate: SiniKraft, kotyhoroshko, Juraj Motuz, bryce-lynch, 109247019824,
+  Retrial, nautilusx, gallegonovato e MkQtS
+* BackgroundJob va tentato più volte prima di notificare un errore.
+* Migliorata la cache dei file APK scaricati
+* Richiesta del permesso di notifica su Android 13
+* Correzione bug dell'interfaccia utente nella vista principale

@@ -1,0 +1,2 @@
+* Grazie per il contributo Weblate: gallegonovato, MkQtS, Juraj Motuz e Retrial
+* Controllo dimensione del file scaricato, e avviso + interruzione installazione se la dimensione è diversa (quando possibile)
