@@ -342,7 +342,7 @@
     <string name="thorium__description">Najszybsza przeglądarka na ziemi. Fork Chromium dla Linuksa nazwany na cześć radioaktywnego pierwiastka nr 90.</string>
     <string name="cardview_dialog__exit">Zamknij</string>
     <string name="cardview_dialog__self_description_label">Opis:</string>
-    <string name="fairemail__warning">- Ta wersja nie obsługuje OAuth i dlatego nie obsługuje Gmaila.</string>
+    <string name="fairemail__warning">- Aktualizacja wersji FairEmail ze Sklepu Google Play za pomocą FFUpdater może prowadzić do problemów, takich jak np. niedziałająca obsługa OAuth/Google Mail. Nie należy prosić autora FairEmail o pomoc w przypadku problemów spowodowanych przez FFUpdater.</string>
     <string name="cardview_dialog__auto_bg_update">Automatyczna aktualizacja w tle</string>
     <string name="cardview_dialog__warnings_label">Ostrzeżenia:</string>
     <string name="k9mail__title">K-9 Mail</string>
@@ -353,5 +353,8 @@
     <string name="fairemail__description">W pełni funkcjonalna, otwartoźródłowa, przyjazna dla prywatności aplikacja e-mail na Androida</string>
     <string name="app_install_info_dialog__install">Instaluj</string>
     <string name="cardview_dialog__install">Instaluj najnowszą wersję</string>
-    <string name="cardview_dialog__different_signature">FFUpdater nie może zaktualizować tej aplikacji, ponieważ sygnatura APK jest inna. Możesz to naprawić, odinstalowując aplikację i instalując ją ponownie za pomocą FFUpdater.</string>
+    <string name="cardview_dialog__different_signature">FFUpdater nie może zaktualizować tej aplikacji, ponieważ sygnatura APK jest inna. Można to naprawić odinstalowując aplikację i instalując ją ponownie za pomocą FFUpdater. Spowoduje to jednak usunięcie wszystkich danych z aplikacji. Pamiętaj więc, aby wcześniej wykonać kopię zapasową danych.</string>
+    <string name="cardview_dialog__hide">Ukryj</string>
+    <string name="foreground__hidden_apps__title">Ukryte aplikacje</string>
+    <string name="foreground__hidden_apps__summary">Ukryte aplikacje będą ukryte w interfejsie użytkownika i nie będą aktualizowane automatycznie.</string>
 </resources>
