@@ -354,4 +354,5 @@
     <string name="app_install_info_dialog__install">Встановити</string>
     <string name="cardview_dialog__install">Встановити останню версію</string>
     <string name="cardview_dialog__different_signature">FFUpdater не може оновити цей застосунок, оскільки підпис APK-файлу відрізняється. Ви можете виправити це шляхом видалення застосунку та перевстановлення його з FFUpdater. Це видалить всі ваші дані в застосунку. Збережіть дані перед видаленням.</string>
+    <string name="foreground__hidden_apps__title">Приховані застосунки</string>
 </resources>
