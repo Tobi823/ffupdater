@@ -1,2 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="brave__warning">- Brave folosește fundația tehnică a Google Chrome și, astfel, susține indirect poziția de monopol a motorului de randare Chromium. 
+\n- Datorită token-ului său Basic Attention Token BAT pe blockchain-ul Ethereum, proiectul are legături cu criptomonedele. Blockchain-urile au multe probleme și ar trebui evitate în opinia mea.</string>
+    <string name="notification__error__text">Vă rugăm să raportați această eroare. Clic pentru a vedea raportul de eroare.</string>
+    <string name="app_description">Updater pentru browsere confidențiale</string>
+    <string name="brave__title">Browser privat Brave</string>
+    <string name="notification__error__title">Verificarea actualizării în fundal a eșuat</string>
+    <string name="action_about_title">Despre FFUpdater</string>
+    <string name="brave_beta__title">Brave Browser (Beta)</string>
+    <string name="brave__description">Navigați privat pe internet, gratuit!
+\nBrave Private Browser App este un browser web privat rapid, gratuit și sigur, cu blocator de reclame și blocator de pop-up. Navigați și căutați pe internet în mod privat, fără a fi urmăriți de agenții de publicitate, programe malware și pop-up-uri.</string>
+    <string name="application_successfully_installed">Aplicație instalată cu succes</string>
+    <string name="brave_beta__description">Bine ai venit la Brave Beta pentru Android!
+\nÎncearcă cele mai noi caracteristici și oferă-ne un feedback timpuriu: https://brave.com/msupport
+\nPuteți instala Brave Beta alături de versiunea actuală a Brave pentru Android.</string>
+    <string name="application_installation_was_not_successful">Instalarea aplicației nu a reușit</string>
+    <string name="app_name">FFUpdater</string>
+</resources>
