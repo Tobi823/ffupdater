@@ -1,6 +1,6 @@
-* Za příspěvek na Weblate děkují: John doe, Oğuz Ersen, atilluF, Vitor Henrique, 109247019824, nautilusx, Juraj Motuz, MkQtS, Giovanni Donisi, Artem a Eduardo Malaspina. 
-* Přidáno Chromium, Orbot, Tor, 
-* Vylepšení uživatelského rozhraní pro přidávání nových aplikací 
-* Ve výchozím nastavení nedůvěřovat uživatelské certifikační autoritě (lze vypnout). 
-* Opravy chyb 
+* Za příspěvek na Weblate děkují: John doe, Oğuz Ersen, atilluF, Vitor Henrique, 109247019824, nautilusx, Juraj Motuz, MkQtS, Giovanni Donisi, Artem a Eduardo Malaspina.
+* Přidáno Chromium, Orbot, Tor,
+* Vylepšení uživatelského rozhraní pro přidávání nových aplikací
+* Ve výchozím nastavení nedůvěřovat uživatelské certifikační autoritě (lze vypnout).
+* Opravy chyb
 * Vyčištění a refaktorizace kódu
