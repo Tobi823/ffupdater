@@ -21,6 +21,7 @@ import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.R.layout.cardview_dialog
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.InstallationStatus.INSTALLED_WITH_DIFFERENT_FINGERPRINT
+import de.marmaro.krt.ffupdater.app.impl.AppBase
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.network.NetworkUtil
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
@@ -33,19 +34,33 @@ import kotlinx.coroutines.runBlocking
  * Show a dialog with the app description.
  */
 @Keep
-class CardviewOptionsDialog(private val app: App) : AppCompatDialogFragment() {
-
-    private val appImpl = app.findImpl()
-    private val isEol = appImpl.isEol()
-    private val isExcluded = app in BackgroundSettings.excludedAppsFromUpdateCheck
-
+class CardviewOptionsDialog : AppCompatDialogFragment() {
+    private lateinit var app: App
+    private lateinit var appImpl: AppBase
+    private var isEol = false
+    private var isExcluded = false
     private var wrongFingerprint = false
     private var installedByOtherApp = true
-    var hideAutomaticUpdateSwitch = false
-    var showHideButton = true
+    private var hideAutomaticUpdateSwitch = false
+    private var hideTheHideButton = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        initAttributes()
         return inflater.inflate(cardview_dialog, container)
+    }
+
+    private fun initAttributes() {
+        val appName = requireArguments().getString(argsApp)!!
+        app = App.valueOf(appName)
+        appImpl = app.findImpl()
+        isEol = appImpl.isEol()
+        isExcluded = app in BackgroundSettings.excludedAppsFromUpdateCheck
+        runBlocking {
+            wrongFingerprint = appImpl.isInstalled(requireContext()) == INSTALLED_WITH_DIFFERENT_FINGERPRINT
+        }
+        installedByOtherApp = appImpl.wasInstalledByOtherApp(requireContext())
+        hideAutomaticUpdateSwitch = requireArguments().getBoolean(argsHideAutomaticUpdateSwitch)
+        hideTheHideButton = requireArguments().getBoolean(argsHideTheHideButton)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -122,7 +137,7 @@ class CardviewOptionsDialog(private val app: App) : AppCompatDialogFragment() {
 
     private fun configureHideButton(view: View) {
         val hideButton = view.findViewById<MaterialButton>(R.id.cardview_dialog__hide_button)
-        hideButton.visibility = if (showHideButton) View.VISIBLE else View.GONE
+        hideButton.visibility = if (hideTheHideButton) View.GONE else View.VISIBLE
         hideButton.setOnClickListener {
             setFragmentResult(APP_WAS_HIDDEN, Bundle())
             ForegroundSettings.hideApp(app)
@@ -136,14 +151,8 @@ class CardviewOptionsDialog(private val app: App) : AppCompatDialogFragment() {
         buttonInstall.setOnClickListener { installLatestUpdate() }
     }
 
-    suspend fun show(manager: FragmentManager, tempContext: Context) {
+    fun show(manager: FragmentManager, tempContext: Context) {
         setStyle(STYLE_NO_FRAME, R.style.Theme_Material3_DayNight_Dialog_Alert)
-
-        val impl = app.findImpl()
-        runBlocking {
-            wrongFingerprint = impl.isInstalled(tempContext) == INSTALLED_WITH_DIFFERENT_FINGERPRINT
-        }
-        installedByOtherApp = impl.wasInstalledByOtherApp(tempContext)
         show(manager, "cardview_options_dialog")
     }
 
@@ -180,7 +189,28 @@ class CardviewOptionsDialog(private val app: App) : AppCompatDialogFragment() {
         return NetworkUtil.isNetworkMetered(requireContext())
     }
 
+    fun hideAutomaticUpdateSwitch() {
+        requireArguments().putBoolean(argsHideAutomaticUpdateSwitch, true)
+    }
+
+    fun hideTheHideButton() {
+        requireArguments().putBoolean(argsHideTheHideButton, true)
+    }
+
     companion object {
+        fun create(app: App): CardviewOptionsDialog {
+            val bundle = Bundle()
+            bundle.putString(argsApp, app.name)
+            bundle.putBoolean(argsHideAutomaticUpdateSwitch, false)
+            bundle.putBoolean(argsHideTheHideButton, false)
+            val dialog = CardviewOptionsDialog()
+            dialog.arguments = bundle
+            return dialog
+        }
+
+        private const val argsApp = "app"
+        private const val argsHideAutomaticUpdateSwitch = "hideAutomaticUpdateSwitch"
+        private const val argsHideTheHideButton = "hideTheHideButton"
         const val AUTO_UPDATE_CHANGED = "AUTO_UPDATE_CHANGED"
         const val DOWNLOAD_ACTIVITY_WAS_STARTED = "DOWNLOAD_ACTIVITY_WAS_STARTED"
         const val APP_WAS_HIDDEN = "APP_WAS_HIDDEN"
