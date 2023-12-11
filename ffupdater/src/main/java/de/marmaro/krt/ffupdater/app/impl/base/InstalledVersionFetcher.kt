@@ -41,7 +41,8 @@ interface InstalledVersionFetcher : AppAttributes {
     fun wasInstalledByOtherApp(context: Context): Boolean {
         return try {
             val installerApp: String? = if (DeviceSdkTester.supportsAndroid11Q30()) {
-                context.packageManager.getInstallSourceInfo(packageName).initiatingPackageName
+                val info = context.packageManager.getInstallSourceInfo(packageName)
+                info.installingPackageName ?: info.initiatingPackageName ?: info.originatingPackageName
             } else {
                 context.packageManager.getInstallerPackageName(packageName)
             }

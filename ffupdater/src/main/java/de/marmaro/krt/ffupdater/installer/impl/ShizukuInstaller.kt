@@ -8,6 +8,7 @@ import android.content.pm.PackageInstaller
 import android.content.pm.PackageInstallerHidden
 import android.content.pm.PackageManager
 import androidx.annotation.Keep
+import de.marmaro.krt.ffupdater.BuildConfig.APPLICATION_ID
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.entity.Installer
@@ -93,14 +94,13 @@ class ShizukuInstaller(app: App) : SessionInstaller(app, false) {
         iPackageInstaller: IPackageInstaller?,
         context: Context,
     ): PackageInstaller {
-        val installerPackageName = "com.android.shell"
         val userId = 0
         val hiddenPackageInstaller = if (DeviceSdkTester.supportsAndroid12S31()) {
-            PackageInstallerHidden(iPackageInstaller, installerPackageName, null, userId)
+            PackageInstallerHidden(iPackageInstaller, APPLICATION_ID, null, userId)
         } else if (DeviceSdkTester.supportsAndroid8Oreo26()) {
-            PackageInstallerHidden(iPackageInstaller, installerPackageName, userId)
+            PackageInstallerHidden(iPackageInstaller, APPLICATION_ID, userId)
         } else {
-            PackageInstallerHidden(context, context.packageManager, iPackageInstaller, installerPackageName, userId)
+            PackageInstallerHidden(context, context.packageManager, iPackageInstaller, APPLICATION_ID, userId)
         }
         return Refine.unsafeCast(hiddenPackageInstaller)
     }
