@@ -355,4 +355,8 @@
     <string name="cardview_dialog__install">Встановити останню версію</string>
     <string name="cardview_dialog__different_signature">FFUpdater не може оновити цей застосунок, оскільки підпис APK-файлу відрізняється. Ви можете виправити це шляхом видалення застосунку та перевстановлення його з FFUpdater. Це видалить всі ваші дані в застосунку. Збережіть дані перед видаленням.</string>
     <string name="foreground__hidden_apps__title">Приховані застосунки</string>
+    <string name="fairemail__warning">- Оновлення версії Google Play Store FairEmail з FFUpdater може призвести до проблем, таких як наприклад, нефункціональна підтримка OAuth/Google Mail. Не просіть автора FairEmail за допомогою з проблемами, викликаними FFUpdater.</string>
+    <string name="cardview_dialog__not_installed_by_ffupdater">Цей застосунок був встановлений або оновлений не через FFUpdater. Щоб уникнути конфліктів з іншими застосунками, автоматичне оновлення вимкнено.</string>
+    <string name="cardview_dialog__hide">Приховати</string>
+    <string name="foreground__hidden_apps__summary">Приховані застосунки будуть приховані в інтерфейсі й не будуть оновлюватися автоматично.</string>
 </resources>
