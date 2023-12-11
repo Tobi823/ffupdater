@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Environment
 import androidx.annotation.Keep
 import com.topjohnwu.superuser.Shell
+import de.marmaro.krt.ffupdater.BuildConfig
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.installer.entity.Installer
 import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
@@ -24,7 +25,7 @@ class RootInstaller(app: App) : AbstractAppInstaller(app) {
         failIfRootPermissionIsMissing()
         val size = file.length().toInt()
         val sessionId = createInstallationSession(size)
-        installApkFileHelper(sessionId, size, file.canonicalPath, file.name)
+        installApkFileWithShell(sessionId, size, file.canonicalPath, file.name)
     }
 
     private fun restartInternalShellToGetAlwaysRootPermission() {
@@ -63,7 +64,7 @@ class RootInstaller(app: App) : AbstractAppInstaller(app) {
 
     @Throws(IllegalStateException::class)
     private suspend fun createInstallationSession(size: Int): Int {
-        val response = execute("pm install-create -i com.android.vending --user 0 -r -S $size")
+        val response = execute("pm install-create -i ${BuildConfig.APPLICATION_ID} --user 0 -r -S $size")
         val result = response[0]
 
         val sessionIdMatch = Regex("""\d+""").find(result)
@@ -75,7 +76,7 @@ class RootInstaller(app: App) : AbstractAppInstaller(app) {
         return sessionId.value.toInt()
     }
 
-    private suspend fun installApkFileHelper(sessionId: Int, size: Int, filePath: String, fileName: String) {
+    private suspend fun installApkFileWithShell(sessionId: Int, size: Int, filePath: String, fileName: String) {
         execute("""cat "$filePath" | pm install-write -S $size $sessionId "$fileName"""")
         execute("""pm install-commit $sessionId""")
     }
