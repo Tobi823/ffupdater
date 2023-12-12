@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="brave__warning">- Brave sử dụng nền tảng kĩ thuật của Google Chrome và do đó gián tiếp hỗ trợ cho vị thế độc quyền của công cụ kết xuất Chromium.
-\n- Do token chú ý cơ bản BAT của nó trên Ethereum blockchain nên dự án có mối quan hệ với tiền mã hóa. Blockchains có nhiều vấn đề và nên được tránh xa theo quan điểm của tôi.</string>
+    <string name="brave__warning">- Brave sử dụng nền tảng kĩ thuật của Google Chrome và do đó gián tiếp hỗ trợ cho vị thế độc quyền của công cụ kết xuất Chromium. \n- Do token chú ý cơ bản BAT của nó trên Ethereum blockchain nên dự án có mối quan hệ với tiền mã hóa. Blockchains có nhiều vấn đề và nên được tránh xa theo quan điểm của tôi.</string>
     <string name="notification__error__text">Vui lòng báo cáo lỗi này. Bấm để xem báo cáo lỗi.</string>
     <string name="download_activity__download_failed">Tải xuống không thành công</string>
     <string name="download_activity__open_folder">Mở thư mục</string>
     <string name="app_description">Trình cập nhật cho những trình duyệt thân thiện với quyền riêng tư</string>
     <string name="brave__title">Trình duyệt riêng tư Brave</string>
     <string name="download_activity__open_cache_folder_button_text">mở thư mục bộ nhớ đệm</string>
-    <string name="infobox">Đây là một trình cập nhật cho các trình duyệt thân thiện với quyền riêng tư. Bấm vào nút dấu cộng để cài đặt ứng dụng mới. Vuốt xuống để buộc kiểm tra các bản cập nhật. Mặc định, ứng dụng sẽ kiểm tra các bản cập nhật theo chu kỳ, tức sẽ được tải xuống và thậm chí được cài đặt. Bấm vào hình bánh răng để tùy chỉnh hành vi trong cài đặt.
-\n
-\nLần cuối kiểm tra cập nhật dưới nền thành công: %1$s</string>
+    <string name="infobox">Đây là một trình cập nhật cho các trình duyệt thân thiện với quyền riêng tư. Bấm vào nút dấu cộng để cài đặt ứng dụng mới. Vuốt xuống để buộc kiểm tra các bản cập nhật. Mặc định, ứng dụng sẽ kiểm tra các bản cập nhật theo chu kỳ, tức sẽ được tải xuống và thậm chí được cài đặt. Bấm vào hình bánh răng để tùy chỉnh hành vi trong cài đặt. \n \nLần cuối kiểm tra cập nhật dưới nền thành công: %1$s</string>
     <string name="notification__eol_apps__title">Ứng dụng quá hạn đã cài đặt</string>
     <string name="notification__error__title">Kiểm tra cập nhật dưới nền không thành công</string>
     <string name="crash_report__go_to_github">Đi đến GitHub</string>
@@ -24,11 +21,7 @@
     <string name="firefox_beta__description">Trình duyệt Firefox cho Android là an toàn một cách tự động và nhanh đáng kinh ngạc. Hàng ngàn trình theo dõi trực tuyến đang theo dõi bạn hàng ngày, thu thập thông tin về những nơi bạn đến khi trực tuyến là làm bạn chậm đi. Firefox mặc định chặn hơn 2000 trong các trình theo dõi này và có sẵn những tiện ích chặn quảng cáo nếu bạn muốn tùy chỉnh trình duyệt của bạn thêm nữa. Với Firefox, bạn sẽ nhận được sự bảo mật mà bạn xứng đáng được có và tốc độ mà bạn cần trong một trình duyệt di động riêng tư.</string>
     <string name="app_installer__signature_of_download_is_invalid">Ứng dụng đã tải xuống CHƯA ĐƯỢC xác minh</string>
     <string name="installed_application_is_verified">Ứng dụng đã cài đặt được xác minh</string>
-    <string name="firefox_nightly__description">Vui lòng chú ý rằng ứng dụng này từng được có tiêu đề là Firefox Preview. Nó đã được chuyển tiếp thành Firefox Nightly.
-\n
-\nFirefox Nightly là một kênh phát triển cho các bản phát hành mới của Mozilla Firefox.
-\n
-\nFirefox Nightly được thiết kế để trưng bày những bản dựng mang tính thử nghiệm hơn của Firefox. Kênh Nightly cho phép người dùng trải nghiệm những sự đổi mới mới nhất của Firefox trong một môi trường không ổn định, và cho ra phản hồi về tính năng và hiệu năng để giúp xác định điều gì tạo nên bản phát hành cuối cùng.</string>
+    <string name="firefox_nightly__description">Vui lòng chú ý rằng ứng dụng này từng được có tiêu đề là Firefox Preview. Nó đã được chuyển tiếp thành Firefox Nightly. \n \nFirefox Nightly là một kênh phát triển cho các bản phát hành mới của Mozilla Firefox. \n \nFirefox Nightly được thiết kế để trưng bày những bản dựng mang tính thử nghiệm hơn của Firefox. Kênh Nightly cho phép người dùng trải nghiệm những sự đổi mới mới nhất của Firefox trong một môi trường không ổn định, và cho ra phản hồi về tính năng và hiệu năng để giúp xác định điều gì tạo nên bản phát hành cuối cùng.</string>
     <string name="download_activity__you_can_now_close_this_window">Bây giờ bạn có thể đóng cửa sổ này</string>
     <string name="action_about_title">Về FFUpdater</string>
     <string name="kiwi__description">Trình duyệt Kiwi được làm ra để duyệt internet, đọc tin tức, xem video và nghe nhạc mà không bị quấy rầy.</string>
@@ -41,9 +34,7 @@
     <string name="firefox_release__warning">- Một phiên bản được cải thiện của Firefox cũng có sẵn trên F-Droid dưới tên Fennec F-Droid.</string>
     <string name="firefox_release__description">Trình duyệt Firefox cho Android là an toàn một cách tự động và nhanh đáng kinh ngạc. Hàng ngàn trình theo dõi trực tuyến đang theo dõi bạn hàng ngày, thu thập thông tin về những nơi bạn đến khi trực tuyến là làm bạn chậm đi. Firefox mặc định chặn hơn 2000 trong các trình theo dõi này và có sẵn những tiện ích chặn quảng cáo nếu bạn muốn tùy chỉnh trình duyệt của bạn thêm nữa. Với Firefox, bạn sẽ nhận được sự bảo mật mà bạn xứng đáng được có và tốc độ mà bạn cần trong một trình duyệt di động riêng tư.</string>
     <string name="notification__install_error__title">%1$s không thể được cập nhật</string>
-    <string name="brave_nightly__description">Chào mừng đến với Brave Nightly (Nhà phát triển) cho Android!
-\nThử qua những tính năng mới nhất và đưa ra phản hồi sớm: https://brave.com/msupport
-\nBạn có thể cài đặt Brave Nightly cùng với phiên bản Brave for Android hiện tại của bạn.</string>
+    <string name="brave_nightly__description">Chào mừng đến với Brave Nightly (Nhà phát triển) cho Android! \nThử qua những tính năng mới nhất và đưa ra phản hồi sớm: https://brave.com/msupport \nBạn có thể cài đặt Brave Nightly cùng với phiên bản Brave for Android hiện tại của bạn.</string>
     <string name="download_activity__temporary_network_issue">Đã xảy ra sự cố mạng tạm thời. Vui lòng thử lại sau.</string>
     <string name="installed_version">Đã cài đặt: %1$s</string>
     <string name="app_icon">biểu tượng ứng dụng</string>
@@ -76,19 +67,12 @@
     <string name="notification__install_success__channel_name">Thông báo %1$s cập nhật thành công</string>
     <string name="firefox_release__title">Trình duyệt Firefox</string>
     <string name="install_activity__download_file_failed__crash_text">Đã xảy ra lỗi sau trong khi tải xuống. Nếu lỗi này xảy ra thường xuyên, vui lòng gửi bản báo cáo sự cố qua notabug.org, GitHub hoặc GitLab.</string>
-    <string name="brave_beta__description">Chào mừng đến với Brave Beta cho Android!
-\nThử qua những tính năng mới nhất và đưa ra phản hồi sớm: https://brave.com/msupport
-\nBạn có thể cài đặt Brave Beta cùng với phiên bản Brave cho Android hiện tại của bạn.</string>
+    <string name="brave_beta__description">Chào mừng đến với Brave Beta cho Android! \nThử qua những tính năng mới nhất và đưa ra phản hồi sớm: https://brave.com/msupport \nBạn có thể cài đặt Brave Beta cùng với phiên bản Brave cho Android hiện tại của bạn.</string>
     <string name="download_activity__github_rate_limit_exceeded">Đã vượt giới hạn tỉ lệ API GitHub. Vui lòng thử tải xuống lại vào giờ sau.</string>
     <string name="app_installer__installed_app_has_invalid_signature">Ứng dụng đã cài đặt CHƯA ĐƯỢC xác minh</string>
-    <string name="iceraven__description">Chắc chắc không được mang đến cho bạn bởi Mozilla!
-\n
-\nTrình duyệt Iceraven là một trình duyệt web cho Android, dựa trên phiên bản Fenix của Mozilla Firefox, GeckoView và những thành phần Mozilla Android.
-\n
-\nMục tiêu của chúng tôi là trở thành bản rẽ nhánh mới của Firefox cho Android tìm mang đến cho người dùng thêm tùy chọn, thêm cơ hội để tùy biến (bao gồm cả một thư viện tiện ích ngoài), và thêm thông tin về trang họ truy cập và cách trình duyệt của họ tương tác với những trang này.</string>
+    <string name="iceraven__description">Chắc chắc không được mang đến cho bạn bởi Mozilla! \n \nTrình duyệt Iceraven là một trình duyệt web cho Android, dựa trên phiên bản Fenix của Mozilla Firefox, GeckoView và những thành phần Mozilla Android. \n \nMục tiêu của chúng tôi là trở thành bản rẽ nhánh mới của Firefox cho Android tìm mang đến cho người dùng thêm tùy chọn, thêm cơ hội để tùy biến (bao gồm cả một thư viện tiện ích ngoài), và thêm thông tin về trang họ truy cập và cách trình duyệt của họ tương tác với những trang này.</string>
     <string name="download_activity__exception__show_button"><u>Hiện chi tiết bản báo cáo lỗi.</u></string>
-    <string name="iceraven__warning">- Người bảo trì không đưa ra bảo hành hay cam kết về bảo mật hay cập nhật hay thậm chí độ ổn định.
-\n - Dự án tốn nhiều thời gian hơn thông thường để cung cấp các bản cập nhật về bảo mật.</string>
+    <string name="iceraven__warning">- Người bảo trì không đưa ra bảo hành hay cam kết về bảo mật hay cập nhật hay thậm chí độ ổn định. \n - Dự án tốn nhiều thời gian hơn thông thường để cung cấp các bản cập nhật về bảo mật.</string>
     <string name="crash_report__explain_text__download_activity_install_file">Lỗi này xảy ra trong quá trình cài đặt. Nếu lỗi này xảy ra thường xuyên, vui lòng gửi bản báo cáo sự cố qua notabug.org, GitHub hoặc GitLab.</string>
     <string name="firefox_focus__description">Đây là một bản sửa đổi của trình duyệt Firefox hướng tới tăng cường sự riêng tư.</string>
     <string name="notification__eol_apps__text">Bạn có ứng dụng quá hạn tức không nên được sử dụng nữa: %1$s</string>
@@ -107,8 +91,7 @@
     <string name="app_card__download_the_app">tải ứng dụng</string>
     <string name="download_activity__different_installer_info__text">Nếu quá trình cài đặt thường xuyên không thành công, hãy thử chuyển sang \'trình cài đặt gốc\' trong cài đặt.</string>
     <string name="download_activity__delete_cache_explanation">Nếu bạn nghĩ rằng FFUpdater đã lưu vào bộ nhớ đệm một bản cập nhật ứng dụng bị lỗi hoặc nếu bạn muốn tiết kiệm không gian, bấm nút để xóa tệp đã tải.</string>
-    <string name="vivaldi__warning">- Vivaldi chỉ là mã nguồn mở một phần.
-\n- Nó cũng sử dụng nền tảng kỹ thuật của Google Chrome và do đó gián tiếp hỗ trợ cho vị thế độc quyền của công cụ kết xuất Chromium.</string>
+    <string name="vivaldi__warning">- Vivaldi chỉ là mã nguồn mở một phần. \n- Nó cũng sử dụng nền tảng kỹ thuật của Google Chrome và do đó gián tiếp hỗ trợ cho vị thế độc quyền của công cụ kết xuất Chromium.</string>
     <string name="notification__network_error__title">Lỗi mạng trong quá trình nền</string>
     <string name="background__separate_notification_channels__title">Các kênh thông báo khác nhau</string>
     <string name="update_interval__3d">3 ngày</string>
@@ -156,17 +139,7 @@
     <string name="update_interval__2h">2 tiếng</string>
     <string name="installer__method__session">Trình cài đặt phiên: Được khuyến nghị cho hầu hết các thiết bị. Trên Android 12 trở lên, ứng dụng có thể được cập nhật âm thầm sau khi được người dùng xác nhận một lần.</string>
     <string name="add_app_activity__add_new_application">Thêm ứng dụng mới</string>
-    <string name="network__custom_doh_server__dialog_message">Nhập chi tiết kết nối cho máy chủ DoH tùy chỉnh ở một trong các định dạng sau:
-\n
-\nurl;ip1
-\n
-\nurl;ip1;ip2
-\n
-\nurl;ip1;ip2;ip3
-\n
-\nurl;ip1;ip2;ip3;ip4
-\n
-\nVí dụ: https://dns.google/dns-query;8.8.8.8 hoặc https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
+    <string name="network__custom_doh_server__dialog_message">Nhập chi tiết kết nối cho máy chủ DoH tùy chỉnh ở một trong các định dạng sau: \n \nurl;ip1 \n \nurl;ip1;ip2 \n \nurl;ip1;ip2;ip3 \n \nurl;ip1;ip2;ip3;ip4 \n \nVí dụ: https://dns.google/dns-query;8.8.8.8 hoặc https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
     <string name="settings__background__installation__enabled__title">Cài đặt bản cập nhật</string>
     <string name="session_installer__status_failure">Thao tác không thành công một cách chung chung. Hệ thống sẽ luôn cố gắng cung cấp lý do lỗi cụ thể hơn, nhưng trong một số trường hợp hiếm hoi, lý do này có thể được đưa ra.</string>
     <string name="update_interval__2d">2 ngày</string>
@@ -221,11 +194,7 @@
     <string name="update_interval__1d">1 ngày</string>
     <string name="settings__foreground_category__summary">Cài đặt khi giao diện người dùng được hiện.</string>
     <string name="settings__background_category__title">Nền</string>
-    <string name="tor_browser_alpha__description">Tor Browser là trình duyệt di động chính thức duy nhất được hỗ trợ bởi Tor Project, các nhà phát triển công cụ mạnh nhất thế giới về quyền riêng tư và quyền tự do trực tuyến.
-\n
-\nTor Browser sẽ LUÔN miễn phí, nhưng sự đóng góp sẽ giúp điều đó trở nên khả thi. Dự án Tor là một tổ chức phi lợi nhuận 501©(3) có trụ sở tại Hoa Kỳ. Hãy cân nhắc việc đóng góp ngay hôm nay. Mỗi món quà đều tạo nên sự khác biệt: https://donate.torproject.org.
-\n
-\nTìm hiểu cách báo cáo lỗi và cung cấp phản hồi tại https://support.torproject.org/misc/bug-or-feedback/!</string>
+    <string name="tor_browser_alpha__description">Tor Browser là trình duyệt di động chính thức duy nhất được hỗ trợ bởi Tor Project, các nhà phát triển công cụ mạnh nhất thế giới về quyền riêng tư và quyền tự do trực tuyến. \n \nTor Browser sẽ LUÔN miễn phí, nhưng sự đóng góp sẽ giúp điều đó trở nên khả thi. Dự án Tor là một tổ chức phi lợi nhuận 501©(3) có trụ sở tại Hoa Kỳ. Hãy cân nhắc việc đóng góp ngay hôm nay. Mỗi món quà đều tạo nên sự khác biệt: https://donate.torproject.org. \n \nTìm hiểu cách báo cáo lỗi và cung cấp phản hồi tại https://support.torproject.org/misc/bug-or-feedback/!</string>
     <string name="session_installer__status_failure_storage">Thao tác không thành công do vấn đề lưu trữ. Ví dụ: thiết bị có thể sắp hết dung lượng hoặc phương tiện bên ngoài có thể không khả dụng. Người dùng có thể giúp giải phóng dung lượng hoặc chèn các phương tiện bên ngoài khác nhau.</string>
     <string name="settings__foreground__theme_preference__title">Chọn giao diện</string>
     <string name="settings__theme_battery_saver">Tối khi Trình tiết kiệm pin đang bật</string>
@@ -241,15 +210,7 @@
     <string name="session_installer__status_failure_aborted">Thao tác không thành công vì nó đã bị chủ động hủy bỏ. Ví dụ: người dùng chủ động từ chối các quyền được yêu cầu hoặc phiên bị hủy.</string>
     <string name="settings__background__update_check__enabled__summary">Kiểm tra các bản cập nhật mới theo định kỳ.</string>
     <string name="settings__theme_system_default">Theo mặc định hệ thống</string>
-    <string name="network__proxy__dialog_message">Nếu bạn muốn sử dụng proxy SOCKS hoặc HTTPS, nhập thông tin kết nối tại đây. Sử dụng một trong các định dạng sau:
-\n
-\nSOCKS/HTTP;ip/domain;port
-\n
-\nSOCKS/HTTP;ip/domain;port;username;password
-\n
-\nVí dụ: SOCKS;1.2.3.4;22 hoặc HTTP;5.6.7.8;80;user1;pw123 hoặc HTTP;p.webshare.io;80;u;p. Để nó trống nếu bạn muốn dùng cấu hình proxy hệ thống.
-\n
-\nGiới hạn: Nếu bạn thay đổi \'cài đặt DNS\' trong cài đặt thành DNS qua máy chủ HTTPS, bạn sẽ phải nhập tên miền của máy chủ proxy. Các IP sẽ không hoạt động.</string>
+    <string name="network__proxy__dialog_message">Nếu bạn muốn sử dụng proxy SOCKS hoặc HTTPS, nhập thông tin kết nối tại đây. Sử dụng một trong các định dạng sau: \n \nSOCKS/HTTP;ip/domain;port \n \nSOCKS/HTTP;ip/domain;port;username;password \n \nVí dụ: SOCKS;1.2.3.4;22 hoặc HTTP;5.6.7.8;80;user1;pw123 hoặc HTTP;p.webshare.io;80;u;p. Để nó trống nếu bạn muốn dùng cấu hình proxy hệ thống. \n \nGiới hạn: Nếu bạn thay đổi \'cài đặt DNS\' trong cài đặt thành DNS qua máy chủ HTTPS, bạn sẽ phải nhập tên miền của máy chủ proxy. Các IP sẽ không hoạt động.</string>
     <string name="notification__install_error__generic_channel_descr">Kênh thông báo về các bản cập nhật ứng dụng không thành công.</string>
     <string name="orbot__description">Orbot là một ứng dụng proxy miễn phí cho phép các ứng dụng khác sử dụng Internet an toàn hơn. Orbot sử dụng Tor để mã hóa lưu lượng truy cập Internet của bạn và sau đó ẩn nó bằng cách chuyển qua hàng loạt máy tính trên khắp thế giới. Tor là phần mềm miễn phí và là mạng mở giúp bạn chống lại hình thức giám sát mạng đe dọa quyền tự do và quyền riêng tư cá nhân, các hoạt động và mối quan hệ kinh doanh bí mật cũng như an ninh nhà nước được gọi là phân tích lưu lượng truy cập.</string>
     <string name="main_activity__github_api_limit_exceeded"><u>Đã vượt quá giới hạn API GitHub. Hãy thử lại vào giờ tiếp theo.</u></string>
@@ -268,8 +229,7 @@
     <string name="thorium__warning">- Thorium sử dụng nền tảng kỹ thuật của Google Chrome nên gián tiếp hỗ trợ cho vị thế độc quyền của công cụ kết xuất Chromium.</string>
     <string name="notification__bg_update_check__unreliable_execution__text">Có thể nguyên nhân là do cài đặt pin hoặc hiệu suất cho thiết bị của bạn. Nhấp vào thông báo này để tắt tối ưu hóa pin cho ứng dụng này.</string>
     <string name="main_activity__unexpected_error">Đã xảy ra lỗi không mong muốn.</string>
-    <string name="duckduckgo_android__warning">- DuckDuckGo sử dụng webview hệ thống để hiển thị các trang web.
-\n- Đã có tranh cãi về việc không chặn tất cả cookie từ Microsoft - nhưng điều này đã được khắc phục.</string>
+    <string name="duckduckgo_android__warning">- DuckDuckGo sử dụng webview hệ thống để hiển thị các trang web. \n- Đã có tranh cãi về việc không chặn tất cả cookie từ Microsoft - nhưng điều này đã được khắc phục.</string>
     <string name="privacy_browser__description">Cách duy nhất để ngăn dữ liệu bị lạm dụng là ngăn chặn việc thu thập dữ liệu ngay từ đầu. Trình duyệt Privacy có hai mục tiêu chính: Giảm thiểu dữ liệu được gửi lên internet và giảm thiểu dữ liệu được lưu trữ trên thiết bị.</string>
     <string name="app_installer__failed_to_verify_signature_of_installed_app">Không kiểm tra được ứng dụng đã cài đặt.</string>
     <string name="cardview_dialog__exit">Đóng</string>
@@ -279,9 +239,7 @@
     <string name="privacy_browser__title">Trình duyệt Privacy</string>
     <string name="cromite__description">Cromite là một bản rẽ nhánh của Chromium dựa trên Bromite với tính năng hỗ trợ tích hợp để chặn quảng cáo và đảm bảo quyền riêng tư.</string>
     <string name="fairemail__warning">- Cập nhật phiên bản FairEmail trên Cửa hàng Google Play bằng FFUpdater có thể dẫn đến các sự cố, chẳng hạn như. hỗ trợ OAuth/Google Mail không hoạt động. Đừng yêu cầu tác giả FairEmail hỗ trợ các vấn đề do FFUpdater gây ra.</string>
-    <string name="firefox_focus_beta__description">Sử dụng Firefox Focus cho mọi thứ bạn muốn tách biệt khỏi trình duyệt chính của mình - để tất cả những ai truy cập vào và quên nó đi trong giây lát. Không có tab, không ồn ào, không lộn xộn. Chặn cả những trình theo dõi trực tuyến. Một lần nhấn và lịch sử duyệt web của bạn sẽ bị hủy hoàn toàn.
-\n
-\nFirefox Focus là công cụ truy cập/ra, tìm kiếm và xóa đi hoàn hảo, tôi đang thực hiện một nhiệm vụ là không phải việc của bạn - trình duyệt web.</string>
+    <string name="firefox_focus_beta__description">Sử dụng Firefox Focus cho mọi thứ bạn muốn tách biệt khỏi trình duyệt chính của mình - để tất cả những ai truy cập vào và quên nó đi trong giây lát. Không có tab, không ồn ào, không lộn xộn. Chặn cả những trình theo dõi trực tuyến. Một lần nhấn và lịch sử duyệt web của bạn sẽ bị hủy hoàn toàn. \n \nFirefox Focus là công cụ truy cập/ra, tìm kiếm và xóa đi hoàn hảo, tôi đang thực hiện một nhiệm vụ là không phải việc của bạn - trình duyệt web.</string>
     <string name="cardview_dialog__auto_bg_update">Cập nhật nền tự động</string>
     <string name="cardview_dialog__warnings_label">Cảnh báo:</string>
     <string name="notification__uncaught_exception__title">FFUpdater bị lỗi</string>
