@@ -125,4 +125,180 @@
     <string name="app_card__download_the_app">tải ứng dụng</string>
     <string name="download_activity__different_installer_info__text">Nếu quá trình cài đặt thường xuyên không thành công, hãy thử chuyển sang \'trình cài đặt gốc\' trong cài đặt.</string>
     <string name="download_activity__delete_cache_explanation">Nếu bạn nghĩ rằng FFUpdater đã lưu vào bộ nhớ đệm một bản cập nhật ứng dụng bị lỗi hoặc nếu bạn muốn tiết kiệm không gian, bấm nút để xóa tệp đã tải.</string>
+    <string name="vivaldi__warning">- Vivaldi chỉ là mã nguồn mở một phần.
+\n- Nó cũng sử dụng nền tảng kỹ thuật của Google Chrome và do đó gián tiếp hỗ trợ cho vị thế độc quyền của công cụ kết xuất Chromium.</string>
+    <string name="notification__network_error__title">Lỗi mạng trong quá trình nền</string>
+    <string name="background__separate_notification_channels__title">Các kênh thông báo khác nhau</string>
+    <string name="update_interval__3d">3 ngày</string>
+    <string name="settings__theme_light">Sáng</string>
+    <string name="ungoogled_chromium__warning">- Ungoogled Chrome sử dụng nền tảng kỹ thuật của Google Chrome nên gián tiếp hỗ trợ cho vị thế độc quyền của công cụ kết xuất Chromium.</string>
+    <string name="update_interval__6h">6 tiếng</string>
+    <string name="session_installer__status_failure_conflict">Thao tác không thành công do xung đột (hoặc không nhất quán với) với gói khác đã được cài đặt trên thiết bị. Ví dụ: quyền hiện có, chứng chỉ không tương thích, v.v. Người dùng có thể gỡ cài đặt ứng dụng khác để khắc phục sự cố.</string>
+    <string name="lockwise__eol_reason">Mozilla đã ngừng hỗ trợ vào tháng 12 năm 2021. Vui lòng chuyển sang két mật khẩu an toàn khác.</string>
+    <string name="update_interval__1h">1 tiếng</string>
+    <string name="settings__device_category__title">Thiết bị</string>
+    <string name="network__dns_provider__custom">Máy chủ DNS qua HTTPS tùy chỉnh</string>
+    <string name="running_downloads_dialog__message">Ứng dụng đang tải xuống cập nhật dưới nền ngay bây giờ. Bạn có muốn bắt đầu một đợi tải xuống mà có thể sẽ lâu hơn?</string>
+    <string name="notification__network_error__text">Lỗi này hiếm khi xảy ra. Tuy nhiên, nếu nó xảy ra thường xuyên, bạn nên báo cáo. Bấm vào đây để xem thông báo lỗi chi tiết.</string>
+    <string name="chromium__description">Chrome là một dự án trình duyệt nguồn mở nhằm mục đích xây dựng một cách an toàn hơn, nhanh hơn và ổn định hơn để tất cả người dùng trải nghiệm web. Trang này chứa các tài liệu thiết kế, tổng quan về kiến trúc, thông tin thử nghiệm, v.v. nhằm giúp bạn tìm hiểu cách xây dựng và làm việc với mã nguồn Chromium.</string>
+    <string name="settings__network__trust_user_cas__summary">Bật nếu lưu lượng dữ liệu cần được kiểm tra và thay đổi bởi các ứng dụng khác. Nếu bạn không chắc chắn, hãy tắt tùy chọn này.</string>
+    <string name="network__dns_provider__system">Sử dụng DNS hệ thống</string>
+    <string name="request_installation_permission_dialog__message">FFUpdater đang thiếu quyền để cài đặt và cập nhật. Bạn cần phải cấp những quyền này hoặc FFUpdater sẽ không hoạt động.</string>
+    <string name="running_downloads_dialog__yes">Có</string>
+    <string name="chromium__warning">- Chromium sử dụng nền tảng kỹ thuật của Google Chrome nên gián tiếp hỗ trợ cho vị thế độc quyền của công cụ kết xuất Chromium.</string>
+    <string name="network__custom_doh_server__title">DNS tùy chỉnh qua máy chủ HTTPS</string>
+    <string name="device__prefer_32bit_apks__title">Ưu tiên các APK 32-Bit</string>
+    <string name="main_activity__an_error_occurred"><u>Có lỗi xảy ra. Thử lại vào lúc khác.</u></string>
+    <string name="running_downloads_dialog__title">Những đợt tải xuống đang diễn ra</string>
+    <string name="network__dns_provider__quad9">DNS qua HTTPS: Quad9</string>
+    <string name="settings__b_f__delete_cache_if_install_successful">Xóa bản cập nhật đã tải xuống nếu cài đặt thành công.</string>
+    <string name="update_interval__1m">1 tháng</string>
+    <string name="settings__foreground_category__title">Trên nền</string>
+    <string name="update_interval__15min">15 phút</string>
+    <string name="fennecfdroid__description">Fennec F-Droid dựa trên phiên bản Firefox mới nhất (tên mã Fenix). Nó đã loại bỏ các phần tử độc quyền và trình đo từ xa nhưng vẫn kết nối với nhiều dịch vụ Mozilla và Google khác nhau có thể theo dõi người dùng.</string>
+    <string name="add_app_activity__title_end_of_live_browser">Trình duyệt đã kết thúc</string>
+    <string name="installer__method__shizuku">Trình cài đặt Shizuku: Cập nhật ứng dụng mà không cần hộp thoại xác nhận. Điều này yêu cầu ứng dụng Shizuku hoặc mô-đun Sui Magisk.</string>
+    <string name="add_app_activity__title_from_mozilla">Từ Mozilla</string>
+    <string name="lockwise__description">TRUY CẬP MẬT KHẨU DÀNH CHO BẠN VÀ CHỈ BẠN
+\n
+\nTheo dõi mật khẩu Firefox của bạn một cách an toàn và truy cập chúng ở mọi nơi. Nhanh chóng mở bất kỳ trang web nào từ ứng dụng để vào tài khoản của bạn.</string>
+    <string name="settings__foreground__update_check__metered__summary">Cho phép kiểm tra cập nhật trên mạng đo lường như dữ liệu di động.</string>
+    <string name="settings__background__update_check__when_device_idle__unsupported">Tùy chọn này chỉ khả dụng trên Android Marshmallow trở lên.</string>
+    <string name="add_app_activity__label">Thêm ứng dụng mới</string>
+    <string name="settings__background__download__metered__title">Tải xuống bản cập nhật ứng dụng trên mạng đo lường</string>
+    <string name="notification__update_available__generic_channel_name">Thông báo cập nhật ứng dụng</string>
+    <string name="request_installation_permission_dialog__grant_permission">Cấp quyền</string>
+    <string name="settings__theme_dark">Tối</string>
+    <string name="settings__foreground__update_check__metered__title">Kiểm tra cập nhật trên mạng đo lường</string>
+    <string name="settings__foreground__theme_preference__summary">Chọn giữa giao diện sáng và tối</string>
+    <string name="settings__network_category__title">Mạng</string>
+    <string name="lockwise__title">Firefox Lockwise</string>
+    <string name="settings__background__update_check__when_device_idle__title">Chỉ kiểm tra cập nhật nếu thiết bị không hoạt động</string>
+    <string name="main_activity__no_unmetered_network">Không có mạng không đo lường</string>
+    <string name="settings__background__update_check__interval__title">Khoảng thời gian giữa các lần kiểm tra cập nhật</string>
+    <string name="session_installer__status_failure_incompatible">Thao tác không thành công vì về cơ bản nó không tương thích với thiết bị này. Ví dụ: ứng dụng có thể yêu cầu một tính năng phần cứng không tồn tại, có thể thiếu mã gốc cho các ABI được thiết bị hỗ trợ hoặc yêu cầu phiên bản SDK mới hơn, v.v.</string>
+    <string name="update_interval__2h">2 tiếng</string>
+    <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
+    <string name="installer__method__session">Trình cài đặt phiên: Được khuyến nghị cho hầu hết các thiết bị. Trên Android 12 trở lên, ứng dụng có thể được cập nhật âm thầm sau khi được người dùng xác nhận một lần.</string>
+    <string name="add_app_activity__add_new_application">Thêm ứng dụng mới</string>
+    <string name="network__custom_doh_server__dialog_message">Nhập chi tiết kết nối cho máy chủ DoH tùy chỉnh ở một trong các định dạng sau:
+\n
+\nurl;ip1
+\n
+\nurl;ip1;ip2
+\n
+\nurl;ip1;ip2;ip3
+\n
+\nurl;ip1;ip2;ip3;ip4
+\n
+\nVí dụ: https://dns.google/dns-query;8.8.8.8 hoặc https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
+    <string name="settings__background__installation__enabled__title">Cài đặt bản cập nhật</string>
+    <string name="session_installer__status_failure">Hoạt động thất bại một cách chung chung. Hệ thống sẽ luôn cố gắng cung cấp lý do lỗi cụ thể hơn, nhưng trong một số trường hợp hiếm hoi, lý do này có thể được đưa ra.</string>
+    <string name="update_interval__2d">2 ngày</string>
+    <string name="settings__installer_category__title">Trình cài đặt</string>
+    <string name="update_notification__title">Có sẵn bản cập nhật cho %1$s</string>
+    <string name="notification__update_available__channel_descr">Kênh thông báo về %1$s các bản cập nhật có sẵn.</string>
+    <string name="fennecfdroid__warning">FFUpdater tải xuống các tệp từ máy chủ F-Droid và do đó không nhanh hơn.</string>
+    <string name="request_installation_permission_dialog__title">Quyền cài đặt</string>
+    <string name="installer__method__native">Trình cài đặt gốc: Dự phòng nếu trình cài đặt phiên không hoạt động trên điện thoại thông minh của bạn.</string>
+    <string name="settings__background__download__metered__summary">Không nên dùng cho người dùng có dữ liệu di động hạn chế.</string>
+    <string name="device__prefer_32bit_apks__summary">Kích hoạt nếu thiết bị của bạn thường thiếu bộ nhớ. FFUpdater sau đó sẽ sử dụng APK 32-bit thường yêu cầu ít bộ nhớ hơn.</string>
+    <string name="ok">OK</string>
+    <string name="network__dns_provider__no">Không DNS (chỉ cho thử nghiệm)</string>
+    <string name="settings__background_category__summary">Cài đặt khi ứng dụng hoạt động ở chế độ nền và không hiển thị với người dùng.</string>
+    <string name="settings__background__download__enabled__title">Tải xuống bản cập nhật ứng dụng</string>
+    <string name="add_app_activity__title_other_applications">Ứng dụng khác</string>
+    <string name="settings__background__update_check__excluded_apps__title">Loại trừ ứng dụng khỏi kiểm tra cập nhật</string>
+    <string name="crash_report_activity__label">Trình báo cáo sự cố</string>
+    <string name="installer__method__shizuku_not_installed">Shizuku chưa được cài đặt!</string>
+    <string name="network__dns_provider__title">Cài đặt DNS</string>
+    <string name="tor_browser_alpha__title">Trình duyệt Tor Alpha</string>
+    <string name="network__proxy__title">Proxy</string>
+    <string name="update_interval__5d">5 ngày</string>
+    <string name="update_interval__4d">4 ngày</string>
+    <string name="update_notification__text">Bấm để cài đặt bản cập nhật</string>
+    <string name="session_installer__require_user_interaction">Yêu cầu sự tương tác của người dùng. Trước tiên, bạn phải cập nhật ứng dụng thông qua giao diện người dùng FFUpdater. Chỉ khi đó các cập nhật nền im lặng cho ứng dụng tương ứng mới được phép.</string>
+    <string name="session_installer__status_failure_invalid">Thao tác không thành công do một hoặc nhiều APK không hợp lệ. Ví dụ: chúng có thể bị sai định dạng, bị hỏng, được ký không chính xác, không khớp, v.v.</string>
+    <string name="mulch__title">Mulch</string>
+    <string name="settings__background__update_check__enabled__title">Kiểm tra cập nhật</string>
+    <string name="tor_browser__description">Trình duyệt Tor cho Android là trình duyệt duy nhất được hỗ trợ chính thức bởi Dự án Tor, những nhà phá triển của công cụ mạnh nhất trên thế giới cho quyền riêng tư và quyền tự do trực tuyến.</string>
+    <string name="ungoogled_chromium__eol_reason">Nhà phát triển đã đăng: \"Tôi sẽ không thể cập nhật các phiên bản trong một thời gian. Nếu có thể, vui lòng sử dụng một trong các trình duyệt [mà FFUpdater hỗ trợ] trong thời gian chờ đợi.\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
+    <string name="notification__install_error__generic_channel_name">Thông báo lỗi cập nhật ứng dụng</string>
+    <string name="mull__title">Trình duyệt Mull</string>
+    <string name="chromium__title">Chromium</string>
+    <string name="add_app_activity__title_better_than_google_chrome">Tốt hơn Google Chrome</string>
+    <string name="tor_browser__title">Trình duyệt Tor</string>
+    <string name="settings__background__update_check__when_device_idle__summary">Kích hoạt tính năng này nếu bạn không muốn ứng dụng của mình bị khởi động lại bởi bản cập nhật nền. Hãy tắt tính năng này nếu bạn muốn có lịch kiểm tra cập nhật nền dễ dự đoán hơn.</string>
+    <string name="app_card__open_project_page">Mở trang dự án trong trình duyệt</string>
+    <string name="ungoogled_chromium__description">Google Chromium, không tích hợp với Google.
+\n
+\nKhông cần đăng nhập vào Tài khoản Google, Chromium hoạt động khá tốt về mặt bảo mật và quyền riêng tư. Tuy nhiên, Chromium vẫn có một số phụ thuộc vào các dịch vụ web và mã nguồn của Google. Ngoài ra, Google đã thiết kế Chromium để dễ dàng và trực quan cho người dùng, điều đó có nghĩa là họ phải gây ảnh hưởng tới tính minh bạch và khả năng kiểm soát các hoạt động nội bộ.</string>
+    <string name="request_installation_permission_dialog__abort">Hủy bỏ</string>
+    <string name="update_interval__4h">4 tiếng</string>
+    <string name="update_interval__18h">18 tiếng</string>
+    <string name="settings__background__installation__enabled__summary">Cố gắng cài đặt các bản cập nhật mà không có sự tương tác của người dùng.</string>
+    <string name="add_app_activity__title_good_privacy_browsers">Các trình duyệt tốt về sự riêng tư</string>
+    <string name="main_activity__app_was_signed_by_different_certificate">Ứng dụng này đã được ký bằng một chứng chỉ khác và không thể cập nhật bằng FFUpdater.</string>
+    <string name="settings__background__update_check__excluded_apps__summary">Hữu ích nếu bạn không muốn cập nhật một ứng dụng và không muốn nhận thông báo cập nhật cho ứng dụng đó.</string>
+    <string name="update_interval__2w">2 tuần</string>
+    <string name="installer__method__root">Trình cài đặt root: Cập nhật ứng dụng mà không có hộp thoại xác nhận. Điều này đòi hỏi một điện thoại thông minh đã root.</string>
+    <string name="background__separate_notification_channels__summary">Sử dụng các kênh thông báo khác nhau cho từng ứng dụng</string>
+    <string name="vivaldi__title">Trình duyệt Vivaldi</string>
+    <string name="settings__background__download__enabled__summary">Khi phát hiện thấy bản cập nhật, hãy tải xuống. Điều này sau đó sẽ tăng tốc quá trình cập nhật.</string>
+    <string name="network__dns_provider__google">DNS qua HTTPS: Google</string>
+    <string name="update_interval__12h">12 tiếng</string>
+    <string name="update_interval__1w">1 tuần</string>
+    <string name="update_interval__30min">30 phút</string>
+    <string name="settings__network__trust_user_cas__title">Tin tưởng CA do người dùng thêm</string>
+    <string name="update_interval__1d">1 ngày</string>
+    <string name="settings__foreground_category__summary">Cài đặt khi giao diện người dùng được hiện.</string>
+    <string name="settings__background_category__title">Nền</string>
+    <string name="tor_browser_alpha__description">Tor Browser là trình duyệt di động chính thức duy nhất được hỗ trợ bởi Tor Project, các nhà phát triển công cụ mạnh nhất thế giới về quyền riêng tư và quyền tự do trực tuyến.
+\n
+\nTor Browser sẽ LUÔN miễn phí, nhưng sự đóng góp sẽ giúp điều đó trở nên khả thi. Dự án Tor là một tổ chức phi lợi nhuận 501©(3) có trụ sở tại Hoa Kỳ. Hãy cân nhắc việc đóng góp ngay hôm nay. Mỗi món quà đều tạo nên sự khác biệt: https://donate.torproject.org.
+\n
+\nTìm hiểu cách báo cáo lỗi và cung cấp phản hồi tại https://support.torproject.org/misc/bug-or-feedback/!</string>
+    <string name="session_installer__status_failure_storage">Thao tác không thành công do vấn đề lưu trữ. Ví dụ: thiết bị có thể sắp hết dung lượng hoặc phương tiện bên ngoài có thể không khả dụng. Người dùng có thể giúp giải phóng dung lượng hoặc chèn các phương tiện bên ngoài khác nhau.</string>
+    <string name="settings__foreground__theme_preference__title">Chọn giao diện</string>
+    <string name="mulch__warning">- Mulch sử dụng nền tảng kỹ thuật của Google Chrome nên gián tiếp hỗ trợ cho vị thế độc quyền của công cụ kết xuất Chromium.</string>
+    <string name="settings__theme_battery_saver">Tối khi Trình tiết kiệm pin đang bật</string>
+    <string name="settings__foreground__download__metered__title">Tài xuống bản cập nhật trên mạng đo lường</string>
+    <string name="unsupported_abi_dialog__title">Thiết bị không được hỗ trợ</string>
+    <string name="notification__update_available__generic_channel_descr">Kênh thông báo về các bản cập nhật ứng dụng có sẵn.</string>
+    <string name="generic_app_warning__beta_version">- Ứng dụng này được thiết kế cho các nhà phát triển và người thử nghiệm. Nó có thể chứa nhiều lỗi khác nhau có thể ảnh hưởng đến công việc thông thường của bạn với trình duyệt.</string>
+    <string name="vivaldi__description">Khám phá trình duyệt Internet cực nhanh! Vivaldi là một trình duyệt web mới, miễn phí và riêng tư được xây dựng với tính linh hoạt. Nó đi kèm với các tính năng hữu ích bao gồm trình chặn quảng cáo (trình chặn cửa sổ bật lên) tích hợp sẵn, bảo vệ theo dõi và trình dịch thuật riêng tư. Các tùy chọn trình duyệt như tab kiểu máy tính để bàn thích hợp, chủ đề tối và các lựa chọn bố cục giúp bạn biến nó thành của riêng mình.</string>
+    <string name="running_downloads_dialog__negative">Không, đừng tải nó xuống</string>
+    <string name="unsupported_abi_dialog__message">Trình duyệt đã chọn không tương thích với bộ xử lý của điện thoại thông minh của bạn. Vui lòng chọn một trình duyệt khác.</string>
+    <string name="mulch__description">Đây là trình duyệt web được định hướng bảo mật và tăng cường dựa trên công nghệ Chromium. Nhiều tính năng không tốt đã bị vô hiệu hóa/bị loại bỏ và một số tính năng bảo mật được bật thêm nhờ các bản vá từ dự án Vanadium. Kho lưu trữ nguồn cũng bao gồm các bản dựng sẵn và tệp tạo tệp để cho phép các hệ điều hành khác đưa Mulch làm WebView hệ thống của họ.</string>
+    <string name="mull__description">Đây là một trình duyệt web hướng tới quyền riêng tư và không thừa thải dựa trên công nghệ Mozilla. Nó kích hoạt nhiều tính năng được dự án Tor Uplift nâng cấp bằng cách sử dụng các tùy chọn từ dự án arkenfox-user.js. Nên cài đặt \'uBlock Origin\'.</string>
+    <string name="orbot__title">Orbot: Tor cho Android</string>
+    <string name="settings__b_f__delete_cache_if_install_failed">Xóa bản cập nhật đã tải xuống nếu cài đặt không thành công.</string>
+    <string name="settings__foreground__hide_warning_buttons">Ẩn nút cảnh báo cho ứng dụng đã cài đặt.</string>
+    <string name="session_installer__status_failure_aborted">Thao tác không thành công vì nó đã bị chủ động hủy bỏ. Ví dụ: người dùng chủ động từ chối các quyền được yêu cầu hoặc phiên bị hủy.</string>
+    <string name="main_activity__subtitle">Trình cập nhật cho các trình duyệt thân thiện với quyền riêng tư</string>
+    <string name="settings__background__update_check__enabled__summary">Kiểm tra các bản cập nhật mới theo định kỳ.</string>
+    <string name="settings__theme_system_default">Theo mặc định hệ thống</string>
+    <string name="network__proxy__dialog_message">Nếu bạn muốn sử dụng proxy SOCKS hoặc HTTPS, nhập thông tin kết nối tại đây. Sử dụng một trong các định dạng sau:
+\n
+\nSOCKS/HTTP;ip/domain;port
+\n
+\nSOCKS/HTTP;ip/domain;port;username;password
+\n
+\nVí dụ: SOCKS;1.2.3.4;22 hoặc HTTP;5.6.7.8;80;user1;pw123 hoặc HTTP;p.webshare.io;80;u;p. Để nó trống nếu bạn muốn dùng cấu hình proxy hệ thống.
+\n
+\nGiới hạn: Nếu bạn thay đổi \'cài đặt DNS\' trong cài đặt thành DNS qua máy chủ HTTPS, bạn sẽ phải nhập tên miền của máy chủ proxy. Các IP sẽ không hoạt động.</string>
+    <string name="notification__install_error__generic_channel_descr">Kênh thông báo về các bản cập nhật ứng dụng không thành công.</string>
+    <string name="orbot__description">Orbot là một ứng dụng proxy miễn phí cho phép các ứng dụng khác sử dụng Internet an toàn hơn. Orbot sử dụng Tor để mã hóa lưu lượng truy cập Internet của bạn và sau đó ẩn nó bằng cách chuyển qua hàng loạt máy tính trên khắp thế giới. Tor là phần mềm miễn phí và là mạng mở giúp bạn chống lại hình thức giám sát mạng đe dọa quyền tự do và quyền riêng tư cá nhân, các hoạt động và mối quan hệ kinh doanh bí mật cũng như an ninh nhà nước được gọi là phân tích lưu lượng truy cập.</string>
+    <string name="main_activity__github_api_limit_exceeded"><u>Đã vượt quá giới hạn API GitHub. Hãy thử lại vào giờ tiếp theo.</u></string>
+    <string name="network__dns_provider__digital_society_ch">DNS qua HTTPS: Xã hội kỹ thuật số Thụy Sĩ</string>
+    <string name="fennecfdroid__title">Fennec F-Droid</string>
+    <string name="update_interval__6d">6 ngày</string>
+    <string name="settings__background__update_check__metered__title">Kiểm tra cập nhật trên mạng đo lường</string>
+    <string name="installer__method__root_not_granted">Quyền root chưa được cấp!</string>
+    <string name="settings_activity__label">Cài đặt</string>
+    <string name="notification__update_available__channel_name">Thông báo %1$s bản cập nhật</string>
+    <string name="update_interval__8h">8 tiếng</string>
+    <string name="network__dns_provider__cloudflare">DNS qua HTTPS: Cloudflare</string>
+    <string name="session_installer__status_failure_blocked">Thao tác không thành công vì nó bị chặn. Ví dụ: chính sách thiết bị có thể đang chặn hoạt động, trình xác minh gói có thể đã chặn hoạt động hoặc ứng dụng có thể được yêu cầu cho hoạt động của hệ thống cốt lõi.</string>
+    <string name="main_activity__temporary_network_issue"><u>Sự cố mạng tạm thời. Thử lại vào lúc khác.</u></string>
 </resources>
