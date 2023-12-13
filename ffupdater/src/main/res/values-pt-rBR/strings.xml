@@ -11,8 +11,7 @@
     <string name="notification__error__title">Verificação em segundo plano falhou</string>
     <string name="brave__description">Navegue livremente e com privacidade na Internet! O Brave Private Browser é o seu navegador privado rápido, livre, seguro e com bloqueador de anúncios e pop-up. Navegue e pesquise na Internet com privacidade, sem ser rastreado por anunciantes, malware e pop-ups.</string>
     <string name="brave__title">Navegador Privado Brave</string>
-    <string name="brave__warning">- O Brave implementa os fundamentos técnicos do Google Chrome (Chromium) e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium.
-\n- Devido ao seu Basic Attention Token BAT na blockchain Ethereum, o projeto tem ligações com criptomoedas. Blockchains têm muitos problemas e devem ser evitadas, na minha opinião.</string>
+    <string name="brave__warning">- O Brave implementa os fundamentos técnicos do Google Chrome (Chromium) e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium. \n- Devido ao seu Basic Attention Token BAT na blockchain Ethereum, o projeto tem ligações com criptomoedas. Blockchains têm muitos problemas e devem ser evitadas, na minha opinião.</string>
     <string name="brave_beta__description">Bem-vindo ao Brave Beta para o Android! \nTeste os mais novos recursos e dê um feedback antecipado: https://brave.com/msupport \nVocê pode instalar o Brave Beta junto com sua versão estável atual do Brave para o Android.</string>
     <string name="brave_beta__title">Navegador Brave (Beta)</string>
     <string name="brave_nightly__description">Bem-vindo ao Brave Nightly (Desenvolvedor) para Android!\nTeste as mais novas funcionalidades e dê feedback antecipado: https://brave.com/msupport\nVocê pode instalar o Brave Nightly junto com sua versão atual do Brave for Android.</string>
@@ -44,11 +43,8 @@
     <string name="firefox_release__warning">- Uma versão melhorada do Firefox também está disponível no F-Droid com o nome Fennec F-Droid.</string>
     <string name="iceraven__description">Definitivamente não criado pela Mozilla! \n\nIceraven é um navegador baseado na versão Fenix da Mozilla, GeckoView e Componentes da Mozilla. \n\nSeu objetivo é ser uma modificação bem próxima ao novo Firefox que tenta oferecer aos usuários mais opções, mais possibilidades de customização (incluindo uma ampla biblioteca de extensões) e mais informações sobre os sites visitados e como o navegador está interagindo com eles.</string>
     <string name="iceraven__title">Iceraven</string>
-    <string name="iceraven__warning">- O mantenedor não dá qualquer garantia ou garantias de segurança ou de atualizações ou mesmo de estabilidade.
-\n - O projeto demora mais do que o normal para fornecer atualizações de segurança.</string>
-    <string name="infobox">Este app instala e atualiza navegadores para privacidade. Clique no botão \"+\" para instalar novos apps. Deslize para baixo para forçar a verificação de novas atualizações. Por padrão, o app regularmente verificará atualizações em segundo plano, que então serão baixadas e eventualmente instaladas. Clique na engrenagem para customizar o comportamento nas configurações.
-\n
-\nÚltima verificação em segundo plano: %1$s</string>
+    <string name="iceraven__warning">- O mantenedor não dá qualquer garantia ou garantias de segurança ou de atualizações ou mesmo de estabilidade. \n - O projeto demora mais do que o normal para fornecer atualizações de segurança.</string>
+    <string name="infobox">Este app instala e atualiza navegadores para privacidade. Clique no botão \"+\" para instalar novos apps. Deslize para baixo para forçar a verificação de novas atualizações. Por padrão, o app regularmente verificará atualizações em segundo plano, que então serão baixadas e eventualmente instaladas. Clique na engrenagem para customizar o comportamento nas configurações. \n \nÚltima verificação em segundo plano: %1$s</string>
     <string name="app_card__information_about_the_app">detalhes sobre o app</string>
     <string name="download_activity__delete_cache_button_text">limpar cache</string>
     <string name="download_activity__delete_cache_explanation">Se você acha que o FFUpdater colocou em cache uma atualização do navegador defeituosa ou deseja economizar espaço, clique no botão para apagar o arquivo baixado.</string>
@@ -162,8 +158,7 @@
     <string name="update_notification__title">Atualização para %1$s disponível</string>
     <string name="vivaldi__description">Descubra um navegador extremamente veloz! Vivaldi é um navegador novo, gratuito, privado e muito flexível. Ele vem repleto de recursos úteis incluindo um AdBlocker (bloqueador de pop-ups) integrado, proteção contra rastreamento e opção de tradução privada. Navegador vem com abas especiais no estilo desktop, temas escuros/claros e muitas opções de layout.</string>
     <string name="vivaldi__title">Vivaldi</string>
-    <string name="vivaldi__warning">- O Vivaldi é parcialmente de código aberto.
-\n- Ele também utiliza a base técnica do Google Chrome e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium.</string>
+    <string name="vivaldi__warning">- O Vivaldi é parcialmente de código aberto. \n- Ele também utiliza a base técnica do Google Chrome e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium.</string>
     <string name="crash_report__explain_text__download_activity_install_file">Este erro ocorreu durante a instalação. Se este erro ocorrer frequentemente, fique a vontade para enviar o relatório de falha via notabug.org, GitHub ou GitLab.</string>
     <string name="notification__eol_apps__channel_description">Canal de notificação para avisos sobre aplicativos desatualizados.</string>
     <string name="notification__eol_apps__channel_name">Notificação de aplicativos desatualizados</string>
