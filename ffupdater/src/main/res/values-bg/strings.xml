@@ -336,7 +336,6 @@
     <string name="fairemail__title">FairEmail</string>
     <string name="cardview_dialog__not_installed_by_ffupdater">Приложението не е инсталирано от FFUpdater. С цел избягване на конфликти с други приложения автоматичното обновяване е изключено.</string>
     <string name="fairemail__description">Пълнофункционално, поверително приложение за електронна поща с отворен код</string>
-    <string name="app_install_info_dialog__install">Инсталиране</string>
     <string name="cardview_dialog__install">Инсталиране последно издание</string>
     <string name="cardview_dialog__different_signature">FFUpdater не може да обнови това приложение, защото подписът му е различен. Можете да премахнете приложението и да го инсталирате отново с FFUpdater. Така, обаче ще загубите данните. Направете резервно копие преди това.</string>
     <string name="cardview_dialog__hide">Скриване</string>

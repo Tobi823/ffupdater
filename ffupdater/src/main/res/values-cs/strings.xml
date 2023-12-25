@@ -325,7 +325,6 @@
     <string name="cardview_dialog__exit">Zavřít</string>
     <string name="cardview_dialog__auto_bg_update">Automatické aktualizace na pozadí</string>
     <string name="cardview_dialog__warnings_label">Varování:</string>
-    <string name="app_install_info_dialog__install">Instalovat</string>
     <string name="cardview_dialog__install">Instalovat nejnovější verzi</string>
     <string name="cardview_dialog__hide">Skrýt</string>
     <string name="foreground__hidden_apps__title">Skryté aplikace</string>
