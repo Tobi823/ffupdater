@@ -4,7 +4,6 @@
     <string name="app_description">Atualizador para navegadores que protegem a privacidade</string>
     <string name="app_icon">ícone do app</string>
     <string name="app_name">FFUpdater</string>
-    <string name="app_warning_dialog__title">Atenção</string>
     <string name="application_installation_was_not_successful">Instalação do navegador falhou</string>
     <string name="application_successfully_installed">Navegador instalado com sucesso</string>
     <string name="available_version">Disponível: %1$s</string>
@@ -31,8 +30,6 @@
     <string name="crash_report__go_to_github">Vá para GitHub</string>
     <string name="crash_report__go_to_gitlab">Vá para GitLab</string>
     <string name="crash_report__got_to_notabug_org">Vá para notabug.org</string>
-    <string name="dialog_button__do_not_install">Não quero instalar</string>
-    <string name="dialog_button__yes">Sim</string>
     <string name="notification__download_running__channel_descr">Mostra quando as atualizações do aplicativo são baixadas em segundo plano.</string>
     <string name="notification__download_running__channel_name">Notificação sobre downloads em segundo plano</string>
     <string name="notification__download_running__title">Download de atualizações do aplicativo</string>
@@ -82,9 +79,6 @@
     <string name="download_activity__use_cached_downloaded_apk">Use o navegador baixado do:</string>
     <string name="download_activity__you_can_now_close_this_window">Pode fechar este aviso</string>
     <string name="download_activity__label">Instalar o navegador</string>
-    <string name="install_new_app">Instalar outro navegador</string>
-    <string name="install_same_version_dialog__message">A versão mais recente deste navegador já foi instalada. Você quer baixar e instalar ela outra vez?</string>
-    <string name="install_same_version_dialog__title">Mesma versão instalada</string>
     <string name="notification__install_error__channel_descr">Canal de notificação para atualizações de %1$s falhadas.</string>
     <string name="notification__install_error__channel_name">%1$s notificação de falha de atualização</string>
     <string name="notification__install_error__text">Erro (%1$d): %2$s</string>
@@ -107,7 +101,6 @@
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>O limite de consultas do API do GitHub foi excedido. Tente outra vez mais tarde.</u>"</string>
     <string name="main_activity__no_unmetered_network">Nenhuma rede não contatada</string>
-    <string name="main_activity__subtitle">Atualizador de navegadores para privacidade</string>
     <string name="main_activity__temporary_network_issue">"<u>Problema temporário da rede. Tente outra vez mais tarde.</u>"</string>
     <string name="ok">OK</string>
     <string name="request_installation_permission_dialog__abort">Abortar</string>
@@ -186,7 +179,6 @@
     <string name="vivaldi__title">Vivaldi</string>
     <string name="vivaldi__warning">- O Vivaldi é parcialmente de código aberto.
 \n- Ele também utiliza a base técnica do Google Chrome e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium.</string>
-    <string name="app_card__app_warning_button_description">Mostre avisos sobre este aplicativo</string>
     <string name="crash_report__explain_text__download_activity_install_file">Este erro ocorreu durante a instalação. Se este erro ocorrer frequentemente, fique a vontade para enviar o relatório de falha via notabug.org, GitHub ou GitLab.</string>
     <string name="notification__download_error__channel_descr">Mostra quando os downloads de atualização em segundo plano falham.</string>
     <string name="notification__download_error__channel_name">Notificação sobre erros de download em segundo plano</string>
@@ -197,10 +189,8 @@
     <string name="notification__eol_apps__text">Você tem apps desatualizados que não devem mais ser usados. Clique para mais informações.</string>
     <string name="notification__eol_apps__title">Aplicativos desatualizados instalados</string>
     <string name="lockwise__eol_reason">A Mozilla abandonou o suporte em dezembro de 2021. Mude para outro cofre de senha.</string>
-    <string name="settings__foreground__hide_warning_buttons">Ocultar o botão de aviso do aplicativo instalado.</string>
     <string name="mull__title">Navegador Mull</string>
     <string name="mull__description">Este é um navegador web orientado à privacidade e deblobbed baseado na tecnologia Mozilla. Ele habilita muitos recursos enviados pelo projeto Tor Uplift usando as preferências do projeto arkenfox-user.js. Recomenda-se instalar o \'uBlock Origin\'.</string>
-    <string name="app_card__open_project_page">Abrir página do projeto no navegador</string>
     <string name="notification__download_error__text">O download em segundo plano da atualização do %1$s falhou. Se este erro ocorre frequentemente, clique aqui para ver o relatório do erro.</string>
     <string name="main_activity__an_error_occurred"><u>Um erro aconteceu. Tente novamente mais tarde.</u></string>
     <string name="notification__network_error__title">Erro de rede no trabalho em segundo plano</string>
@@ -223,9 +213,7 @@
     <string name="add_app_activity__title_other_applications">Outros Aplicativos</string>
     <string name="crash_report_activity__label">Reportador de Falhas</string>
     <string name="network__dns_provider__title">Configurações de DNS</string>
-    <string name="notification__bachground_work__title">Executando trabalho em segundo plano</string>
     <string name="tor_browser_alpha__title">Navegador Tor Alfa</string>
-    <string name="notification__bachground_work__action_title">Cancelar este trabalho em segundo plano</string>
     <string name="add_app_activity__title_based_on_firefox">Baseado no Firefox</string>
     <string name="chromium__title">Chromium</string>
     <string name="add_app_activity__title_better_than_google_chrome">Melhor que Google Chrome</string>
@@ -234,7 +222,6 @@
     <string name="installer__method__title">Método do instalador</string>
     <string name="network__dns_provider__google">DNS sobre HTTPS: Google</string>
     <string name="orbot__title">Orbot: Tor para Android</string>
-    <string name="notification__bachground_work__channel_name">Notificações de Trabalho em Segundo Plano</string>
     <string name="network__dns_provider__cloudflare">DNS sobre HTTPS: Cloudflare</string>
     <string name="app_installer__failed_to_verify_signature_of_installed_app">Falha ao verificar aplicativo instalado.</string>
     <string name="background__installation__when_screen_off__summary">Tentar instalar atualizações somente quando a tela do dispositivo está desligada.</string>

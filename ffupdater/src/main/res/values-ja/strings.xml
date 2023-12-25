@@ -33,8 +33,6 @@
     <string name="crash_report__go_to_github">GitHub に移動</string>
     <string name="crash_report__go_to_gitlab">GitLab に移動</string>
     <string name="crash_report__got_to_notabug_org">notabug.org に移動</string>
-    <string name="dialog_button__do_not_install">いいえ、このアプリをインストールしません</string>
-    <string name="dialog_button__yes">はい</string>
     <string name="notification__download_running__channel_descr">アプリの更新をバックグラウンドでダウンロードしたときに表示されます。</string>
     <string name="notification__download_running__channel_name">バックグラウンドでのダウンロードについての通知</string>
     <string name="notification__download_running__title">アプリの更新をダウンロード中</string>
@@ -86,9 +84,6 @@
     <string name="download_activity__use_cached_downloaded_apk">既にダウンロード済みのファイルを使用します:</string>
     <string name="download_activity__you_can_now_close_this_window">ウィンドウを閉じても構いません</string>
     <string name="download_activity__label">アプリをダウンロード</string>
-    <string name="install_new_app">新しいアプリをインストール</string>
-    <string name="install_same_version_dialog__message">このアプリの最新版は既にインストールされています。再度、最新版をダウンロードしてインストールしますか？</string>
-    <string name="install_same_version_dialog__title">同じバージョンがインストール済み</string>
     <string name="notification__install_error__channel_descr">%1$s の更新失敗の通知チャンネル。</string>
     <string name="notification__install_error__channel_name">%1$s の更新失敗の通知</string>
     <string name="notification__install_error__text">エラー (%1$d): %2$s</string>
@@ -103,7 +98,6 @@
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded"><u>GitHub-API の制限を超過しました。次の時間に再試行します。</u></string>
     <string name="main_activity__no_unmetered_network">定額制ネットワークではありません</string>
-    <string name="main_activity__subtitle">プライバシーを重視したブラウザー用のアップデーター</string>
     <string name="main_activity__temporary_network_issue"><u>一時的なネットワークの問題が発生しています。時間を置いて再試行してください。</u></string>
     <string name="ok">OK</string>
     <string name="request_installation_permission_dialog__abort">中止</string>
@@ -181,10 +175,8 @@
     <string name="vivaldi__title">Vivaldi ブラウザ</string>
     <string name="vivaldi__warning">- Vivaldi は部分的なオープンソースに過ぎません。
 \n- また、Vivaldi は Google Chrome と同じ技術的基盤を使用しているため、Chromium レンダリングエンジンの独占的地位を間接的に支えることになります。</string>
-    <string name="app_card__app_warning_button_description">このアプリについての警告を表示</string>
     <string name="install_activity__download_file_failed__crash_text">ダウンロード中に以下のエラーが発生しました。同様のエラーが頻繁に発生する場合は、notabug.org、GitHub、または GitLab にクラッシュレポートを提出してください。</string>
     <string name="crash_report__explain_text__download_activity_install_file">インストール中に以下のエラーが発生しました。同様のエラーが頻繁に発生する場合は、notabug.org、GitHub、または GitLab にクラッシュレポートを提出してください。</string>
-    <string name="app_warning_dialog__title">警告</string>
     <string name="download_activity__open_folder">フォルダーを開く</string>
     <string name="iceraven__warning">- メンテナーはセキュリティやアップデート、安定性についてのいかなる保証も提供していません。
 \n - このプロジェクトはセキュリティアップデートの提供に一般より長い時間を要します。</string>
@@ -216,7 +208,6 @@
     <string name="lockwise__description">あなただけのためのパスワードアクセス
 \n
 \nFirefox のパスワードを安全に追跡し、どこからでもアクセスできます。アプリからウェブサイトを素早く開き、アカウントにアクセスしましょう。</string>
-    <string name="settings__foreground__hide_warning_buttons">インストール済みのアプリは警告ボタンを非表示にする</string>
     <string name="background__separate_notification_channels__title">通知チャンネルを分割</string>
     <string name="notification__update_available__generic_channel_name">アプリの更新通知</string>
     <string name="background__separate_notification_channels__summary">アプリごとに異なる通知チャンネルを使用します</string>
@@ -237,7 +228,6 @@
     <string name="crash_report_activity__label">クラッシュレポーター</string>
     <string name="add_app_activity__title_from_mozilla">Mozilla から</string>
     <string name="add_app_activity__label">新しいアプリの追加</string>
-    <string name="app_card__open_project_page">ブラウザーでプロジェクトのページを開く</string>
     <string name="kiwi__warning">- Kiwi は Google Chrome と同じ技術的基盤を使用しているため、Chromium レンダリングエンジンの独占的地位を間接的に支えることになります。
 \n- Kiwi は理想的なプライバシーブラウザではありませんが、拡張機能に対応しています。
 \n- Kiwi Browser で検索を行うたびに、検索エンジンからの報酬を受け取ります。検索エンジンの選択によっては、リクエストが Kiwibrowser / Kiwisearchservices のサーバーを経由する場合があります。
@@ -326,16 +316,11 @@
     <string name="add_app_activity__title_based_on_firefox">Firefox ベースのブラウザー</string>
     <string name="add_app_activity__title_good_security_browsers">セキュリティーに優れたブラウザー</string>
     <string name="notification__uncaught_exception__channel_name">クラッシュ通知</string>
-    <string name="notification__bachground_work__channel_name">バックグラウンド動作通知</string>
-    <string name="notification__bachground_work__channel_description">バックグラウンド動作に関する通知</string>
-    <string name="notification__bachground_work__title">実行中のバックグラウンド動作</string>
-    <string name="notification__bachground_work__action_title">このバックグラウンド動作をキャンセル</string>
     <string name="app_installer__failed_to_validate_signature_of_download">ダウンロードしたファイルの署名を確認できませんでした。</string>
     <string name="app_installer__failed_to_verify_signature_of_installed_app">インストール済みのアプリを確認できませんでした。</string>
     <string name="notification__bg_update_check__unreliable_execution__channel_name">バックグラウンドでの更新確認が実行されなかった場合の通知</string>
     <string name="notification__bg_update_check__unreliable_execution__channel_description">信頼できないバックグラウンドでの更新確認の実行に関する警告</string>
     <string name="notification__bg_update_check__unreliable_execution__text">バッテリーやパフォーマンスに関する設定が原因の可能性があります。通知をタップして、このアプリのバッテリー最適化を無効にしてください。</string>
-    <string name="notification__bachground_work__text">この通知は、安定した処理の実行に必要です。設定に従い、バックグラウンドでのダウンロードまたはインストールが行われています。確認が完了すると通知も閉じられます。この通知はバックグラウンド動作を妨げることなく非表示にすることができます。</string>
     <string name="mulch_wv__description">これは Chromium の技術をベースとした、セキュリティ重視の強化されたシステム WebView です。Vanadium プロジェクト のパッチにより、多くの不要な機能が無効化/削除され、いくつかのセキュリティ機能が有効化/追加されています。</string>
     <string name="installer__method__title">インストーラーの選択</string>
     <string name="ffupdater__different_signature_message">この FFUpdater は F-Droid で署名されたバージョンのため、F-Droid からのみ更新できます。一度 FFUpdater をアンインストールして開発者が署名したバージョンをインストールすると、より早く更新できるようになります。開発者が署名したバージョンでは、F-Droid での配布を待たずに FFUpdater 自身で更新できます。</string>
@@ -356,7 +341,6 @@
     <string name="cardview_dialog__eol">このアプリの使用は推奨しません:</string>
     <string name="cardview_dialog__not_installed_by_ffupdater">このアプリは FFUpdater からインストールや更新をしたものではありません。他のアプリとの競合を防ぐため、自動更新は無効になっています。</string>
     <string name="fairemail__description">完璧でオープンソース、プライバシーを尊重する Android 用のメールアプリ</string>
-    <string name="app_install_info_dialog__install">インストール</string>
     <string name="cardview_dialog__install">最新版をインストール</string>
     <string name="cardview_dialog__different_signature">APK 署名が異なるため、FFUpdater はこのアプリを更新できません。一度アプリをアンインストールして、FFUpdater から再インストールすると修正できます。</string>
     <string name="fairemail__warning">- このバージョンは OAuth に対応していないため Gmail に対応しません</string>

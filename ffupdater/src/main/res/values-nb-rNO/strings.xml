@@ -29,8 +29,6 @@
     <string name="crash_report__go_to_github">Gå til GitHub</string>
     <string name="crash_report__go_to_gitlab">Gå til GitLab</string>
     <string name="crash_report__got_to_notabug_org">Surf til notabug.org</string>
-    <string name="dialog_button__do_not_install">Nei, ikke installer</string>
-    <string name="dialog_button__yes">Ja</string>
     <string name="notification__download_running__channel_descr">Viser når programoppgraderinger lastes ned i bakgrunnen.</string>
     <string name="notification__download_running__channel_name">Merknad om nedlastinger i bakgrunnen</string>
     <string name="notification__download_running__title">Laster ned programoppgraderinger</string>
@@ -67,9 +65,6 @@
     <string name="download_activity__use_cached_downloaded_apk">Bruk allerede nedlastet fil fra:</string>
     <string name="download_activity__you_can_now_close_this_window">Du kan lukke vinduet</string>
     <string name="download_activity__label">Installer program</string>
-    <string name="install_new_app">Installer nytt program</string>
-    <string name="install_same_version_dialog__message">Nyeste versjon av dette programmet er allerede installert. Last det ned og installer nyeste versjon igjen\?</string>
-    <string name="install_same_version_dialog__title">Samme versjon installert</string>
     <string name="notification__install_error__channel_descr">Merknadskanal for mislykkede %1$s-oppgraderinger.</string>
     <string name="notification__install_error__text">Feil (%1$d): %2$s</string>
     <string name="notification__install_error__title">%1$s kunne ikke oppgraderes.</string>
@@ -81,7 +76,6 @@
     <string name="installed_version">Installert: %1$s</string>
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded"><u>Grense for GitHub-API overskredet. Prøv igjen om en time.</u></string>
-    <string name="main_activity__subtitle">Oppgrader dine Mozilla-nettlesere</string>
     <string name="main_activity__temporary_network_issue"><u>Midlertidig nettverksproblem. Prøv igjen senere.</u></string>
     <string name="ok">OK</string>
     <string name="request_installation_permission_dialog__abort">Avbryt</string>
@@ -143,5 +137,4 @@
     <string name="update_notification__text">Klikk for å installere</string>
     <string name="update_notification__title">Ny versjon av %1$s tilgjengelig</string>
     <string name="vivaldi__title">Vivaldi-nettleseren</string>
-    <string name="app_card__app_warning_button_description">Vis advarsler om denne applikasjonen</string>
 </resources>

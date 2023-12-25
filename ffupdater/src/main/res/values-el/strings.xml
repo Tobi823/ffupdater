@@ -13,7 +13,6 @@
 \nΟ στόχος μας είναι να γίνουμε ο νέος Firefox για Android που επιδιώκει να παρέχει στους χρήστες περισσότερες επιλογές, περισσότερες ευκαιρίες προσαρμογής (συμπεριλαμβανομένης μιας βιβλιοθήκης ευρείας επέκτασης) και περισσότερες πληροφορίες σχετικά με τις σελίδες που επισκέπτονται και τον τρόπο με τον οποίο αλληλεπιδρούν τα προγράμματα περιήγησής τους αυτές οι σελίδες.</string>
     <string name="app_icon">εικονίδιο εφαρμογής</string>
     <string name="app_name">FFUpdater</string>
-    <string name="app_warning_dialog__title">Προειδοποίηση</string>
     <string name="available_version">Διαθέσιμο: %1$s</string>
     <string name="brave__description">Περιηγηθείτε ιδιωτικά στο διαδίκτυο, δωρεάν! Η εφαρμογή Brave Private Browser είναι το γρήγορο, δωρεάν και ασφαλές ιδιωτικό πρόγραμμα περιήγησης ιστού με πρόγραμμα αποκλεισμού διαφημίσεων και αποκλεισμού αναδυόμενων παραθύρων. Περιηγηθείτε και αναζητήστε ιδιωτικά στο διαδίκτυο χωρίς να παρακολουθείστε από διαφημιστές, κακόβουλο λογισμικό και αναδυόμενα παράθυρα.</string>
     <string name="brave__title">Brave Private Browser</string>
@@ -32,8 +31,6 @@
     <string name="crash_report__explain_text__uncaught_throwable">Δυστυχώς, το FFUpdater συνετρίβη την τελευταία φορά και κατέγραψε αυτό το σφάλμα. Υποβάλετε την αναφορά σφαλμάτων στο notabug.org, στο GitHub ή στο GitLab.</string>
     <string name="crash_report__go_to_github">Μεταβείτε στο GitHub</string>
     <string name="crash_report__go_to_gitlab">Μεταβείτε στο GitLab</string>
-    <string name="dialog_button__do_not_install">Όχι, μην το εγκαταστήσετε</string>
-    <string name="dialog_button__yes">Ναί</string>
     <string name="notification__download_error__channel_descr">Εμφανίζεται όταν αποτυγχάνουν οι λήψεις ενημέρωσης στο παρασκήνιο.</string>
     <string name="notification__download_error__descr">Η λήψη στο παρασκήνιο της ενημέρωσης %1$s απέτυχε. Εάν αυτό το σφάλμα εμφανίζεται συχνά, μη διστάσετε να το αναφέρετε στο notabug.org, στο GitHub ή στο GitLab.</string>
     <string name="notification__download_running__channel_name">Ειδοποίηση για λήψεις στο παρασκήνιο</string>
@@ -51,7 +48,6 @@
     <string name="iceraven__title">Iceraven Browser</string>
     <string name="application_installation_was_not_successful">Η εγκατάσταση της εφαρμογής δεν ήταν επιτυχής</string>
     <string name="action_about_title">Σχετικά με το FFUpdater</string>
-    <string name="app_card__app_warning_button_description">Εμφάνιση προειδοποιήσεων σχετικά με αυτήν την εφαρμογή</string>
     <string name="app_description">Ενημέρωση για προγράμματα περιήγησης φιλικά προς το απόρρητο</string>
     <string name="notification__error__text">Παρακαλώ αναφέρετε αυτό το σφάλμα. Κάντε κλικ για να δείτε την αναφορά σφάλματος.</string>
     <string name="notification__error__title">Ο έλεγχος ενημέρωσης παρασκηνίου απέτυχε</string>
@@ -91,9 +87,6 @@
     <string name="download_activity__temporary_network_issue">Παρουσιάστηκε ένα προσωρινό πρόβλημα δικτύου. Δοκιμάστε ξανά αργότερα.</string>
     <string name="download_activity__too_low_memory_description">Ο αποθηκευτικός χώρος της συσκευής σας είναι χαμηλός (μόνο %1$d MB ελεύθερα). Αυτό θα οδηγήσει σε αποτυχία λήψης ή εγκατάστασης.</string>
     <string name="download_activity__you_can_now_close_this_window">Μπορείτε να κλείσετε αυτό το παράθυρο τώρα</string>
-    <string name="install_new_app">Εγκατάσταση νέας εφαρμογής</string>
-    <string name="install_same_version_dialog__message">Η πιο πρόσφατη έκδοση αυτής της εφαρμογής είναι ήδη εγκατεστημένη. Θέλετε να κατεβάσετε και να εγκαταστήσετε ξανά την πιο πρόσφατη έκδοση;</string>
-    <string name="install_same_version_dialog__title">Εγκατεστημένη η ίδια έκδοση</string>
     <string name="notification__install_error__title">Δεν ήταν δυνατή η ενημέρωση του %1$s</string>
     <string name="notification__install_error__channel_descr">Κανάλι ειδοποιήσεων για αποτυχημένες ενημερώσεις %1$s.</string>
     <string name="notification__install_error__channel_name">%1$s ειδοποίηση αποτυχίας ενημέρωσης</string>
@@ -129,7 +122,6 @@
     <string name="update_notification__title">Διαθέσιμη ενημέρωση για %1$s</string>
     <string name="vivaldi__description">Ανακαλύψτε ένα απίστευτα γρήγορο πρόγραμμα περιήγησης στο Διαδίκτυο! Το Vivaldi είναι ένα νέο, δωρεάν και ιδιωτικό πρόγραμμα περιήγησης ιστού που δημιουργήθηκε με γνώμονα την ευελιξία. Έρχεται γεμάτο με χρήσιμες λειτουργίες, όπως ένα ενσωματωμένο AdBlocker (μπλοκάρισμα αναδυόμενων παραθύρων), προστασία παρακολούθησης και ιδιωτική μετάφραση. Οι επιλογές του προγράμματος περιήγησης, όπως οι κατάλληλες καρτέλες σε στυλ επιφάνειας εργασίας, τα σκούρα/ανοιχτόχρωμα θέματα και οι επιλογές διάταξης σάς βοηθούν να το κάνετε δικό σας.</string>
     <string name="mull__description">Αυτό είναι ένα πρόγραμμα περιήγησης ιστού με γνώμονα το απόρρητο και αφαιρεθεί το blobbed που βασίζεται στην τεχνολογία Mozilla. Επιτρέπει πολλές δυνατότητες που προέρχονται από το έργο Tor Uplift χρησιμοποιώντας προτιμήσεις από το έργο arkenfox-user.js. Συνιστάται η εγκατάσταση του \'uBlock Origin\'.</string>
-    <string name="app_card__open_project_page">Ανοίξτε τη σελίδα του έργου στο πρόγραμμα περιήγησης</string>
     <string name="ungoogled_chromium__eol_reason">Ο προγραμματιστής δημοσίευσε: \"Δεν θα μπορώ να ενημερώσω τις εκδόσεις για κάποιο χρονικό διάστημα. Εάν είναι δυνατόν, χρησιμοποιήστε ένα από τα προγράμματα περιήγησης [που υποστηρίζει το FFUpdater] στο μεταξύ.\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
     <string name="tor_browser__title">Tor Browser</string>
     <string name="tor_browser__description">Το Tor Browser για Android είναι το μόνο επίσημο πρόγραμμα περιήγησης για κινητά που υποστηρίζεται από το Tor Project, τους προγραμματιστές του ισχυρότερου εργαλείου στον κόσμο για την ιδιωτικότητα και την ελευθερία στο διαδίκτυο.</string>
@@ -166,7 +158,6 @@
     <string name="lockwise__eol_reason">Η Mozilla διέκοψε την υποστήριξη τον Δεκέμβριο του 2021. Μεταβείτε σε άλλο χρηματοκιβώτιο κωδικού πρόσβασης.</string>
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded"><u>Υπέρβαση του ορίου GitHub-API. Δοκιμάστε ξανά την επόμενη ώρα.</u></string>
-    <string name="main_activity__subtitle">Ενημέρωση για προγράμματα περιήγησης φιλικά προς το απόρρητο</string>
     <string name="main_activity__temporary_network_issue"><u>Προσωρινό πρόβλημα δικτύου. Δοκιμάστε ξανά αργότερα.</u></string>
     <string name="ok">Εντάξει</string>
     <string name="request_installation_permission_dialog__abort">Ματαίωση</string>
@@ -188,7 +179,6 @@
     <string name="settings__background__update_check__enabled__title">Έλεγχος ενημέρωσης</string>
     <string name="settings__background__update_check__excluded_apps__summary">Χρήσιμο εάν δεν θέλετε να ενημερώσετε μια εφαρμογή και δεν θέλετε να λαμβάνετε ειδοποιήσεις ενημέρωσης για αυτήν.</string>
     <string name="settings__background__update_check__excluded_apps__title">Εξαίρεση εφαρμογών από τον έλεγχο ενημέρωσης</string>
-    <string name="settings__foreground__hide_warning_buttons">Απόκρυψη του κουμπιού προειδοποίησης για την εγκατεστημένη εφαρμογή.</string>
     <string name="settings__foreground__theme_preference__summary">Επιλέξτε ανάμεσα σε ανοιχτό και σκοτεινό θέμα</string>
     <string name="settings__foreground__theme_preference__title">Επιλέξτε θέμα</string>
     <string name="settings__foreground__update_check__metered__summary">Να επιτρέπονται οι έλεγχοι ενημερώσεων σε μετρήσιμα δίκτυα, όπως δεδομένα κινητής τηλεφωνίας.</string>
@@ -324,15 +314,10 @@
     <string name="crash_report__report_is_copied_to_clipboard">Η αναφορά σφαλμάτων αντιγράφτηκε στο πρόχειρο σας</string>
     <string name="installer__android_too_old_for_shizuku">Το Android σας είναι πολύ παλιό για Shizuku.</string>
     <string name="notification__uncaught_exception__title">Το FFUpdater συνετρίβη</string>
-    <string name="notification__bachground_work__channel_name">Ειδοποιήσεις Εργασίας Παρασκηνίου</string>
-    <string name="notification__bachground_work__action_title">Ακυρώστε αυτήν την εργασία στο παρασκήνιο</string>
-    <string name="notification__bachground_work__channel_description">Ειδοποιήσεις για την εργασία στο παρασκήνιο</string>
-    <string name="notification__bachground_work__text">Αυτή η ειδοποίηση απαιτείται για αξιόπιστη εκτέλεση. Ανάλογα με τις ρυθμίσεις σας, οι ενημερώσεις λαμβάνονται, κατεβαίνουν και εγκαθίστανται στο παρασκήνιο. Αυτή η ειδοποίηση μπορεί να κρυφτεί ή να τεθεί σε σίγαση χωρίς να σταματήσει η εργασία στο παρασκήνιο. Μετά την ολοκλήρωση του ελέγχου, η ειδοποίηση θα κλείσει επίσης.</string>
     <string name="add_app_activity__title_based_on_firefox">Βασισμένο στον Firefox</string>
     <string name="add_app_activity__title_good_security_browsers">Καλό Πρόγραμμα περιήγησης Ασφαλείας</string>
     <string name="notification__uncaught_exception__channel_name">Ειδοποιήσεις σφαλμάτων</string>
     <string name="notification__uncaught_exception__text">Κάντε κλικ για να δείτε την αναφορά σφάλματος.</string>
-    <string name="notification__bachground_work__title">Εκτέλεση εργασιών στο παρασκήνιο</string>
     <string name="mulch_wv__title">Mulch System WebView</string>
     <string name="mulch_wv__description">Πρόκειται για ένα σύστημα WebView προσανατολισμένο στην ασφάλεια και βασίζεται στην τεχνολογία Chromium. Πολλά χαρακτηριστικά έχουν απενεργοποιηθεί/αφαιρεθεί και αρκετά λειτουργίες προστασίας έχουν ενεργοποιηθεί/προστεθεί χάρη σε ενημερώσεις κώδικα από το Vanadium έργο.</string>
     <string name="app_installer__failed_to_validate_signature_of_download">Αποτυχία επικύρωσης της υπογραφής της λήψης.</string>

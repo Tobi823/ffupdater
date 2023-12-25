@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_about_title">FFUpdater Hakkında</string>
-    <string name="app_card__app_warning_button_description">Bu uygulama hakkındaki uyarıları göster</string>
     <string name="app_description">Gizlilik dostu tarayıcılar için bir güncelleyici</string>
     <string name="app_icon">uygulama simgesi</string>
     <string name="app_name">FFUpdater</string>
-    <string name="app_warning_dialog__title">Uyarı</string>
     <string name="application_installation_was_not_successful">Uygulama kurulumu başarısız oldu</string>
     <string name="application_successfully_installed">Uygulama başarıyla kuruldu</string>
     <string name="available_version">Kullanılabilir: %1$s</string>
@@ -37,8 +35,6 @@
     <string name="crash_report__go_to_github">GitHub\'a git</string>
     <string name="crash_report__go_to_gitlab">GitLab\'a git</string>
     <string name="crash_report__got_to_notabug_org">notabug.org\'a git</string>
-    <string name="dialog_button__do_not_install">Hayır, kurma</string>
-    <string name="dialog_button__yes">Evet</string>
     <string name="notification__download_error__channel_descr">Arka planda güncelleme indirmeleri başarısız olduğunda gösterilir.</string>
     <string name="notification__download_error__channel_name">Arka planda indirme hataları hakkında bildirim</string>
     <string name="notification__download_error__descr">%1$s güncellemesinin arka planda indirilmesi başarısız oldu. Bu hata sık sık meydana geliyorsa, notabug.org, GitHub veya GitLab üzerinden bildirmekten çekinmeyin.</string>
@@ -105,9 +101,6 @@
     <string name="download_activity__use_cached_downloaded_apk">Şuradan indirilmiş dosyayı kullanın:</string>
     <string name="download_activity__you_can_now_close_this_window">Artık bu pencereyi kapatabilirsiniz</string>
     <string name="download_activity__label">Uygulamayı İndir</string>
-    <string name="install_new_app">Yeni uygulama kur</string>
-    <string name="install_same_version_dialog__message">Bu uygulamanın en son sürümü zaten kurulu. En son sürümü tekrar indirip kurmak istiyor musunuz\?</string>
-    <string name="install_same_version_dialog__title">Aynı sürüm kurulu</string>
     <string name="notification__install_error__channel_descr">Başarısız %1$s güncellemeleri için bildirim kanalı.</string>
     <string name="notification__install_error__channel_name">%1$s güncelleme hatası bildirimi</string>
     <string name="notification__install_error__text">Hata (%1$d): %2$s</string>
@@ -132,7 +125,6 @@
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>GitHub-API sınırı aşıldı. Bir saat içinde tekrar deneyin.</u>"</string>
     <string name="main_activity__no_unmetered_network">Ölçülmeyen ağ yok</string>
-    <string name="main_activity__subtitle">Gizlilik dostu tarayıcılar için bir güncelleyici</string>
     <string name="main_activity__temporary_network_issue">"<u>Geçici ağ sorunu. Daha sonra tekrar deneyin.</u>"</string>
     <string name="ok">Tamam</string>
     <string name="request_installation_permission_dialog__abort">İptal</string>
@@ -169,7 +161,6 @@
     <string name="settings__background_category__summary">Uygulamanın arka planda çalıştığı ve kullanıcı tarafından görülmediği ayarlar.</string>
     <string name="settings__background_category__title">Arka plan</string>
     <string name="settings__foreground__download__metered__title">Ölçülü ağlarda güncellemeleri indir</string>
-    <string name="settings__foreground__hide_warning_buttons">Kurulu uygulama için uyarı düğmesini gizle.</string>
     <string name="settings__foreground__theme_preference__summary">Açık ve koyu tema arasında seçim yapın</string>
     <string name="settings__foreground__theme_preference__title">Tema seçin</string>
     <string name="settings__foreground__update_check__metered__summary">Mobil veri gibi ölçülü ağlarda güncelleme denetimlerine izin ver.</string>
@@ -216,7 +207,6 @@
 \n- Ayrıca Google Chrome\'un teknik temelini kullanır ve böylece Chromium görselleştirme motorunun tekel konumunu dolaylı olarak destekler.</string>
     <string name="mull__title">Mull Tarayıcı</string>
     <string name="mull__description">Bu, Mozilla teknolojisine dayanan gizlilik odaklı ve açık olmayan kısımları temizlenen bir web tarayıcısıdır. arkenfox-user.js projesindeki tercihleri kullanarak Tor Uplift projesi tarafından geliştirilen birçok özelliği etkinleştirir. \'uBlock Origin\' eklentisini kurmanız tavsiye edilir.</string>
-    <string name="app_card__open_project_page">Proje sayfasını tarayıcıda aç</string>
     <string name="ungoogled_chromium__eol_reason">Geliştirici şunları paylaştı: \"Sürümleri bir süre güncelleyemeyeceğim. Mümkünse lütfen bu arada [FFUpdater\'ın desteklediği] tarayıcılardan birini kullanın.\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
     <string name="tor_browser__title">Tor Browser</string>
     <string name="tor_browser__description">Android için Tor Browser, çevrim içi gizlilik ve özgürlük için dünyanın en güçlü aracının geliştiricileri olan Tor Projesi tarafından desteklenen tek resmi mobil tarayıcıdır.</string>

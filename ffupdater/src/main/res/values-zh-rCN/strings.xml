@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_about_title">关于 FFUpdater</string>
-    <string name="app_card__app_warning_button_description">显示关于此应用的警告</string>
     <string name="app_description">为隐私友好型浏览器打造的升级器</string>
     <string name="app_icon">应用图标</string>
     <string name="app_name">FFUpdater</string>
-    <string name="app_warning_dialog__title">警告</string>
     <string name="application_installation_was_not_successful">应用程序安装未成功</string>
     <string name="application_successfully_installed">已成功安装应用程序</string>
     <string name="available_version">可用版本：%1$s</string>
@@ -37,8 +35,6 @@
     <string name="crash_report__go_to_github">跳转到 GitHub</string>
     <string name="crash_report__go_to_gitlab">跳转到 GitLab</string>
     <string name="crash_report__got_to_notabug_org">跳转到 notabug.org</string>
-    <string name="dialog_button__do_not_install">不，请不要安装</string>
-    <string name="dialog_button__yes">是</string>
     <string name="notification__download_error__channel_descr">当在后台下载更新失败时显示。</string>
     <string name="notification__download_error__channel_name">后台下载错误通知</string>
     <string name="notification__download_error__descr">后台下载 %1$s 的更新失败。如果这个错误频繁出现，请随时在 notabug.org、GitHub 或 GitLab 上报告。</string>
@@ -105,9 +101,6 @@
     <string name="download_activity__use_cached_downloaded_apk">使用此处已下载的文件：</string>
     <string name="download_activity__you_can_now_close_this_window">现在您可以关闭此窗口</string>
     <string name="download_activity__label">下载应用程序</string>
-    <string name="install_new_app">安装新应用</string>
-    <string name="install_same_version_dialog__message">已安装此应用程序的最新版本。是否要再次下载并安装最新版本？</string>
-    <string name="install_same_version_dialog__title">已安装相同版本</string>
     <string name="notification__install_error__channel_descr">%1$s 更新失败通知频道。</string>
     <string name="notification__install_error__channel_name">%1$s 更新失败通知</string>
     <string name="notification__install_error__text">错误（%1$d）：%2$s</string>
@@ -132,7 +125,6 @@
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded"><u>超出 GitHub API 限制。请在下一小时重试。</u></string>
     <string name="main_activity__no_unmetered_network">无非流量计费网络</string>
-    <string name="main_activity__subtitle">隐私友好的浏览器的更新器</string>
     <string name="main_activity__temporary_network_issue"><u>临时网络问题。请稍后重试。</u></string>
     <string name="ok">好的</string>
     <string name="request_installation_permission_dialog__abort">放弃</string>
@@ -169,7 +161,6 @@
     <string name="settings__background_category__summary">当应用程序在后台运行并对用户不可见时的设置。</string>
     <string name="settings__background_category__title">后台</string>
     <string name="settings__foreground__download__metered__title">在按流量计费的网络中下载更新</string>
-    <string name="settings__foreground__hide_warning_buttons">隐藏已安装应用程序的警告按钮。</string>
     <string name="settings__foreground__theme_preference__summary">在浅色和深色主题之间进行选择</string>
     <string name="settings__foreground__theme_preference__title">选择主题</string>
     <string name="settings__foreground__update_check__metered__summary">允许在按流量计费的网络（如移动数据）中检查更新。</string>
@@ -216,7 +207,6 @@
 \n- 它还使用了 Google Chrome 的技术基础，因而间接支持了 Chromium 渲染引擎的垄断地位。</string>
     <string name="mull__title">Mull 浏览器</string>
     <string name="mull__description">这是一款基于 Mozilla 技术、以隐私为导向的完全开源的网页浏览器。其使用了 arkenfox-user.js 项目的偏好设置，开启了许多以 Tor Uplift 项目为上游实现的功能。推荐同时安装 \'uBlock Origin\' 扩展。</string>
-    <string name="app_card__open_project_page">在浏览器中打开项目页面</string>
     <string name="ungoogled_chromium__eol_reason">开发者消息：“我将有一段时间无法更新版本。 如果可能，请同时使用 FFUpdater 支持的其他浏览器之一。” https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
     <string name="orbot__title">Orbot：Android 版 Tor</string>
     <string name="settings__background__update_check__when_device_idle__title">仅在设备空闲时检查更新</string>
@@ -327,16 +317,11 @@
     <string name="notification__uncaught_exception__channel_description">FFUpdater 因意外错误崩溃。</string>
     <string name="notification__uncaught_exception__title">FFUpdater 崩溃了</string>
     <string name="notification__uncaught_exception__text">点击以查看错误报告。</string>
-    <string name="notification__bachground_work__channel_name">后台任务通知</string>
-    <string name="notification__bachground_work__channel_description">后台任务的通知</string>
-    <string name="notification__bachground_work__title">执行后台任务</string>
     <string name="app_installer__failed_to_validate_signature_of_download">验证此下载的签名失败。</string>
-    <string name="notification__bachground_work__action_title">取消后台任务</string>
     <string name="mulch_wv__title">覆盖系统 WebView</string>
     <string name="mulch_wv__description">这是一个基于 Chromium 技术的面向安全的、加固的系统 WebView。由于 Vanadium 项目的补丁，许多不受欢迎的特性被禁用/删除，而一些安全功能被启用/添加。</string>
     <string name="background__installation__when_screen_off__summary">仅在设备屏幕关闭时尝试安装更新。</string>
     <string name="notification__bg_update_check__unreliable_execution__text">这可能是由您设备的电池或性能设置造成的。点击此通知以禁用对此 App 的电池优化。</string>
-    <string name="notification__bachground_work__text">此通知是可靠的执行所必需的。根据您的设置，更新的获取、下载和安装在后台完成。这一通知可在不停止后台任务的情况下被隐藏或静音。在检查结束后，通知也将关闭。</string>
     <string name="thorium__warning">- Thorium 使用了 Google Chrome 的技术基础，因而间接支持了 Chromium 渲染引擎的垄断地位。</string>
     <string name="main_activity__unexpected_error">发生了意外错误。</string>
     <string name="cromite__description">Cromite 是基于 Bromite 的 Chromium 修改版，支持广告拦截和隐私保护。</string>
@@ -357,7 +342,6 @@
     <string name="fairemail__title">FairEmail</string>
     <string name="cardview_dialog__not_installed_by_ffupdater">此应用没有通过 FFUpdater 安装或更新。为避免和其他应用冲突，自动更新已禁用。</string>
     <string name="fairemail__description">功能齐全、开源且隐私友好的 Android 电子邮件应用</string>
-    <string name="app_install_info_dialog__install">安装</string>
     <string name="cardview_dialog__install">安装最新版本</string>
     <string name="cardview_dialog__different_signature">由于 APK 签名不同，FFUpdater 无法更新该应用。您可以通过卸载该应用并用 FFUpdater 重新安装来解决此问题。</string>
 </resources>

@@ -4,7 +4,6 @@
     <string name="app_description">Päivittäjä yksityisyyttä arvostaville selaimille</string>
     <string name="app_name">FFUpdater</string>
     <string name="app_icon">sovelluskuvake</string>
-    <string name="app_warning_dialog__title">Varoitus</string>
     <string name="application_installation_was_not_successful">Sovelluksen asennus ei onnistunut</string>
     <string name="application_successfully_installed">Sovellus asennettu onnistuneesti</string>
     <string name="available_version">Saatavilla: %1$s</string>
@@ -21,8 +20,6 @@
     <string name="notification__install_error__title">%1$s ei voi päivittää</string>
     <string name="notification__install_error__channel_name">%1$s päivitysvirheen ilmoitus</string>
     <string name="notification__install_error__channel_descr">Ilmoituskanava epäonnistuneille %1$s päivityksille.</string>
-    <string name="install_same_version_dialog__title">Sama versio asennettu</string>
-    <string name="install_new_app">Asenna uusi sovellus</string>
     <string name="download_activity__label">Asenna sovellus</string>
     <string name="download_activity__use_cached_downloaded_apk">Käytä jo ladattua tiedostoa kohteesta:</string>
     <string name="download_activity__too_low_memory_title">Vähäinen tallennustila</string>
@@ -40,7 +37,6 @@
     <string name="running_downloads_dialog__title">Käynnissä olevat lataukset</string>
     <string name="request_installation_permission_dialog__abort">Peru</string>
     <string name="ok">OK</string>
-    <string name="main_activity__subtitle">Yksityisyyttä arvostavien selainten päivittäjä</string>
     <string name="settings__background__installation__enabled__title">Asenna päivitys</string>
     <string name="settings__foreground__download__metered__title">Lataa päivitykset kulutukseen perustuvissa verkoissa</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
@@ -85,7 +81,6 @@
     <string name="download_activity__download_failed">Lataus epäonnistui</string>
     <string name="download_activity__you_can_now_close_this_window">Voit sulkea tämän ikkunan</string>
     <string name="download_activity__open_cache_folder_button_text">avaa välimuistikansio</string>
-    <string name="settings__foreground__hide_warning_buttons">Piilota varoituspainike asennetulta sovellukselta.</string>
     <string name="settings__background_category__title">Tausta</string>
     <string name="request_installation_permission_dialog__title">Asentajan lupa</string>
     <string name="request_installation_permission_dialog__grant_permission">Salli lupa</string>
@@ -98,10 +93,7 @@
     <string name="download_activity__delete_cache_button_text">tyhjennä välimuisti</string>
     <string name="notification__download_error__title">Päivityksen lataus taustalla epäonnistui</string>
     <string name="notification__download_running__title">Ladataan sovelluksen päivityksiä</string>
-    <string name="dialog_button__do_not_install">Ei, älä asenna sitä</string>
     <string name="notification__download_running__channel_name">Ilmoitus latauksista taustalla</string>
-    <string name="dialog_button__yes">Kyllä</string>
-    <string name="install_same_version_dialog__message">Sovelluksen viimeisin versio on jo asennettu. Haluatko ladata ja asentaa viimeisimmän version uudestaan\?</string>
     <string name="firefox_release__title">Firefox Selain</string>
     <string name="app_card__information_about_the_app">Tietoa sovelluksesta</string>
     <string name="settings__b_f__delete_cache_if_install_failed">Poista ladattu päivitys, jos asennus epäonnistuu.</string>

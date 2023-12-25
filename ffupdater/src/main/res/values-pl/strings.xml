@@ -33,8 +33,6 @@
     <string name="crash_report__go_to_github">Przejdź do GitHub</string>
     <string name="crash_report__go_to_gitlab">Przejdź do GitLab</string>
     <string name="crash_report__got_to_notabug_org">Przejdź do notabug.org</string>
-    <string name="dialog_button__do_not_install">Nie, nie instaluj tego</string>
-    <string name="dialog_button__yes">Tak</string>
     <string name="notification__download_running__channel_descr">Pokazuje, kiedy aktualizacje aplikacji są pobierane w tle.</string>
     <string name="notification__download_running__channel_name">Powiadomienie o pobieraniu plików w tle</string>
     <string name="notification__download_running__title">Pobieranie aktualizacji aplikacji</string>
@@ -83,9 +81,6 @@
     <string name="download_activity__use_cached_downloaded_apk">Użyj wcześniej pobranego pliku z:</string>
     <string name="download_activity__you_can_now_close_this_window">Możesz teraz zamknąć to okno</string>
     <string name="download_activity__label">Zainstaluj aplikację</string>
-    <string name="install_new_app">Zainstaluj nową aplikację</string>
-    <string name="install_same_version_dialog__message">Najnowsza wersja tej aplikacji jest już zainstalowana. Czy chcesz ponownie pobrać i zainstalować najnowszą wersję?</string>
-    <string name="install_same_version_dialog__title">Ta sama wersja jest już zainstalowana</string>
     <string name="notification__install_error__channel_descr">Kanał powiadomień o nieudanych aktualizacjach %1$s.</string>
     <string name="notification__install_error__channel_name">Powiadomienie o niepowodzeniu aktualizacji %1$s</string>
     <string name="notification__install_error__text">Błąd (%1$d): %2$s</string>
@@ -103,7 +98,6 @@
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>Przekroczono limit GitHub-API. Ponów próbę w ciągu następnej godziny.</u>"</string>
     <string name="main_activity__no_unmetered_network">Brak sieci bez limitu danych</string>
-    <string name="main_activity__subtitle">Aktualizator dla przeglądarek chroniących prywatność</string>
     <string name="main_activity__temporary_network_issue">"<u>Tymczasowy problem z siecią. Spróbuj ponownie później.</u>"</string>
     <string name="ok">OK</string>
     <string name="request_installation_permission_dialog__abort">Przerwij</string>
@@ -180,8 +174,6 @@
     <string name="vivaldi__title">Vivaldi</string>
     <string name="vivaldi__warning">- Vivaldi posiada tylko częściowo otwarty kod źródłowy.
 \n- Wykorzystuje również techniczne podstawy przeglądarki Google Chrome, przez co pośrednio wspiera monopolistyczną pozycję silnika renderującego Chromium.</string>
-    <string name="app_card__app_warning_button_description">Pokaż ostrzeżenia o tej aplikacji</string>
-    <string name="app_warning_dialog__title">Ostrzeżenie</string>
     <string name="notification__download_error__channel_descr">Pokazuje, gdy pobieranie aktualizacji w tle nie powiodło się.</string>
     <string name="notification__download_error__channel_name">Powiadomienie o błędach podczas pobierania w tle</string>
     <string name="notification__download_error__title">Pobieranie aktualizacji w tle nie powiodło się</string>
@@ -193,7 +185,6 @@
     <string name="add_app_activity__label">Dodaj nową aplikację</string>
     <string name="crash_report_activity__label">Zgłoś usterkę</string>
     <string name="add_app_activity__title_from_mozilla">Od Mozilli</string>
-    <string name="settings__foreground__hide_warning_buttons">Ukryj przycisk ostrzegawczy dla zainstalowanej aplikacji.</string>
     <string name="settings__b_f__delete_cache_if_install_failed">Usuń pobraną aktualizację, jeśli instalacja nie powiedzie się.</string>
     <string name="settings__b_f__delete_cache_if_install_successful">Usuń pobraną aktualizację, jeśli instalacja zakończy się pomyślnie.</string>
     <string name="add_app_activity__title_better_than_google_chrome">Lepsze niż Google Chrome</string>
@@ -205,7 +196,6 @@
     <string name="settings__background__update_check__when_device_idle__title">Sprawdź aktualizacje tylko wtedy, gdy urządzenie jest bezczynne</string>
     <string name="download_activity__different_installer_info__text">Jeśli instalacja często się nie udaje, spróbuj przełączyć się na \"natywny instalator\" w ustawieniach.</string>
     <string name="download_activity__open_folder">Otwórz folder</string>
-    <string name="app_card__open_project_page">Otwórz stronę projektu w przeglądarce</string>
     <string name="mull__description">Jest to zorientowana na prywatność i deblobowana (sprawdź \"Blob binarny\" na Wikipedii) przeglądarka internetowa oparta na technologii Mozilli. Umożliwia wiele funkcji wniesionych przez projekt Tor Uplift, używając preferencji z projektu arkenfox-user.js. Zalecane jest zainstalowanie \"uBlock Origin\".</string>
     <string name="orbot__title">Orbot: Tor dla Androida</string>
     <string name="settings__network__trust_user_cas__summary">Włącz, jeśli ruch danych powinien być sprawdzany i zmieniany przez inne aplikacje. Jeśli nie jesteś pewien, pozostaw tę opcję wyłączoną.</string>
@@ -313,20 +303,15 @@
     <string name="notification__uncaught_exception__title">Awaria FFUpdater</string>
     <string name="add_app_activity__title_good_security_browsers">Dobre bezpieczne przeglądarki</string>
     <string name="notification__uncaught_exception__channel_description">Niespodziewany błąd spowodował awarię FFUpdater.</string>
-    <string name="notification__bachground_work__title">Wykonywanie działań w tle</string>
-    <string name="notification__bachground_work__action_title">Anuluj to działanie w tle</string>
     <string name="notification__bg_update_check__unreliable_execution__channel_name">Sprawdzanie aktualizacji w tle nie powiodło się</string>
     <string name="mulch_wv__title">Mulch System WebView</string>
-    <string name="notification__bachground_work__channel_name">Powiadomienia o działaniu w tle</string>
     <string name="background__installation__when_screen_off__title">Instaluj tylko wtedy gdy ekran jest wyłączony</string>
     <string name="notification__bg_update_check__unreliable_execution__channel_description">Ostrzeżenie o niepowodzeniu sprawdzania aktualizacji w tle</string>
     <string name="background__installation__when_screen_off__summary">Próbować instalować aktualizacje tylko wtedy, gdy ekran urządzenia jest wyłączony.</string>
     <string name="notification__bg_update_check__unreliable_execution__title">Zawodzi sprawdzanie aktualizacji w tle</string>
-    <string name="notification__bachground_work__channel_description">Powiadomienia z pracy w tle</string>
     <string name="mulch_wv__description">Jest to zorientowany na bezpieczeństwo i wzmocniony system WebView oparty na technologii Chromium. Wiele anty-funkcji zostało wyłączonych/usuniętych, oraz kilka funkcji bezpieczeństwa zostało włączonych/dodanych dzięki łatkom z projektu Vanadium.</string>
     <string name="notification__bg_update_check__unreliable_execution__text">Może być to spowodowane ustawieniami baterii lub wydajności. Kliknij, aby wyłączyć optymalizację baterii dla tej aplikacji.</string>
     <string name="app_installer__failed_to_verify_signature_of_installed_app">Nie udało się sprawdzić zainstalowanej aplikacji.</string>
-    <string name="notification__bachground_work__text">To powiadomienie jest wymagane do niezawodnego działania. W zależności od ustawień, aktualizacje są sprawdzane, pobierane i instalowane w tle. To powiadomienie można ukryć lub wyciszyć bez ograniczania pracy w tle. Po zakończeniu sprawdzania powiadomienie zostanie usunięte.</string>
     <string name="crash_report__report_is_copied_to_clipboard">Skopiowano raport awarii do schowka</string>
     <string name="installer__method__title">Metoda instalacji</string>
     <string name="app_installer__failed_to_validate_signature_of_download">Nie udało się zweryfikować podpisu pobierania.</string>
@@ -351,7 +336,6 @@
     <string name="fairemail__title">FairEmail</string>
     <string name="cardview_dialog__not_installed_by_ffupdater">Ta aplikacja nie została zainstalowana ani zaktualizowana przez FFUpdater. Aby uniknąć konfliktów z innymi aplikacjami, automatyczna aktualizacja jest wyłączona.</string>
     <string name="fairemail__description">W pełni funkcjonalna, otwartoźródłowa, przyjazna dla prywatności aplikacja e-mail na Androida</string>
-    <string name="app_install_info_dialog__install">Instaluj</string>
     <string name="cardview_dialog__install">Instaluj najnowszą wersję</string>
     <string name="cardview_dialog__different_signature">FFUpdater nie może zaktualizować tej aplikacji, ponieważ sygnatura APK jest inna. Możesz to naprawić, odinstalowując aplikację i instalując ją ponownie za pomocą FFUpdater.</string>
 </resources>

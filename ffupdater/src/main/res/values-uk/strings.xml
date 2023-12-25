@@ -31,8 +31,6 @@
     <string name="crash_report__go_to_github">Перейдіть на GitHub</string>
     <string name="crash_report__go_to_gitlab">Перейдіть на GitLab</string>
     <string name="crash_report__got_to_notabug_org">Перейдіть на сторінку notabug.org</string>
-    <string name="dialog_button__do_not_install">Ні, поверніться до \'Release\'</string>
-    <string name="dialog_button__yes">Так</string>
     <string name="notification__download_running__channel_descr">Показує, коли оновлення застосунка завантажуються у фоновому режимі.</string>
     <string name="notification__download_running__channel_name">Повідомлення про завантаження у фоновому режимі</string>
     <string name="notification__download_running__title">Завантаження оновлень застосунку</string>
@@ -85,9 +83,6 @@
     <string name="download_activity__use_cached_downloaded_apk">Використайте вже завантажений файл із:</string>
     <string name="download_activity__you_can_now_close_this_window">Тепер ви можете закрити це вікно</string>
     <string name="download_activity__label">Встановити застосунок</string>
-    <string name="install_new_app">Встановіть новий застосунок</string>
-    <string name="install_same_version_dialog__message">Останню версію цього застосунок вже встановлено. Завантажити та встановити останню версію знову\?</string>
-    <string name="install_same_version_dialog__title">Встановлена та сама версія</string>
     <string name="notification__install_error__channel_descr">Канал сповіщень про невдалі оновлення %1$s.</string>
     <string name="notification__install_error__channel_name">Повідомлення про помилку оновлення %1$s</string>
     <string name="notification__install_error__text">Помилка (%1$d): %2$s</string>
@@ -105,7 +100,6 @@
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>Перевищено ліміт GitHub-API. Повторіть спробу наступної години.</u>"</string>
     <string name="main_activity__no_unmetered_network">Немає мережі без тарифікації трафіку</string>
-    <string name="main_activity__subtitle">Оновлювач для конфіденційних браузерів</string>
     <string name="main_activity__temporary_network_issue">"<u>Тимчасова проблема з мережею. Повторіть спробу пізніше.</u>"</string>
     <string name="ok">Гаразд</string>
     <string name="request_installation_permission_dialog__abort">Перервати</string>
@@ -181,10 +175,8 @@
     <string name="vivaldi__title">Vivaldi</string>
     <string name="vivaldi__warning">- Vivaldi є лише частково відкритим.
 \n- Він також використовує технічну основу Google Chrome і, таким чином, опосередковано підтримує монопольне положення рушія візуалізації Chromium.</string>
-    <string name="app_card__app_warning_button_description">Показати попередження про цей застосунок</string>
     <string name="iceraven__warning">- Супроводжувач не дає жодних гарантій чи гарантій безпеки, оновлень чи навіть стабільності.
 \n- Проект потребує більше часу, ніж зазвичай, для надання оновлень безпеки.</string>
-    <string name="app_warning_dialog__title">Увага</string>
     <string name="notification__download_error__channel_name">Сповіщення про помилки завантаження у фоновому режимі</string>
     <string name="notification__download_error__title">Не вдалося завантажити оновлення у фоновому режимі</string>
     <string name="notification__eol_apps__channel_description">Канал сповіщень про застарілі програми.</string>
@@ -198,11 +190,9 @@
     <string name="download_activity__file_uri_exposed_toast">Неможливо відкрити шлях до файлу іншим застосункам. Будь ласка, відкрийте теку самостійно за допомогою вашого улюбленого файлового менеджера.</string>
     <string name="install_activity__download_file_failed__crash_text">Під час завантаження виникла наступна помилка. Якщо ця помилка виникає часто, не соромтеся надіслати звіт про збій на notabug.org, GitHub або GitLab.</string>
     <string name="crash_report__explain_text__download_activity_install_file">Ця помилка виникла під час інсталяції. Якщо ця помилка виникає часто, не соромтеся надіслати звіт про збій на notabug.org, GitHub або GitLab.</string>
-    <string name="app_card__open_project_page">Відкрити сторінку проєкту в браузері</string>
     <string name="ungoogled_chromium__eol_reason">Розробник опублікував: \"Я не зможу оновлювати версії протягом деякого часу. Якщо це можливо, будь ласка, використовуйте один з браузерів [який підтримується FFUpdater] у цей час.\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
     <string name="kiwi__title">Kiwi Next</string>
     <string name="lockwise__eol_reason">Mozilla припинила підтримку в грудні 2021 року. Будь ласка, перейдіть на інший сейф для зберігання паролів.</string>
-    <string name="settings__foreground__hide_warning_buttons">Приховати кнопку попередження для встановленого застосунку.</string>
     <string name="settings__b_f__delete_cache_if_install_successful">Видаляти завантажене оновлення, якщо встановлення пройшло успішно.</string>
     <string name="settings__b_f__delete_cache_if_install_failed">Видаляти завантажене оновлення, якщо встановлення завершилося невдало.</string>
     <string name="settings__installer_category__title">Встановлювач</string>
@@ -308,7 +298,6 @@
     <string name="installer__android_too_old_for_shizuku">Ваш Android занадто старий для Shizuku.</string>
     <string name="add_app_activity__title_good_security_browsers">Хороший безпечний браузер</string>
     <string name="thorium__warning">- Thorium використовує технічну основу Google Chrome і, таким чином, опосередковано підтримує монопольне положення рушія візуалізації Chromium.</string>
-    <string name="notification__bachground_work__channel_description">Повідомлення про фонову роботу</string>
     <string name="mulch_wv__description">Це орієнтована на безпеку та посилена система WebView на основі технології Chromium. Багато антифункцій вимкнено/видалено, а декілька функцій безпеки ввімкнено/додано завдяки виправленням від проекту Vanadium.</string>
     <string name="notification__bg_update_check__unreliable_execution__text">Можливо, це викликано налаштуваннями акумулятора або продуктивності вашого пристрою. Натисніть на це сповіщення, щоб вимкнути оптимізацію акумулятора для цього застосунка.</string>
     <string name="main_activity__unexpected_error">Сталася неочікувана помилка.</string>
@@ -318,7 +307,6 @@
     <string name="duckduckgo_android__title">DuckDuckGo Browser</string>
     <string name="notification__uncaught_exception__channel_name">Сповіщення про збої</string>
     <string name="cromite__description">Cromite — це форк Chromium на базі Bromite із вбудованою підтримкою блокування реклами та забезпеченням конфіденційності.</string>
-    <string name="notification__bachground_work__text">Це сповіщення потрібне для надійного виконання. Залежно від ваших налаштувань, оновлення завантажуються та встановлюються у фоновому режимі. Це сповіщення можна приховати або вимкнути, не припиняючи фонову роботу. Після завершення перевірки сповіщення також буде закрито.</string>
     <string name="firefox_focus_beta__description">Використовуйте Firefox Focus для всього, що хочете тримати окремо від основного браузера — для всіх, хто заходить, виходить і миттєво забуває про це. Без вкладок, без метушні, без плутанини. Також блокуйте онлайн-трекери. Один дотик, і вашу історію веб-перегляду буде повністю видаленною.
 \n
 \nFirefox Focus — ідеальний засіб для входу/виходу, пошуку та очищення історії пошуку.</string>
@@ -327,8 +315,6 @@
     <string name="notification__uncaught_exception__channel_description">Неочікувані помилки, які призводять до збою FFUpdater.</string>
     <string name="notification__bg_update_check__unreliable_execution__channel_description">Попередження про ненадійне виконання фонової перевірки оновлень</string>
     <string name="background__installation__when_screen_off__summary">Встановлення оновлень тільки при вимкненому екрані пристрою.</string>
-    <string name="notification__bachground_work__title">Виконання фонової роботи</string>
-    <string name="notification__bachground_work__action_title">Скасувати цю фонову роботу</string>
     <string name="add_app_activity__title_based_on_firefox">На основі Firefox</string>
     <string name="notification__bg_update_check__unreliable_execution__title">Фонова перевірка оновлень виконується ненадійно</string>
     <string name="thorium__title">Thorium</string>
@@ -337,7 +323,6 @@
     <string name="duckduckgo_android__description">Застосунок DuckDuckGo забезпечує найповніший захист конфіденційності в Інтернеті одним натисканням кнопки. З одним завантаженням ви отримуєте новий повсякденний браузер, який пропонує бездоганний захист під час пошуку та перегляду, а також доступ до захисту від відстеження електронних листів, які ви отримуєте, і застосунків, якими ви користуєтеся. Багато з цих засобів захисту не пропонуються в більшості популярних браузерів за замовчуванням.</string>
     <string name="notification__uncaught_exception__text">Натисніть, щоб переглянути звіт про помилку.</string>
     <string name="ffupdater__different_signature_message">Ця версія FFUpdater була підписана F-Droid, тому лише F-Droid може поширювати оновлення. Щоб швидше отримувати оновлення, видаліть FFUpdater і встановіть версію, підписану розробником. З цією версією FFUpdater може оновлюватися самостійно, не чекаючи F-Droid.</string>
-    <string name="notification__bachground_work__channel_name">Сповіщення про фонову роботу</string>
     <string name="thorium__description">Найшвидший браузер на Землі. Chromium fork для Linux названий на честь радіоактивного елемента під номером 90.</string>
     <string name="background__installation__when_screen_off__title">Встановлювати тільки при вимкненому екрані</string>
     <string name="cromite__title">Cromite</string>
@@ -351,7 +336,6 @@
     <string name="cardview_dialog__warnings_label">Увага:</string>
     <string name="cardview_dialog__eol">Цей застосунок не повинен більше використовуватися:</string>
     <string name="fairemail__description">Повнофункціональний, відкритий і конфіденційний застосунок для електронної пошти</string>
-    <string name="app_install_info_dialog__install">Встановити</string>
     <string name="cardview_dialog__install">Встановити останню версію</string>
     <string name="cardview_dialog__different_signature">FFUpdater не може оновити цей застосунок, оскільки підпис APK-файлу відрізняється. Ви можете виправити це шляхом видалення застосунку та перевстановлення його з FFUpdater.</string>
 </resources>

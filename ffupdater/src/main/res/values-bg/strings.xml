@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_about_title">Относно FFUpdater</string>
-    <string name="app_card__app_warning_button_description">Показва предупреждение за приложението</string>
     <string name="app_description">Приложение за обновяване на поверителни четци</string>
     <string name="app_icon">пиктограма на приложение</string>
     <string name="app_name">FFUpdater</string>
-    <string name="app_warning_dialog__title">Внимание</string>
     <string name="application_installation_was_not_successful">Приложението не е инсталирано</string>
     <string name="application_successfully_installed">Приложението е инсталирано</string>
     <string name="available_version">Налично: %1$s</string>
@@ -37,8 +35,6 @@
     <string name="crash_report__go_to_github">Към Гитхъб</string>
     <string name="crash_report__go_to_gitlab">Към Гитлаб</string>
     <string name="crash_report__got_to_notabug_org">Към notabug.org</string>
-    <string name="dialog_button__do_not_install">Не, без инсталиране</string>
-    <string name="dialog_button__yes">Да</string>
     <string name="notification__download_error__channel_descr">Категория известия за неуспешни изтегляния на обновяване във фонов режим.</string>
     <string name="notification__download_error__channel_name">Известие при неуспешно изтегляне във фонов режим</string>
     <string name="notification__download_error__descr">Неуспешно изтегляне на обновяване на %1$s във фонов режим. Ако грешката се появява често, не се колебайте да съобщите за нея в notabug.org, Гитхъб или Гитлаб.</string>
@@ -105,9 +101,6 @@
     <string name="download_activity__use_cached_downloaded_apk">Използва се изтегления файл:</string>
     <string name="download_activity__you_can_now_close_this_window">Можете да затворите прозореца</string>
     <string name="download_activity__label">Изтегляне на приложение</string>
-    <string name="install_new_app">Инсталиране на ново приложение</string>
-    <string name="install_same_version_dialog__message">Последното издание на приложението вече е инсталирано. Желаете ли да бъде изтеглено и инсталирано отново\?</string>
-    <string name="install_same_version_dialog__title">Инсталирано е същото издание</string>
     <string name="notification__install_error__channel_descr">Категория известия за неуспешни обновявания на %1$s.</string>
     <string name="notification__install_error__channel_name">Известие при неуспешно обновяване на %1$s</string>
     <string name="notification__install_error__text">Грешка (%1$d): %2$s</string>
@@ -132,7 +125,6 @@
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>Превишено е ограничение на GitHub-API. Опитайте отново след час.</u>"</string>
     <string name="main_activity__no_unmetered_network">Няма мрежи без отчитане</string>
-    <string name="main_activity__subtitle">Приложение за обновяване на поверителни четци</string>
     <string name="main_activity__temporary_network_issue">"<u>Временен проблем в мрежата. Опитайте по-късно</u>"</string>
     <string name="ok">Добре</string>
     <string name="request_installation_permission_dialog__abort">Относно</string>
@@ -169,7 +161,6 @@
     <string name="settings__background_category__summary">Настройки на приложението, когато работи във фонов режим и е невидимо за потребителя.</string>
     <string name="settings__background_category__title">Работа във фонов режим</string>
     <string name="settings__foreground__download__metered__title">Изтегляне на обновявания в мрежи с отчитане на трафика</string>
-    <string name="settings__foreground__hide_warning_buttons">Скриване на предупреждението на инсталираните приложения</string>
     <string name="settings__foreground__theme_preference__summary">На разположение са светла и тъмна тема.</string>
     <string name="settings__foreground__theme_preference__title">Избиране на тема</string>
     <string name="settings__foreground__update_check__metered__summary">Разрешава проверката за обновявания в мрежи с отчитане на трафика, каквито са мобилните данни.</string>
@@ -214,7 +205,6 @@
 \n- Освен това използва техническата основа на Гугъл Хром и така косвено поддържа монопола на машината за изчертаване на Хромиум.</string>
     <string name="mull__title">Четецът Мул</string>
     <string name="mull__description">Това е мрежов четец, ориентиран към защита на личните данни и базиран на технологията на Мозила. Включва много от възможностите, разработени от проекта Tor Uplift, а също използва настройките от проекта arkenfox-user.js. Препоръчително е да инсталирате „uBlock Origin“.</string>
-    <string name="app_card__open_project_page">Отваряне на страницата на проекта</string>
     <string name="ungoogled_chromium__eol_reason">Разработчикът е написал: „За известно време няма да мога да правя нови издания. Ако е възможно междувременно ползвайте някой от другите [поддържани от FFUpdater] мрежови четци.“ https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
     <string name="tor_browser__title">Четецът Тор</string>
     <string name="tor_browser__description">Четецът Тор за Андроид е единственият официален мобилен четец, поддържан от проекта Тор, разработчик на най-добрия в света инструмент за защита на личния живот и свободата онлайн.</string>
@@ -314,16 +304,11 @@
     <string name="add_app_activity__title_good_security_browsers">Добър, защитен четец</string>
     <string name="background__installation__when_screen_off__summary">Инсталиране на обновяванията само при изключен екран.</string>
     <string name="notification__uncaught_exception__channel_description">Категория известия за сривове на FFUpdater.</string>
-    <string name="notification__bachground_work__channel_description">Категория известия за работа във фонов режим.</string>
-    <string name="notification__bachground_work__channel_name">Известие при работа във фонов режим</string>
     <string name="notification__bg_update_check__unreliable_execution__text">Вероятната причина е или батерията, или настройките за производителност на устройството. За да изключите оптимизирането на батерията за това приложение докоснете известието.</string>
-    <string name="notification__bachground_work__text">Известието е необходимо за надеждно изпълнение. В зависимост от настройките обновяванията се извличат, изтеглят и инсталират във фонов режим. Това известие може да бъде скрито или заглушено, без да влияе на работа. След приключване на проверката за обноване то ще бъде затворено.</string>
     <string name="crash_report__report_is_copied_to_clipboard">Докладът за срив е копиран в междинната памет</string>
     <string name="installer__android_too_old_for_shizuku">Изданието на Android е твърде старо за Shizuku.</string>
     <string name="notification__uncaught_exception__title">FFUpdater се срина</string>
     <string name="notification__uncaught_exception__text">За да видите доклада докоснете.</string>
-    <string name="notification__bachground_work__title">Изпълняване във фонов режим</string>
-    <string name="notification__bachground_work__action_title">Спиране</string>
     <string name="notification__bg_update_check__unreliable_execution__channel_description">Категория известия за ненадеждна проверка за обновяване във фонов режим.</string>
     <string name="notification__bg_update_check__unreliable_execution__channel_name">Известие при неизпълнено обновяване във фонов режим</string>
     <string name="notification__bg_update_check__unreliable_execution__title">Проверката за обновяване във фонов режим не се изпълнява надеждно</string>

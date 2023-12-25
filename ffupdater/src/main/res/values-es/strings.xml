@@ -4,7 +4,6 @@
     <string name="app_description">Actualizador para navegadores respetuosos con la privacidad</string>
     <string name="app_icon">icono de la aplicación</string>
     <string name="app_name">FFUpdater</string>
-    <string name="app_warning_dialog__title">Advertencia</string>
     <string name="application_installation_was_not_successful">La instalación de la aplicación no se ha realizado correctamente</string>
     <string name="application_successfully_installed">Aplicación instalada exitosamente</string>
     <string name="available_version">Disponible: %1$s</string>
@@ -36,8 +35,6 @@
     <string name="crash_report__go_to_github">Ir a GitHub</string>
     <string name="crash_report__go_to_gitlab">Ir a GitLab</string>
     <string name="crash_report__got_to_notabug_org">Ir a notabug.org</string>
-    <string name="dialog_button__do_not_install">No, no lo instales</string>
-    <string name="dialog_button__yes">Sí</string>
     <string name="notification__download_running__channel_descr">Aparece cuando las actualizaciones de la aplicación se descargan en segundo plano.</string>
     <string name="notification__download_running__channel_name">Notificación sobre descargas en segundo plano</string>
     <string name="notification__download_running__title">Descargando actualizaciones de aplicaciones</string>
@@ -95,9 +92,6 @@
     <string name="download_activity__use_cached_downloaded_apk">Utilizar el archivo ya descargado de:</string>
     <string name="download_activity__you_can_now_close_this_window">Ahora puede cerrar esta ventana</string>
     <string name="download_activity__label">Descargar la aplicación</string>
-    <string name="install_new_app">Instalar una nueva aplicación</string>
-    <string name="install_same_version_dialog__message">La última versión de esta aplicación ya está instalada. ¿Quieres descargar e instalar la última versión de nuevo\?</string>
-    <string name="install_same_version_dialog__title">La misma versión ya está instalada</string>
     <string name="notification__install_error__channel_descr">Canal de notificación para actualizaciones fallidas de %1$s.</string>
     <string name="notification__install_error__channel_name">Notificación de fallo de actualización de %1$s</string>
     <string name="notification__install_error__text">Error (%1$d): %2$s</string>
@@ -121,7 +115,6 @@
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded"><u>Límite del API de GitHub superado. Vuelva a intentar en la próxima hora.</u></string>
     <string name="main_activity__no_unmetered_network">No hay ninguna red sin límite en el uso de datos</string>
-    <string name="main_activity__subtitle">Actualizador para navegadores respetuosos con la privacidad</string>
     <string name="main_activity__temporary_network_issue"><u>Problema temporal de red. Inténtelo más tarde.</u></string>
     <string name="ok">De acuerdo</string>
     <string name="request_installation_permission_dialog__abort">Cancelar</string>
@@ -202,12 +195,9 @@
     <string name="vivaldi__title">Navegador Vivaldi</string>
     <string name="vivaldi__warning">- Vivaldi es solo parcialmente de código abierto.
 \n- También utiliza la base técnica de Google Chrome y, por tanto, apoya indirectamente la posición de monopolio del motor de renderizado Chromium.</string>
-    <string name="settings__foreground__hide_warning_buttons">Oculte el botón de advertencia para la aplicación instalada.</string>
     <string name="notification__eol_apps__title">Aplicaciones obsoletas instaladas</string>
-    <string name="app_card__open_project_page">Abrir la página del proyecto en el navegador</string>
     <string name="orbot__description">Orbot es una aplicación de proxy gratuita que permite a otras aplicaciones utilizar Internet de forma más segura. Orbot usa Tor para encriptar su tráfico de Internet y luego lo oculta rebotando a través de una serie de computadoras en todo el mundo. Tor es un software gratuito y una red abierta que lo ayuda a defenderse contra una forma de vigilancia de la red que amenaza la libertad personal y la privacidad, las actividades y relaciones comerciales confidenciales y la seguridad del estado conocida como análisis de tráfico.</string>
     <string name="ungoogled_chromium__eol_reason">El desarrollador publicó: \"No podré actualizar las versiones durante algún tiempo. Si es posible, utilice uno de los navegadores [compatibles con FFUpdater] mientras tanto\". https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
-    <string name="app_card__app_warning_button_description">Mostrar alertas sobre esta aplicación</string>
     <string name="lockwise__eol_reason">Mozilla eliminó el soporte en diciembre de 2021. Cambie a otro gestor de contraseñas.</string>
     <string name="mull__title">Mull Browser (Basado en Firefox Móvil con arkenfox-user.js)</string>
     <string name="mull__description">Este es un navegador web depurado y orientado a la privacidad basado en la tecnología de Mozilla. Habilita muchas características mejoradas por el proyecto Tor Uplift utilizando las preferencias del proyecto arkenfox-user.js. Se recomienda instalar \'uBlock Origin\'.</string>
@@ -328,11 +318,6 @@
     <string name="notification__uncaught_exception__channel_description">Errores inesperados que bloquean FFUpdater.</string>
     <string name="notification__uncaught_exception__title">FFUpdater se ha bloqueado</string>
     <string name="notification__uncaught_exception__text">Haz clic para ver el informe de error.</string>
-    <string name="notification__bachground_work__channel_description">Notificaciones del trabajo en segundo plano</string>
-    <string name="notification__bachground_work__text">Esta notificación es necesaria para una ejecución fiable. Dependiendo de tu configuración, las actualizaciones se obtienen, descargan e instalan en segundo plano. Esta notificación puede ocultarse o silenciarse sin detener el trabajo en segundo plano. Una vez finalizada la comprobación, la notificación también se cerrará.</string>
-    <string name="notification__bachground_work__channel_name">Notificación de trabajo en segundo plano</string>
-    <string name="notification__bachground_work__title">Ejecutando el trabajo en segundo plano</string>
-    <string name="notification__bachground_work__action_title">Cancelar este trabajo en segundo plano</string>
     <string name="mulch_wv__title">Sistema Mulch WebView</string>
     <string name="mulch_wv__description">Se trata deun sistema WebView reforzado y orientado a la seguridad basado en Chromium. Se han deshabilitado/eliminado muchas antifunciones y se han habilitado/agregado un puñado de funciones de seguridad gracias a los parches del Vanadium proyecto.</string>
     <string name="app_installer__failed_to_verify_signature_of_installed_app">Error al comprobar la aplicación instalada.</string>
@@ -357,7 +342,6 @@
     <string name="cardview_dialog__eol">Esta aplicación ya no debería utilizarse:</string>
     <string name="cardview_dialog__not_installed_by_ffupdater">Esta aplicación no ha sido instalada ni actualizada por FFUpdater. Para evitar conflictos con otras aplicaciones, la actualización automática está desactivada.</string>
     <string name="fairemail__description">Aplicación de correo electrónico para Android con todas las funciones, de código abierto y respetuosa con la privacidad</string>
-    <string name="app_install_info_dialog__install">Instalar</string>
     <string name="cardview_dialog__install">Instalar la última versión</string>
     <string name="cardview_dialog__different_signature">FFUpdater no puede actualizar esta aplicación porque la firma del APK es diferente. Puedes solucionarlo desinstalando la aplicación y volviéndola a instalar con FFUpdater.</string>
 </resources>

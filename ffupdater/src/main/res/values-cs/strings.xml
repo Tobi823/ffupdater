@@ -4,7 +4,6 @@
     <string name="app_description">Aktualizátor pro prohlížeče šetrný k soukromí</string>
     <string name="app_icon">ikona aplikace</string>
     <string name="app_name">FFUpdater</string>
-    <string name="app_warning_dialog__title">Varování</string>
     <string name="application_installation_was_not_successful">Instalace aplikace se nezdařila</string>
     <string name="application_successfully_installed">Aplikace byla úspěšně nainstalována</string>
     <string name="available_version">K dispozici: %1$s</string>
@@ -32,8 +31,6 @@
     <string name="crash_report__go_to_github">Přejít na GitHub</string>
     <string name="crash_report__go_to_gitlab">Přejít na GitLab</string>
     <string name="crash_report__got_to_notabug_org">Přejít na notabug.org</string>
-    <string name="dialog_button__do_not_install">Ne, neinstalovat</string>
-    <string name="dialog_button__yes">Ano</string>
     <string name="notification__download_running__channel_descr">Zobrazí se, když se stahují aktualizace na pozadí.</string>
     <string name="notification__download_running__channel_name">Upozornění na stahování na pozadí</string>
     <string name="notification__download_running__title">Stahování aktualizací aplikací</string>
@@ -80,9 +77,6 @@
     <string name="download_activity__use_cached_downloaded_apk">Použít již stažený soubor z:</string>
     <string name="download_activity__you_can_now_close_this_window">Toto okno můžete zavřít</string>
     <string name="download_activity__label">Instalace aplikace</string>
-    <string name="install_new_app">Instalovat novou aplikaci</string>
-    <string name="install_same_version_dialog__message">Nejnovější verze této aplikace je již nainstalovaná. Chcete nejnovější verzi znovu stáhnout a nainstalovat?</string>
-    <string name="install_same_version_dialog__title">Tato verze už je nainstalovaná</string>
     <string name="notification__install_error__channel_descr">Kanál oznámení o neúspěšných aktualizacích %1$s.</string>
     <string name="notification__install_error__channel_name">Upozornění na selhání aktualizace %1$s</string>
     <string name="notification__install_error__text">Chyba (%1$d): %2$s</string>
@@ -100,7 +94,6 @@
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>Limit GitHub-API byl překročen. Zkuste to prosím znovu během následující hodiny.</u>"</string>
     <string name="main_activity__no_unmetered_network">Žádná neměřená síť</string>
-    <string name="main_activity__subtitle">Aktualizátor pro prohlížeče šetrné k soukromí</string>
     <string name="main_activity__temporary_network_issue">"<u>Dočasný problém se sítí. Zkuste to prosím později.</u>"</string>
     <string name="ok">OK</string>
     <string name="request_installation_permission_dialog__abort">Přerušit</string>
@@ -179,7 +172,6 @@
     <string name="vivaldi__title">Vivaldi Prohlížeč</string>
     <string name="vivaldi__warning">- Vivaldi je pouze částečně open source.
 \n- Používá také technický základ Google Chrome, a tak nepřímo podporuje monopolní renderovací jádro Chromium.</string>
-    <string name="app_card__app_warning_button_description">Zobrazit varování o této aplikaci</string>
     <string name="crash_report__explain_text__download_activity_install_file">K této chybě došlo při instalaci. Pokud k této chybě dochází často, neváhejte odeslat hlášení o chybě na notabug.org, GitHub nebo GitLab.</string>
     <string name="install_activity__download_file_failed__crash_text">Při stahování došlo k následující chybě. Pokud k této chybě dochází často, neváhejte odeslat hlášení o chybě na notabug.org, GitHub nebo GitLab.</string>
     <string name="lockwise__eol_reason">Mozilla ukončila podporu v prosinci 2021. Přejděte prosím na jiného správce hesel.</string>
@@ -189,7 +181,6 @@
     <string name="notification__eol_apps__channel_name">Oznámení o zastaralých aplikacích</string>
     <string name="iceraven__warning">- Správce neposkytuje žádnou záruku bezpečnosti, aktualizací nebo dokonce stability.
 \n- Poskytování aktualizací zabezpečení projektu trvá déle než obvykle.</string>
-    <string name="settings__foreground__hide_warning_buttons">Skrýt tlačítko s upozorněním pro nainstalované aplikace.</string>
     <string name="notification__download_error__descr">Stažení aktualizace pro %1$s na pozadí se nezdařilo. Pokud se tato chyba vyskytuje často, neváhejte ji nahlásit na stránkách notabug.org, GitHub nebo GitLab.</string>
     <string name="notification__download_error__text">Stažení aktualizace pro %1$s na pozadí se nezdařilo. Pokud se tato chyba vyskytuje často, klikněte pro zobrazení chybového hlášení.</string>
     <string name="notification__download_error__title">Stažení aktualizace na pozadí se nezdařilo</string>
@@ -204,7 +195,6 @@
     <string name="mull__description">Jedná se o webový prohlížeč zaměřený na ochranu soukromí založený na technologii Mozilla a očištěný od nesvobodného kódu. Umožňuje mnoho funkcí vyvinutých projektem Tor Uplift pomocí předvoleb z projektu arkenfox-user.js. Doporučuje se nainstalovat doplněk \"uBlock Origin\".</string>
     <string name="download_activity__different_installer_info__text">Pokud instalace často selhává, zkuste v nastavení zapnout \"nativní instalátor\".</string>
     <string name="notification__download_error__channel_descr">Zobrazí se, když selže stahování aktualizace na pozadí.</string>
-    <string name="app_card__open_project_page">Otevřít stránku projektu v prohlížeči</string>
     <string name="ungoogled_chromium__eol_reason">Vývojář napsal: \"Nějakou dobu nebudu moci aktualizovat verze. Pokud je to možné, používejte prosím do té doby některý z prohlížečů [které FFUpdater podporuje].\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
     <string name="tor_browser__title">Tor Browser</string>
     <string name="tor_browser__description">Tor Browser pro Android je jediný oficiální mobilní prohlížeč podporovaný organizací Tor Project, vývojáři nejsilnějšího nástroje pro ochranu soukromí a svobody internetu na světě.</string>
@@ -310,14 +300,9 @@
     <string name="add_app_activity__title_good_security_browsers">Dobrý bezpečný prohlížeč</string>
     <string name="notification__uncaught_exception__channel_name">Oznámení o pádu aplikace</string>
     <string name="notification__uncaught_exception__text">Kliknutím zobrazíte chybovou zprávu.</string>
-    <string name="notification__bachground_work__channel_description">Oznámení o práci aplikace na pozadí</string>
-    <string name="notification__bachground_work__channel_name">Oznámení o práci na pozadí</string>
-    <string name="notification__bachground_work__text">Toto oznámení je nutné pro spolehlivou funkčnost. V závislosti na vašem nastavení se aktualizace načítají, stahují a instalují na pozadí. Můžete toto oznámení schovat nebo ztlumit bez zastavení práce na pozadí. Po dokončení se oznámení zavře.</string>
-    <string name="notification__bachground_work__action_title">Zrušit tuto práci na pozadí</string>
     <string name="installer__android_too_old_for_shizuku">Vaše Android zařízení je pro Shizuku příliš zastaralé.</string>
     <string name="notification__uncaught_exception__channel_description">Nečekané chyby způsobily pád FFUpdateru.</string>
     <string name="notification__uncaught_exception__title">FFUpdater spadnul</string>
-    <string name="notification__bachground_work__title">Provádění práce na pozadí</string>
     <string name="notification__bg_update_check__unreliable_execution__title">Kontrola aktualizací na pozadí nefunguje spolehlivě</string>
     <string name="background__installation__when_screen_off__summary">Zkusit nainstalovat aktualizace pouze pokud je obrazovka vypnutá.</string>
     <string name="background__installation__when_screen_off__title">Instalace pouze při vypnuté obrazovce</string>

@@ -21,9 +21,7 @@
 \nA Brave Nightly-t a Brave jelenlegi verziója mellé telepítheti.</string>
     <string name="bromite_systemwebview__description">A SystemWebView csomag tartalmazza a Bromite alapvető böngésző/megjelenítő motorját és ugyanazokat a funkciókat. Lehetőséget kínál az alapértelmezett böngésző komponens helyettesítésére az egész Android rendszerben.</string>
     <string name="app_card__download_the_app">az alkalmazás letöltése</string>
-    <string name="app_card__app_warning_button_description">Figyelmeztetések megjelenítése erről az alkalmazásról</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Összeomlási jelentés másolása a vágólapra</string>
-    <string name="dialog_button__do_not_install">Nem, ne telepítse</string>
     <string name="crash_report__go_to_github">GitHub megnyitása</string>
     <string name="crash_report__go_to_gitlab">GitLab megnyitása</string>
     <string name="crash_report__got_to_notabug_org">notabug.org megnyitása</string>
@@ -47,8 +45,6 @@
     <string name="bromite__title">Bromite</string>
     <string name="bromite__warning">- A Bromite a Google Chrome technikai alapjait használja, és így közvetve támogatja a Chromium renderelőmotor monopolhelyzetét.</string>
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
-    <string name="dialog_button__yes">Igen</string>
-    <string name="app_warning_dialog__title">Figyelmeztetés</string>
     <string name="install_activity__download_file_failed__crash_text">A letöltés során a következő hiba lépett fel. Ha ez a hiba gyakran előfordul, küldje el a hibajelentést a notabug.org, a GitHub vagy a GitLab oldalra.</string>
     <string name="crash_report__explain_text__download_activity_fetching_url">Ez a hiba a letöltési metaadatok lekérdezésekor lépett fel. Ha ez a hiba gyakran fordul elő, küldje el a hibajelentést a notabug.org, a GitHub vagy a GitLab oldalra.</string>
     <string name="crash_report__explain_text__download_activity_install_file">Ez a hiba a telepítés során lépett fel. Ha ez a hiba gyakran előfordul, küldje el a hibajelentést a notabug.org, a GitHub vagy a GitLab oldalra.</string>

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_about_title">About FFUpdater</string>
-    <string name="app_card__app_warning_button_description">Show warnings about this app</string>
     <string name="app_description">Updater for privacy friendly browsers</string>
     <string name="app_icon">app icon</string>
     <string name="app_name">FFUpdater</string>
-    <string name="app_warning_dialog__title">Warning</string>
     <string name="application_installation_was_not_successful">Application installation was not successful</string>
     <string name="application_successfully_installed">Application successfully installed</string>
     <string name="available_version">Available: %1$s</string>
@@ -33,8 +31,6 @@
     <string name="crash_report__go_to_gitlab">Go to GitLab</string>
     <string name="crash_report__got_to_notabug_org">Go to notabug.org</string>
     <string name="default_theme_preference" translatable="false">3</string>
-    <string name="dialog_button__do_not_install">No, don\'t install it</string>
-    <string name="dialog_button__yes">Yes</string>
     <string name="notification__download_error__channel_descr">Shows when update downloads in the background fail.</string>
     <string name="notification__download_error__channel_name">Notification about download errors in the background</string>
     <string name="notification__download_error__descr">The background download of the %1$s update failed. If this error occurs frequently, feel free to report it on notabug.org, GitHub or GitLab.</string>
@@ -92,9 +88,6 @@
     <string name="download_activity__use_cached_downloaded_apk">Use already downloaded file from:</string>
     <string name="download_activity__you_can_now_close_this_window">You can now close this window</string>
     <string name="download_activity__label">Download Application</string>
-    <string name="install_new_app">Install new app</string>
-    <string name="install_same_version_dialog__message">The latest version of this app is already installed. Do you want to download and install the latest version again?</string>
-    <string name="install_same_version_dialog__title">Same version installed</string>
     <string name="notification__install_error__channel_descr">Notification channel for failed %1$s updates.</string>
     <string name="notification__install_error__channel_name">%1$s update failure notification</string>
     <string name="notification__install_error__text">Error (%1$d): %2$s</string>
@@ -119,7 +112,6 @@
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>GitHub-API limit exceeded. Retry next hour.</u>"</string>
     <string name="main_activity__no_unmetered_network">No unmetered network</string>
-    <string name="main_activity__subtitle">Updater for privacy friendly browsers</string>
     <string name="main_activity__temporary_network_issue">"<u>Temporary network issue. Retry later.</u>"</string>
     <string name="main_activity__an_error_occurred">"<u>An error occurred. Retry later.</u>"</string>
     <string name="ok">OK</string>
@@ -157,7 +149,6 @@
     <string name="settings__background_category__summary">Settings when the app is working in the background and is invisible to the user.</string>
     <string name="settings__background_category__title">Background</string>
     <string name="settings__foreground__download__metered__title">Download updates on metered networks</string>
-    <string name="settings__foreground__hide_warning_buttons">Hide the warning button for installed app.</string>
     <string name="settings__foreground__theme_preference__summary">Choose between light and dark theme</string>
     <string name="settings__foreground__theme_preference__title">Choose theme</string>
     <string name="settings__foreground__update_check__metered__summary">Allow update checks on metered networks such as mobile data.</string>
@@ -201,7 +192,6 @@
     <string name="vivaldi__warning">- Vivaldi is only partially open source.\n- It also uses the technical foundation of Google Chrome and thus indirectly supports the monopoly position of the Chromium render engine.</string>
     <string name="mull__title">Mull Browser</string>
     <string name="mull__description">This is a privacy oriented and deblobbed web browser based on Mozilla technology. It enables many features upstreamed by the Tor Uplift project using preferences from the arkenfox-user.js project. It is recommended to install \'uBlock Origin\'.</string>
-    <string name="app_card__open_project_page">Open project page in browser</string>
     <string name="ungoogled_chromium__eol_reason">"The developer posted: \"I won't be able to update the versions for some time. If possible please use one of the browsers [that FFUpdater supports] in the meantime.\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123"</string>
     <string name="tor_browser__title">Tor Browser</string>
     <string name="tor_browser__description">Tor Browser for Android is the only official mobile browser supported by the Tor Project, developers of the world’s strongest tool for privacy and freedom online.</string>
@@ -287,11 +277,6 @@
     <string name="notification__uncaught_exception__channel_description">Unexpected errors which crash FFUpdater.</string>
     <string name="notification__uncaught_exception__title">FFUpdater crashed</string>
     <string name="notification__uncaught_exception__text">Click to view the error report.</string>
-    <string name="notification__bachground_work__channel_name">Background Work Notifications</string>
-    <string name="notification__bachground_work__channel_description">Notifications of the background work</string>
-    <string name="notification__bachground_work__title">Executing background work</string>
-    <string name="notification__bachground_work__text">This notification is required for a reliable execution. Depending on your settings, updates are fetched, downloaded and installed in the background. This notification can be hidden or muted without stopping the background work. After the check is completed, the notification will is also be closed.</string>
-    <string name="notification__bachground_work__action_title">Cancel this background work</string>
     <string name="mulch_wv__title">Mulch System WebView</string>
     <string name="mulch_wv__description">This is a security oriented and hardened system WebView based on Chromium technology. Many anti-features are disabled/removed and a handful security features are enabled/added thanks to patches from the Vanadium project.</string>
     <string name="app_installer__failed_to_validate_signature_of_download">Failed to validate the signature of the download.</string>
@@ -313,7 +298,6 @@
     <string name="cardview_dialog__warnings_label">Warnings:</string>
     <string name="cardview_dialog__auto_bg_update">Automatic background update</string>
     <string name="cardview_dialog__exit">Close</string>
-    <string name="app_install_info_dialog__install">Install</string>
     <string name="cardview_dialog__install">Install latest version</string>
     <string name="cardview_dialog__different_signature">FFUpdater can not update this app because the APK signature is different. You can fix it by uninstalling the app and reinstalling it with FFUpdater. However, this will delete all your data in the app. So remember to back up your data beforehand.</string>
     <string name="cardview_dialog__eol">This app should no longer be used:</string>

@@ -4,7 +4,6 @@
     <string name="app_description">Программа обновления приватных браузеров</string>
     <string name="app_icon">иконка приложения</string>
     <string name="app_name">FFUpdater</string>
-    <string name="app_warning_dialog__title">Предупреждение</string>
     <string name="application_installation_was_not_successful">Не удалось установить приложение</string>
     <string name="application_successfully_installed">Приложение успешно установлено</string>
     <string name="available_version">Доступно: %1$s</string>
@@ -32,8 +31,6 @@
     <string name="crash_report__go_to_github">Перейти на GitHub</string>
     <string name="crash_report__go_to_gitlab">Перейти на GitLab</string>
     <string name="crash_report__got_to_notabug_org">Перейти на notabug.org</string>
-    <string name="dialog_button__do_not_install">Нет, не устанавливать</string>
-    <string name="dialog_button__yes">Да</string>
     <string name="notification__download_running__channel_descr">Показывает, когда обновления приложений загружаются в фоновом режиме.</string>
     <string name="notification__download_running__channel_name">Уведомление о загрузках в фоновом режиме</string>
     <string name="notification__download_running__title">Загрузка обновлений приложений</string>
@@ -83,9 +80,6 @@
     <string name="download_activity__use_cached_downloaded_apk">Используйте уже загруженный файл:</string>
     <string name="download_activity__you_can_now_close_this_window">Теперь вы можете закрыть это окно</string>
     <string name="download_activity__label">Установить приложение</string>
-    <string name="install_new_app">Установить новое приложение</string>
-    <string name="install_same_version_dialog__message">Последняя версия этого приложения уже установлена. Вы хотите снова загрузить и установить её?</string>
-    <string name="install_same_version_dialog__title">Установлена та же версия</string>
     <string name="notification__install_error__channel_descr">Канал уведомления о неудачных обновлениях %1$s.</string>
     <string name="notification__install_error__channel_name">Уведомление о сбое обновления %1$s</string>
     <string name="notification__install_error__text">Ошибка (%1$d): %2$s</string>
@@ -109,7 +103,6 @@
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>Превышен лимит GitHub-API. Повторите попытку через час.</u>"</string>
     <string name="main_activity__no_unmetered_network">Отсутствуют сети без тарификации</string>
-    <string name="main_activity__subtitle">Программа обновления конфиденциальных браузеров</string>
     <string name="main_activity__temporary_network_issue">"<u>Временная проблема сети. Повторите попытку позже.</u>"</string>
     <string name="ok">ОК</string>
     <string name="request_installation_permission_dialog__abort">Прервать</string>
@@ -146,7 +139,6 @@
     <string name="settings__background_category__summary">Настройки, когда приложение работает в фоновом режиме и невидимо для пользователя.</string>
     <string name="settings__background_category__title">Фон</string>
     <string name="settings__foreground__download__metered__title">Загрузка обновлений в сетях с тарификацией</string>
-    <string name="settings__foreground__hide_warning_buttons">Скрыть предупреждения для установленных приложений.</string>
     <string name="settings__foreground__theme_preference__summary">Выбор между светлой и тёмной темой</string>
     <string name="settings__foreground__theme_preference__title">Выбор темы</string>
     <string name="settings__foreground__update_check__metered__summary">Разрешить проверку обновлений в сетях c тарификацией, таких как мобильные данные.</string>
@@ -189,7 +181,6 @@
     <string name="vivaldi__title">Браузер Vivaldi</string>
     <string name="vivaldi__warning">- Vivaldi является лишь частично открытым исходным кодом.
 \n- Он также использует техническую основу Google Chrome и тем самым косвенно поддерживает монопольное положение движка рендеринга Chromium.</string>
-    <string name="app_card__app_warning_button_description">Показывать предупреждения о данном приложении</string>
     <string name="notification__download_error__channel_descr">Показывает, когда загрузки обновлений в фоновом режиме завершаются неудачно.</string>
     <string name="notification__download_error__title">Фоновая загрузка обновления завершилась с ошибкой</string>
     <string name="notification__download_error__text">Фоновая загрузка обновления %1$s завершилась с ошибкой. Если эта ошибка происходит часто, нажмите сюда, чтобы посмотреть отчёт об ошибке.</string>
@@ -256,7 +247,6 @@
     <string name="notification__eol_apps__text">У вас установлены устаревшие приложения, которые больше не следует использовать. Нажмите для получения дополнительной информации.</string>
     <string name="notification__eol_apps__title">Установлены устаревшие приложения</string>
     <string name="main_activity__an_error_occurred"><u>Произошла ошибка. Повторите попытку позже.</u></string>
-    <string name="app_card__open_project_page">Открыть страницу проекта в браузере</string>
     <string name="tor_browser__title">Tor Browser</string>
     <string name="crash_report_activity__label">Отчёт о сбое</string>
     <string name="add_app_activity__label">Добавить Новое Приложение</string>
@@ -282,7 +272,6 @@
     <string name="installer__method__shizuku">Shizuku установщик: Обновление приложений без диалогового окна подтверждения. Для этого требуется приложение Shizuku или модуль Sui Magisk.</string>
     <string name="orbot__description">Orbot - это бесплатное прокси-приложение, которое позволяет другим приложениям использовать интернет более безопасно. Orbot использует Tor для шифрования вашего интернет-трафика, а затем скрывает его, пропуская через ряд компьютеров по всему миру. Tor - это свободное программное обеспечение и открытая сеть, которая помогает защититься от формы сетевого наблюдения, угрожающей личной свободе и неприкосновенности частной жизни, конфиденциальным деловым операциям и отношениям, а также государственной безопасности, известной как анализ трафика.</string>
     <string name="notification__network_error__title">Ошибка сети в фоновом задании</string>
-    <string name="notification__bachground_work__channel_description">Уведомления фоновой работы</string>
     <string name="mulch_wv__description">Это ориентированная на безопасность и усиленная система WebView, основанная на технологии Chromium. Многие антифункции отключены/удалены, а несколько функций безопасности включены/добавлены благодаря патчам проекта Vanadium.</string>
     <string name="duckduckgo_android__warning">- DuckDuckGo использует системный webview для отображения веб-сайтов.
 \n- Был спор о том, чтобы не блокировать все файлы cookie от Microsoft, - но это было исправлено.</string>
@@ -292,16 +281,13 @@
     <string name="duckduckgo_android__title">Приватный браузер DuckDuckGo</string>
     <string name="notification__uncaught_exception__channel_name">Уведомления о сбоях</string>
     <string name="privacy_browser__title">Privacy Browser</string>
-    <string name="notification__bachground_work__text">Это уведомление необходимо для надежного выполнения. В зависимости от ваших настроек обновления загружаются, загружаются и устанавливаются в фоновом режиме. Это уведомление можно скрыть или отключить, не останавливая фоновую работу. После завершения проверки уведомление также закроется.</string>
     <string name="firefox_focus_beta__description">Используйте Firefox Focus для всего, что вы хотите хранить отдельно от основного браузера — чтобы все, кто вошёл, вышли и забыли об этом в мгновение ока. Никаких вкладок и лишней суеты. Заблокируйте онлайн-трекеры. Одно касание, и ваша история просмотров полностью удалена.
 \n
 \nFirefox Focus — идеальное средство для входа и выхода, поиска и уничтожения. У меня не ваше дело — веб-браузер.</string>
     <string name="notification__uncaught_exception__title">Сбой FFUpdater</string>
     <string name="notification__uncaught_exception__channel_description">Неожиданные ошибки, приводящие к сбою FFUpdater.</string>
     <string name="background__installation__when_screen_off__summary">Установка обновлений только при выключенном экране.</string>
-    <string name="notification__bachground_work__title">Выполнение фоновой работы</string>
     <string name="tor_browser_alpha__title">Tor Browser Alpha</string>
-    <string name="notification__bachground_work__action_title">Отменить эту фоновую работу</string>
     <string name="privacy_browser__warning">FFUpdater загружает файлы с серверов F-Droid и поэтому работает не быстрее.</string>
     <string name="notification__install_error__generic_channel_name">Уведомление об ошибке обновления приложения</string>
     <string name="firefox_focus_beta__title">Firefox Focus Бета</string>
@@ -321,7 +307,6 @@
     <string name="eol_reason__browser_no_longer_maintained">Браузер больше не поддерживается.</string>
     <string name="notification__install_error__generic_channel_descr">Канал уведомлений о неудачных обновлениях приложений.</string>
     <string name="mulch_wv__title">Системный WebView Mulch</string>
-    <string name="notification__bachground_work__channel_name">Уведомления о фоновой работе</string>
     <string name="background__installation__when_screen_off__title">Устанавливать только при выключенном экране</string>
     <string name="installer__method__title">Метод установки</string>
     <string name="ffupdater__different_signature_message">Эта версия FFUpdater подписана F-Droid, поэтому только F-Droid может распространять обновления. Чтобы получать обновления быстрее, удалите FFUpdater и установите версию, подписанную разработчиком. В этой версии FFUpdater может обновляться самостоятельно, не дожидаясь F-Droid.</string>
@@ -343,7 +328,6 @@
     <string name="cardview_dialog__eol">Это приложение больше не следует использовать:</string>
     <string name="cardview_dialog__not_installed_by_ffupdater">Это приложение не было установлено и обновлено FFUpdater. Во избежание конфликтов с другими приложениями автообновление отключено.</string>
     <string name="fairemail__description">Полнофункциональное, открытое и конфиденциальное приложение для электронной почты</string>
-    <string name="app_install_info_dialog__install">Установить</string>
     <string name="cardview_dialog__install">Установить последнюю версию</string>
     <string name="cardview_dialog__different_signature">FFUpdater не может обновить это приложение, поскольку подпись APK отличается. Вы можете исправить это, удалив приложение и переустановив его с помощью FFUpdater.</string>
 </resources>

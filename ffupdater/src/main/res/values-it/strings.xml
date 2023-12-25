@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_about_title">Info su FFUpdater</string>
-    <string name="app_card__app_warning_button_description">Mostra avvisi riguardo a questa app</string>
     <string name="app_description">Updater per i browser rispettosi della privacy</string>
     <string name="app_icon">icona dell\'app</string>
     <string name="app_name">FFUpdater</string>
-    <string name="app_warning_dialog__title">Attenzione</string>
     <string name="application_installation_was_not_successful">L\'installazione dell\'applicazione non è riuscita</string>
     <string name="application_successfully_installed">Applicazione installata con successo</string>
     <string name="available_version">Disponibile: %1$s</string>
@@ -33,8 +31,6 @@
     <string name="crash_report__go_to_github">Vai su GitHub</string>
     <string name="crash_report__go_to_gitlab">Vai su GitLab</string>
     <string name="crash_report__got_to_notabug_org">Vai su notabug.org</string>
-    <string name="dialog_button__do_not_install">No, non installarlo</string>
-    <string name="dialog_button__yes">Sì</string>
     <string name="notification__download_error__channel_descr">Mostra quando gli aggiornamenti dei download in background falliscono.</string>
     <string name="notification__download_error__channel_name">Notifica sugli errori di download in background</string>
     <string name="notification__download_error__descr">Il download in background dell\'aggiornamento %1$s non è riuscito. Se questo errore si verifica frequentemente, sentiti libero di segnalarlo su notabug.org, GitHub o GitLab.</string>
@@ -93,9 +89,6 @@
     <string name="download_activity__use_cached_downloaded_apk">Usa il file già scaricato da:</string>
     <string name="download_activity__you_can_now_close_this_window">Ora puoi chiudere questa finestra</string>
     <string name="download_activity__label">Installa Applicazione</string>
-    <string name="install_new_app">Installa nuova app</string>
-    <string name="install_same_version_dialog__message">L\'ultima versione di questa app è già installata. Vuoi scaricare e installare nuovamente l\'ultima versione?</string>
-    <string name="install_same_version_dialog__title">Stessa versione installata</string>
     <string name="notification__install_error__channel_descr">Canale di notifica per aggiornamenti falliti %1$s.</string>
     <string name="notification__install_error__channel_name">%1$s notifica di fallimento dell\'aggiornamento</string>
     <string name="notification__install_error__text">Errore (%1$d): %2$s</string>
@@ -120,7 +113,6 @@
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>Limite di GitHub-API superato. Si prega di provare di nuovo il download tra un\'ora.</u>"</string>
     <string name="main_activity__no_unmetered_network">Nessuna rete non misurata</string>
-    <string name="main_activity__subtitle">Aggiorna i browser che rispettano la tua privacy</string>
     <string name="main_activity__temporary_network_issue">"<u>Problema di rete temporaneo. Riprovare più tardi.</u>"</string>
     <string name="ok">OK</string>
     <string name="request_installation_permission_dialog__abort">Annulla</string>
@@ -157,7 +149,6 @@
     <string name="settings__background_category__summary">Impostazioni quando l\'app lavora in background ed è invisibile all\'utente.</string>
     <string name="settings__background_category__title">Sfondo</string>
     <string name="settings__foreground__download__metered__title">Scarica gli aggiornamenti sulle reti a pagamento</string>
-    <string name="settings__foreground__hide_warning_buttons">Nascondi il pulsante di avviso per le app installate.</string>
     <string name="settings__foreground__theme_preference__summary">Scegli tra il tema chiaro e scuro</string>
     <string name="settings__foreground__theme_preference__title">Scegli tema</string>
     <string name="settings__foreground__update_check__metered__summary">Permettere i controlli degli aggiornamenti sulle reti a pagamento come i dati mobili.</string>
@@ -202,7 +193,6 @@
 \n- Inoltre usa la base tecnica di Google Chrome e quindi supporta indirettamente la posizione di monopolio del motore di rendering Chromium.</string>
     <string name="mull__description">Questo è un browser web orientato alla privacy e deblobbed basato sulla tecnologia Mozilla. Abilita molte funzionalità a monte del progetto Tor Uplift usando le preferenze del progetto arkenfox-user.js. Si consiglia di installare \'uBlock Origin\'.</string>
     <string name="mull__title">Mull Browser</string>
-    <string name="app_card__open_project_page">Apri la pagina del progetto nel browser</string>
     <string name="ungoogled_chromium__eol_reason">Lo sviluppatore ha scritto: \"Non sarò in grado di aggiornare le versioni per un po\' di tempo. Se possibile, utilizza uno dei browser [che FFUpdater supporta] nel frattempo.\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
     <string name="tor_browser__title">Tor Browser</string>
     <string name="tor_browser__description">Tor Browser per Android è l\'unico browser per dispositivi mobile supportato ufficialmente da Tor Project, sviluppatori del più potente strumento al mondo per la privacy e la libertà online.</string>
@@ -308,10 +298,6 @@
     <string name="installer__android_too_old_for_shizuku">Il tuo Android è troppo vecchio per Shizuku.</string>
     <string name="add_app_activity__title_good_security_browsers">Un buon browser per la sicurezza</string>
     <string name="notification__uncaught_exception__text">Clicca per visualizzare il rapporto di errore.</string>
-    <string name="notification__bachground_work__channel_description">Notifiche del lavoro in background</string>
-    <string name="notification__bachground_work__channel_name">Notifiche lavoro in background</string>
-    <string name="notification__bachground_work__title">Esecuzione del lavoro in background</string>
-    <string name="notification__bachground_work__action_title">Annulla questo lavoro in background</string>
     <string name="mulch_wv__title">Mulch System WebView</string>
     <string name="crash_report__report_is_copied_to_clipboard">Il rapporto di arresto anomalo è stato copiato negli appunti</string>
     <string name="notification__uncaught_exception__channel_name">Notifiche sugli arresti</string>
@@ -322,5 +308,4 @@
     <string name="app_installer__failed_to_verify_signature_of_installed_app">Impossibile verificare l\'app installata.</string>
     <string name="background__installation__when_screen_off__title">Installa solo quando lo schermo è spento</string>
     <string name="background__installation__when_screen_off__summary">Prova ad installare gli aggiornamenti solo quando lo schermo del dispositivo è spento.</string>
-    <string name="notification__bachground_work__text">Questa notifica è necessaria per un\'esecuzione affidabile. A seconda delle impostazioni, gli aggiornamenti vengono recuperati, scaricati e installati in background. Questa notifica può essere nascosta o silenziata senza interrompere il lavoro in background. Al termine del controllo, anche la notifica verrà chiusa.</string>
 </resources>

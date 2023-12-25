@@ -42,7 +42,6 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
-            android:id="@+id/add_app"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:background="@android:color/transparent"

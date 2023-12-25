@@ -31,8 +31,6 @@
     <string name="crash_report__go_to_github">Aller sur GitHub</string>
     <string name="crash_report__go_to_gitlab">Aller sur GitLab</string>
     <string name="crash_report__got_to_notabug_org">Aller sur notabug.org</string>
-    <string name="dialog_button__do_not_install">Non, ne pas l\'installer</string>
-    <string name="dialog_button__yes">Oui</string>
     <string name="notification__download_running__channel_descr">Indique quand les mises à jour des applications sont téléchargées en arrière-plan.</string>
     <string name="notification__download_running__channel_name">Notification des téléchargements en arrière-plan</string>
     <string name="notification__download_running__title">Téléchargement des mises à jour des applications</string>
@@ -85,9 +83,6 @@
     <string name="download_activity__use_cached_downloaded_apk">Utiliser le fichier déjà téléchargé de :</string>
     <string name="download_activity__you_can_now_close_this_window">Vous pouvez maintenant fermer cette fenêtre</string>
     <string name="download_activity__label">Installer l\'application</string>
-    <string name="install_new_app">Installer une nouvelle application</string>
-    <string name="install_same_version_dialog__message">La dernière version de cette application est déjà installée. Voulez-vous télécharger et installer à nouveau la dernière version ?</string>
-    <string name="install_same_version_dialog__title">Même version installée</string>
     <string name="notification__install_error__channel_descr">Canal de notification des échecs de mise à jour de %1$s.</string>
     <string name="notification__install_error__channel_name">notification d\'échec de la mise à jour de %1$s</string>
     <string name="notification__install_error__text">Erreur (%1$d) : %2$s</string>
@@ -105,7 +100,6 @@
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>La limite de GitHub-API est dépassée. Réessayez l\'heure suivante.</u>"</string>
     <string name="main_activity__no_unmetered_network">Pas de réseau non mesuré</string>
-    <string name="main_activity__subtitle">Mettez à jour vos navigateurs respectueux de la vie privée</string>
     <string name="main_activity__temporary_network_issue">"<u>Problème de réseau temporaire. Réessayez plus tard.</u>"</string>
     <string name="ok">D\'accord</string>
     <string name="request_installation_permission_dialog__abort">Abandonner</string>
@@ -182,9 +176,6 @@
     <string name="vivaldi__title">Navigateur Vivaldi</string>
     <string name="vivaldi__warning">- Vivaldi n\'est que partiellement open source.
 \n- Il utilise également le fondement technique de Google Chrome et soutient donc indirectement la position monopolistique du moteur de rendu Chromium.</string>
-    <string name="app_card__app_warning_button_description">Afficher les signalements de l\'application</string>
-    <string name="app_warning_dialog__title">Avertissement</string>
-    <string name="app_card__open_project_page">Ouvrir la page du projet dans le navigateur</string>
     <string name="lockwise__eol_reason">Mozilla a arrêté le support en Décembre 2021. Veuillez changer pour un autre gestionnaire de mots de passe.</string>
     <string name="kiwi__description">Le navigateur Kiwi est fait pour explorer Internet, lire les news, regarder des vidéos et écouter de la musique, sans ennuis.</string>
     <string name="kiwi__title">Navigateur Kiwi Next</string>
@@ -212,7 +203,6 @@
 \n- Le navigateur est payé par des moteurs de recherches pour chaque recherche effectuée avec le navigateur. En fonction du choix du moteur de recherche, vos requêtes peuvent aller vers les serveurs de Kiwibrowser / Kiwisearchservices.
 \n Les publicités Google Ads dans Kiwi peuvent utiliser la position - mais vous pouvez refuser en désactivant la Fonctionnalité Découverte. Mais cela va bientôt changer. Pour plus d\'informations, visitez https://privacy.kiwibrowser.org/.</string>
     <string name="download_activity__open_folder">Ouvrir le dossier</string>
-    <string name="settings__foreground__hide_warning_buttons">Cacher le bouton d\'avertissement pour les applications installées.</string>
     <string name="network__dns_provider__title">Paramètres DNS</string>
     <string name="network__custom_doh_server__title">Serveur DNS par HTTPS personnalisé</string>
     <string name="network__proxy__title">Proxy</string>

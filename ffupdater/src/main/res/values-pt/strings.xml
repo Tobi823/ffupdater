@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">FFUpdater</string>
-    <string name="app_warning_dialog__title">Advertência</string>
     <string name="available_version">Disponível: %1$s</string>
     <string name="notification__error__title">Verificação de atualização de antecedentes falhou</string>
     <string name="brave__title">Brave Navegador Privado</string>
@@ -18,7 +17,6 @@
     <string name="action_about_title">Sobre FFUpdater</string>
     <string name="application_installation_was_not_successful">A instalação da aplicação não foi bem sucedida</string>
     <string name="notification__error__text">Queira comunicar este erro. Clique para ver o relatório de erro.</string>
-    <string name="app_card__app_warning_button_description">Mostrar avisos sobre esta aplicação</string>
     <string name="app_icon">ícone da aplicação</string>
     <string name="application_successfully_installed">Aplicação instalada com sucesso</string>
     <string name="brave_beta__description">Bem-vindo à Brave Beta para Android!
@@ -31,8 +29,6 @@
     <string name="crash_report__go_to_github">Ir para GitHub</string>
     <string name="crash_report__go_to_gitlab">Ir para GitLab</string>
     <string name="crash_report__got_to_notabug_org">Ir para notabug.org</string>
-    <string name="dialog_button__do_not_install">Não, não o instale</string>
-    <string name="dialog_button__yes">Sim</string>
     <string name="notification__download_error__channel_descr">Mostra quando os downloads de atualizações em segundo plano falham.</string>
     <string name="notification__download_error__channel_name">Notificação sobre erros de download em segundo plano</string>
     <string name="app_card__download_the_app">transferir o aplicativo</string>
@@ -52,8 +48,6 @@
     <string name="download_activity__use_cached_downloaded_apk">Utilizar ficheiro já transferido de:</string>
     <string name="download_activity__you_can_now_close_this_window">Agora pode fechar esta janela</string>
     <string name="download_activity__label">Transferir Aplicação</string>
-    <string name="install_new_app">Instalar nova aplicação</string>
-    <string name="install_same_version_dialog__message">A última versão deste aplicativo já está instalada. Quer transferir e instalar novamente a versão mais recente\?</string>
     <string name="crash_report__explain_text__download_activity_install_file">Este erro ocorreu durante a instalação. Se este erro ocorrer frequentemente, sinta-se à vontade para submeter o relatório de crash a notabug.org, GitHub ou GitLab.</string>
     <string name="crash_report__explain_text__download_activity_fetching_url">Este erro ocorreu quando os metadados descarregados foram obtidos. Se este erro ocorrer frequentemente, sinta-se à vontade para submeter o relatório de crash a notabug.org, GitHub ou GitLab.</string>
     <string name="crash_report__explain_text__download_activity_update_check">Este erro ocorreu quando se verificou a existência de atualizações na vista principal. Se este erro ocorrer frequentemente, sinta-se à vontade para submeter o relatório de crash a notabug.org, GitHub ou GitLab.</string>
@@ -107,7 +101,6 @@
     <string name="download_activity__exception__show_button"><u>Mostrar o relatório de erro detalhado.</u></string>
     <string name="download_activity__external_storage_not_accessible">O armazenamento externo não está disponível - não pode começar a descarregar. O estado atual é:</string>
     <string name="download_activity__fetch_url_for_download">Obter metadados a partir de %1$s</string>
-    <string name="install_same_version_dialog__title">Mesma versão instalada</string>
     <string name="notification__install_error__channel_descr">Canal de notificação para atualizações falhadas %1$s.</string>
     <string name="notification__install_error__channel_name">%1$s notificação de falha de atualização</string>
     <string name="notification__install_error__text">Erro (%1$d): %2$s</string>
@@ -132,7 +125,6 @@
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded"><u>Limite de GitHub-API excedido. Tentativa na próxima hora.</u></string>
     <string name="main_activity__no_unmetered_network">Sem rede ilimitada</string>
-    <string name="main_activity__subtitle">Atualizador para navegadores amigos da privacidade</string>
     <string name="main_activity__temporary_network_issue"><u>Entrada de rede temporária. Tenta mais tarde.</u></string>
     <string name="ok">OK</string>
     <string name="request_installation_permission_dialog__abort">Abortar</string>
@@ -162,7 +154,6 @@
     <string name="settings__background_category__summary">Configurações quando a aplicação está a trabalhar em segundo plano e é invisível para o utilizador.</string>
     <string name="settings__background_category__title">Segundo Plano</string>
     <string name="settings__foreground__download__metered__title">Transferir actualizações sobre redes com medição</string>
-    <string name="settings__foreground__hide_warning_buttons">Ocultar o botão de aviso para a aplicação instalada.</string>
     <string name="settings__foreground__theme_preference__summary">Escolha entre tema claro e escuro</string>
     <string name="settings__foreground__update_check__metered__title">Atualização de verificações em redes de medição</string>
     <string name="settings__foreground_category__summary">Configurações quando a interface do utilizador é visível.</string>
@@ -200,7 +191,6 @@
     <string name="vivaldi__warning">- Vivaldi é apenas parcialmente código aberto.
 \n- Utiliza também a base técnica do Google Chrome e, assim, apoia indiretamente a posição de monopólio do motor de renderização Chromium.</string>
     <string name="mull__title">Mull Browser</string>
-    <string name="app_card__open_project_page">Abrir página do projeto no browser</string>
     <string name="tor_browser__title">Tor Browser</string>
     <string name="tor_browser__description">O Tor Browser para Android é o único navegador móvel oficial suportado pelo Projecto Tor, o qual desenvolve a ferramenta mais forte do mundo para a privacidade e liberdade online.</string>
     <string name="orbot__title">Orbot: Tor para Android</string>
@@ -318,15 +308,10 @@
     <string name="add_app_activity__title_based_on_firefox">Baseado no Firefox</string>
     <string name="notification__uncaught_exception__channel_description">Erros inesperados que bloqueiam o FFUpdater.</string>
     <string name="notification__uncaught_exception__channel_name">Notificações de falhas</string>
-    <string name="notification__bachground_work__text">Esta notificação é necessária para uma execução fiável. Dependendo das suas definições, as atualizações são obtidas, descarregadas e instaladas em segundo plano. Esta notificação pode ser ocultada ou silenciada sem interromper o trabalho em segundo plano. Após a conclusão da verificação, a notificação também será fechada.</string>
-    <string name="notification__bachground_work__action_title">Cancelar este trabalho em segundo plano</string>
     <string name="crash_report__report_is_copied_to_clipboard">O relatório de erro foi copiado para a sua área de transferência</string>
     <string name="add_app_activity__title_good_security_browsers">Bom navegador de segurança</string>
     <string name="notification__uncaught_exception__title">O FFUpdater falhou</string>
     <string name="notification__uncaught_exception__text">Clique para ver o relatório de erro.</string>
-    <string name="notification__bachground_work__channel_name">Notificações de trabalho em segundo plano</string>
-    <string name="notification__bachground_work__channel_description">Notificações do trabalho de fundo</string>
-    <string name="notification__bachground_work__title">Execução de trabalho em segundo plano</string>
     <string name="eol_reason__browser_no_longer_maintained">O navegador já não é atualizado.</string>
     <string name="notification__bg_update_check__unreliable_execution__channel_name">Verificação de atualização em segundo plano não executada</string>
     <string name="notification__bg_update_check__unreliable_execution__channel_description">Aviso sobre a execução não fiável da verificação da atualização em segundo plano</string>
