@@ -322,12 +322,15 @@
     <string name="fairemail__title">FairEmail</string>
     <string name="cardview_dialog__exit">Закрыть</string>
     <string name="cardview_dialog__self_description_label">Описание:</string>
-    <string name="fairemail__warning">- Эта версия не поддерживает OAuth и, следовательно, не поддерживает Gmail.</string>
+    <string name="fairemail__warning">- Обновление версии FairEmail из Google Play через FFUpdater может привести к проблемам, таким как, например, нерабочая поддержка авторизации по Gmail. Не просите автора FairEmail о помощи в проблемах, вызванных FFUpdater.</string>
     <string name="cardview_dialog__auto_bg_update">Автообновление в фоне</string>
     <string name="cardview_dialog__warnings_label">Предупреждения:</string>
     <string name="cardview_dialog__eol">Это приложение больше не следует использовать:</string>
     <string name="cardview_dialog__not_installed_by_ffupdater">Это приложение не было установлено и обновлено FFUpdater. Во избежание конфликтов с другими приложениями автообновление отключено.</string>
     <string name="fairemail__description">Полнофункциональное, открытое и конфиденциальное приложение для электронной почты</string>
     <string name="cardview_dialog__install">Установить последнюю версию</string>
-    <string name="cardview_dialog__different_signature">FFUpdater не может обновить это приложение, поскольку подпись APK отличается. Вы можете исправить это, удалив приложение и переустановив его с помощью FFUpdater.</string>
+    <string name="cardview_dialog__different_signature">FFUpdater не может обновить это приложение, поскольку подпись APK отличается. Вы можете исправить это, удалив приложение и переустановив его с помощью FFUpdater. Однако, все данные этого приложения будут стёрты. Поэтому не забудьте перед этим сделать резервную копию данных.</string>
+    <string name="cardview_dialog__hide">Скрыть</string>
+    <string name="foreground__hidden_apps__title">Скрытые приложения</string>
+    <string name="foreground__hidden_apps__summary">Скрытые приложения не будут видны в главном меню и не будут обновляться автоматически.</string>
 </resources>

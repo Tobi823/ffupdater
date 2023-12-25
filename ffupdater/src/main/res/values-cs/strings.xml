@@ -322,4 +322,18 @@
     <string name="fairemail__title">FairEmail</string>
     <string name="thorium__title">Thorium Browser pro Android</string>
     <string name="thorium__description">Nejrychlejší prohlížeč na světě. Linuxový fork Chromiumu pojmenovaný po radioaktivním prvku č. 90.</string>
+    <string name="cardview_dialog__exit">Zavřít</string>
+    <string name="cardview_dialog__auto_bg_update">Automatické aktualizace na pozadí</string>
+    <string name="cardview_dialog__warnings_label">Varování:</string>
+    <string name="app_install_info_dialog__install">Instalovat</string>
+    <string name="cardview_dialog__install">Instalovat nejnovější verzi</string>
+    <string name="cardview_dialog__hide">Skrýt</string>
+    <string name="foreground__hidden_apps__title">Skryté aplikace</string>
+    <string name="cardview_dialog__self_description_label">Sebepopis:</string>
+    <string name="fairemail__warning">- Aktualizování FairEmailu instalovaného z Obchodu Google Play s FFUpdaterem může vést k poruchám, např. nefunkční OAuth/podpora Google Mailu. Nechtějte po autorovi FairEmailu pomoc při řešení problémů způsobených FFUpdaterem.</string>
+    <string name="cardview_dialog__eol">Tato aplikace by neměla být nadále používaná:</string>
+    <string name="cardview_dialog__not_installed_by_ffupdater">Tato aplikace nebyla nainstalovaná nebo aktualizovaná FFUpdaterem. Aby se předešlo konfliktům s jinými aplikacemi, je automatická aktualizace zakázána.</string>
+    <string name="fairemail__description">Emailová aplikace pro Android, která je plnohodnotná, open source a šetrná k soukromí</string>
+    <string name="cardview_dialog__different_signature">FFUpdater nemůže tuto aplikaci aktualizovat neboť se podpisy souborů APK liší. Chybu můžete vyřešit odinstalováním aplikace a opětovným nainstalováním v FFUpdateru. Avšak tento krok vám bohužel také smaže všechny osobní data v aplikaci. Proto doporučujeme před tímto krokem zálohovat vaše data.</string>
+    <string name="foreground__hidden_apps__summary">Skryté aplikace budou v uživatelském rozhraní skryté a nebudou automaticky aktualizovány.</string>
 </resources>

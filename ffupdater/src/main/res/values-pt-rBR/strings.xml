@@ -234,4 +234,5 @@
 \nO Navegador Tor SEMPRE vai ser grátis, mas doações o fazem possível, O Projeto Tor é uma organização sem fins lucrativos 501©(3) baseada nos EUA. Por favor, considere fazer uma doação hoje. Cada presente faz diferença: https://donate.torproject.org.
 \n
 \nAprenda como relatar erros e prover opiniões em https://support.torproject.org/pt-BR/misc/bug-or-feedback/!</string>
+    <string name="ungoogled_chromium__eol_reason">O desenvolvedor postou: \"Eu não serei capaz de atualizar as versões por algum tempo. Se possível, use um dos navegadores [que o FFUpdater suporta] por enquanto.\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
 </resources>

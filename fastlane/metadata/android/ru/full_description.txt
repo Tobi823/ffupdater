@@ -1,26 +1,28 @@
-Загружайте, устанавливайте и обновляйте браузеры от Mozilla или основанные на Firefox:
+Скачивает и обновляет следующие браузеры:
+
+Браузеры от Mozilla или основанные на Firefox:
 - Firefox Browser, Firefox для Android Beta, Firefox Nightly
 - Firefox Focus, Firefox Klar
 - Iceraven
 - Mull Browser
 - Tor Browser
 
-хорошие браузеры для обеспечения конфиденциальности:
+Хорошие браузеры для обеспечения конфиденциальности:
 - Bromite, Bromite SystemWebView
 
-браузеры, которые лучше, чем Google Chrome:
+Браузеры, которые лучше, чем Google Chrome:
 - Brave Browser, Brave Browser (Beta), Brave Browser (Nightly)
 - Chromium
 - Kiwi Browser Next
 - Thorium
 - Vivaldi
 
-другие:
+Прочие приложения:
 - FairEmail
 - K-9 Mail / Thunderbird Mail
 - Orbot
 
-FFUpdater проверяет наличие обновлений в фоновом режиме и также загружает их. На устройствах с Android 12+ или root FFUpdater также может обновлять приложения без участия пользователя.
+FFUpdater проверяет наличие обновлений в фоновом режиме и загружает их. На устройствах с Android 12+ или root FFUpdater может обновлять приложения без участия пользователя.
 
 Посетите сайт https://notabug.org/Tobiwan/ffupdater/src/master/README.md или воспользуйтесь ссылкой "Исходный код" ниже для получения дополнительной информации о мерах безопасности, других каналах распространения, ограничениях, ошибках, FAQ, инструкциях по сборке, используемых сторонних библиотеках, технических деталях и т.д.
 

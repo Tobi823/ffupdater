@@ -342,6 +342,9 @@
     <string name="cardview_dialog__not_installed_by_ffupdater">このアプリは FFUpdater からインストールや更新をしたものではありません。他のアプリとの競合を防ぐため、自動更新は無効になっています。</string>
     <string name="fairemail__description">完璧でオープンソース、プライバシーを尊重する Android 用のメールアプリ</string>
     <string name="cardview_dialog__install">最新版をインストール</string>
-    <string name="cardview_dialog__different_signature">APK 署名が異なるため、FFUpdater はこのアプリを更新できません。一度アプリをアンインストールして、FFUpdater から再インストールすると修正できます。</string>
-    <string name="fairemail__warning">- このバージョンは OAuth に対応していないため Gmail に対応しません</string>
+    <string name="cardview_dialog__different_signature">APK 署名が異なるため、FFUpdater はこのアプリを更新できません。一度アプリをアンインストールして、FFUpdater から再インストールすると修正できます。一度アンインストールすると、すべてのデータが削除されます。操作の前にデータを必ずバックアップしてください。</string>
+    <string name="fairemail__warning">- FFUpdater を使用して Google Play ストアからインストールした FairEmail を更新すると、一部機能に問題が発生する場合があります。FairEmail の開発者に、FFUpdater を使用したことによる問題のサポートを依頼しないでください。</string>
+    <string name="cardview_dialog__hide">非表示</string>
+    <string name="foreground__hidden_apps__title">非表示アプリ</string>
+    <string name="foreground__hidden_apps__summary">アプリを非表示にすると、UI に表示されず自動で更新もされません。</string>
 </resources>
