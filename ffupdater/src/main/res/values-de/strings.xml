@@ -326,4 +326,20 @@
     <string name="main_activity__unexpected_error">Unerwarteter Fehler ist aufgetreten.</string>
     <string name="thorium__title">Thorium Browser für Android</string>
     <string name="thorium__description">Der schnellste Browser der Welt. Chromium-Fork für Linux, benannt nach dem radioaktiven Element Nr. 90.</string>
+    <string name="cardview_dialog__exit">Schließen</string>
+    <string name="cardview_dialog__self_description_label">Selbstbeschreibung:</string>
+    <string name="fairemail__warning">- Die Aktualisierung der Google Play Store Version von FairEmail mit FFUpdater kann zu Problemen führen, wie z.B. eine nicht funktionierende OAuth/Google Mail-Unterstützung. Fragt bitte den FairEmail-Autor nicht nach Hilfe bei Problemen, die durch FFUpdater verursacht werden.</string>
+    <string name="cardview_dialog__auto_bg_update">Automatische Hintergrundaktualisierung</string>
+    <string name="cardview_dialog__warnings_label">Warnungen:</string>
+    <string name="k9mail__title">K-9 Mail</string>
+    <string name="cardview_dialog__eol">Diese App sollte nicht mehr verwendet werden:</string>
+    <string name="k9mail__description">Leistungsstarker E-Mail-Client</string>
+    <string name="fairemail__title">FairEmail</string>
+    <string name="cardview_dialog__not_installed_by_ffupdater">Diese App wurde nicht von FFUpdater installiert oder aktualisiert. Um Konflikte mit anderen Apps zu vermeiden, ist die automatische Aktualisierung deaktiviert.</string>
+    <string name="fairemail__description">Vollständig ausgestattete, quelloffene, datenschutzfreundliche E-Mail-App für Android</string>
+    <string name="cardview_dialog__install">Aktuelle Version installieren</string>
+    <string name="cardview_dialog__different_signature">FFUpdater kann diese App nicht aktualisieren, weil die APK-Signatur unterschiedlich ist. Du kannst das Problem beheben, indem du die App deinstallierst und sie mit FFUpdater neu installierst. Dabei werden jedoch alle deine Daten in der App gelöscht. Denke also daran, deine Daten vorher zu sichern.</string>
+    <string name="cardview_dialog__hide">Verstecken</string>
+    <string name="foreground__hidden_apps__title">Versteckte Apps</string>
+    <string name="foreground__hidden_apps__summary">Versteckte Apps werden in der Benutzeroberfläche nicht angezeigt und nicht automatisch aktualisiert.</string>
 </resources>
