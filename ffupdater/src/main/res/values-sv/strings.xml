@@ -68,4 +68,8 @@
     <string name="foreground__hidden_apps__title">Dolda appar</string>
     <string name="settings__theme_system_default">Systemstandard</string>
     <string name="settings_activity__label">Inställningar</string>
+    <string name="download_activity__you_can_now_close_this_window">Du kan nu stänga detta fönster</string>
+    <string name="notification__install_error__title">%1$s kunde inte uppdateras</string>
+    <string name="notification__install_success__text">App har uppdaterats i bakgrunden.</string>
+    <string name="notification__install_error__text">Fel: (%1$d): %2$s</string>
 </resources>
