@@ -1,2 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_description">Pembaruan untuk peramban ramah privasi</string>
+    <string name="app_icon">ikon aplikasi</string>
+    <string name="app_name">FFUpdater</string>
+    <string name="application_successfully_installed">Aplikasi berhasil terinstal</string>
+    <string name="available_version">Tersedia: %1$s</string>
+    <string name="notification__error__text">Silahkan melaporkan kesalahan ini. Klik untuk melihat laporan kesalahan.</string>
+    <string name="brave__title">Brave Private Browser</string>
+    <string name="brave__warning">- Brave menggunakan fondasi teknis Google Chrome dan dengan demikian secara tidak langsung mendukung posisi monopoli mesin render Chromium.
+\n- Karena Basic Attention Token BAT pada sistem blockchain Ethereum, proyek ini memiliki hubungan dengan mata uang kriptografi. Blockchain memiliki banyak masalah dan sebaiknya dihindari.</string>
+    <string name="bromite_systemwebview__description">Paket SystemWebView berisi inti mesin peramban/renderisasi dari Bromite termasuk fitur-fitur yang sama. Paket ini menawarkan kemungkinan untuk mengganti komponen SystemWebView default untuk seluruh sistem Android.</string>
+    <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
+    <string name="crash_report__copy_crash_report_to_clipboard">Menyalin laporan kerusakan ke papan klip</string>
+    <string name="install_activity__download_file_failed__crash_text">Kesalahan berikut ini terjadi selama pengunduhan. Jika kesalahan ini sering terjadi, silahkan kirim laporan kerusakan ke notabug.org, GitHub, atau GitLab.</string>
+    <string name="crash_report__explain_text__download_activity_fetching_url">Kesalahan ini terjadi ketika unduhan metadata diambil. Jika kesalahan ini sering terjadi, silahkan kirim laporan kerusakan ke notabug.org, GitHub, atau GitLab.</string>
+    <string name="crash_report__explain_text__download_activity_install_file">Kesalahan ini terjadi selama instalasi. Jika kesalahan ini sering terjadi, silahkan kirim laporan kerusakan ke notabug.org, GitHub, atau GitLab.</string>
+    <string name="crash_report__explain_text__download_activity_update_check">Kesalahan ini terjadi ketika memeriksa pembaruan di tampilan utama. Jika kesalahan ini sering terjadi, silahkan kirim laporan kerusakan ke notabug.org, GitHub, atau GitLab.</string>
+    <string name="crash_report__explain_text__uncaught_throwable">Tragis, FFUpdater mengalami kerusakan terakhir kali dan mencatat kesalahan ini. Silahkan kirim laporan kerusakan ke notabug.org, GitHub atau GitLab.</string>
+    <string name="crash_report__go_to_github">Menuju GitHub</string>
+    <string name="crash_report__go_to_gitlab">Menuju GitLab</string>
+    <string name="crash_report__got_to_notabug_org">Menuju notabug.org</string>
+    <string name="notification__download_error__channel_descr">Menampilkan ketika unduhan pembaruan di latar belakang gagal.</string>
+    <string name="notification__download_error__channel_name">Pemberitahuan tentang kesalahan pengunduhan di latar belakang</string>
+    <string name="notification__download_error__text">Pengunduhan latar belakang pembaruan %1$s gagal. Jika kesalahan ini sering terjadi, klik di sini untuk melihat laporan kesalahan.</string>
+    <string name="notification__download_error__title">Pengunduhan pembaruan di latar belakang gagal</string>
+    <string name="notification__download_running__channel_name">Pemberitahuan tentang unduhan di latar belakang</string>
+    <string name="notification__download_running__title">Mengunduh pembaruan aplikasi</string>
+    <string name="app_card__download_the_app">unduh aplikasi</string>
+    <string name="notification__eol_apps__channel_description">Saluran pemberitahuan untuk peringatan tentang aplikasi yang kedaluwarsa.</string>
+    <string name="notification__eol_apps__channel_name">Pemberitahuan aplikasi yang kedaluwarsa</string>
+    <string name="notification__eol_apps__title">Aplikasi yang sudah usang terinstal</string>
+    <string name="notification__error__channel_descr">Menampilkan kesalahan pemeriksa pembaruan latar belakang</string>
+    <string name="notification__error__channel_name">Kesalahan latar belakang</string>
+    <string name="firefox_beta__title">Firefox untuk Android Beta</string>
+    <string name="action_about_title">Tentang FFUpdater</string>
+    <string name="application_installation_was_not_successful">Aplikasi gagal terinstal</string>
+    <string name="brave__description">Jelajahi internet secara pribadi, gratis! Aplikasi Brave Private Browser adalah peramban web pribadi yang cepat, gratis, dan aman dengan pemblokir iklan dan pemblokir virus pop-up. Jelajahi dan telusuri internet secara pribadi tanpa dilacak oleh pengiklan, perangkat lunak berbahaya, dan virus pop-up.</string>
+    <string name="brave_beta__description">Selamat datang di Brave Beta untuk Android!
+\nMari mencoba fitur-fitur terbaru dan memberikan umpan balik lebih awal: https://brave.com/msupport
+\nAnda bisa menginstal Brave Beta bersamaan dengan versi Brave untuk Android yang Anda miliki saat ini.</string>
+    <string name="brave_nightly__description">Welcome to Brave Nightly (Developer) for Android!
+\nMari mencoba fitur-fitur terbaru dan memberikan umpan balik lebih awal: https://brave.com/msupport
+\nAnda bisa menginstal Brave Nightly bersamaan dengan versi Brave untuk Android yang Anda miliki saat ini.</string>
+    <string name="bromite__description">Bromite bertujuan untuk memberikan pengalaman penjelajahan tanpa gangguan dan tanpa fitur yang mengganggu privasi beserta dengan tambahan mesin pemblokir iklan yang cepat. Perubahan User Interface UI minimal diterapkan untuk membantu mengekang gagasan peramban sebagai medium iklan.</string>
+    <string name="brave_nightly__title">Brave Browser (Nightly)</string>
+    <string name="brave_beta__title">Brave Browser (Beta)</string>
+    <string name="notification__error__title">Pemeriksaan pembaruan di latar belakang gagal</string>
+    <string name="notification__download_error__descr">Pengunduhan latar belakang pembaruan %1$ gagal. Jika kesalahan ini sering terjadi, silahkan lapor ke notabug.org, GitHub atau Gitlab.</string>
+    <string name="notification__download_running__channel_descr">Menunjukkan kapan pembaruan aplikasi diunduh di latar belakang.</string>
+    <string name="bromite__title">Bromite</string>
+    <string name="notification__eol_apps__text">Anda memiliki aplikasi usang yang seharusnya tidak digunakan lagi. Klik untuk informasi lebih lanjut.</string>
+    <string name="bromite__warning">- Bromite menggunakan fondasi teknis Google Chrome dan dengan demikian secara tidak langsung mendukung posisi monopoli mesin render Chromium.</string>
+    <string name="firefox_beta__description">Peramban Firefox untuk Android secara otomatis bersifat pribadi dan sangat cepat. Ribuan pelacak online mengikuti Anda setiap hari, mengumpulkan informasi tentang ke mana saja Anda online dan memperlambat kecepatan Anda. Firefox memblokir lebih dari 2000 pelacak ini secara default dan ada tambahan add-on pemblokir iklan yang tersedia jika Anda ingin menyesuaikan peramban Anda lebih jauh lagi. Dengan Firefox, Anda akan mendapatkan keamanan yang layak Anda dapatkan dan kecepatan yang Anda butuhkan dalam peramban seluler pribadi.</string>
+</resources>
