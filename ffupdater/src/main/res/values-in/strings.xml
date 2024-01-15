@@ -9,7 +9,7 @@
     <string name="brave__title">Brave Private Browser</string>
     <string name="brave__warning">- Brave menggunakan fondasi teknis Google Chrome dan dengan demikian secara tidak langsung mendukung posisi monopoli mesin render Chromium.
 \n- Karena Basic Attention Token BAT pada sistem blockchain Ethereum, proyek ini memiliki hubungan dengan mata uang kriptografi. Blockchain memiliki banyak masalah dan sebaiknya dihindari.</string>
-    <string name="bromite_systemwebview__description">Paket SystemWebView berisi inti mesin peramban/renderisasi dari Bromite termasuk fitur-fitur yang sama. Paket ini menawarkan kemungkinan untuk mengganti komponen SystemWebView default untuk seluruh sistem Android.</string>
+    <string name="bromite_systemwebview__description">Paket SystemWebView berisi inti mesin peramban/renderisasi dari Bromite termasuk fitur-fitur yang sama. Paket ini menawarkan kemungkinan untuk mengganti komponen SystemWebView default kepada seluruh sistem Android.</string>
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Menyalin laporan kerusakan ke papan klip</string>
     <string name="install_activity__download_file_failed__crash_text">Kesalahan berikut ini terjadi selama pengunduhan. Jika kesalahan ini sering terjadi, silahkan kirim laporan kerusakan ke notabug.org, GitHub, atau GitLab.</string>
@@ -51,5 +51,43 @@
     <string name="bromite__title">Bromite</string>
     <string name="notification__eol_apps__text">Anda memiliki aplikasi usang yang seharusnya tidak digunakan lagi. Klik untuk informasi lebih lanjut.</string>
     <string name="bromite__warning">- Bromite menggunakan fondasi teknis Google Chrome dan dengan demikian secara tidak langsung mendukung posisi monopoli mesin render Chromium.</string>
-    <string name="firefox_beta__description">Peramban Firefox untuk Android secara otomatis bersifat pribadi dan sangat cepat. Ribuan pelacak online mengikuti Anda setiap hari, mengumpulkan informasi tentang ke mana saja Anda online dan memperlambat kecepatan Anda. Firefox memblokir lebih dari 2000 pelacak ini secara default dan ada tambahan add-on pemblokir iklan yang tersedia jika Anda ingin menyesuaikan peramban Anda lebih jauh lagi. Dengan Firefox, Anda akan mendapatkan keamanan yang layak Anda dapatkan dan kecepatan yang Anda butuhkan dalam peramban seluler pribadi.</string>
+    <string name="firefox_beta__description">Peramban Firefox untuk Android secara otomatis bersifat pribadi dan sangat cepat. Ribuan pelacak online mengikuti Anda setiap hari, mengumpulkan informasi tentang ke mana saja Anda online dan memperlambat kecepatan Anda. Firefox memblokir lebih dari 2000 pelacak ini secara bawaan dan ada ekstensi pemblokir iklan yang tersedia jika Anda ingin menyesuaikan peramban Anda lebih jauh lagi. Dengan Firefox, Anda akan mendapatkan keamanan yang layak Anda dapatkan dan kecepatan yang Anda butuhkan dalam peramban seluler pribadi.</string>
+    <string name="firefox_beta__warning">- Aplikasi ini dirancang untuk pengembang dan penguji. Aplikasi ini mungkin mengandung berbagai kode eror yang dapat memengaruhi pekerjaan Anda dengan peramban.</string>
+    <string name="firefox_focus__title">Firefox Focus</string>
+    <string name="firefox_focus__description">Ini adalah modifikasi dari peramban Firefox yang ditujukan untuk meningkatkan privasi.</string>
+    <string name="firefox_klar__title">Firefox Klar</string>
+    <string name="firefox_nightly__description">Harap diperhatikan bahwa aplikasi ini dulunya bernama Firefox Preview. Sekarang telah dialihkan ke Firefox Nightly.
+\n
+\nFirefox Nightly adalah saluran pengembangan untuk rilisan Mozilla Firefox yang terbarukan.
+\n
+\nFirefox Nightly dirancang untuk menampilkan versi eksperimental dari Firefox. Saluran Nightly memungkinkan pengguna untuk merasakan inovasi Firefox terbaru dalam lingkungan yang tidak stabil dan memberikan umpan balik pada fitur dan kinerja untuk membantu menentukan apa yang membuat rilisan final.</string>
+    <string name="firefox_nightly__title">Firefox Nightly</string>
+    <string name="firefox_release__title">Firefox Browser</string>
+    <string name="firefox_release__warning">- Versi Firefox yang lebih baik juga tersedia di F-Droid dengan nama Fennec F-Droid.</string>
+    <string name="firefox_klar__description">Firefox Klar dikembangkan untuk Jerman, Austria, dan Swiss, tetapi dapat digunakan oleh pengguna di negara manapun. Ini sangat mirip dengan Firefox Focus, tetapi namanya diubah di negara-negara berbahasa Jerman untuk menghindari kebingungan dengan majalah Focus oleh grup Hubert Burda Media. Tidak seperti Firefox Focus, Firefox Klar memiliki telemetri yang dinonaktifkan secara bawaan karena undang-undang privasi Jerman yang ketat.</string>
+    <string name="firefox_release__description">Peramban Firefox untuk Android secara otomatis bersifat pribadi dan sangat cepat. Ribuan pelacak online mengikuti Anda setiap hari, mengumpulkan informasi tentang ke mana saja Anda online dan memperlambat kecepatan Anda. Firefox memblokir lebih dari 2000 pelacak ini secara bawaan dan ada tambahan ekstensi pemblokir iklan yang tersedia jika Anda ingin menyesuaikan peramban Anda lebih jauh lagi. Dengan Firefox, Anda akan mendapatkan keamanan yang layak Anda dapatkan dan kecepatan yang Anda butuhkan dalam peramban seluler pribadi.</string>
+    <string name="app_card__information_about_the_app">Informasi tentang aplikasi</string>
+    <string name="download_activity__delete_cache_button_text">hapus tembolok</string>
+    <string name="download_activity__delete_cache_explanation">Jika Anda merasa bahwa FFUpdater telah menyimpan tembolok pembaruan aplikasi yang salah atau jika Anda ingin menghemat ruang, klik tombol untuk menghapus file yang diunduh.</string>
+    <string name="download_activity__different_installer_info__text">Jika penginstalan sering gagal, coba beralih ke \'native installer\' dalam pengaturan.</string>
+    <string name="download_activity__download_app_with_status">Mengunduh aplikasi</string>
+    <string name="download_activity__download_failed">Pengunduhan gagal</string>
+    <string name="download_activity__downloaded_application_from">Aplikasi yang diunduh dari:</string>
+    <string name="app_installer__signature_of_download_is_invalid">Aplikasi yang diunduh TIDAK diverifikasi</string>
+    <string name="download_activity__exception__show_button"><u>Menampilkan laporan kesalahan yang mendetail.</u></string>
+    <string name="download_activity__external_storage_not_accessible">Penyimpanan eksternal tidak tersedia - tidak dapat memulai pengunduhan. Status saat ini adalah:</string>
+    <string name="download_activity__fetch_url_for_download">Mengambil metadata dari %1$s</string>
+    <string name="download_activity__fetched_url_for_download_successfully">Terambil metadata dari %1$s</string>
+    <string name="download_activity__file_uri_exposed_toast">Tidak dapat membuka jalur bilah ke aplikasi lain. Silakan buka sendiri berkas tersebut dengan pengelola file pilihan Anda.</string>
+    <string name="iceraven__description">Tidak dipersembahkan oleh Mozilla!
+\n
+\nIceraven Browser adalah peramban web untuk Android, berdasarkan pada Firefox versi Fenix dari Mozilla, GeckoView, dan Mozilla Android Components.
+\n
+\nTujuan kami adalah untuk menjadi aplikasi cabang dari Firefox baru untuk Android yang berusaha untuk memberikan lebih banyak pilihan kepada pengguna, lebih banyak kesempatan untuk menyesuaikan (termasuk perpustakaan ekstensi yang luas), dan lebih banyak informasi tentang halaman yang mereka kunjungi dan bagaimana peramban mereka berinteraksi dengan halaman-halaman tersebut.</string>
+    <string name="iceraven__title">Iceraven Browser</string>
+    <string name="iceraven__warning">- Pengelola tidak memberikan jaminan atau garansi keamanan atau pembaruan atau bahkan stabilitas.
+\n - Proyek ini membutuhkan waktu lebih lama dari biasanya untuk menyediakan pembaruan keamanan.</string>
+    <string name="infobox">Ini adalah pembaru untuk peramban yang ramah privasi. Klik tombol plus untuk menginstal aplikasi baru. Geser ke bawah untuk memaksa pemeriksaan pembaruan baru. Secara bawaan, aplikasi akan memeriksa pembaruan secara berkala di latar belakang, yang kemudian akan diunduh dan akhirnya diinstal. Klik roda gigi untuk menyesuaikan perilaku dalam pengaturan.
+\n
+\nPemeriksaan pembaruan latar belakang terakhir yang berhasil: %1$s</string>
 </resources>
