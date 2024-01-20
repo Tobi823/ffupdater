@@ -46,7 +46,7 @@
     <string name="brave_nightly__title">Brave Browser (Nightly)</string>
     <string name="brave_beta__title">Brave Browser (Beta)</string>
     <string name="notification__error__title">Pemeriksaan pembaruan di latar belakang gagal</string>
-    <string name="notification__download_error__descr">Pengunduhan latar belakang pembaruan %1$ gagal. Jika kesalahan ini sering terjadi, silahkan lapor ke notabug.org, GitHub atau Gitlab.</string>
+    <string name="notification__download_error__descr">Pengunduhan latar belakang pembaruan %1$s gagal. Jika kesalahan ini sering terjadi, silahkan lapor ke notabug.org, GitHub atau Gitlab.</string>
     <string name="notification__download_running__channel_descr">Menunjukkan kapan pembaruan aplikasi diunduh di latar belakang.</string>
     <string name="bromite__title">Bromite</string>
     <string name="notification__eol_apps__text">Anda memiliki aplikasi usang yang seharusnya tidak digunakan lagi. Klik untuk informasi lebih lanjut.</string>
