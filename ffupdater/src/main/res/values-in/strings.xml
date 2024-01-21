@@ -90,4 +90,28 @@
     <string name="infobox">Ini adalah pembaru untuk peramban yang ramah privasi. Klik tombol plus untuk menginstal aplikasi baru. Geser ke bawah untuk memaksa pemeriksaan pembaruan baru. Secara bawaan, aplikasi akan memeriksa pembaruan secara berkala di latar belakang, yang kemudian akan diunduh dan akhirnya diinstal. Klik roda gigi untuk menyesuaikan perilaku dalam pengaturan.
 \n
 \nPemeriksaan pembaruan latar belakang terakhir yang berhasil: %1$s</string>
+    <string name="installed_version">Terinstal: %1$s</string>
+    <string name="kiwi__description">Kiwi Browser dibuat untuk menjelajahi internet, membaca berita, menonton video, dan mendengarkan musik, tanpa gangguan.</string>
+    <string name="download_activity__github_rate_limit_exceeded">Batas kecepatan GitHub-API terlampaui. Silahkan coba mengunduh lagi dalam satu jam ke depan.</string>
+    <string name="download_activity__open_cache_explanation">Anda bisa membuka berkas tembolok untuk menyalin bilah APK ke tempat yang memiliki lebih banyak ruang penyimpanan. Namun, di Android 11+ hanya beberapa pengelola file yang dapat mengakses folder ini di dalam Android/data.</string>
+    <string name="download_activity__open_cache_folder_button_text">buka tembolok berkas</string>
+    <string name="download_activity__open_folder">Buka berkas</string>
+    <string name="download_activity__sha_256_certificate_fingerprint">SHA-256 sertifikat sidikjari:</string>
+    <string name="download_activity__temporary_network_issue">Terjadi masalah jaringan sementara. Silahkan coba lagi nanti.</string>
+    <string name="download_activity__too_low_memory_description">Perangkat Anda hampir kehabisan ruang penyimpanan (hanya tersisa %1$d MB). Hal ini akan menyebabkan kegagalan pengunduhan atau instalasi.</string>
+    <string name="download_activity__too_low_memory_title">Ruangan Disket Rendah</string>
+    <string name="download_activity__use_cached_downloaded_apk">Gunakan bilah yang sudah diunduh dari:</string>
+    <string name="download_activity__you_can_now_close_this_window">Anda sekarang dapat menutup jendela ini</string>
+    <string name="download_activity__label">Unduh Aplikasi</string>
+    <string name="notification__install_error__channel_descr">Saluran pemberitahuan untuk pembaruan %1$s yang gagal.</string>
+    <string name="notification__install_error__channel_name">Pemberitahuan kegagalan pembaruan %1$s</string>
+    <string name="notification__install_error__text">Kesalahan (%1$d): %2$s</string>
+    <string name="notification__install_error__title">%1$s tidak dapat diperbarui</string>
+    <string name="notification__install_success__channel_descr">Saluran pemberitahuan untuk pembaruan %1$s yang berhasil.</string>
+    <string name="notification__install_success__channel_name">%1$s pemberitahuan pembaruan berhasil</string>
+    <string name="notification__install_success__text">Aplikasi telah diperbarui di latar belakang.</string>
+    <string name="notification__install_success__title">%1$s telah diperbarui</string>
+    <string name="app_installer__installed_app_has_invalid_signature">Aplikasi yang diinstal TIDAK diverifikasi</string>
+    <string name="installed_application_is_verified">Aplikasi yang terinstal diverifikasi</string>
+    <string name="kiwi__title">Kiwi Browser Next</string>
 </resources>
