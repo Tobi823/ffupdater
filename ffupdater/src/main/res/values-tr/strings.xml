@@ -11,15 +11,10 @@
     <string name="notification__error__title">Arka plan güncelleme denetimi başarısız oldu</string>
     <string name="brave__description">İnternette ücretsiz olarak gizli bir şekilde gezinin! Brave Gizli Tarayıcı uygulaması, reklam engelleyicisi ve açılır pencere engelleyicisi ile hızlı, özel, güvenli ve ücretsiz bir web tarayıcısıdır. Reklamlar, kötü amaçlı yazılımlar ve açılır pencereler tarafından izlenmeden internette gizli olarak gezinin ve arama yapın.</string>
     <string name="brave__title">Brave Gizli Tarayıcı</string>
-    <string name="brave__warning">- Brave, Google Chrome\'un teknik temelini kullanır ve dolayısıyla Chromium görselleştirme motorunun tekel konumunu dolaylı olarak destekler.
-\n- Ethereum blok zincirindeki Basic Attention Token BAT nedeniyle, projenin kripto para birimi ile bağları vardır. Blok zincirlerin birçok sorunu vardır ve benim görüşüme göre kaçınılması gerekmektedir.</string>
-    <string name="brave_beta__description">Android için Brave Beta\'ya hoş geldiniz!
-\nEn yeni özellikleri deneyin ve erken geri bildirimde bulunun: https://brave.com/msupport
-\nAndroid için Brave\'in geçerli sürümünün yanı sıra Brave Beta\'yı da kurabilirsiniz.</string>
+    <string name="brave__warning">- Brave, Google Chrome\'un teknik temelini kullanır ve dolayısıyla Chromium görselleştirme motorunun tekel konumunu dolaylı olarak destekler. \n- Ethereum blok zincirindeki Basic Attention Token BAT nedeniyle, projenin kripto para birimi ile bağları vardır. Blok zincirlerin birçok sorunu vardır ve benim görüşüme göre kaçınılması gerekmektedir.</string>
+    <string name="brave_beta__description">Android için Brave Beta\'ya hoş geldiniz! \nEn yeni özellikleri deneyin ve erken geri bildirimde bulunun: https://brave.com/msupport \nAndroid için Brave\'in geçerli sürümünün yanı sıra Brave Beta\'yı da kurabilirsiniz.</string>
     <string name="brave_beta__title">Brave Tarayıcı (Beta)</string>
-    <string name="brave_nightly__description">Android için Brave Nightly\'ye (Geliştirici) hoş geldiniz!
-\nEn yeni özellikleri deneyin ve erken geri bildirimde bulunun: https://brave.com/msupport
-\nAndroid için Brave\'in geçerli sürümünün yanına Brave Nightly kurabilirsiniz.</string>
+    <string name="brave_nightly__description">Android için Brave Nightly\'ye (Geliştirici) hoş geldiniz! \nEn yeni özellikleri deneyin ve erken geri bildirimde bulunun: https://brave.com/msupport \nAndroid için Brave\'in geçerli sürümünün yanına Brave Nightly kurabilirsiniz.</string>
     <string name="brave_nightly__title">Brave Tarayıcı (Gecelik)</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Çökme raporunu panoya kopyala</string>
     <string name="install_activity__download_file_failed__crash_text">İndirme sırasında aşağıdaki hata oluştu. Bu hata sık sık meydana geliyorsa, çökme raporunu notabug.org, GitHub veya GitLab\'a göndermekten çekinmeyin.</string>
@@ -46,26 +41,15 @@
     <string name="firefox_focus__title">Firefox Focus</string>
     <string name="firefox_klar__description">Firefox Klar Almanya, Avusturya ve İsviçre için geliştirilmiştir, ancak herhangi bir ülkedeki kullanıcılar tarafından kullanılabilir. Firefox Focus\'a çok benzer, ancak Almanca konuşulan ülkelerde Hubert Burda Media grubunun Focus dergisi ile karıştırılmaması için adı değiştirildi. Firefox Focus\'un aksine, Firefox Klar, katı Alman gizlilik yasaları nedeniyle öntanımlı olarak uzaktan izlemeyi devre dışı bırakmıştır.</string>
     <string name="firefox_klar__title">Firefox Klar</string>
-    <string name="firefox_nightly__description">Lütfen bu uygulamanın daha önce Firefox Preview olarak adlandırıldığını unutmayın. Şimdi Firefox Nightly\'ye geçiş yapıldı.
-\n
-\nFirefox Nightly, yeni Mozilla Firefox sürümlerinin yayımlandığı bir geliştirici kanalıdır.
-\n
-\nFirefox Nightly, Firefox’un daha deneysel sürümlerini sergilemek amacıyla tasarlandı. Nightly kanalı, en yeni Firefox özelliklerini kararlı olmayan bir ortamda denemenize, özellikler ve performansla ilgili geri bildirimlerde bulunmanıza olanak tanıyor. Böylece neleri son sürüme aktaracağımızı belirlememize yardımcı oluyorsunuz.</string>
+    <string name="firefox_nightly__description">Lütfen bu uygulamanın daha önce Firefox Preview olarak adlandırıldığını unutmayın. Şimdi Firefox Nightly\'ye geçiş yapıldı. \n \nFirefox Nightly, yeni Mozilla Firefox sürümlerinin yayımlandığı bir geliştirici kanalıdır. \n \nFirefox Nightly, Firefox’un daha deneysel sürümlerini sergilemek amacıyla tasarlandı. Nightly kanalı, en yeni Firefox özelliklerini kararlı olmayan bir ortamda denemenize, özellikler ve performansla ilgili geri bildirimlerde bulunmanıza olanak tanıyor. Böylece neleri son sürüme aktaracağımızı belirlememize yardımcı oluyorsunuz.</string>
     <string name="firefox_nightly__title">Firefox Nightly</string>
     <string name="firefox_release__description">Android için Firefox tarayıcı, ışık hızında sayfa yükleme ve gizliliğinizi kolayca koruma olanağı sunuyor. Gelişmiş İzlenme Koruması, gizliliğinizi ihlal eden ve sayfalarınızı yavaşlatan 2.000\'den fazla çevrimiçi takipçiyi otomatik olarak engelliyor. Ayrıca Firefox tarayıcı, daha verimli ve daha hızlı kullanım sağlayan yeni ve sade bir tasarım sunuyor. Üstelik Firefox, yerleşik akıllı gezinti özellikleriyle gizliliğinizi, parolalarınızı ve yer imlerinizi gittiğiniz her yere güvenle taşıyor.</string>
     <string name="firefox_release__title">Firefox Tarayıcı</string>
     <string name="firefox_release__warning">- F-Droid\'de Fennec F-Droid adı altında Firefox\'un iyileştirilmiş bir sürümü de bulunmakdır.</string>
-    <string name="iceraven__description">Kesinlikle Mozilla tarafından size getirilmedi!
-\n
-\nIceraven Tarayıcı, Mozilla\'nın Firefox, GeckoView ve Mozilla Android bileşenlerinin Fenix sürümünü temel alan Android için bir web tarayıcısıdır.
-\n
-\nAmacımız, kullanıcılara daha fazla seçenek, daha fazla özelleştirme fırsatı (geniş bir uzantı kitaplığı dahil) ve ziyaret ettikleri sayfalar ve tarayıcılarının nasıl çalıştığı hakkında daha fazla bilgi sağlamayı amaçlayan yeni Android için Firefox\'un yakın bir çatalı olmaktır.</string>
+    <string name="iceraven__description">Kesinlikle Mozilla tarafından size getirilmedi! \n \nIceraven Tarayıcı, Mozilla\'nın Firefox, GeckoView ve Mozilla Android bileşenlerinin Fenix sürümünü temel alan Android için bir web tarayıcısıdır. \n \nAmacımız, kullanıcılara daha fazla seçenek, daha fazla özelleştirme fırsatı (geniş bir uzantı kitaplığı dahil) ve ziyaret ettikleri sayfalar ve tarayıcılarının nasıl çalıştığı hakkında daha fazla bilgi sağlamayı amaçlayan yeni Android için Firefox\'un yakın bir çatalı olmaktır.</string>
     <string name="iceraven__title">Iceraven Tarayıcı</string>
-    <string name="iceraven__warning">- Geliştiricisi, güvenlik veya güncellemeler ve hatta kararlılık konusunda hiçbir garanti vermez.
-\n- Projenin güvenlik güncellemelerini sağlaması normalden daha uzun sürer.</string>
-    <string name="infobox">Bu, gizlilik dostu tarayıcılar için bir güncelleyicidir. Yeni uygulamalar kurmak için artı düğmesine tıklayın. Yeni güncellemeleri denetlemeye zorlamak için aşağı kaydırın. Öntanımlı olarak, uygulama arka planda güncellemeleri düzenli olarak denetleyecek, daha sonra indirecek ve kuracaktır. Ayarlarda davranışı özelleştirmek için dişli simgesine tıklayın.
-\n
-\nSon başarılı arka plan güncelleme denetimi: %1$s</string>
+    <string name="iceraven__warning">- Geliştiricisi, güvenlik veya güncellemeler ve hatta kararlılık konusunda hiçbir garanti vermez. \n- Projenin güvenlik güncellemelerini sağlaması normalden daha uzun sürer.</string>
+    <string name="infobox">Bu, gizlilik dostu tarayıcılar için bir güncelleyicidir. Yeni uygulamalar kurmak için artı düğmesine tıklayın. Yeni güncellemeleri denetlemeye zorlamak için aşağı kaydırın. Öntanımlı olarak, uygulama arka planda güncellemeleri düzenli olarak denetleyecek, daha sonra indirecek ve kuracaktır. Ayarlarda davranışı özelleştirmek için dişli simgesine tıklayın. \n \nSon başarılı arka plan güncelleme denetimi: %1$s</string>
     <string name="app_card__information_about_the_app">uygulama hakkında bilgi</string>
     <string name="download_activity__delete_cache_button_text">önbelleği temizle</string>
     <string name="download_activity__delete_cache_explanation">FFUpdater\'ın hatalı bir uygulama güncellemesini önbelleğe aldığını düşünüyorsanız veya yerden tasarruf etmek istiyorsanız, indirilen dosyayı silmek için düğmeye tıklayın.</string>
@@ -103,11 +87,7 @@
     <string name="installed_version">Kuruldu: %1$s</string>
     <string name="kiwi__description">Kiwi Browser, rahatsız edilmeden internette gezinmek, haber okumak, video izlemek ve müzik dinlemek için yapılmıştır.</string>
     <string name="kiwi__title">Kiwi Browser Next</string>
-    <string name="kiwi__warning">- Kiwi yalnızca kısmen açık kaynaklıdır
-\n- Kiwi, Google Chrome\'un teknik temelini kullanır ve dolayısıyla Chromium görselleştirme motorunun tekel konumunu dolaylı olarak destekler.
-\n- Kiwi, gizlilik için uygun bir tarayıcı değildir, ancak iyi bir eklenti desteğine sahiptir.
-\n- Tarayıcı, Kiwi Browser kullanılarak yapılan her arama için arama motorları tarafından ödeme almaktadır. Arama motoru seçimine bağlı olarak istekler Kiwibrowser / Kiwisearchservices sunucuları üzerinden gidebilir.
-\n- Kiwi\'deki Google Reklamları, reklamlar için konum verilerini kullanabilir - ancak Keşif özelliğini devre dışı bırakarak bunu devre dışı bırakabilirsiniz. Ancak bu yakında değişecek. Daha fazla ayrıntı için https://privacy.kiwibrowser.org/ adresine bakın.</string>
+    <string name="kiwi__warning">- Kiwi yalnızca kısmen açık kaynaklıdır \n- Kiwi, Google Chrome\'un teknik temelini kullanır ve dolayısıyla Chromium görselleştirme motorunun tekel konumunu dolaylı olarak destekler. \n- Kiwi, gizlilik için uygun bir tarayıcı değildir, ancak iyi bir eklenti desteğine sahiptir. \n- Tarayıcı, Kiwi Browser kullanılarak yapılan her arama için arama motorları tarafından ödeme almaktadır. Arama motoru seçimine bağlı olarak istekler Kiwibrowser / Kiwisearchservices sunucuları üzerinden gidebilir. \n- Kiwi\'deki Google Reklamları, reklamlar için konum verilerini kullanabilir - ancak Keşif özelliğini devre dışı bırakarak bunu devre dışı bırakabilirsiniz. Ancak bu yakında değişecek. Daha fazla ayrıntı için https://privacy.kiwibrowser.org/ adresine bakın.</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>GitHub-API sınırı aşıldı. Bir saat içinde tekrar deneyin.</u>"</string>
     <string name="main_activity__no_unmetered_network">Ölçülmeyen ağ yok</string>
     <string name="main_activity__temporary_network_issue">"<u>Geçici ağ sorunu. Daha sonra tekrar deneyin.</u>"</string>
@@ -183,8 +163,7 @@
     <string name="update_notification__title">%1$s için güncelleme var</string>
     <string name="vivaldi__description">Son derece hızlı bir İnternet tarayıcısını keşfedin! Vivaldi, esneklik göz önünde bulundurularak oluşturulmuş yeni, ücretsiz ve özel bir web tarayıcısıdır. İçinde var olan bir reklam engelleyici (açılır pencere engelleyici), izleme koruması ve özel çeviri gibi kullanışlı özelliklerle birlikte gelir. Uygun masaüstü tarzı sekmeler, Koyu/Açık temalar ve düzen seçenekleri gibi tarayıcı seçenekleri, onu size özel yapmanıza yardımcı olur.</string>
     <string name="vivaldi__title">Vivaldi Tarayıcı</string>
-    <string name="vivaldi__warning">- Vivaldi yalnızca kısmen açık kaynaklıdır.
-\n- Ayrıca Google Chrome\'un teknik temelini kullanır ve böylece Chromium görselleştirme motorunun tekel konumunu dolaylı olarak destekler.</string>
+    <string name="vivaldi__warning">- Vivaldi yalnızca kısmen açık kaynaklıdır. \n- Ayrıca Google Chrome\'un teknik temelini kullanır ve böylece Chromium görselleştirme motorunun tekel konumunu dolaylı olarak destekler.</string>
     <string name="tor_browser__title">Tor Browser</string>
     <string name="tor_browser__description">Android için Tor Browser, çevrim içi gizlilik ve özgürlük için dünyanın en güçlü aracının geliştiricileri olan Tor Projesi tarafından desteklenen tek resmi mobil tarayıcıdır.</string>
     <string name="orbot__description">Orbot, diğer uygulamaların interneti daha güvenli kullanmasını sağlayan ücretsiz bir vekil uygulamasıdır. Orbot, internet trafiğinizi şifrelemek için Tor kullanır ve daha sonra dünyanın dört bir yanındaki bir dizi bilgisayardan geçirerek onu gizler. Tor, kişisel özgürlüğü ve mahremiyeti, gizli iş faaliyetlerini ve ilişkilerini ve trafik analizi olarak bilinen devlet güvenliğini tehdit eden bir tür ağ gözetimine karşı savunmanıza yardımcı olan özgür bir yazılım ve açık bir ağdır.</string>
@@ -211,17 +190,7 @@
     <string name="network__proxy__title">Vekil</string>
     <string name="network__dns_provider__title">DNS ayarları</string>
     <string name="network__custom_doh_server__title">Özel HTTPS üzerinden DNS sunucusu</string>
-    <string name="network__custom_doh_server__dialog_message">Özel DoH sunucusu için bağlantı ayrıntılarını aşağıdaki biçimlerden birinde girin:
-\n
-\nURL;IP1
-\n
-\nURL;IP1;IP2
-\n
-\nURL;IP1;IP2;IP3
-\n
-\nURL;IP1;IP2;IP3;IP4
-\n
-\nÖrneğin: https://dns.google/dns-query;8.8.8.8 veya https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
+    <string name="network__custom_doh_server__dialog_message">Özel DoH sunucusu için bağlantı ayrıntılarını aşağıdaki biçimlerden birinde girin: \n \nURL;IP1 \n \nURL;IP1;IP2 \n \nURL;IP1;IP2;IP3 \n \nURL;IP1;IP2;IP3;IP4 \n \nÖrneğin: https://dns.google/dns-query;8.8.8.8 veya https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
     <string name="network__proxy__dialog_message">Bağlantı ayrıntılarını aşağıdaki biçimlerden birinde girin:
 \n
 \nSOCKS/HTTP;IP/etkialanı;bağlantınoktası
@@ -257,21 +226,14 @@
     <string name="notification__network_error__title">Arka plan işinde ağ hatası</string>
     <string name="notification__network_error__text">Bu hata nadiren meydana gelmelidir. Ancak, sık sık meydana geliyorsa bunu bildirmelisiniz. Ayrıntılı hata mesajını görüntülemek için buraya tıklayın.</string>
     <string name="tor_browser_alpha__title">Tor Browser Alfa</string>
-    <string name="tor_browser_alpha__description">Tor Browser, çevrim içi gizlilik ve özgürlük için dünyanın en güçlü aracını geliştiren Tor Projesi tarafından desteklenen tek resmi mobil tarayıcıdır.
-\n
-\nTor Browser HER ZAMAN ücretsiz olacaktır, ancak bağışlar bunu mümkün kılmaktadır. Tor Projesi ABD merkezli 501©(3) kar amacı gütmeyen bir kuruluştur. Lütfen bugün bir katkıda bulunmayı düşünün. Her hediye bir fark yaratır: https://donate.torproject.org.
-\n
-\nHataları nasıl bildireceğinizi ve geri bildirimde bulunacağınızı https://support.torproject.org/misc/bug-or-feedback/ adresinden öğrenin!</string>
+    <string name="tor_browser_alpha__description">Tor Browser, çevrim içi gizlilik ve özgürlük için dünyanın en güçlü aracını geliştiren Tor Projesi tarafından desteklenen tek resmi mobil tarayıcıdır. \n \nTor Browser HER ZAMAN ücretsiz olacaktır, ancak bağışlar bunu mümkün kılmaktadır. Tor Projesi ABD merkezli 501©(3) kar amacı gütmeyen bir kuruluştur. Lütfen bugün bir katkıda bulunmayı düşünün. Her hediye bir fark yaratır: https://donate.torproject.org. \n \nHataları nasıl bildireceğinizi ve geri bildirimde bulunacağınızı https://support.torproject.org/misc/bug-or-feedback/ adresinden öğrenin!</string>
     <string name="main_activity__app_was_signed_by_different_certificate">Bu uygulama farklı bir sertifika ile imzalandı ve FFUpdater ile güncellenemez.</string>
     <string name="generic_app_warning__beta_version">- Bu uygulama geliştiriciler ve test eden kullanıcılar için tasarlanmıştır. Tarayıcı ile olağan çalışmanızı etkileyebilecek çeşitli hatalar içerebilir.</string>
     <string name="foreground__hide_apps_signed_by_different_certificate__title">Farklı bir sertifika tarafından imzalanan uygulamaları gizle.</string>
     <string name="firefox_focus_beta__title">Firefox Focus Beta</string>
-    <string name="firefox_focus_beta__description">Ana tarayıcınızdan ayrı tutmak istediğiniz her şey için Firefox Focus\'u kullanın — tüm o girip çıktığınız ve unuttuğunuz anlar için. Sekme yok, telaş yok, karışıklık yok. Çevrim içi izleyicileri de engelleyin. Tek bir dokunuşla tarama geçmişiniz tamamen yok olur.
-\n
-\nFirefox Focus, mükemmel bir giriş/çıkış, arama ve yok etme, sizi ilgilendirmeyen bir görevdeyim — web tarayıcısıdır.</string>
+    <string name="firefox_focus_beta__description">Ana tarayıcınızdan ayrı tutmak istediğiniz her şey için Firefox Focus\'u kullanın — tüm o girip çıktığınız ve unuttuğunuz anlar için. Sekme yok, telaş yok, karışıklık yok. Çevrim içi izleyicileri de engelleyin. Tek bir dokunuşla tarama geçmişiniz tamamen yok olur. \n \nFirefox Focus, mükemmel bir giriş/çıkış, arama ve yok etme, sizi ilgilendirmeyen bir görevdeyim — web tarayıcısıdır.</string>
     <string name="duckduckgo_android__title">DuckDuckGo Özel Tarayıcı</string>
-    <string name="duckduckgo_android__warning">- DuckDuckGo web sitelerini görüntülemek için sistem web görünümünü kullanır.
-\n- Microsoft\'tan gelen tüm çerezleri engellememe konusunda bir tartışma vardı - ancak bu düzeltildi.</string>
+    <string name="duckduckgo_android__warning">- DuckDuckGo web sitelerini görüntülemek için sistem web görünümünü kullanır. \n- Microsoft\'tan gelen tüm çerezleri engellememe konusunda bir tartışma vardı - ancak bu düzeltildi.</string>
     <string name="privacy_browser__warning">FFUpdater dosyaları F-Droid sunucularından indirir ve bu nedenle daha hızlı değildir.</string>
     <string name="privacy_browser__title">Privacy Browser</string>
     <string name="duckduckgo_android__description">DuckDuckGo uygulaması, tek bir düğmeye basarak en kapsamlı çevrim içi gizlilik korumasını sağlar. Tek bir indirme ile, arama yaparken ve gezinirken sorunsuz koruma sunan yeni bir günlük tarayıcıya sahip olursunuz ve aldığınız e-postalar ve kullandığınız uygulamalar için izleme korumalarına erişirsiniz. Bu korumaların çoğu, birçok yaygın tarayıcıda öntanımlı olarak sunulmaz.</string>
