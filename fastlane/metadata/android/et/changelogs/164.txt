@@ -1,0 +1,3 @@
+Rakenduse versioon 78.3.0
+- tõlgete täiendused - tänud tõlkijatele Weblate's: P.O, Alexthegib, winver and gallegonovato
+- lisasime Thoriumi toe; vt https://github.com/Alex313031/Thorium-Android (Tobi823/ffupdater#414)
