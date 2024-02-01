@@ -114,4 +114,8 @@
     <string name="app_installer__installed_app_has_invalid_signature">Aplikasi yang diinstal TIDAK diverifikasi</string>
     <string name="installed_application_is_verified">Aplikasi yang terinstal diverifikasi</string>
     <string name="kiwi__title">Kiwi Browser Next</string>
+    <string name="settings__foreground__update_check__metered__title">Pemeriksaan pembaruan pada jaringan terukur</string>
+    <string name="settings__foreground__theme_preference__title">Pilih tema</string>
+    <string name="settings__foreground__update_check__metered__summary">Izinkan pemeriksaan pembaruan pada jaringan terukur seperti data seluler.</string>
+    <string name="settings__foreground_category__summary">Pengaturan ketika antarmuka pengguna terlihat.</string>
 </resources>
