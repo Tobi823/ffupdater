@@ -72,11 +72,13 @@ object TorBrowser : AppBase() {
         val match = Regex(pattern).find(content)
         checkNotNull(match) { "Can't find latest version regex pattern '$pattern'." }
 
-        val version = match.groups[1]?.value
-        checkNotNull(version) { "Can't extract latest version from regex match." }
-        check(version == match.groups[2]?.value) { "Extract different versions." }
+        val firstVersionMatch = match.groups[1]?.value
+        val secondVersionMatch = match.groups[2]?.value
+        checkNotNull(firstVersionMatch) { "Can't extract latest version from regex match." }
+        checkNotNull(secondVersionMatch) { "Can't extract latest version from regex match." }
+        check(firstVersionMatch == secondVersionMatch) { "Extract different versions." }
 
-        return version
+        return firstVersionMatch
     }
 
     private fun getDownloadUrl(version: String): String {

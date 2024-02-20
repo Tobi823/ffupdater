@@ -68,11 +68,13 @@ object TorBrowserAlpha : AppBase() {
         val match = Regex(pattern).find(content)
         checkNotNull(match) { "Can't find latest version regex pattern '$pattern'." }
 
-        val version = match.groups[1]?.value
-        checkNotNull(version) { "Can't extract latest version from regex match." }
-        check(version == match.groups[2]?.value) { "Extract different versions." }
+        val firstVersionMatch = match.groups[1]?.value
+        val secondVersionMatch = match.groups[4]?.value
+        checkNotNull(firstVersionMatch) { "Can't extract latest version from regex match." }
+        checkNotNull(secondVersionMatch) { "Can't extract latest version from regex match." }
+        check(firstVersionMatch == secondVersionMatch) { "Extract different versions." }
 
-        return version
+        return firstVersionMatch
     }
 
     private fun getDownloadUrl(version: String): String {
@@ -118,5 +120,5 @@ object TorBrowserAlpha : AppBase() {
     }
 
     private const val MAIN_BASE_URL = "https://dist.torproject.org/torbrowser"
-    private const val VERSION_PATTERN = "([\\d\\.]+\\w\\d+)"
+    private const val VERSION_PATTERN = """(([\d\.]+)(\d+a\d+))"""
 }
