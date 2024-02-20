@@ -1,0 +1,4 @@
+* Terima kasih kepada para kontributor Weblate: WhiredPlanck, 109247019824, Oğuz Ersen, Giovanni Donisi, MkQtS, dan Hin 
+Weisner 
+* Perbaikan teks notifikasi saat pemeriksaan pembaruan latar belakang gagal selama lima hari berturut-turut (nilai lama: dua hari, tetapi terlalu rendah untuk beberapa pengguna) 
+* Perbaikan laporan kerusakan dan stempel waktu pemeriksaan pembaruan latar belakang yang terakhir berhasil

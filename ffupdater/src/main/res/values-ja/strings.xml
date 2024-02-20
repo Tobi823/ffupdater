@@ -310,7 +310,7 @@
     <string name="notification__uncaught_exception__text">タップしてエラー報告を表示</string>
     <string name="notification__uncaught_exception__channel_description">予期せぬエラーにより FFUpdater がクラッシュしました。</string>
     <string name="notification__uncaught_exception__title">FFUpdater がクラッシュしました</string>
-    <string name="notification__bg_update_check__unreliable_execution__title">バックグラウンドでの更新確認が不確実にし実行された場合の通知</string>
+    <string name="notification__bg_update_check__unreliable_execution__title">バックグラウンドでの更新確認の実行が不確実です</string>
     <string name="crash_report__report_is_copied_to_clipboard">クラッシュレポートがクリップボードにコピーされました</string>
     <string name="installer__android_too_old_for_shizuku">Android のバージョンが古すぎるため、Shizuku を利用できません。</string>
     <string name="add_app_activity__title_based_on_firefox">Firefox ベースのブラウザー</string>

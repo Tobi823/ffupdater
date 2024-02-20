@@ -342,7 +342,6 @@
     <string name="fairemail__title">FairEmail</string>
     <string name="cardview_dialog__not_installed_by_ffupdater">Αυτή η εφαρμογή δεν εγκαταστάθηκε ούτε ενημερώθηκε από το FFUpdater. Για την αποφυγή διενέξεων με άλλες εφαρμογές, η αυτόματη ενημέρωση είναι απενεργοποιημένη.</string>
     <string name="fairemail__description">Πλήρες δυνατοτήτων, ανοιχτού κώδικα, φιλική προς το απόρρητο εφαρμογή email για Android</string>
-    <string name="app_install_info_dialog__install">Εγκατάσταση</string>
     <string name="cardview_dialog__install">Εγκατάσταση τελευταίας έκδοσης</string>
     <string name="cardview_dialog__different_signature">Το FFUpdater δεν μπορεί να ενημερώσει αυτήν την εφαρμογή επειδή η υπογραφή APK είναι διαφορετική. Μπορείτε να το διορθώσετε καταργώντας την εγκατάσταση της εφαρμογής και επανεγκαθιστώντας την με το FFUpdater. Ωστόσο, αυτό θα διαγράψει όλα τα δεδομένα σας στην εφαρμογή. Επομένως, θυμηθείτε να δημιουργήσετε αντίγραφα ασφαλείας των δεδομένων σας εκ των προτέρων.</string>
     <string name="cardview_dialog__hide">Απόκρυψη</string>

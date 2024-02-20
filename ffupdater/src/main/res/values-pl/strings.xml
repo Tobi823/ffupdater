@@ -336,7 +336,7 @@
     <string name="fairemail__title">FairEmail</string>
     <string name="cardview_dialog__not_installed_by_ffupdater">Ta aplikacja nie została zainstalowana ani zaktualizowana przez FFUpdater. Aby uniknąć konfliktów z innymi aplikacjami, automatyczna aktualizacja jest wyłączona.</string>
     <string name="fairemail__description">W pełni funkcjonalna, otwartoźródłowa, przyjazna dla prywatności aplikacja e-mail na Androida</string>
-    <string name="cardview_dialog__install">Instaluj najnowszą wersję</string>
+    <string name="cardview_dialog__install">Instaluj</string>
     <string name="cardview_dialog__different_signature">FFUpdater nie może zaktualizować tej aplikacji, ponieważ sygnatura APK jest inna. Można to naprawić odinstalowując aplikację i instalując ją ponownie za pomocą FFUpdater. Spowoduje to jednak usunięcie wszystkich danych z aplikacji. Pamiętaj więc, aby wcześniej wykonać kopię zapasową danych.</string>
     <string name="cardview_dialog__hide">Ukryj</string>
     <string name="foreground__hidden_apps__title">Ukryte aplikacje</string>

@@ -1,0 +1,5 @@
+Rakenduse versioon 78.4.0 (165)
+- tõlgete täiendused - tänud tõlkijatele Weblate's: winver, Retrial, 109247019824, Gérson da Fonseca Henzel, gallegonovato, Alexthegib, Kazushi Hayama, Daviteusz, MkQtS ja nautilusx
+- lisasime rakendused K-9 Mail ja FairMail
+- parandasime uuenduste kontrollimist Tor Browser ja Tor Browser Alpha puhul
+- uuendasime seotud teeke
