@@ -8,7 +8,7 @@
     <string name="app_description">Trình cập nhật cho những trình duyệt thân thiện với quyền riêng tư</string>
     <string name="brave__title">Trình duyệt riêng tư Brave</string>
     <string name="download_activity__open_cache_folder_button_text">mở thư mục bộ nhớ đệm</string>
-    <string name="infobox">Đây là một trình cập nhật cho các trình duyệt thân thiện với quyền riêng tư. Bấm vào nút dấu cộng để cài đặt ứng dụng mới. Vuốt xuống để buộc kiểm tra các bản cập nhật. Mặc định, ứng dụng sẽ kiểm tra các bản cập nhậy theo chu kỳ, tức sẽ được tải xuống và thậm chí được cài đặt. Bấm vào hình bánh răng để tùy chỉnh hành vi trong cài đặt.
+    <string name="infobox">Đây là một trình cập nhật cho các trình duyệt thân thiện với quyền riêng tư. Bấm vào nút dấu cộng để cài đặt ứng dụng mới. Vuốt xuống để buộc kiểm tra các bản cập nhật. Mặc định, ứng dụng sẽ kiểm tra các bản cập nhật theo chu kỳ, tức sẽ được tải xuống và thậm chí được cài đặt. Bấm vào hình bánh răng để tùy chỉnh hành vi trong cài đặt.
 \n
 \nLần cuối kiểm tra cập nhật dưới nền thành công: %1$s</string>
     <string name="notification__eol_apps__title">­Ứng dụng quá hạn đã cài đặt</string>
@@ -34,7 +34,7 @@
     <string name="action_about_title">Về FFUpdater</string>
     <string name="kiwi__description">Trình duyệt Kiwi được làm để duyệt internet, đọc tin tức, xem video và nghe nhạc mà không bị quấy rầy.</string>
     <string name="download_activity__open_cache_explanation">Bạn có thể mở thư mục bộ nhớ đệm để sao chép APK đến một nơi có nhiều dung lượng có sẵn hơn. Không may thay, trên Android 11+ chỉ một số ít trình quản lí tập tin có thể truy cập tập tin này trong Android/data.</string>
-    <string name="download_activity__fetched_url_for_download_successfully">Siêu dữ liệu đã tìm nạp từ %1$s</string>
+    <string name="download_activity__fetched_url_for_download_successfully">Đã tìm nạp siêu dữ liệu từ %1$s</string>
     <string name="firefox_klar__title">Firefox Klar</string>
     <string name="crash_report__explain_text__download_activity_fetching_url">Lỗi này xảy ra khi siêu dữ liệu tải xuống được tìm nạp. Nếu lỗi này xảy ra thường xuyên, vui lòng gửi bản báo cáo sự cố qua notabug.org, GitHub hoặc GitLab.</string>
     <string name="download_activity__label">Tải xuống ứng dụng</string>
