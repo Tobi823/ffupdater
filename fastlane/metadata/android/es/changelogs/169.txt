@@ -1,0 +1,3 @@
+Versión 79.1.1 (169)
+- Gracias por las contribuciones de: minh, matte22ladde, markov, v1s7, Priit Jõerüüt, Retrial, Fabio Rusconi, bryce-lynch, Oğuz Ersen, Sebi, Reza Almanda, inson1, gallegonovato, P. O, nautilusx, 109247019824, Juraj Motuz, winver, Daviteusz, Kazushi Hayama, MkQtS, Vitor Henrique, Giovanni Donisi, Сергій and Software In Interlingua
+- Solucionado el error al descargar Tor Browser Alpha (Tobi823/ffupdater#570)
