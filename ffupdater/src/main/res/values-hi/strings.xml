@@ -1,2 +1,350 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="action_about_title">FFUpdater के बारे में</string>
+    <string name="app_name">FFUpdater</string>
+    <string name="application_installation_was_not_successful">एप्लिकेशन इंस्टॉलेशन सफल नहीं हुआ</string>
+    <string name="available_version">उपलब्ध: %1$s</string>
+    <string name="notification__error__text">कृपया इस त्रुटि की रिपोर्ट करें. त्रुटि रिपोर्ट देखने के लिए क्लिक करें।</string>
+    <string name="brave__title">Brave Private Browser</string>
+    <string name="brave_beta__description">Android के लिए Brave Beta में आपका स्वागत है!
+\nनवीनतम सुविधाएँ आज़माएँ और शीघ्र प्रतिक्रिया दें: https://brave.com/msupport
+\nआप Android के लिए Brave के अपने वर्तमान संस्करण के साथ Brave Beta इंस्टॉल कर सकते हैं।</string>
+    <string name="brave_nightly__description">Android के लिए Brave Nightly (डेवलपर) में आपका स्वागत है!
+\nनवीनतम सुविधाएँ आज़माएँ और शीघ्र प्रतिक्रिया दें: https://brave.com/msupport
+\nआप Android के लिए Brave के अपने वर्तमान संस्करण के साथ Brave Nightly इंस्टॉल कर सकते हैं।</string>
+    <string name="bromite__title">Bromite</string>
+    <string name="crash_report__copy_crash_report_to_clipboard">क्रैश रिपोर्ट को क्लिपबोर्ड पर कॉपी करें</string>
+    <string name="crash_report__go_to_github">GitHub पर जाएँ</string>
+    <string name="crash_report__go_to_gitlab">GitLab पर जाएँ</string>
+    <string name="notification__download_error__channel_descr">जब पृष्ठभूमि में अपडेट डाउनलोड विफल हो जाता है तो दिखाता है।</string>
+    <string name="notification__download_error__channel_name">पृष्ठभूमि में डाउनलोड त्रुटियों के बारे में अधिसूचना</string>
+    <string name="notification__download_running__channel_name">पृष्ठभूमि में डाउनलोड के बारे में अधिसूचना</string>
+    <string name="crash_report__got_to_notabug_org">notabug.org पर जाएं</string>
+    <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
+    <string name="crash_report__explain_text__download_activity_fetching_url">यह त्रुटि तब हुई जब डाउनलोड मेटाडेटा लाया गया था। यदि यह त्रुटि बार-बार होती है, तो बेझिझक क्रैश रिपोर्ट notabug.org, GitHub या GitLab पर सबमिट करें।</string>
+    <string name="crash_report__explain_text__download_activity_install_file">यह त्रुटि स्थापना के दौरान उत्पन्न हुई. यदि यह त्रुटि बार-बार होती है, तो बेझिझक क्रैश रिपोर्ट notabug.org, GitHub या GitLab पर सबमिट करें।</string>
+    <string name="crash_report__explain_text__uncaught_throwable">दुर्भाग्य से, FFUpdater पिछली बार क्रैश हो गया और यह त्रुटि लॉग हुई। कृपया क्रैश रिपोर्ट notabug.org, GitHub या GitLab पर सबमिट करें।</string>
+    <string name="notification__error__channel_name">पृष्ठभूमि त्रुटियाँ</string>
+    <string name="notification__error__channel_descr">बैकग्राउंड अपडेट चेकर की त्रुटियाँ दिखाएँ</string>
+    <string name="notification__eol_apps__title">पुराने ऐप्स इंस्टॉल किए गए</string>
+    <string name="notification__eol_apps__channel_name">पुराने ऐप्स अधिसूचना</string>
+    <string name="notification__eol_apps__channel_description">पुराने ऐप्स के बारे में चेतावनियों के लिए अधिसूचना चैनल।</string>
+    <string name="firefox_focus__title">Firefox Focus</string>
+    <string name="firefox_nightly__title">Firefox Nightly</string>
+    <string name="firefox_release__title">Firefox Browser</string>
+    <string name="firefox_release__warning">- Firefox का एक उन्नत संस्करण F-Droid पर Fennec F-Droid नाम से भी उपलब्ध है।</string>
+    <string name="iceraven__title">Iceraven Browser</string>
+    <string name="app_card__information_about_the_app">ऐप के बारे में जानकारी</string>
+    <string name="download_activity__fetch_url_for_download">%1$s से मेटाडेटा प्राप्त करें</string>
+    <string name="app_installer__signature_of_download_is_invalid">डाउनलोड किया गया एप्लिकेशन सत्यापित नहीं है</string>
+    <string name="download_activity__downloaded_application_from">यहां से एप्लिकेशन डाउनलोड किया गया:</string>
+    <string name="download_activity__download_app_with_status">एप्लिकेशन डाउनलोड हो रहा है</string>
+    <string name="download_activity__external_storage_not_accessible">बाह्य स्टोरेज उपलब्ध नहीं है - डाउनलोड प्रारंभ नहीं हो सकता. वर्तमान स्थिति यह है:</string>
+    <string name="notification__install_success__channel_descr">सफल %1$s अपडेट के लिए अधिसूचना चैनल।</string>
+    <string name="notification__install_error__title">%1$s को अपडेट नहीं किया जा सका</string>
+    <string name="notification__install_error__text">त्रुटि (%1$d): %2$s</string>
+    <string name="notification__install_error__channel_descr">विफल %1$s अपडेट के लिए अधिसूचना चैनल।</string>
+    <string name="download_activity__label">एप्लिकेशन डाउनलोड करें</string>
+    <string name="download_activity__use_cached_downloaded_apk">पहले से ही डाउनलोड की गई फ़ाइल का उपयोग करें:</string>
+    <string name="download_activity__too_low_memory_title">डिस्क में कम जगह है</string>
+    <string name="download_activity__sha_256_certificate_fingerprint">SHA-256 प्रमाणपत्र फ़िंगरप्रिंट:</string>
+    <string name="notification__install_error__channel_name">%1$s अपडेट विफलता सूचना</string>
+    <string name="notification__install_success__channel_name">%1$s सफल अपडेट सूचना</string>
+    <string name="installed_application_is_verified">इंस्टॉल किया गया एप्लिकेशन सत्यापित है</string>
+    <string name="kiwi__title">Kiwi Browser Next</string>
+    <string name="request_installation_permission_dialog__abort">निरस्त करें</string>
+    <string name="ok">ठीक है</string>
+    <string name="main_activity__an_error_occurred"><u>एक त्रुटि उत्पन्न हुई. बाद में पुनः प्रयास करें.</u></string>
+    <string name="main_activity__temporary_network_issue"><u>अस्थायी नेटवर्क समस्या. बाद में पुनः प्रयास करें.</u></string>
+    <string name="main_activity__no_unmetered_network">कोई अनमीटर्ड नेटवर्क नहीं</string>
+    <string name="main_activity__github_api_limit_exceeded"><u>GitHub-API सीमा पार हो गई। अगले घंटे पुनः प्रयास करें।</u></string>
+    <string name="lockwise__eol_reason">Mozilla ने दिसंबर 2021 में समर्थन बंद कर दिया। कृपया किसी अन्य सुरक्षित पासवर्ड पर स्विच करें।</string>
+    <string name="lockwise__title">Firefox Lockwise</string>
+    <string name="request_installation_permission_dialog__title">इंस्टॉलर अनुमति</string>
+    <string name="running_downloads_dialog__message">ऐप अब बैकग्राउंड में अपडेट डाउनलोड कर रहा है। क्या आप एक नया डाउनलोड शुरू करना चाहते हैं जिसमें अधिक समय लग सकता है?</string>
+    <string name="running_downloads_dialog__title">डाउनलोड चल रहे हैं</string>
+    <string name="session_installer__status_failure_conflict">ऑपरेशन विफल हो गया क्योंकि यह डिवाइस पर पहले से स्थापित किसी अन्य पैकेज के साथ विरोध करता है (या असंगत है)। उदाहरण के लिए, मौजूदा अनुमति, असंगत प्रमाणपत्र आदि। उपयोगकर्ता समस्या को ठीक करने के लिए किसी अन्य ऐप को अनइंस्टॉल करने में सक्षम हो सकता है।</string>
+    <string name="settings__b_f__delete_cache_if_install_failed">इंस्टॉलेशन विफल होने पर डाउनलोड किए गए अपडेट को हटा दें।</string>
+    <string name="settings_activity__label">सेटिंग्स</string>
+    <string name="settings__background__update_check__enabled__title">अपडेट जांच</string>
+    <string name="settings__background__update_check__enabled__summary">नियमित अंतराल पर नए अपडेट की जाँच करें।</string>
+    <string name="settings__background__installation__enabled__title">अपडेट इंस्टॉल करें</string>
+    <string name="settings__background__download__metered__title">मीटर वाले नेटवर्क पर ऐप अपडेट डाउनलोड करें</string>
+    <string name="settings__background__download__metered__summary">सीमित मोबाइल डेटा वाले उपयोगकर्ताओं के लिए अनुशंसित नहीं है।</string>
+    <string name="settings__background__download__enabled__title">ऐप अपडेट डाउनलोड करें</string>
+    <string name="settings__background__update_check__interval__title">चेक अंतराल को अपडेट करें</string>
+    <string name="settings__foreground_category__title">अग्रभूमि</string>
+    <string name="settings__foreground__update_check__metered__summary">मोबाइल डेटा जैसे मीटर्ड नेटवर्क पर अपडेट जांच की अनुमति दें।</string>
+    <string name="settings__foreground__theme_preference__title">थीम चुनें</string>
+    <string name="settings__foreground__theme_preference__summary">हल्की और गहरी रंग की थीम में से चुनें</string>
+    <string name="settings__foreground__update_check__metered__title">मीटर्ड नेटवर्क पर अपडेट जांच</string>
+    <string name="settings__theme_battery_saver">बैटरी सेवर सक्रिय होने पर गहरी</string>
+    <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
+    <string name="update_interval__1w">1 सप्ताह</string>
+    <string name="update_interval__1m">1 महीना</string>
+    <string name="update_interval__1h">1 घंटा</string>
+    <string name="update_interval__1d">1 दिन</string>
+    <string name="update_interval__18h">18 घंटे</string>
+    <string name="update_interval__15min">15 मिनट</string>
+    <string name="update_interval__12h">12 घंटे</string>
+    <string name="unsupported_abi_dialog__title">असमर्थित डिवाइस</string>
+    <string name="update_interval__4d">4 दिन</string>
+    <string name="update_interval__3d">3 दिन</string>
+    <string name="update_interval__30min">30 मिनट</string>
+    <string name="update_interval__2w">2 हफ्ते</string>
+    <string name="update_interval__2h">2 घंटे</string>
+    <string name="update_interval__2d">2 दिन</string>
+    <string name="update_notification__title">%1$s के लिए अपडेट उपलब्ध है</string>
+    <string name="vivaldi__title">Vivaldi Browser</string>
+    <string name="vivaldi__warning">- Vivaldi केवल आंशिक रूप से खुला स्रोत है।
+\n- यह Google Chrome की तकनीकी नींव का भी उपयोग करता है और इस प्रकार अप्रत्यक्ष रूप से Chromium रेंडर इंजन की एकाधिकार स्थिति का समर्थन करता है।</string>
+    <string name="ungoogled_chromium__eol_reason">डेवलपर ने पोस्ट किया: \"मैं कुछ समय तक संस्करणों को अपडेट नहीं कर पाऊंगा। यदि संभव हो तो कृपया इस बीच किसी एक ब्राउज़र का उपयोग करें [जिसे FFUpdater समर्थन करता है]।\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
+    <string name="orbot__title">Orbot: Android के लिए Tor</string>
+    <string name="settings__background__update_check__when_device_idle__title">अपडेट केवल तभी जांचता है जब डिवाइस निष्क्रिय हो</string>
+    <string name="add_app_activity__title_better_than_google_chrome">Google Chrome से बेहतर</string>
+    <string name="add_app_activity__title_end_of_live_browser">ब्राउज़र अब समर्थित नहीं हैं</string>
+    <string name="chromium__warning">- Chromium Google Chrome की तकनीकी नींव का उपयोग करता है और इस प्रकार अप्रत्यक्ष रूप से Chromium रेंडर इंजन की एकाधिकार स्थिति का समर्थन करता है।</string>
+    <string name="settings__background__update_check__when_device_idle__unsupported">यह विकल्प केवल Android Marshmallow या इसके बाद के संस्करण पर उपलब्ध है।</string>
+    <string name="mulch__warning">- Mulch Google Chrome की तकनीकी नींव का उपयोग करता है और इस प्रकार अप्रत्यक्ष रूप से Chromium रेंडर इंजन की एकाधिकार स्थिति का समर्थन करता है।</string>
+    <string name="fennecfdroid__description">Fennec F-Droid नवीनतम Firefox रिलीज़ (कोडनेम Fenix) पर आधारित है। इसमें मालिकाना बिट्स और टेलीमेट्री हटा दी गई है, लेकिन फिर भी यह विभिन्न Mozilla और Google सेवाओं से कनेक्ट है जो उपयोगकर्ताओं को ट्रैक कर सकती हैं।</string>
+    <string name="network__dns_provider__title">DNS सेटिंग्स</string>
+    <string name="settings__device_category__title">डिवाइस</string>
+    <string name="network__proxy__title">प्रॉक्सी</string>
+    <string name="notification__network_error__title">पृष्ठभूमि कार्य में नेटवर्क त्रुटि</string>
+    <string name="notification__install_error__generic_channel_descr">विफल ऐप अपडेट के लिए अधिसूचना चैनल।</string>
+    <string name="notification__update_available__generic_channel_name">ऐप अपडेट अधिसूचना</string>
+    <string name="background__separate_notification_channels__title">विभिन्न अधिसूचना चैनल</string>
+    <string name="background__separate_notification_channels__summary">प्रत्येक व्यक्तिगत ऐप के लिए अलग-अलग अधिसूचना चैनलों का उपयोग करें</string>
+    <string name="network__dns_provider__no">कोई DNS नहीं (केवल परीक्षण के लिए)</string>
+    <string name="network__dns_provider__custom">HTTPS सर्वर पर कस्टम DNS</string>
+    <string name="network__dns_provider__google">HTTPS पर DNS: Google</string>
+    <string name="network__dns_provider__quad9">HTTPS पर DNS: Quad9</string>
+    <string name="installer__method__native">Native इंस्टॉलर: यदि session इंस्टॉलर आपके स्मार्टफोन पर काम नहीं करता है तो फ़ॉलबैक।</string>
+    <string name="installer__method__shizuku">Shizuku इंस्टॉलर: पुष्टिकरण संवाद के बिना ऐप्स अपडेट करें। इसके लिए Shizuku ऐप या Sui Magisk मॉड्यूल की आवश्यकता है।</string>
+    <string name="main_activity__app_was_signed_by_different_certificate">इस ऐप पर एक अलग प्रमाणपत्र के साथ हस्ताक्षर किया गया था और इसे FFUpdater के साथ अपडेट नहीं किया जा सकता।</string>
+    <string name="firefox_focus_beta__title">Firefox Focus Beta</string>
+    <string name="background__installation__when_screen_off__title">स्क्रीन बंद होने पर ही इंस्टॉल करें</string>
+    <string name="eol_reason__browser_no_longer_maintained">ब्राउज़र अब अनुरक्षित नहीं है।</string>
+    <string name="privacy_browser__warning">FFUpdater F-Droid सर्वर से फ़ाइलें डाउनलोड करता है और इसलिए तेज़ नहीं है।</string>
+    <string name="notification__bg_update_check__unreliable_execution__channel_name">पृष्ठभूमि अपडेट जाँच निष्पादित नहीं हुई</string>
+    <string name="add_app_activity__title_good_security_browsers">अच्छा सुरक्षा ब्राउज़र</string>
+    <string name="add_app_activity__title_based_on_firefox">Firefox पर आधारित</string>
+    <string name="installer__android_too_old_for_shizuku">Shizuku के लिए आपका Android बहुत पुराना है।</string>
+    <string name="notification__bg_update_check__unreliable_execution__title">पृष्ठभूमि अपडेट जांच विश्वसनीय रूप से निष्पादित नहीं की जाती है</string>
+    <string name="notification__uncaught_exception__channel_description">अप्रत्याशित त्रुटियाँ जो FFUpdater को क्रैश कर देती हैं।</string>
+    <string name="cardview_dialog__eol">इस ऐप का अब उपयोग नहीं किया जाना चाहिए:</string>
+    <string name="cardview_dialog__install">नवीनतम संस्करण इंस्टॉल करें</string>
+    <string name="cardview_dialog__exit">बंद करें</string>
+    <string name="cardview_dialog__warnings_label">चेतावनियाँ:</string>
+    <string name="cardview_dialog__self_description_label">स्व विवरण:</string>
+    <string name="fairemail__title">FairEmail</string>
+    <string name="k9mail__description">पूर्ण-विशेषीकृत ईमेल क्लाइंट</string>
+    <string name="k9mail__title">K-9 Mail</string>
+    <string name="main_activity__unexpected_error">अनपेक्षित त्रुटि उत्पन्न हुई।</string>
+    <string name="cromite__title">Cromite</string>
+    <string name="app_installer__failed_to_verify_signature_of_installed_app">इंस्टॉल किए गए ऐप की जांच करने में विफल।</string>
+    <string name="app_installer__failed_to_validate_signature_of_download">डाउनलोड के हस्ताक्षर सत्यापित करने में विफल।</string>
+    <string name="mulch_wv__title">Mulch System WebView</string>
+    <string name="cromite__description">Cromite Bromite पर आधारित एक Chromium फोर्क है जिसमें विज्ञापन अवरोधन के लिए अंतर्निहित समर्थन और गोपनीयता का ध्यान रखा गया है।</string>
+    <string name="cromite__warning">- Cromite Google Chrome की तकनीकी नींव का उपयोग करता है और इस प्रकार अप्रत्यक्ष रूप से Chromium रेंडर इंजन की एकाधिकार स्थिति का समर्थन करता है।</string>
+    <string name="thorium__title">Android के लिए Thorium Browser</string>
+    <string name="thorium__warning">- Thorium Google Chrome की तकनीकी नींव का उपयोग करता है और इस प्रकार अप्रत्यक्ष रूप से Chromium रेंडर इंजन की एकाधिकार स्थिति का समर्थन करता है।</string>
+    <string name="background__installation__when_screen_off__summary">डिवाइस स्क्रीन बंद होने पर ही अपडेट इंस्टॉल करने का प्रयास करें।</string>
+    <string name="ffupdater__different_signature_message">FFUpdater के इस संस्करण पर F-Droid द्वारा हस्ताक्षर किए गए हैं, इसलिए केवल F-Droid ही अपडेट वितरित कर सकता है। तेज़ी से अपडेट प्राप्त करने के लिए, FFUpdater को अनइंस्टॉल करें और डेवलपर द्वारा हस्ताक्षरित संस्करण इंस्टॉल करें। इस संस्करण के साथ FFUpdater F-Droid की प्रतीक्षा किए बिना स्वयं को अपडेट कर सकता है।</string>
+    <string name="app_description">गोपनीयता के अनुकूल ब्राउज़रों के लिए अपडेटर</string>
+    <string name="app_icon">ऐप आइकन</string>
+    <string name="privacy_browser__title">गोपनीयता ब्राउज़र</string>
+    <string name="thorium__description">पृथ्वी पर सबसे तेज़ ब्राउज़र. Linux के लिए Chromium फ़ोर्क का नाम रेडियोधर्मी तत्व संख्या 90 के नाम पर रखा गया है।</string>
+    <string name="application_successfully_installed">एप्लिकेशन सफलतापूर्वक इंस्टॉल हो गया</string>
+    <string name="notification__download_error__title">अपडेट का बैकग्राउंड डाउनलोड विफल रहा</string>
+    <string name="cardview_dialog__different_signature">FFUpdater इस ऐप को अपडेट नहीं कर सकता क्योंकि APK हस्ताक्षर अलग है। आप ऐप को अनइंस्टॉल करके और FFUpdater के साथ पुनः इंस्टॉल करके इसे ठीक कर सकते हैं। हालाँकि, इससे ऐप में आपका सारा डेटा डिलीट हो जाएगा। इसलिए अपने डेटा का पहले से बैकअप लेना याद रखें।</string>
+    <string name="brave_nightly__title">Brave Browser (Nightly)</string>
+    <string name="notification__error__title">पृष्ठभूमि अपडेट जांच विफल</string>
+    <string name="cardview_dialog__not_installed_by_ffupdater">यह ऐप FFUpdater द्वारा इंस्टॉल या अपडेट नहीं किया गया था। अन्य एप्लिकेशन के साथ टकराव से बचने के लिए, स्वचालित अपडेट अक्षम है।</string>
+    <string name="cardview_dialog__hide">छुपाएं</string>
+    <string name="foreground__hidden_apps__title">छुपे हुए ऐप्स</string>
+    <string name="foreground__hidden_apps__summary">छिपे हुए ऐप्स UI में छिपे रहेंगे और स्वचालित रूप से अपडेट नहीं होंगे।</string>
+    <string name="firefox_focus_beta__description">उन सभी चीज़ों के लिए Firefox Focus का उपयोग करें जिन्हें आप अपने मुख्य ब्राउज़र से अलग रखना चाहते हैं - उन सभी के लिए जो अंदर आते हैं और बाहर निकलते हैं और इसके बारे में भूल जाते हैं। कोई टैब नहीं, कोई झंझट नहीं, कोई गड़बड़ नहीं। ऑनलाइन ट्रैकर्स को भी ब्लॉक करें. एक टैप, और आपका ब्राउज़िंग इतिहास पूरी तरह से नष्ट हो जाता है।
+\n
+\nFirefox Focus अंदर आने/बाहर निकलने, खोजने और नष्ट करने के लिए एकदम सही है, मैं एक ऐसे मिशन पर हूँ जो आपके काम का नहीं है - वेब ब्राउज़र।</string>
+    <string name="cardview_dialog__auto_bg_update">स्वचालित पृष्ठभूमि अपडेट</string>
+    <string name="fairemail__warning">- FairEmail के Google Play Store संस्करण को FFUpdater के साथ अपडेट करने से समस्याएँ हो सकती हैं, जैसे। कार्यात्मक OAuth/Google मेल समर्थन नहीं। FFUpdater के कारण होने वाली समस्याओं के लिए FairEmail लेखक से सहायता न मांगें।</string>
+    <string name="brave_beta__title">Brave Browser (Beta)</string>
+    <string name="fairemail__description">Android के लिए पूरी तरह से फीचर्ड, ओपन सोर्स, गोपनीयता अनुकूल ईमेल ऐप</string>
+    <string name="duckduckgo_android__title">DuckDuckGo Private Browser</string>
+    <string name="installer__method__title">इंस्टॉलर विधि</string>
+    <string name="notification__uncaught_exception__text">त्रुटि रिपोर्ट देखने के लिए क्लिक करें।</string>
+    <string name="foreground__hide_apps_signed_by_different_certificate__title">किसी भिन्न प्रमाणपत्र द्वारा हस्ताक्षरित ऐप्स छिपाएँ।</string>
+    <string name="duckduckgo_android__description">DuckDuckGo ऐप एक बटन दबाते ही सबसे व्यापक ऑनलाइन गोपनीयता सुरक्षा प्रदान करता है। एक डाउनलोड के साथ, आपको एक नया रोजमर्रा का ब्राउज़र मिलता है जो खोजते और ब्राउज़ करते समय निर्बाध सुरक्षा प्रदान करता है, और आपके द्वारा प्राप्त ईमेल और आपके द्वारा उपयोग किए जाने वाले ऐप्स के लिए ट्रैकिंग सुरक्षा तक पहुंच प्रदान करता है। इनमें से कई सुरक्षाएँ अधिकांश लोकप्रिय ब्राउज़रों में डिफ़ॉल्ट रूप से पेश नहीं की जाती हैं।</string>
+    <string name="notification__uncaught_exception__title">FFUpdater क्रैश हो गया</string>
+    <string name="duckduckgo_android__warning">- DuckDuckGo वेबसाइटों को प्रदर्शित करने के लिए सिस्टम वेबव्यू का उपयोग करता है।
+\n- Microsoft की सभी कुकीज़ को ब्लॉक न करने को लेकर विवाद था - लेकिन इसे ठीक कर लिया गया है।</string>
+    <string name="notification__uncaught_exception__channel_name">क्रैश सूचनाएं</string>
+    <string name="crash_report__report_is_copied_to_clipboard">क्रैश रिपोर्ट आपके क्लिपबोर्ड पर कॉपी हो जाती है</string>
+    <string name="notification__bg_update_check__unreliable_execution__text">हो सकता है कि यह आपके डिवाइस की बैटरी या प्रदर्शन सेटिंग्स के कारण हो। इस ऐप के लिए बैटरी अनुकूलन अक्षम करने के लिए इस अधिसूचना पर क्लिक करें।</string>
+    <string name="privacy_browser__description">डेटा के दुरुपयोग को रोकने का एकमात्र तरीका इसे पहले स्थान पर एकत्र होने से रोकना है। गोपनीयता ब्राउज़र के दो प्राथमिक लक्ष्य हैं: इंटरनेट पर भेजे जाने वाले डेटा को कम करना और डिवाइस पर संग्रहीत डेटा को कम करना।</string>
+    <string name="notification__bg_update_check__unreliable_execution__channel_description">पृष्ठभूमि अपडेट जाँच के अविश्वसनीय निष्पादन के बारे में चेतावनी</string>
+    <string name="generic_app_warning__beta_version">- यह ऐप डेवलपर्स और परीक्षकों के लिए डिज़ाइन किया गया है। इसमें विभिन्न बग हो सकते हैं जो ब्राउज़र के साथ आपके सामान्य कार्य को प्रभावित कर सकते हैं।</string>
+    <string name="notification__network_error__text">यह त्रुटि कभी-कभार ही घटित होनी चाहिए. हालाँकि, यदि ऐसा बार-बार होता है, तो आपको इसकी रिपोर्ट करनी चाहिए। विस्तृत त्रुटि संदेश देखने के लिए यहां क्लिक करें।</string>
+    <string name="mulch_wv__description">यह Chromium तकनीक पर आधारित एक सुरक्षा उन्मुख और कठोर सिस्टम वेबव्यू है। कई एंटी-सुविधाएँ अक्षम/हटा दी गई हैं और Vanadium प्रोजेक्ट के पैच की बदौलत कुछ सुरक्षा सुविधाएँ सक्षम/जोड़ी गई हैं।</string>
+    <string name="notification__install_error__generic_channel_name">ऐप अपडेट विफलता अधिसूचना</string>
+    <string name="notification__update_available__generic_channel_descr">उपलब्ध ऐप अपडेट के लिए अधिसूचना चैनल।</string>
+    <string name="network__dns_provider__system">सिस्टम DNS का उपयोग करें</string>
+    <string name="settings__network_category__title">नेटवर्क</string>
+    <string name="device__prefer_32bit_apks__title">32-बिट APKs को प्राथमिकता दें</string>
+    <string name="network__custom_doh_server__title">HTTPS सर्वर पर कस्टम DNS</string>
+    <string name="fennecfdroid__title">Fennec F-Droid</string>
+    <string name="mulch__title">Mulch</string>
+    <string name="settings__network__trust_user_cas__title">उपयोगकर्ता द्वारा जोड़े गए CAs पर भरोसा करें</string>
+    <string name="settings__background__update_check__when_device_idle__summary">यदि आप नहीं चाहते कि आपके एप्लिकेशन पृष्ठभूमि अपडेट द्वारा पुनः आरंभ हों तो इसे सक्षम करें। यदि आप पृष्ठभूमि अद्यतन जांच के लिए अधिक पूर्वानुमानित शेड्यूल चाहते हैं तो इसे अक्षम करें।</string>
+    <string name="chromium__title">Chromium</string>
+    <string name="settings__network__trust_user_cas__summary">यदि डेटा ट्रैफ़िक का निरीक्षण और परिवर्तन अन्य ऐप्स द्वारा किया जाना चाहिए तो सक्षम करें। यदि आप अनिश्चित हैं, तो इस विकल्प को अक्षम रखें।</string>
+    <string name="add_app_activity__add_new_application">नया एप्लिकेशन जोड़ें</string>
+    <string name="add_app_activity__title_from_mozilla">Mozilla से</string>
+    <string name="add_app_activity__title_other_applications">अन्य एप्लीकेशंस</string>
+    <string name="add_app_activity__title_good_privacy_browsers">अच्छे गोपनीयता ब्राउज़र</string>
+    <string name="crash_report_activity__label">क्रैश रिपोर्टर</string>
+    <string name="add_app_activity__label">नया एप्लिकेशन जोड़ें</string>
+    <string name="update_notification__text">अपडेट इंस्टॉल करने के लिए क्लिक करें</string>
+    <string name="update_interval__8h">8 घंटे</string>
+    <string name="update_interval__6d">6 दिन</string>
+    <string name="notification__update_available__channel_name">%1$s अपडेट अधिसूचना</string>
+    <string name="notification__update_available__channel_descr">उपलब्ध %1$s अपडेट के लिए अधिसूचना चैनल।</string>
+    <string name="update_interval__6h">6 घंटे</string>
+    <string name="update_interval__4h">4 घंटे</string>
+    <string name="update_interval__5d">5 दिन</string>
+    <string name="unsupported_abi_dialog__message">चयनित ब्राउज़र आपके स्मार्टफ़ोन के प्रोसेसर के साथ असंगत है। कृपया कोई भिन्न ब्राउज़र चुनें।</string>
+    <string name="settings__theme_system_default">सिस्टम डिफ़ॉल्ट का उपयोग करें</string>
+    <string name="settings__theme_light">हल्की</string>
+    <string name="settings__theme_dark">गहरी</string>
+    <string name="settings__installer_category__title">इंस्टालर</string>
+    <string name="settings__foreground_category__summary">उपयोगकर्ता इंटरफ़ेस दिखाई देने पर सेटिंग्स।</string>
+    <string name="settings__foreground__download__metered__title">मीटर्ड नेटवर्क पर अपडेट डाउनलोड करें</string>
+    <string name="settings__background_category__title">पृष्ठभूमि</string>
+    <string name="settings__background_category__summary">सेटिंग्स जब ऐप पृष्ठभूमि में काम कर रहा हो और उपयोगकर्ता के लिए अदृश्य हो।</string>
+    <string name="settings__background__update_check__excluded_apps__title">अपडेट जांच से ऐप्स को बाहर निकालें</string>
+    <string name="settings__background__update_check__excluded_apps__summary">यदि आप किसी ऐप को अपडेट नहीं करना चाहते हैं और इसके लिए अपडेट सूचनाएं प्राप्त नहीं करना चाहते हैं तो उपयोगी है।</string>
+    <string name="settings__background__installation__enabled__summary">उपयोगकर्ता इंटरेक्शन के बिना अपडेट इंस्टॉल करने का प्रयास करें।</string>
+    <string name="settings__b_f__delete_cache_if_install_successful">यदि इंस्टॉलेशन सफल हो तो डाउनलोड किए गए अपडेट को हटा दें।</string>
+    <string name="running_downloads_dialog__yes">हाँ</string>
+    <string name="running_downloads_dialog__negative">नहीं, इसे डाउनलोड न करें</string>
+    <string name="request_installation_permission_dialog__grant_permission">अनुमति प्रदान करें</string>
+    <string name="kiwi__description">Kiwi ब्राउज़र बिना किसी परेशानी के इंटरनेट ब्राउज़ करने, समाचार पढ़ने, वीडियो देखने और संगीत सुनने के लिए बनाया गया है।</string>
+    <string name="installed_version">इंस्टॉल किया गया: %1$s</string>
+    <string name="download_activity__you_can_now_close_this_window">अब आप इस विंडो को बंद कर सकते हैं</string>
+    <string name="app_installer__installed_app_has_invalid_signature">इंस्टॉल किया गया ऐप सत्यापित नहीं है</string>
+    <string name="notification__install_success__title">%1$s अपडेट कर दिया गया है</string>
+    <string name="notification__install_success__text">ऐप को बैकग्राउंड में अपडेट कर दिया गया है।</string>
+    <string name="download_activity__temporary_network_issue">एक अस्थायी नेटवर्क समस्या उत्पन्न हुई. कृपया बाद में पुनः प्रयास करें।</string>
+    <string name="download_activity__open_folder">फोल्डर खोलें</string>
+    <string name="download_activity__open_cache_folder_button_text">कैश फ़ोल्डर खोलें</string>
+    <string name="download_activity__exception__show_button"><u>विस्तृत त्रुटि रिपोर्ट दिखाएं।</u></string>
+    <string name="download_activity__github_rate_limit_exceeded">GitHub-API दर सीमा पार हो गई है. कृपया अगले घंटे में पुनः डाउनलोड का प्रयास करें।</string>
+    <string name="download_activity__file_uri_exposed_toast">फ़ाइल पथ को अन्य ऐप्स पर प्रदर्शित नहीं किया जा सकता. कृपया अपने पसंदीदा फ़ाइल प्रबंधक के साथ स्वयं फ़ोल्डर खोलें।</string>
+    <string name="download_activity__fetched_url_for_download_successfully">%1$s से मेटाडेटा प्राप्त किया गया</string>
+    <string name="download_activity__download_failed">डाउनलोड विफल</string>
+    <string name="download_activity__delete_cache_button_text">कैश साफ़ करें</string>
+    <string name="notification__eol_apps__text">आपके पास पुराने ऐप्स हैं जिनका अब उपयोग नहीं किया जाना चाहिए। अधिक जानकारी के लिए क्लिक करें।</string>
+    <string name="iceraven__warning">- अनुरक्षक सुरक्षा या अपडेट या यहां तक कि स्थिरता की कोई वारंटी या गारंटी नहीं देता है।
+\n - सुरक्षा अपडेट प्रदान करने में परियोजना को सामान्य से अधिक समय लगता है।</string>
+    <string name="firefox_focus__description">यह Firefox ब्राउज़र का एक संशोधन है जिसका उद्देश्य गोपनीयता बढ़ाना है।</string>
+    <string name="firefox_beta__warning">- यह ऐप डेवलपर्स और परीक्षकों के लिए डिज़ाइन किया गया है। इसमें विभिन्न बग हो सकते हैं जो ब्राउज़र के साथ आपके सामान्य कार्य को प्रभावित कर सकते हैं।</string>
+    <string name="app_card__download_the_app">ऐप डाउनलोड करें</string>
+    <string name="notification__download_running__title">ऐप अपडेट डाउनलोड हो रहा है</string>
+    <string name="notification__download_running__channel_descr">पृष्ठभूमि में ऐप अपडेट डाउनलोड होने पर दिखाता है।</string>
+    <string name="notification__download_error__text">%1$s अपडेट का बैकग्राउंड डाउनलोड विफल रहा। यदि यह त्रुटि बार-बार होती है, तो त्रुटि रिपोर्ट देखने के लिए यहां क्लिक करें।</string>
+    <string name="brave__description">नि:शुल्क निजी तौर पर इंटरनेट ब्राउज़ करें! Brave प्राइवेट ब्राउज़र ऐप विज्ञापन अवरोधक और पॉप-अप अवरोधक के साथ आपका तेज़, मुफ़्त और सुरक्षित निजी वेब ब्राउज़र है। विज्ञापनदाताओं, मैलवेयर और पॉप-अप द्वारा ट्रैक किए बिना निजी तौर पर इंटरनेट ब्राउज़ करें और खोजें।</string>
+    <string name="brave__warning">- Brave Google Chrome की तकनीकी नींव का उपयोग करता है और इस प्रकार अप्रत्यक्ष रूप से क्रोमियम रेंडर इंजन की एकाधिकार स्थिति का समर्थन करता है।
+\n- Ethereum ब्लॉकचेन पर अपने Basic Attention Token BAT के कारण प्रोजेक्ट का क्रिप्टोकरेंसी से संबंध है। ब्लॉकचेन में कई समस्याएं हैं और मेरे विचार से इससे बचा जाना चाहिए।</string>
+    <string name="bromite__description">Bromite का लक्ष्य गोपनीयता-आक्रामक सुविधाओं के बिना और तेज़ विज्ञापन-अवरोधक इंजन के साथ एक अव्यवस्था रहित ब्राउज़िंग अनुभव प्रदान करना है। एक विज्ञापन प्लेटफ़ॉर्म के रूप में ब्राउज़र के विचार पर अंकुश लगाने में मदद के लिए न्यूनतम UI परिवर्तन लागू किए जाते हैं।</string>
+    <string name="bromite__warning">- Bromite Google Chrome की तकनीकी नींव का उपयोग करता है और इस प्रकार अप्रत्यक्ष रूप से क्रोमियम रेंडर इंजन की एकाधिकार स्थिति का समर्थन करता है।</string>
+    <string name="bromite_systemwebview__description">SystemWebView पैकेज में Bromite का मुख्य ब्राउज़र/रेंडरिंग इंजन और इसकी समान विशेषताएं शामिल हैं। यह संपूर्ण Android सिस्टम के लिए डिफ़ॉल्ट ब्राउज़र घटक को बदलने की संभावना प्रदान करता है।</string>
+    <string name="install_activity__download_file_failed__crash_text">डाउनलोड के दौरान निम्न त्रुटि उत्पन्न हुई. यदि यह त्रुटि बार-बार होती है, तो बेझिझक क्रैश रिपोर्ट notabug.org, GitHub या GitLab पर सबमिट करें।</string>
+    <string name="crash_report__explain_text__download_activity_update_check">मुख्य दृश्य में अद्यतनों की जाँच करते समय यह त्रुटि उत्पन्न हुई। यदि यह त्रुटि बार-बार होती है, तो बेझिझक क्रैश रिपोर्ट notabug.org, GitHub या GitLab पर सबमिट करें।</string>
+    <string name="notification__download_error__descr">%1$s अपडेट का बैकग्राउंड डाउनलोड विफल रहा। यदि यह त्रुटि बार-बार होती है, तो बेझिझक इसे notabug.org, GitHub या GitLab पर रिपोर्ट करें।</string>
+    <string name="firefox_beta__description">Android के लिए Firefox ब्राउज़र स्वचालित रूप से निजी और अविश्वसनीय रूप से तेज़ है। हर दिन हजारों ऑनलाइन ट्रैकर आपका पीछा कर रहे हैं, आप ऑनलाइन कहां जाते हैं, इसके बारे में जानकारी एकत्र कर रहे हैं और आपकी गति को धीमा कर रहे हैं। Firefox इनमें से 2000 से अधिक ट्रैकर्स को डिफ़ॉल्ट रूप से ब्लॉक कर देता है और यदि आप अपने ब्राउज़र को और भी अधिक कस्टमाइज़ करना चाहते हैं तो विज्ञापन अवरोधक ऐड-ऑन उपलब्ध हैं। Firefox के साथ, आपको वह सुरक्षा मिलेगी जिसके आप हकदार हैं और वह गति जो आपको एक निजी, मोबाइल ब्राउज़र में चाहिए।</string>
+    <string name="firefox_beta__title">Android Beta के लिए Firefox</string>
+    <string name="firefox_klar__description">Firefox Klar जर्मनी, ऑस्ट्रिया और स्विट्जरलैंड के लिए विकसित किया गया है, लेकिन इसका उपयोग किसी भी देश के उपयोगकर्ताओं द्वारा किया जा सकता है। यह Firefox Focus के समान है, लेकिन Hubert Burda Media group की पत्रिका फोकस के साथ भ्रम से बचने के लिए जर्मन भाषी देशों में इसका नाम बदल दिया गया था। Firefox Focus के विपरीत, Firefox Klar में सख्त जर्मन गोपनीयता कानूनों के कारण डिफ़ॉल्ट रूप से टेलीमेट्री अक्षम है।</string>
+    <string name="firefox_klar__title">Firefox Klar</string>
+    <string name="firefox_nightly__description">कृपया ध्यान दें कि इस ऐप का नाम Firefox प्रीव्यू हुआ करता था। इसे अब Firefox Nightly में परिवर्तित कर दिया गया है।
+\n
+\nFirefox Nightly नए Mozilla Firefox रिलीज़ के लिए एक विकासात्मक चैनल है।
+\n
+\nFirefox Nightly को Firefox के अधिक प्रयोगात्मक बिल्ड को प्रदर्शित करने के लिए डिज़ाइन किया गया है। Nightly चैनल उपयोगकर्ताओं को अस्थिर वातावरण में नवीनतम Firefox नवाचारों का अनुभव करने की अनुमति देता है और अंतिम रिलीज़ क्या बनाता है यह निर्धारित करने में सहायता के लिए सुविधाओं और प्रदर्शन पर प्रतिक्रिया प्रदान करता है।</string>
+    <string name="firefox_release__description">Android के लिए Firefox ब्राउज़र स्वचालित रूप से निजी और अविश्वसनीय रूप से तेज़ है। हर दिन हजारों ऑनलाइन ट्रैकर आपका पीछा कर रहे हैं, आप ऑनलाइन कहां जाते हैं, इसके बारे में जानकारी एकत्र कर रहे हैं और आपकी गति को धीमा कर रहे हैं। Firefox इनमें से 2000 से अधिक ट्रैकर्स को डिफ़ॉल्ट रूप से ब्लॉक कर देता है और यदि आप अपने ब्राउज़र को और भी अधिक कस्टमाइज़ करना चाहते हैं तो विज्ञापन अवरोधक ऐड-ऑन उपलब्ध हैं। Firefox के साथ, आपको वह सुरक्षा मिलेगी जिसके आप हकदार हैं और वह गति जो आपको एक निजी, मोबाइल ब्राउज़र में चाहिए।</string>
+    <string name="iceraven__description">Mozilla द्वारा निश्चित रूप से आपके लिए नहीं लाया गया!
+\n
+\nIceraven Browser Android के लिए एक वेब ब्राउज़र है, जो Mozilla के Firefox, GeckoView और Mozilla Android कंपोनेंट्स के Fenix संस्करण पर आधारित है।
+\n
+\nहमारा लक्ष्य Android के लिए नए Firefox का करीबी हिस्सा बनना है जो उपयोगकर्ताओं को अधिक विकल्प, अनुकूलित करने के अधिक अवसर (एक विस्तृत एक्सटेंशन लाइब्रेरी सहित), और उनके द्वारा देखे जाने वाले पृष्ठों और उनके ब्राउज़र के साथ कैसे इंटरैक्ट कर रहे हैं, इसके बारे में अधिक जानकारी प्रदान करना चाहता है। वे पन्ने।</string>
+    <string name="infobox">यह गोपनीयता-अनुकूल ब्राउज़रों के लिए एक अपडेटर है। नए ऐप्स इंस्टॉल करने के लिए प्लस बटन पर क्लिक करें। नए अपडेट की जांच करने के लिए नीचे स्वाइप करें। डिफ़ॉल्ट रूप से, ऐप समय-समय पर पृष्ठभूमि में अपडेट की जांच करेगा, जिसे बाद में डाउनलोड किया जाएगा और अंततः इंस्टॉल किया जाएगा। सेटिंग्स में व्यवहार को अनुकूलित करने के लिए गियर पर क्लिक करें।
+\n
+\nअंतिम सफल पृष्ठभूमि अपडेट जाँच: %1$s</string>
+    <string name="download_activity__delete_cache_explanation">यदि आपको लगता है कि FFUpdater ने एक दोषपूर्ण ऐप अपडेट को कैश किया है या यदि आप स्थान बचाना चाहते हैं, तो डाउनलोड की गई फ़ाइल को हटाने के लिए बटन पर क्लिक करें।</string>
+    <string name="download_activity__different_installer_info__text">यदि इंस्टॉलेशन बार-बार विफल हो जाता है, तो सेटिंग्स में \'नेटिव इंस्टॉलर\' पर स्विच करने का प्रयास करें।</string>
+    <string name="download_activity__open_cache_explanation">आप APK फ़ाइल को अधिक निःशुल्क संग्रहण वाले स्थान पर कॉपी करने के लिए कैश फ़ोल्डर खोल सकते हैं। दुर्भाग्य से, Android 11+ पर केवल कुछ फ़ाइल प्रबंधक ही Android/डेटा के भीतर इस फ़ोल्डर तक पहुंच सकते हैं।</string>
+    <string name="download_activity__too_low_memory_description">आपके डिवाइस में स्टोरेज कम है (केवल %1$d MB निःशुल्क)। इससे डाउनलोड या इंस्टॉलेशन विफल हो जाएगा।</string>
+    <string name="kiwi__warning">- Kiwi Google Chrome की तकनीकी नींव का उपयोग करता है और इस प्रकार अप्रत्यक्ष रूप से Chromium रेंडर इंजन की एकाधिकार स्थिति का समर्थन करता है।
+\n- Kiwi एक आदर्श गोपनीयता ब्राउज़र नहीं है लेकिन इसमें एक अच्छा ऐडऑन समर्थन है।
+\n- Kiwi ब्राउज़र का उपयोग करके की गई प्रत्येक खोज के लिए ब्राउज़र को खोज इंजन द्वारा भुगतान किया जा रहा है। खोज इंजन की पसंद के आधार पर, अनुरोध Kiwibrowser/Kiwisearchservices सर्वर के माध्यम से जा सकते हैं।
+\n- Kiwi में Google विज्ञापन विज्ञापनों के लिए स्थान डेटा का उपयोग कर सकता है - लेकिन आप डिस्कवरी सुविधा को अक्षम करके इसे अक्षम कर सकते हैं। लेकिन यह जल्द ही बदल जाएगा. अधिक जानकारी के लिए https://privacy.kiwibrowser.org/ देखें।</string>
+    <string name="lockwise__description">आपके और केवल आपके लिए पासवर्ड एक्सेस
+\n
+\nअपने Firefox पासवर्ड को सुरक्षित रूप से ट्रैक करें और उन्हें कहीं भी एक्सेस करें। अपने खातों में जाने के लिए ऐप से किसी भी वेबसाइट को तुरंत खोलें।</string>
+    <string name="request_installation_permission_dialog__message">FFUpdater में ऐप्स इंस्टॉल और अपडेट करने की अनुमति नहीं है। आपको ये अनुमतियाँ देनी होंगी अन्यथा FFUpdater काम नहीं करेगा।</string>
+    <string name="session_installer__require_user_interaction">उपयोगकर्ता सहभागिता की आवश्यकता है. आपको सबसे पहले ऐप को FFUpdater यूजर इंटरफेस के जरिए अपडेट करना होगा। केवल तभी संबंधित ऐप के लिए साइलेंट बैकग्राउंड अपडेट की अनुमति दी जाती है।</string>
+    <string name="session_installer__status_failure">ऑपरेशन सामान्य तरीके से विफल रहा. सिस्टम हमेशा अधिक विशिष्ट विफलता कारण प्रदान करने का प्रयास करेगा, लेकिन कुछ दुर्लभ मामलों में यह दिया जा सकता है।</string>
+    <string name="session_installer__status_failure_aborted">ऑपरेशन विफल हो गया क्योंकि इसे सक्रिय रूप से निरस्त कर दिया गया था। उदाहरण के लिए, उपयोगकर्ता ने अनुरोधित अनुमतियों को सक्रिय रूप से अस्वीकार कर दिया, या सत्र छोड़ दिया गया।</string>
+    <string name="session_installer__status_failure_blocked">ऑपरेशन विफल हो गया क्योंकि यह अवरुद्ध था. उदाहरण के लिए, एक डिवाइस नीति ऑपरेशन को अवरुद्ध कर सकती है, एक पैकेज सत्यापनकर्ता ने ऑपरेशन को अवरुद्ध कर दिया है, या कोर सिस्टम ऑपरेशन के लिए ऐप की आवश्यकता हो सकती है।</string>
+    <string name="session_installer__status_failure_incompatible">ऑपरेशन विफल हो गया क्योंकि यह इस उपकरण के साथ मौलिक रूप से असंगत है। उदाहरण के लिए, ऐप को एक हार्डवेयर सुविधा की आवश्यकता हो सकती है जो मौजूद नहीं है, इसमें डिवाइस द्वारा समर्थित ABIs के लिए मूल कोड गायब हो सकता है, या इसे एक नए SDK संस्करण की आवश्यकता हो सकती है, आदि।</string>
+    <string name="session_installer__status_failure_invalid">ऑपरेशन विफल हो गया क्योंकि एक या अधिक APK अमान्य थे। उदाहरण के लिए, वे विकृत, भ्रष्ट, गलत हस्ताक्षरित, बेमेल आदि हो सकते हैं।</string>
+    <string name="settings__background__download__enabled__summary">जब किसी अपडेट का पता चले तो उसे डाउनलोड करें। इससे बाद में अपडेट प्रक्रिया में तेजी आएगी।</string>
+    <string name="session_installer__status_failure_storage">भंडारण संबंधी समस्याओं के कारण कार्रवाई विफल रही. उदाहरण के लिए, डिवाइस में जगह कम हो सकती है, या बाहरी मीडिया अनुपलब्ध हो सकता है। उपयोगकर्ता स्थान खाली करने या विभिन्न बाहरी मीडिया डालने में मदद करने में सक्षम हो सकता है।</string>
+    <string name="settings__background__update_check__metered__title">मीटर्ड नेटवर्क पर अपडेट जांच</string>
+    <string name="ungoogled_chromium__description">Google Chromium, Google के साथ एकीकरण के बिना।
+\n
+\nGoogle खाते में साइन इन किए बिना, क्रोमियम सुरक्षा और गोपनीयता के मामले में बहुत अच्छा प्रदर्शन करता है। हालाँकि, Chromium की अभी भी Google वेब सेवाओं और बायनेरिज़ पर कुछ निर्भरता है। इसके अलावा, Google ने Chromium को उपयोगकर्ताओं के लिए आसान और सहज बनाने के लिए डिज़ाइन किया है, जिसका अर्थ है कि वे आंतरिक संचालन की पारदर्शिता और नियंत्रण से समझौता करते हैं।</string>
+    <string name="ungoogled_chromium__warning">- Ungoogled Chromium Google Chrome की तकनीकी नींव का उपयोग करता है और इस प्रकार अप्रत्यक्ष रूप से Chromium रेंडर इंजन की एकाधिकार स्थिति का समर्थन करता है।</string>
+    <string name="vivaldi__description">एक अत्यधिक तेज़ इंटरनेट ब्राउज़र खोजें! Vivaldi एक नया, मुफ़्त और निजी वेब ब्राउज़र है जिसे लचीलेपन को ध्यान में रखकर बनाया गया है। यह बिल्ट-इन एडब्लॉकर (पॉप-अप ब्लॉकर), ट्रैकिंग सुरक्षा और निजी अनुवाद सहित उपयोगी सुविधाओं से भरपूर है। उचित डेस्कटॉप-शैली टैब, गहरी/हल्की थीम और लेआउट विकल्प जैसे ब्राउज़र विकल्प आपको इसे अपना बनाने में मदद करते हैं।</string>
+    <string name="mull__title">Mull Browser</string>
+    <string name="mull__description">यह Mozilla तकनीक पर आधारित एक गोपनीयता उन्मुख और डीब्लॉब्ड वेब ब्राउज़र है। यह arkenfox-user.js प्रोजेक्ट की प्राथमिकताओं का उपयोग करके Tor Uplift प्रोजेक्ट द्वारा अपस्ट्रीम की गई कई सुविधाओं को सक्षम बनाता है। \'uBlock Origin\' स्थापित करने की अनुशंसा की जाती है।</string>
+    <string name="tor_browser__title">Tor Browser</string>
+    <string name="tor_browser__description">Android के लिए Tor ब्राउज़र एकमात्र आधिकारिक मोबाइल ब्राउज़र है जो Tor प्रोजेक्ट द्वारा समर्थित है, जो ऑनलाइन गोपनीयता और स्वतंत्रता के लिए दुनिया के सबसे मजबूत टूल के डेवलपर्स है।</string>
+    <string name="orbot__description">Orbot एक मुफ़्त प्रॉक्सी ऐप है जो अन्य ऐप्स को अधिक सुरक्षित रूप से इंटरनेट का उपयोग करने में सक्षम बनाता है। Orbot आपके इंटरनेट ट्रैफ़िक को एन्क्रिप्ट करने के लिए Tor का उपयोग करता है और फिर इसे दुनिया भर के कंप्यूटरों की एक श्रृंखला के माध्यम से छिपा देता है। Tor मुफ़्त सॉफ़्टवेयर और एक खुला नेटवर्क है जो आपको नेटवर्क निगरानी के एक रूप से बचाव में मदद करता है जो व्यक्तिगत स्वतंत्रता और गोपनीयता, गोपनीय व्यावसायिक गतिविधियों और रिश्तों और राज्य सुरक्षा को ट्रैफ़िक विश्लेषण के रूप में जाना जाता है।</string>
+    <string name="chromium__description">Chromium एक ओपन-सोर्स ब्राउज़र प्रोजेक्ट है जिसका उद्देश्य सभी उपयोगकर्ताओं के लिए वेब का अनुभव करने के लिए एक सुरक्षित, तेज़ और अधिक स्थिर तरीका बनाना है। इस साइट में डिज़ाइन दस्तावेज़, आर्किटेक्चर अवलोकन, परीक्षण जानकारी और Chromium स्रोत कोड के साथ काम करना सीखने में आपकी मदद करने के लिए और भी बहुत कुछ शामिल है।</string>
+    <string name="mulch__description">यह Chromium तकनीक पर आधारित एक सुरक्षा उन्मुख और कठोर वेब ब्राउज़र है। कई एंटी-सुविधाएँ अक्षम/हटा दी गई हैं और Vanadium प्रोजेक्ट के पैच की बदौलत कुछ सुरक्षा सुविधाएँ सक्षम/जोड़ी गई हैं। स्रोत रेपो में अन्य ऑपरेटिंग सिस्टम को Mulch को अपने सिस्टम वेबव्यू के रूप में शामिल करने की अनुमति देने के लिए प्रीबिल्ट और makefiles भी शामिल हैं।</string>
+    <string name="fennecfdroid__warning">FFUpdater F-Droid सर्वर से फ़ाइलें डाउनलोड करता है और इसलिए तेज़ नहीं है।</string>
+    <string name="network__custom_doh_server__dialog_message">इनमें से किसी एक प्रारूप में कस्टम DoH सर्वर के लिए कनेक्शन विवरण दर्ज करें:
+\n
+\nurl;ip1
+\n
+\nurl;ip1;ip2
+\n
+\nurl;ip1;ip2;ip3
+\n
+\nurl;ip1;ip2;ip3;ip4
+\n
+\nउदाहरण के लिए: https://dns.google/dns-query;8.8.8.8 या https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
+    <string name="network__proxy__dialog_message">यदि आप SOCKS या HTTP प्रॉक्सी का उपयोग करना चाहते हैं, तो यहां कनेक्शन विवरण दर्ज करें। इनमें से किसी एक प्रारूप का उपयोग करें:
+\n
+\nSOCKS/HTTP;IP/डोमेन;पोर्ट
+\n
+\nSOCKS/HTTP;IP/डोमेन;पोर्ट;उपयोगकर्ता नाम;पासवर्ड
+\n
+\nउदाहरण के लिए: SOCKS;1.2.3.4;22 या HTTP;5.6.7.8;80;user1;pw123 या HTTP;p.webshare.io;80;u;p. यदि आप सिस्टम प्रॉक्सी कॉन्फ़िगरेशन का उपयोग करना चाहते हैं तो इसे खाली छोड़ दें।
+\n
+\nसीमा: यदि आप सेटिंग्स में \'DNS सेटिंग्स\' को HTTPS सर्वर पर DNS में बदलते हैं, तो आपको प्रॉक्सी सर्वर का डोमेन दर्ज करना होगा। IP काम नहीं करेगा।</string>
+    <string name="device__prefer_32bit_apks__summary">यदि आपके डिवाइस में आमतौर पर मेमोरी कम है तो सक्षम करें। इसके बाद FFUpdater 32-बिट APK का उपयोग करेगा जिसके लिए आमतौर पर कम मेमोरी की आवश्यकता होती है।</string>
+    <string name="installer__method__root_not_granted">रूट अनुमति नहीं दी गई!</string>
+    <string name="installer__method__shizuku_not_installed">Shizuku इंस्टॉल नहीं है!</string>
+    <string name="network__dns_provider__digital_society_ch">HTTPS पर DNS: Digital Society Switzerland</string>
+    <string name="network__dns_provider__cloudflare">HTTPS पर DNS: Cloudflare</string>
+    <string name="installer__method__session">Session इंस्टॉलर: अधिकांश उपकरणों के लिए अनुशंसित। Android 12 या इसके बाद के संस्करण पर, ऐप्स को एक उपयोगकर्ता की पुष्टि के बाद चुपचाप अपडेट किया जा सकता है।</string>
+    <string name="installer__method__root">Root इंस्टॉलर: पुष्टिकरण संवाद के बिना ऐप्स अपडेट करें। इसके लिए एक रूटेड स्मार्टफोन की आवश्यकता होती है।</string>
+    <string name="tor_browser_alpha__title">Tor Browser Alpha</string>
+    <string name="tor_browser_alpha__description">Tor ब्राउज़र एकमात्र आधिकारिक मोबाइल ब्राउज़र है जो Tor प्रोजेक्ट द्वारा समर्थित है, जो ऑनलाइन गोपनीयता और स्वतंत्रता के लिए दुनिया के सबसे मजबूत टूल के डेवलपर्स है।
+\n
+\nTor ब्राउज़र हमेशा मुफ़्त रहेगा, लेकिन दान इसे संभव बनाता है। Tor प्रोजेक्ट अमेरिका में स्थित एक 501©(3) गैर-लाभकारी संस्था है। कृपया आज ही योगदान देने पर विचार करें। हर उपहार से फर्क पड़ता है: https://donate.torproject.org.
+\n
+\nhttps://support.torproject.org/misc/bug-or-feedback/ पर जानें कि बग की रिपोर्ट कैसे करें और फीडबैक कैसे दें!</string>
+</resources>
