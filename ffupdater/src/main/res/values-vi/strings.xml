@@ -32,7 +32,7 @@
     <string name="download_activity__you_can_now_close_this_window">Bây giờ bạn có thể đóng cửa sổ này</string>
     <string name="bromite__warning">- Bromite sử dụng nền tảng kỹ thuật của Google Chrome và do đó gián tiếp hỗ trợ vị thế độc quyền của công cụ kết xuất Chromium.</string>
     <string name="action_about_title">Về FFUpdater</string>
-    <string name="kiwi__description">Trình duyệt Kiwi được làm để duyệt internet, đọc tin tức, xem video và nghe nhạc mà không bị quấy rầy.</string>
+    <string name="kiwi__description">Trình duyệt Kiwi được làm ra để duyệt internet, đọc tin tức, xem video và nghe nhạc mà không bị quấy rầy.</string>
     <string name="download_activity__open_cache_explanation">Bạn có thể mở thư mục bộ nhớ đệm để sao chép APK đến một nơi có nhiều dung lượng có sẵn hơn. Không may thay, trên Android 11+ chỉ một số ít trình quản lí tập tin có thể truy cập tập tin này trong Android/data.</string>
     <string name="download_activity__fetched_url_for_download_successfully">Đã tìm nạp siêu dữ liệu từ %1$s</string>
     <string name="firefox_klar__title">Firefox Klar</string>
