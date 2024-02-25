@@ -1,0 +1,2 @@
+* नए फोन के लिए फिक्स्ड Brave, Brave Beta, Brave Nightly (BraveMonoarm64.ap के बजाय Bravearm64Universal.apk का उपयोग करें) (Tobi823/ffupdater#475)
+* Brave, Brave Beta, Brave Nightly का अप्रचलित Android 6 संस्करण हटा दिया गया
