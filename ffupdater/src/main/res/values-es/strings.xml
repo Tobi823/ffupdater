@@ -312,7 +312,7 @@
     <string name="notification__bg_update_check__unreliable_execution__text">Tal vez se debe a la configuración de la batería o del rendimiento de tu dispositivo. Haz clic en esta notificación para desactivar la optimización de la batería para esta aplicación.</string>
     <string name="installer__android_too_old_for_shizuku">Tu Android es demasiado antiguo para Shizuku.</string>
     <string name="add_app_activity__title_based_on_firefox">Basado en Firefox</string>
-    <string name="add_app_activity__title_good_security_browsers">Buen navegador para la seguridad</string>
+    <string name="add_app_activity__title_good_security_browsers">Buenos navegadores para la seguridad</string>
     <string name="crash_report__report_is_copied_to_clipboard">El informe de errores se copió en el portapapeles</string>
     <string name="notification__uncaught_exception__channel_name">Notificaciones de fallos</string>
     <string name="notification__uncaught_exception__channel_description">Errores inesperados que bloquean FFUpdater.</string>
