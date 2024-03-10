@@ -292,4 +292,7 @@
     <string name="k9mail__title"></string>
     <string name="k9mail__description"></string>
     <string name="fairemail__title"></string>
+    <string name="add_app_activity__title_good_security_browsers"></string>
+    <string name="thorium__description"></string>
+    <string name="cromite__warning"></string>
 </resources>
