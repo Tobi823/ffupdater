@@ -294,4 +294,5 @@
     <string name="tor_browser_alpha__title"></string>
     <string name="firefox_focus_beta__description"></string>
     <string name="download_activity__retry_installation"></string>
+    <string name="add_app_activity__title_good_security_browsers"></string>
 </resources>
