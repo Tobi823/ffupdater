@@ -291,4 +291,7 @@
     <string name="settings__foreground__update_check__metered__title"></string>
     <string name="privacy_browser__title"></string>
     <string name="update_all_activity__all_apps_updated"></string>
+    <string name="add_app_activity__title_good_security_browsers"></string>
+    <string name="thorium__description"></string>
+    <string name="cromite__warning"></string>
 </resources>
