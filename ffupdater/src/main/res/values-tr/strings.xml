@@ -318,7 +318,7 @@
     <string name="foreground__hidden_apps__title">Gizli uygulamalar</string>
     <string name="crash_report__report_is_copied_to_clipboard">Çökme raporu panonuza kopyalandı</string>
     <string name="installer__android_too_old_for_shizuku">Android sürümünüz Shizuku için çok eski.</string>
-    <string name="add_app_activity__title_good_security_browsers">İyi Bir Güvenlik Tarayıcısı</string>
+    <string name="add_app_activity__title_good_security_browsers">İyi Güvenlik Tarayıcıları</string>
     <string name="notification__uncaught_exception__title">FFUpdater çöktü</string>
     <string name="notification__uncaught_exception__text">Hata raporunu görmek için tıklayın.</string>
     <string name="mulch_wv__title">Mulch System WebView</string>
