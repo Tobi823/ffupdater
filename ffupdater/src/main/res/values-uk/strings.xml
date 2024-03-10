@@ -6,7 +6,7 @@
     <string name="app_name">FFUpdater</string>
     <string name="application_installation_was_not_successful">Установка застосунка не вдалася</string>
     <string name="application_successfully_installed">Застосунок успішно встановлено</string>
-    <string name="available_version">У наявності: %1$s</string>
+    <string name="available_version">Доступно: %1$s</string>
     <string name="notification__error__text">Повідомте про цю помилку. Натисніть, щоб переглянути звіт про помилку.</string>
     <string name="notification__error__title">Не вдалося перевірити фонове оновлення</string>
     <string name="brave__description">Безкоштовно переглядайте Інтернет конфіденційно! Brave — це ваш швидкий, безкоштовний і безпечний приватний веб-браузер із блокувальником реклами та спливаючих вікон. Конфіденційно переглядайте та шукайте в Інтернеті без відстеження рекламодавців, зловмисного програмного забезпечення та спливаючих вікон.</string>
@@ -94,7 +94,7 @@
     <string name="app_installer__installed_app_has_invalid_signature">Встановлений застосунок НЕ підтверджений</string>
     <string name="installed_application_is_verified">Встановлений застосунок перевірений</string>
     <string name="installed_version">Встановлено: %1$s</string>
-    <string name="lockwise__description">ДОСТУП ПАРОЛЯ ДЛЯ ВАС, І ТОЛЬКО ВАС
+    <string name="lockwise__description">ДОСТУП ПАРОЛЯ ДЛЯ ВАС, І ЛИШЕ ДЛЯ ВАС
 \n
 \nБезпечно відстежуйте ваші паролі Firefox та отримуйте доступ до них будь-де. Швидко відкривайте будь-який веб-сайт із застосунка, щоб увійти до своїх облікових записів.</string>
     <string name="lockwise__title">Firefox Lockwise</string>
@@ -296,7 +296,7 @@
     <string name="app_installer__failed_to_verify_signature_of_installed_app">Не вдалося перевірити встановлений застосунок.</string>
     <string name="app_installer__failed_to_validate_signature_of_download">Не вдалося перевірити підпис завантаження.</string>
     <string name="installer__android_too_old_for_shizuku">Ваш Android занадто старий для Shizuku.</string>
-    <string name="add_app_activity__title_good_security_browsers">Хороший безпечний браузер</string>
+    <string name="add_app_activity__title_good_security_browsers">Хороші безпечні браузери</string>
     <string name="thorium__warning">- Thorium використовує технічну основу Google Chrome і, таким чином, опосередковано підтримує монопольне положення рушія візуалізації Chromium.</string>
     <string name="mulch_wv__description">Це орієнтована на безпеку та посилена система WebView на основі технології Chromium. Багато антифункцій вимкнено/видалено, а декілька функцій безпеки ввімкнено/додано завдяки виправленням від проекту Vanadium.</string>
     <string name="notification__bg_update_check__unreliable_execution__text">Можливо, це викликано налаштуваннями акумулятора або продуктивності вашого пристрою. Натисніть на це сповіщення, щоб вимкнути оптимізацію акумулятора для цього застосунка.</string>
@@ -333,7 +333,7 @@
     <string name="cardview_dialog__exit">Закрити</string>
     <string name="cardview_dialog__self_description_label">Опис:</string>
     <string name="cardview_dialog__auto_bg_update">Автоматичні оновлення у фоні</string>
-    <string name="cardview_dialog__warnings_label">Увага:</string>
+    <string name="cardview_dialog__warnings_label">Попередження:</string>
     <string name="cardview_dialog__eol">Цей застосунок не повинен більше використовуватися:</string>
     <string name="fairemail__description">Повнофункціональний, відкритий і конфіденційний застосунок для електронної пошти</string>
     <string name="cardview_dialog__install">Встановити останню версію</string>
