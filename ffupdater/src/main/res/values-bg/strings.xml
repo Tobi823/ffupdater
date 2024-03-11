@@ -301,7 +301,7 @@
     <string name="background__installation__when_screen_off__title">Инсталиране при изключен екран</string>
     <string name="notification__uncaught_exception__channel_name">Известие при срив</string>
     <string name="add_app_activity__title_based_on_firefox">На основата на Firefox</string>
-    <string name="add_app_activity__title_good_security_browsers">Добър, защитен четец</string>
+    <string name="add_app_activity__title_good_security_browsers">Добри, защитени четци</string>
     <string name="background__installation__when_screen_off__summary">Инсталиране на обновяванията само при изключен екран.</string>
     <string name="notification__uncaught_exception__channel_description">Категория известия за сривове на FFUpdater.</string>
     <string name="notification__bg_update_check__unreliable_execution__text">Вероятната причина е или батерията, или настройките за производителност на устройството. За да изключите оптимизирането на батерията за това приложение докоснете известието.</string>
