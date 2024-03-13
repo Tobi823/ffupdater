@@ -59,4 +59,12 @@
     <string name="crash_report__go_to_github">Ava GitHub\'i sait</string>
     <string name="crash_report__go_to_gitlab">Ava GitLab\'i sait</string>
     <string name="crash_report__got_to_notabug_org">Ava notabug.org sait</string>
+    <string name="notification__download_error__text">„%1$s“ rakenduse uuendamise jaoks vajalik taustal tehtud allalaadimine ei toiminud. Kui seda juhtub sagedasti, siis siin saad vaadata veateadet.</string>
+    <string name="notification__download_error__title">Rakenduse uuendamise jaoks vajalik taustal tehtud allalaadimine ei õnnestunud</string>
+    <string name="notification__download_error__descr">„%1$s“ rakenduse uuendamise jaoks vajalik taustal tehtud allalaadimine ei toiminud. Kui seda juhtub sagedasti, siis palun teata meile veast siin kanalites: notabug.org, GitHub või GitLab.</string>
+    <string name="brave__description">Sirvi internetti privaatselt ja tasuta! Brave Private Browser on sinu kiire, tasuta ja turvaline veebibrauser, kus sisaldub reklaamiblokeerija ja hüpikakende blokeerija. Sirvi internetti ning ja otsi sealt andmeid ilma kõrvalise jälgimiseta reklaamijate, pahavara ja hüpikakende poolt.</string>
+    <string name="brave_beta__title">Brave veebibrauser (beeta)</string>
+    <string name="brave_nightly__title">Brave veebibrauser (igaöine testversioon)</string>
+    <string name="notification__download_error__channel_descr">Kuvatav teade, kui taustal tehtav uuendmine ei õnnestunud.</string>
+    <string name="notification__download_error__channel_name">Teavitus taustal tekkinud allalaadimisvigadest</string>
 </resources>
