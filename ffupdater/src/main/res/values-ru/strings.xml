@@ -243,7 +243,7 @@
     <string name="installer__method__session">Сессионный установщик: Рекомендуется для большинства устройств. На Android 12 и выше приложения могут обновляться без звука после одного подтверждения пользователя.</string>
     <string name="add_app_activity__title_based_on_firefox">На основе Firefox</string>
     <string name="background__separate_notification_channels__title">Различные каналы уведомления</string>
-    <string name="add_app_activity__title_good_security_browsers">Хороший Безопасный Браузер</string>
+    <string name="add_app_activity__title_good_security_browsers">Хорошие безопасные браузеры</string>
     <string name="crash_report__report_is_copied_to_clipboard">Отчет об ошибке скопирован в ваш буфер обмена</string>
     <string name="notification__bg_update_check__unreliable_execution__text">Возможно, это связано с настройками батареи или производительности вашего устройства. Нажмите на это уведомление, чтобы отключить оптимизацию батареи для этого приложения.</string>
     <string name="notification__bg_update_check__unreliable_execution__channel_description">Предупреждение о ненадежном выполнении фоновой проверки обновлений</string>
