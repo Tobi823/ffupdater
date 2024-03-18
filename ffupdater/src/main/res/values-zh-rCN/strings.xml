@@ -312,7 +312,7 @@
     <string name="notification__bg_update_check__unreliable_execution__title">后台更新检测的执行不可靠</string>
     <string name="installer__android_too_old_for_shizuku">您的 Android 版本过低，无法使用 Shizuku。</string>
     <string name="add_app_activity__title_based_on_firefox">基于 Firefox</string>
-    <string name="add_app_activity__title_good_security_browsers">良好的安全浏览器</string>
+    <string name="add_app_activity__title_good_security_browsers">好的安全浏览器</string>
     <string name="notification__uncaught_exception__channel_name">崩溃通知</string>
     <string name="notification__uncaught_exception__channel_description">FFUpdater 因意外错误崩溃。</string>
     <string name="notification__uncaught_exception__title">FFUpdater 崩溃了</string>
