@@ -114,7 +114,8 @@
     <string name="installed_version">Kuruldu: %1$s</string>
     <string name="kiwi__description">Kiwi Browser, rahatsız edilmeden internette gezinmek, haber okumak, video izlemek ve müzik dinlemek için yapılmıştır.</string>
     <string name="kiwi__title">Kiwi Browser Next</string>
-    <string name="kiwi__warning">- Kiwi, Google Chrome\'un teknik temelini kullanır ve dolayısıyla Chromium görselleştirme motorunun tekel konumunu dolaylı olarak destekler.
+    <string name="kiwi__warning">- Kiwi yalnızca kısmen açık kaynaklıdır
+\n- Kiwi, Google Chrome\'un teknik temelini kullanır ve dolayısıyla Chromium görselleştirme motorunun tekel konumunu dolaylı olarak destekler.
 \n- Kiwi, gizlilik için uygun bir tarayıcı değildir, ancak iyi bir eklenti desteğine sahiptir.
 \n- Tarayıcı, Kiwi Browser kullanılarak yapılan her arama için arama motorları tarafından ödeme almaktadır. Arama motoru seçimine bağlı olarak istekler Kiwibrowser / Kiwisearchservices sunucuları üzerinden gidebilir.
 \n- Kiwi\'deki Google Reklamları, reklamlar için konum verilerini kullanabilir - ancak Keşif özelliğini devre dışı bırakarak bunu devre dışı bırakabilirsiniz. Ancak bu yakında değişecek. Daha fazla ayrıntı için https://privacy.kiwibrowser.org/ adresine bakın.</string>
