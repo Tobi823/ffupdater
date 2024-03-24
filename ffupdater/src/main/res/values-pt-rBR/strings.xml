@@ -92,8 +92,8 @@
     <string name="installed_version">Instalado: %1$s</string>
     <string name="kiwi__description">O Navegador Kiwi é feito para navegar na internet, ler notícias, assistir vídeos e ouvir música, sem incômodos.</string>
     <string name="kiwi__title">Navegador Kiwi Next</string>
-    <string name="kiwi__warning">- O Kiwi implementa os fundamentos técnicos do Google Chrome (Chromium) e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium. 
-\n- O Kiwi não é um navegador de privacidade ideal mas tem um bom suporte a addons. 
+    <string name="kiwi__warning">- O Kiwi implementa os fundamentos técnicos do Google Chrome (Chromium) e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium.
+\n- O Kiwi não é um navegador de privacidade ideal mas tem um bom suporte a addons.
 \n- O navegador está sendo pago pelos motores de busca por cada pesquisa feita utilizando o Kiwi Browser. Dependendo da escolha do motor de busca, os pedidos podem ser feitos através dos servidores Kiwibrowser / Kiwisearchservices.</string>
     <string name="lockwise__description">ACESSO VIA SENHA, &amp; APENAS VOCÊ
 \n
