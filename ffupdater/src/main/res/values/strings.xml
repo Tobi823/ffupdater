@@ -101,7 +101,8 @@
     <string name="installed_version">Installed: %1$s</string>
     <string name="kiwi__description">Kiwi Browser is made to browse the internet, read news, watch videos and listen to music, without annoyances.</string>
     <string name="kiwi__title">Kiwi Browser Next</string>
-    <string name="kiwi__warning">- Kiwi uses the technical foundation of Google Chrome and thus indirectly supports the monopoly position of the Chromium render engine.
+    <string name="kiwi__warning">- Kiwi is only partial open-source
+\n- Kiwi uses the technical foundation of Google Chrome and thus indirectly supports the monopoly position of the Chromium render engine.
 \n- Kiwi is not an ideal privacy browser but has a good addon support.
 \n- The browser is getting paid by search engines for every search done using Kiwi Browser. Depending on the search engine choice, requests may go via Kiwibrowser / Kiwisearchservices servers.
 \n- Google Ads in Kiwi may use the location data for ads - but you can disable it by disabling the Discovery feature. But this will soon change. See https://privacy.kiwibrowser.org/ for more details.</string>
