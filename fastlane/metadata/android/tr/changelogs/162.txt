@@ -1,0 +1,1 @@
+- tor browser için düzenli ifade güncellendi (uygulama başlangıcındaki çökmeyi düzeltmek için)

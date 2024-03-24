@@ -1,0 +1,3 @@
+Sürüm 79.0.1
+- Weblate üzerinde katkıda bulunanlara teşekkürler: gallegonovato ve Daviteusz
+- yeni uygulama kurarken oluşan çökme düzeltildi (Tobi823/ffupdater#538)

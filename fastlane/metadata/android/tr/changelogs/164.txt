@@ -1,0 +1,3 @@
+Sürüm 78.3.0
+- Weblate üzerinde katkıda bulunanlara teşekkürler: P.O, Alexthegib, winver ve gallegonovato
+- Thorium desteği eklendi https://github.com/Alex313031/Thorium-Android (Tobi823/ffupdater#414)

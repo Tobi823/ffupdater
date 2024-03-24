@@ -1,0 +1,6 @@
+Sürüm 79.1.0 (168)
+- Weblate üzerinde katkıda bulunanlara teşekkürler: WhiredPlanck, gallegonovato, Daviteusz, Макар Разин, winver ve Kazushi Hayama
+- uygulamalar ana görünümde "gizle" düğmesiyle (uygulama iletişim kutusunda) veya "Gizli uygulamalar" ayarıyla gizlenebilir (Tobi823/ffupdater#540)
+- Android 10'da yeni uygulama kurarken oluşan çökme düzeltildi (Tobi823/ffupdater#548)
+- kaldırmanın kullanıcı verilerini sileceğine dair uyarı eklendi (Tobi823/ffupdater#546)
+- FairEmail uyarısı iyileştirildi (Tobi823/ffupdater#539)

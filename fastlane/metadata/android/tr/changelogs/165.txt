@@ -1,0 +1,5 @@
+Sürüm 78.4.0 (165)
+- Weblate üzerinde katkıda bulunanlara teşekkürler: winver, Retrial, 109247019824, Gérson da Fonseca Henzel, gallegonovato, Alexthegib, Kazushi Hayama, Daviteusz, MkQtS ve nautilusx
+- K-9 Mail ve FairMail eklendi
+- Tor Browser / Tor Browser Alpha için güncelleme denetimi iyileştirildi
+- Bağımlılıklar güncellendi

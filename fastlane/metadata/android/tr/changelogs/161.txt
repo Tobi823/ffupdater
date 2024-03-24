@@ -1,0 +1,2 @@
+- Weblate üzerinde katkıda bulunanlara teşekkürler: winver, nautilusx, gallegonovato, Kazushi Hayama ve 109247019824
+- F-Droid'de tekrarlanabilir derlemeler düzeltilmeye çalışıldı

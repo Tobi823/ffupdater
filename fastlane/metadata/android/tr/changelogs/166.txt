@@ -1,0 +1,4 @@
+Sürüm 79.0.0 (166)
+- Weblate üzerinde katkıda bulunanlara teşekkürler: winver, Juraj Motuz, gallegonovato ve Kazushi Hayama
+- yalnızca FFUpdater tarafından kurulan veya güncellenen uygulamaları otomatik olarak güncelle
+- kullanıcı arayüzü iyileştirildi
