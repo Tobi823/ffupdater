@@ -105,10 +105,11 @@
     <string name="installed_version">Instalado: %1$s</string>
     <string name="kiwi__description">Kiwi Browser está hecho para navegar por internet, leer noticias, ver videos y escuchar música, sin molestias.</string>
     <string name="kiwi__title">Navegador Kiwi Next</string>
-    <string name="kiwi__warning">- Kiwi utiliza la base técnica de Google Chrome y, por tanto, apoya indirectamente la posición de monopolio del motor de renderizado Chromium.
-\n- Kiwi no es un navegador ideal para la privacidad, pero tiene un buen soporte de complementos.
-\n- El navegador recibe un pago de los motores de búsqueda por cada búsqueda realizada con Kiwi Browser. Dependiendo de la elección del motor de búsqueda, las solicitudes pueden ir a través de los servidores de Kiwibrowser / Kiwisearchservices.
-\n- Los anuncios de Google en Kiwi pueden utilizar los datos de ubicación para los anuncios - pero se puede desactivar mediante la desactivación de la función de descubrimiento. Pero esto cambiará pronto. Consulte https://privacy.kiwibrowser.org/ para obtener más detalles.</string>
+    <string name="kiwi__warning">- Kiwi es sólo parcialmente de código abierto
+\n- Kiwi utiliza la base técnica de Google Chrome y por lo tanto apoya indirectamente la posición de monopolio del motor de renderizado de cromo.
+\n- Kiwi no es un navegador de privacidad ideal pero tiene un buen soporte para complementos.
+\n- El navegador está recibiendo el pago de los motores de búsqueda por cada búsqueda realizada usando Kiwi Browser. Dependiendo de la elección del motor de búsqueda, las peticiones pueden ir a través de los servidores Kiwibrowser / Kiwisearchservices.
+\n- Google Ads en kiwi puede usar los datos de ubicación para los anuncios, pero puede desactivarlos desactivando la función Discovery. Pero esto pronto cambiará. Véase https://privacy.kiwibrowser.org/ para más detalles.</string>
     <string name="lockwise__description">ACCESO A LAS CONTRASEÑAS PARA TI, Y SÓLO PARA TI
 \n
 \nSigue de forma segura tus contraseñas de Firefox y accede a ellas en cualquier lugar. Abre rápidamente cualquier sitio web desde la aplicación para entrar en tus cuentas.</string>
