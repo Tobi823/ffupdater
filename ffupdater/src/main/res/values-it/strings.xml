@@ -102,7 +102,8 @@
     <string name="installed_version">Installata: %1$s</string>
     <string name="kiwi__description">Kiwi Browser è fatto per navigare in internet, leggere notizie, guardare video e ascoltare musica, senza fastidi.</string>
     <string name="kiwi__title">Kiwi Browser Next</string>
-    <string name="kiwi__warning">- Kiwi usa la base tecnica di Google Chrome e quindi supporta indirettamente la posizione di monopolio del motore di rendering Chromium.
+    <string name="kiwi__warning">- Kiwi è solo parzialmente open-source
+\n- Kiwi usa la base tecnica di Google Chrome e quindi supporta indirettamente la posizione di monopolio del motore di rendering Chromium.
 \n- Kiwi non è un browser per la privacy ideale, ma ha un buon supporto per componenti aggiuntivi.
 \n- Il browser viene pagato dai motori di ricerca per ogni ricerca effettuata utilizzando Kiwi Browser. A seconda della scelta del motore di ricerca, le richieste possono passare tramite i server Kiwibrowser / Kiwisearchservices.
 \n- Google Ads in Kiwi può utilizzare i dati sulla posizione per gli annunci - ma puoi disabilitarlo disattivando la funzione Discovery. Ma questo cambierà presto. Vedi https://privacy.kiwibrowser.org/ per più dettagli.</string>
@@ -296,7 +297,7 @@
     <string name="notification__bg_update_check__unreliable_execution__channel_description">Avviso riguardante l\'esecuzione inaffidabile del controllo aggiornamento in background</string>
     <string name="notification__bg_update_check__unreliable_execution__title">Il controllo degli aggiornamenti in background non viene eseguito in modo affidabile</string>
     <string name="installer__android_too_old_for_shizuku">Il tuo Android è troppo vecchio per Shizuku.</string>
-    <string name="add_app_activity__title_good_security_browsers">Un buon browser per la sicurezza</string>
+    <string name="add_app_activity__title_good_security_browsers">Buoni browser per la sicurezza</string>
     <string name="notification__uncaught_exception__text">Clicca per visualizzare il rapporto di errore.</string>
     <string name="mulch_wv__title">Mulch System WebView</string>
     <string name="crash_report__report_is_copied_to_clipboard">Il rapporto di arresto anomalo è stato copiato negli appunti</string>
