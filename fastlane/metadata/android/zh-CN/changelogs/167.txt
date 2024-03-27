@@ -1,0 +1,3 @@
+发布版本 79.0.1
+- 感谢来自 Weblate 的贡献： gallegonovato 以及 Daviteusz
+- 修复安装新应用时的崩溃问题 (Tobi823/ffupdater#538)

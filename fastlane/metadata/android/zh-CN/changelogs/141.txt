@@ -1,0 +1,3 @@
+* 感谢来自 Weblate 的贡献者：SiniKraft, Kazushi Hayama, 109247019824, Retrial, Alexthegib,
+  Meiru, Juraj Motuz, atilluF, gallegonovato, nautilusx, MkQtS, Eryk Michalak, Ettore Atalan 以及 Oğuz Ersen
+* 修复 Firefox Nightly 下载失败的问题 (Tobi823/ffupdater#428)

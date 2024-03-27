@@ -1,0 +1,4 @@
+发布版本 79.0.0 (166)
+- 感谢来自 Weblate 的贡献： winver, Juraj Motuz, gallegonovato 以及 Kazushi Hayama
+- 仅自动更新由 FFUpdater 安装或更新过的应用程序
+- 改进用户界面

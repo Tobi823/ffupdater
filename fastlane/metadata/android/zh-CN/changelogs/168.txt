@@ -1,0 +1,6 @@
+发布版本 79.1.0 (168)
+- 感谢来自 Weblate 的贡献： WhiredPlanck, gallegonovato, Daviteusz, Макар Разин, winver 以及 Kazushi Hayama
+- 可以使用应用对话框中的“隐藏”按钮或设置中的“隐藏应用”选项，在主页隐藏特定应用 (Tobi823/ffupdater#540)
+- 修复 Android 10 上安装新应用时的崩溃问题 (Tobi823/ffupdater#548)
+- 添加卸载程序将删除用户数据的警告 (Tobi823/ffupdater#546)
+- 改进 FairEmail 警告 (Tobi823/ffupdater#539)
