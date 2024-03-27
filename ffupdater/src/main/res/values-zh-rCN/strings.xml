@@ -87,11 +87,7 @@
     <string name="installed_version">已安装：%1$s</string>
     <string name="kiwi__description">Kiwi 浏览器可以无扰浏览互联网、阅读新闻、观看视频和听音乐。</string>
     <string name="kiwi__title">Kiwi Next 浏览器</string>
-    <string name="kiwi__warning">- Kiwi 仅部分开放源代码
-\n- Kiwi 使用了 Google Chrome 的技术基础，因而间接支持了 Chromium 渲染引擎的垄断地位。
-\n- Kiwi 不是理想的隐私浏览器，但其有良好的插件支持。
-\n- 搜索引擎会为使用 Kiwi 浏览器完成的每一次搜索而对其付费。根据选择的搜索引擎，请求可能会通过 Kiwibrowser / Kiwisearchservices 服务器。
-\n- Kiwi 中的 Google 广告可能会将位置数据用于广告业务——但您可以通过禁用发现功能来禁用它。但这一行为将很快发生变化。请参阅 https://privacy.kiwibrowser.org/ 了解更多详情。</string>
+    <string name="kiwi__warning">- Kiwi 仅部分开放源代码 \n- Kiwi 使用了 Google Chrome 的技术基础，因而间接支持了 Chromium 渲染引擎的垄断地位。 \n- Kiwi 不是理想的隐私浏览器，但其有良好的插件支持。 \n- 搜索引擎会为使用 Kiwi 浏览器完成的每一次搜索而对其付费。根据选择的搜索引擎，请求可能会通过 Kiwibrowser / Kiwisearchservices 服务器。 \n- Kiwi 中的 Google 广告可能会将位置数据用于广告业务——但您可以通过禁用发现功能来禁用它。但这一行为将很快发生变化。请参阅 https://privacy.kiwibrowser.org/ 了解更多详情。</string>
     <string name="main_activity__github_api_limit_exceeded"><u>超出 GitHub API 限制。请在下一小时重试。</u></string>
     <string name="main_activity__no_unmetered_network">无非流量计费网络</string>
     <string name="main_activity__temporary_network_issue"><u>临时网络问题。请稍后重试。</u></string>
