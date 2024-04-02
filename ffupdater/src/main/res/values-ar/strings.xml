@@ -1,2 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="kiwi__warning">- Kiwi مفتوح المصدر جزئيًا فقط
+\n- يستخدم Kiwi الأساس التقني لـ Google Chrome وبالتالي يدعم بشكل غير مباشر الوضع الاحتكاري لمحرك عرض Chromium.
+\n- Kiwi ليس متصفحًا مثاليًا للخصوصية ولكنه يتمتع بدعم جيد للوظائف الإضافية.
+\n- يتم الدفع للمتصفح من خلال محركات البحث مقابل كل عملية بحث يتم إجراؤها باستخدام متصفح Kiwi. اعتمادًا على اختيار محرك البحث، قد يتم إرسال الطلبات عبر خوادم Kiwibrowser / Kiwisearchservices.
+\n- قد يستخدم إعلانات Google في Kiwi بيانات الموقع للإعلانات - ولكن يمكنك تعطيلها عن طريق تعطيل ميزة الاكتشاف. ولكن هذا سوف يتغير قريبا. راجع https://privacy.kiwibrowser.org/ لمزيد من التفاصيل.</string>
+    <string name="lockwise__description">الوصول إلى كلمة المرور لك، أنت فقط
+\n
+\nتتبع كلمات مرور Firefox بشكل آمن والوصول إليها في أي مكان. افتح أي موقع ويب بسرعة من التطبيق للوصول إلى حساباتك.</string>
+    <string name="request_installation_permission_dialog__grant_permission">يعطي الأذن</string>
+    <string name="request_installation_permission_dialog__message">يفتقد FFUpdater إذن تثبيت التطبيقات وتحديثها. يجب عليك منح هذه الأذونات وإلا فلن يعمل FFUpdater.</string>
+    <string name="request_installation_permission_dialog__title">إذن المثبت</string>
+    <string name="running_downloads_dialog__negative">لا تقم بتنزيله</string>
+    <string name="session_installer__require_user_interaction">تتطلب تفاعل المستخدم. يجب عليك أولاً تحديث التطبيق عبر واجهة مستخدم FFUpdater. عندها فقط يُسمح بتحديثات الخلفية الصامتة للتطبيق المعني.</string>
+    <string name="session_installer__status_failure">فشلت العملية بطريقة عامة. سيحاول النظام دائمًا تقديم سبب أكثر تحديدًا للفشل، ولكن في بعض الحالات النادرة قد يتم تقديم ذلك.</string>
+    <string name="session_installer__status_failure_aborted">فشلت العملية لأنه تم إحباطها بشكل فعال. على سبيل المثال، رفض المستخدم الأذونات المطلوبة بشكل نشط، أو تم التخلي عن الجلسة.</string>
+    <string name="session_installer__status_failure_blocked">فشلت العملية بسبب حظرها. على سبيل المثال، قد تكون سياسة الجهاز تحظر العملية، أو قد يكون أداة التحقق من الحزمة قد حظرت العملية، أو قد يكون التطبيق مطلوبًا لتشغيل النظام الأساسي.</string>
+    <string name="session_installer__status_failure_conflict">فشلت العملية لأنها تتعارض (أو غير متوافقة مع) مع حزمة أخرى مثبتة بالفعل على الجهاز. على سبيل المثال، إذن موجود، أو شهادات غير متوافقة، وما إلى ذلك. قد يتمكن المستخدم من إلغاء تثبيت تطبيق آخر لإصلاح المشكلة.</string>
+    <string name="session_installer__status_failure_incompatible">فشلت العملية لأنها غير متوافقة بشكل أساسي مع هذا الجهاز. على سبيل المثال، قد يتطلب التطبيق ميزة أجهزة غير موجودة، أو قد يفتقد التعليمات البرمجية الأصلية لواجهات ABI التي يدعمها الجهاز، أو يتطلب إصدار SDK أحدث، وما إلى ذلك.</string>
+    <string name="session_installer__status_failure_invalid">فشلت العملية لأن واحدًا أو أكثر من ملفات APK غير صالح. على سبيل المثال، قد تكون مشوهة، أو فاسدة، أو موقعة بشكل غير صحيح، أو غير متطابقة، وما إلى ذلك.</string>
+    <string name="action_about_title">عن FFUpdater</string>
+    <string name="app_description">محدث للمتصفحات المحترمة للخصوصية</string>
+    <string name="app_icon">رمز التطبيق</string>
+    <string name="app_name">FFUpdater</string>
+    <string name="application_installation_was_not_successful">فشل في تثبيت التطبيق</string>
+    <string name="notification__error__text">يرجى إبلاغنا بهذا الخطأ. اضغط لقراءة التقرير.</string>
+    <string name="bromite__title">Bromite</string>
+    <string name="crash_report__go_to_github">اذهب إلى GitHub</string>
+    <string name="crash_report__go_to_gitlab">اذهب إلى GitLab</string>
+    <string name="notification__download_error__channel_descr">يظهر عند فشل تنزيلات التحديث في الخلفية.</string>
+    <string name="notification__eol_apps__title">التطبيقات القديمة المثبتة</string>
+    <string name="notification__error__channel_descr">إظهار أخطاء مدقق تحديث الخلفية</string>
+    <string name="notification__error__channel_name">أخطاء الخلفية</string>
+    <string name="firefox_focus__description">هذا تعديل لمتصفح Firefox يهدف إلى زيادة الخصوصية.</string>
+    <string name="firefox_focus__title">Firefox Focus</string>
+    <string name="firefox_klar__title">Firefox Klar</string>
+    <string name="firefox_nightly__title">Firefox نسخة المطورين</string>
+    <string name="firefox_release__title">متصفح Firefox</string>
+    <string name="iceraven__title">متصفح Iceraven</string>
+    <string name="app_card__information_about_the_app">معلومات حول التطبيق</string>
+    <string name="download_activity__delete_cache_button_text">مسح ذاكرة التخزين المؤقت</string>
+    <string name="download_activity__different_installer_info__text">إذا فشل التثبيت بشكل متكرر، فحاول التبديل إلى \"المثبت الأصلي\" في الإعدادات.</string>
+    <string name="download_activity__downloaded_application_from">تم تنزيل التطبيق من :</string>
+    <string name="app_installer__signature_of_download_is_invalid">لم يتم التحقق من التطبيق الذي تم تنزيله</string>
+    <string name="download_activity__external_storage_not_accessible">وحدة التخزين الخارجية غير متوفرة - لا يمكن بدء التنزيل. الوضع الحالي هو:</string>
+    <string name="download_activity__fetch_url_for_download">جلب البيانات الوصفية من %1$s</string>
+    <string name="download_activity__file_uri_exposed_toast">لا يمكن كشف مسار الملف إلى تطبيقات أخرى. يرجى فتح المجلد بنفسك باستخدام مدير الملفات المفضل لديك.</string>
+    <string name="download_activity__temporary_network_issue">حدثت مشكلة مؤقتة في الشبكة. يرجى إعادة المحاولة لاحقًا.</string>
+    <string name="download_activity__too_low_memory_title">مساحة تخزين قليلة</string>
+    <string name="notification__install_error__channel_name">إشعار فشل التحديث %1$s</string>
+    <string name="notification__install_success__title">تم تحديث %1$s</string>
+    <string name="installed_version">تم التثبيت: %1$s</string>
+    <string name="kiwi__title">Kiwi Browser Next</string>
+    <string name="lockwise__eol_reason">أسقطت Mozilla الدعم في ديسمبر 2021. يرجى التبديل إلى خزنة أخرى لكلمات المرور.</string>
+    <string name="main_activity__github_api_limit_exceeded"><u>تم تجاوز الحد الأقصى لواجهة برمجة تطبيقات GitHub. أعد المحاولة في الساعة القادمة.</u></string>
+    <string name="main_activity__no_unmetered_network">لا توجد شبكة غير محدودة</string>
+    <string name="main_activity__temporary_network_issue"><u>مشكلة مؤقتة في الشبكة. أعد المحاولة لاحقًا.</u></string>
+    <string name="main_activity__an_error_occurred"><u>حدث خطأ. أعد المحاولة لاحقًا.</u></string>
+    <string name="ok">حسناً</string>
+    <string name="request_installation_permission_dialog__abort">إيقاف</string>
+    <string name="running_downloads_dialog__message">يقوم التطبيق بتنزيل التحديثات في الخلفية الآن. هل تريد بدء تنزيل جديد قد يستغرق وقتًا أطول؟</string>
+    <string name="running_downloads_dialog__title">التنزيلات الحالية</string>
+    <string name="running_downloads_dialog__yes">نعم</string>
+    <string name="bromite__description">يهدف Bromite إلى توفير تجربة تصفح خالية من الازدحام دون ميزات تنتهك الخصوصية ومع إضافة محرك سريع لحظر الإعلانات. يتم تطبيق الحد الأدنى من تغييرات واجهة المستخدم للمساعدة في الحد من فكرة المتصفح كمنصة إعلانية.</string>
+    <string name="bromite__warning">- يستخدم Bromite الأساس التقني لـ Google Chrome وبالتالي يدعم بشكل غير مباشر الوضع الاحتكاري لمحرك عرض Chromium.</string>
+    <string name="bromite_systemwebview__description">تحتوي حزمة SystemWebView على المتصفح الأساسي/محرك العرض الخاص بـ Bromite ونفس ميزاته. يوفر إمكانية استبدال مكون المتصفح الافتراضي لنظام Android بأكمله.</string>
+    <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
+    <string name="crash_report__copy_crash_report_to_clipboard">نسخ تقرير الأعطال إلى الحافظة</string>
+    <string name="install_activity__download_file_failed__crash_text">حدث الخطأ التالي أثناء التنزيل. إذا حدث هذا الخطأ بشكل متكرر، فلا تتردد في إرسال تقرير الأعطال إلى notabug.org أو GitHub أو GitLab.</string>
+    <string name="crash_report__explain_text__download_activity_fetching_url">حدث هذا الخطأ عندما تم جلب البيانات التعريفية للتنزيل. إذا حدث هذا الخطأ بشكل متكرر، فلا تتردد في إرسال تقرير الأعطال إلى notabug.org أو GitHub أو GitLab.</string>
+    <string name="crash_report__explain_text__download_activity_install_file">حدث هذا الخطأ أثناء التثبيت. إذا حدث هذا الخطأ بشكل متكرر، فلا تتردد في إرسال تقرير الأعطال إلى notabug.org أو GitHub أو GitLab.</string>
+    <string name="crash_report__explain_text__download_activity_update_check">حدث هذا الخطأ عند التحقق من وجود تحديثات في العرض الرئيسي. إذا حدث هذا الخطأ بشكل متكرر، فلا تتردد في إرسال تقرير الأعطال إلى notabug.org أو GitHub أو GitLab.</string>
+    <string name="crash_report__explain_text__uncaught_throwable">لسوء الحظ، تعطل FFUpdater في المرة الأخيرة وسجل هذا الخطأ. يرجى إرسال تقرير الأعطال إلى notabug.org أو GitHub أو GitLab.</string>
+    <string name="crash_report__got_to_notabug_org">انتقل إلى notabug.org</string>
+    <string name="notification__download_error__channel_name">إشعار حول أخطاء التنزيل في الخلفية</string>
+    <string name="notification__download_error__descr">فشل التنزيل في الخلفية لتحديث %1$s. إذا حدث هذا الخطأ بشكل متكرر، فلا تتردد في الإبلاغ عنه على notabug.org أو GitHub أو GitLab.</string>
+    <string name="notification__download_error__text">فشل التنزيل في الخلفية لتحديث %1$s. إذا حدث هذا الخطأ بشكل متكرر، فانقر هنا لعرض تقرير الخطأ.</string>
+    <string name="notification__download_error__title">فشل تنزيل التحديث في الخلفية</string>
+    <string name="notification__download_running__channel_descr">يظهر عندما يتم تنزيل تحديثات التطبيق في الخلفية.</string>
+    <string name="notification__download_running__channel_name">إشعار حول التنزيلات في الخلفية</string>
+    <string name="notification__download_running__title">تنزيل تحديثات التطبيق</string>
+    <string name="app_card__download_the_app">قم بتنزيل التطبيق</string>
+    <string name="notification__eol_apps__channel_description">قناة إشعارات للتحذيرات حول التطبيقات القديمة.</string>
+    <string name="notification__eol_apps__channel_name">إشعار التطبيقات القديمة</string>
+    <string name="notification__eol_apps__text">لديك تطبيقات قديمة لا ينبغي استخدامها بعد الآن. انقر للحصول على مزيد من المعلومات.</string>
+    <string name="kiwi__description">تم تصميم متصفح Kiwi لتصفح الإنترنت وقراءة الأخبار ومشاهدة مقاطع الفيديو والاستماع إلى الموسيقى دون أي إزعاجات.</string>
+    <string name="firefox_beta__description">يتميز متصفح Firefox لنظام Android بأنه خاص تلقائيًا وسريع بشكل لا يصدق. يتابعك الآلاف من المتتبعين عبر الإنترنت يوميًا، ويجمعون معلومات حول مكان اتصالك بالإنترنت ويبطئون سرعتك. يحظر Firefox ما يزيد عن 2000 من أدوات التتبع هذه افتراضيًا، وتتوفر وظائف إضافية لحظر الإعلانات إذا كنت تريد تخصيص متصفحك بشكل أكبر. مع Firefox، ستحصل على الأمان الذي تستحقه والسرعة التي تحتاجها في متصفح خاص على الهاتف المحمول.</string>
+    <string name="firefox_beta__title">Firefox النسخة التجريبية</string>
+    <string name="firefox_beta__warning">- تم تصميم هذا التطبيق للمطورين والمختبرين. قد يحتوي على أخطاء مختلفة يمكن أن تؤثر على عملك المعتاد مع المتصفح.</string>
+    <string name="firefox_klar__description">تم تطوير Firefox Klar لألمانيا والنمسا وسويسرا، ولكن يمكن استخدامه من قبل المستخدمين في أي بلد. إنه مشابه جدًا لمتصفح Firefox Focus، ولكن تم تغيير الاسم في البلدان الناطقة بالألمانية لتجنب الخلط مع مجلة Focus بواسطة مجموعة Hubert Burda Media. على عكس Firefox Focus، تم تعطيل القياس عن بعد في Firefox Klar افتراضيًا بسبب قوانين الخصوصية الألمانية الصارمة.</string>
+    <string name="firefox_nightly__description">يرجى ملاحظة أن هذا التطبيق كان يحمل عنوان Firefox Preview. لقد تم الآن نقله إلى Firefox Nightly.
+\n
+\nFirefox Nightly هي قناة تطويرية لإصدارات Mozilla Firefox الجديدة.
+\n
+\nتم تصميم Firefox Nightly لعرض الإصدارات الأكثر تجريبية من Firefox. تتيح قناة Nightly للمستخدمين تجربة أحدث ابتكارات Firefox في بيئة غير مستقرة وتقديم تعليقات حول الميزات والأداء للمساعدة في تحديد الإصدار النهائي.</string>
+    <string name="firefox_release__description">يتميز متصفح Firefox لنظام Android بأنه خاص تلقائيًا وسريع بشكل لا يصدق. يتابعك الآلاف من المتتبعين عبر الإنترنت يوميًا، ويجمعون معلومات حول مكان اتصالك بالإنترنت ويبطئون سرعتك. يحظر Firefox ما يزيد عن 2000 من أدوات التتبع هذه افتراضيًا، وتتوفر وظائف إضافية لحظر الإعلانات إذا كنت تريد تخصيص متصفحك بشكل أكبر. مع Firefox، ستحصل على الأمان الذي تستحقه والسرعة التي تحتاجها في متصفح خاص على الهاتف المحمول.</string>
+    <string name="firefox_release__warning">- تتوفر أيضًا نسخة محسنة من Firefox على F-Droid تحت اسم Fennec F-Droid.</string>
+    <string name="iceraven__description">بالتأكيد لم تقدمه لك موزيلا!
+\n
+\nمتصفح Iceraven هو متصفح ويب لنظام Android، يعتمد على إصدار Mozilla\'s Fenix من Firefox وGeckoView وMozilla Android Components.
+\n
+\nهدفنا هو أن نكون شوكة وثيقة لمتصفح Firefox الجديد لنظام Android الذي يسعى إلى تزويد المستخدمين بالمزيد من الخيارات، والمزيد من فرص التخصيص (بما في ذلك مكتبة الملحقات الواسعة)، ومزيد من المعلومات حول الصفحات التي يزورونها وكيفية تفاعل متصفحاتهم معها. تلك الصفحات.</string>
+    <string name="download_activity__download_app_with_status">جارٍ تنزيل التطبيق</string>
+    <string name="download_activity__download_failed">التحميل فشل</string>
+    <string name="download_activity__exception__show_button"><u>عرض تقرير الأخطاء التفصيلي.</u></string>
+    <string name="download_activity__fetched_url_for_download_successfully">تم جلب البيانات الوصفية من %1$s</string>
+    <string name="download_activity__github_rate_limit_exceeded">تم تجاوز حد معدل GitHub-API. يرجى محاولة التنزيل مرة أخرى خلال الساعة القادمة.</string>
+    <string name="iceraven__warning">- لا يقدم المطور أي ضمانات للأمن أو التحديثات أو حتى الاستقرار.
+\n- يستغرق المشروع وقتًا أطول من المعتاد لتوفير التحديثات الأمنية.</string>
+    <string name="infobox">وظيفة التطبيق هي تحديث المتصفحات الصديقة للخصوصية. انقر فوق زر علامة الزائد لتثبيت التطبيقات الجديدة. اسحب لأسفل لفرض التحقق من وجود تحديثات جديدة. افتراضيًا، سيبحث التطبيق بشكل دوري عن التحديثات في الخلفية، والتي سيتم بعد ذلك تنزيلها وتثبيتها في النهاية. انقر فوق الترس لتخصيص السلوك في الإعدادات.
+\n
+\nآخر فحص ناجح للتحديث في الخلفية: %1$s</string>
+    <string name="download_activity__delete_cache_explanation">إذا كنت تعتقد أن FFUpdater قام بتخزين تحديث التطبيق الخاطئ مؤقتًا أو إذا كنت تريد توفير المساحة، فانقر فوق الزر لحذف الملف الذي تم تنزيله.</string>
+    <string name="download_activity__open_cache_explanation">يمكنك فتح مجلد ذاكرة التخزين المؤقت لنسخ ملف APK إلى مكان به مساحة تخزين متوفرة أكبر. لسوء الحظ، في نظام التشغيل Android 11+، لا يتمكن سوى عدد قليل من مديري الملفات من الوصول إلى هذا المجلد داخل Android/data.</string>
+    <string name="download_activity__open_cache_folder_button_text">فتح مجلد ذاكرة التخزين المؤقت</string>
+    <string name="download_activity__open_folder">افتح المجلد</string>
+    <string name="download_activity__sha_256_certificate_fingerprint">بصمة شهادة SHA-256:</string>
+    <string name="download_activity__too_low_memory_description">مساحة تخزين جهازك منخفضة (يتوفر %1$d ميغابايت فقط). سيؤدي هذا إلى فشل التنزيل أو التثبيت.</string>
+    <string name="download_activity__use_cached_downloaded_apk">استخدم الملف الذي تم تنزيله بالفعل من:</string>
+    <string name="download_activity__you_can_now_close_this_window">يمكنك الآن إغلاق هذه النافذة</string>
+    <string name="download_activity__label">تحميل التطبيق</string>
+    <string name="notification__install_error__channel_descr">قناة الإشعارات لتحديثات %1$s الفاشلة.</string>
+    <string name="notification__install_error__text">الخطأ (%1$d): %2$s</string>
+    <string name="notification__install_error__title">تعذر تحديث %1$s</string>
+    <string name="notification__install_success__channel_descr">قناة الإشعارات لتحديثات %1$s الناجحة.</string>
+    <string name="notification__install_success__channel_name">%1$s إشعار تحديث ناجح</string>
+    <string name="notification__install_success__text">تم تحديث التطبيق في الخلفية.</string>
+    <string name="app_installer__installed_app_has_invalid_signature">لم يتم التحقق من التطبيق المثبت</string>
+    <string name="installed_application_is_verified">تم التحقق من التطبيق المثبت</string>
+    <string name="application_successfully_installed">تم تثبيت التطبيق بنجاح</string>
+    <string name="available_version">المتاح: %1$s</string>
+    <string name="notification__error__title">تحديث البرنامج في الخلفية فشل</string>
+    <string name="brave__description">تصفح الإنترنت بخصوصية، مجانًا! تطبيق Brave هو متصفح ويب خاص سريع ومجاني وآمن مع أداة حظر الإعلانات ومانع النوافذ المنبثقة. تصفح الإنترنت وابحث فيه بشكل خاص دون أن يتتبعك المعلنون والبرامج الضارة والنوافذ المنبثقة.</string>
+    <string name="brave__title">متصفح الخصوصية Brave</string>
+    <string name="brave__warning">- يستخدم Brave الأساس التقني لـ Google Chrome وبالتالي يدعم بشكل غير مباشر الوضع الاحتكاري لمحرك عرض Chromium.
+\n- نظرًا لرمز الاهتمام الأساسي BAT الخاص به على سلسلة Ethereum blockchain، فإن المشروع له علاقات بالعملات المشفرة. تواجه تقنية Blockchain العديد من المشكلات ويجب تجنبها من وجهة نظر المطور.</string>
+    <string name="brave_beta__description">مرحبًا بك في Brave Beta لنظام Android!
+\nجرب أحدث الميزات وقدم تعليقات مبكرة: https://brave.com/msupport
+\nيمكنك تثبيت Brave Beta إلى جانب الإصدار الحالي من Brave لنظام Android.</string>
+    <string name="brave_beta__title">متصفح Brave (النسخة التجريبية)</string>
+    <string name="brave_nightly__description">مرحبًا بك في Brave Nightly (نسخة المطورين) لنظام Android!
+\nجرب أحدث الميزات وقدم تعليقات مبكرة: https://brave.com/msupport
+\nيمكنك تثبيت Brave Nightly إلى جانب الإصدار الحالي من Brave لنظام Android.</string>
+    <string name="brave_nightly__title">متصفح Brave (نسخة المطورين)</string>
+</resources>
