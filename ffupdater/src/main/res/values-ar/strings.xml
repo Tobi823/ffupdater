@@ -143,4 +143,62 @@
 \nجرب أحدث الميزات وقدم تعليقات مبكرة: https://brave.com/msupport
 \nيمكنك تثبيت Brave Nightly إلى جانب الإصدار الحالي من Brave لنظام Android.</string>
     <string name="brave_nightly__title">متصفح Brave (نسخة المطورين)</string>
+    <string name="unsupported_abi_dialog__title">جهاز غير مدعوم</string>
+    <string name="update_interval__12h">12 ساعة</string>
+    <string name="update_interval__15min">15 دقيقة</string>
+    <string name="update_interval__1d">يوم</string>
+    <string name="update_interval__1w">اسبوع</string>
+    <string name="update_interval__4d">4 أيام</string>
+    <string name="update_interval__5d">5 أيام</string>
+    <string name="update_interval__6d">6 أيام</string>
+    <string name="update_interval__6h">6 ساعات</string>
+    <string name="notification__update_available__channel_name">إشعار تحديث %1$s</string>
+    <string name="settings_activity__label">إعدادات</string>
+    <string name="settings__b_f__delete_cache_if_install_failed">احذف التحديث الذي تم تنزيله في حالة فشل التثبيت.</string>
+    <string name="settings__background__download__enabled__summary">عند اكتشاف تحديث، قم بتنزيله. سيؤدي هذا لاحقًا إلى تسريع عملية التحديث.</string>
+    <string name="settings__background__download__metered__summary">لا يُنصح به للمستخدمين الذين لديهم بيانات جوال محدودة.</string>
+    <string name="settings__background__download__metered__title">قم بتنزيل تحديثات التطبيق على الشبكات المقاسة</string>
+    <string name="settings__background__installation__enabled__summary">حاول تثبيت التحديثات دون تدخل المستخدم.</string>
+    <string name="settings__background__update_check__enabled__summary">تحقق من وجود تحديثات جديدة على فترات منتظمة.</string>
+    <string name="settings__background__update_check__enabled__title">فحص التحديث</string>
+    <string name="settings__background__update_check__excluded_apps__summary">مفيد إذا كنت لا ترغب في تحديث أحد التطبيقات ولا ترغب في تلقي إشعارات التحديث الخاصة به.</string>
+    <string name="settings__background__update_check__excluded_apps__title">استبعاد التطبيقات من التحقق من التحديث</string>
+    <string name="settings__background__update_check__interval__title">تحديث الفاصل الزمني للتحقق</string>
+    <string name="settings__background_category__summary">الإعدادات عندما يعمل التطبيق في الخلفية ويكون غير مرئي للمستخدم.</string>
+    <string name="settings__background__update_check__metered__title">تحديث عمليات التحقق على الشبكات المقاسة</string>
+    <string name="settings__foreground__download__metered__title">تنزيل التحديثات على الشبكات المقاسة</string>
+    <string name="settings__foreground__update_check__metered__summary">السماح بالتحقق من التحديثات على الشبكات المقاسة مثل بيانات الجوال.</string>
+    <string name="ungoogled_chromium__description">جوجل كروم، بدون التكامل مع جوجل.
+\n
+\nبدون تسجيل الدخول إلى حساب Google، يعمل Chromium بشكل جيد من حيث الأمان والخصوصية. ومع ذلك، لا يزال لدى Chromium بعض الاعتماد على خدمات الويب والثنائيات من Google. بالإضافة إلى ذلك، صممت Google Chromium ليكون سهلًا وبديهيًا للمستخدمين، مما يعني أنهم يتنازلون عن الشفافية والتحكم في العمليات الداخلية.</string>
+    <string name="ungoogled_chromium__title">Chromium بدون جوجل</string>
+    <string name="ungoogled_chromium__warning">- يستخدم Ungoogled Chromium الأساس التقني لـ Google Chrome وبالتالي يدعم بشكل غير مباشر الوضع الاحتكاري لمحرك عرض Chromium.</string>
+    <string name="lockwise__title">خزنة كلمات السر من Firefox</string>
+    <string name="session_installer__status_failure_storage">فشلت العملية بسبب مشاكل في التخزين. على سبيل المثال، قد تكون مساحة الجهاز منخفضة، أو قد تكون الوسائط الخارجية غير متوفرة. قد يكون المستخدم قادرًا على توفير مساحة أو إدخال وسائط خارجية مختلفة.</string>
+    <string name="settings__b_f__delete_cache_if_install_successful">احذف التحديث الذي تم تنزيله إذا نجح التثبيت.</string>
+    <string name="settings__background__download__enabled__title">تنزيل تحديثات التطبيق.</string>
+    <string name="settings__background__installation__enabled__title">تثبيت التحديث</string>
+    <string name="settings__background_category__title">الخلفية</string>
+    <string name="settings__foreground__theme_preference__summary">اختر بين المظهر الفاتح والداكن</string>
+    <string name="settings__foreground__theme_preference__title">اختر مظهر</string>
+    <string name="settings__foreground__update_check__metered__title">تحديث الشيكات على الشبكات المقاسة</string>
+    <string name="settings__foreground_category__summary">الإعدادات عندما تكون واجهة المستخدم مرئية.</string>
+    <string name="settings__foreground_category__title">الصدارة</string>
+    <string name="settings__installer_category__title">المثبت</string>
+    <string name="settings__theme_battery_saver">داكن عندما يكون توفير شحن البطارية نشطًا</string>
+    <string name="settings__theme_dark">داكن</string>
+    <string name="settings__theme_light">فاتح</string>
+    <string name="settings__theme_system_default">استخدام مظهر النظام الافتراضي</string>
+    <string name="unsupported_abi_dialog__message">المتصفح المحدد غير متوافق مع معالج هاتفك الذكي. الرجاء تحديد متصفح مختلف.</string>
+    <string name="update_interval__18h">18 ساعة</string>
+    <string name="update_interval__1h">ساعة</string>
+    <string name="update_interval__1m">شهر</string>
+    <string name="update_interval__2d">يومين</string>
+    <string name="update_interval__2h">ساعتين</string>
+    <string name="update_interval__2w">اسبوعين</string>
+    <string name="update_interval__30min">30 دقيقة</string>
+    <string name="update_interval__3d">3 أيام</string>
+    <string name="update_interval__4h">4 ساعات</string>
+    <string name="update_interval__8h">8 ساعات</string>
+    <string name="notification__update_available__channel_descr">قناة الإشعارات لتحديثات %1$s المتوفرة.</string>
 </resources>
