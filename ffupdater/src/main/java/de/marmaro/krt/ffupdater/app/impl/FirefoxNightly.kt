@@ -42,7 +42,7 @@ object FirefoxNightly : AppBase() {
     override val signatureHash = "5004779088e7f988d5bc5cc5f8798febf4f8cd084a1b2a46efd4c8ee4aeaf211"
     override val supportedAbis = ARM32_ARM64_X86_X64
     override val projectPage =
-        "https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v3.firefox-android.apks.fenix-nightly.latest"
+        "https://firefox-ci-tc.services.mozilla.com/tasks/index/gecko.v2.mozilla-central.latest.mobile/fenix-nightly"
     override val displayCategory = listOf(FROM_MOZILLA)
 
     @MainThread
