@@ -111,13 +111,15 @@ class DownloadActivity : AppCompatActivity() {
         setContentView(R.layout.activity_download)
         AppCompatDelegate.setDefaultNightMode(ForegroundSettings.themePreference)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON) // prevent network timeouts
 
         val appFromExtras = intent.extras?.getString(EXTRA_APP_NAME)
+        // check if this activity was unintentionally started again after finishing the download
         if (appFromExtras == null) {
-            // InstallActivity was unintentionally started again after finishing the download
             finish()
             return
         }
+
         app = App.valueOf(appFromExtras)
         appImpl = app.findImpl()
         appInstaller = createForegroundAppInstaller(this, app)
@@ -130,12 +132,7 @@ class DownloadActivity : AppCompatActivity() {
         findViewById<Button>(R.id.install_activity__open_cache_folder_button).setOnClickListener {
             SystemFileManager.openFolder(appImpl.getApkCacheFolder(applicationContext), this)
         }
-
-        // hide existing background notification for this app
         NotificationRemover.removeAppStatusNotifications(applicationContext, app)
-
-        // prevent network timeouts when the displayed is automatically turned off
-        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
 
         lifecycleScope.launch(Dispatchers.Main) {
             startInstallationProcess()
@@ -205,25 +202,6 @@ class DownloadActivity : AppCompatActivity() {
         }
     }
 
-    private suspend fun executeDownloadProcess(status: InstalledAppStatus): Boolean {
-        if (downloadViewModel.isDownloadForCurrentAppRunning(status)) {
-            return reuseCurrentDownload(status)
-        }
-
-        val appImpl = app.findImpl()
-        if (appImpl.isApkDownloaded(applicationContext, status.latestVersion)) {
-            Log.d(LOG_TAG, "DownloadActivity: Use APK cache of ${app.name}.")
-            show(R.id.useCachedDownloadedApk)
-            val file = appImpl.getApkFile(applicationContext, status.latestVersion)
-            setText(R.id.useCachedDownloadedApk__path, file.absolutePath)
-            return true
-        }
-
-        isNetworkSuitable().ifFalse { return false }
-
-        return startDownload(status)
-    }
-
     private fun isStorageMounted(): Boolean {
         if (Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED) {
             return true
@@ -280,60 +258,22 @@ class DownloadActivity : AppCompatActivity() {
         return status
     }
 
-    @MainThread
-    private suspend fun startDownload(status: InstalledAppStatus): Boolean {
-        return try {
-            startDownloadWithoutErrorChecking(status)
-        } catch (e: Exception) {
-            val text = when (e) {
-                is NetworkException -> getString(install_activity__download_file_failed__crash_text)
-                is DisplayableException -> e.message ?: e.javaClass.name
-                else -> throw e
-            }
-            displayDownloadFailure(status, text, e)
-            false
+    private suspend fun executeDownloadProcess(status: InstalledAppStatus): Boolean {
+        if (downloadViewModel.isDownloadForCurrentAppRunning(status)) {
+            return reuseCurrentDownload(status)
         }
-    }
 
-    @MainThread
-    private suspend fun startDownloadWithoutErrorChecking(status: InstalledAppStatus): Boolean {
-        Log.d(LOG_TAG, "DownloadActivity: Start download of ${app.name}.")
-        setText(R.id.downloadingFileUrl, status.latestVersion.downloadUrl)
-        setText(R.id.downloadedFileUrl, status.latestVersion.downloadUrl)
-        setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status))
-        findViewById<View>(R.id.downloadingFile).visibleDuringExecution {
-            findViewById<View>(R.id.downloadedFile).visibleAfterExecution {
-                startDownloadInternal(status)
-            }
-        }
-        return true
-    }
-
-    @MainThread
-    private suspend fun startDownloadInternal(status: InstalledAppStatus) {
         val appImpl = app.findImpl()
-        val coroutineContext = downloadViewModel.viewModelScope.coroutineContext
-        withContext(coroutineContext) {
-            appImpl.download(applicationContext, status.latestVersion) { deferred, progressChannel ->
-                downloadViewModel.storeNewRunningDownload(status, deferred, progressChannel)
-                showDownloadProgress(progressChannel)
-            }
+        if (appImpl.isApkDownloaded(applicationContext, status.latestVersion)) {
+            Log.d(LOG_TAG, "DownloadActivity: Use APK cache of ${app.name}.")
+            show(R.id.useCachedDownloadedApk)
+            val file = appImpl.getApkFile(applicationContext, status.latestVersion)
+            setText(R.id.useCachedDownloadedApk__path, file.absolutePath)
+            return true
         }
-    }
 
-
-    private suspend fun showDownloadProgress(progressChannel: Channel<DownloadStatus>) {
-        for (progress in progressChannel) {
-            if (progress.progressInPercent != null) {
-                findViewById<ProgressBar>(R.id.downloadingFileProgressBar).progress = progress.progressInPercent
-            }
-
-            val text = when {
-                progress.progressInPercent != null -> " (${progress.progressInPercent}%)"
-                else -> " (${progress.totalMB}MB)"
-            }
-            setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status) + text)
-        }
+        isNetworkSuitable().ifFalse { return false }
+        return startDownload(status)
     }
 
     @MainThread
@@ -363,6 +303,62 @@ class DownloadActivity : AppCompatActivity() {
             showDownloadProgress(downloadViewModel.progressChannel!!)
             // NPE was thrown in https://github.com/Tobi823/ffupdater/issues/359 - it should be safe to ignore null values
             downloadViewModel.deferred?.await()
+        }
+    }
+
+    @MainThread
+    private suspend fun startDownload(status: InstalledAppStatus): Boolean {
+        return try {
+            startDownloadWithoutErrorChecking(status)
+        } catch (e: Exception) {
+            val text = when (e) {
+                is NetworkException -> getString(install_activity__download_file_failed__crash_text)
+                is DisplayableException -> e.message ?: e.javaClass.name
+                else -> throw e
+            }
+            displayDownloadFailure(status, text, e)
+            false
+        }
+    }
+
+
+    @MainThread
+    private suspend fun startDownloadWithoutErrorChecking(status: InstalledAppStatus): Boolean {
+        Log.d(LOG_TAG, "DownloadActivity: Start download of ${app.name}.")
+        setText(R.id.downloadingFileUrl, status.latestVersion.downloadUrl)
+        setText(R.id.downloadedFileUrl, status.latestVersion.downloadUrl)
+        setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status))
+        findViewById<View>(R.id.downloadingFile).visibleDuringExecution {
+            findViewById<View>(R.id.downloadedFile).visibleAfterExecution {
+                startDownloadInternal(status)
+            }
+        }
+        return true
+    }
+
+    @MainThread
+    private suspend fun startDownloadInternal(status: InstalledAppStatus) {
+        val appImpl = app.findImpl()
+        val coroutineContext = downloadViewModel.viewModelScope.coroutineContext
+        withContext(coroutineContext) {
+            appImpl.download(applicationContext, status.latestVersion) { deferred, progressChannel ->
+                downloadViewModel.storeNewRunningDownload(status, deferred, progressChannel)
+                showDownloadProgress(progressChannel)
+            }
+        }
+    }
+
+    private suspend fun showDownloadProgress(progressChannel: Channel<DownloadStatus>) {
+        for (progress in progressChannel) {
+            if (progress.progressInPercent != null) {
+                findViewById<ProgressBar>(R.id.downloadingFileProgressBar).progress = progress.progressInPercent
+            }
+
+            val text = when {
+                progress.progressInPercent != null -> " (${progress.progressInPercent}%)"
+                else -> " (${progress.totalMB}MB)"
+            }
+            setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status) + text)
         }
     }
 
