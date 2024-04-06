@@ -81,4 +81,20 @@ class GuiHelper(val app: App, val activity: DownloadActivity) {
             setText(R.id.downloadingFileText, "$statusText $text")
         }
     }
+
+    @MainThread
+    fun displayFetchFailure(message: String, exception: Exception?) {
+        show(R.id.install_activity__exception)
+        setText(R.id.install_activity__exception__text, message)
+        if (exception == null) {
+            activity.findViewById<View>(R.id.install_activity__exception__show_button).visibility = View.GONE
+            return
+        }
+        val throwableAndLogs = ThrowableAndLogs(exception, LogReader.readLogs())
+        activity.findViewById<TextView>(R.id.install_activity__exception__show_button).setOnClickListener {
+            val description = activity.getString(R.string.crash_report__explain_text__download_activity_fetching_url)
+            val intent = CrashReportActivity.createIntent(activity, throwableAndLogs, description)
+            activity.startActivity(intent)
+        }
+    }
 }

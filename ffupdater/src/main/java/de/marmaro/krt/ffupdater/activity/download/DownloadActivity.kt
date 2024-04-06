@@ -205,7 +205,7 @@ class DownloadActivity : AppCompatActivity() {
         if (ForegroundSettings.isDownloadOnMeteredAllowed || !isNetworkMetered(applicationContext)) {
             return true
         }
-        displayFetchFailure(getString(main_activity__no_unmetered_network), null)
+        gui.displayFetchFailure(getString(main_activity__no_unmetered_network), null)
         return false
     }
 
@@ -228,7 +228,7 @@ class DownloadActivity : AppCompatActivity() {
                 is DisplayableException -> getString(download_activity__temporary_network_issue)
                 else -> throw e
             }
-            displayFetchFailure(text, e)
+            gui.displayFetchFailure(text, e)
             null
         }
     }
@@ -372,21 +372,7 @@ class DownloadActivity : AppCompatActivity() {
         NotificationRemover.removeAppStatusNotifications(applicationContext, app)
     }
 
-    @MainThread
-    private fun displayFetchFailure(message: String, exception: Exception?) {
-        gui.show(R.id.install_activity__exception)
-        gui.setText(R.id.install_activity__exception__text, message)
-        if (exception == null) {
-            findViewById<View>(R.id.install_activity__exception__show_button).visibility = View.GONE
-            return
-        }
-        val throwableAndLogs = ThrowableAndLogs(exception, LogReader.readLogs())
-        findViewById<TextView>(R.id.install_activity__exception__show_button).setOnClickListener {
-            val description = getString(crash_report__explain_text__download_activity_fetching_url)
-            val intent = CrashReportActivity.createIntent(applicationContext, throwableAndLogs, description)
-            startActivity(intent)
-        }
-    }
+
 
     companion object {
         const val EXTRA_APP_NAME = "app_name"
