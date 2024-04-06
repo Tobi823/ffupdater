@@ -321,7 +321,6 @@ class DownloadActivity : AppCompatActivity() {
         }
     }
 
-
     @MainThread
     private suspend fun startDownloadWithoutErrorChecking(status: InstalledAppStatus): Boolean {
         Log.d(LOG_TAG, "DownloadActivity: Start download of ${app.name}.")
@@ -400,16 +399,14 @@ class DownloadActivity : AppCompatActivity() {
     @MainThread
     private fun displayAppInstallationFailure(errorMessage: String, exception: Exception) {
         show(R.id.install_activity__exception)
-        show(R.id.install_activity__exception__description)
-        setText(
-            R.id.install_activity__exception__text,
-            getString(application_installation_was_not_successful)
-        )
+
+        setText(R.id.install_activity__exception__text, getString(application_installation_was_not_successful))
         if (InstallerSettings.getInstallerMethod() == SESSION_INSTALLER) {
             show(R.id.install_activity__different_installer_info)
         }
 
         val throwableAndLogs = ThrowableAndLogs(exception, LogReader.readLogs())
+        show(R.id.install_activity__exception__description)
         findViewById<TextView>(R.id.install_activity__exception__description).text = errorMessage
         findViewById<TextView>(R.id.install_activity__exception__show_button).setOnClickListener {
             val description = getString(crash_report__explain_text__download_activity_install_file)
