@@ -76,6 +76,7 @@ class DownloadActivity : AppCompatActivity() {
     private lateinit var app: App
     private lateinit var appImpl: AppBase
     private lateinit var appInstaller: AppInstaller
+    private val gui = GuiHelper(this)
 
     // persistent data for already running downloads
     class DownloadViewModel : ViewModel() {
@@ -161,9 +162,7 @@ class DownloadActivity : AppCompatActivity() {
         return true
     }
 
-    private fun show(viewId: Int) {
-        findViewById<View>(viewId).visibility = View.VISIBLE
-    }
+
 
     private fun deleteCachedApkFileIfNecessary() {
         if (downloadViewModel.installationSuccess) {
@@ -206,7 +205,7 @@ class DownloadActivity : AppCompatActivity() {
         if (Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED) {
             return true
         }
-        show(R.id.externalStorageNotAccessible)
+        gui.show(R.id.externalStorageNotAccessible)
         setText(R.id.externalStorageNotAccessible_state, Environment.getExternalStorageState())
         return false
     }
@@ -223,7 +222,7 @@ class DownloadActivity : AppCompatActivity() {
         if (StorageUtil.isEnoughStorageAvailable(applicationContext)) {
             return
         }
-        show(R.id.tooLowMemory)
+        gui.show(R.id.tooLowMemory)
         val mbs = StorageUtil.getFreeStorageInMebibytes(applicationContext)
         val message = getString(download_activity__too_low_memory_description, mbs)
         setText(R.id.tooLowMemoryDescription, message)
@@ -253,7 +252,7 @@ class DownloadActivity : AppCompatActivity() {
             appImpl.findInstalledAppStatus(applicationContext, USE_EVEN_OUTDATED_CACHE)
         }
 
-        show(R.id.fetchedUrlSuccess)
+        gui.show(R.id.fetchedUrlSuccess)
         setText(R.id.fetchedUrlSuccessTextView, finishedText)
         return status
     }
@@ -266,7 +265,7 @@ class DownloadActivity : AppCompatActivity() {
         val appImpl = app.findImpl()
         if (appImpl.isApkDownloaded(applicationContext, status.latestVersion)) {
             Log.d(LOG_TAG, "DownloadActivity: Use APK cache of ${app.name}.")
-            show(R.id.useCachedDownloadedApk)
+            gui.show(R.id.useCachedDownloadedApk)
             val file = appImpl.getApkFile(applicationContext, status.latestVersion)
             setText(R.id.useCachedDownloadedApk__path, file.absolutePath)
             return true
@@ -385,12 +384,12 @@ class DownloadActivity : AppCompatActivity() {
             installResult.certificateHash ?: "error"
         }
 
-        show(R.id.installerSuccess)
-        show(R.id.fingerprintInstalledGood)
+        gui.show(R.id.installerSuccess)
+        gui.show(R.id.fingerprintInstalledGood)
         setText(R.id.fingerprintInstalledGoodHash, certificateHash)
         if (!ForegroundSettings.isDeleteUpdateIfInstallSuccessful) {
-            show(R.id.install_activity__delete_cache)
-            show(R.id.install_activity__open_cache_folder)
+            gui.show(R.id.install_activity__delete_cache)
+            gui.show(R.id.install_activity__open_cache_folder)
         }
         // hide existing background notification for applicationContext app
         NotificationRemover.removeAppStatusNotifications(applicationContext, app)
@@ -398,15 +397,15 @@ class DownloadActivity : AppCompatActivity() {
 
     @MainThread
     private fun displayAppInstallationFailure(errorMessage: String, exception: Exception) {
-        show(R.id.install_activity__exception)
+        gui.show(R.id.install_activity__exception)
 
         setText(R.id.install_activity__exception__text, getString(application_installation_was_not_successful))
         if (InstallerSettings.getInstallerMethod() == SESSION_INSTALLER) {
-            show(R.id.install_activity__different_installer_info)
+            gui.show(R.id.install_activity__different_installer_info)
         }
 
         val throwableAndLogs = ThrowableAndLogs(exception, LogReader.readLogs())
-        show(R.id.install_activity__exception__description)
+        gui.show(R.id.install_activity__exception__description)
         findViewById<TextView>(R.id.install_activity__exception__description).text = errorMessage
         findViewById<TextView>(R.id.install_activity__exception__show_button).setOnClickListener {
             val description = getString(crash_report__explain_text__download_activity_install_file)
@@ -417,14 +416,14 @@ class DownloadActivity : AppCompatActivity() {
         val cacheFolder = appImpl.getApkCacheFolder(applicationContext).absolutePath
         setText(R.id.install_activity__cache_folder_path, cacheFolder)
         if (!ForegroundSettings.isDeleteUpdateIfInstallFailed) {
-            show(R.id.install_activity__delete_cache)
-            show(R.id.install_activity__open_cache_folder)
+            gui.show(R.id.install_activity__delete_cache)
+            gui.show(R.id.install_activity__open_cache_folder)
         }
     }
 
     @MainThread
     private fun displayDownloadFailure(status: InstalledAppStatus, description: String, exception: Exception?) {
-        show(R.id.install_activity__download_file_failed)
+        gui.show(R.id.install_activity__download_file_failed)
         setText(R.id.install_activity__download_file_failed__url, status.latestVersion.downloadUrl)
         setText(R.id.install_activity__download_file_failed__text, description)
         if (exception != null) {
@@ -439,7 +438,7 @@ class DownloadActivity : AppCompatActivity() {
 
     @MainThread
     private fun displayFetchFailure(message: String, exception: Exception?) {
-        show(R.id.install_activity__exception)
+        gui.show(R.id.install_activity__exception)
         setText(R.id.install_activity__exception__text, message)
         if (exception == null) {
             findViewById<View>(R.id.install_activity__exception__show_button).visibility = View.GONE
