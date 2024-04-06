@@ -52,6 +52,7 @@ import de.marmaro.krt.ffupdater.settings.ForegroundSettings
 import de.marmaro.krt.ffupdater.settings.InstallerSettings
 import de.marmaro.krt.ffupdater.storage.StorageUtil
 import de.marmaro.krt.ffupdater.storage.SystemFileManager
+import de.marmaro.krt.ffupdater.utils.goneAfterExecution
 import de.marmaro.krt.ffupdater.utils.ifFalse
 import de.marmaro.krt.ffupdater.utils.visibleAfterExecution
 import de.marmaro.krt.ffupdater.utils.visibleDuringExecution
@@ -143,31 +144,17 @@ class DownloadActivity : AppCompatActivity() {
 
     private fun deleteFileCache() {
         lifecycleScope.launch(Dispatchers.Main) {
-            app.findImpl().deleteFileCache(applicationContext)
-            hide(R.id.install_activity__delete_cache)
+            findViewById<View>(R.id.install_activity__delete_cache).goneAfterExecution {
+                app.findImpl().deleteFileCache(applicationContext)
+            }
         }
     }
 
     override fun onStop() {
         super.onStop()
-
+        // if the device was not rotated
         if (!isChangingConfigurations) {
-            // if the device is not rotated, delete information about the download to allow a new download
-            // next time
-            if (downloadViewModel.installationSuccess) {
-                if (ForegroundSettings.isDeleteUpdateIfInstallSuccessful) {
-                    lifecycleScope.launch(Dispatchers.Main) {
-                        appImpl.deleteFileCache(applicationContext)
-                    }
-                }
-            } else {
-                if (ForegroundSettings.isDeleteUpdateIfInstallFailed) {
-                    lifecycleScope.launch(Dispatchers.Main) {
-                        appImpl.deleteFileCache(applicationContext)
-                    }
-                }
-            }
-            downloadViewModel.clear()
+            deleteCachedApkFileIfNecessary()
         }
         window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
     }
@@ -181,8 +168,21 @@ class DownloadActivity : AppCompatActivity() {
         findViewById<View>(viewId).visibility = View.VISIBLE
     }
 
-    private fun hide(viewId: Int) {
-        findViewById<View>(viewId).visibility = View.GONE
+    private fun deleteCachedApkFileIfNecessary() {
+        if (downloadViewModel.installationSuccess) {
+            if (ForegroundSettings.isDeleteUpdateIfInstallSuccessful) {
+                lifecycleScope.launch(Dispatchers.Main) {
+                    appImpl.deleteFileCache(applicationContext)
+                }
+            }
+        } else {
+            if (ForegroundSettings.isDeleteUpdateIfInstallFailed) {
+                lifecycleScope.launch(Dispatchers.Main) {
+                    appImpl.deleteFileCache(applicationContext)
+                }
+            }
+        }
+        downloadViewModel.clear()
     }
 
     private fun setText(textId: Int, text: String) {
@@ -237,7 +237,7 @@ class DownloadActivity : AppCompatActivity() {
         if (ForegroundSettings.isDownloadOnMeteredAllowed || !isNetworkMetered(applicationContext)) {
             return true
         }
-        displayFetchFailure(getString(main_activity__no_unmetered_network))
+        displayFetchFailure(getString(main_activity__no_unmetered_network), null)
         return false
     }
 
@@ -445,11 +445,11 @@ class DownloadActivity : AppCompatActivity() {
     }
 
     @MainThread
-    private fun displayFetchFailure(message: String, exception: Exception? = null) {
+    private fun displayFetchFailure(message: String, exception: Exception?) {
         show(R.id.install_activity__exception)
         setText(R.id.install_activity__exception__text, message)
         if (exception == null) {
-            hide(R.id.install_activity__exception__show_button)
+            findViewById<View>(R.id.install_activity__exception__show_button).visibility = View.GONE
             return
         }
         val throwableAndLogs = ThrowableAndLogs(exception, LogReader.readLogs())

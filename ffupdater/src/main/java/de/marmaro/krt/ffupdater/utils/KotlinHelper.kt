@@ -47,6 +47,15 @@ inline fun <T> View.visibleDuringExecution(block: () -> T): T {
 }
 
 inline fun <T> View.visibleAfterExecution(block: () -> T): T {
+    this.visibility = View.GONE
+    try {
+        return block()
+    } finally {
+        this.visibility = View.VISIBLE
+    }
+}
+
+inline fun <T> View.goneAfterExecution(block: () -> T): T {
     this.visibility = View.VISIBLE
     try {
         return block()
