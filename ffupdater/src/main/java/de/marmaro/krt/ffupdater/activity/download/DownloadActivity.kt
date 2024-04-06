@@ -21,9 +21,7 @@ import androidx.lifecycle.viewModelScope
 import de.marmaro.krt.ffupdater.DisplayableException
 import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.R.string.application_installation_was_not_successful
 import de.marmaro.krt.ffupdater.R.string.crash_report__explain_text__download_activity_fetching_url
-import de.marmaro.krt.ffupdater.R.string.crash_report__explain_text__download_activity_install_file
 import de.marmaro.krt.ffupdater.R.string.download_activity__download_app_with_status
 import de.marmaro.krt.ffupdater.R.string.download_activity__fetch_url_for_download
 import de.marmaro.krt.ffupdater.R.string.download_activity__fetched_url_for_download_successfully
@@ -40,7 +38,6 @@ import de.marmaro.krt.ffupdater.crash.LogReader
 import de.marmaro.krt.ffupdater.crash.ThrowableAndLogs
 import de.marmaro.krt.ffupdater.installer.AppInstaller
 import de.marmaro.krt.ffupdater.installer.AppInstaller.Companion.createForegroundAppInstaller
-import de.marmaro.krt.ffupdater.installer.entity.Installer.SESSION_INSTALLER
 import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
 import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.network.exceptions.ApiRateLimitExceededException
@@ -49,7 +46,6 @@ import de.marmaro.krt.ffupdater.network.file.CacheBehaviour.USE_EVEN_OUTDATED_CA
 import de.marmaro.krt.ffupdater.network.file.DownloadStatus
 import de.marmaro.krt.ffupdater.notification.NotificationRemover
 import de.marmaro.krt.ffupdater.settings.ForegroundSettings
-import de.marmaro.krt.ffupdater.settings.InstallerSettings
 import de.marmaro.krt.ffupdater.storage.StorageUtil
 import de.marmaro.krt.ffupdater.storage.SystemFileManager
 import de.marmaro.krt.ffupdater.utils.goneAfterExecution
@@ -285,7 +281,7 @@ class DownloadActivity : AppCompatActivity() {
                 is DisplayableException -> e.message ?: e.javaClass.name
                 else -> throw e
             }
-            displayDownloadFailure(status, text, e)
+            gui.displayDownloadFailure(status, text, e)
             Log.d(LOG_TAG, "DownloadActivity: Reusing failed for ${app.name}.")
             false
         }
@@ -314,7 +310,7 @@ class DownloadActivity : AppCompatActivity() {
                 is DisplayableException -> e.message ?: e.javaClass.name
                 else -> throw e
             }
-            displayDownloadFailure(status, text, e)
+            gui.displayDownloadFailure(status, text, e)
             false
         }
     }
@@ -392,23 +388,6 @@ class DownloadActivity : AppCompatActivity() {
         }
         // hide existing background notification for applicationContext app
         NotificationRemover.removeAppStatusNotifications(applicationContext, app)
-    }
-
-
-
-    @MainThread
-    private fun displayDownloadFailure(status: InstalledAppStatus, description: String, exception: Exception?) {
-        gui.show(R.id.install_activity__download_file_failed)
-        gui.setText(R.id.install_activity__download_file_failed__url, status.latestVersion.downloadUrl)
-        gui.setText(R.id.install_activity__download_file_failed__text, description)
-        if (exception != null) {
-            val throwableAndLogs = ThrowableAndLogs(exception, LogReader.readLogs())
-            val text = findViewById<TextView>(R.id.install_activity__download_file_failed__show_exception)
-            text.setOnClickListener {
-                val intent = CrashReportActivity.createIntent(applicationContext, throwableAndLogs, description)
-                startActivity(intent)
-            }
-        }
     }
 
     @MainThread

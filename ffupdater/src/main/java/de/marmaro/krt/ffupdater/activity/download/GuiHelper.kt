@@ -5,6 +5,7 @@ import android.widget.TextView
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.entity.InstalledAppStatus
 import de.marmaro.krt.ffupdater.crash.CrashReportActivity
 import de.marmaro.krt.ffupdater.crash.LogReader
 import de.marmaro.krt.ffupdater.crash.ThrowableAndLogs
@@ -46,6 +47,21 @@ class GuiHelper(val app: App, val activity: DownloadActivity) {
         if (!ForegroundSettings.isDeleteUpdateIfInstallFailed) {
             show(R.id.install_activity__delete_cache)
             show(R.id.install_activity__open_cache_folder)
+        }
+    }
+
+    @MainThread
+    fun displayDownloadFailure(status: InstalledAppStatus, description: String, exception: Exception?) {
+        show(R.id.install_activity__download_file_failed)
+        setText(R.id.install_activity__download_file_failed__url, status.latestVersion.downloadUrl)
+        setText(R.id.install_activity__download_file_failed__text, description)
+        if (exception != null) {
+            val throwableAndLogs = ThrowableAndLogs(exception, LogReader.readLogs())
+            val text = activity.findViewById<TextView>(R.id.install_activity__download_file_failed__show_exception)
+            text.setOnClickListener {
+                val intent = CrashReportActivity.createIntent(activity, throwableAndLogs, description)
+                activity.startActivity(intent)
+            }
         }
     }
 }
