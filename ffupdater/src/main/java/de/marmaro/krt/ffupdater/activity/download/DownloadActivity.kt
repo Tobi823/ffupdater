@@ -76,37 +76,37 @@ import kotlinx.coroutines.withContext
  */
 @Keep
 class DownloadActivity : AppCompatActivity() {
-    private lateinit var viewModel: InstallActivityViewModel
+    private lateinit var downloadViewModel: DownloadViewModel
     private lateinit var app: App
     private lateinit var appImpl: AppBase
     private lateinit var installedAppStatus: InstalledAppStatus
     private lateinit var appInstaller: AppInstaller
 
     // persistent data for already running downloads
-    class InstallActivityViewModel : ViewModel() {
-        private var downloadApp: App? = null
-        var downloadDeferred: Deferred<Any>? = null
-        var downloadProgressChannel: Channel<DownloadStatus>? = null
+    class DownloadViewModel : ViewModel() {
+        private var status: InstalledAppStatus? = null
+        var deferred: Deferred<Any>? = null
+        var progressChannel: Channel<DownloadStatus>? = null
         var installationSuccess: Boolean = false
 
         fun storeNewRunningDownload(
-            app: App,
+            status: InstalledAppStatus,
             deferred: Deferred<Any>,
-            progressChannel: Channel<DownloadStatus>,
+            progressChannel: Channel<DownloadStatus>
         ) {
-            downloadApp = app
-            downloadDeferred = deferred
-            downloadProgressChannel = progressChannel
+            this.status = status
+            this.deferred = deferred
+            this.progressChannel = progressChannel
         }
 
-        fun isDownloadForCurrentAppRunning(currentApp: App): Boolean {
-            return downloadApp == currentApp && downloadDeferred?.isActive == true
+        fun isDownloadForCurrentAppRunning(status: InstalledAppStatus): Boolean {
+            return this.status == status && deferred?.isActive == true
         }
 
         fun clear() {
-            downloadApp = null
-            downloadDeferred = null
-            downloadProgressChannel = null
+            status = null
+            deferred = null
+            progressChannel = null
             installationSuccess = false
         }
     }
@@ -126,7 +126,7 @@ class DownloadActivity : AppCompatActivity() {
         app = App.valueOf(appFromExtras)
         appImpl = app.findImpl()
 
-        viewModel = ViewModelProvider(this)[InstallActivityViewModel::class.java]
+        downloadViewModel = ViewModelProvider(this)[DownloadViewModel::class.java]
         findViewById<Button>(R.id.install_activity__delete_cache_button).setOnClickListener {
             lifecycleScope.launch(Dispatchers.Main) {
                 app.findImpl().deleteFileCache(applicationContext)
@@ -157,7 +157,7 @@ class DownloadActivity : AppCompatActivity() {
         if (!isChangingConfigurations) {
             // if the device is not rotated, delete information about the download to allow a new download
             // next time
-            if (viewModel.installationSuccess) {
+            if (downloadViewModel.installationSuccess) {
                 if (ForegroundSettings.isDeleteUpdateIfInstallSuccessful) {
                     lifecycleScope.launch(Dispatchers.Main) {
                         appImpl.deleteFileCache(applicationContext)
@@ -170,7 +170,7 @@ class DownloadActivity : AppCompatActivity() {
                     }
                 }
             }
-            viewModel.clear()
+            downloadViewModel.clear()
         }
         window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
     }
@@ -222,18 +222,19 @@ class DownloadActivity : AppCompatActivity() {
 
         isStorageMounted().ifFalse { return }
         showWarningIfNotEnoughStorageIsAvailable()
+        fetchDownloadInformation().ifFalse { return }
         executeDownloadProcess().ifFalse { return }
         val success = installApp()
-        viewModel.installationSuccess = success
+        downloadViewModel.installationSuccess = success
         if (success) {
             appImpl.appWasInstalledCallback(applicationContext, installedAppStatus)
         }
     }
 
     private suspend fun executeDownloadProcess(): Boolean {
-        fetchDownloadInformation().ifFalse { return false }
 
-        if (viewModel.isDownloadForCurrentAppRunning(app)) {
+
+        if (downloadViewModel.isDownloadForCurrentAppRunning(installedAppStatus)) {
             return reuseCurrentDownload()
         }
 
@@ -306,9 +307,9 @@ class DownloadActivity : AppCompatActivity() {
         setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status))
 
         try {
-            withContext(viewModel.viewModelScope.coroutineContext) {
+            withContext(downloadViewModel.viewModelScope.coroutineContext) {
                 appImpl.download(applicationContext, installedAppStatus.latestVersion) { deferred, progressChannel ->
-                    viewModel.storeNewRunningDownload(app, deferred, progressChannel)
+                    downloadViewModel.storeNewRunningDownload(installedAppStatus, deferred, progressChannel)
                     showDownloadProgress(progressChannel)
                 }
             }
@@ -351,11 +352,11 @@ class DownloadActivity : AppCompatActivity() {
         setText(R.id.downloadingFileUrl, latestUpdate.downloadUrl)
         setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status))
 
-        showDownloadProgress(viewModel.downloadProgressChannel!!)
+        showDownloadProgress(downloadViewModel.progressChannel!!)
 
         try {
             // NPE was thrown in #359 - it should be safe to ignore null values
-            viewModel.downloadDeferred?.await()
+            downloadViewModel.deferred?.await()
             return true
         } catch (e: Exception) {
             val text = when (e) {
