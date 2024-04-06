@@ -1,6 +1,7 @@
 package de.marmaro.krt.ffupdater.activity.download
 
 import android.view.View
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
@@ -10,8 +11,10 @@ import de.marmaro.krt.ffupdater.crash.CrashReportActivity
 import de.marmaro.krt.ffupdater.crash.LogReader
 import de.marmaro.krt.ffupdater.crash.ThrowableAndLogs
 import de.marmaro.krt.ffupdater.installer.entity.Installer
+import de.marmaro.krt.ffupdater.network.file.DownloadStatus
 import de.marmaro.krt.ffupdater.settings.ForegroundSettings
 import de.marmaro.krt.ffupdater.settings.InstallerSettings
+import kotlinx.coroutines.channels.Channel
 
 class GuiHelper(val app: App, val activity: DownloadActivity) {
     private val appImpl = app.findImpl()
@@ -61,6 +64,21 @@ class GuiHelper(val app: App, val activity: DownloadActivity) {
         text.setOnClickListener {
             val intent = CrashReportActivity.createIntent(activity, throwableAndLogs, description)
             activity.startActivity(intent)
+        }
+    }
+
+    suspend fun showDownloadProgress(progressChannel: Channel<DownloadStatus>) {
+        for (progress in progressChannel) {
+            if (progress.progressInPercent != null) {
+                activity.findViewById<ProgressBar>(R.id.downloadingFileProgressBar).progress = progress.progressInPercent
+            }
+
+            val text = when {
+                progress.progressInPercent != null -> "(${progress.progressInPercent}%)"
+                else -> "(${progress.totalMB}MB)"
+            }
+            val statusText = activity.getString(R.string.download_activity__download_app_with_status)
+            setText(R.id.downloadingFileText, "$statusText $text")
         }
     }
 }

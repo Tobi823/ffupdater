@@ -159,8 +159,6 @@ class DownloadActivity : AppCompatActivity() {
         return true
     }
 
-
-
     private fun deleteCachedApkFileIfNecessary() {
         if (downloadViewModel.installationSuccess) {
             if (ForegroundSettings.isDeleteUpdateIfInstallSuccessful) {
@@ -177,8 +175,6 @@ class DownloadActivity : AppCompatActivity() {
         }
         downloadViewModel.clear()
     }
-
-
 
     private suspend fun startInstallationProcess() {
         Log.d(LOG_TAG, "DownloadActivity: Start process for ${app.name}.")
@@ -294,7 +290,7 @@ class DownloadActivity : AppCompatActivity() {
         gui.setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status))
 
         findViewById<View>(R.id.downloadingFile).visibleDuringExecution {
-            showDownloadProgress(downloadViewModel.progressChannel!!)
+            gui.showDownloadProgress(downloadViewModel.progressChannel!!)
             // NPE was thrown in https://github.com/Tobi823/ffupdater/issues/359 - it should be safe to ignore null values
             downloadViewModel.deferred?.await()
         }
@@ -336,22 +332,8 @@ class DownloadActivity : AppCompatActivity() {
         withContext(coroutineContext) {
             appImpl.download(applicationContext, status.latestVersion) { deferred, progressChannel ->
                 downloadViewModel.storeNewRunningDownload(status, deferred, progressChannel)
-                showDownloadProgress(progressChannel)
+                gui.showDownloadProgress(progressChannel)
             }
-        }
-    }
-
-    private suspend fun showDownloadProgress(progressChannel: Channel<DownloadStatus>) {
-        for (progress in progressChannel) {
-            if (progress.progressInPercent != null) {
-                findViewById<ProgressBar>(R.id.downloadingFileProgressBar).progress = progress.progressInPercent
-            }
-
-            val text = when {
-                progress.progressInPercent != null -> " (${progress.progressInPercent}%)"
-                else -> " (${progress.totalMB}MB)"
-            }
-            gui.setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status) + text)
         }
     }
 
