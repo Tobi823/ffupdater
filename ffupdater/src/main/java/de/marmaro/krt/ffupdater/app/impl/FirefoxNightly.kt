@@ -45,22 +45,14 @@ object FirefoxNightly : AppBase() {
         "https://firefox-ci-tc.services.mozilla.com/tasks/index/gecko.v2.mozilla-central.latest.mobile/fenix-nightly"
     override val displayCategory = listOf(FROM_MOZILLA)
 
+    private const val TASK_NAMESPACE = "gecko.v2.mozilla-central.latest.mobile.fenix-nightly"
+
+
     @MainThread
     @Throws(NetworkException::class)
     override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
         val abiString = findAbiString()
-        val preferences = PreferenceManager.getDefaultSharedPreferences(context.applicationContext)
-        var taskId = preferences.getString("cache__firefox_nightly__task_id", null)
-        var cacheAge = preferences.getLong("cache__firefox_nightly__age_ms", 0)
-        if (taskId == null || (System.currentTimeMillis() - cacheAge) >= Duration.ofHours(24).toMillis()) {
-            val indexPath = "mobile.v3.firefox-android.apks.fenix-nightly.latest.arm64-v8a"
-            taskId = MozillaCiJsonConsumer.findTaskId(indexPath, cacheBehaviour)
-            cacheAge = System.currentTimeMillis()
-            preferences.edit()
-                .putString("cache__firefox_nightly__task_id", taskId)
-                .putLong("cache__firefox_nightly__age_ms", cacheAge)
-                .apply()
-        }
+        val taskId = findLatestTaskId(context, cacheBehaviour)
         val result = MozillaCiJsonConsumer.findChainOfTrustJson(taskId, abiString, cacheBehaviour)
         val downloadUrl = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
                 "mobile.v3.firefox-android.apks.fenix-nightly.latest.${abiString}/artifacts/" +
@@ -76,6 +68,22 @@ object FirefoxNightly : AppBase() {
             fileHash = result.fileHash,
         )
     }
+
+    private suspend fun findLatestTaskId(context: Context, cacheBehaviour: CacheBehaviour): String {
+        val preferences = PreferenceManager.getDefaultSharedPreferences(context.applicationContext)
+        var taskId = preferences.getString("cache__firefox_nightly__task_id", null)
+        var cacheAge = preferences.getLong("cache__firefox_nightly__age_ms", 0)
+        if (taskId == null || (System.currentTimeMillis() - cacheAge) >= Duration.ofHours(24).toMillis()) {
+            taskId = MozillaCiJsonConsumer.findTaskId(TASK_NAMESPACE, cacheBehaviour)
+            cacheAge = System.currentTimeMillis()
+            preferences.edit()
+                .putString("cache__firefox_nightly__task_id", taskId)
+                .putLong("cache__firefox_nightly__age_ms", cacheAge)
+                .apply()
+        }
+        return taskId
+    }
+
 
     private fun findAbiString(): String {
         val abiString = when (DeviceAbiExtractor.findBestAbi(supportedAbis, DeviceSettingsHelper.prefer32BitApks)) {
