@@ -53,6 +53,8 @@ import de.marmaro.krt.ffupdater.settings.InstallerSettings
 import de.marmaro.krt.ffupdater.storage.StorageUtil
 import de.marmaro.krt.ffupdater.storage.SystemFileManager
 import de.marmaro.krt.ffupdater.utils.ifFalse
+import de.marmaro.krt.ffupdater.utils.visibleAfterExecution
+import de.marmaro.krt.ffupdater.utils.visibleDuringExecution
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
@@ -183,23 +185,6 @@ class DownloadActivity : AppCompatActivity() {
         findViewById<View>(viewId).visibility = View.GONE
     }
 
-    private suspend fun <T> showViewDuringExecution(viewId: Int, block: suspend () -> T): T {
-        findViewById<View>(viewId).visibility = View.VISIBLE
-        try {
-            return block()
-        } finally {
-            findViewById<View>(viewId).visibility = View.GONE
-        }
-    }
-
-    private suspend fun <T> showViewAfterExecution(viewId: Int, block: suspend () -> T): T {
-        try {
-            return block()
-        } finally {
-            findViewById<View>(viewId).visibility = View.VISIBLE
-        }
-    }
-
     private fun setText(textId: Int, text: String) {
         findViewById<TextView>(textId).text = text
     }
@@ -286,7 +271,7 @@ class DownloadActivity : AppCompatActivity() {
         val finishedText = getString(download_activity__fetched_url_for_download_successfully, source)
 
         setText(R.id.fetchUrlTextView, inProgressText)
-        val status = showViewDuringExecution(R.id.fetchUrl) {
+        val status = findViewById<View>(R.id.fetchUrl).visibleDuringExecution {
             appImpl.findInstalledAppStatus(applicationContext, USE_EVEN_OUTDATED_CACHE)
         }
 
@@ -316,8 +301,8 @@ class DownloadActivity : AppCompatActivity() {
         setText(R.id.downloadingFileUrl, status.latestVersion.downloadUrl)
         setText(R.id.downloadedFileUrl, status.latestVersion.downloadUrl)
         setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status))
-        showViewDuringExecution(R.id.downloadingFile) {
-            showViewAfterExecution(R.id.downloadedFile) {
+        findViewById<View>(R.id.downloadingFile).visibleDuringExecution {
+            findViewById<View>(R.id.downloadedFile).visibleAfterExecution {
                 startDownloadInternal(status)
             }
         }
