@@ -231,7 +231,7 @@ class DownloadActivity : AppCompatActivity() {
     }
 
     private suspend fun executeDownloadProcess(): Boolean {
-        fetchDownloadInformationOrUseCache().ifFalse { return false }
+        fetchDownloadInformation().ifFalse { return false }
 
         if (viewModel.isDownloadForCurrentAppRunning(app)) {
             return reuseCurrentDownload()
@@ -268,7 +268,7 @@ class DownloadActivity : AppCompatActivity() {
         }
     }
 
-    private suspend fun fetchDownloadInformationOrUseCache(): Boolean {
+    private suspend fun fetchDownloadInformation(): Boolean {
         show(R.id.fetchUrl)
         val downloadSource = appImpl.downloadSource
         setText(R.id.fetchUrlTextView, getString(download_activity__fetch_url_for_download, downloadSource))
