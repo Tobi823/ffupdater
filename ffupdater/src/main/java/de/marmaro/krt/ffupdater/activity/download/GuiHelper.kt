@@ -55,13 +55,12 @@ class GuiHelper(val app: App, val activity: DownloadActivity) {
         show(R.id.install_activity__download_file_failed)
         setText(R.id.install_activity__download_file_failed__url, status.latestVersion.downloadUrl)
         setText(R.id.install_activity__download_file_failed__text, description)
-        if (exception != null) {
-            val throwableAndLogs = ThrowableAndLogs(exception, LogReader.readLogs())
-            val text = activity.findViewById<TextView>(R.id.install_activity__download_file_failed__show_exception)
-            text.setOnClickListener {
-                val intent = CrashReportActivity.createIntent(activity, throwableAndLogs, description)
-                activity.startActivity(intent)
-            }
+        if (exception == null) return
+        val throwableAndLogs = ThrowableAndLogs(exception, LogReader.readLogs())
+        val text = activity.findViewById<TextView>(R.id.install_activity__download_file_failed__show_exception)
+        text.setOnClickListener {
+            val intent = CrashReportActivity.createIntent(activity, throwableAndLogs, description)
+            activity.startActivity(intent)
         }
     }
 }
