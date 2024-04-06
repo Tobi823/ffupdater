@@ -60,6 +60,7 @@ import de.marmaro.krt.ffupdater.settings.ForegroundSettings
 import de.marmaro.krt.ffupdater.settings.InstallerSettings
 import de.marmaro.krt.ffupdater.storage.StorageUtil
 import de.marmaro.krt.ffupdater.utils.MethodResult
+import de.marmaro.krt.ffupdater.utils.ifFalse
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
@@ -220,10 +221,9 @@ class DownloadActivity : AppCompatActivity() {
     private suspend fun startInstallationProcess() {
         Log.d(LOG_TAG, "DownloadActivity: Start process for ${app.name}.")
 
-        checkIfStorageIsMounted()
-            .onFailure { return@startInstallationProcess }
+        isStorageMounted().ifFalse { return }
 
-        checkIfEnoughStorageAvailable()
+        showWarningIfNotEnoughStorageIsAvailable()
 
         executeDownloadProcess()
             .onFailure { return@startInstallationProcess }
@@ -261,16 +261,16 @@ class DownloadActivity : AppCompatActivity() {
         return MethodResult.success()
     }
 
-    private fun checkIfStorageIsMounted(): MethodResult {
-        if (Environment.getExternalStorageState() != Environment.MEDIA_MOUNTED) {
-            show(R.id.externalStorageNotAccessible)
-            setText(R.id.externalStorageNotAccessible_state, Environment.getExternalStorageState())
-            return MethodResult.failure()
+    private fun isStorageMounted(): Boolean {
+        if (Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED) {
+            return true
         }
-        return MethodResult.success()
+        show(R.id.externalStorageNotAccessible)
+        setText(R.id.externalStorageNotAccessible_state, Environment.getExternalStorageState())
+        return false
     }
 
-    private fun checkIfEnoughStorageAvailable() {
+    private fun showWarningIfNotEnoughStorageIsAvailable() {
         if (!StorageUtil.isEnoughStorageAvailable(applicationContext)) {
             show(R.id.tooLowMemory)
             val mbs = StorageUtil.getFreeStorageInMebibytes(applicationContext)
