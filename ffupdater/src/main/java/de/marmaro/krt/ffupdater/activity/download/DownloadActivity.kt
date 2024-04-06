@@ -76,7 +76,7 @@ class DownloadActivity : AppCompatActivity() {
     private lateinit var app: App
     private lateinit var appImpl: AppBase
     private lateinit var appInstaller: AppInstaller
-    private val gui = GuiHelper(this)
+    private lateinit var gui: GuiHelper
 
     // persistent data for already running downloads
     class DownloadViewModel : ViewModel() {
@@ -124,6 +124,7 @@ class DownloadActivity : AppCompatActivity() {
         app = App.valueOf(appFromExtras)
         appImpl = app.findImpl()
         appInstaller = createForegroundAppInstaller(this, app)
+        gui = GuiHelper(app, this)
         lifecycle.addObserver(appInstaller)
 
         downloadViewModel = ViewModelProvider(this)[DownloadViewModel::class.java]
@@ -365,7 +366,7 @@ class DownloadActivity : AppCompatActivity() {
             true
         } catch (e: InstallationFailedException) {
             val ex = RuntimeException("Failed to install ${app.name} in the foreground.", e)
-            displayAppInstallationFailure(e.translatedMessage, ex)
+            gui.displayAppInstallationFailure(e.translatedMessage, ex)
             // hide existing background notification for applicationContext app
             NotificationRemover.removeAppStatusNotifications(applicationContext, app)
             false
@@ -393,31 +394,7 @@ class DownloadActivity : AppCompatActivity() {
         NotificationRemover.removeAppStatusNotifications(applicationContext, app)
     }
 
-    @MainThread
-    private fun displayAppInstallationFailure(errorMessage: String, exception: Exception) {
-        gui.show(R.id.install_activity__exception)
 
-        gui.setText(R.id.install_activity__exception__text, getString(application_installation_was_not_successful))
-        if (InstallerSettings.getInstallerMethod() == SESSION_INSTALLER) {
-            gui.show(R.id.install_activity__different_installer_info)
-        }
-
-        val throwableAndLogs = ThrowableAndLogs(exception, LogReader.readLogs())
-        gui.show(R.id.install_activity__exception__description)
-        findViewById<TextView>(R.id.install_activity__exception__description).text = errorMessage
-        findViewById<TextView>(R.id.install_activity__exception__show_button).setOnClickListener {
-            val description = getString(crash_report__explain_text__download_activity_install_file)
-            val intent = CrashReportActivity.createIntent(applicationContext, throwableAndLogs, description)
-            startActivity(intent)
-        }
-
-        val cacheFolder = appImpl.getApkCacheFolder(applicationContext).absolutePath
-        gui.setText(R.id.install_activity__cache_folder_path, cacheFolder)
-        if (!ForegroundSettings.isDeleteUpdateIfInstallFailed) {
-            gui.show(R.id.install_activity__delete_cache)
-            gui.show(R.id.install_activity__open_cache_folder)
-        }
-    }
 
     @MainThread
     private fun displayDownloadFailure(status: InstalledAppStatus, description: String, exception: Exception?) {
