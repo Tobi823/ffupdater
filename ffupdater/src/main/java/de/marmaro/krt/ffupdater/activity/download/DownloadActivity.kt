@@ -181,9 +181,7 @@ class DownloadActivity : AppCompatActivity() {
         downloadViewModel.clear()
     }
 
-    private fun setText(textId: Int, text: String) {
-        findViewById<TextView>(textId).text = text
-    }
+
 
     private suspend fun startInstallationProcess() {
         Log.d(LOG_TAG, "DownloadActivity: Start process for ${app.name}.")
@@ -206,7 +204,7 @@ class DownloadActivity : AppCompatActivity() {
             return true
         }
         gui.show(R.id.externalStorageNotAccessible)
-        setText(R.id.externalStorageNotAccessible_state, Environment.getExternalStorageState())
+        gui.setText(R.id.externalStorageNotAccessible_state, Environment.getExternalStorageState())
         return false
     }
 
@@ -225,7 +223,7 @@ class DownloadActivity : AppCompatActivity() {
         gui.show(R.id.tooLowMemory)
         val mbs = StorageUtil.getFreeStorageInMebibytes(applicationContext)
         val message = getString(download_activity__too_low_memory_description, mbs)
-        setText(R.id.tooLowMemoryDescription, message)
+        gui.setText(R.id.tooLowMemoryDescription, message)
     }
 
     private suspend fun fetchDownloadInformation(): InstalledAppStatus? {
@@ -247,13 +245,13 @@ class DownloadActivity : AppCompatActivity() {
         val inProgressText = getString(download_activity__fetch_url_for_download, source)
         val finishedText = getString(download_activity__fetched_url_for_download_successfully, source)
 
-        setText(R.id.fetchUrlTextView, inProgressText)
+        gui.setText(R.id.fetchUrlTextView, inProgressText)
         val status = findViewById<View>(R.id.fetchUrl).visibleDuringExecution {
             appImpl.findInstalledAppStatus(applicationContext, USE_EVEN_OUTDATED_CACHE)
         }
 
         gui.show(R.id.fetchedUrlSuccess)
-        setText(R.id.fetchedUrlSuccessTextView, finishedText)
+        gui.setText(R.id.fetchedUrlSuccessTextView, finishedText)
         return status
     }
 
@@ -267,7 +265,7 @@ class DownloadActivity : AppCompatActivity() {
             Log.d(LOG_TAG, "DownloadActivity: Use APK cache of ${app.name}.")
             gui.show(R.id.useCachedDownloadedApk)
             val file = appImpl.getApkFile(applicationContext, status.latestVersion)
-            setText(R.id.useCachedDownloadedApk__path, file.absolutePath)
+            gui.setText(R.id.useCachedDownloadedApk__path, file.absolutePath)
             return true
         }
 
@@ -295,8 +293,8 @@ class DownloadActivity : AppCompatActivity() {
     @MainThread
     private suspend fun reuseCurrentDownloadWithoutErrorChecking(status: InstalledAppStatus) {
         Log.d(LOG_TAG, "DownloadActivity: Reuse running download of ${app.name}.")
-        setText(R.id.downloadingFileUrl, status.latestVersion.downloadUrl)
-        setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status))
+        gui.setText(R.id.downloadingFileUrl, status.latestVersion.downloadUrl)
+        gui.setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status))
 
         findViewById<View>(R.id.downloadingFile).visibleDuringExecution {
             showDownloadProgress(downloadViewModel.progressChannel!!)
@@ -323,9 +321,9 @@ class DownloadActivity : AppCompatActivity() {
     @MainThread
     private suspend fun startDownloadWithoutErrorChecking(status: InstalledAppStatus): Boolean {
         Log.d(LOG_TAG, "DownloadActivity: Start download of ${app.name}.")
-        setText(R.id.downloadingFileUrl, status.latestVersion.downloadUrl)
-        setText(R.id.downloadedFileUrl, status.latestVersion.downloadUrl)
-        setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status))
+        gui.setText(R.id.downloadingFileUrl, status.latestVersion.downloadUrl)
+        gui.setText(R.id.downloadedFileUrl, status.latestVersion.downloadUrl)
+        gui.setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status))
         findViewById<View>(R.id.downloadingFile).visibleDuringExecution {
             findViewById<View>(R.id.downloadedFile).visibleAfterExecution {
                 startDownloadInternal(status)
@@ -356,7 +354,7 @@ class DownloadActivity : AppCompatActivity() {
                 progress.progressInPercent != null -> " (${progress.progressInPercent}%)"
                 else -> " (${progress.totalMB}MB)"
             }
-            setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status) + text)
+            gui.setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status) + text)
         }
     }
 
@@ -386,7 +384,7 @@ class DownloadActivity : AppCompatActivity() {
 
         gui.show(R.id.installerSuccess)
         gui.show(R.id.fingerprintInstalledGood)
-        setText(R.id.fingerprintInstalledGoodHash, certificateHash)
+        gui.setText(R.id.fingerprintInstalledGoodHash, certificateHash)
         if (!ForegroundSettings.isDeleteUpdateIfInstallSuccessful) {
             gui.show(R.id.install_activity__delete_cache)
             gui.show(R.id.install_activity__open_cache_folder)
@@ -399,7 +397,7 @@ class DownloadActivity : AppCompatActivity() {
     private fun displayAppInstallationFailure(errorMessage: String, exception: Exception) {
         gui.show(R.id.install_activity__exception)
 
-        setText(R.id.install_activity__exception__text, getString(application_installation_was_not_successful))
+        gui.setText(R.id.install_activity__exception__text, getString(application_installation_was_not_successful))
         if (InstallerSettings.getInstallerMethod() == SESSION_INSTALLER) {
             gui.show(R.id.install_activity__different_installer_info)
         }
@@ -414,7 +412,7 @@ class DownloadActivity : AppCompatActivity() {
         }
 
         val cacheFolder = appImpl.getApkCacheFolder(applicationContext).absolutePath
-        setText(R.id.install_activity__cache_folder_path, cacheFolder)
+        gui.setText(R.id.install_activity__cache_folder_path, cacheFolder)
         if (!ForegroundSettings.isDeleteUpdateIfInstallFailed) {
             gui.show(R.id.install_activity__delete_cache)
             gui.show(R.id.install_activity__open_cache_folder)
@@ -424,8 +422,8 @@ class DownloadActivity : AppCompatActivity() {
     @MainThread
     private fun displayDownloadFailure(status: InstalledAppStatus, description: String, exception: Exception?) {
         gui.show(R.id.install_activity__download_file_failed)
-        setText(R.id.install_activity__download_file_failed__url, status.latestVersion.downloadUrl)
-        setText(R.id.install_activity__download_file_failed__text, description)
+        gui.setText(R.id.install_activity__download_file_failed__url, status.latestVersion.downloadUrl)
+        gui.setText(R.id.install_activity__download_file_failed__text, description)
         if (exception != null) {
             val throwableAndLogs = ThrowableAndLogs(exception, LogReader.readLogs())
             val text = findViewById<TextView>(R.id.install_activity__download_file_failed__show_exception)
@@ -439,7 +437,7 @@ class DownloadActivity : AppCompatActivity() {
     @MainThread
     private fun displayFetchFailure(message: String, exception: Exception?) {
         gui.show(R.id.install_activity__exception)
-        setText(R.id.install_activity__exception__text, message)
+        gui.setText(R.id.install_activity__exception__text, message)
         if (exception == null) {
             findViewById<View>(R.id.install_activity__exception__show_button).visibility = View.GONE
             return
