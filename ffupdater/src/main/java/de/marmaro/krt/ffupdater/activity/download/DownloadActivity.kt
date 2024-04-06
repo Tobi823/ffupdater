@@ -336,20 +336,11 @@ class DownloadActivity : AppCompatActivity() {
         }
     }
 
-
     @MainThread
     private suspend fun reuseCurrentDownload(status: InstalledAppStatus): Boolean {
-        Log.d(LOG_TAG, "DownloadActivity: Reuse running download of ${app.name}.")
-        show(R.id.downloadingFile)
-        setText(R.id.downloadingFileUrl, status.latestVersion.downloadUrl)
-        setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status))
-
-        showDownloadProgress(downloadViewModel.progressChannel!!)
-
-        try {
-            // NPE was thrown in #359 - it should be safe to ignore null values
-            downloadViewModel.deferred?.await()
-            return true
+        return try {
+            reuseCurrentDownloadWithoutErrorChecking(status)
+            true
         } catch (e: Exception) {
             val text = when (e) {
                 is NetworkException -> getString(install_activity__download_file_failed__crash_text)
@@ -357,37 +348,48 @@ class DownloadActivity : AppCompatActivity() {
                 else -> throw e
             }
             displayDownloadFailure(status, text, e)
-        } finally {
-            hide(R.id.downloadingFile)
+            Log.d(LOG_TAG, "DownloadActivity: Reusing failed for ${app.name}.")
+            false
         }
-        Log.d(LOG_TAG, "DownloadActivity: Reusing failed for ${app.name}.")
-        return false
+    }
+
+    @MainThread
+    private suspend fun reuseCurrentDownloadWithoutErrorChecking(status: InstalledAppStatus) {
+        Log.d(LOG_TAG, "DownloadActivity: Reuse running download of ${app.name}.")
+        setText(R.id.downloadingFileUrl, status.latestVersion.downloadUrl)
+        setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status))
+
+        findViewById<View>(R.id.downloadingFile).visibleDuringExecution {
+            showDownloadProgress(downloadViewModel.progressChannel!!)
+            // NPE was thrown in https://github.com/Tobi823/ffupdater/issues/359 - it should be safe to ignore null values
+            downloadViewModel.deferred?.await()
+        }
     }
 
     @MainThread
     private suspend fun installApp(status: InstalledAppStatus): Boolean {
-        Log.d(LOG_TAG, "DownloadActivity: Install app ${app.name}.")
-        show(R.id.installingApplication)
-        val file = appImpl.getApkFile(applicationContext, status.latestVersion)
-
-        try {
-            val installResult = appInstaller.startInstallation(this@DownloadActivity, file)
-            val certificateHash = installResult.certificateHash ?: "error"
-            displayAppInstallationSuccess(certificateHash)
-            return true
+        return try {
+            installAppWithoutErrorChecking(status)
+            true
         } catch (e: InstallationFailedException) {
             val ex = RuntimeException("Failed to install ${app.name} in the foreground.", e)
             displayAppInstallationFailure(e.translatedMessage, ex)
-        } finally {
             // hide existing background notification for applicationContext app
             NotificationRemover.removeAppStatusNotifications(applicationContext, app)
-            hide(R.id.installingApplication)
+            false
         }
-        return false
     }
 
     @MainThread
-    private fun displayAppInstallationSuccess(certificateHash: String) {
+    private suspend fun installAppWithoutErrorChecking(status: InstalledAppStatus) {
+        Log.d(LOG_TAG, "DownloadActivity: Install app ${app.name}.")
+        val file = appImpl.getApkFile(applicationContext, status.latestVersion)
+
+        val certificateHash = findViewById<View>(R.id.installingApplication).visibleDuringExecution {
+            val installResult = appInstaller.startInstallation(this@DownloadActivity, file)
+            installResult.certificateHash ?: "error"
+        }
+
         show(R.id.installerSuccess)
         show(R.id.fingerprintInstalledGood)
         setText(R.id.fingerprintInstalledGoodHash, certificateHash)
@@ -395,6 +397,8 @@ class DownloadActivity : AppCompatActivity() {
             show(R.id.install_activity__delete_cache)
             show(R.id.install_activity__open_cache_folder)
         }
+        // hide existing background notification for applicationContext app
+        NotificationRemover.removeAppStatusNotifications(applicationContext, app)
     }
 
     @MainThread
