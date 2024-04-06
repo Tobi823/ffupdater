@@ -59,6 +59,7 @@ import de.marmaro.krt.ffupdater.notification.NotificationRemover
 import de.marmaro.krt.ffupdater.settings.ForegroundSettings
 import de.marmaro.krt.ffupdater.settings.InstallerSettings
 import de.marmaro.krt.ffupdater.storage.StorageUtil
+import de.marmaro.krt.ffupdater.storage.SystemFileManager
 import de.marmaro.krt.ffupdater.utils.ifFalse
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
@@ -133,7 +134,7 @@ class DownloadActivity : AppCompatActivity() {
             }
         }
         findViewById<Button>(R.id.install_activity__open_cache_folder_button).setOnClickListener {
-            tryOpenDownloadFolderInFileManager()
+            SystemFileManager.openFolder(appImpl.getApkCacheFolder(applicationContext), this)
         }
 
         // hide existing background notification for this app
@@ -177,31 +178,6 @@ class DownloadActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         finish()
         return true
-    }
-
-    private fun tryOpenDownloadFolderInFileManager() {
-        val absolutePath = appImpl.getApkCacheFolder(applicationContext).absolutePath
-        val uri = Uri.parse("file://$absolutePath/")
-        val intent = Intent(Intent.ACTION_VIEW)
-        intent.setDataAndType(uri, "resource/folder")
-        val chooser = Intent.createChooser(intent, getString(download_activity__open_folder))
-        showBriefMessage(download_activity__file_uri_exposed_toast)
-        if (DeviceSdkTester.supportsAndroid7Nougat24()) {
-            StrictMode.setVmPolicy(StrictMode.VmPolicy.LAX)
-            try {
-                startActivity(chooser)
-            } catch (e: FileUriExposedException) {
-                showBriefMessage(download_activity__file_uri_exposed_toast)
-            }
-        } else {
-            startActivity(chooser)
-        }
-    }
-
-    @UiThread
-    private fun showBriefMessage(message: Int) {
-        val layout = findViewById<View>(R.id.download_activity__root_view)
-        Snackbar.make(layout, message, Snackbar.LENGTH_LONG).show()
     }
 
     private fun show(viewId: Int) {
