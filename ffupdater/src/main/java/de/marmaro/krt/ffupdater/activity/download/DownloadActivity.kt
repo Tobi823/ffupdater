@@ -2,11 +2,8 @@ package de.marmaro.krt.ffupdater.activity.download
 
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
-import android.os.FileUriExposedException
-import android.os.StrictMode
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
@@ -15,14 +12,12 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
-import androidx.annotation.UiThread
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
-import com.google.android.material.snackbar.Snackbar
 import de.marmaro.krt.ffupdater.DisplayableException
 import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
 import de.marmaro.krt.ffupdater.R
@@ -32,9 +27,7 @@ import de.marmaro.krt.ffupdater.R.string.crash_report__explain_text__download_ac
 import de.marmaro.krt.ffupdater.R.string.download_activity__download_app_with_status
 import de.marmaro.krt.ffupdater.R.string.download_activity__fetch_url_for_download
 import de.marmaro.krt.ffupdater.R.string.download_activity__fetched_url_for_download_successfully
-import de.marmaro.krt.ffupdater.R.string.download_activity__file_uri_exposed_toast
 import de.marmaro.krt.ffupdater.R.string.download_activity__github_rate_limit_exceeded
-import de.marmaro.krt.ffupdater.R.string.download_activity__open_folder
 import de.marmaro.krt.ffupdater.R.string.download_activity__temporary_network_issue
 import de.marmaro.krt.ffupdater.R.string.download_activity__too_low_memory_description
 import de.marmaro.krt.ffupdater.R.string.install_activity__download_file_failed__crash_text
@@ -45,7 +38,6 @@ import de.marmaro.krt.ffupdater.app.impl.AppBase
 import de.marmaro.krt.ffupdater.crash.CrashReportActivity
 import de.marmaro.krt.ffupdater.crash.LogReader
 import de.marmaro.krt.ffupdater.crash.ThrowableAndLogs
-import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.AppInstaller
 import de.marmaro.krt.ffupdater.installer.AppInstaller.Companion.createForegroundAppInstaller
 import de.marmaro.krt.ffupdater.installer.entity.Installer.SESSION_INSTALLER
@@ -125,13 +117,12 @@ class DownloadActivity : AppCompatActivity() {
         }
         app = App.valueOf(appFromExtras)
         appImpl = app.findImpl()
+        appInstaller = createForegroundAppInstaller(this, app)
+        lifecycle.addObserver(appInstaller)
 
         downloadViewModel = ViewModelProvider(this)[DownloadViewModel::class.java]
         findViewById<Button>(R.id.install_activity__delete_cache_button).setOnClickListener {
-            lifecycleScope.launch(Dispatchers.Main) {
-                app.findImpl().deleteFileCache(applicationContext)
-                hide(R.id.install_activity__delete_cache)
-            }
+            deleteFileCache()
         }
         findViewById<Button>(R.id.install_activity__open_cache_folder_button).setOnClickListener {
             SystemFileManager.openFolder(appImpl.getApkCacheFolder(applicationContext), this)
@@ -146,9 +137,13 @@ class DownloadActivity : AppCompatActivity() {
         lifecycleScope.launch(Dispatchers.Main) {
             startInstallationProcess()
         }
+    }
 
-        appInstaller = createForegroundAppInstaller(this, app)
-        lifecycle.addObserver(appInstaller)
+    private fun deleteFileCache() {
+        lifecycleScope.launch(Dispatchers.Main) {
+            app.findImpl().deleteFileCache(applicationContext)
+            hide(R.id.install_activity__delete_cache)
+        }
     }
 
     override fun onStop() {
@@ -188,6 +183,23 @@ class DownloadActivity : AppCompatActivity() {
         findViewById<View>(viewId).visibility = View.GONE
     }
 
+    private suspend fun <T> showViewDuringExecution(viewId: Int, block: suspend () -> T): T {
+        findViewById<View>(viewId).visibility = View.VISIBLE
+        try {
+            return block()
+        } finally {
+            findViewById<View>(viewId).visibility = View.GONE
+        }
+    }
+
+    private suspend fun <T> showViewAfterExecution(viewId: Int, block: suspend () -> T): T {
+        try {
+            return block()
+        } finally {
+            findViewById<View>(viewId).visibility = View.VISIBLE
+        }
+    }
+
     private fun setText(textId: Int, text: String) {
         findViewById<TextView>(textId).text = text
     }
@@ -222,6 +234,8 @@ class DownloadActivity : AppCompatActivity() {
             return true
         }
 
+        isNetworkSuitable().ifFalse { return false }
+
         return startDownload(status)
     }
 
@@ -234,13 +248,22 @@ class DownloadActivity : AppCompatActivity() {
         return false
     }
 
-    private fun showWarningIfNotEnoughStorageIsAvailable() {
-        if (!StorageUtil.isEnoughStorageAvailable(applicationContext)) {
-            show(R.id.tooLowMemory)
-            val mbs = StorageUtil.getFreeStorageInMebibytes(applicationContext)
-            val message = getString(download_activity__too_low_memory_description, mbs)
-            setText(R.id.tooLowMemoryDescription, message)
+    private fun isNetworkSuitable(): Boolean {
+        if (ForegroundSettings.isDownloadOnMeteredAllowed || !isNetworkMetered(applicationContext)) {
+            return true
         }
+        displayFetchFailure(getString(main_activity__no_unmetered_network))
+        return false
+    }
+
+    private fun showWarningIfNotEnoughStorageIsAvailable() {
+        if (StorageUtil.isEnoughStorageAvailable(applicationContext)) {
+            return
+        }
+        show(R.id.tooLowMemory)
+        val mbs = StorageUtil.getFreeStorageInMebibytes(applicationContext)
+        val message = getString(download_activity__too_low_memory_description, mbs)
+        setText(R.id.tooLowMemoryDescription, message)
     }
 
     private suspend fun fetchDownloadInformation(): InstalledAppStatus? {
@@ -258,40 +281,24 @@ class DownloadActivity : AppCompatActivity() {
     }
 
     private suspend fun fetchDownloadInformationWithoutErrorChecking(): InstalledAppStatus {
-        show(R.id.fetchUrl)
-        val downloadSource = appImpl.downloadSource
-        setText(R.id.fetchUrlTextView, getString(download_activity__fetch_url_for_download, downloadSource))
+        val source = appImpl.downloadSource
+        val inProgressText = getString(download_activity__fetch_url_for_download, source)
+        val finishedText = getString(download_activity__fetched_url_for_download_successfully, source)
 
-        val status = appImpl.findInstalledAppStatus(applicationContext, USE_EVEN_OUTDATED_CACHE)
+        setText(R.id.fetchUrlTextView, inProgressText)
+        val status = showViewDuringExecution(R.id.fetchUrl) {
+            appImpl.findInstalledAppStatus(applicationContext, USE_EVEN_OUTDATED_CACHE)
+        }
 
-        hide(R.id.fetchUrl)
         show(R.id.fetchedUrlSuccess)
-        val finishedText = getString(download_activity__fetched_url_for_download_successfully, downloadSource)
         setText(R.id.fetchedUrlSuccessTextView, finishedText)
         return status
     }
 
     @MainThread
     private suspend fun startDownload(status: InstalledAppStatus): Boolean {
-        Log.d(LOG_TAG, "DownloadActivity: Start download of ${app.name}.")
-        if (!ForegroundSettings.isDownloadOnMeteredAllowed && isNetworkMetered(applicationContext)) {
-            displayFetchFailure(getString(main_activity__no_unmetered_network))
-            return false
-        }
-
-        val appImpl = app.findImpl()
-        show(R.id.downloadingFile)
-        setText(R.id.downloadingFileUrl, status.latestVersion.downloadUrl)
-        setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status))
-
-        try {
-            withContext(downloadViewModel.viewModelScope.coroutineContext) {
-                appImpl.download(applicationContext, status.latestVersion) { deferred, progressChannel ->
-                    downloadViewModel.storeNewRunningDownload(status, deferred, progressChannel)
-                    showDownloadProgress(progressChannel)
-                }
-            }
-            return true
+        return try {
+            startDownloadWithoutErrorChecking(status)
         } catch (e: Exception) {
             val text = when (e) {
                 is NetworkException -> getString(install_activity__download_file_failed__crash_text)
@@ -299,13 +306,36 @@ class DownloadActivity : AppCompatActivity() {
                 else -> throw e
             }
             displayDownloadFailure(status, text, e)
-        } finally {
-            hide(R.id.downloadingFile)
-            show(R.id.downloadedFile)
-            setText(R.id.downloadedFileUrl, status.latestVersion.downloadUrl)
+            false
         }
-        return false
     }
+
+    @MainThread
+    private suspend fun startDownloadWithoutErrorChecking(status: InstalledAppStatus): Boolean {
+        Log.d(LOG_TAG, "DownloadActivity: Start download of ${app.name}.")
+        setText(R.id.downloadingFileUrl, status.latestVersion.downloadUrl)
+        setText(R.id.downloadedFileUrl, status.latestVersion.downloadUrl)
+        setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status))
+        showViewDuringExecution(R.id.downloadingFile) {
+            showViewAfterExecution(R.id.downloadedFile) {
+                startDownloadInternal(status)
+            }
+        }
+        return true
+    }
+
+    @MainThread
+    private suspend fun startDownloadInternal(status: InstalledAppStatus) {
+        val appImpl = app.findImpl()
+        val coroutineContext = downloadViewModel.viewModelScope.coroutineContext
+        withContext(coroutineContext) {
+            appImpl.download(applicationContext, status.latestVersion) { deferred, progressChannel ->
+                downloadViewModel.storeNewRunningDownload(status, deferred, progressChannel)
+                showDownloadProgress(progressChannel)
+            }
+        }
+    }
+
 
     private suspend fun showDownloadProgress(progressChannel: Channel<DownloadStatus>) {
         for (progress in progressChannel) {
