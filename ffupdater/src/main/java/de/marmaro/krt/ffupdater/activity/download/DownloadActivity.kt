@@ -234,8 +234,7 @@ class DownloadActivity : AppCompatActivity() {
         fetchDownloadInformationOrUseCache().ifFalse { return false }
 
         if (viewModel.isDownloadForCurrentAppRunning(app)) {
-            reuseCurrentDownload().ifFalse { return false }
-            return true
+            return reuseCurrentDownload()
         }
 
         val appImpl = app.findImpl()
@@ -248,8 +247,7 @@ class DownloadActivity : AppCompatActivity() {
             return true
         }
 
-        startDownload().ifFalse { return false }
-        return true
+        return startDownload()
     }
 
     private fun isStorageMounted(): Boolean {
