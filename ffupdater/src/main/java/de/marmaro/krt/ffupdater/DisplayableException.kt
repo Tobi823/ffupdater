@@ -9,4 +9,8 @@ import androidx.annotation.Keep
 open class DisplayableException : RuntimeException {
     constructor(message: String) : super(message)
     constructor(message: String, throwable: Throwable?) : super(message, throwable)
+
+    fun getNullSafeMessage(): String {
+        return message ?: javaClass.name
+    }
 }

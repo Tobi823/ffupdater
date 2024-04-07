@@ -2,64 +2,47 @@ package de.marmaro.krt.ffupdater.activity.download
 
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
-import android.os.FileUriExposedException
-import android.os.StrictMode
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.Button
-import android.widget.ProgressBar
-import android.widget.TextView
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
-import androidx.annotation.UiThread
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
-import com.google.android.material.snackbar.Snackbar
 import de.marmaro.krt.ffupdater.DisplayableException
 import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.R.string.application_installation_was_not_successful
-import de.marmaro.krt.ffupdater.R.string.crash_report__explain_text__download_activity_fetching_url
-import de.marmaro.krt.ffupdater.R.string.crash_report__explain_text__download_activity_install_file
 import de.marmaro.krt.ffupdater.R.string.download_activity__download_app_with_status
 import de.marmaro.krt.ffupdater.R.string.download_activity__fetch_url_for_download
 import de.marmaro.krt.ffupdater.R.string.download_activity__fetched_url_for_download_successfully
-import de.marmaro.krt.ffupdater.R.string.download_activity__file_uri_exposed_toast
-import de.marmaro.krt.ffupdater.R.string.download_activity__github_rate_limit_exceeded
-import de.marmaro.krt.ffupdater.R.string.download_activity__open_folder
-import de.marmaro.krt.ffupdater.R.string.download_activity__temporary_network_issue
 import de.marmaro.krt.ffupdater.R.string.download_activity__too_low_memory_description
-import de.marmaro.krt.ffupdater.R.string.install_activity__download_file_failed__crash_text
 import de.marmaro.krt.ffupdater.R.string.main_activity__no_unmetered_network
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.InstalledAppStatus
 import de.marmaro.krt.ffupdater.app.impl.AppBase
-import de.marmaro.krt.ffupdater.crash.CrashReportActivity
-import de.marmaro.krt.ffupdater.crash.LogReader
-import de.marmaro.krt.ffupdater.crash.ThrowableAndLogs
-import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.AppInstaller
 import de.marmaro.krt.ffupdater.installer.AppInstaller.Companion.createForegroundAppInstaller
-import de.marmaro.krt.ffupdater.installer.entity.Installer.SESSION_INSTALLER
 import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
 import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
-import de.marmaro.krt.ffupdater.network.exceptions.ApiRateLimitExceededException
-import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
+import de.marmaro.krt.ffupdater.network.exceptions.NetworkNotSuitableException
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour.USE_EVEN_OUTDATED_CACHE
 import de.marmaro.krt.ffupdater.network.file.DownloadStatus
 import de.marmaro.krt.ffupdater.notification.NotificationRemover
 import de.marmaro.krt.ffupdater.settings.ForegroundSettings
-import de.marmaro.krt.ffupdater.settings.InstallerSettings
 import de.marmaro.krt.ffupdater.storage.StorageUtil
-import de.marmaro.krt.ffupdater.utils.MethodResult
+import de.marmaro.krt.ffupdater.storage.SystemFileManager
+import de.marmaro.krt.ffupdater.utils.goneAfterExecution
+import de.marmaro.krt.ffupdater.utils.ifFalse
+import de.marmaro.krt.ffupdater.utils.visibleAfterExecution
+import de.marmaro.krt.ffupdater.utils.visibleDuringExecution
+import de.marmaro.krt.ffupdater.utils.setVisibleOrGone
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
@@ -76,37 +59,39 @@ import kotlinx.coroutines.withContext
  */
 @Keep
 class DownloadActivity : AppCompatActivity() {
-    private lateinit var viewModel: InstallActivityViewModel
+    private lateinit var downloadViewModel: DownloadViewModel
     private lateinit var app: App
+    private lateinit var installer: AppInstaller
     private lateinit var appImpl: AppBase
-    private lateinit var installedAppStatus: InstalledAppStatus
-    private lateinit var appInstaller: AppInstaller
+    private lateinit var gui: GuiHelper
 
     // persistent data for already running downloads
-    class InstallActivityViewModel : ViewModel() {
-        private var downloadApp: App? = null
-        var downloadDeferred: Deferred<Any>? = null
-        var downloadProgressChannel: Channel<DownloadStatus>? = null
+    class DownloadViewModel : ViewModel() {
+        private var status: InstalledAppStatus? = null
+        var deferred: Deferred<Any>? = null
+        var progressChannel: Channel<DownloadStatus>? = null
+        var installationFinished: Boolean = false
         var installationSuccess: Boolean = false
 
         fun storeNewRunningDownload(
-            app: App,
+            status: InstalledAppStatus,
             deferred: Deferred<Any>,
             progressChannel: Channel<DownloadStatus>,
         ) {
-            downloadApp = app
-            downloadDeferred = deferred
-            downloadProgressChannel = progressChannel
+            this.status = status
+            this.deferred = deferred
+            this.progressChannel = progressChannel
         }
 
-        fun isDownloadForCurrentAppRunning(currentApp: App): Boolean {
-            return downloadApp == currentApp && downloadDeferred?.isActive == true
+        fun isDownloadForCurrentAppRunning(status: InstalledAppStatus): Boolean {
+            return this.status == status && deferred?.isActive == true
         }
 
         fun clear() {
-            downloadApp = null
-            downloadDeferred = null
-            downloadProgressChannel = null
+            status = null
+            deferred = null
+            progressChannel = null
+            installationFinished = false
             installationSuccess = false
         }
     }
@@ -116,62 +101,60 @@ class DownloadActivity : AppCompatActivity() {
         setContentView(R.layout.activity_download)
         AppCompatDelegate.setDefaultNightMode(ForegroundSettings.themePreference)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON) // prevent network timeouts
 
         val appFromExtras = intent.extras?.getString(EXTRA_APP_NAME)
+        // check if this activity was unintentionally started again after finishing the download
         if (appFromExtras == null) {
-            // InstallActivity was unintentionally started again after finishing the download
             finish()
             return
         }
+
+        downloadViewModel = ViewModelProvider(this)[DownloadViewModel::class.java]
+        if (downloadViewModel.installationFinished) {
+            downloadViewModel.clear()
+        }
+
         app = App.valueOf(appFromExtras)
         appImpl = app.findImpl()
+        gui = GuiHelper(app, this)
+        installer = createForegroundAppInstaller(this, app)
+        lifecycle.addObserver(installer)
 
-        viewModel = ViewModelProvider(this)[InstallActivityViewModel::class.java]
         findViewById<Button>(R.id.install_activity__delete_cache_button).setOnClickListener {
-            lifecycleScope.launch(Dispatchers.Main) {
-                app.findImpl().deleteFileCache(applicationContext)
-                hide(R.id.install_activity__delete_cache)
-            }
+            deleteFileCache()
         }
         findViewById<Button>(R.id.install_activity__open_cache_folder_button).setOnClickListener {
-            tryOpenDownloadFolderInFileManager()
+            SystemFileManager.openFolder(appImpl.getApkCacheFolder(applicationContext), this)
         }
-
-        // hide existing background notification for this app
+        findViewById<Button>(R.id.install_activity__retry_installation_button).setOnClickListener {
+            downloadViewModel.clear()
+            lifecycleScope.launch(Dispatchers.Main) {
+                startInstallationProcess()
+            }
+        }
         NotificationRemover.removeAppStatusNotifications(applicationContext, app)
-
-        // prevent network timeouts when the displayed is automatically turned off
-        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
 
         lifecycleScope.launch(Dispatchers.Main) {
             startInstallationProcess()
         }
+    }
 
-        appInstaller = createForegroundAppInstaller(this, app)
-        lifecycle.addObserver(appInstaller)
+    private fun deleteFileCache() {
+        lifecycleScope.launch(Dispatchers.Main) {
+            findViewById<View>(R.id.install_activity__delete_cache).goneAfterExecution {
+                app.findImpl().deleteFileCache(applicationContext)
+            }
+        }
     }
 
     override fun onStop() {
         super.onStop()
-
+        // if the device was not rotated
         if (!isChangingConfigurations) {
-            // if the device is not rotated, delete information about the download to allow a new download
-            // next time
-            if (viewModel.installationSuccess) {
-                if (ForegroundSettings.isDeleteUpdateIfInstallSuccessful) {
-                    lifecycleScope.launch(Dispatchers.Main) {
-                        appImpl.deleteFileCache(applicationContext)
-                    }
-                }
-            } else {
-                if (ForegroundSettings.isDeleteUpdateIfInstallFailed) {
-                    lifecycleScope.launch(Dispatchers.Main) {
-                        appImpl.deleteFileCache(applicationContext)
-                    }
-                }
-            }
-            viewModel.clear()
+            deleteCachedApkFileIfSuitable(downloadViewModel.installationSuccess)
         }
+        lifecycle.removeObserver(installer)
         window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
     }
 
@@ -180,303 +163,233 @@ class DownloadActivity : AppCompatActivity() {
         return true
     }
 
-    private fun tryOpenDownloadFolderInFileManager() {
-        val absolutePath = appImpl.getApkCacheFolder(applicationContext).absolutePath
-        val uri = Uri.parse("file://$absolutePath/")
-        val intent = Intent(Intent.ACTION_VIEW)
-        intent.setDataAndType(uri, "resource/folder")
-        val chooser = Intent.createChooser(intent, getString(download_activity__open_folder))
-        showBriefMessage(download_activity__file_uri_exposed_toast)
-        if (DeviceSdkTester.supportsAndroid7Nougat24()) {
-            StrictMode.setVmPolicy(StrictMode.VmPolicy.LAX)
-            try {
-                startActivity(chooser)
-            } catch (e: FileUriExposedException) {
-                showBriefMessage(download_activity__file_uri_exposed_toast)
+    private fun deleteCachedApkFileIfSuitable(wasInstallationSuccessful: Boolean) {
+        debug("check if the cached APK for ${app.name} should be deleted.")
+        val ifInstallSuccessfulShouldApkBeDeleted = mapOf(
+            true to ForegroundSettings.isDeleteUpdateIfInstallSuccessful,
+            false to ForegroundSettings.isDeleteUpdateIfInstallFailed
+        )
+        if (ifInstallSuccessfulShouldApkBeDeleted[wasInstallationSuccessful]!!) {
+            lifecycleScope.launch(Dispatchers.Main) {
+                appImpl.deleteFileCache(applicationContext)
             }
-        } else {
-            startActivity(chooser)
         }
-    }
-
-    @UiThread
-    private fun showBriefMessage(message: Int) {
-        val layout = findViewById<View>(R.id.download_activity__root_view)
-        Snackbar.make(layout, message, Snackbar.LENGTH_LONG).show()
-    }
-
-    private fun show(viewId: Int) {
-        findViewById<View>(viewId).visibility = View.VISIBLE
-    }
-
-    private fun hide(viewId: Int) {
-        findViewById<View>(viewId).visibility = View.GONE
-    }
-
-    private fun setText(textId: Int, text: String) {
-        findViewById<TextView>(textId).text = text
     }
 
     private suspend fun startInstallationProcess() {
-        Log.d(LOG_TAG, "DownloadActivity: Start process for ${app.name}.")
+        debug("start fetching, downloading and installation process")
+        gui.resetGui()
+        isStorageMounted().ifFalse { return }
+        showWarningIfNotEnoughStorageIsAvailable()
 
-        checkIfStorageIsMounted()
-            .onFailure { return@startInstallationProcess }
-
-        checkIfEnoughStorageAvailable()
-
-        executeDownloadProcess()
-            .onFailure { return@startInstallationProcess }
-
-        installApp()
-            .onSuccess {
-                appImpl.appWasInstalledCallback(applicationContext, installedAppStatus)
-                viewModel.installationSuccess = true
-            }
-            .onFailure { viewModel.installationSuccess = false }
+        val status = fetchDownloadInformation() ?: return
+        executeDownloadProcess(status).ifFalse { return }
+        installAppWithResultProcessing(status)
     }
 
-    private suspend fun executeDownloadProcess(): MethodResult {
-        fetchDownloadInformationOrUseCache()
-            .onFailure { return@executeDownloadProcess it }
-
-        if (viewModel.isDownloadForCurrentAppRunning(app)) {
-            reuseCurrentDownload()
-                .onFailure { return@executeDownloadProcess it }
-            return MethodResult.success()
+    private fun isStorageMounted(): Boolean {
+        if (Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED) {
+            return true
         }
-
-        val appImpl = app.findImpl()
-        val latestUpdate = installedAppStatus.latestVersion
-        if (appImpl.isApkDownloaded(applicationContext, latestUpdate)) {
-            Log.d(LOG_TAG, "DownloadActivity: Use APK cache of ${app.name}.")
-            show(R.id.useCachedDownloadedApk)
-            val file = appImpl.getApkFile(applicationContext, latestUpdate)
-            setText(R.id.useCachedDownloadedApk__path, file.absolutePath)
-            return MethodResult.success()
-        }
-
-        startDownload()
-            .onFailure { return@executeDownloadProcess it }
-        return MethodResult.success()
+        debug("storage is not mounted")
+        gui.show(R.id.externalStorageNotAccessible)
+        gui.setText(R.id.externalStorageNotAccessible_state, Environment.getExternalStorageState())
+        return false
     }
 
-    private fun checkIfStorageIsMounted(): MethodResult {
-        if (Environment.getExternalStorageState() != Environment.MEDIA_MOUNTED) {
-            show(R.id.externalStorageNotAccessible)
-            setText(R.id.externalStorageNotAccessible_state, Environment.getExternalStorageState())
-            return MethodResult.failure()
+    private fun isNetworkSuitable(): Boolean {
+        if (ForegroundSettings.isDownloadOnMeteredAllowed || !isNetworkMetered(applicationContext)) {
+            return true
         }
-        return MethodResult.success()
+        gui.displayFetchFailure(NetworkNotSuitableException(getString(main_activity__no_unmetered_network)))
+        return false
     }
 
-    private fun checkIfEnoughStorageAvailable() {
-        if (!StorageUtil.isEnoughStorageAvailable(applicationContext)) {
-            show(R.id.tooLowMemory)
-            val mbs = StorageUtil.getFreeStorageInMebibytes(applicationContext)
-            val message = getString(download_activity__too_low_memory_description, mbs)
-            setText(R.id.tooLowMemoryDescription, message)
-        }
-    }
-
-    private suspend fun fetchDownloadInformationOrUseCache(): MethodResult {
-        show(R.id.fetchUrl)
-        val downloadSource = appImpl.downloadSource
-        setText(R.id.fetchUrlTextView, getString(download_activity__fetch_url_for_download, downloadSource))
-
-        try {
-            installedAppStatus = appImpl.findInstalledAppStatus(applicationContext, USE_EVEN_OUTDATED_CACHE)
-        } catch (e: Exception) {
-            val text = when (e) {
-                is ApiRateLimitExceededException -> getString(download_activity__github_rate_limit_exceeded)
-                is DisplayableException -> getString(download_activity__temporary_network_issue)
-                else -> throw e
-            }
-            displayFetchFailure(text, e)
-            return MethodResult.failure()
-        }
-
-        hide(R.id.fetchUrl)
-        show(R.id.fetchedUrlSuccess)
-        val finishedText = getString(download_activity__fetched_url_for_download_successfully, downloadSource)
-        setText(R.id.fetchedUrlSuccessTextView, finishedText)
-        return MethodResult.success()
-    }
-
-    @MainThread
-    private suspend fun startDownload(): MethodResult {
-        Log.d(LOG_TAG, "DownloadActivity: Start download of ${app.name}.")
-        if (!ForegroundSettings.isDownloadOnMeteredAllowed && isNetworkMetered(applicationContext)) {
-            displayFetchFailure(getString(main_activity__no_unmetered_network))
-            return MethodResult.failure()
-        }
-
-        val appImpl = app.findImpl()
-        show(R.id.downloadingFile)
-        setText(R.id.downloadingFileUrl, installedAppStatus.latestVersion.downloadUrl)
-        setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status))
-
-        try {
-            withContext(viewModel.viewModelScope.coroutineContext) {
-                appImpl.download(applicationContext, installedAppStatus.latestVersion) { deferred, progressChannel ->
-                    viewModel.storeNewRunningDownload(app, deferred, progressChannel)
-                    showDownloadProgress(progressChannel)
-                }
-            }
-            return MethodResult.success()
-        } catch (e: Exception) {
-            val text = when (e) {
-                is NetworkException -> getString(install_activity__download_file_failed__crash_text)
-                is DisplayableException -> e.message ?: e.javaClass.name
-                else -> throw e
-            }
-            displayDownloadFailure(text, e)
-        } finally {
-            hide(R.id.downloadingFile)
-            show(R.id.downloadedFile)
-            setText(R.id.downloadedFileUrl, installedAppStatus.latestVersion.downloadUrl)
-        }
-        return MethodResult.failure()
-    }
-
-    private suspend fun showDownloadProgress(progressChannel: Channel<DownloadStatus>) {
-        for (progress in progressChannel) {
-            if (progress.progressInPercent != null) {
-                findViewById<ProgressBar>(R.id.downloadingFileProgressBar).progress = progress.progressInPercent
-            }
-
-            val text = when {
-                progress.progressInPercent != null -> " (${progress.progressInPercent}%)"
-                else -> " (${progress.totalMB}MB)"
-            }
-            setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status) + text)
-        }
-    }
-
-
-    @MainThread
-    private suspend fun reuseCurrentDownload(): MethodResult {
-        Log.d(LOG_TAG, "DownloadActivity: Reuse running download of ${app.name}.")
-        show(R.id.downloadingFile)
-        val latestUpdate = installedAppStatus.latestVersion
-        setText(R.id.downloadingFileUrl, latestUpdate.downloadUrl)
-        setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status))
-
-        showDownloadProgress(viewModel.downloadProgressChannel!!)
-
-        try {
-            // NPE was thrown in #359 - it should be safe to ignore null values
-            viewModel.downloadDeferred?.await()
-            return MethodResult.success()
-        } catch (e: Exception) {
-            val text = when (e) {
-                is NetworkException -> getString(install_activity__download_file_failed__crash_text)
-                is DisplayableException -> e.message ?: e.javaClass.name
-                else -> throw e
-            }
-            displayDownloadFailure(text, e)
-        } finally {
-            hide(R.id.downloadingFile)
-        }
-        Log.d(LOG_TAG, "DownloadActivity: Reusing failed for ${app.name}.")
-        return MethodResult.failure()
-    }
-
-    @MainThread
-    private suspend fun installApp(): MethodResult {
-        Log.d(LOG_TAG, "DownloadActivity: Install app ${app.name}.")
-        show(R.id.installingApplication)
-        val file = appImpl.getApkFile(applicationContext, installedAppStatus.latestVersion)
-
-        try {
-            val installResult = appInstaller.startInstallation(this@DownloadActivity, file)
-            val certificateHash = installResult.certificateHash ?: "error"
-            displayAppInstallationSuccess(certificateHash)
-            return MethodResult.success()
-        } catch (e: InstallationFailedException) {
-            val ex = RuntimeException("Failed to install ${app.name} in the foreground.", e)
-            displayAppInstallationFailure(e.translatedMessage, ex)
-        } finally {
-            // hide existing background notification for applicationContext app
-            NotificationRemover.removeAppStatusNotifications(applicationContext, app)
-            hide(R.id.installingApplication)
-        }
-        return MethodResult.failure()
-    }
-
-    @MainThread
-    private fun displayAppInstallationSuccess(certificateHash: String) {
-        show(R.id.installerSuccess)
-        show(R.id.fingerprintInstalledGood)
-        setText(R.id.fingerprintInstalledGoodHash, certificateHash)
-        if (!ForegroundSettings.isDeleteUpdateIfInstallSuccessful) {
-            show(R.id.install_activity__delete_cache)
-            show(R.id.install_activity__open_cache_folder)
-        }
-    }
-
-    @MainThread
-    private fun displayAppInstallationFailure(errorMessage: String, exception: Exception) {
-        show(R.id.install_activity__exception)
-        show(R.id.install_activity__exception__description)
-        setText(
-            R.id.install_activity__exception__text,
-            getString(application_installation_was_not_successful)
-        )
-        if (InstallerSettings.getInstallerMethod() == SESSION_INSTALLER) {
-            show(R.id.install_activity__different_installer_info)
-        }
-
-        val throwableAndLogs = ThrowableAndLogs(exception, LogReader.readLogs())
-        findViewById<TextView>(R.id.install_activity__exception__description).text = errorMessage
-        findViewById<TextView>(R.id.install_activity__exception__show_button).setOnClickListener {
-            val description = getString(crash_report__explain_text__download_activity_install_file)
-            val intent = CrashReportActivity.createIntent(applicationContext, throwableAndLogs, description)
-            startActivity(intent)
-        }
-
-        val cacheFolder = appImpl.getApkCacheFolder(applicationContext).absolutePath
-        setText(R.id.install_activity__cache_folder_path, cacheFolder)
-        if (!ForegroundSettings.isDeleteUpdateIfInstallFailed) {
-            show(R.id.install_activity__delete_cache)
-            show(R.id.install_activity__open_cache_folder)
-        }
-    }
-
-    @MainThread
-    private fun displayDownloadFailure(description: String, exception: Exception?) {
-        val downloadUrl = installedAppStatus.latestVersion.downloadUrl
-        show(R.id.install_activity__download_file_failed)
-        setText(R.id.install_activity__download_file_failed__url, downloadUrl)
-        setText(R.id.install_activity__download_file_failed__text, description)
-        if (exception != null) {
-            val throwableAndLogs = ThrowableAndLogs(exception, LogReader.readLogs())
-            val text = findViewById<TextView>(R.id.install_activity__download_file_failed__show_exception)
-            text.setOnClickListener {
-                val intent = CrashReportActivity.createIntent(applicationContext, throwableAndLogs, description)
-                startActivity(intent)
-            }
-        }
-    }
-
-    @MainThread
-    private fun displayFetchFailure(message: String, exception: Exception? = null) {
-        show(R.id.install_activity__exception)
-        setText(R.id.install_activity__exception__text, message)
-        if (exception == null) {
-            hide(R.id.install_activity__exception__show_button)
+    private fun showWarningIfNotEnoughStorageIsAvailable() {
+        if (StorageUtil.isEnoughStorageAvailable(applicationContext)) {
             return
         }
-        val throwableAndLogs = ThrowableAndLogs(exception, LogReader.readLogs())
-        findViewById<TextView>(R.id.install_activity__exception__show_button).setOnClickListener {
-            val description = getString(crash_report__explain_text__download_activity_fetching_url)
-            val intent = CrashReportActivity.createIntent(applicationContext, throwableAndLogs, description)
-            startActivity(intent)
+        gui.show(R.id.tooLowMemory)
+        val mbs = StorageUtil.getFreeStorageInMebibytes(applicationContext)
+        val message = getString(download_activity__too_low_memory_description, mbs)
+        gui.setText(R.id.tooLowMemoryDescription, message)
+    }
+
+    private suspend fun fetchDownloadInformation(): InstalledAppStatus? {
+        return try {
+            fetchDownloadInformationWithoutErrorChecking()
+        } catch (e: Exception) {
+            debug("fetching download information failed for ${app.name}", e)
+            if (e !is DisplayableException) throw e
+            gui.displayFetchFailure(e)
+            null
+        }
+    }
+
+    private suspend fun fetchDownloadInformationWithoutErrorChecking(): InstalledAppStatus {
+        debug("fetching download information for ${app.name}")
+        val source = appImpl.downloadSource
+        val inProgressText = getString(download_activity__fetch_url_for_download, source)
+        gui.setText(R.id.fetchUrlTextView, inProgressText)
+        val finishedText = getString(download_activity__fetched_url_for_download_successfully, source)
+        gui.setText(R.id.fetchedUrlSuccessTextView, finishedText)
+
+        var status: InstalledAppStatus? = null
+        findViewById<View>(R.id.fetchUrl).visibleDuringExecution {
+            status = appImpl.findInstalledAppStatus(applicationContext, USE_EVEN_OUTDATED_CACHE)
+        }
+        gui.show(R.id.fetchedUrlSuccess)
+        return status!!
+    }
+
+    private suspend fun executeDownloadProcess(status: InstalledAppStatus): Boolean {
+        debug("check if an existing download can be reused")
+        if (downloadViewModel.isDownloadForCurrentAppRunning(status)) {
+            return reuseCurrentDownload(status)
+        }
+
+        debug("check if no APK file is cached")
+        if (!appImpl.isApkDownloaded(applicationContext, status.latestVersion)) {
+            isNetworkSuitable().ifFalse { return false }
+            return startDownload(status)
+        }
+
+        debug("use cached APK file")
+        val file = appImpl.getApkFile(applicationContext, status.latestVersion)
+        gui.show(R.id.useCachedDownloadedApk)
+        gui.setText(R.id.useCachedDownloadedApk__path, file.absolutePath)
+        return true
+    }
+
+    @MainThread
+    private suspend fun reuseCurrentDownload(status: InstalledAppStatus): Boolean {
+        debug("start reusing existing download")
+        return try {
+            reuseCurrentDownloadWithoutErrorChecking(status)
+            true
+        } catch (e: Exception) {
+            debug("reusing the existing download of $[app.name} failed", e)
+            if (e !is DisplayableException) throw e
+            gui.displayDownloadFailure(status, e)
+            false
+        }
+    }
+
+    @MainThread
+    private suspend fun reuseCurrentDownloadWithoutErrorChecking(status: InstalledAppStatus) {
+        debug("reuse existing download")
+        gui.setText(R.id.downloadingFileUrl, status.latestVersion.downloadUrl)
+        gui.setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status))
+
+        findViewById<View>(R.id.downloadingFile).visibleDuringExecution {
+            gui.showDownloadProgress(downloadViewModel.progressChannel!!)
+            // NPE was thrown in https://github.com/Tobi823/ffupdater/issues/359 - it should be safe to ignore null values
+            downloadViewModel.deferred?.await()
+        }
+    }
+
+    @MainThread
+    private suspend fun startDownload(status: InstalledAppStatus): Boolean {
+        debug("start download (1/3)")
+        return try {
+            startDownloadWithoutErrorChecking(status)
+        } catch (e: Exception) {
+            debug("download failed", e)
+            if (e !is DisplayableException) throw e
+            gui.displayDownloadFailure(status, e)
+            false
+        }
+    }
+
+    @MainThread
+    private suspend fun startDownloadWithoutErrorChecking(status: InstalledAppStatus): Boolean {
+        debug("start downloading (2/3)")
+        gui.setText(R.id.downloadingFileUrl, status.latestVersion.downloadUrl)
+        gui.setText(R.id.downloadedFileUrl, status.latestVersion.downloadUrl)
+        gui.setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status))
+        findViewById<View>(R.id.downloadingFile).visibleDuringExecution {
+            findViewById<View>(R.id.downloadedFile).visibleAfterExecution {
+                startDownloadInternal(status)
+            }
+        }
+        return true
+    }
+
+    @MainThread
+    private suspend fun startDownloadInternal(status: InstalledAppStatus) {
+        debug("start downloading (3/3)")
+        val appImpl = app.findImpl()
+        val coroutineContext = downloadViewModel.viewModelScope.coroutineContext
+        withContext(coroutineContext) {
+            appImpl.download(applicationContext, status.latestVersion) { deferred, progressChannel ->
+                downloadViewModel.storeNewRunningDownload(status, deferred, progressChannel)
+                gui.showDownloadProgress(progressChannel)
+            }
+        }
+    }
+
+    @MainThread
+    private suspend fun installAppWithResultProcessing(status: InstalledAppStatus) {
+        debug("install app (1/3)")
+        val success = installApp(status)
+
+        downloadViewModel.installationFinished = true
+        downloadViewModel.installationSuccess = success
+        if (success) {
+            appImpl.appWasInstalledCallback(applicationContext, status)
+        }
+        deleteCachedApkFileIfSuitable(success)
+
+        findViewById<View>(R.id.install_activity__retry_installation).setVisibleOrGone(!success)
+    }
+
+    @MainThread
+    private suspend fun installApp(status: InstalledAppStatus): Boolean {
+        debug("install app (2/3)")
+        return try {
+            installAppWithoutErrorChecking(status)
+            true
+        } catch (e: InstallationFailedException) {
+            debug("installation failed", e)
+            val ex = RuntimeException("Failed to install ${app.name} in the foreground.", e)
+            gui.displayAppInstallationFailure(e.translatedMessage, ex)
+            // hide existing background notification for applicationContext app
+            NotificationRemover.removeAppStatusNotifications(applicationContext, app)
+            false
+        }
+    }
+
+    @MainThread
+    private suspend fun installAppWithoutErrorChecking(status: InstalledAppStatus) {
+        debug("install app (3/3)")
+        val file = appImpl.getApkFile(applicationContext, status.latestVersion)
+
+        var certificateHash = "error"
+        findViewById<View>(R.id.installingApplication).visibleDuringExecution {
+            val installResult = installer.startInstallation(this@DownloadActivity, file)
+            certificateHash = installResult.certificateHash ?: "error"
+        }
+
+        gui.show(R.id.installerSuccess, R.id.fingerprintInstalledGood)
+        gui.setText(R.id.fingerprintInstalledGoodHash, certificateHash)
+        if (!ForegroundSettings.isDeleteUpdateIfInstallSuccessful) {
+            gui.show(R.id.install_activity__delete_cache, R.id.install_activity__open_cache_folder)
+        }
+        // hide existing background notification for applicationContext app
+        NotificationRemover.removeAppStatusNotifications(applicationContext, app)
+    }
+
+    private fun debug(message: String, throwable: Throwable? = null) {
+        if (throwable == null) {
+            Log.d(LOG_TAG, "$LOG_PREFIX ${app.name}: $message")
+        } else {
+            Log.d(LOG_TAG, "$LOG_PREFIX ${app.name}: $message", throwable)
         }
     }
 
     companion object {
         const val EXTRA_APP_NAME = "app_name"
+        const val LOG_PREFIX = "DownloadActivity"
 
         /**
          * Create a new InstallActivity which have to check if app is up-to-date

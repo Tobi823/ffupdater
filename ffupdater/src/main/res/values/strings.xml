@@ -307,4 +307,5 @@
     <string name="foreground__hidden_apps__summary">Hidden apps will be hidden in the UI and will not be updated automatically.</string>
     <string name="foreground__hidden_apps__title">Hidden apps</string>
     <string name="cardview_dialog__hide">Hide</string>
+    <string name="download_activity__retry_installation">Retry installation</string>
 </resources>

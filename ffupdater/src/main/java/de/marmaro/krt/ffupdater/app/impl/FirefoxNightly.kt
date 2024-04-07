@@ -19,7 +19,6 @@ import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.network.mozillaci.MozillaCiJsonConsumer
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
-import java.time.Duration
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
@@ -38,42 +37,29 @@ object FirefoxNightly : AppBase() {
     override val icon = R.drawable.ic_logo_firefox_nightly
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
 
-    @Suppress("SpellCheckingInspection")
+    private const val HOSTNAME = "https://firefox-ci-tc.services.mozilla.com"
+    private const val TASK_PARENT_NAMESPACE = "gecko.v2.mozilla-central.latest.mobile"
+    private const val TASK_NAMESPACE = "$TASK_PARENT_NAMESPACE.fenix-nightly"
+
     override val signatureHash = "5004779088e7f988d5bc5cc5f8798febf4f8cd084a1b2a46efd4c8ee4aeaf211"
     override val supportedAbis = ARM32_ARM64_X86_X64
-    override val projectPage =
-        "https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v3.firefox-android.apks.fenix-nightly.latest"
+    override val projectPage = "$HOSTNAME/tasks/index/$TASK_PARENT_NAMESPACE/fenix-nightly"
     override val displayCategory = listOf(FROM_MOZILLA)
+
+    private val versionDateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
 
     @MainThread
     @Throws(NetworkException::class)
     override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
         val abiString = findAbiString()
-        val preferences = PreferenceManager.getDefaultSharedPreferences(context.applicationContext)
-        var taskId = preferences.getString("cache__firefox_nightly__task_id", null)
-        var cacheAge = preferences.getLong("cache__firefox_nightly__age_ms", 0)
-        if (taskId == null || (System.currentTimeMillis() - cacheAge) >= Duration.ofHours(24).toMillis()) {
-            val indexPath = "mobile.v3.firefox-android.apks.fenix-nightly.latest.arm64-v8a"
-            taskId = MozillaCiJsonConsumer.findTaskId(indexPath, cacheBehaviour)
-            cacheAge = System.currentTimeMillis()
-            preferences.edit()
-                .putString("cache__firefox_nightly__task_id", taskId)
-                .putLong("cache__firefox_nightly__age_ms", cacheAge)
-                .apply()
-        }
-        val result = MozillaCiJsonConsumer.findChainOfTrustJson(taskId, abiString, cacheBehaviour)
-        val downloadUrl = "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/" +
-                "mobile.v3.firefox-android.apks.fenix-nightly.latest.${abiString}/artifacts/" +
-                "public%2Fbuild%2Ftarget.${abiString}.apk"
-        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
-        val releaseDate = ZonedDateTime.parse(result.releaseDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
-        val version = formatter.format(releaseDate)
+        val taskId = MozillaCiJsonConsumer.findTaskId(TASK_NAMESPACE, cacheBehaviour)
+        val metaInformation = MozillaCiJsonConsumer.findChainOfTrustJson(taskId, abiString, cacheBehaviour)
         return LatestVersion(
-            downloadUrl = downloadUrl,
-            version = version,
-            publishDate = result.releaseDate,
+            downloadUrl = getDownloadUrl(abiString),
+            version = formatReleaseDate(metaInformation.releaseDate),
+            publishDate = metaInformation.releaseDate,
             exactFileSizeBytesOfDownload = null,
-            fileHash = result.fileHash,
+            fileHash = metaInformation.fileHash,
         )
     }
 
@@ -86,6 +72,15 @@ object FirefoxNightly : AppBase() {
             else -> throw IllegalArgumentException("ABI is not supported")
         }
         return abiString
+    }
+
+    private fun getDownloadUrl(abiString: String): String {
+        return "$HOSTNAME/api/index/v1/task/$TASK_NAMESPACE/artifacts/public%2Fbuild%2Ftarget.$abiString.apk"
+    }
+
+    private fun formatReleaseDate(releaseDate: String): String {
+        val date = ZonedDateTime.parse(releaseDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
+        return versionDateFormat.format(date)
     }
 
     override suspend fun isInstalledAppOutdated(
@@ -126,6 +121,6 @@ object FirefoxNightly : AppBase() {
         return packageInfo.versionCode.toLong()
     }
 
-    const val INSTALLED_VERSION_CODE = "firefox_nightly_installed_version_code"
-    const val INSTALLED_SHA256_HASH = "firefox_nightly_installed_sha256_hash"
+    private const val INSTALLED_VERSION_CODE = "firefox_nightly_installed_version_code"
+    private const val INSTALLED_SHA256_HASH = "firefox_nightly_installed_sha256_hash"
 }
