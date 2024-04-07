@@ -143,7 +143,7 @@ class DownloadActivity : AppCompatActivity() {
         super.onStop()
         // if the device was not rotated
         if (!isChangingConfigurations) {
-            deleteCachedApkFileIfNecessary()
+            deleteCachedApkFileIfSuitable()
         }
         window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
     }
@@ -153,7 +153,7 @@ class DownloadActivity : AppCompatActivity() {
         return true
     }
 
-    private fun deleteCachedApkFileIfNecessary() {
+    private fun deleteCachedApkFileIfSuitable() {
         Log.d(LOG_TAG, "DownloadActivity: Check if the cached APK for ${app.name} should be deleted.")
         val reason1 = downloadViewModel.installationSuccess && ForegroundSettings.isDeleteUpdateIfInstallSuccessful
         val reason2 = !downloadViewModel.installationSuccess && ForegroundSettings.isDeleteUpdateIfInstallFailed
