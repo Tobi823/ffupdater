@@ -348,4 +348,5 @@
     <string name="fairemail__title">FairEmail</string>
     <string name="cardview_dialog__different_signature">APK imzası farklı olduğu için FFUpdater bu uygulamayı güncelleyemiyor. Uygulamayı kaldırıp FFUpdater ile yeniden kurarak düzeltebilirsiniz. Ancak bu, uygulamadaki tüm verilerinizi silecektir. Bu yüzden verilerinizi önceden yedeklemeyi unutmayın.</string>
     <string name="cardview_dialog__hide">Gizle</string>
+    <string name="download_activity__retry_installation">Kurulumu yeniden dene</string>
 </resources>
