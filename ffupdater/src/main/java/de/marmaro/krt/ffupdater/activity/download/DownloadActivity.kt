@@ -251,8 +251,8 @@ class DownloadActivity : AppCompatActivity() {
         val appImpl = app.findImpl()
         if (appImpl.isApkDownloaded(applicationContext, status.latestVersion)) {
             debug("use APK cache of ${app.name}.")
-            gui.show(R.id.useCachedDownloadedApk)
             val file = appImpl.getApkFile(applicationContext, status.latestVersion)
+            gui.show(R.id.useCachedDownloadedApk)
             gui.setText(R.id.useCachedDownloadedApk__path, file.absolutePath)
             return true
         }
