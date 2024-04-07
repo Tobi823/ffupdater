@@ -243,22 +243,22 @@ class DownloadActivity : AppCompatActivity() {
     }
 
     private suspend fun executeDownloadProcess(status: InstalledAppStatus): Boolean {
-        debug("check if and how to download the APK of ${app.name}.")
+        debug("check if an existing download can be reused")
         if (downloadViewModel.isDownloadForCurrentAppRunning(status)) {
             return reuseCurrentDownload(status)
         }
 
-        val appImpl = app.findImpl()
-        if (appImpl.isApkDownloaded(applicationContext, status.latestVersion)) {
-            debug("use APK cache of ${app.name}.")
-            val file = appImpl.getApkFile(applicationContext, status.latestVersion)
-            gui.show(R.id.useCachedDownloadedApk)
-            gui.setText(R.id.useCachedDownloadedApk__path, file.absolutePath)
-            return true
+        debug("check if no APK file is cached")
+        if (!appImpl.isApkDownloaded(applicationContext, status.latestVersion)) {
+            isNetworkSuitable().ifFalse { return false }
+            return startDownload(status)
         }
 
-        isNetworkSuitable().ifFalse { return false }
-        return startDownload(status)
+        debug("use cached APK file")
+        val file = appImpl.getApkFile(applicationContext, status.latestVersion)
+        gui.show(R.id.useCachedDownloadedApk)
+        gui.setText(R.id.useCachedDownloadedApk__path, file.absolutePath)
+        return true
     }
 
     @MainThread
@@ -368,9 +368,9 @@ class DownloadActivity : AppCompatActivity() {
 
     private fun debug(message: String, throwable: Throwable? = null) {
         if (throwable == null) {
-            Log.d(LOG_TAG, "$LOG_PREFIX: $message")
+            Log.d(LOG_TAG, "$LOG_PREFIX ${app.name}: $message")
         } else {
-            Log.d(LOG_TAG, "$LOG_PREFIX: $message", throwable)
+            Log.d(LOG_TAG, "$LOG_PREFIX ${app.name}: $message", throwable)
         }
     }
 
