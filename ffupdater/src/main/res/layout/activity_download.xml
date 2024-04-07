@@ -245,6 +245,18 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/install_activity__retry_installation"
+            style="@style/install_activity__segment"
+            android:padding="8dp">
+
+            <Button
+                android:id="@+id/install_activity__retry_installation_button"
+                style="@style/install_activity__button"
+                android:text="@string/download_activity__retry_installation" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/install_activity__delete_cache"
             style="@style/install_activity__segment"
             android:padding="8dp">

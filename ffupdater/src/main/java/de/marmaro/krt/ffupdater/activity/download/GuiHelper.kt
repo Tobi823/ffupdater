@@ -23,8 +23,12 @@ import kotlinx.coroutines.channels.Channel
 class GuiHelper(val app: App, val activity: DownloadActivity) {
     private val appImpl = app.findImpl()
 
-    fun show(viewId: Int) {
-        activity.findViewById<View>(viewId).visibility = View.VISIBLE
+    fun show(vararg viewIds: Int) {
+        viewIds.forEach { activity.findViewById<View>(it).visibility = View.VISIBLE }
+    }
+
+    fun hide(vararg viewIds: Int) {
+        viewIds.forEach { activity.findViewById<View>(it).visibility = View.GONE }
     }
 
     fun setText(textId: Int, text: String) {

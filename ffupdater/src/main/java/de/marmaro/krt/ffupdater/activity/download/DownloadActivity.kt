@@ -42,6 +42,7 @@ import de.marmaro.krt.ffupdater.utils.goneAfterExecution
 import de.marmaro.krt.ffupdater.utils.ifFalse
 import de.marmaro.krt.ffupdater.utils.visibleAfterExecution
 import de.marmaro.krt.ffupdater.utils.visibleDuringExecution
+import de.marmaro.krt.ffupdater.utils.setVisibleOrGone
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
@@ -60,8 +61,8 @@ import kotlinx.coroutines.withContext
 class DownloadActivity : AppCompatActivity() {
     private lateinit var downloadViewModel: DownloadViewModel
     private lateinit var app: App
+    private lateinit var installer: AppInstaller
     private lateinit var appImpl: AppBase
-    private lateinit var appInstaller: AppInstaller
     private lateinit var gui: GuiHelper
 
     // persistent data for already running downloads
@@ -116,15 +117,21 @@ class DownloadActivity : AppCompatActivity() {
 
         app = App.valueOf(appFromExtras)
         appImpl = app.findImpl()
-        appInstaller = createForegroundAppInstaller(this, app)
         gui = GuiHelper(app, this)
-        lifecycle.addObserver(appInstaller)
+        installer = createForegroundAppInstaller(this, app)
+        lifecycle.addObserver(installer)
 
         findViewById<Button>(R.id.install_activity__delete_cache_button).setOnClickListener {
             deleteFileCache()
         }
         findViewById<Button>(R.id.install_activity__open_cache_folder_button).setOnClickListener {
             SystemFileManager.openFolder(appImpl.getApkCacheFolder(applicationContext), this)
+        }
+        findViewById<Button>(R.id.install_activity__retry_installation_button).setOnClickListener {
+            downloadViewModel.clear()
+            lifecycleScope.launch(Dispatchers.Main) {
+                startInstallationProcess()
+            }
         }
         NotificationRemover.removeAppStatusNotifications(applicationContext, app)
 
@@ -147,6 +154,7 @@ class DownloadActivity : AppCompatActivity() {
         if (!isChangingConfigurations) {
             deleteCachedApkFileIfSuitable(downloadViewModel.installationSuccess)
         }
+        lifecycle.removeObserver(installer)
         window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
     }
 
@@ -170,23 +178,18 @@ class DownloadActivity : AppCompatActivity() {
 
     private suspend fun startInstallationProcess() {
         debug("start fetching, downloading and installation process")
+        gui.hide(R.id.install_activity__exception)
 
         isStorageMounted().ifFalse { return }
         showWarningIfNotEnoughStorageIsAvailable()
 
         val status = fetchDownloadInformation() ?: return
         executeDownloadProcess(status).ifFalse { return }
-        val success = installApp(status)
-
-        downloadViewModel.installationFinished = true
-        downloadViewModel.installationSuccess = success
-        if (success) {
-            appImpl.appWasInstalledCallback(applicationContext, status)
-        }
-        deleteCachedApkFileIfSuitable(success)
+        installAppWithResultProcessing(status)
     }
 
     private fun isStorageMounted(): Boolean {
+        gui.hide(R.id.externalStorageNotAccessible)
         if (Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED) {
             return true
         }
@@ -205,6 +208,7 @@ class DownloadActivity : AppCompatActivity() {
     }
 
     private fun showWarningIfNotEnoughStorageIsAvailable() {
+        gui.hide(R.id.tooLowMemory)
         if (StorageUtil.isEnoughStorageAvailable(applicationContext)) {
             return
         }
@@ -227,6 +231,7 @@ class DownloadActivity : AppCompatActivity() {
 
     private suspend fun fetchDownloadInformationWithoutErrorChecking(): InstalledAppStatus {
         debug("fetching download information for ${app.name}")
+        gui.hide(R.id.fetchedUrlSuccess)
         val source = appImpl.downloadSource
         val inProgressText = getString(download_activity__fetch_url_for_download, source)
         gui.setText(R.id.fetchUrlTextView, inProgressText)
@@ -242,6 +247,8 @@ class DownloadActivity : AppCompatActivity() {
     }
 
     private suspend fun executeDownloadProcess(status: InstalledAppStatus): Boolean {
+        gui.hide(R.id.useCachedDownloadedApk)
+
         debug("check if an existing download can be reused")
         if (downloadViewModel.isDownloadForCurrentAppRunning(status)) {
             return reuseCurrentDownload(status)
@@ -328,8 +335,23 @@ class DownloadActivity : AppCompatActivity() {
     }
 
     @MainThread
+    private suspend fun installAppWithResultProcessing(status: InstalledAppStatus) {
+        debug("install app (1/3)")
+        val success = installApp(status)
+
+        downloadViewModel.installationFinished = true
+        downloadViewModel.installationSuccess = success
+        if (success) {
+            appImpl.appWasInstalledCallback(applicationContext, status)
+        }
+        deleteCachedApkFileIfSuitable(success)
+
+        findViewById<View>(R.id.install_activity__retry_installation).setVisibleOrGone(!success)
+    }
+
+    @MainThread
     private suspend fun installApp(status: InstalledAppStatus): Boolean {
-        debug("install app (1/2)")
+        debug("install app (2/3)")
         return try {
             installAppWithoutErrorChecking(status)
             true
@@ -345,21 +367,22 @@ class DownloadActivity : AppCompatActivity() {
 
     @MainThread
     private suspend fun installAppWithoutErrorChecking(status: InstalledAppStatus) {
-        debug("install app (2/2)")
+        debug("install app (3/3)")
+        gui.hide(R.id.installerSuccess, R.id.fingerprintInstalledGood, R.id.install_activity__delete_cache)
+        gui.hide(R.id.install_activity__open_cache_folder, R.id.install_activity__exception)
+
         val file = appImpl.getApkFile(applicationContext, status.latestVersion)
 
         var certificateHash = "error"
         findViewById<View>(R.id.installingApplication).visibleDuringExecution {
-            val installResult = appInstaller.startInstallation(this@DownloadActivity, file)
+            val installResult = installer.startInstallation(this@DownloadActivity, file)
             certificateHash = installResult.certificateHash ?: "error"
         }
 
-        gui.show(R.id.installerSuccess)
-        gui.show(R.id.fingerprintInstalledGood)
+        gui.show(R.id.installerSuccess, R.id.fingerprintInstalledGood)
         gui.setText(R.id.fingerprintInstalledGoodHash, certificateHash)
         if (!ForegroundSettings.isDeleteUpdateIfInstallSuccessful) {
-            gui.show(R.id.install_activity__delete_cache)
-            gui.show(R.id.install_activity__open_cache_folder)
+            gui.show(R.id.install_activity__delete_cache, R.id.install_activity__open_cache_folder)
         }
         // hide existing background notification for applicationContext app
         NotificationRemover.removeAppStatusNotifications(applicationContext, app)
