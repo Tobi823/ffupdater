@@ -22,8 +22,6 @@ import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.R.string.download_activity__download_app_with_status
 import de.marmaro.krt.ffupdater.R.string.download_activity__fetch_url_for_download
 import de.marmaro.krt.ffupdater.R.string.download_activity__fetched_url_for_download_successfully
-import de.marmaro.krt.ffupdater.R.string.download_activity__github_rate_limit_exceeded
-import de.marmaro.krt.ffupdater.R.string.download_activity__temporary_network_issue
 import de.marmaro.krt.ffupdater.R.string.download_activity__too_low_memory_description
 import de.marmaro.krt.ffupdater.R.string.main_activity__no_unmetered_network
 import de.marmaro.krt.ffupdater.app.App
@@ -33,7 +31,6 @@ import de.marmaro.krt.ffupdater.installer.AppInstaller
 import de.marmaro.krt.ffupdater.installer.AppInstaller.Companion.createForegroundAppInstaller
 import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
 import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
-import de.marmaro.krt.ffupdater.network.exceptions.ApiRateLimitExceededException
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkNotSuitableException
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour.USE_EVEN_OUTDATED_CACHE
 import de.marmaro.krt.ffupdater.network.file.DownloadStatus
@@ -72,6 +69,7 @@ class DownloadActivity : AppCompatActivity() {
         private var status: InstalledAppStatus? = null
         var deferred: Deferred<Any>? = null
         var progressChannel: Channel<DownloadStatus>? = null
+        var installationFinished: Boolean = false
         var installationSuccess: Boolean = false
 
         fun storeNewRunningDownload(
@@ -92,6 +90,7 @@ class DownloadActivity : AppCompatActivity() {
             status = null
             deferred = null
             progressChannel = null
+            installationFinished = false
             installationSuccess = false
         }
     }
@@ -110,13 +109,17 @@ class DownloadActivity : AppCompatActivity() {
             return
         }
 
+        downloadViewModel = ViewModelProvider(this)[DownloadViewModel::class.java]
+        if (downloadViewModel.installationFinished) {
+            downloadViewModel.clear()
+        }
+
         app = App.valueOf(appFromExtras)
         appImpl = app.findImpl()
         appInstaller = createForegroundAppInstaller(this, app)
         gui = GuiHelper(app, this)
         lifecycle.addObserver(appInstaller)
 
-        downloadViewModel = ViewModelProvider(this)[DownloadViewModel::class.java]
         findViewById<Button>(R.id.install_activity__delete_cache_button).setOnClickListener {
             deleteFileCache()
         }
@@ -142,7 +145,7 @@ class DownloadActivity : AppCompatActivity() {
         super.onStop()
         // if the device was not rotated
         if (!isChangingConfigurations) {
-            deleteCachedApkFileIfSuitable()
+            deleteCachedApkFileIfSuitable(downloadViewModel.installationSuccess)
         }
         window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
     }
@@ -152,16 +155,17 @@ class DownloadActivity : AppCompatActivity() {
         return true
     }
 
-    private fun deleteCachedApkFileIfSuitable() {
+    private fun deleteCachedApkFileIfSuitable(wasInstallationSuccessful: Boolean) {
         debug("check if the cached APK for ${app.name} should be deleted.")
-        val reason1 = downloadViewModel.installationSuccess && ForegroundSettings.isDeleteUpdateIfInstallSuccessful
-        val reason2 = !downloadViewModel.installationSuccess && ForegroundSettings.isDeleteUpdateIfInstallFailed
-        if (reason1 || reason2) {
+        val ifInstallSuccessfulShouldApkBeDeleted = mapOf(
+            true to ForegroundSettings.isDeleteUpdateIfInstallSuccessful,
+            false to ForegroundSettings.isDeleteUpdateIfInstallFailed
+        )
+        if (ifInstallSuccessfulShouldApkBeDeleted[wasInstallationSuccessful]!!) {
             lifecycleScope.launch(Dispatchers.Main) {
                 appImpl.deleteFileCache(applicationContext)
             }
         }
-        downloadViewModel.clear()
     }
 
     private suspend fun startInstallationProcess() {
@@ -174,10 +178,12 @@ class DownloadActivity : AppCompatActivity() {
         executeDownloadProcess(status).ifFalse { return }
         val success = installApp(status)
 
+        downloadViewModel.installationFinished = true
         downloadViewModel.installationSuccess = success
         if (success) {
             appImpl.appWasInstalledCallback(applicationContext, status)
         }
+        deleteCachedApkFileIfSuitable(success)
     }
 
     private fun isStorageMounted(): Boolean {
