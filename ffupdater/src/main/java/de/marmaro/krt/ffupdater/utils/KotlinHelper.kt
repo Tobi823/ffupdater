@@ -37,28 +37,28 @@ inline fun Boolean.ifFalse(block: Boolean?.() -> Unit): Boolean {
 //}
 
 
-inline fun <T> View.visibleDuringExecution(block: () -> T): T {
+inline fun View.visibleDuringExecution(block: () -> Unit) {
     this.visibility = View.VISIBLE
     try {
-        return block()
+        block()
     } finally {
         this.visibility = View.GONE
     }
 }
 
-inline fun <T> View.visibleAfterExecution(block: () -> T): T {
+inline fun View.visibleAfterExecution(block: () -> Unit) {
     this.visibility = View.GONE
     try {
-        return block()
+        block()
     } finally {
         this.visibility = View.VISIBLE
     }
 }
 
-inline fun <T> View.goneAfterExecution(block: () -> T): T {
+inline fun View.goneAfterExecution(block: () -> Unit) {
     this.visibility = View.VISIBLE
     try {
-        return block()
+        block()
     } finally {
         this.visibility = View.GONE
     }

@@ -8,8 +8,6 @@ import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.Button
-import android.widget.ProgressBar
-import android.widget.TextView
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import androidx.appcompat.app.AppCompatActivity
@@ -21,7 +19,6 @@ import androidx.lifecycle.viewModelScope
 import de.marmaro.krt.ffupdater.DisplayableException
 import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.R.string.crash_report__explain_text__download_activity_fetching_url
 import de.marmaro.krt.ffupdater.R.string.download_activity__download_app_with_status
 import de.marmaro.krt.ffupdater.R.string.download_activity__fetch_url_for_download
 import de.marmaro.krt.ffupdater.R.string.download_activity__fetched_url_for_download_successfully
@@ -33,9 +30,6 @@ import de.marmaro.krt.ffupdater.R.string.main_activity__no_unmetered_network
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.InstalledAppStatus
 import de.marmaro.krt.ffupdater.app.impl.AppBase
-import de.marmaro.krt.ffupdater.crash.CrashReportActivity
-import de.marmaro.krt.ffupdater.crash.LogReader
-import de.marmaro.krt.ffupdater.crash.ThrowableAndLogs
 import de.marmaro.krt.ffupdater.installer.AppInstaller
 import de.marmaro.krt.ffupdater.installer.AppInstaller.Companion.createForegroundAppInstaller
 import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
@@ -239,13 +233,15 @@ class DownloadActivity : AppCompatActivity() {
         val finishedText = getString(download_activity__fetched_url_for_download_successfully, source)
 
         gui.setText(R.id.fetchUrlTextView, inProgressText)
-        val status = findViewById<View>(R.id.fetchUrl).visibleDuringExecution {
-            appImpl.findInstalledAppStatus(applicationContext, USE_EVEN_OUTDATED_CACHE)
+
+        var status: InstalledAppStatus? = null
+        findViewById<View>(R.id.fetchUrl).visibleDuringExecution {
+            status = appImpl.findInstalledAppStatus(applicationContext, USE_EVEN_OUTDATED_CACHE)
         }
 
         gui.show(R.id.fetchedUrlSuccess)
         gui.setText(R.id.fetchedUrlSuccessTextView, finishedText)
-        return status
+        return status!!
     }
 
     private suspend fun executeDownloadProcess(status: InstalledAppStatus): Boolean {
@@ -356,9 +352,10 @@ class DownloadActivity : AppCompatActivity() {
         Log.d(LOG_TAG, "DownloadActivity: Install app ${app.name}.")
         val file = appImpl.getApkFile(applicationContext, status.latestVersion)
 
-        val certificateHash = findViewById<View>(R.id.installingApplication).visibleDuringExecution {
+        var certificateHash = "error"
+        findViewById<View>(R.id.installingApplication).visibleDuringExecution {
             val installResult = appInstaller.startInstallation(this@DownloadActivity, file)
-            installResult.certificateHash ?: "error"
+            certificateHash = installResult.certificateHash ?: "error"
         }
 
         gui.show(R.id.installerSuccess)
@@ -371,8 +368,6 @@ class DownloadActivity : AppCompatActivity() {
         // hide existing background notification for applicationContext app
         NotificationRemover.removeAppStatusNotifications(applicationContext, app)
     }
-
-
 
     companion object {
         const val EXTRA_APP_NAME = "app_name"
