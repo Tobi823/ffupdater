@@ -43,7 +43,6 @@ object Brave : AppBase() {
     @Throws(NetworkException::class)
     override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
         val fileName = findNameOfApkFile()
-        Log.e("test", "|${fileName}|")
         val result = GithubConsumer.findLatestRelease(
             repository = REPOSITORY,
             isValidRelease = { !it.isPreRelease && it.name.startsWith("Release v") },
