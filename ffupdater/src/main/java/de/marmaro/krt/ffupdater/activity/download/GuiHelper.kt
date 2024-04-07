@@ -118,7 +118,10 @@ class GuiHelper(val app: App, val activity: DownloadActivity) {
 
     fun resetGui() {
         hide(
+            R.id.downloadedFile,
+            R.id.downloadingFile,
             R.id.externalStorageNotAccessible,
+            R.id.fetchUrl,
             R.id.fetchedUrlSuccess,
             R.id.fingerprintInstalledGood,
             R.id.install_activity__delete_cache,
@@ -127,7 +130,9 @@ class GuiHelper(val app: App, val activity: DownloadActivity) {
             R.id.install_activity__exception,
             R.id.install_activity__exception__description,
             R.id.install_activity__open_cache_folder,
+            R.id.install_activity__retry_installation,
             R.id.installerSuccess,
+            R.id.installingApplication,
             R.id.tooLowMemory,
             R.id.useCachedDownloadedApk,
         )
