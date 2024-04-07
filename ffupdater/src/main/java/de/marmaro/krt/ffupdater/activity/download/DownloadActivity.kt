@@ -130,6 +130,7 @@ class DownloadActivity : AppCompatActivity() {
         findViewById<Button>(R.id.install_activity__retry_installation_button).setOnClickListener {
             downloadViewModel.clear()
             lifecycleScope.launch(Dispatchers.Main) {
+                it.visibility = View.GONE
                 startInstallationProcess()
             }
         }
