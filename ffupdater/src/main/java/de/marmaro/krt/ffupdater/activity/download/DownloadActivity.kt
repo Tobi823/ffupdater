@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Environment
-import android.os.Message
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
@@ -270,12 +269,8 @@ class DownloadActivity : AppCompatActivity() {
             true
         } catch (e: Exception) {
             debug("reusing the existing download of $[app.name} failed", e)
-            val text = when (e) {
-                is NetworkException -> getString(install_activity__download_file_failed__crash_text)
-                is DisplayableException -> e.message ?: e.javaClass.name
-                else -> throw e
-            }
-            gui.displayDownloadFailure(status, text, e)
+            if (e !is DisplayableException) throw e
+            gui.displayDownloadFailure(status, e)
             false
         }
     }
@@ -300,12 +295,8 @@ class DownloadActivity : AppCompatActivity() {
             startDownloadWithoutErrorChecking(status)
         } catch (e: Exception) {
             debug("download failed for ${app.name}.", e)
-            val text = when (e) {
-                is NetworkException -> getString(install_activity__download_file_failed__crash_text)
-                is DisplayableException -> e.message ?: e.javaClass.name
-                else -> throw e
-            }
-            gui.displayDownloadFailure(status, text, e)
+            if (e !is DisplayableException) throw e
+            gui.displayDownloadFailure(status, e)
             false
         }
     }
