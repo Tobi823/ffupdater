@@ -25,7 +25,6 @@ import de.marmaro.krt.ffupdater.R.string.download_activity__fetched_url_for_down
 import de.marmaro.krt.ffupdater.R.string.download_activity__github_rate_limit_exceeded
 import de.marmaro.krt.ffupdater.R.string.download_activity__temporary_network_issue
 import de.marmaro.krt.ffupdater.R.string.download_activity__too_low_memory_description
-import de.marmaro.krt.ffupdater.R.string.install_activity__download_file_failed__crash_text
 import de.marmaro.krt.ffupdater.R.string.main_activity__no_unmetered_network
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.InstalledAppStatus
@@ -35,7 +34,7 @@ import de.marmaro.krt.ffupdater.installer.AppInstaller.Companion.createForegroun
 import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
 import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.network.exceptions.ApiRateLimitExceededException
-import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
+import de.marmaro.krt.ffupdater.network.exceptions.NetworkNotSuitableException
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour.USE_EVEN_OUTDATED_CACHE
 import de.marmaro.krt.ffupdater.network.file.DownloadStatus
 import de.marmaro.krt.ffupdater.notification.NotificationRemover
@@ -195,7 +194,7 @@ class DownloadActivity : AppCompatActivity() {
         if (ForegroundSettings.isDownloadOnMeteredAllowed || !isNetworkMetered(applicationContext)) {
             return true
         }
-        gui.displayFetchFailure(getString(main_activity__no_unmetered_network), null)
+        gui.displayFetchFailure(NetworkNotSuitableException(getString(main_activity__no_unmetered_network)))
         return false
     }
 
@@ -214,12 +213,8 @@ class DownloadActivity : AppCompatActivity() {
             fetchDownloadInformationWithoutErrorChecking()
         } catch (e: Exception) {
             debug("fetching download information failed for ${app.name}", e)
-            val text = when (e) {
-                is ApiRateLimitExceededException -> getString(download_activity__github_rate_limit_exceeded)
-                is DisplayableException -> getString(download_activity__temporary_network_issue)
-                else -> throw e
-            }
-            gui.displayFetchFailure(text, e)
+            if (e !is DisplayableException) throw e
+            gui.displayFetchFailure(e)
             null
         }
     }

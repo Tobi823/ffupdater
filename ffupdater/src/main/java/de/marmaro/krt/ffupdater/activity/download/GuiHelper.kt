@@ -12,7 +12,9 @@ import de.marmaro.krt.ffupdater.crash.CrashReportActivity
 import de.marmaro.krt.ffupdater.crash.LogReader
 import de.marmaro.krt.ffupdater.crash.ThrowableAndLogs
 import de.marmaro.krt.ffupdater.installer.entity.Installer
+import de.marmaro.krt.ffupdater.network.exceptions.ApiRateLimitExceededException
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
+import de.marmaro.krt.ffupdater.network.exceptions.NetworkNotSuitableException
 import de.marmaro.krt.ffupdater.network.file.DownloadStatus
 import de.marmaro.krt.ffupdater.settings.ForegroundSettings
 import de.marmaro.krt.ffupdater.settings.InstallerSettings
@@ -93,13 +95,15 @@ class GuiHelper(val app: App, val activity: DownloadActivity) {
     }
 
     @MainThread
-    fun displayFetchFailure(message: String, exception: Exception?) {
+    fun displayFetchFailure(exception: DisplayableException) {
+        val message = when (exception) {
+            is ApiRateLimitExceededException -> activity.getString(R.string.download_activity__github_rate_limit_exceeded)
+            is NetworkNotSuitableException -> exception.getNullSafeMessage()
+            else -> activity.getString(R.string.download_activity__temporary_network_issue)
+        }
+
         show(R.id.install_activity__exception)
         setText(R.id.install_activity__exception__text, message)
-        if (exception == null) {
-            activity.findViewById<View>(R.id.install_activity__exception__show_button).visibility = View.GONE
-            return
-        }
         val throwableAndLogs = ThrowableAndLogs(exception, LogReader.readLogs())
         activity.findViewById<TextView>(R.id.install_activity__exception__show_button).setOnClickListener {
             val description = activity.getString(R.string.crash_report__explain_text__download_activity_fetching_url)
