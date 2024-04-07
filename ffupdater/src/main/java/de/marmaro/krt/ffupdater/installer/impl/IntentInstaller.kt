@@ -17,8 +17,12 @@ import de.marmaro.krt.ffupdater.installer.entity.Installer
 import de.marmaro.krt.ffupdater.installer.error.intent.GeneralInstallResultDecoder
 import de.marmaro.krt.ffupdater.installer.error.intent.HuaweiInstallResultDecoder
 import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
-import kotlinx.coroutines.CompletableDeferred
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.runBlocking
 import java.io.File
+import java.lang.Exception
+import java.lang.RuntimeException
 
 
 @Keep
@@ -29,15 +33,21 @@ class IntentInstaller(
 ) : AbstractAppInstaller(app) {
     override val type = Installer.NATIVE_INSTALLER
     private lateinit var appInstallationCallback: ActivityResultLauncher<Intent>
-    private val installResult = CompletableDeferred<Boolean>()
+    private var installFailure = Channel<Exception?>()
 
     private val appResultCallback = lambda@{ activityResult: ActivityResult ->
-        if (activityResult.resultCode == Activity.RESULT_OK) {
-            installResult.complete(true)
-            return@lambda
+        val result = if (activityResult.resultCode == Activity.RESULT_OK) {
+            null
+        } else {
+            createInstallationFailedException(activityResult, context)
         }
-        val exception = createInstallationFailedException(activityResult, context)
-        this.installResult.completeExceptionally(exception)
+        try {
+            runBlocking {
+                installFailure.send(result)
+            }
+        } catch (e: Exception) {
+            throw RuntimeException("Can't use channel to send installation results", e)
+        }
     }
 
     private fun createInstallationFailedException(
@@ -64,10 +74,22 @@ class IntentInstaller(
 
     @Throws(IllegalArgumentException::class)
     override suspend fun installApkFile(context: Context, file: File) {
+        removePreviousResultsFromChannel()
         require(this::appInstallationCallback.isInitialized) { "Call lifecycle.addObserver(...) first!" }
         require(file.exists()) { "File does not exists." }
         installApkFileHelper(context.applicationContext, file)
-        installResult.await()
+
+        val result = installFailure.receive()
+        if (result != null) {
+            throw result
+        }
+    }
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    private suspend fun removePreviousResultsFromChannel() {
+        while (!installFailure.isEmpty) {
+            installFailure.receive()
+        }
     }
 
     /**
