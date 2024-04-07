@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Environment
+import android.os.Message
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
@@ -154,7 +155,7 @@ class DownloadActivity : AppCompatActivity() {
     }
 
     private fun deleteCachedApkFileIfSuitable() {
-        Log.d(LOG_TAG, "DownloadActivity: Check if the cached APK for ${app.name} should be deleted.")
+        debug("check if the cached APK for ${app.name} should be deleted.")
         val reason1 = downloadViewModel.installationSuccess && ForegroundSettings.isDeleteUpdateIfInstallSuccessful
         val reason2 = !downloadViewModel.installationSuccess && ForegroundSettings.isDeleteUpdateIfInstallFailed
         if (reason1 || reason2) {
@@ -166,7 +167,7 @@ class DownloadActivity : AppCompatActivity() {
     }
 
     private suspend fun startInstallationProcess() {
-        Log.d(LOG_TAG, "DownloadActivity: Start process for ${app.name}.")
+        debug("start process for ${app.name}.")
 
         isStorageMounted().ifFalse { return }
         showWarningIfNotEnoughStorageIsAvailable()
@@ -185,6 +186,7 @@ class DownloadActivity : AppCompatActivity() {
         if (Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED) {
             return true
         }
+        debug("storage is not mounted")
         gui.show(R.id.externalStorageNotAccessible)
         gui.setText(R.id.externalStorageNotAccessible_state, Environment.getExternalStorageState())
         return false
@@ -212,6 +214,7 @@ class DownloadActivity : AppCompatActivity() {
         return try {
             fetchDownloadInformationWithoutErrorChecking()
         } catch (e: Exception) {
+            debug("fetching download information failed for ${app.name}", e)
             val text = when (e) {
                 is ApiRateLimitExceededException -> getString(download_activity__github_rate_limit_exceeded)
                 is DisplayableException -> getString(download_activity__temporary_network_issue)
@@ -223,6 +226,7 @@ class DownloadActivity : AppCompatActivity() {
     }
 
     private suspend fun fetchDownloadInformationWithoutErrorChecking(): InstalledAppStatus {
+        debug("fetching download information for ${app.name}")
         val source = appImpl.downloadSource
         val inProgressText = getString(download_activity__fetch_url_for_download, source)
         val finishedText = getString(download_activity__fetched_url_for_download_successfully, source)
@@ -240,13 +244,14 @@ class DownloadActivity : AppCompatActivity() {
     }
 
     private suspend fun executeDownloadProcess(status: InstalledAppStatus): Boolean {
+        debug("check if and how to download the APK of ${app.name}.")
         if (downloadViewModel.isDownloadForCurrentAppRunning(status)) {
             return reuseCurrentDownload(status)
         }
 
         val appImpl = app.findImpl()
         if (appImpl.isApkDownloaded(applicationContext, status.latestVersion)) {
-            Log.d(LOG_TAG, "DownloadActivity: Use APK cache of ${app.name}.")
+            debug("use APK cache of ${app.name}.")
             gui.show(R.id.useCachedDownloadedApk)
             val file = appImpl.getApkFile(applicationContext, status.latestVersion)
             gui.setText(R.id.useCachedDownloadedApk__path, file.absolutePath)
@@ -259,24 +264,25 @@ class DownloadActivity : AppCompatActivity() {
 
     @MainThread
     private suspend fun reuseCurrentDownload(status: InstalledAppStatus): Boolean {
+        debug("start reusing existing download ${app.name}.")
         return try {
             reuseCurrentDownloadWithoutErrorChecking(status)
             true
         } catch (e: Exception) {
+            debug("reusing the existing download of $[app.name} failed", e)
             val text = when (e) {
                 is NetworkException -> getString(install_activity__download_file_failed__crash_text)
                 is DisplayableException -> e.message ?: e.javaClass.name
                 else -> throw e
             }
             gui.displayDownloadFailure(status, text, e)
-            Log.d(LOG_TAG, "DownloadActivity: Reusing failed for ${app.name}.")
             false
         }
     }
 
     @MainThread
     private suspend fun reuseCurrentDownloadWithoutErrorChecking(status: InstalledAppStatus) {
-        Log.d(LOG_TAG, "DownloadActivity: Reuse running download of ${app.name}.")
+        debug("reuse existing download ${app.name}.")
         gui.setText(R.id.downloadingFileUrl, status.latestVersion.downloadUrl)
         gui.setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status))
 
@@ -289,9 +295,11 @@ class DownloadActivity : AppCompatActivity() {
 
     @MainThread
     private suspend fun startDownload(status: InstalledAppStatus): Boolean {
+        debug("start download of ${app.name}.")
         return try {
             startDownloadWithoutErrorChecking(status)
         } catch (e: Exception) {
+            debug("download failed for ${app.name}.", e)
             val text = when (e) {
                 is NetworkException -> getString(install_activity__download_file_failed__crash_text)
                 is DisplayableException -> e.message ?: e.javaClass.name
@@ -304,7 +312,7 @@ class DownloadActivity : AppCompatActivity() {
 
     @MainThread
     private suspend fun startDownloadWithoutErrorChecking(status: InstalledAppStatus): Boolean {
-        Log.d(LOG_TAG, "DownloadActivity: Start download of ${app.name}.")
+        debug("startDownloadWithoutErrorChecking ${app.name}.")
         gui.setText(R.id.downloadingFileUrl, status.latestVersion.downloadUrl)
         gui.setText(R.id.downloadedFileUrl, status.latestVersion.downloadUrl)
         gui.setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status))
@@ -318,6 +326,7 @@ class DownloadActivity : AppCompatActivity() {
 
     @MainThread
     private suspend fun startDownloadInternal(status: InstalledAppStatus) {
+        debug("downloading ${app.name}.")
         val appImpl = app.findImpl()
         val coroutineContext = downloadViewModel.viewModelScope.coroutineContext
         withContext(coroutineContext) {
@@ -330,10 +339,12 @@ class DownloadActivity : AppCompatActivity() {
 
     @MainThread
     private suspend fun installApp(status: InstalledAppStatus): Boolean {
+        debug("start installation of ${app.name}.")
         return try {
             installAppWithoutErrorChecking(status)
             true
         } catch (e: InstallationFailedException) {
+            debug("installation of ${app.name} failed.", e)
             val ex = RuntimeException("Failed to install ${app.name} in the foreground.", e)
             gui.displayAppInstallationFailure(e.translatedMessage, ex)
             // hide existing background notification for applicationContext app
@@ -344,7 +355,7 @@ class DownloadActivity : AppCompatActivity() {
 
     @MainThread
     private suspend fun installAppWithoutErrorChecking(status: InstalledAppStatus) {
-        Log.d(LOG_TAG, "DownloadActivity: Install app ${app.name}.")
+        debug("install ${app.name}.")
         val file = appImpl.getApkFile(applicationContext, status.latestVersion)
 
         var certificateHash = "error"
@@ -364,8 +375,17 @@ class DownloadActivity : AppCompatActivity() {
         NotificationRemover.removeAppStatusNotifications(applicationContext, app)
     }
 
+    private fun debug(message: String, throwable: Throwable? = null) {
+        if (throwable == null) {
+            Log.d(LOG_TAG, "$LOG_PREFIX: $message")
+        } else {
+            Log.d(LOG_TAG, "$LOG_PREFIX: $message", throwable)
+        }
+    }
+
     companion object {
         const val EXTRA_APP_NAME = "app_name"
+        const val LOG_PREFIX = "DownloadActivity"
 
         /**
          * Create a new InstallActivity which have to check if app is up-to-date
