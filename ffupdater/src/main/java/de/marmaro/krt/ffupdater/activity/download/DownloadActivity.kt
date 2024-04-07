@@ -166,7 +166,7 @@ class DownloadActivity : AppCompatActivity() {
     }
 
     private suspend fun startInstallationProcess() {
-        debug("start process for ${app.name}.")
+        debug("start fetching, downloading and installation process")
 
         isStorageMounted().ifFalse { return }
         showWarningIfNotEnoughStorageIsAvailable()
@@ -263,7 +263,7 @@ class DownloadActivity : AppCompatActivity() {
 
     @MainThread
     private suspend fun reuseCurrentDownload(status: InstalledAppStatus): Boolean {
-        debug("start reusing existing download ${app.name}.")
+        debug("start reusing existing download")
         return try {
             reuseCurrentDownloadWithoutErrorChecking(status)
             true
@@ -277,7 +277,7 @@ class DownloadActivity : AppCompatActivity() {
 
     @MainThread
     private suspend fun reuseCurrentDownloadWithoutErrorChecking(status: InstalledAppStatus) {
-        debug("reuse existing download ${app.name}.")
+        debug("reuse existing download")
         gui.setText(R.id.downloadingFileUrl, status.latestVersion.downloadUrl)
         gui.setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status))
 
@@ -290,11 +290,11 @@ class DownloadActivity : AppCompatActivity() {
 
     @MainThread
     private suspend fun startDownload(status: InstalledAppStatus): Boolean {
-        debug("start download of ${app.name}.")
+        debug("start download (1/3)")
         return try {
             startDownloadWithoutErrorChecking(status)
         } catch (e: Exception) {
-            debug("download failed for ${app.name}.", e)
+            debug("download failed", e)
             if (e !is DisplayableException) throw e
             gui.displayDownloadFailure(status, e)
             false
@@ -303,7 +303,7 @@ class DownloadActivity : AppCompatActivity() {
 
     @MainThread
     private suspend fun startDownloadWithoutErrorChecking(status: InstalledAppStatus): Boolean {
-        debug("startDownloadWithoutErrorChecking ${app.name}.")
+        debug("start downloading (2/3)")
         gui.setText(R.id.downloadingFileUrl, status.latestVersion.downloadUrl)
         gui.setText(R.id.downloadedFileUrl, status.latestVersion.downloadUrl)
         gui.setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status))
@@ -317,7 +317,7 @@ class DownloadActivity : AppCompatActivity() {
 
     @MainThread
     private suspend fun startDownloadInternal(status: InstalledAppStatus) {
-        debug("downloading ${app.name}.")
+        debug("start downloading (3/3)")
         val appImpl = app.findImpl()
         val coroutineContext = downloadViewModel.viewModelScope.coroutineContext
         withContext(coroutineContext) {
@@ -330,12 +330,12 @@ class DownloadActivity : AppCompatActivity() {
 
     @MainThread
     private suspend fun installApp(status: InstalledAppStatus): Boolean {
-        debug("start installation of ${app.name}.")
+        debug("install app (1/2)")
         return try {
             installAppWithoutErrorChecking(status)
             true
         } catch (e: InstallationFailedException) {
-            debug("installation of ${app.name} failed.", e)
+            debug("installation failed", e)
             val ex = RuntimeException("Failed to install ${app.name} in the foreground.", e)
             gui.displayAppInstallationFailure(e.translatedMessage, ex)
             // hide existing background notification for applicationContext app
@@ -346,7 +346,7 @@ class DownloadActivity : AppCompatActivity() {
 
     @MainThread
     private suspend fun installAppWithoutErrorChecking(status: InstalledAppStatus) {
-        debug("install ${app.name}.")
+        debug("install app (2/2)")
         val file = appImpl.getApkFile(applicationContext, status.latestVersion)
 
         var certificateHash = "error"
