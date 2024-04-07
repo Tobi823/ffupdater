@@ -65,3 +65,5 @@ fastlane/readme.md
 /ffupdater/release/output-metadata.json
 /ffupdater/release/ffupdater-release.zip
 /ffupdater/http_cache/
+/ffupdater/release/baselineProfiles/0/ffupdater-release.dm
+/ffupdater/release/baselineProfiles/1/ffupdater-release.dm
