@@ -154,17 +154,12 @@ class DownloadActivity : AppCompatActivity() {
     }
 
     private fun deleteCachedApkFileIfNecessary() {
-        if (downloadViewModel.installationSuccess) {
-            if (ForegroundSettings.isDeleteUpdateIfInstallSuccessful) {
-                lifecycleScope.launch(Dispatchers.Main) {
-                    appImpl.deleteFileCache(applicationContext)
-                }
-            }
-        } else {
-            if (ForegroundSettings.isDeleteUpdateIfInstallFailed) {
-                lifecycleScope.launch(Dispatchers.Main) {
-                    appImpl.deleteFileCache(applicationContext)
-                }
+        Log.d(LOG_TAG, "DownloadActivity: Check if the cached APK for ${app.name} should be deleted.")
+        val reason1 = downloadViewModel.installationSuccess && ForegroundSettings.isDeleteUpdateIfInstallSuccessful
+        val reason2 = !downloadViewModel.installationSuccess && ForegroundSettings.isDeleteUpdateIfInstallFailed
+        if (reason1 || reason2) {
+            lifecycleScope.launch(Dispatchers.Main) {
+                appImpl.deleteFileCache(applicationContext)
             }
         }
         downloadViewModel.clear()

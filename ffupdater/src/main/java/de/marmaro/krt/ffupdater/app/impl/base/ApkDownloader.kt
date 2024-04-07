@@ -54,8 +54,10 @@ interface ApkDownloader : AppAttributes {
             getApkCacheFolder(context.applicationContext).listFiles()!!
                 .filter { it.name.startsWith("${getSanitizedPackageName()}_") }
                 .filter { it.name.endsWith(".apk") }
-                .also { if (it.isNotEmpty()) Log.i(LOG_TAG, "ApkDownloader: Delete files from ${app.name}") }
-                .forEach { it.delete() }
+                .forEach {
+                    Log.d(LOG_TAG, "ApkDownloader: Delete cached APK of ${app.name} (${it.absolutePath}).")
+                    it.delete()
+                }
         }
     }
 
