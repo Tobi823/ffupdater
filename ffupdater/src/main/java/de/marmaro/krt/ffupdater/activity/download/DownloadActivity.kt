@@ -223,17 +223,15 @@ class DownloadActivity : AppCompatActivity() {
         debug("fetching download information for ${app.name}")
         val source = appImpl.downloadSource
         val inProgressText = getString(download_activity__fetch_url_for_download, source)
-        val finishedText = getString(download_activity__fetched_url_for_download_successfully, source)
-
         gui.setText(R.id.fetchUrlTextView, inProgressText)
+        val finishedText = getString(download_activity__fetched_url_for_download_successfully, source)
+        gui.setText(R.id.fetchedUrlSuccessTextView, finishedText)
 
         var status: InstalledAppStatus? = null
         findViewById<View>(R.id.fetchUrl).visibleDuringExecution {
             status = appImpl.findInstalledAppStatus(applicationContext, USE_EVEN_OUTDATED_CACHE)
         }
-
         gui.show(R.id.fetchedUrlSuccess)
-        gui.setText(R.id.fetchedUrlSuccessTextView, finishedText)
         return status!!
     }
 
