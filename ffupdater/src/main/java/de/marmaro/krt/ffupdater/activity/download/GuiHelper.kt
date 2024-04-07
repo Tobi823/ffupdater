@@ -115,4 +115,21 @@ class GuiHelper(val app: App, val activity: DownloadActivity) {
             activity.startActivity(intent)
         }
     }
+
+    fun resetGui() {
+        hide(
+            R.id.externalStorageNotAccessible,
+            R.id.fetchedUrlSuccess,
+            R.id.fingerprintInstalledGood,
+            R.id.install_activity__delete_cache,
+            R.id.install_activity__different_installer_info,
+            R.id.install_activity__download_file_failed,
+            R.id.install_activity__exception,
+            R.id.install_activity__exception__description,
+            R.id.install_activity__open_cache_folder,
+            R.id.installerSuccess,
+            R.id.tooLowMemory,
+            R.id.useCachedDownloadedApk,
+        )
+    }
 }

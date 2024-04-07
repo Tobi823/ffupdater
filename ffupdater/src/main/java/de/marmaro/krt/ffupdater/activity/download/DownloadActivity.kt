@@ -179,8 +179,7 @@ class DownloadActivity : AppCompatActivity() {
 
     private suspend fun startInstallationProcess() {
         debug("start fetching, downloading and installation process")
-        gui.hide(R.id.install_activity__exception)
-
+        gui.resetGui()
         isStorageMounted().ifFalse { return }
         showWarningIfNotEnoughStorageIsAvailable()
 
@@ -190,7 +189,6 @@ class DownloadActivity : AppCompatActivity() {
     }
 
     private fun isStorageMounted(): Boolean {
-        gui.hide(R.id.externalStorageNotAccessible)
         if (Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED) {
             return true
         }
@@ -209,7 +207,6 @@ class DownloadActivity : AppCompatActivity() {
     }
 
     private fun showWarningIfNotEnoughStorageIsAvailable() {
-        gui.hide(R.id.tooLowMemory)
         if (StorageUtil.isEnoughStorageAvailable(applicationContext)) {
             return
         }
@@ -232,7 +229,6 @@ class DownloadActivity : AppCompatActivity() {
 
     private suspend fun fetchDownloadInformationWithoutErrorChecking(): InstalledAppStatus {
         debug("fetching download information for ${app.name}")
-        gui.hide(R.id.fetchedUrlSuccess)
         val source = appImpl.downloadSource
         val inProgressText = getString(download_activity__fetch_url_for_download, source)
         gui.setText(R.id.fetchUrlTextView, inProgressText)
@@ -248,8 +244,6 @@ class DownloadActivity : AppCompatActivity() {
     }
 
     private suspend fun executeDownloadProcess(status: InstalledAppStatus): Boolean {
-        gui.hide(R.id.useCachedDownloadedApk)
-
         debug("check if an existing download can be reused")
         if (downloadViewModel.isDownloadForCurrentAppRunning(status)) {
             return reuseCurrentDownload(status)
@@ -369,9 +363,6 @@ class DownloadActivity : AppCompatActivity() {
     @MainThread
     private suspend fun installAppWithoutErrorChecking(status: InstalledAppStatus) {
         debug("install app (3/3)")
-        gui.hide(R.id.installerSuccess, R.id.fingerprintInstalledGood, R.id.install_activity__delete_cache)
-        gui.hide(R.id.install_activity__open_cache_folder, R.id.install_activity__exception)
-
         val file = appImpl.getApkFile(applicationContext, status.latestVersion)
 
         var certificateHash = "error"
