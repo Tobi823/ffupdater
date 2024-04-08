@@ -122,13 +122,8 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
         NotificationRemover.removeAppStatusNotifications(applicationContext)
 
         checkUpdateCheckAllowed().onFailure { return@internalDoWork it }
-        val outdatedApps = findOutdatedApps().toMutableList()
-
-        // update FFUpdater at last
-        if (outdatedApps.contains(App.FFUPDATER)) {
-            outdatedApps.remove(App.FFUPDATER)
-            outdatedApps.add(App.FFUPDATER)
-        }
+        val outdatedApps = findOutdatedApps()
+            .sortedBy { it.installationChronology }
 
         // enqueue all work requests for update check
         val workManager = WorkManager.getInstance(applicationContext)

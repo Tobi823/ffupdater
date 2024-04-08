@@ -74,4 +74,12 @@ enum class App {
             VIVALDI -> Vivaldi
         }
     }
+
+    val installationChronology: Int
+        get() {
+            if (this == FFUPDATER) {
+                return Int.MAX_VALUE
+            }
+            return this.ordinal
+        }
 }
