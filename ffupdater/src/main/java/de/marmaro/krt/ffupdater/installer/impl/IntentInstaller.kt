@@ -35,12 +35,12 @@ class IntentInstaller(
 
     override suspend fun startInstallation(context: Context, file: File, appImpl: AppBase): InstallResult {
         return CertificateVerifier(context, appImpl, file).verifyCertificateBeforeAndAfterInstallation {
-            installApkFile(context, file, appImpl)
+            installApkFile(context, file)
         }
     }
 
     @Throws(IllegalArgumentException::class)
-    suspend fun installApkFile(context: Context, file: File, appImpl: AppBase) {
+    private suspend fun installApkFile(context: Context, file: File) {
         removePreviousResultsFromChannel()
         require(this::appInstallationCallback.isInitialized) { "Call lifecycle.addObserver(...) first!" }
         require(file.exists()) { "File does not exists." }
