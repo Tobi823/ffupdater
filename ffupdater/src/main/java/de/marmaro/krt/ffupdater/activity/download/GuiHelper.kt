@@ -6,8 +6,8 @@ import android.widget.TextView
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.DisplayableException
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.InstalledAppStatus
+import de.marmaro.krt.ffupdater.app.impl.AppBase
 import de.marmaro.krt.ffupdater.crash.CrashReportActivity
 import de.marmaro.krt.ffupdater.crash.LogReader
 import de.marmaro.krt.ffupdater.crash.ThrowableAndLogs
@@ -20,8 +20,7 @@ import de.marmaro.krt.ffupdater.settings.ForegroundSettings
 import de.marmaro.krt.ffupdater.settings.InstallerSettings
 import kotlinx.coroutines.channels.Channel
 
-class GuiHelper(val app: App, val activity: DownloadActivity) {
-    private val appImpl = app.findImpl()
+class GuiHelper(val activity: DownloadActivity) {
 
     fun show(vararg viewIds: Int) {
         viewIds.forEach { activity.findViewById<View>(it).visibility = View.VISIBLE }
@@ -36,7 +35,7 @@ class GuiHelper(val app: App, val activity: DownloadActivity) {
     }
 
     @MainThread
-    fun displayAppInstallationFailure(errorMessage: String, exception: Exception) {
+    fun displayAppInstallationFailure(errorMessage: String, exception: Exception, appImpl: AppBase) {
         show(R.id.install_activity__exception)
 
         setText(

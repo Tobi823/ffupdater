@@ -118,7 +118,7 @@ class DownloadActivity : AppCompatActivity() {
 
         app = App.valueOf(appFromExtras)
         appImpl = app.findImpl()
-        gui = GuiHelper(app, this)
+        gui = GuiHelper(this)
         installer = createForegroundAppInstaller(this, app)
         lifecycle.addObserver(installer)
 
@@ -152,7 +152,7 @@ class DownloadActivity : AppCompatActivity() {
         }
         app = App.valueOf(appFromExtras)
         appImpl = app.findImpl()
-        gui = GuiHelper(app, this)
+        gui = GuiHelper(this)
         installer.changeApp(app)
         downloadViewModel.clear()
         lifecycleScope.launch(Dispatchers.Main) {
@@ -372,7 +372,7 @@ class DownloadActivity : AppCompatActivity() {
         } catch (e: InstallationFailedException) {
             debug("installation failed", e)
             val ex = RuntimeException("Failed to install ${app.name} in the foreground.", e)
-            gui.displayAppInstallationFailure(e.translatedMessage, ex)
+            gui.displayAppInstallationFailure(e.translatedMessage, ex, appImpl)
             // hide existing background notification for applicationContext app
             NotificationRemover.removeAppStatusNotifications(applicationContext, app)
             false
