@@ -123,9 +123,6 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
 
         checkUpdateCheckAllowed().onFailure { return@internalDoWork it }
         val outdatedApps = findOutdatedApps().toMutableList()
-        if (outdatedApps.isEmpty()) {
-            return Result.success()
-        }
 
         // update FFUpdater at last
         if (outdatedApps.contains(App.FFUPDATER)) {
