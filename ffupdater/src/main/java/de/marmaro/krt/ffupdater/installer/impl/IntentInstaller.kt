@@ -11,6 +11,7 @@ import androidx.activity.result.contract.ActivityResultContracts.StartActivityFo
 import androidx.annotation.Keep
 import androidx.core.content.FileProvider
 import androidx.lifecycle.LifecycleOwner
+import de.marmaro.krt.ffupdater.BuildConfig
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.entity.Installer
@@ -21,8 +22,6 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.runBlocking
 import java.io.File
-import java.lang.Exception
-import java.lang.RuntimeException
 
 
 @Keep
@@ -107,7 +106,7 @@ class IntentInstaller(
         intent.flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
         intent.putExtra(Intent.EXTRA_RETURN_RESULT, true)
         intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true)
-        intent.putExtra(Intent.EXTRA_INSTALLER_PACKAGE_NAME, "com.android.vending")
+        intent.putExtra(Intent.EXTRA_INSTALLER_PACKAGE_NAME, BuildConfig.APPLICATION_ID)
         appInstallationCallback.launch(intent)
     }
 
