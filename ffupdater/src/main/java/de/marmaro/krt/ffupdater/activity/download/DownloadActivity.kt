@@ -386,7 +386,7 @@ class DownloadActivity : AppCompatActivity() {
 
         var certificateHash = "error"
         findViewById<View>(R.id.installingApplication).visibleDuringExecution {
-            val installResult = installer.startInstallation(this@DownloadActivity, file)
+            val installResult = installer.startInstallation(this@DownloadActivity, file, appImpl)
             certificateHash = installResult.certificateHash ?: "error"
         }
 

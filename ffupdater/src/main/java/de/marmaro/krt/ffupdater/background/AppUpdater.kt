@@ -214,7 +214,7 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) :
         try {
             Log.i(LOG_TAG, "$LOGTAG: Update/install $app.")
             val installer = AppInstallerFactory.createBackgroundAppInstaller(app)
-            installer.startInstallation(applicationContext, file)
+            installer.startInstallation(applicationContext, file, appImpl)
             appImpl.appWasInstalledCallback(applicationContext, installedAppStatus)
             if (BackgroundSettings.isDeleteUpdateIfInstallSuccessful) {
                 appImpl.getApkCacheFolder(applicationContext)

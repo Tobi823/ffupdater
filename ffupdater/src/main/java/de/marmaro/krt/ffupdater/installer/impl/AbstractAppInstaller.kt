@@ -15,17 +15,15 @@ import de.marmaro.krt.ffupdater.security.FingerprintValidator
 import java.io.File
 
 @Keep
-abstract class AbstractAppInstaller(protected var app: App) : AppInstaller {
+abstract class AbstractAppInstaller : AppInstaller {
 
     override fun changeApp(app: App) {
-        this.app = app
     }
 
     @Throws(InstallationFailedException::class)
-    override suspend fun startInstallation(context: Context, file: File): InstallResult {
-        val appImpl = app.findImpl()
+    override suspend fun startInstallation(context: Context, file: File, appImpl: AppBase): InstallResult {
         val fileCertHash = hasApkCorrectCertificate(context.applicationContext, file, appImpl)
-        installApkFile(context /* must be activity and not application context */, file)
+        installApkFile(context /* must be activity and not application context */, file, appImpl)
         hasInstalledAppCorrectCertificate(context.applicationContext, appImpl, fileCertHash)
         return InstallResult(fileCertHash)
     }
@@ -48,7 +46,7 @@ abstract class AbstractAppInstaller(protected var app: App) : AppInstaller {
         return fileCertHash
     }
 
-    protected abstract suspend fun installApkFile(context: Context, file: File)
+    protected abstract suspend fun installApkFile(context: Context, file: File, appImpl: AppBase)
 
     private suspend fun hasInstalledAppCorrectCertificate(context: Context, appImpl: AppBase, fileCertHash: String) {
         val appResult = try {

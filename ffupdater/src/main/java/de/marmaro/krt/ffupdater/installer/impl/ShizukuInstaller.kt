@@ -9,7 +9,7 @@ import android.content.pm.PackageInstallerHidden
 import android.content.pm.PackageManager
 import androidx.annotation.Keep
 import de.marmaro.krt.ffupdater.BuildConfig.APPLICATION_ID
-import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.impl.AppBase
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.entity.Installer
 import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
@@ -21,17 +21,17 @@ import rikka.shizuku.SystemServiceHelper
 import java.io.File
 
 @Keep
-class ShizukuInstaller(app: App) : SessionInstaller(app, false) {
+class ShizukuInstaller : SessionInstaller(false) {
     override val type = Installer.SESSION_INSTALLER
     override val intentName = "de.marmaro.krt.ffupdater.installer.impl.ShizukuNewInstaller"
 
     @Throws(IllegalArgumentException::class)
-    override suspend fun installApkFile(context: Context, file: File) {
+    override suspend fun installApkFile(context: Context, file: File, appImpl: AppBase) {
         if (DeviceSdkTester.supportsAndroid9P28()) {
             HiddenApiBypass.addHiddenApiExemptions("")
         }
         failIfShizukuPermissionIsMissing()
-        super.installApkFile(context, file)
+        super.installApkFile(context, file, appImpl)
     }
 
     private fun failIfShizukuPermissionIsMissing() {
@@ -56,13 +56,14 @@ class ShizukuInstaller(app: App) : SessionInstaller(app, false) {
     override suspend fun openSession(
         context: Context,
         file: File,
+        appImpl: AppBase,
         block: suspend (PackageInstaller.Session, Int) -> Unit,
     ): Int {
         // Taken from LSPatch (https://github.com/LSPosed/LSPatch) and AuroraStore:
         // https://gitlab.com/AuroraOSS/AuroraStore/-/blob/master/app/src/main/java/com/aurora/store/data/installer/ShizukuInstaller.kt)
         val iPackageInstaller = getPackageInstallerInterface()
         val packageInstaller = getPackageInstaller(iPackageInstaller, context)
-        val sessionParams = createSessionParams(context, file)
+        val sessionParams = createSessionParams(context, file, appImpl)
         val sessionId = packageInstaller.createSession(sessionParams)
         val session = getSession(iPackageInstaller, sessionId)
         session.use {

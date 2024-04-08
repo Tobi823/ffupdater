@@ -16,10 +16,10 @@ object AppInstallerFactory {
     ): AppInstaller {
         val registry = activity.activityResultRegistry
         return when (InstallerSettings.getInstallerMethod()) {
-            Installer.SESSION_INSTALLER -> SessionInstaller(app, true)
-            Installer.NATIVE_INSTALLER -> IntentInstaller(activity.applicationContext, registry, app)
-            Installer.ROOT_INSTALLER -> RootInstaller(app)
-            Installer.SHIZUKU_INSTALLER -> ShizukuInstaller(app)
+            Installer.SESSION_INSTALLER -> SessionInstaller(true)
+            Installer.NATIVE_INSTALLER -> IntentInstaller(activity.applicationContext, registry)
+            Installer.ROOT_INSTALLER -> RootInstaller()
+            Installer.SHIZUKU_INSTALLER -> ShizukuInstaller()
         }
     }
 
@@ -27,10 +27,10 @@ object AppInstallerFactory {
         app: App,
     ): AppInstaller {
         return when (InstallerSettings.getInstallerMethod()) {
-            Installer.SESSION_INSTALLER -> SessionInstaller(app, false)
+            Installer.SESSION_INSTALLER -> SessionInstaller(false)
             Installer.NATIVE_INSTALLER -> throw Exception("Installer can not update apps in background")
-            Installer.ROOT_INSTALLER -> RootInstaller(app)
-            Installer.SHIZUKU_INSTALLER -> ShizukuInstaller(app)
+            Installer.ROOT_INSTALLER -> RootInstaller()
+            Installer.SHIZUKU_INSTALLER -> ShizukuInstaller()
         }
     }
 }
