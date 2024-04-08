@@ -40,9 +40,9 @@ import de.marmaro.krt.ffupdater.storage.StorageUtil
 import de.marmaro.krt.ffupdater.storage.SystemFileManager
 import de.marmaro.krt.ffupdater.utils.goneAfterExecution
 import de.marmaro.krt.ffupdater.utils.ifFalse
+import de.marmaro.krt.ffupdater.utils.setVisibleOrGone
 import de.marmaro.krt.ffupdater.utils.visibleAfterExecution
 import de.marmaro.krt.ffupdater.utils.visibleDuringExecution
-import de.marmaro.krt.ffupdater.utils.setVisibleOrGone
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
@@ -98,6 +98,7 @@ class DownloadActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.e(LOG_TAG, "debug: start OnCreate DownloadActivity")
         setContentView(R.layout.activity_download)
         AppCompatDelegate.setDefaultNightMode(ForegroundSettings.themePreference)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -135,6 +136,25 @@ class DownloadActivity : AppCompatActivity() {
         }
         NotificationRemover.removeAppStatusNotifications(applicationContext, app)
 
+        lifecycleScope.launch(Dispatchers.Main) {
+            startInstallationProcess()
+        }
+    }
+
+    // other download notification has been pushed
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        val appFromExtras = intent?.extras?.getString(EXTRA_APP_NAME)
+        // check if this activity was unintentionally started again after finishing the download
+        if (appFromExtras == null) {
+            finish()
+            return
+        }
+        app = App.valueOf(appFromExtras)
+        appImpl = app.findImpl()
+        gui = GuiHelper(app, this)
+        installer.changeApp(app)
+        downloadViewModel.clear()
         lifecycleScope.launch(Dispatchers.Main) {
             startInstallationProcess()
         }
@@ -396,7 +416,6 @@ class DownloadActivity : AppCompatActivity() {
          */
         fun createIntent(context: Context, app: App): Intent {
             val intent = Intent(context, DownloadActivity::class.java)
-            // intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             intent.putExtra(EXTRA_APP_NAME, app.name)
             return intent
         }

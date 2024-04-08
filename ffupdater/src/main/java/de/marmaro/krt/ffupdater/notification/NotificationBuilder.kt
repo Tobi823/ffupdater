@@ -71,12 +71,6 @@ object NotificationBuilder {
         showNotification(appContext, channel, notification, intent)
     }
 
-    fun showUpdateAvailableNotification(context: Context, apps: List<App>) {
-        apps.forEach {
-            showUpdateAvailableNotification(context, it)
-        }
-    }
-
     fun showUpdateAvailableNotification(context: Context, app: App) {
         val useDifferentChannels = BackgroundSettings.useDifferentNotificationChannels
         val appTitle: String = context.getString(app.findImpl().title)
@@ -102,7 +96,7 @@ object NotificationBuilder {
             title = context.getString(update_notification__title, appTitle),
             text = context.getString(update_notification__text),
         )
-        showNotification(context, channel, notification, DownloadActivity.createIntent(context, app))
+        showNotification(context, channel, notification, DownloadActivity.createIntent(context, app), null, UPDATE_AVAILABLE_CODE + app.ordinal)
     }
 
     fun showDownloadRunningNotification(context: Context, app: App, progressInPercent: Int?, totalMB: Long?) {
@@ -248,6 +242,7 @@ object NotificationBuilder {
         notification: NotificationData,
         intent: Intent? = null,
         action: Notification.Action? = null,
+        requestCode: Int = 0
     ): Notification {
         val notificationManager = getNotificationManager(context)
 
@@ -269,7 +264,7 @@ object NotificationBuilder {
 
         if (intent != null) {
             val flags = FLAG_UPDATE_CURRENT + (if (DeviceSdkTester.supportsAndroid12S31()) FLAG_IMMUTABLE else 0)
-            notificationBuilder.setContentIntent(PendingIntent.getActivity(context, 0, intent, flags))
+            notificationBuilder.setContentIntent(PendingIntent.getActivity(context, requestCode, intent, flags))
         }
         action?.let { notificationBuilder.addAction(it) }
 

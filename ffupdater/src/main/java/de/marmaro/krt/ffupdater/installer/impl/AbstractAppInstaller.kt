@@ -15,7 +15,11 @@ import de.marmaro.krt.ffupdater.security.FingerprintValidator
 import java.io.File
 
 @Keep
-abstract class AbstractAppInstaller(protected val app: App) : AppInstaller {
+abstract class AbstractAppInstaller(protected var app: App) : AppInstaller {
+
+    override fun changeApp(app: App) {
+        this.app = app
+    }
 
     @Throws(InstallationFailedException::class)
     override suspend fun startInstallation(context: Context, file: File): InstallResult {
