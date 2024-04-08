@@ -110,11 +110,7 @@ class ShizukuInstaller(private val foreground: Boolean) : AppInstaller {
         val filter = IntentFilter(intentName)
         if (DeviceSdkTester.supportsAndroid13T33()) {
             withContext(Dispatchers.Main) {
-                context.registerReceiver(
-                    intentReceiver,
-                    filter,
-                    Context.RECEIVER_NOT_EXPORTED
-                )
+                context.registerReceiver(intentReceiver, filter, Context.RECEIVER_NOT_EXPORTED)
             }
         } else {
             withContext(Dispatchers.Main) { context.registerReceiver(intentReceiver, filter) }
