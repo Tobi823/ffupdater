@@ -39,6 +39,35 @@ class IntentInstaller(
         }
     }
 
+    @Throws(IllegalArgumentException::class)
+    suspend fun installApkFile(context: Context, file: File, appImpl: AppBase) {
+        removePreviousResultsFromChannel()
+        require(this::appInstallationCallback.isInitialized) { "Call lifecycle.addObserver(...) first!" }
+        require(file.exists()) { "File does not exists." }
+        installApkFileHelper(context.applicationContext, file)
+
+        val result = installFailure.receive()
+        if (result != null) {
+            throw result
+        }
+    }
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    private suspend fun removePreviousResultsFromChannel() {
+        while (!installFailure.isEmpty) {
+            installFailure.receive()
+        }
+    }
+
+    override fun onCreate(owner: LifecycleOwner) {
+        appInstallationCallback = activityResultRegistry.register(
+            ACTIVITY_RESULT_NAME,
+            owner,
+            StartActivityForResult(),
+            appResultCallback
+        )
+    }
+
     private val appResultCallback = lambda@{ activityResult: ActivityResult ->
         val result = if (activityResult.resultCode == Activity.RESULT_OK) {
             null
@@ -65,35 +94,6 @@ class IntentInstaller(
         val shortErrorMessage = "${getShortErrorMessage(installResult)} $resultCodeString"
         val translatedErrorMessage = "${getTranslatedErrorMessage(context, installResult)} $resultCodeString"
         return InstallationFailedException(shortErrorMessage, resultCode, translatedErrorMessage)
-    }
-
-    override fun onCreate(owner: LifecycleOwner) {
-        appInstallationCallback = activityResultRegistry.register(
-            ACTIVITY_RESULT_NAME,
-            owner,
-            StartActivityForResult(),
-            appResultCallback
-        )
-    }
-
-    @Throws(IllegalArgumentException::class)
-    suspend fun installApkFile(context: Context, file: File, appImpl: AppBase) {
-        removePreviousResultsFromChannel()
-        require(this::appInstallationCallback.isInitialized) { "Call lifecycle.addObserver(...) first!" }
-        require(file.exists()) { "File does not exists." }
-        installApkFileHelper(context.applicationContext, file)
-
-        val result = installFailure.receive()
-        if (result != null) {
-            throw result
-        }
-    }
-
-    @OptIn(ExperimentalCoroutinesApi::class)
-    private suspend fun removePreviousResultsFromChannel() {
-        while (!installFailure.isEmpty) {
-            installFailure.receive()
-        }
     }
 
     /**
