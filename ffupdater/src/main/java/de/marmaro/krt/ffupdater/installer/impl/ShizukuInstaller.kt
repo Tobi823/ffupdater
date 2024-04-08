@@ -11,6 +11,8 @@ import android.content.pm.IPackageInstaller
 import android.content.pm.IPackageInstallerSession
 import android.content.pm.IPackageManager
 import android.content.pm.PackageInstaller
+import android.content.pm.PackageInstaller.STATUS_PENDING_USER_ACTION
+import android.content.pm.PackageInstaller.STATUS_SUCCESS
 import android.content.pm.PackageInstallerHidden
 import android.content.pm.PackageManager
 import android.content.pm.PackageManagerHidden
@@ -95,25 +97,20 @@ class ShizukuInstaller(private val foreground: Boolean) : AppInstaller {
                 requireNotNull(intent)
                 val bundle = requireNotNull(intent.extras)
                 when (val status = bundle.getInt(PackageInstaller.EXTRA_STATUS)) {
-                    PackageInstaller.STATUS_PENDING_USER_ACTION -> requestInstallationPermission(
-                        context,
-                        bundle,
-                        installStatus
-                    )
-
-                    PackageInstaller.STATUS_SUCCESS -> installStatus.complete(true)
+                    STATUS_PENDING_USER_ACTION -> requestInstallationPermission(context, bundle, installStatus)
+                    STATUS_SUCCESS -> installStatus.complete(true)
                     else -> installStatus.completeExceptionally(createInstallFailedException(status, bundle, context))
                 }
             }
         }
 
-        val filter = IntentFilter(intentName)
-        if (DeviceSdkTester.supportsAndroid13T33()) {
-            withContext(Dispatchers.Main) {
+        withContext(Dispatchers.Main) {
+            val filter = IntentFilter(intentName)
+            if (DeviceSdkTester.supportsAndroid13T33()) {
                 context.registerReceiver(intentReceiver, filter, Context.RECEIVER_NOT_EXPORTED)
+            } else {
+                context.registerReceiver(intentReceiver, filter)
             }
-        } else {
-            withContext(Dispatchers.Main) { context.registerReceiver(intentReceiver, filter) }
         }
         return intentReceiver
     }
