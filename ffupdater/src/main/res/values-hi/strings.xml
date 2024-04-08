@@ -6,12 +6,8 @@
     <string name="available_version">उपलब्ध: %1$s</string>
     <string name="notification__error__text">कृपया इस त्रुटि की रिपोर्ट करें. त्रुटि रिपोर्ट देखने के लिए क्लिक करें।</string>
     <string name="brave__title">Brave Private Browser</string>
-    <string name="brave_beta__description">Android के लिए Brave Beta में आपका स्वागत है!
-\nनवीनतम सुविधाएँ आज़माएँ और शीघ्र प्रतिक्रिया दें: https://brave.com/msupport
-\nआप Android के लिए Brave के अपने वर्तमान संस्करण के साथ Brave Beta इंस्टॉल कर सकते हैं।</string>
-    <string name="brave_nightly__description">Android के लिए Brave Nightly (डेवलपर) में आपका स्वागत है!
-\nनवीनतम सुविधाएँ आज़माएँ और शीघ्र प्रतिक्रिया दें: https://brave.com/msupport
-\nआप Android के लिए Brave के अपने वर्तमान संस्करण के साथ Brave Nightly इंस्टॉल कर सकते हैं।</string>
+    <string name="brave_beta__description">Android के लिए Brave Beta में आपका स्वागत है! \nनवीनतम सुविधाएँ आज़माएँ और शीघ्र प्रतिक्रिया दें: https://brave.com/msupport \nआप Android के लिए Brave के अपने वर्तमान संस्करण के साथ Brave Beta इंस्टॉल कर सकते हैं।</string>
+    <string name="brave_nightly__description">Android के लिए Brave Nightly (डेवलपर) में आपका स्वागत है! \nनवीनतम सुविधाएँ आज़माएँ और शीघ्र प्रतिक्रिया दें: https://brave.com/msupport \nआप Android के लिए Brave के अपने वर्तमान संस्करण के साथ Brave Nightly इंस्टॉल कर सकते हैं।</string>
     <string name="crash_report__copy_crash_report_to_clipboard">क्रैश रिपोर्ट को क्लिपबोर्ड पर कॉपी करें</string>
     <string name="crash_report__go_to_github">GitHub पर जाएँ</string>
     <string name="crash_report__go_to_gitlab">GitLab पर जाएँ</string>
@@ -89,8 +85,7 @@
     <string name="update_interval__2d">2 दिन</string>
     <string name="update_notification__title">%1$s के लिए अपडेट उपलब्ध है</string>
     <string name="vivaldi__title">Vivaldi Browser</string>
-    <string name="vivaldi__warning">- Vivaldi केवल आंशिक रूप से खुला स्रोत है।
-\n- यह Google Chrome की तकनीकी नींव का भी उपयोग करता है और इस प्रकार अप्रत्यक्ष रूप से Chromium रेंडर इंजन की एकाधिकार स्थिति का समर्थन करता है।</string>
+    <string name="vivaldi__warning">- Vivaldi केवल आंशिक रूप से खुला स्रोत है। \n- यह Google Chrome की तकनीकी नींव का भी उपयोग करता है और इस प्रकार अप्रत्यक्ष रूप से Chromium रेंडर इंजन की एकाधिकार स्थिति का समर्थन करता है।</string>
     <string name="orbot__title">Orbot: Android के लिए Tor</string>
     <string name="settings__background__update_check__when_device_idle__title">अपडेट केवल तभी जांचता है जब डिवाइस निष्क्रिय हो</string>
     <string name="add_app_activity__title_better_than_google_chrome">Google Chrome से बेहतर</string>
@@ -153,9 +148,7 @@
     <string name="cardview_dialog__hide">छुपाएं</string>
     <string name="foreground__hidden_apps__title">छुपे हुए ऐप्स</string>
     <string name="foreground__hidden_apps__summary">छिपे हुए ऐप्स UI में छिपे रहेंगे और स्वचालित रूप से अपडेट नहीं होंगे।</string>
-    <string name="firefox_focus_beta__description">उन सभी चीज़ों के लिए Firefox Focus का उपयोग करें जिन्हें आप अपने मुख्य ब्राउज़र से अलग रखना चाहते हैं - उन सभी के लिए जो अंदर आते हैं और बाहर निकलते हैं और इसके बारे में भूल जाते हैं। कोई टैब नहीं, कोई झंझट नहीं, कोई गड़बड़ नहीं। ऑनलाइन ट्रैकर्स को भी ब्लॉक करें. एक टैप, और आपका ब्राउज़िंग इतिहास पूरी तरह से नष्ट हो जाता है।
-\n
-\nFirefox Focus अंदर आने/बाहर निकलने, खोजने और नष्ट करने के लिए एकदम सही है, मैं एक ऐसे मिशन पर हूँ जो आपके काम का नहीं है - वेब ब्राउज़र।</string>
+    <string name="firefox_focus_beta__description">उन सभी चीज़ों के लिए Firefox Focus का उपयोग करें जिन्हें आप अपने मुख्य ब्राउज़र से अलग रखना चाहते हैं - उन सभी के लिए जो अंदर आते हैं और बाहर निकलते हैं और इसके बारे में भूल जाते हैं। कोई टैब नहीं, कोई झंझट नहीं, कोई गड़बड़ नहीं। ऑनलाइन ट्रैकर्स को भी ब्लॉक करें. एक टैप, और आपका ब्राउज़िंग इतिहास पूरी तरह से नष्ट हो जाता है। \n \nFirefox Focus अंदर आने/बाहर निकलने, खोजने और नष्ट करने के लिए एकदम सही है, मैं एक ऐसे मिशन पर हूँ जो आपके काम का नहीं है - वेब ब्राउज़र।</string>
     <string name="cardview_dialog__auto_bg_update">स्वचालित पृष्ठभूमि अपडेट</string>
     <string name="fairemail__warning">- FairEmail के Google Play Store संस्करण को FFUpdater के साथ अपडेट करने से समस्याएँ हो सकती हैं, जैसे। कार्यात्मक OAuth/Google मेल समर्थन नहीं। FFUpdater के कारण होने वाली समस्याओं के लिए FairEmail लेखक से सहायता न मांगें।</string>
     <string name="brave_beta__title">Brave Browser (Beta)</string>
@@ -166,8 +159,7 @@
     <string name="foreground__hide_apps_signed_by_different_certificate__title">किसी भिन्न प्रमाणपत्र द्वारा हस्ताक्षरित ऐप्स छिपाएँ।</string>
     <string name="duckduckgo_android__description">DuckDuckGo ऐप एक बटन दबाते ही सबसे व्यापक ऑनलाइन गोपनीयता सुरक्षा प्रदान करता है। एक डाउनलोड के साथ, आपको एक नया रोजमर्रा का ब्राउज़र मिलता है जो खोजते और ब्राउज़ करते समय निर्बाध सुरक्षा प्रदान करता है, और आपके द्वारा प्राप्त ईमेल और आपके द्वारा उपयोग किए जाने वाले ऐप्स के लिए ट्रैकिंग सुरक्षा तक पहुंच प्रदान करता है। इनमें से कई सुरक्षाएँ अधिकांश लोकप्रिय ब्राउज़रों में डिफ़ॉल्ट रूप से पेश नहीं की जाती हैं।</string>
     <string name="notification__uncaught_exception__title">FFUpdater क्रैश हो गया</string>
-    <string name="duckduckgo_android__warning">- DuckDuckGo वेबसाइटों को प्रदर्शित करने के लिए सिस्टम वेबव्यू का उपयोग करता है।
-\n- Microsoft की सभी कुकीज़ को ब्लॉक न करने को लेकर विवाद था - लेकिन इसे ठीक कर लिया गया है।</string>
+    <string name="duckduckgo_android__warning">- DuckDuckGo वेबसाइटों को प्रदर्शित करने के लिए सिस्टम वेबव्यू का उपयोग करता है। \n- Microsoft की सभी कुकीज़ को ब्लॉक न करने को लेकर विवाद था - लेकिन इसे ठीक कर लिया गया है।</string>
     <string name="notification__uncaught_exception__channel_name">क्रैश सूचनाएं</string>
     <string name="crash_report__report_is_copied_to_clipboard">क्रैश रिपोर्ट आपके क्लिपबोर्ड पर कॉपी हो जाती है</string>
     <string name="notification__bg_update_check__unreliable_execution__text">हो सकता है कि यह आपके डिवाइस की बैटरी या प्रदर्शन सेटिंग्स के कारण हो। इस ऐप के लिए बैटरी अनुकूलन अक्षम करने के लिए इस अधिसूचना पर क्लिक करें।</string>
@@ -232,44 +224,28 @@
     <string name="download_activity__download_failed">डाउनलोड विफल</string>
     <string name="download_activity__delete_cache_button_text">कैश साफ़ करें</string>
     <string name="notification__eol_apps__text">आपके पास पुराने ऐप्स हैं जिनका अब उपयोग नहीं किया जाना चाहिए। अधिक जानकारी के लिए क्लिक करें। : %1$s</string>
-    <string name="iceraven__warning">- अनुरक्षक सुरक्षा या अपडेट या यहां तक कि स्थिरता की कोई वारंटी या गारंटी नहीं देता है।
-\n - सुरक्षा अपडेट प्रदान करने में परियोजना को सामान्य से अधिक समय लगता है।</string>
+    <string name="iceraven__warning">- अनुरक्षक सुरक्षा या अपडेट या यहां तक कि स्थिरता की कोई वारंटी या गारंटी नहीं देता है। \n - सुरक्षा अपडेट प्रदान करने में परियोजना को सामान्य से अधिक समय लगता है।</string>
     <string name="firefox_focus__description">यह Firefox ब्राउज़र का एक संशोधन है जिसका उद्देश्य गोपनीयता बढ़ाना है।</string>
     <string name="app_card__download_the_app">ऐप डाउनलोड करें</string>
     <string name="notification__download_running__title">ऐप अपडेट डाउनलोड हो रहा है</string>
     <string name="notification__download_running__channel_descr">पृष्ठभूमि में ऐप अपडेट डाउनलोड होने पर दिखाता है।</string>
     <string name="brave__description">नि:शुल्क निजी तौर पर इंटरनेट ब्राउज़ करें! Brave प्राइवेट ब्राउज़र ऐप विज्ञापन अवरोधक और पॉप-अप अवरोधक के साथ आपका तेज़, मुफ़्त और सुरक्षित निजी वेब ब्राउज़र है। विज्ञापनदाताओं, मैलवेयर और पॉप-अप द्वारा ट्रैक किए बिना निजी तौर पर इंटरनेट ब्राउज़ करें और खोजें।</string>
-    <string name="brave__warning">- Brave Google Chrome की तकनीकी नींव का उपयोग करता है और इस प्रकार अप्रत्यक्ष रूप से क्रोमियम रेंडर इंजन की एकाधिकार स्थिति का समर्थन करता है।
-\n- Ethereum ब्लॉकचेन पर अपने Basic Attention Token BAT के कारण प्रोजेक्ट का क्रिप्टोकरेंसी से संबंध है। ब्लॉकचेन में कई समस्याएं हैं और मेरे विचार से इससे बचा जाना चाहिए।</string>
+    <string name="brave__warning">- Brave Google Chrome की तकनीकी नींव का उपयोग करता है और इस प्रकार अप्रत्यक्ष रूप से क्रोमियम रेंडर इंजन की एकाधिकार स्थिति का समर्थन करता है। \n- Ethereum ब्लॉकचेन पर अपने Basic Attention Token BAT के कारण प्रोजेक्ट का क्रिप्टोकरेंसी से संबंध है। ब्लॉकचेन में कई समस्याएं हैं और मेरे विचार से इससे बचा जाना चाहिए।</string>
     <string name="install_activity__download_file_failed__crash_text">डाउनलोड के दौरान निम्न त्रुटि उत्पन्न हुई. यदि यह त्रुटि बार-बार होती है, तो बेझिझक क्रैश रिपोर्ट notabug.org, GitHub या GitLab पर सबमिट करें।</string>
     <string name="crash_report__explain_text__download_activity_update_check">मुख्य दृश्य में अद्यतनों की जाँच करते समय यह त्रुटि उत्पन्न हुई। यदि यह त्रुटि बार-बार होती है, तो बेझिझक क्रैश रिपोर्ट notabug.org, GitHub या GitLab पर सबमिट करें।</string>
     <string name="firefox_beta__description">Android के लिए Firefox ब्राउज़र स्वचालित रूप से निजी और अविश्वसनीय रूप से तेज़ है। हर दिन हजारों ऑनलाइन ट्रैकर आपका पीछा कर रहे हैं, आप ऑनलाइन कहां जाते हैं, इसके बारे में जानकारी एकत्र कर रहे हैं और आपकी गति को धीमा कर रहे हैं। Firefox इनमें से 2000 से अधिक ट्रैकर्स को डिफ़ॉल्ट रूप से ब्लॉक कर देता है और यदि आप अपने ब्राउज़र को और भी अधिक कस्टमाइज़ करना चाहते हैं तो विज्ञापन अवरोधक ऐड-ऑन उपलब्ध हैं। Firefox के साथ, आपको वह सुरक्षा मिलेगी जिसके आप हकदार हैं और वह गति जो आपको एक निजी, मोबाइल ब्राउज़र में चाहिए।</string>
     <string name="firefox_beta__title">Android Beta के लिए Firefox</string>
     <string name="firefox_klar__description">Firefox Klar जर्मनी, ऑस्ट्रिया और स्विट्जरलैंड के लिए विकसित किया गया है, लेकिन इसका उपयोग किसी भी देश के उपयोगकर्ताओं द्वारा किया जा सकता है। यह Firefox Focus के समान है, लेकिन Hubert Burda Media group की पत्रिका फोकस के साथ भ्रम से बचने के लिए जर्मन भाषी देशों में इसका नाम बदल दिया गया था। Firefox Focus के विपरीत, Firefox Klar में सख्त जर्मन गोपनीयता कानूनों के कारण डिफ़ॉल्ट रूप से टेलीमेट्री अक्षम है।</string>
     <string name="firefox_klar__title">Firefox Klar</string>
-    <string name="firefox_nightly__description">कृपया ध्यान दें कि इस ऐप का नाम Firefox प्रीव्यू हुआ करता था। इसे अब Firefox Nightly में परिवर्तित कर दिया गया है।
-\n
-\nFirefox Nightly नए Mozilla Firefox रिलीज़ के लिए एक विकासात्मक चैनल है।
-\n
-\nFirefox Nightly को Firefox के अधिक प्रयोगात्मक बिल्ड को प्रदर्शित करने के लिए डिज़ाइन किया गया है। Nightly चैनल उपयोगकर्ताओं को अस्थिर वातावरण में नवीनतम Firefox नवाचारों का अनुभव करने की अनुमति देता है और अंतिम रिलीज़ क्या बनाता है यह निर्धारित करने में सहायता के लिए सुविधाओं और प्रदर्शन पर प्रतिक्रिया प्रदान करता है।</string>
+    <string name="firefox_nightly__description">कृपया ध्यान दें कि इस ऐप का नाम Firefox प्रीव्यू हुआ करता था। इसे अब Firefox Nightly में परिवर्तित कर दिया गया है। \n \nFirefox Nightly नए Mozilla Firefox रिलीज़ के लिए एक विकासात्मक चैनल है। \n \nFirefox Nightly को Firefox के अधिक प्रयोगात्मक बिल्ड को प्रदर्शित करने के लिए डिज़ाइन किया गया है। Nightly चैनल उपयोगकर्ताओं को अस्थिर वातावरण में नवीनतम Firefox नवाचारों का अनुभव करने की अनुमति देता है और अंतिम रिलीज़ क्या बनाता है यह निर्धारित करने में सहायता के लिए सुविधाओं और प्रदर्शन पर प्रतिक्रिया प्रदान करता है।</string>
     <string name="firefox_release__description">Android के लिए Firefox ब्राउज़र स्वचालित रूप से निजी और अविश्वसनीय रूप से तेज़ है। हर दिन हजारों ऑनलाइन ट्रैकर आपका पीछा कर रहे हैं, आप ऑनलाइन कहां जाते हैं, इसके बारे में जानकारी एकत्र कर रहे हैं और आपकी गति को धीमा कर रहे हैं। Firefox इनमें से 2000 से अधिक ट्रैकर्स को डिफ़ॉल्ट रूप से ब्लॉक कर देता है और यदि आप अपने ब्राउज़र को और भी अधिक कस्टमाइज़ करना चाहते हैं तो विज्ञापन अवरोधक ऐड-ऑन उपलब्ध हैं। Firefox के साथ, आपको वह सुरक्षा मिलेगी जिसके आप हकदार हैं और वह गति जो आपको एक निजी, मोबाइल ब्राउज़र में चाहिए।</string>
-    <string name="iceraven__description">Mozilla द्वारा निश्चित रूप से आपके लिए नहीं लाया गया!
-\n
-\nIceraven Browser Android के लिए एक वेब ब्राउज़र है, जो Mozilla के Firefox, GeckoView और Mozilla Android कंपोनेंट्स के Fenix संस्करण पर आधारित है।
-\n
-\nहमारा लक्ष्य Android के लिए नए Firefox का करीबी हिस्सा बनना है जो उपयोगकर्ताओं को अधिक विकल्प, अनुकूलित करने के अधिक अवसर (एक विस्तृत एक्सटेंशन लाइब्रेरी सहित), और उनके द्वारा देखे जाने वाले पृष्ठों और उनके ब्राउज़र के साथ कैसे इंटरैक्ट कर रहे हैं, इसके बारे में अधिक जानकारी प्रदान करना चाहता है। वे पन्ने।</string>
-    <string name="infobox">यह गोपनीयता-अनुकूल ब्राउज़रों के लिए एक अपडेटर है। नए ऐप्स इंस्टॉल करने के लिए प्लस बटन पर क्लिक करें। नए अपडेट की जांच करने के लिए नीचे स्वाइप करें। डिफ़ॉल्ट रूप से, ऐप समय-समय पर पृष्ठभूमि में अपडेट की जांच करेगा, जिसे बाद में डाउनलोड किया जाएगा और अंततः इंस्टॉल किया जाएगा। सेटिंग्स में व्यवहार को अनुकूलित करने के लिए गियर पर क्लिक करें।
-\n
-\nअंतिम सफल पृष्ठभूमि अपडेट जाँच: %1$s</string>
+    <string name="iceraven__description">Mozilla द्वारा निश्चित रूप से आपके लिए नहीं लाया गया! \n \nIceraven Browser Android के लिए एक वेब ब्राउज़र है, जो Mozilla के Firefox, GeckoView और Mozilla Android कंपोनेंट्स के Fenix संस्करण पर आधारित है। \n \nहमारा लक्ष्य Android के लिए नए Firefox का करीबी हिस्सा बनना है जो उपयोगकर्ताओं को अधिक विकल्प, अनुकूलित करने के अधिक अवसर (एक विस्तृत एक्सटेंशन लाइब्रेरी सहित), और उनके द्वारा देखे जाने वाले पृष्ठों और उनके ब्राउज़र के साथ कैसे इंटरैक्ट कर रहे हैं, इसके बारे में अधिक जानकारी प्रदान करना चाहता है। वे पन्ने।</string>
+    <string name="infobox">यह गोपनीयता-अनुकूल ब्राउज़रों के लिए एक अपडेटर है। नए ऐप्स इंस्टॉल करने के लिए प्लस बटन पर क्लिक करें। नए अपडेट की जांच करने के लिए नीचे स्वाइप करें। डिफ़ॉल्ट रूप से, ऐप समय-समय पर पृष्ठभूमि में अपडेट की जांच करेगा, जिसे बाद में डाउनलोड किया जाएगा और अंततः इंस्टॉल किया जाएगा। सेटिंग्स में व्यवहार को अनुकूलित करने के लिए गियर पर क्लिक करें। \n \nअंतिम सफल पृष्ठभूमि अपडेट जाँच: %1$s</string>
     <string name="download_activity__delete_cache_explanation">यदि आपको लगता है कि FFUpdater ने एक दोषपूर्ण ऐप अपडेट को कैश किया है या यदि आप स्थान बचाना चाहते हैं, तो डाउनलोड की गई फ़ाइल को हटाने के लिए बटन पर क्लिक करें।</string>
     <string name="download_activity__different_installer_info__text">यदि इंस्टॉलेशन बार-बार विफल हो जाता है, तो सेटिंग्स में \'नेटिव इंस्टॉलर\' पर स्विच करने का प्रयास करें।</string>
     <string name="download_activity__open_cache_explanation">आप APK फ़ाइल को अधिक निःशुल्क संग्रहण वाले स्थान पर कॉपी करने के लिए कैश फ़ोल्डर खोल सकते हैं। दुर्भाग्य से, Android 11+ पर केवल कुछ फ़ाइल प्रबंधक ही Android/डेटा के भीतर इस फ़ोल्डर तक पहुंच सकते हैं।</string>
     <string name="download_activity__too_low_memory_description">आपके डिवाइस में स्टोरेज कम है (केवल %1$d MB निःशुल्क)। इससे डाउनलोड या इंस्टॉलेशन विफल हो जाएगा।</string>
-    <string name="kiwi__warning">- Kiwi केवल आंशिक ओपन-सोर्स है
-\n- Kiwi Google Chrome की तकनीकी नींव का उपयोग करता है और इस प्रकार अप्रत्यक्ष रूप से Chromium रेंडर इंजन की एकाधिकार स्थिति का समर्थन करता है।
-\n- Kiwi एक आदर्श गोपनीयता ब्राउज़र नहीं है लेकिन इसमें एक अच्छा ऐडऑन समर्थन है।
-\n- Kiwi ब्राउज़र का उपयोग करके की गई प्रत्येक खोज के लिए ब्राउज़र को खोज इंजन द्वारा भुगतान किया जा रहा है। खोज इंजन की पसंद के आधार पर, अनुरोध Kiwibrowser/Kiwisearchservices सर्वर के माध्यम से जा सकते हैं।
-\n- Kiwi में Google विज्ञापन विज्ञापनों के लिए स्थान डेटा का उपयोग कर सकता है - लेकिन आप डिस्कवरी सुविधा को अक्षम करके इसे अक्षम कर सकते हैं। लेकिन यह जल्द ही बदल जाएगा. अधिक जानकारी के लिए https://privacy.kiwibrowser.org/ देखें।</string>
+    <string name="kiwi__warning">- Kiwi केवल आंशिक ओपन-सोर्स है \n- Kiwi Google Chrome की तकनीकी नींव का उपयोग करता है और इस प्रकार अप्रत्यक्ष रूप से Chromium रेंडर इंजन की एकाधिकार स्थिति का समर्थन करता है। \n- Kiwi एक आदर्श गोपनीयता ब्राउज़र नहीं है लेकिन इसमें एक अच्छा ऐडऑन समर्थन है। \n- Kiwi ब्राउज़र का उपयोग करके की गई प्रत्येक खोज के लिए ब्राउज़र को खोज इंजन द्वारा भुगतान किया जा रहा है। खोज इंजन की पसंद के आधार पर, अनुरोध Kiwibrowser/Kiwisearchservices सर्वर के माध्यम से जा सकते हैं। \n- Kiwi में Google विज्ञापन विज्ञापनों के लिए स्थान डेटा का उपयोग कर सकता है - लेकिन आप डिस्कवरी सुविधा को अक्षम करके इसे अक्षम कर सकते हैं। लेकिन यह जल्द ही बदल जाएगा. अधिक जानकारी के लिए https://privacy.kiwibrowser.org/ देखें।</string>
     <string name="request_installation_permission_dialog__message">FFUpdater में ऐप्स इंस्टॉल और अपडेट करने की अनुमति नहीं है। आपको ये अनुमतियाँ देनी होंगी अन्यथा FFUpdater काम नहीं करेगा।</string>
     <string name="session_installer__require_user_interaction">उपयोगकर्ता सहभागिता की आवश्यकता है. आपको सबसे पहले ऐप को FFUpdater यूजर इंटरफेस के जरिए अपडेट करना होगा। केवल तभी संबंधित ऐप के लिए साइलेंट बैकग्राउंड अपडेट की अनुमति दी जाती है।</string>
     <string name="session_installer__status_failure">ऑपरेशन सामान्य तरीके से विफल रहा. सिस्टम हमेशा अधिक विशिष्ट विफलता कारण प्रदान करने का प्रयास करेगा, लेकिन कुछ दुर्लभ मामलों में यह दिया जा सकता है।</string>
@@ -286,26 +262,8 @@
     <string name="orbot__description">Orbot एक मुफ़्त प्रॉक्सी ऐप है जो अन्य ऐप्स को अधिक सुरक्षित रूप से इंटरनेट का उपयोग करने में सक्षम बनाता है। Orbot आपके इंटरनेट ट्रैफ़िक को एन्क्रिप्ट करने के लिए Tor का उपयोग करता है और फिर इसे दुनिया भर के कंप्यूटरों की एक श्रृंखला के माध्यम से छिपा देता है। Tor मुफ़्त सॉफ़्टवेयर और एक खुला नेटवर्क है जो आपको नेटवर्क निगरानी के एक रूप से बचाव में मदद करता है जो व्यक्तिगत स्वतंत्रता और गोपनीयता, गोपनीय व्यावसायिक गतिविधियों और रिश्तों और राज्य सुरक्षा को ट्रैफ़िक विश्लेषण के रूप में जाना जाता है।</string>
     <string name="chromium__description">Chromium एक ओपन-सोर्स ब्राउज़र प्रोजेक्ट है जिसका उद्देश्य सभी उपयोगकर्ताओं के लिए वेब का अनुभव करने के लिए एक सुरक्षित, तेज़ और अधिक स्थिर तरीका बनाना है। इस साइट में डिज़ाइन दस्तावेज़, आर्किटेक्चर अवलोकन, परीक्षण जानकारी और Chromium स्रोत कोड के साथ काम करना सीखने में आपकी मदद करने के लिए और भी बहुत कुछ शामिल है।</string>
     <string name="fennecfdroid__warning">FFUpdater F-Droid सर्वर से फ़ाइलें डाउनलोड करता है और इसलिए तेज़ नहीं है।</string>
-    <string name="network__custom_doh_server__dialog_message">इनमें से किसी एक प्रारूप में कस्टम DoH सर्वर के लिए कनेक्शन विवरण दर्ज करें:
-\n
-\nurl;ip1
-\n
-\nurl;ip1;ip2
-\n
-\nurl;ip1;ip2;ip3
-\n
-\nurl;ip1;ip2;ip3;ip4
-\n
-\nउदाहरण के लिए: https://dns.google/dns-query;8.8.8.8 या https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
-    <string name="network__proxy__dialog_message">यदि आप SOCKS या HTTP प्रॉक्सी का उपयोग करना चाहते हैं, तो यहां कनेक्शन विवरण दर्ज करें। इनमें से किसी एक प्रारूप का उपयोग करें:
-\n
-\nSOCKS/HTTP;IP/डोमेन;पोर्ट
-\n
-\nSOCKS/HTTP;IP/डोमेन;पोर्ट;उपयोगकर्ता नाम;पासवर्ड
-\n
-\nउदाहरण के लिए: SOCKS;1.2.3.4;22 या HTTP;5.6.7.8;80;user1;pw123 या HTTP;p.webshare.io;80;u;p. यदि आप सिस्टम प्रॉक्सी कॉन्फ़िगरेशन का उपयोग करना चाहते हैं तो इसे खाली छोड़ दें।
-\n
-\nसीमा: यदि आप सेटिंग्स में \'DNS सेटिंग्स\' को HTTPS सर्वर पर DNS में बदलते हैं, तो आपको प्रॉक्सी सर्वर का डोमेन दर्ज करना होगा। IP काम नहीं करेगा।</string>
+    <string name="network__custom_doh_server__dialog_message">इनमें से किसी एक प्रारूप में कस्टम DoH सर्वर के लिए कनेक्शन विवरण दर्ज करें: \n \nurl;ip1 \n \nurl;ip1;ip2 \n \nurl;ip1;ip2;ip3 \n \nurl;ip1;ip2;ip3;ip4 \n \nउदाहरण के लिए: https://dns.google/dns-query;8.8.8.8 या https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
+    <string name="network__proxy__dialog_message">यदि आप SOCKS या HTTP प्रॉक्सी का उपयोग करना चाहते हैं, तो यहां कनेक्शन विवरण दर्ज करें। इनमें से किसी एक प्रारूप का उपयोग करें: \n \nSOCKS/HTTP;IP/डोमेन;पोर्ट \n \nSOCKS/HTTP;IP/डोमेन;पोर्ट;उपयोगकर्ता नाम;पासवर्ड \n \nउदाहरण के लिए: SOCKS;1.2.3.4;22 या HTTP;5.6.7.8;80;user1;pw123 या HTTP;p.webshare.io;80;u;p. यदि आप सिस्टम प्रॉक्सी कॉन्फ़िगरेशन का उपयोग करना चाहते हैं तो इसे खाली छोड़ दें। \n \nसीमा: यदि आप सेटिंग्स में \'DNS सेटिंग्स\' को HTTPS सर्वर पर DNS में बदलते हैं, तो आपको प्रॉक्सी सर्वर का डोमेन दर्ज करना होगा। IP काम नहीं करेगा।</string>
     <string name="device__prefer_32bit_apks__summary">यदि आपके डिवाइस में आमतौर पर मेमोरी कम है तो सक्षम करें। इसके बाद FFUpdater 32-बिट APK का उपयोग करेगा जिसके लिए आमतौर पर कम मेमोरी की आवश्यकता होती है।</string>
     <string name="installer__method__root_not_granted">रूट अनुमति नहीं दी गई!</string>
     <string name="installer__method__shizuku_not_installed">Shizuku इंस्टॉल नहीं है!</string>
@@ -314,11 +272,7 @@
     <string name="installer__method__session">Session इंस्टॉलर: अधिकांश उपकरणों के लिए अनुशंसित। Android 12 या इसके बाद के संस्करण पर, ऐप्स को एक उपयोगकर्ता की पुष्टि के बाद चुपचाप अपडेट किया जा सकता है।</string>
     <string name="installer__method__root">Root इंस्टॉलर: पुष्टिकरण संवाद के बिना ऐप्स अपडेट करें। इसके लिए एक रूटेड स्मार्टफोन की आवश्यकता होती है।</string>
     <string name="tor_browser_alpha__title">Tor Browser Alpha</string>
-    <string name="tor_browser_alpha__description">Tor ब्राउज़र एकमात्र आधिकारिक मोबाइल ब्राउज़र है जो Tor प्रोजेक्ट द्वारा समर्थित है, जो ऑनलाइन गोपनीयता और स्वतंत्रता के लिए दुनिया के सबसे मजबूत टूल के डेवलपर्स है।
-\n
-\nTor ब्राउज़र हमेशा मुफ़्त रहेगा, लेकिन दान इसे संभव बनाता है। Tor प्रोजेक्ट अमेरिका में स्थित एक 501©(3) गैर-लाभकारी संस्था है। कृपया आज ही योगदान देने पर विचार करें। हर उपहार से फर्क पड़ता है: https://donate.torproject.org.
-\n
-\nhttps://support.torproject.org/misc/bug-or-feedback/ पर जानें कि बग की रिपोर्ट कैसे करें और फीडबैक कैसे दें!</string>
+    <string name="tor_browser_alpha__description">Tor ब्राउज़र एकमात्र आधिकारिक मोबाइल ब्राउज़र है जो Tor प्रोजेक्ट द्वारा समर्थित है, जो ऑनलाइन गोपनीयता और स्वतंत्रता के लिए दुनिया के सबसे मजबूत टूल के डेवलपर्स है। \n \nTor ब्राउज़र हमेशा मुफ़्त रहेगा, लेकिन दान इसे संभव बनाता है। Tor प्रोजेक्ट अमेरिका में स्थित एक 501©(3) गैर-लाभकारी संस्था है। कृपया आज ही योगदान देने पर विचार करें। हर उपहार से फर्क पड़ता है: https://donate.torproject.org. \n \nhttps://support.torproject.org/misc/bug-or-feedback/ पर जानें कि बग की रिपोर्ट कैसे करें और फीडबैक कैसे दें!</string>
     <string name="download_activity__retry_installation">पुनः स्थापना का प्रयास करें</string>
     <string name="settings__network__use_cloudflare_mirrors__summary">उपलब्ध होने पर प्राथमिक सर्वर के संसाधन भार को कम करने हेतु सक्षम करें।</string>
     <string name="settings__network__use_cloudflare_mirrors__title">क्लाउडफ्लेयर मिरर का प्रयोग करें</string>
