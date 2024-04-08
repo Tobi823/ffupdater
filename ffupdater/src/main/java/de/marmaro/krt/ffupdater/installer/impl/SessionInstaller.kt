@@ -44,7 +44,7 @@ import java.io.IOException
 
 @Keep
 open class SessionInstaller(private val foreground: Boolean) : AppInstaller {
-    protected open val intentName = "de.marmaro.krt.ffupdater.installer.impl.SessionInstaller.$foreground"
+    private val intentName = "de.marmaro.krt.ffupdater.installer.impl.SessionInstaller.$foreground"
 
     override suspend fun startInstallation(context: Context, file: File, appImpl: AppBase): InstallResult {
         return CertificateVerifier(context, appImpl, file).verifyCertificateBeforeAndAfterInstallation {
