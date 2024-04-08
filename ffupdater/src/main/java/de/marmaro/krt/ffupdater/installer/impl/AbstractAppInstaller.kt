@@ -6,7 +6,6 @@ import de.marmaro.krt.ffupdater.R.string.app_installer__failed_to_validate_signa
 import de.marmaro.krt.ffupdater.R.string.app_installer__failed_to_verify_signature_of_installed_app
 import de.marmaro.krt.ffupdater.R.string.app_installer__installed_app_has_invalid_signature
 import de.marmaro.krt.ffupdater.R.string.app_installer__signature_of_download_is_invalid
-import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.impl.AppBase
 import de.marmaro.krt.ffupdater.installer.AppInstaller
 import de.marmaro.krt.ffupdater.installer.entity.InstallResult
@@ -16,9 +15,6 @@ import java.io.File
 
 @Keep
 abstract class AbstractAppInstaller : AppInstaller {
-
-    override fun changeApp(app: App) {
-    }
 
     @Throws(InstallationFailedException::class)
     override suspend fun startInstallation(context: Context, file: File, appImpl: AppBase): InstallResult {

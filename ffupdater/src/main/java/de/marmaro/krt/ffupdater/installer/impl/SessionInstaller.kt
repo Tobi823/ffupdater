@@ -28,7 +28,6 @@ import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.BuildConfig
 import de.marmaro.krt.ffupdater.app.impl.AppBase
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
-import de.marmaro.krt.ffupdater.installer.entity.Installer
 import de.marmaro.krt.ffupdater.installer.error.session.GenericSessionResultDecoder.getShortErrorMessage
 import de.marmaro.krt.ffupdater.installer.error.session.GenericSessionResultDecoder.getTranslatedErrorMessage
 import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
@@ -43,7 +42,6 @@ import java.io.IOException
 
 @Keep
 open class SessionInstaller(private val foreground: Boolean) : AbstractAppInstaller() {
-    override val type = Installer.SESSION_INSTALLER
     protected open val intentName = "de.marmaro.krt.ffupdater.installer.impl.SessionInstaller.$foreground"
 
     @Throws(IllegalArgumentException::class)

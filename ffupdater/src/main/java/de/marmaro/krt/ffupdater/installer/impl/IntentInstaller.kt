@@ -14,7 +14,6 @@ import androidx.lifecycle.LifecycleOwner
 import de.marmaro.krt.ffupdater.BuildConfig
 import de.marmaro.krt.ffupdater.app.impl.AppBase
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
-import de.marmaro.krt.ffupdater.installer.entity.Installer
 import de.marmaro.krt.ffupdater.installer.error.intent.GeneralInstallResultDecoder
 import de.marmaro.krt.ffupdater.installer.error.intent.HuaweiInstallResultDecoder
 import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
@@ -29,7 +28,6 @@ class IntentInstaller(
     context: Context,
     private val activityResultRegistry: ActivityResultRegistry,
 ) : AbstractAppInstaller() {
-    override val type = Installer.NATIVE_INSTALLER
     private lateinit var appInstallationCallback: ActivityResultLauncher<Intent>
     private var installFailure = Channel<Exception?>()
 

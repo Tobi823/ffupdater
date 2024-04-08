@@ -11,9 +11,6 @@ import java.io.File
 
 @Keep
 interface AppInstaller : DefaultLifecycleObserver {
-    val type: Installer
-
-    fun changeApp(app: App)
 
     suspend fun startInstallation(context: Context, file: File, appImpl: AppBase): InstallResult
 }

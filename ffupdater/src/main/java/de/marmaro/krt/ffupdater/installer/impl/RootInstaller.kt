@@ -6,7 +6,6 @@ import androidx.annotation.Keep
 import com.topjohnwu.superuser.Shell
 import de.marmaro.krt.ffupdater.BuildConfig
 import de.marmaro.krt.ffupdater.app.impl.AppBase
-import de.marmaro.krt.ffupdater.installer.entity.Installer
 import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -17,7 +16,6 @@ import java.io.File
  */
 @Keep
 class RootInstaller : AbstractAppInstaller() {
-    override val type = Installer.ROOT_INSTALLER
 
     override suspend fun installApkFile(context: Context, file: File, appImpl: AppBase) {
         restartInternalShellToGetAlwaysRootPermission()

@@ -11,7 +11,6 @@ import androidx.annotation.Keep
 import de.marmaro.krt.ffupdater.BuildConfig.APPLICATION_ID
 import de.marmaro.krt.ffupdater.app.impl.AppBase
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
-import de.marmaro.krt.ffupdater.installer.entity.Installer
 import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
 import dev.rikka.tools.refine.Refine
 import org.lsposed.hiddenapibypass.HiddenApiBypass
@@ -22,7 +21,6 @@ import java.io.File
 
 @Keep
 class ShizukuInstaller : SessionInstaller(false) {
-    override val type = Installer.SESSION_INSTALLER
     override val intentName = "de.marmaro.krt.ffupdater.installer.impl.ShizukuNewInstaller"
 
     @Throws(IllegalArgumentException::class)
