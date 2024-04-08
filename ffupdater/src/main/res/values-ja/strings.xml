@@ -228,7 +228,8 @@
     <string name="crash_report_activity__label">クラッシュレポーター</string>
     <string name="add_app_activity__title_from_mozilla">Mozilla から</string>
     <string name="add_app_activity__label">新しいアプリの追加</string>
-    <string name="kiwi__warning">- Kiwi は Google Chrome と同じ技術的基盤を使用しているため、Chromium レンダリングエンジンの独占的地位を間接的に支えることになります。
+    <string name="kiwi__warning">- Kiwi は部分的なオープンソースに過ぎません。
+\n- Kiwi は Google Chrome と同じ技術的基盤を使用しているため、Chromium レンダリングエンジンの独占的地位を間接的に支えることになります。
 \n- Kiwi は理想的なプライバシーブラウザではありませんが、拡張機能に対応しています。
 \n- Kiwi Browser で検索を行うたびに、検索エンジンからの報酬を受け取ります。検索エンジンの選択によっては、リクエストが Kiwibrowser / Kiwisearchservices のサーバーを経由する場合があります。
 \n- Kiwi の Google Ads は広告に位置情報を使用されることがありますが、検出機能を無効にできます。ただし、まもなく変更される予定です。詳細は https://privacy.kiwibrowser.org/ を参照してください。</string>
@@ -347,4 +348,5 @@
     <string name="cardview_dialog__hide">非表示</string>
     <string name="foreground__hidden_apps__title">非表示アプリ</string>
     <string name="foreground__hidden_apps__summary">アプリを非表示にすると、UI に表示されず自動で更新もされません。</string>
+    <string name="download_activity__retry_installation">インストールを再試行</string>
 </resources>
