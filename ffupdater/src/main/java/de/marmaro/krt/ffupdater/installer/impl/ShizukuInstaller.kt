@@ -115,14 +115,24 @@ class ShizukuInstaller(private val foreground: Boolean) : AppInstaller {
         return intentReceiver
     }
 
-    private fun createInstallFailedException(
-        status: Int,
-        bundle: Bundle?,
+    private fun requestInstallationPermission(
         context: Context,
-    ): InstallationFailedException {
-        val shortMessage = GenericSessionResultDecoder.getShortErrorMessage(status, bundle)
-        val translatedMessage = GenericSessionResultDecoder.getTranslatedErrorMessage(context, status, bundle)
-        return InstallationFailedException(shortMessage, status, translatedMessage)
+        bundle: Bundle,
+        installStatus: CompletableDeferred<Boolean>,
+    ) {
+        if (!foreground) {
+            val exception = UserInteractionIsRequiredException(bundle.getInt(PackageInstaller.EXTRA_STATUS), context)
+            installStatus.completeExceptionally(exception)
+            return
+        }
+
+        try {
+            val newIntent = createConfirmInstallationIntent(bundle)
+            context.startActivity(newIntent)
+        } catch (e: ActivityNotFoundException) {
+            val message = "Installation failed because Activity is not available."
+            installStatus.completeExceptionally(InstallationFailedException(message, e, -110, e.message ?: "/"))
+        }
     }
 
     @MainThread
@@ -134,22 +144,6 @@ class ShizukuInstaller(private val foreground: Boolean) : AppInstaller {
                 session.commit(intentSender)
             }
         }
-    }
-
-    private fun createSessionParams(context: Context, file: File, appImpl: AppBase): PackageInstaller.SessionParams {
-        // https://gitlab.com/AuroraOSS/AuroraStore/-/blob/master/app/src/main/java/com/aurora/store/data/installer/SessionInstaller.kt
-        val params = PackageInstaller.SessionParams(PackageInstaller.SessionParams.MODE_FULL_INSTALL)
-        val displayIcon = appImpl.icon // store display icon id in variable to prevent crash
-        params.setAppIcon(BitmapFactory.decodeResource(context.resources, displayIcon))
-        params.setAppLabel(context.getString(appImpl.title))
-        params.setAppPackageName(appImpl.packageName)
-        params.setSize(file.length())
-        if (DeviceSdkTester.supportsAndroid7Nougat24()) params.setOriginatingUid(android.os.Process.myUid())
-        if (DeviceSdkTester.supportsAndroid8Oreo26()) params.setInstallReason(PackageManager.INSTALL_REASON_USER)
-        if (DeviceSdkTester.supportsAndroid12S31()) params.setRequireUserAction(PackageInstaller.SessionParams.USER_ACTION_NOT_REQUIRED)
-        if (DeviceSdkTester.supportsAndroid14U34()) params.setDontKillApp(true)
-        allowAppReplacement(params)
-        return params
     }
 
     private fun allowAppReplacement(params: PackageInstaller.SessionParams) {
@@ -182,26 +176,6 @@ class ShizukuInstaller(private val foreground: Boolean) : AppInstaller {
         }
         val pendingIntent = PendingIntent.getBroadcast(context, sessionId, intent, flags)
         return pendingIntent.intentSender
-    }
-
-    private fun requestInstallationPermission(
-        context: Context,
-        bundle: Bundle,
-        installStatus: CompletableDeferred<Boolean>,
-    ) {
-        if (!foreground) {
-            val exception = UserInteractionIsRequiredException(bundle.getInt(PackageInstaller.EXTRA_STATUS), context)
-            installStatus.completeExceptionally(exception)
-            return
-        }
-
-        try {
-            val newIntent = createConfirmInstallationIntent(bundle)
-            context.startActivity(newIntent)
-        } catch (e: ActivityNotFoundException) {
-            val message = "Installation failed because Activity is not available."
-            installStatus.completeExceptionally(InstallationFailedException(message, e, -110, e.message ?: "/"))
-        }
     }
 
     @Throws(IllegalArgumentException::class)
@@ -244,14 +218,20 @@ class ShizukuInstaller(private val foreground: Boolean) : AppInstaller {
         return sessionId
     }
 
-    private fun getSession(
-        iPackageInstaller: IPackageInstaller,
-        sessionId: Int,
-    ): PackageInstaller.Session {
-        val iSession = IPackageInstallerSession.Stub.asInterface(
-            ShizukuBinderWrapper(iPackageInstaller.openSession(sessionId).asBinder())
-        )
-        return Refine.unsafeCast(PackageInstallerHidden.SessionHidden(iSession))
+    private fun createSessionParams(context: Context, file: File, appImpl: AppBase): PackageInstaller.SessionParams {
+        // https://gitlab.com/AuroraOSS/AuroraStore/-/blob/master/app/src/main/java/com/aurora/store/data/installer/SessionInstaller.kt
+        val params = PackageInstaller.SessionParams(PackageInstaller.SessionParams.MODE_FULL_INSTALL)
+        val displayIcon = appImpl.icon // store display icon id in variable to prevent crash
+        params.setAppIcon(BitmapFactory.decodeResource(context.resources, displayIcon))
+        params.setAppLabel(context.getString(appImpl.title))
+        params.setAppPackageName(appImpl.packageName)
+        params.setSize(file.length())
+        if (DeviceSdkTester.supportsAndroid7Nougat24()) params.setOriginatingUid(android.os.Process.myUid())
+        if (DeviceSdkTester.supportsAndroid8Oreo26()) params.setInstallReason(PackageManager.INSTALL_REASON_USER)
+        if (DeviceSdkTester.supportsAndroid12S31()) params.setRequireUserAction(PackageInstaller.SessionParams.USER_ACTION_NOT_REQUIRED)
+        if (DeviceSdkTester.supportsAndroid14U34()) params.setDontKillApp(true)
+        allowAppReplacement(params)
+        return params
     }
 
     private fun getPackageInstallerInterface(): IPackageInstaller {
@@ -261,6 +241,16 @@ class ShizukuInstaller(private val foreground: Boolean) : AppInstaller {
         return IPackageInstaller.Stub.asInterface(
             ShizukuBinderWrapper(iPackageManager.packageInstaller.asBinder())
         )
+    }
+
+    private fun getSession(
+        iPackageInstaller: IPackageInstaller,
+        sessionId: Int,
+    ): PackageInstaller.Session {
+        val iSession = IPackageInstallerSession.Stub.asInterface(
+            ShizukuBinderWrapper(iPackageInstaller.openSession(sessionId).asBinder())
+        )
+        return Refine.unsafeCast(PackageInstallerHidden.SessionHidden(iSession))
     }
 
     private fun getPackageInstaller(
@@ -278,9 +268,18 @@ class ShizukuInstaller(private val foreground: Boolean) : AppInstaller {
         return Refine.unsafeCast(hiddenPackageInstaller)
     }
 
+    private fun createInstallFailedException(
+        status: Int,
+        bundle: Bundle?,
+        context: Context,
+    ): InstallationFailedException {
+        val shortMessage = GenericSessionResultDecoder.getShortErrorMessage(status, bundle)
+        val translatedMessage = GenericSessionResultDecoder.getTranslatedErrorMessage(context, status, bundle)
+        return InstallationFailedException(shortMessage, status, translatedMessage)
+    }
+
     companion object {
         private const val ACTION_CONFIRM_INSTALL = "android.content.pm.action.CONFIRM_INSTALL"
         private const val EXTRA_SESSION_ID = "android.content.pm.extra.SESSION_ID"
     }
-
 }
