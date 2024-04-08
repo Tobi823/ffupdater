@@ -6,6 +6,8 @@ import androidx.annotation.Keep
 import com.topjohnwu.superuser.Shell
 import de.marmaro.krt.ffupdater.BuildConfig
 import de.marmaro.krt.ffupdater.app.impl.AppBase
+import de.marmaro.krt.ffupdater.installer.AppInstaller
+import de.marmaro.krt.ffupdater.installer.entity.InstallResult
 import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -15,9 +17,15 @@ import java.io.File
  * Copied from https://gitlab.com/AuroraOSS/AuroraStore/-/blob/master/app/src/main/java/com/aurora/store/data/installer/RootInstaller.kt
  */
 @Keep
-class RootInstaller : AbstractAppInstaller() {
+class RootInstaller : AppInstaller {
 
-    override suspend fun installApkFile(context: Context, file: File, appImpl: AppBase) {
+    override suspend fun startInstallation(context: Context, file: File, appImpl: AppBase): InstallResult {
+        return CertificateVerifier(context, appImpl, file).verifyCertificateBeforeAndAfterInstallation {
+            installApkFile(context, file, appImpl)
+        }
+    }
+
+    private suspend fun installApkFile(context: Context, file: File, appImpl: AppBase) {
         restartInternalShellToGetAlwaysRootPermission()
         fileIsSafeOrThrow(context, file, appImpl)
         failIfRootPermissionIsMissing()

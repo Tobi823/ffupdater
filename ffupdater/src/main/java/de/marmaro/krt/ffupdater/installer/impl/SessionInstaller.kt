@@ -28,6 +28,8 @@ import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.BuildConfig
 import de.marmaro.krt.ffupdater.app.impl.AppBase
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
+import de.marmaro.krt.ffupdater.installer.AppInstaller
+import de.marmaro.krt.ffupdater.installer.entity.InstallResult
 import de.marmaro.krt.ffupdater.installer.error.session.GenericSessionResultDecoder.getShortErrorMessage
 import de.marmaro.krt.ffupdater.installer.error.session.GenericSessionResultDecoder.getTranslatedErrorMessage
 import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
@@ -41,11 +43,17 @@ import java.io.IOException
 
 
 @Keep
-open class SessionInstaller(private val foreground: Boolean) : AbstractAppInstaller() {
+open class SessionInstaller(private val foreground: Boolean) : AppInstaller {
     protected open val intentName = "de.marmaro.krt.ffupdater.installer.impl.SessionInstaller.$foreground"
 
+    override suspend fun startInstallation(context: Context, file: File, appImpl: AppBase): InstallResult {
+        return CertificateVerifier(context, appImpl, file).verifyCertificateBeforeAndAfterInstallation {
+            installApkFile(context, file, appImpl)
+        }
+    }
+
     @Throws(IllegalArgumentException::class)
-    override suspend fun installApkFile(context: Context, file: File, appImpl: AppBase) {
+    protected suspend fun installApkFile(context: Context, file: File, appImpl: AppBase) {
         require(file.exists()) { "File does not exists." }
         val installStatus = CompletableDeferred<Boolean>()
         val intentReceiver = registerIntentReceiver(context, installStatus)

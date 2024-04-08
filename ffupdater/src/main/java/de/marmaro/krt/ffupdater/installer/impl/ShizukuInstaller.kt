@@ -11,6 +11,7 @@ import androidx.annotation.Keep
 import de.marmaro.krt.ffupdater.BuildConfig.APPLICATION_ID
 import de.marmaro.krt.ffupdater.app.impl.AppBase
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
+import de.marmaro.krt.ffupdater.installer.entity.InstallResult
 import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
 import dev.rikka.tools.refine.Refine
 import org.lsposed.hiddenapibypass.HiddenApiBypass
@@ -23,13 +24,19 @@ import java.io.File
 class ShizukuInstaller : SessionInstaller(false) {
     override val intentName = "de.marmaro.krt.ffupdater.installer.impl.ShizukuNewInstaller"
 
+    override suspend fun startInstallation(context: Context, file: File, appImpl: AppBase): InstallResult {
+        return CertificateVerifier(context, appImpl, file).verifyCertificateBeforeAndAfterInstallation {
+            shizukuInstallApkFile(context, file, appImpl)
+        }
+    }
+
     @Throws(IllegalArgumentException::class)
-    override suspend fun installApkFile(context: Context, file: File, appImpl: AppBase) {
+    private suspend fun shizukuInstallApkFile(context: Context, file: File, appImpl: AppBase) {
         if (DeviceSdkTester.supportsAndroid9P28()) {
             HiddenApiBypass.addHiddenApiExemptions("")
         }
         failIfShizukuPermissionIsMissing()
-        super.installApkFile(context, file, appImpl)
+        installApkFile(context, file, appImpl)
     }
 
     private fun failIfShizukuPermissionIsMissing() {
