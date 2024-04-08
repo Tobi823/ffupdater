@@ -28,7 +28,7 @@ import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.InstalledAppStatus
 import de.marmaro.krt.ffupdater.app.impl.AppBase
 import de.marmaro.krt.ffupdater.installer.AppInstaller
-import de.marmaro.krt.ffupdater.installer.AppInstaller.Companion.createForegroundAppInstaller
+import de.marmaro.krt.ffupdater.installer.AppInstallerFactory
 import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
 import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkNotSuitableException
@@ -119,7 +119,7 @@ class DownloadActivity : AppCompatActivity() {
         app = App.valueOf(appFromExtras)
         appImpl = app.findImpl()
         gui = GuiHelper(this)
-        installer = createForegroundAppInstaller(this, app)
+        installer = AppInstallerFactory.createForegroundAppInstaller(this, app)
         lifecycle.addObserver(installer)
 
         findViewById<Button>(R.id.install_activity__delete_cache_button).setOnClickListener {

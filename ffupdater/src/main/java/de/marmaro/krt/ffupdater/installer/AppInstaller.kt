@@ -21,30 +21,4 @@ interface AppInstaller : DefaultLifecycleObserver {
     fun changeApp(app: App)
 
     suspend fun startInstallation(context: Context, file: File): InstallResult
-
-    companion object {
-        fun createForegroundAppInstaller(
-            activity: ComponentActivity,
-            app: App,
-        ): AppInstaller {
-            val registry = activity.activityResultRegistry
-            return when (InstallerSettings.getInstallerMethod()) {
-                Installer.SESSION_INSTALLER -> SessionInstaller(app, true)
-                Installer.NATIVE_INSTALLER -> IntentInstaller(activity.applicationContext, registry, app)
-                Installer.ROOT_INSTALLER -> RootInstaller(app)
-                Installer.SHIZUKU_INSTALLER -> ShizukuInstaller(app)
-            }
-        }
-
-        fun createBackgroundAppInstaller(
-            app: App,
-        ): AppInstaller {
-            return when (InstallerSettings.getInstallerMethod()) {
-                Installer.SESSION_INSTALLER -> SessionInstaller(app, false)
-                Installer.NATIVE_INSTALLER -> throw Exception("Installer can not update apps in background")
-                Installer.ROOT_INSTALLER -> RootInstaller(app)
-                Installer.SHIZUKU_INSTALLER -> ShizukuInstaller(app)
-            }
-        }
-    }
 }
