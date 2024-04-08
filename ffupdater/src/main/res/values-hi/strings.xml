@@ -348,4 +348,5 @@
 \nTor ब्राउज़र हमेशा मुफ़्त रहेगा, लेकिन दान इसे संभव बनाता है। Tor प्रोजेक्ट अमेरिका में स्थित एक 501©(3) गैर-लाभकारी संस्था है। कृपया आज ही योगदान देने पर विचार करें। हर उपहार से फर्क पड़ता है: https://donate.torproject.org.
 \n
 \nhttps://support.torproject.org/misc/bug-or-feedback/ पर जानें कि बग की रिपोर्ट कैसे करें और फीडबैक कैसे दें!</string>
+    <string name="download_activity__retry_installation">पुनः स्थापना का प्रयास करें</string>
 </resources>
