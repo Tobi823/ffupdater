@@ -1,18 +1,13 @@
 package de.marmaro.krt.ffupdater.installer.impl
 
 import android.app.PendingIntent
-import android.content.ActivityNotFoundException
-import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.content.IntentFilter
 import android.content.IntentSender
 import android.content.pm.IPackageInstaller
 import android.content.pm.IPackageInstallerSession
 import android.content.pm.IPackageManager
 import android.content.pm.PackageInstaller
-import android.content.pm.PackageInstaller.STATUS_PENDING_USER_ACTION
-import android.content.pm.PackageInstaller.STATUS_SUCCESS
 import android.content.pm.PackageInstallerHidden
 import android.content.pm.PackageManager
 import android.content.pm.PackageManagerHidden
@@ -28,7 +23,6 @@ import de.marmaro.krt.ffupdater.installer.AppInstaller
 import de.marmaro.krt.ffupdater.installer.entity.InstallResult
 import de.marmaro.krt.ffupdater.installer.error.session.GenericSessionResultDecoder
 import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
-import de.marmaro.krt.ffupdater.installer.exceptions.UserInteractionIsRequiredException
 import dev.rikka.tools.refine.Refine
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
@@ -38,10 +32,9 @@ import rikka.shizuku.Shizuku
 import rikka.shizuku.ShizukuBinderWrapper
 import rikka.shizuku.SystemServiceHelper
 import java.io.File
-import java.io.IOException
 
 @Keep
-class ShizukuInstaller(private val foreground: Boolean) : AppInstaller {
+class ShizukuInstaller() : AppInstaller {
     private val intentName = "de.marmaro.krt.ffupdater.installer.impl.ShizukuNewInstaller"
 
     override suspend fun startInstallation(context: Context, file: File, appImpl: AppBase): InstallResult {
@@ -58,13 +51,8 @@ class ShizukuInstaller(private val foreground: Boolean) : AppInstaller {
         failIfShizukuPermissionIsMissing()
         require(file.exists()) { "File does not exists." }
         val installStatus = CompletableDeferred<Boolean>()
-        val intentReceiver = registerIntentReceiver(context, installStatus)
         installApkFileHelper(context, file, appImpl)
-        try {
-            installStatus.await()
-        } finally {
-            withContext(Dispatchers.Main) { context.unregisterReceiver(intentReceiver) }
-        }
+        installStatus.await()
     }
 
     private fun failIfShizukuPermissionIsMissing() {
@@ -83,55 +71,6 @@ class ShizukuInstaller(private val foreground: Boolean) : AppInstaller {
         if (permission != PackageManager.PERMISSION_GRANTED) {
             Shizuku.requestPermission(42)
             throw InstallationFailedException("Missing Shizuku permission. Retry again.", -431)
-        }
-    }
-
-    private suspend fun registerIntentReceiver(
-        context: Context,
-        installStatus: CompletableDeferred<Boolean>,
-    ): BroadcastReceiver {
-        val intentReceiver = object : BroadcastReceiver() {
-            @Throws(IllegalArgumentException::class)
-            override fun onReceive(context: Context?, intent: Intent?) {
-                requireNotNull(context)
-                requireNotNull(intent)
-                val bundle = requireNotNull(intent.extras)
-                when (val status = bundle.getInt(PackageInstaller.EXTRA_STATUS)) {
-                    STATUS_PENDING_USER_ACTION -> requestInstallationPermission(context, bundle, installStatus)
-                    STATUS_SUCCESS -> installStatus.complete(true)
-                    else -> installStatus.completeExceptionally(createInstallFailedException(status, bundle, context))
-                }
-            }
-        }
-
-        withContext(Dispatchers.Main) {
-            val filter = IntentFilter(intentName)
-            if (DeviceSdkTester.supportsAndroid13T33()) {
-                context.registerReceiver(intentReceiver, filter, Context.RECEIVER_NOT_EXPORTED)
-            } else {
-                context.registerReceiver(intentReceiver, filter)
-            }
-        }
-        return intentReceiver
-    }
-
-    private fun requestInstallationPermission(
-        context: Context,
-        bundle: Bundle,
-        installStatus: CompletableDeferred<Boolean>,
-    ) {
-        if (!foreground) {
-            val exception = UserInteractionIsRequiredException(bundle.getInt(PackageInstaller.EXTRA_STATUS), context)
-            installStatus.completeExceptionally(exception)
-            return
-        }
-
-        try {
-            val newIntent = createConfirmInstallationIntent(bundle)
-            context.startActivity(newIntent)
-        } catch (e: ActivityNotFoundException) {
-            val message = "Installation failed because Activity is not available."
-            installStatus.completeExceptionally(InstallationFailedException(message, e, -110, e.message ?: "/"))
         }
     }
 
