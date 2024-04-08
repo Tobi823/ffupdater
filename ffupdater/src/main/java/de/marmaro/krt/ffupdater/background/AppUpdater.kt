@@ -109,9 +109,9 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) :
     }
 
     private fun isAppStillOutdated(installedAppStatus: InstalledAppStatus): OneTimeWorkMethodResult {
-//        if (!installedAppStatus.isUpdateAvailable) {
-//            return executeNextOneTimeDownload("$LOGTAG ${installedAppStatus.app.name} was already updated.")
-//        }
+        if (!installedAppStatus.isUpdateAvailable) {
+            return executeNextOneTimeDownload("$LOGTAG ${installedAppStatus.app.name} was already updated.")
+        }
         return success()
     }
 
@@ -163,7 +163,6 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) :
     }
 
     private suspend fun shouldAppBeInstalled(app: App): OneTimeWorkMethodResult {
-        return stopNextOneTimeDownload("")
         val installerMethod = InstallerSettings.getInstallerMethod()
         return when {
             !BackgroundSettings.isInstallationEnabled ->
