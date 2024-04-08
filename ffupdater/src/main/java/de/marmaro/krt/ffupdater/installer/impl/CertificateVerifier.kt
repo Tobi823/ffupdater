@@ -11,7 +11,7 @@ import java.io.File
 class CertificateVerifier(contextParam: Context, private val appImpl: AppBase, private val file: File) {
     private val context = contextParam.applicationContext
 
-    suspend fun verifyCertificateBeforeAndAfterInstallation(blockForInstallation: () -> Any): InstallResult {
+    suspend fun verifyCertificateBeforeAndAfterInstallation(blockForInstallation: suspend () -> Any): InstallResult {
         val fileCertHash = hasApkCorrectCertificate()
         blockForInstallation()
         hasInstalledAppCorrectCertificate(fileCertHash)
