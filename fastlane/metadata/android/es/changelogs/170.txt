@@ -1,0 +1,10 @@
+Versión 79.2.0 (170)
+- Gracias por las contribuciones a Weblate: Scrambled777, Bahaa Zidan, minh, Oğuz Ersen, gallegonovato, winver, Raymond Nee, v1s7, Giovanni Donisi, Priit Jõerüüt, 109247019824, Kazushi Hayama, atilluF y MkQtS
+- corregida la url de descarga de Firefox Nightly (Tobi823/ffupdater#579, gracias monstorix)
+- corregido error: Descarga de la aplicación correcta al hacer clic en la segunda notificación de actualización (Tobi823/ffupdater#565)
+- corregido error: Si haces clic en una notificación de actualización, FFUpdater actualizará la aplicación correcta y no la de la primera notificación
+- intentar arreglar un bucle (Tobi823/ffupdater#576)
+- arreglar el borrado automático de APKs (Tobi823/ffupdater#569)
+- añadir botón para reintentar una instalación fallida
+- informar a los usuarios que Kiwi Browser no es código abierto (Tobi823/ffupdater#554)
+- corregir pruebas, corregir errores, refactorizar código
