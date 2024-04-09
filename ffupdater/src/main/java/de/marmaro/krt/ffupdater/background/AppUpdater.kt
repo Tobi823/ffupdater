@@ -20,7 +20,7 @@ import de.marmaro.krt.ffupdater.background.OneTimeWorkMethodResult.Companion.sto
 import de.marmaro.krt.ffupdater.background.OneTimeWorkMethodResult.Companion.success
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.device.PowerUtil
-import de.marmaro.krt.ffupdater.installer.AppInstaller
+import de.marmaro.krt.ffupdater.installer.AppInstallerFactory
 import de.marmaro.krt.ffupdater.installer.entity.Installer.*
 import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
 import de.marmaro.krt.ffupdater.installer.exceptions.UserInteractionIsRequiredException
@@ -213,8 +213,8 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) :
 
         try {
             Log.i(LOG_TAG, "$LOGTAG: Update/install $app.")
-            val installer = AppInstaller.createBackgroundAppInstaller(app)
-            installer.startInstallation(applicationContext, file)
+            val installer = AppInstallerFactory.createBackgroundAppInstaller(app)
+            installer.startInstallation(applicationContext, file, appImpl)
             appImpl.appWasInstalledCallback(applicationContext, installedAppStatus)
             if (BackgroundSettings.isDeleteUpdateIfInstallSuccessful) {
                 appImpl.getApkCacheFolder(applicationContext)
