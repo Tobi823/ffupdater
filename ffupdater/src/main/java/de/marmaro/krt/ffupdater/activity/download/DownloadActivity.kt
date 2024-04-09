@@ -28,7 +28,7 @@ import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.InstalledAppStatus
 import de.marmaro.krt.ffupdater.app.impl.AppBase
 import de.marmaro.krt.ffupdater.installer.AppInstaller
-import de.marmaro.krt.ffupdater.installer.AppInstaller.Companion.createForegroundAppInstaller
+import de.marmaro.krt.ffupdater.installer.AppInstallerFactory
 import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
 import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkNotSuitableException
@@ -40,9 +40,9 @@ import de.marmaro.krt.ffupdater.storage.StorageUtil
 import de.marmaro.krt.ffupdater.storage.SystemFileManager
 import de.marmaro.krt.ffupdater.utils.goneAfterExecution
 import de.marmaro.krt.ffupdater.utils.ifFalse
+import de.marmaro.krt.ffupdater.utils.setVisibleOrGone
 import de.marmaro.krt.ffupdater.utils.visibleAfterExecution
 import de.marmaro.krt.ffupdater.utils.visibleDuringExecution
-import de.marmaro.krt.ffupdater.utils.setVisibleOrGone
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
@@ -117,8 +117,8 @@ class DownloadActivity : AppCompatActivity() {
 
         app = App.valueOf(appFromExtras)
         appImpl = app.findImpl()
-        gui = GuiHelper(app, this)
-        installer = createForegroundAppInstaller(this, app)
+        gui = GuiHelper(this)
+        installer = AppInstallerFactory.createForegroundAppInstaller(this, app)
         lifecycle.addObserver(installer)
 
         findViewById<Button>(R.id.install_activity__delete_cache_button).setOnClickListener {
@@ -135,6 +135,24 @@ class DownloadActivity : AppCompatActivity() {
         }
         NotificationRemover.removeAppStatusNotifications(applicationContext, app)
 
+        lifecycleScope.launch(Dispatchers.Main) {
+            startInstallationProcess()
+        }
+    }
+
+    // other download notification has been pushed
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        val appFromExtras = intent?.extras?.getString(EXTRA_APP_NAME)
+        // check if this activity was unintentionally started again after finishing the download
+        if (appFromExtras == null) {
+            finish()
+            return
+        }
+        app = App.valueOf(appFromExtras)
+        appImpl = app.findImpl()
+        gui = GuiHelper(this)
+        downloadViewModel.clear()
         lifecycleScope.launch(Dispatchers.Main) {
             startInstallationProcess()
         }
@@ -352,7 +370,7 @@ class DownloadActivity : AppCompatActivity() {
         } catch (e: InstallationFailedException) {
             debug("installation failed", e)
             val ex = RuntimeException("Failed to install ${app.name} in the foreground.", e)
-            gui.displayAppInstallationFailure(e.translatedMessage, ex)
+            gui.displayAppInstallationFailure(e.translatedMessage, ex, appImpl)
             // hide existing background notification for applicationContext app
             NotificationRemover.removeAppStatusNotifications(applicationContext, app)
             false
@@ -366,7 +384,7 @@ class DownloadActivity : AppCompatActivity() {
 
         var certificateHash = "error"
         findViewById<View>(R.id.installingApplication).visibleDuringExecution {
-            val installResult = installer.startInstallation(this@DownloadActivity, file)
+            val installResult = installer.startInstallation(this@DownloadActivity, file, appImpl)
             certificateHash = installResult.certificateHash ?: "error"
         }
 
@@ -396,7 +414,6 @@ class DownloadActivity : AppCompatActivity() {
          */
         fun createIntent(context: Context, app: App): Intent {
             val intent = Intent(context, DownloadActivity::class.java)
-            // intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             intent.putExtra(EXTRA_APP_NAME, app.name)
             return intent
         }
