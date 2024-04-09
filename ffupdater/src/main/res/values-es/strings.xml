@@ -348,4 +348,5 @@
     <string name="cardview_dialog__hide">Ocultar</string>
     <string name="foreground__hidden_apps__title">Aplicaciones ocultas</string>
     <string name="foreground__hidden_apps__summary">Las aplicaciones ocultas permanecerán ocultas en la interfaz de usuario y no se actualizarán automáticamente.</string>
+    <string name="download_activity__retry_installation">Reintentar la instalación</string>
 </resources>
