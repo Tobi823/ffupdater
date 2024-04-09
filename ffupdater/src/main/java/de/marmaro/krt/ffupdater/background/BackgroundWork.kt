@@ -10,6 +10,7 @@ import androidx.work.ExistingPeriodicWorkPolicy.CANCEL_AND_REENQUEUE
 import androidx.work.ExistingPeriodicWorkPolicy.UPDATE
 import androidx.work.ExistingWorkPolicy.KEEP
 import androidx.work.PeriodicWorkRequest
+import androidx.work.WorkContinuation
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
 import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
@@ -110,6 +111,7 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
         return success()
     }
 
+    @Suppress("IfThenToElvis")
     @MainThread
     private suspend fun internalDoWork(): Result {
         storeBackgroundJobExecutionTime()
@@ -120,25 +122,20 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
         NotificationRemover.removeAppStatusNotifications(applicationContext)
 
         checkUpdateCheckAllowed().onFailure { return@internalDoWork it }
-        val outdatedApps = findOutdatedApps().toMutableList()
-        if (outdatedApps.isEmpty()) {
-            return Result.success()
-        }
+        val outdatedApps = findOutdatedApps()
+            .sortedBy { it.installationChronology }
 
-        if (outdatedApps.contains(App.FFUPDATER)) {
-            outdatedApps.remove(App.FFUPDATER)
-            outdatedApps.add(App.FFUPDATER)
-        }
-        val workRequests = outdatedApps
-            .map { AppUpdater.createWorkRequest(it) }
-            .toMutableList()
-        val firstWorkRequest = workRequests.removeFirst()
+        // enqueue all work requests for update check
         val workManager = WorkManager.getInstance(applicationContext)
-        var workContinuation = workManager.beginUniqueWork(DOWNLOADER_INSTALLER_KEY, KEEP, firstWorkRequest)
-        for (workRequest in workRequests) {
-            workContinuation = workContinuation.then(workRequest)
+        var lastWorkRequest: WorkContinuation? = null
+        for (app in outdatedApps) {
+            lastWorkRequest = if (lastWorkRequest == null) {
+                workManager.beginUniqueWork(DOWNLOADER_INSTALLER_KEY, KEEP, AppUpdater.createWorkRequest(app))
+            } else {
+                lastWorkRequest.then(AppUpdater.createWorkRequest(app))
+            }
         }
-        workContinuation.enqueue()
+        lastWorkRequest?.enqueue()
 
         return Result.success()
     }
