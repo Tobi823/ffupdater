@@ -1,0 +1,10 @@
+Release version 79.2.0 (170)
+- Thanks for the Weblate contributions from: Scrambled777, Bahaa Zidan, minh, Oğuz Ersen, gallegonovato, winver, Raymond Nee, v1s7, Giovanni Donisi, Priit Jõerüüt, 109247019824, Kazushi Hayama, atilluF and MkQtS
+- fix download url for Firefox Nightly (Tobi823/ffupdater#579, thanks monstorix)
+- fix bug: Download correct app if the second update notification is clicked. (Tobi823/ffupdater#565)
+- fix bug: If you click on a update notification, FFUpdater will update the correct app and not the app from the first notification
+- try to fix update loop (Tobi823/ffupdater#576)
+- fix not working automatic APK deletion (Tobi823/ffupdater#569)
+- add button to retry a failed installation
+- inform users that Kiwi Browser is not truly open source (Tobi823/ffupdater#554)
+- fix tests, fix bugs, refactor code
