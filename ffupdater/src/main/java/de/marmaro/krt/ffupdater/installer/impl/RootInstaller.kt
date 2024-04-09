@@ -5,8 +5,9 @@ import android.os.Environment
 import androidx.annotation.Keep
 import com.topjohnwu.superuser.Shell
 import de.marmaro.krt.ffupdater.BuildConfig
-import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.installer.entity.Installer
+import de.marmaro.krt.ffupdater.app.impl.AppBase
+import de.marmaro.krt.ffupdater.installer.AppInstaller
+import de.marmaro.krt.ffupdater.installer.entity.InstallResult
 import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -16,12 +17,17 @@ import java.io.File
  * Copied from https://gitlab.com/AuroraOSS/AuroraStore/-/blob/master/app/src/main/java/com/aurora/store/data/installer/RootInstaller.kt
  */
 @Keep
-class RootInstaller(app: App) : AbstractAppInstaller(app) {
-    override val type = Installer.ROOT_INSTALLER
+class RootInstaller : AppInstaller {
 
-    override suspend fun installApkFile(context: Context, file: File) {
+    override suspend fun startInstallation(context: Context, file: File, appImpl: AppBase): InstallResult {
+        return CertificateVerifier(context, appImpl, file).verifyCertificateBeforeAndAfterInstallation {
+            installApkFile(context, file, appImpl)
+        }
+    }
+
+    private suspend fun installApkFile(context: Context, file: File, appImpl: AppBase) {
         restartInternalShellToGetAlwaysRootPermission()
-        fileIsSafeOrThrow(context, file)
+        fileIsSafeOrThrow(context, file, appImpl)
         failIfRootPermissionIsMissing()
         val size = file.length().toInt()
         val sessionId = createInstallationSession(size)
@@ -34,7 +40,7 @@ class RootInstaller(app: App) : AbstractAppInstaller(app) {
     }
 
     @Throws(IllegalArgumentException::class)
-    private fun fileIsSafeOrThrow(context: Context, file: File) {
+    private fun fileIsSafeOrThrow(context: Context, file: File, appImpl: AppBase) {
         require(!hasDangerousCharacter(file.canonicalPath)) { "File path has dangerous characters: ${file.canonicalPath}" }
         require(!hasDangerousCharacter(file.name)) { "File name has dangerous characters: ${file.name}" }
 
@@ -42,7 +48,7 @@ class RootInstaller(app: App) : AbstractAppInstaller(app) {
         require(file.parentFile == downloadFolder) { "Wrong folder: ${file.parentFile}" }
 
         val invalidChars = """\W""".toRegex()
-        val appName = app.findImpl().packageName.replace(invalidChars, "_")
+        val appName = appImpl.packageName.replace(invalidChars, "_")
         require(file.name.startsWith(appName)) { "Invalid file prefix: ${file.name}" }
         require(file.extension == "apk") { "Invalid file suffix: ${file.name}" }
         require(!file.nameWithoutExtension.contains(invalidChars)) { "Invalid chars in file name: ${file.name}" }

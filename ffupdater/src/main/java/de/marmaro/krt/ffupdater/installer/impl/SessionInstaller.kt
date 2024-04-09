@@ -26,14 +26,14 @@ import android.os.Bundle
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.BuildConfig
-import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.impl.AppBase
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
-import de.marmaro.krt.ffupdater.installer.entity.Installer
+import de.marmaro.krt.ffupdater.installer.AppInstaller
+import de.marmaro.krt.ffupdater.installer.entity.InstallResult
 import de.marmaro.krt.ffupdater.installer.error.session.GenericSessionResultDecoder.getShortErrorMessage
 import de.marmaro.krt.ffupdater.installer.error.session.GenericSessionResultDecoder.getTranslatedErrorMessage
 import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
 import de.marmaro.krt.ffupdater.installer.exceptions.UserInteractionIsRequiredException
-import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import dev.rikka.tools.refine.Refine
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
@@ -43,16 +43,21 @@ import java.io.IOException
 
 
 @Keep
-open class SessionInstaller(app: App, private val foreground: Boolean) : AbstractAppInstaller(app) {
-    override val type = Installer.SESSION_INSTALLER
-    protected open val intentName = "de.marmaro.krt.ffupdater.installer.impl.SessionInstaller.$foreground"
+open class SessionInstaller(private val foreground: Boolean) : AppInstaller {
+    private val intentName = "de.marmaro.krt.ffupdater.installer.impl.SessionInstaller.$foreground"
+
+    override suspend fun startInstallation(context: Context, file: File, appImpl: AppBase): InstallResult {
+        return CertificateVerifier(context, appImpl, file).verifyCertificateBeforeAndAfterInstallation {
+            installApkFile(context, file, appImpl)
+        }
+    }
 
     @Throws(IllegalArgumentException::class)
-    override suspend fun installApkFile(context: Context, file: File) {
+    protected suspend fun installApkFile(context: Context, file: File, appImpl: AppBase) {
         require(file.exists()) { "File does not exists." }
         val installStatus = CompletableDeferred<Boolean>()
         val intentReceiver = registerIntentReceiver(context, installStatus)
-        val sessionId = installApkFileHelper(context, file)
+        val sessionId = installApkFileHelper(context, file, appImpl)
         try {
             installStatus.await()
         } finally {
@@ -99,19 +104,24 @@ open class SessionInstaller(app: App, private val foreground: Boolean) : Abstrac
     }
 
     @MainThread
-    private suspend fun installApkFileHelper(context: Context, file: File): Int {
+    private suspend fun installApkFileHelper(context: Context, file: File, appImpl: AppBase): Int {
         return withContext(Dispatchers.Default) {
-            openSession(context, file) { session, sessionId ->
-                copyApkToSession(session, file)
+            openSession(context, file, appImpl) { session, sessionId ->
+                copyApkToSession(session, file, appImpl)
                 val intentSender = createSessionChangeReceiver(context, sessionId)
                 session.commit(intentSender)
             }
         }
     }
 
-    protected open suspend fun openSession(context: Context, file: File, block: suspend (Session, Int) -> Unit): Int {
+    protected open suspend fun openSession(
+        context: Context,
+        file: File,
+        appImpl: AppBase,
+        block: suspend (Session, Int) -> Unit,
+    ): Int {
         val packageInstaller = context.packageManager.packageInstaller
-        val params = createSessionParams(context, file)
+        val params = createSessionParams(context, file, appImpl)
         val sessionId = try {
             packageInstaller.createSession(params)
         } catch (e: IOException) {
@@ -121,9 +131,8 @@ open class SessionInstaller(app: App, private val foreground: Boolean) : Abstrac
         return sessionId
     }
 
-    protected fun createSessionParams(context: Context, file: File): SessionParams {
+    protected fun createSessionParams(context: Context, file: File, appImpl: AppBase): SessionParams {
         // https://gitlab.com/AuroraOSS/AuroraStore/-/blob/master/app/src/main/java/com/aurora/store/data/installer/SessionInstaller.kt
-        val appImpl = app.findImpl()
         val params = SessionParams(MODE_FULL_INSTALL)
         val displayIcon = appImpl.icon // store display icon id in variable to prevent crash
         params.setAppIcon(BitmapFactory.decodeResource(context.resources, displayIcon))
@@ -144,8 +153,8 @@ open class SessionInstaller(app: App, private val foreground: Boolean) : Abstrac
                     PackageManagerHidden.INSTALL_REPLACE_EXISTING
     }
 
-    private suspend fun copyApkToSession(session: Session, file: File) {
-        val name = "${app.findImpl().packageName}_${System.currentTimeMillis()}"
+    private suspend fun copyApkToSession(session: Session, file: File, appImpl: AppBase) {
+        val name = "${appImpl.packageName}_${System.currentTimeMillis()}"
         withContext(Dispatchers.IO) {
             file.inputStream().buffered().use { downloadStream ->
                 // don't use buffered because I think this causes the 'Unrecognized stream' exception
