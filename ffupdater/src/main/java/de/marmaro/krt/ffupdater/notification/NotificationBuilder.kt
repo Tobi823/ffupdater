@@ -71,12 +71,6 @@ object NotificationBuilder {
         showNotification(appContext, channel, notification, intent)
     }
 
-    fun showUpdateAvailableNotification(context: Context, apps: List<App>) {
-        apps.forEach {
-            showUpdateAvailableNotification(context, it)
-        }
-    }
-
     fun showUpdateAvailableNotification(context: Context, app: App) {
         val useDifferentChannels = BackgroundSettings.useDifferentNotificationChannels
         val appTitle: String = context.getString(app.findImpl().title)
@@ -247,7 +241,7 @@ object NotificationBuilder {
         channelData: ChannelData,
         notification: NotificationData,
         intent: Intent? = null,
-        action: Notification.Action? = null,
+        action: Notification.Action? = null
     ): Notification {
         val notificationManager = getNotificationManager(context)
 
@@ -269,7 +263,7 @@ object NotificationBuilder {
 
         if (intent != null) {
             val flags = FLAG_UPDATE_CURRENT + (if (DeviceSdkTester.supportsAndroid12S31()) FLAG_IMMUTABLE else 0)
-            notificationBuilder.setContentIntent(PendingIntent.getActivity(context, 0, intent, flags))
+            notificationBuilder.setContentIntent(PendingIntent.getActivity(context, notification.id, intent, flags))
         }
         action?.let { notificationBuilder.addAction(it) }
 
