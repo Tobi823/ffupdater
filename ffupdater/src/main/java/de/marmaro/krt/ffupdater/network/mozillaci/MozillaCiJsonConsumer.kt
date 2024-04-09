@@ -1,7 +1,9 @@
 package de.marmaro.krt.ffupdater.network.mozillaci
 
+import android.util.Log
 import androidx.annotation.Keep
 import com.google.gson.JsonObject
+import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
@@ -40,7 +42,23 @@ object MozillaCiJsonConsumer {
         abiString: String,
         cacheBehaviour: CacheBehaviour,
     ): Result {
-        val url = "https://firefoxci.taskcluster-artifacts.net/$taskId/0/public/chain-of-trust.json"
+        for (subfolder in arrayOf(0, 1)) {
+            try {
+                return findChainOfTrustJson(taskId, abiString, cacheBehaviour, subfolder)
+            } catch (e: NetworkException) {
+                error("Download of chain-of-trust.json from subfolder $subfolder failed. Retry with next.", e)
+            }
+        }
+        return findChainOfTrustJson(taskId, abiString, cacheBehaviour, 2)
+    }
+
+    private suspend fun findChainOfTrustJson(
+        taskId: String,
+        abiString: String,
+        cacheBehaviour: CacheBehaviour,
+        subFolder: Int,
+    ): Result {
+        val url = "https://firefoxci.taskcluster-artifacts.net/$taskId/$subFolder/public/chain-of-trust.json"
         val json = FileDownloader.downloadJsonObjectWithCache(url, cacheBehaviour)
         return parseJson(json, abiString)
     }
@@ -68,6 +86,10 @@ object MozillaCiJsonConsumer {
             }
             throw e
         }
+    }
+
+    private fun error(msg: String, e: Throwable) {
+        Log.e(LOG_TAG, "MozillaCiJsonConsumer: $msg", e)
     }
 }
 
