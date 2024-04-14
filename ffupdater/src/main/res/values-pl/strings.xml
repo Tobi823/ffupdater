@@ -224,7 +224,8 @@
     <string name="mulch__warning">- Mulch wykorzystuje techniczne fundamenty Google Chrome, a więc pośrednio wspiera monopolistyczną pozycję silnika renderującego Chromium.</string>
     <string name="fennecfdroid__description">Fennec F-Droid jest oparty na najnowszym wydaniu Firefoksa (o nazwie kodowej Fenix). Ma usunięte zastrzeżone bity i telemetrię, ale nadal łączy się z różnymi usługami Mozilli i Google, które mogą śledzić użytkowników.</string>
     <string name="orbot__description">Orbot to darmowa aplikacja proxy, która umożliwia innym aplikacjom bezpieczniejsze korzystanie z internetu. Orbot wykorzystuje Tor do szyfrowania ruchu internetowego, a następnie ukrywa go, odbijając się od szeregu komputerów na całym świecie. Tor to darmowe oprogramowanie i otwarta sieć, która pomaga bronić się przed formą nadzoru sieciowego, która zagraża wolności osobistej i prywatności, poufnym działaniom i relacjom biznesowym oraz bezpieczeństwu państwa, znaną jako analiza ruchu.</string>
-    <string name="kiwi__warning">- Kiwi korzysta z technicznych fundamentów Google Chrome, a więc pośrednio wspiera monopolistyczną pozycję silnika renderującego Chromium.
+    <string name="kiwi__warning">- Kiwi jest tylko częściowo oprogramowaniem open-source
+\n- Kiwi korzysta z technicznych fundamentów Google Chrome, a więc pośrednio wspiera monopolistyczną pozycję silnika renderującego Chromium.
 \n- Kiwi nie jest idealną przeglądarką do ochrony prywatności, ale ma dobre wsparcie dla dodatków.
 \n- Przeglądarka otrzymuje pieniądze od wyszukiwarek za każde wyszukiwanie wykonane przy użyciu Kiwi. W zależności od wyboru wyszukiwarki, zapytania mogą przechodzić przez serwery Kiwibrowser / Kiwisearchservices.
 \n- Google Ads w Kiwi może używać danych o lokalizacji do reklam - ale można to wyłączyć, wyłączając funkcję Discovery. Ale to się wkrótce zmieni. Zobacz https://privacy.kiwibrowser.org/, aby uzyskać więcej szczegółów.</string>
@@ -341,4 +342,5 @@
     <string name="cardview_dialog__hide">Ukryj</string>
     <string name="foreground__hidden_apps__title">Ukryte aplikacje</string>
     <string name="foreground__hidden_apps__summary">Ukryte aplikacje będą ukryte w interfejsie użytkownika i nie będą aktualizowane automatycznie.</string>
+    <string name="download_activity__retry_installation">Ponów instalację</string>
 </resources>
