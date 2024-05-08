@@ -10,7 +10,7 @@
     <string name="notification__error__text">Por favor relate este erro. Clique aqui para ver os detalhes.</string>
     <string name="notification__error__title">Verificação em segundo plano falhou</string>
     <string name="brave__description">Navegue livremente e de modo privado! Brave é rápido, gratuito e seguro com bloqueador de pop-ups e anúncios. Navegue e pesquise na internet sem malware e rastreamento.</string>
-    <string name="brave__title">Brave Navegador Privado</string>
+    <string name="brave__title">Navegador Privado Brave</string>
     <string name="brave__warning">- O Brave implementa os fundamentos técnicos do Google Chrome (Chromium) e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium.
 \n- Devido ao seu Basic Attention Token BAT na blockchain Ethereum, o projeto tem ligações com criptomoedas. Blockchains têm muitos problemas e devem ser evitadas, na minha opinião.</string>
     <string name="brave_beta__description">Bem-vindo ao Brave Beta para o Android!
