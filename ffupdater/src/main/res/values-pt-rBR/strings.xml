@@ -18,7 +18,7 @@
 \nVocê pode instalar o Brave Beta junto com sua versão atual do Brave Stable para o Android.</string>
     <string name="brave_beta__title">Navegador Brave (Beta)</string>
     <string name="brave_nightly__description">Bem-vindo ao Brave Nightly (Desenvolvedor) para Android!\nTeste as mais novas funcionalidades e dê feedback antecipado: https://brave.com/msupport\nVocê pode instalar o Brave Nightly junto com sua versão atual do Brave for Android.</string>
-    <string name="brave_nightly__title">Navegador Brave (Nocturno)</string>
+    <string name="brave_nightly__title">Navegador Brave (Nightly)</string>
     <string name="bromite__description">Bromite tem como o objetivo proporcionar uma experiência de navegação descomplicada, sem funcionalidades que invadem sua privacidade e com a adição de um mecanismo rápido de bloqueio de anúncios. As mínimas mudanças da interface são implementadas para ajudar a frear a idéia de \"navegador como plataforma publicitária\".</string>
     <string name="bromite__title">Bromite</string>
     <string name="bromite__warning">- Bromite usa os fundamentos técnicos do Google Chrome e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium.</string>
@@ -197,7 +197,7 @@
     <string name="main_activity__an_error_occurred"><u>Um erro aconteceu. Tente novamente mais tarde.</u></string>
     <string name="notification__network_error__title">Erro de rede no trabalho em segundo plano</string>
     <string name="background__separate_notification_channels__title">Canais de notificação diferentes</string>
-    <string name="add_app_activity__title_good_security_browsers">Navegador Seguro Bom</string>
+    <string name="add_app_activity__title_good_security_browsers">Navegadores de Segurança Bons</string>
     <string name="main_activity__unexpected_error">Erro inesperado ocorrido.</string>
     <string name="settings__device_category__title">Dispositivo</string>
     <string name="network__dns_provider__custom">Servidor DNS sobre HTTPS personalizado</string>
@@ -237,4 +237,6 @@
 \n
 \nAprenda como relatar erros e prover opiniões em https://support.torproject.org/pt-BR/misc/bug-or-feedback/!</string>
     <string name="ungoogled_chromium__eol_reason">O desenvolvedor postou: \"Eu não serei capaz de atualizar as versões por algum tempo. Se possível, use um dos navegadores [que o FFUpdater suporta] por enquanto.\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
+    <string name="chromium__description">O Chromium é um projeto de navegador de código aberto que visa construir uma maneira mais segura, rápida e estável para todos os usuários experienciarem a web. Este site contém documentos de design, visões gerais de arquitetura, informações de teste e muito mais para ajudá-lo a aprender a criar e trabalhar com o código-fonte do Chromium.</string>
+    <string name="chromium__warning">- O Chromium usa a base técnica do Google Chrome e, portanto, indiretamente apoia a posição de monopólio do mecanismo de renderização do Chromium.</string>
 </resources>
