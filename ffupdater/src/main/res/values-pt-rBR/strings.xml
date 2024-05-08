@@ -13,9 +13,7 @@
     <string name="brave__title">Navegador Privado Brave</string>
     <string name="brave__warning">- O Brave implementa os fundamentos técnicos do Google Chrome (Chromium) e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium.
 \n- Devido ao seu Basic Attention Token BAT na blockchain Ethereum, o projeto tem ligações com criptomoedas. Blockchains têm muitos problemas e devem ser evitadas, na minha opinião.</string>
-    <string name="brave_beta__description">Bem-vindo ao Brave Beta para o Android!
-\nTeste os mais novos recursos e dê um feedback antecipado: https://brave.com/msupport
-\nVocê pode instalar o Brave Beta junto com sua versão estável atual do Brave para o Android.</string>
+    <string name="brave_beta__description">Bem-vindo ao Brave Beta para o Android! \nTeste os mais novos recursos e dê um feedback antecipado: https://brave.com/msupport \nVocê pode instalar o Brave Beta junto com sua versão estável atual do Brave para o Android.</string>
     <string name="brave_beta__title">Navegador Brave (Beta)</string>
     <string name="brave_nightly__description">Bem-vindo ao Brave Nightly (Desenvolvedor) para Android!\nTeste as mais novas funcionalidades e dê feedback antecipado: https://brave.com/msupport\nVocê pode instalar o Brave Nightly junto com sua versão atual do Brave for Android.</string>
     <string name="brave_nightly__title">Navegador Brave (Nightly)</string>
