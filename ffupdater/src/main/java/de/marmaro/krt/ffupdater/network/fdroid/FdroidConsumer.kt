@@ -28,11 +28,16 @@ object FdroidConsumer {
         val commitId = getLastCommitId(packageName, cacheBehaviour)
         val createdAt = getCreateDate(commitId, cacheBehaviour)
 
+        val downloadPrefix = "https://f-droid.org/repo/"
+        if (preferences.getBoolean("network__use_cloudflare_mirrors", false)) {
+            val downloadPrefix = "https://cloudflare.f-droid.org/repo/"
+        }
+
         Log.i(LOG_TAG, "FdroidConsumer: Found latest version ${latestVersion.versionName}")
         return Result(
             latestVersion.versionName,
             latestVersion.versionCode,
-            "https://f-droid.org/repo/${packageName}_${latestVersion.versionCode}.apk",
+            "${downloadPrefix}${packageName}_${latestVersion.versionCode}.apk",
             createdAt
         )
     }
