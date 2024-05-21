@@ -45,4 +45,16 @@ object MozillaArchiveConsumer {
         val dateTime = LocalDateTime.parse(lastModified, parser)
         return ZonedDateTime.of(dateTime, ZoneId.of("UTC"))
     }
+
+    suspend fun findLastLink(page: String, cacheBehaviour: CacheBehaviour): String {
+        val webpage = FileDownloader.downloadStringWithCache(page, cacheBehaviour)
+        val regex = Regex("""<a href="([a-z0-9.\-_/]+)">""")
+        val links = regex
+                .findAll(webpage)
+                .toList()
+        require(links.isNotEmpty())
+        val lastGroup = links.last().groups[1]
+        requireNotNull(lastGroup)
+        return lastGroup.value
+    }
 }
