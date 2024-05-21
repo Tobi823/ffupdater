@@ -32,7 +32,6 @@ object FirefoxFocusBeta : AppBase() {
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = ARM32_ARM64_X86_X64
 
-    @Suppress("SpellCheckingInspection")
     override val signatureHash = "6203a473be36d64ee37f87fa500edbc79eab930610ab9b9fa4ca7d5c1f1b4ffc"
     override val projectPage = "https://github.com/mozilla-mobile/firefox-android"
     override val displayCategory = listOf(FROM_MOZILLA)
@@ -41,7 +40,7 @@ object FirefoxFocusBeta : AppBase() {
     @Throws(NetworkException::class)
     override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
         val version = findLatestVersion(cacheBehaviour)
-        val abi = findAbiString()
+        val abi = DeviceAbiExtractor.findBestAbiAsStringA(supportedAbis, DeviceSettingsHelper.prefer32BitApks)
         val page = "https://archive.mozilla.org/pub/focus/releases/$version/android/focus-$version-android-$abi/"
         val downloadUrl = "${page}focus-$version.multi.android-$abi.apk"
         val dateTime = MozillaArchiveConsumer.findDateTimeFromPage(page, cacheBehaviour)
@@ -59,16 +58,5 @@ object FirefoxFocusBeta : AppBase() {
         val versionRegex = Regex("""(\d+)\.(\d+b\d+)""")
         val version = MozillaArchiveConsumer.findLatestVersion(url, versionRegex, cacheBehaviour)
         return version
-    }
-
-    private fun findAbiString(): String {
-        val abiString = when (DeviceAbiExtractor.findBestAbi(FirefoxRelease.supportedAbis, DeviceSettingsHelper.prefer32BitApks)) {
-            ABI.ARMEABI_V7A -> "armeabi-v7a"
-            ABI.ARM64_V8A -> "arm64-v8a"
-            ABI.X86 -> "x86"
-            ABI.X86_64 -> "x86_64"
-            else -> throw IllegalArgumentException("ABI is not supported")
-        }
-        return abiString
     }
 }

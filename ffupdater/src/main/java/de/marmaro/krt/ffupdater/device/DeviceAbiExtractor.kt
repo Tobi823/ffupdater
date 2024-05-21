@@ -1,6 +1,8 @@
 package de.marmaro.krt.ffupdater.device
 
 import android.os.Build
+import de.marmaro.krt.ffupdater.app.impl.FirefoxFocusBeta
+import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 
 object DeviceAbiExtractor {
     var supportedAbis: List<ABI> = Build.SUPPORTED_ABIS?.map { ABI.findByCodeName(it) } ?: listOf()
@@ -17,5 +19,15 @@ object DeviceAbiExtractor {
 
     fun supportsOneOf(abisSupportedByApp: List<ABI>): Boolean {
         return supportedAbis.any { it in abisSupportedByApp }
+    }
+
+    fun findBestAbiAsStringA(abisSupportedByApp: List<ABI>, prefer32Bit: Boolean): String {
+        return when (findBestAbi(abisSupportedByApp, prefer32Bit)) {
+            ABI.ARMEABI_V7A -> "armeabi-v7a"
+            ABI.ARM64_V8A -> "arm64-v8a"
+            ABI.X86 -> "x86"
+            ABI.X86_64 -> "x86_64"
+            else -> throw IllegalArgumentException("ABI is not supported")
+        }
     }
 }

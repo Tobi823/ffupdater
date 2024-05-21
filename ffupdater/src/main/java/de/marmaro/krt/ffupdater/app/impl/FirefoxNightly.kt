@@ -39,7 +39,7 @@ object FirefoxNightly : AppBase() {
     @MainThread
     @Throws(NetworkException::class)
     override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
-        val abi = findAbiString()
+        val abi = DeviceAbiExtractor.findBestAbiAsStringA(supportedAbis, DeviceSettingsHelper.prefer32BitApks)
         val page = findPageUrl(abi, cacheBehaviour)
         val version = Regex("""fenix-(\d+\.\d+a\d+)-android""").find(page)!!.groups[1]!!.value
         val downloadUrl = "${page}fenix-$version.multi.android-$abi.apk"
@@ -66,17 +66,5 @@ object FirefoxNightly : AppBase() {
         // https://archive.mozilla.org/pub/fenix/nightly/2024/05/2024-05-20-21-46-33-fenix-128.0a1-android-arm64-v8a/
         val page5 = "$hostname$page4-$abi/"
         return page5
-    }
-
-    private fun findAbiString(): String {
-        val abiString =
-            when (DeviceAbiExtractor.findBestAbi(FirefoxRelease.supportedAbis, DeviceSettingsHelper.prefer32BitApks)) {
-                ABI.ARMEABI_V7A -> "armeabi-v7a"
-                ABI.ARM64_V8A -> "arm64-v8a"
-                ABI.X86 -> "x86"
-                ABI.X86_64 -> "x86_64"
-                else -> throw IllegalArgumentException("ABI is not supported")
-            }
-        return abiString
     }
 }

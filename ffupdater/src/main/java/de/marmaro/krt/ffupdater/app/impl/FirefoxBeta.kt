@@ -39,7 +39,7 @@ object FirefoxBeta : AppBase() {
     @Throws(NetworkException::class)
     override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
         val version = findLatestVersion(cacheBehaviour)
-        val abi = findAbiString()
+        val abi = DeviceAbiExtractor.findBestAbiAsStringA(supportedAbis, DeviceSettingsHelper.prefer32BitApks)
         val page = "https://archive.mozilla.org/pub/fenix/releases/$version/android/fenix-$version-android-$abi/"
         val downloadUrl = "${page}fenix-$version.multi.android-$abi.apk"
         val dateTime = MozillaArchiveConsumer.findDateTimeFromPage(page, cacheBehaviour)
@@ -57,16 +57,5 @@ object FirefoxBeta : AppBase() {
         val versionRegex = Regex("""(\d+)\.(\d+b\d+)""")
         val version = MozillaArchiveConsumer.findLatestVersion(url, versionRegex, cacheBehaviour)
         return version
-    }
-
-    private fun findAbiString(): String {
-        val abiString = when (DeviceAbiExtractor.findBestAbi(FirefoxRelease.supportedAbis, DeviceSettingsHelper.prefer32BitApks)) {
-            ABI.ARMEABI_V7A -> "armeabi-v7a"
-            ABI.ARM64_V8A -> "arm64-v8a"
-            ABI.X86 -> "x86"
-            ABI.X86_64 -> "x86_64"
-            else -> throw IllegalArgumentException("ABI is not supported")
-        }
-        return abiString
     }
 }
