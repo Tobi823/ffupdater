@@ -1,0 +1,3 @@
+Release version 79.2.1 (171)
+- Thanks for the Weblate contributions from: Kazushi Hayama, winver, gallegonovato, Scrambled777, Eryk Michalak, v1s7, Gersonzao, Flavio F. M., syl, Oğuz Ersen and MkQtS
+- use archive.mozilla.org for Firefox Release / Beta / Nightly / Focus / Focus Beta / Klar (Tobi823/ffupdater#584)
