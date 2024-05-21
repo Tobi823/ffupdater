@@ -13,6 +13,7 @@ import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
+import de.marmaro.krt.ffupdater.network.website.MozillaArchiveConsumer
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 
 /**
@@ -32,7 +33,6 @@ object FirefoxFocus : AppBase() {
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = ARM32_ARM64_X86_X64
 
-    @Suppress("SpellCheckingInspection")
     override val signatureHash = "6203a473be36d64ee37f87fa500edbc79eab930610ab9b9fa4ca7d5c1f1b4ffc"
     override val projectPage = "https://github.com/mozilla-mobile/firefox-android"
     override val displayCategory = listOf(FROM_MOZILLA)
@@ -40,35 +40,35 @@ object FirefoxFocus : AppBase() {
     @MainThread
     @Throws(NetworkException::class)
     override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
-        val fileSuffix = findFileName()
-        val result = GithubConsumer.findLatestRelease(
-            repository = FirefoxRelease.REPOSITORY,
-            isValidRelease = { !it.isPreRelease && """^Focus \d""".toRegex().containsMatchIn(it.name) },
-            isSuitableAsset = { it.nameStartsAndEndsWith("focus-", fileSuffix) },
-            cacheBehaviour = cacheBehaviour,
-            requireReleaseDescription = false,
-        )
-        val version = result.tagName
-            .removePrefix("focus-v") //convert v108.1.1 or focus-v108.1.1 to 108.1.1
-            .removePrefix("v") //fallback if the tag naming schema changed
+        val version = findLatestVersion(cacheBehaviour)
+        val abi = findAbiString()
+        val page = "https://archive.mozilla.org/pub/focus/releases/$version/android/focus-$version-android-$abi/"
+        val downloadUrl = "${page}focus-$version.multi.android-$abi.apk"
+        val dateTime = MozillaArchiveConsumer.findDateTimeFromPage(page, cacheBehaviour)
         return LatestVersion(
-            downloadUrl = result.url,
+            downloadUrl = downloadUrl,
             version = version,
-            publishDate = result.releaseDate,
-            exactFileSizeBytesOfDownload = result.fileSizeBytes,
+            publishDate = dateTime.toString(),
+            exactFileSizeBytesOfDownload = null,
             fileHash = null,
         )
     }
 
-    private fun findFileName(): String {
-        val fileSuffix =
-            when (DeviceAbiExtractor.findBestAbi(supportedAbis, DeviceSettingsHelper.prefer32BitApks)) {
-                ABI.ARMEABI_V7A -> "-armeabi-v7a.apk"
-                ABI.ARM64_V8A -> "-arm64-v8a.apk"
-                ABI.X86 -> "-x86.apk"
-                ABI.X86_64 -> "-x86_64.apk"
-                else -> throw IllegalArgumentException("ABI is not supported")
-            }
-        return fileSuffix
+    private suspend fun findLatestVersion(cacheBehaviour: CacheBehaviour): String {
+        val url = "https://archive.mozilla.org/pub/focus/releases/"
+        val versionRegex = Regex("""(\d+)\.(\d+)\.?(\d+)?""")
+        val version = MozillaArchiveConsumer.findLatestVersion(url, versionRegex, cacheBehaviour)
+        return version
+    }
+
+    private fun findAbiString(): String {
+        val abiString = when (DeviceAbiExtractor.findBestAbi(FirefoxRelease.supportedAbis, DeviceSettingsHelper.prefer32BitApks)) {
+            ABI.ARMEABI_V7A -> "armeabi-v7a"
+            ABI.ARM64_V8A -> "arm64-v8a"
+            ABI.X86 -> "x86"
+            ABI.X86_64 -> "x86_64"
+            else -> throw IllegalArgumentException("ABI is not supported")
+        }
+        return abiString
     }
 }
