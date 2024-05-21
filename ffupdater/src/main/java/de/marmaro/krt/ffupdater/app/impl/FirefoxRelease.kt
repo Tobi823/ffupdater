@@ -18,8 +18,7 @@ import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
 /**
- * https://github.com/mozilla-mobile/focus-android
- * https://api.github.com/repos/mozilla-mobile/focus-android/releases
+ * https://archive.mozilla.org/pub/fenix/releases/126.0/android/fenix-126.0-android-arm64-v8a/
  * https://www.apkmirror.com/apk/mozilla/firefox/
  */
 @Keep

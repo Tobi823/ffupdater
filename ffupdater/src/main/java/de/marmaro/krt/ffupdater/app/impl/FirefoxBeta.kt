@@ -16,8 +16,7 @@ import de.marmaro.krt.ffupdater.network.website.MozillaArchiveConsumer
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 
 /**
- * https://github.com/mozilla-mobile/firefox-android
- * https://api.github.com/repos/mozilla-mobile/focus-android/releases
+ * https://archive.mozilla.org/pub/fenix/releases/107.0b6/android/fenix-107.0b6-android-arm64-v8a/
  * https://www.apkmirror.com/apk/mozilla/firefox-beta
  */
 @Keep

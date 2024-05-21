@@ -17,7 +17,7 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 import java.time.format.DateTimeFormatter
 
 /**
- * https://firefox-ci-tc.services.mozilla.com/tasks/index/gecko.v2.mozilla-central.latest.mobile.fenix-nightly
+ * https://archive.mozilla.org/pub/fenix/nightly/2024/05/2024-05-20-21-46-33-fenix-128.0a1-android-arm64-v8a/
  * https://www.apkmirror.com/apk/mozilla/firefox-fenix/
  */
 @Keep
