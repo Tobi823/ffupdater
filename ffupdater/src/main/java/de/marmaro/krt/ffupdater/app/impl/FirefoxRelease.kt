@@ -34,11 +34,9 @@ object FirefoxRelease : AppBase() {
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = ARM32_ARM64_X86_X64
 
-    @Suppress("SpellCheckingInspection")
     override val signatureHash = "a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04"
-    override val projectPage = "https://firefox-ci-tc.services.mozilla.com/tasks/index/mobile.v3.firefox-android.apks.fenix-release.latest/arm64-v8a"
+    override val projectPage = "https://www.mozilla.org/firefox/browsers/mobile/android/"
     override val displayCategory = listOf(FROM_MOZILLA)
-
 
     @MainThread
     @Throws(NetworkException::class)
