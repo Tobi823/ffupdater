@@ -342,4 +342,5 @@
     <string name="cardview_dialog__hide">Скриване</string>
     <string name="foreground__hidden_apps__title">Скрити приложения</string>
     <string name="foreground__hidden_apps__summary">Скритите приложения ще бъдат недостъпни и няма да бъдат обновявани автоматично.</string>
+    <string name="download_activity__retry_installation">Повторно инсталиране</string>
 </resources>
