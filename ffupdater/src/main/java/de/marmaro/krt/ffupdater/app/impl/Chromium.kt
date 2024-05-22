@@ -41,6 +41,7 @@ object Chromium : AppBase() {
     override val projectPage = "https://www.chromium.org/chromium-projects/"
     override val displayCategory = listOf(BETTER_THAN_GOOGLE_CHROME)
     override val fileNameInZipArchive = "chrome-android/apks/ChromePublic.apk"
+    override val hostnameForInternetCheck = "https://storage.googleapis.com"
 
     @MainThread
     @Throws(NetworkException::class)

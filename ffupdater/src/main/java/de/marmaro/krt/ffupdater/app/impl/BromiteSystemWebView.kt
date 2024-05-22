@@ -37,6 +37,7 @@ object BromiteSystemWebView : AppBase() {
     override val installableByUser = false
     override val projectPage = "https://github.com/bromite/bromite"
     override val displayCategory = listOf(GOOD_PRIVACY_BROWSER, EOL)
+    override val hostnameForInternetCheck = "https://api.github.com"
 
     @MainThread
     @Throws(NetworkException::class)

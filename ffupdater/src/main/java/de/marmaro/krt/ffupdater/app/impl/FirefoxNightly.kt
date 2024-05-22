@@ -35,6 +35,7 @@ object FirefoxNightly : AppBase() {
     override val supportedAbis = ARM32_ARM64_X86_X64
     override val projectPage = "https://www.mozilla.org/firefox/browsers/mobile/android/"
     override val displayCategory = listOf(FROM_MOZILLA)
+    override val hostnameForInternetCheck = "https://archive.mozilla.org"
 
     @MainThread
     @Throws(NetworkException::class)

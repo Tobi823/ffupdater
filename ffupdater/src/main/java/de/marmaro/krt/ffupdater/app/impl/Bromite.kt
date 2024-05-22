@@ -38,6 +38,7 @@ object Bromite : AppBase() {
     override val projectPage = "https://github.com/bromite/bromite"
     override val displayCategory = listOf(GOOD_PRIVACY_BROWSER, EOL)
     val REPOSITORY = GithubConsumer.GithubRepo("bromite", "bromite", 0)
+    override val hostnameForInternetCheck = "https://api.github.com"
 
     @MainThread
     @Throws(NetworkException::class)

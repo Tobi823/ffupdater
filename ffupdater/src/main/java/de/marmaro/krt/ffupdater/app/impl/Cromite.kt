@@ -32,6 +32,7 @@ object Cromite : AppBase() {
     override val signatureHash = "633fa41d8211d6d0916a819b89668c6de92e64232da67f9d16fd81c3b7e923ff"
     override val projectPage = "https://github.com/uazo/cromite"
     override val displayCategory = listOf(DisplayCategory.GOOD_PRIVACY_BROWSER)
+    override val hostnameForInternetCheck = "https://api.github.com"
 
     @MainThread
     @Throws(NetworkException::class)

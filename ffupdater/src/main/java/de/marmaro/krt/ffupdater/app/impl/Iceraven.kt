@@ -34,6 +34,7 @@ object Iceraven : AppBase() {
     override val signatureHash = "9c0d22379f487b70a4f9f8bec0173cf91a1644f08f93385b5b782ce37660ba81"
     override val projectPage = "https://github.com/fork-maintainers/iceraven-browser"
     override val displayCategory = listOf(BASED_ON_FIREFOX)
+    override val hostnameForInternetCheck = "https://api.github.com"
 
     override suspend fun getInstalledVersion(packageManager: PackageManager): String? {
         val installedVersion = super.getInstalledVersion(packageManager)

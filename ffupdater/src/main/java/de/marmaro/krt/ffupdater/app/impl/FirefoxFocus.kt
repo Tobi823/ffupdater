@@ -34,6 +34,7 @@ object FirefoxFocus : AppBase() {
     override val signatureHash = "6203a473be36d64ee37f87fa500edbc79eab930610ab9b9fa4ca7d5c1f1b4ffc"
     override val projectPage = "https://github.com/mozilla-mobile/firefox-android"
     override val displayCategory = listOf(FROM_MOZILLA)
+    override val hostnameForInternetCheck = "https://archive.mozilla.org"
 
     @MainThread
     @Throws(NetworkException::class)

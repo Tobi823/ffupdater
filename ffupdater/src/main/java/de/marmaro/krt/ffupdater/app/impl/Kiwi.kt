@@ -34,6 +34,7 @@ object Kiwi : AppBase() {
     override val signatureHash = "829b930e919cd56c9a67617c312e3b425a38894b929e735c3d391d9c51b9e4c0"
     override val projectPage = "https://github.com/kiwibrowser/src.next"
     override val displayCategory = listOf(BETTER_THAN_GOOGLE_CHROME)
+    override val hostnameForInternetCheck = "https://api.github.com"
 
     @MainThread
     @Throws(NetworkException::class)

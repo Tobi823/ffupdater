@@ -30,6 +30,7 @@ object PrivacyBrowser : AppBase() {
     override val signatureHash = "f97614dc96964bea2e4fa66b24608a510a87b3b1e01ba68e0753c099133a8768"
     override val projectPage = "https://f-droid.org/en/packages/com.stoutner.privacybrowser.standard/"
     override val displayCategory = listOf(GOOD_PRIVACY_BROWSER)
+    override val hostnameForInternetCheck = "https://f-droid.org"
 
     @MainThread
     @Throws(NetworkException::class)

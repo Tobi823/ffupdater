@@ -30,6 +30,7 @@ object FairEmail : AppBase() {
     override val signatureHash = "e02067249f5a350e0ec703fe9df4dd682e0291a09f0c2e041050bbe7c064f5c9"
     override val projectPage = "https://github.com/M66B/FairEmail"
     override val displayCategory = listOf(OTHER)
+    override val hostnameForInternetCheck = "https://api.github.com"
 
     @MainThread
     @Throws(NetworkException::class)

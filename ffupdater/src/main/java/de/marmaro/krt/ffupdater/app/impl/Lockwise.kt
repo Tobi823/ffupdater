@@ -34,6 +34,7 @@ object Lockwise : AppBase() {
     override val projectPage = "https://github.com/mozilla-lockwise/lockwise-android"
     override val eolReason = R.string.lockwise__eol_reason
     override val displayCategory = listOf(OTHER, EOL)
+    override val hostnameForInternetCheck = "https://api.github.com"
 
     @MainThread
     @Throws(NetworkException::class, IllegalStateException::class)

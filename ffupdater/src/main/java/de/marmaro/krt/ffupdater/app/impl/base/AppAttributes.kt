@@ -23,6 +23,7 @@ interface AppAttributes {
     val displayCategory: List<DisplayCategory>
     val fileNameInZipArchive: String?
     val differentSignatureMessage: Int
+    val hostnameForInternetCheck: String
 
     fun isEol() = (eolReason != null)
 }

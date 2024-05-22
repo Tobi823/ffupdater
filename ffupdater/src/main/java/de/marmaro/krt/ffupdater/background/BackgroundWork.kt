@@ -115,15 +115,13 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
     @MainThread
     private suspend fun internalDoWork(): Result {
         storeBackgroundJobExecutionTime()
-        areRunRequirementsMet()
-            .onFailure { return it }
+        areRunRequirementsMet().onFailure { return it }
 
         NotificationRemover.removeDownloadErrorNotification(applicationContext)
         NotificationRemover.removeAppStatusNotifications(applicationContext)
 
         checkUpdateCheckAllowed().onFailure { return@internalDoWork it }
-        val outdatedApps = findOutdatedApps()
-            .sortedBy { it.installationChronology }
+        val outdatedApps = findOutdatedApps().sortedBy { it.installationChronology }
 
         // enqueue all work requests for update check
         val workManager = WorkManager.getInstance(applicationContext)
@@ -142,14 +140,11 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
 
     private fun checkUpdateCheckAllowed(): PeriodicWorkMethodResult {
         return when {
-            !BackgroundSettings.isUpdateCheckEnabled ->
-                neverRetry("BackgroundWork: Background should be disabled - disable it now.")
+            !BackgroundSettings.isUpdateCheckEnabled -> neverRetry("BackgroundWork: Background should be disabled - disable it now.")
 
-            FileDownloader.areDownloadsCurrentlyRunning() ->
-                retrySoon("BackgroundWork: Retry background job because other downloads are running.")
+            FileDownloader.areDownloadsCurrentlyRunning() -> retrySoon("BackgroundWork: Retry background job because other downloads are running.")
 
-            !BackgroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(applicationContext) ->
-                retrySoon("BackgroundWork: No unmetered network available for update check.")
+            !BackgroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(applicationContext) -> retrySoon("BackgroundWork: No unmetered network available for update check.")
 
             else -> success()
         }
@@ -157,21 +152,26 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
 
     private suspend fun findOutdatedApps(): List<App> {
         InstalledAppsCache.updateCache(applicationContext)
-        val appsToCheck = InstalledAppsCache.getInstalledAppsWithCorrectFingerprint(applicationContext)
-            .filter { it !in BackgroundSettings.excludedAppsFromUpdateCheck }
-            .filter { it !in ForegroundSettings.hiddenApps }
-            .filter { DeviceAbiExtractor.supportsOneOf(it.findImpl().supportedAbis) }
-            .filter { !it.findImpl().wasInstalledByOtherApp(applicationContext) }
+        val appsToCheck = InstalledAppsCache
+                .getInstalledAppsWithCorrectFingerprint(applicationContext)
+                .filter { it !in BackgroundSettings.excludedAppsFromUpdateCheck }
+                .filter { it !in ForegroundSettings.hiddenApps }
+                .filter { DeviceAbiExtractor.supportsOneOf(it.findImpl().supportedAbis) }
+                .map { it.findImpl() }
+                .filter { !it.wasInstalledByOtherApp(applicationContext) }
+                .filter { FileDownloader.isUrlAvailable(it.hostnameForInternetCheck) }
+                .map { it.findInstalledAppStatus(applicationContext, USE_CACHE) }
 
-        // check for updates
-        val appStatusList = appsToCheck.map { it.findImpl().findInstalledAppStatus(applicationContext, USE_CACHE) }
-
-        val outdatedApps = appStatusList
-            .filter { it.isUpdateAvailable }
-            .map { it.app }
+        val outdatedApps = appsToCheck
+                .filter { it.isUpdateAvailable }
+                .map { it.app }
 
         // delete old cached APK files
-        appStatusList.forEach { it.app.findImpl().deleteFileCacheExceptLatest(applicationContext, it.latestVersion) }
+        appsToCheck.forEach {
+            it.app
+                    .findImpl()
+                    .deleteFileCacheExceptLatest(applicationContext, it.latestVersion)
+        }
 
         Log.d(LOG_TAG, "BackgroundWork: [${outdatedApps.joinToString(",")}] are outdated.")
         return outdatedApps
@@ -204,9 +204,10 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
             }
 
             val minutes = BackgroundSettings.updateCheckInterval.toMinutes()
-            val workRequest = PeriodicWorkRequest.Builder(BackgroundWork::class.java, minutes, MINUTES)
-                .setInitialDelay(initialDelay.seconds, SECONDS)
-                .build()
+            val workRequest = PeriodicWorkRequest
+                    .Builder(BackgroundWork::class.java, minutes, MINUTES)
+                    .setInitialDelay(initialDelay.seconds, SECONDS)
+                    .build()
             instance.enqueueUniquePeriodicWork(CHECK_FOR_UPDATES_KEY, policy, workRequest)
         }
 

@@ -34,6 +34,7 @@ object FirefoxBeta : AppBase() {
     override val signatureHash = "a78b62a5165b4494b2fead9e76a280d22d937fee6251aece599446b2ea319b04"
     override val projectPage = "https://www.mozilla.org/firefox/browsers/mobile/android/"
     override val displayCategory = listOf(FROM_MOZILLA)
+    override val hostnameForInternetCheck = "https://archive.mozilla.org"
 
     @MainThread
     @Throws(NetworkException::class)

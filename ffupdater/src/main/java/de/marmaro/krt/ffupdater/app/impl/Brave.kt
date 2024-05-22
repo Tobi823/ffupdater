@@ -38,6 +38,7 @@ object Brave : AppBase() {
     override val projectPage = "https://github.com/brave/brave-browser"
     override val displayCategory = listOf(BETTER_THAN_GOOGLE_CHROME)
     val REPOSITORY = GithubConsumer.GithubRepo("brave", "brave-browser", 27)
+    override val hostnameForInternetCheck = "https://api.github.com"
 
     @MainThread
     @Throws(NetworkException::class)

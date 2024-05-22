@@ -32,6 +32,7 @@ object FFUpdater : AppBase() {
     override val projectPage = "https://github.com/Tobi823/ffupdater"
     override val displayCategory = listOf(OTHER)
     override val differentSignatureMessage = R.string.ffupdater__different_signature_message
+    override val hostnameForInternetCheck = "https://api.github.com"
 
     @MainThread
     @Throws(NetworkException::class)

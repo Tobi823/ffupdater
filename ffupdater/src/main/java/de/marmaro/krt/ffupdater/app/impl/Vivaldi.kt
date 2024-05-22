@@ -36,6 +36,7 @@ object Vivaldi : AppBase() {
     override val signatureHash = "e8a78544655ba8c09817f732768f5689b1662ec4b2bc5a0bc0ec138d33ca3d1e"
     override val projectPage = "https://vivaldi.com/de/download/"
     override val displayCategory = listOf(BETTER_THAN_GOOGLE_CHROME)
+    override val hostnameForInternetCheck = "https://vivaldi.com"
 
     @MainThread
     @Throws(NetworkException::class)

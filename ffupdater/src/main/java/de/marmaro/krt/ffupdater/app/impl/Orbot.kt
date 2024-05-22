@@ -34,6 +34,7 @@ object Orbot : AppBase() {
     override val signatureHash = "a454b87a1847a89ed7f5e70fba6bba96f3ef29c26e0981204fe347bf231dfd5b"
     override val projectPage = "https://github.com/guardianproject/orbot"
     override val displayCategory = listOf(OTHER)
+    override val hostnameForInternetCheck = "https://api.github.com"
 
     @MainThread
     @Throws(NetworkException::class)

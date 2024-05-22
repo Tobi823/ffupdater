@@ -57,6 +57,23 @@ object FileDownloader {
         init(context)
     }
 
+    @Throws(IllegalArgumentException::class)
+    suspend fun isUrlAvailable(url: String): Boolean {
+        require(url.startsWith("https://"))
+        try {
+            val request = Request.Builder()
+                    .url(url)
+                    .cacheControl(CacheControl.FORCE_NETWORK)
+                    .method("HEAD", null)
+            clientWithCache
+                    .newCall(request.build())
+                    .await()
+            return true
+        } catch (e: Exception) {
+            return false
+        }
+    }
+
     suspend fun downloadFile(url: String, file: File): Pair<Deferred<Any>, Channel<DownloadStatus>> {
         val processChannel = Channel<DownloadStatus>(Channel.CONFLATED)
         val deferred = CoroutineScope(Dispatchers.IO).async {

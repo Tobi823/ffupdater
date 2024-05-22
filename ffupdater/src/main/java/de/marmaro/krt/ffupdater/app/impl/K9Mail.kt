@@ -31,6 +31,7 @@ object K9Mail : AppBase() {
     override val signatureHash = "55c8a523b97335f5bf60dfe8a9f3e1dde744516d9357e80a925b7b22e4f55524"
     override val projectPage = "https://github.com/thunderbird/thunderbird-android"
     override val displayCategory = listOf(OTHER)
+    override val hostnameForInternetCheck = "https://api.github.com"
 
     @MainThread
     @Throws(NetworkException::class)

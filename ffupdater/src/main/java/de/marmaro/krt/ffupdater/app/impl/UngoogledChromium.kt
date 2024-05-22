@@ -36,6 +36,7 @@ object UngoogledChromium : AppBase() {
     override val signatureHash = "7e6ba7bbb939fa52d5569a8ea628056adf8c75292bf4dee6b353fafaf2c30e19"
     override val eolReason = R.string.ungoogled_chromium__eol_reason
     override val displayCategory = listOf(BETTER_THAN_GOOGLE_CHROME, EOL)
+    override val hostnameForInternetCheck = "https://api.github.com"
 
     @MainThread
     @Throws(NetworkException::class)

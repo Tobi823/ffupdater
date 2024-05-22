@@ -33,6 +33,7 @@ object Thorium : AppBase() {
     override val signatureHash = "32a2fc74d731105859e5a85df16d95f102d85b22099b8064c5d8915c61dad1e0"
     override val projectPage = "https://github.com/Alex313031/Thorium-Android"
     override val displayCategory = listOf(BETTER_THAN_GOOGLE_CHROME)
+    override val hostnameForInternetCheck = "https://api.github.com"
 
     @MainThread
     @Throws(NetworkException::class)

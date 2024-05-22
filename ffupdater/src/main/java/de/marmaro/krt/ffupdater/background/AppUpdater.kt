@@ -21,11 +21,13 @@ import de.marmaro.krt.ffupdater.background.OneTimeWorkMethodResult.Companion.suc
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.device.PowerUtil
 import de.marmaro.krt.ffupdater.installer.AppInstallerFactory
-import de.marmaro.krt.ffupdater.installer.entity.Installer.*
+import de.marmaro.krt.ffupdater.installer.entity.Installer.NATIVE_INSTALLER
+import de.marmaro.krt.ffupdater.installer.entity.Installer.SESSION_INSTALLER
 import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
 import de.marmaro.krt.ffupdater.installer.exceptions.UserInteractionIsRequiredException
 import de.marmaro.krt.ffupdater.network.NetworkUtil
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
+import de.marmaro.krt.ffupdater.network.file.CacheBehaviour.FORCE_NETWORK
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour.USE_CACHE
 import de.marmaro.krt.ffupdater.network.file.DownloadStatus
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
@@ -41,6 +43,7 @@ import de.marmaro.krt.ffupdater.settings.BackgroundSettings
 import de.marmaro.krt.ffupdater.settings.InstallerSettings
 import de.marmaro.krt.ffupdater.storage.StorageUtil
 import de.marmaro.krt.ffupdater.utils.WorkManagerTiming.calcBackoffTime
+import de.marmaro.krt.ffupdater.utils.ifFalse
 import kotlinx.coroutines.CompletableDeferred
 
 @Keep
@@ -68,13 +71,22 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) :
     private suspend fun doWorkInternal(): Result {
         val context = applicationContext
         val app = getApp()
-        val installedAppStatus = app.findImpl().findInstalledAppStatus(context, USE_CACHE)
+        val installedAppStatus = app
+                .findImpl()
+                .findInstalledAppStatus(context, USE_CACHE)
         Log.i(LOG_TAG, "$LOGTAG Start for ${app.name}.")
 
         isAppStillOutdated(installedAppStatus).onFailure { return it }
         isAppNotDownloaded(installedAppStatus).onFailure { showUpdateAvailableNotification(context, app); return it }
         isUpdateCheckAllowed().onFailure { showUpdateAvailableNotification(context, app); return it }
         isEnoughStorage().onFailure { showUpdateAvailableNotification(context, app); return it }
+
+        FileDownloader
+                .isUrlAvailable(app.findImpl().hostnameForInternetCheck)
+                .ifFalse {
+                    Log.w(LOG_TAG, "$LOGTAG Simple network test ws not successful. Abort background update check.")
+                    return Result.retry()
+                }
 
         try {
             showDownloadRunningNotification(context, app, null, null)
@@ -125,17 +137,15 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) :
 
     private fun isUpdateCheckAllowed(): OneTimeWorkMethodResult {
         return when {
-            !BackgroundSettings.isUpdateCheckEnabled ->
-                stopNextOneTimeDownload("$LOGTAG Background update checks are disabled.")
+            !BackgroundSettings.isUpdateCheckEnabled -> stopNextOneTimeDownload("$LOGTAG Background update checks are disabled.")
 
-            !BackgroundSettings.isDownloadEnabled ->
-                stopNextOneTimeDownload("$LOGTAG Background downloads are disabled.")
+            !BackgroundSettings.isDownloadEnabled -> stopNextOneTimeDownload("$LOGTAG Background downloads are disabled.")
 
-            FileDownloader.areDownloadsCurrentlyRunning() ->
-                retry("$LOGTAG Other downloads are running.")
+            FileDownloader.areDownloadsCurrentlyRunning() -> retry("$LOGTAG Other downloads are running.")
 
-            !BackgroundSettings.isUpdateCheckOnMeteredAllowed && NetworkUtil.isNetworkMetered(applicationContext) ->
-                retry("$LOGTAG No unmetered network available for app download.")
+            !BackgroundSettings.isUpdateCheckOnMeteredAllowed && NetworkUtil.isNetworkMetered(applicationContext) -> retry(
+                "$LOGTAG No unmetered network available for app download."
+            )
 
             else -> success()
         }
@@ -145,6 +155,13 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) :
         if (!StorageUtil.isEnoughStorageAvailable(applicationContext)) {
             return stopNextOneTimeDownload("$LOGTAG Not enough storage is available")
         }
+        return success()
+    }
+
+    private suspend fun isDownloadServerAvailable(): OneTimeWorkMethodResult {
+        val url = getApp().findImpl().hostnameForInternetCheck
+        FileDownloader.downloadStringWithCache(url, FORCE_NETWORK, method = "HEAD")
+
         return success()
     }
 
@@ -165,20 +182,15 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) :
     private suspend fun shouldAppBeInstalled(app: App): OneTimeWorkMethodResult {
         val installerMethod = InstallerSettings.getInstallerMethod()
         return when {
-            !BackgroundSettings.isInstallationEnabled ->
-                stopNextOneTimeDownload("$LOGTAG Automatic background app installation is not enabled.")
+            !BackgroundSettings.isInstallationEnabled -> stopNextOneTimeDownload("$LOGTAG Automatic background app installation is not enabled.")
 
-            !DeviceSdkTester.supportsAndroid12S31() && installerMethod == SESSION_INSTALLER ->
-                stopNextOneTimeDownload("$LOGTAG The current installer can not update apps in the background.")
+            !DeviceSdkTester.supportsAndroid12S31() && installerMethod == SESSION_INSTALLER -> stopNextOneTimeDownload("$LOGTAG The current installer can not update apps in the background.")
 
-            installerMethod == NATIVE_INSTALLER ->
-                stopNextOneTimeDownload("$LOGTAG The current installer can not update apps in the background.")
+            installerMethod == NATIVE_INSTALLER -> stopNextOneTimeDownload("$LOGTAG The current installer can not update apps in the background.")
 
-            BackgroundSettings.isInstallationWhenScreenOff && PowerUtil.isDeviceInteractive() ->
-                retry("$LOGTAG Device is interactive. Abort background installation.")
+            BackgroundSettings.isInstallationWhenScreenOff && PowerUtil.isDeviceInteractive() -> retry("$LOGTAG Device is interactive. Abort background installation.")
 
-            DeviceSdkTester.supportsAndroid14U34() && !isGentleUpdatePossible(app) ->
-                retry("$LOGTAG Gentle update is not possible. Abort background installation.")
+            DeviceSdkTester.supportsAndroid14U34() && !isGentleUpdatePossible(app) -> retry("$LOGTAG Gentle update is not possible. Abort background installation.")
 
             else -> success()
         }
@@ -221,7 +233,9 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) :
             }
         } catch (e: Exception) {
             if (BackgroundSettings.isDeleteUpdateIfInstallFailed) {
-                app.findImpl().deleteFileCache(applicationContext)
+                app
+                        .findImpl()
+                        .deleteFileCache(applicationContext)
             }
             throw e
         }
@@ -233,12 +247,14 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) :
         private const val MAX_RETRIES = 6 // waiting time of all previous retries = about 1 hour
 
         fun createWorkRequest(app: App): OneTimeWorkRequest {
-            val data = Data.Builder()
-                .putString(APP_NAME_KEY, app.name)
-                .build()
-            return OneTimeWorkRequest.Builder(AppUpdater::class.java)
-                .setInputData(data)
-                .build()
+            val data = Data
+                    .Builder()
+                    .putString(APP_NAME_KEY, app.name)
+                    .build()
+            return OneTimeWorkRequest
+                    .Builder(AppUpdater::class.java)
+                    .setInputData(data)
+                    .build()
         }
     }
 

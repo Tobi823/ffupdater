@@ -39,6 +39,7 @@ object TorBrowser : AppBase() {
     override val signatureHash = "20061f045e737c67375c17794cfedb436a03cec6bacb7cb9f96642205ca2cec8"
     override val projectPage = "https://www.torproject.org/download/#android"
     override val displayCategory = listOf(BASED_ON_FIREFOX, GOOD_PRIVACY_BROWSER, GOOD_SECURITY_BROWSER)
+    override val hostnameForInternetCheck = "https://dist.torproject.org"
 
     override suspend fun getInstalledVersion(packageManager: PackageManager): String? {
         val rawVersion = super.getInstalledVersion(packageManager) ?: return null
