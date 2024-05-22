@@ -1,0 +1,3 @@
+रिलीज़ संस्करण 79.2.1 (171)
+- वेबलेट योगदान के लिए धन्यवाद: Kazushi Hayama, winver, gallegonovato, Scrambled777, Eryk Michalak, v1s7, Gersonzao, Flavio F. M., syl, Oğuz Ersen और MkQtS
+- फायरफॉक्स रिलीज़ / बीटा / नाइटली / फोकस / फोकस बीटा / क्लार (Tobi823/ffupdater#584) के लिए Archive.mozilla.org का उपयोग करें
