@@ -40,7 +40,7 @@ object FennecFdroid : AppBase() {
     @MainThread
     @Throws(NetworkException::class)
     override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
-        val result = FdroidConsumer.getLatestUpdate(packageName, getVersionAcceptor(), cacheBehaviour)
+        val result = FdroidConsumer.getLatestUpdate(packageName, getVersionAcceptor(), cacheBehaviour, context)
         return LatestVersion(
             downloadUrl = result.downloadUrl,
             version = result.versionName,

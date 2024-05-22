@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Build
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
+import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.BETTER_THAN_GOOGLE_CHROME
@@ -40,16 +41,20 @@ object MulchSystemWebView : AppBase() {
     @Throws(NetworkException::class)
     override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
         val abi = DeviceAbiExtractor.findBestAbi(supportedAbis, DeviceSettingsHelper.prefer32BitApks)
-
-        if (preferences.getBoolean("network__use_cloudflare_mirrors", false)) {
-            val downloadSource = "https://divestos.eeyo.re/fdroid/official"
-        }
-
         return CustomRepositoryConsumer.getLatestUpdate(
-            downloadSource,
+            getUrl(context),
             packageName,
             abi,
             cacheBehaviour
         )
+    }
+
+    private fun getUrl(context: Context): String {
+        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
+        if (preferences.getBoolean("network__use_cloudflare_mirrors", false)) {
+            // Cloudflare mirror url - see https://divestos.org/pages/community "Cloudflare Mirror"
+            return "https://divestos.eeyo.re/fdroid/official"
+        }
+        return Mulch.downloadSource
     }
 }
