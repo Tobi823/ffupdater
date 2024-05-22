@@ -258,12 +258,12 @@
     <string name="background__installation__when_screen_off__summary">Essaie d\'installer les mises à jour uniquement lorsque que l\'écran est éteint.</string>
     <string name="background__installation__when_screen_off__title">Installation uniquement lorsque l\'écran est éteint</string>
     <string name="notification__bg_update_check__unreliable_execution__channel_name">La vérification des mises à jour en arrière-plan n\'a pas été exécuté</string>
-    <string name="cardview_dialog__warnings_label">Avertissements :</string>
+    <string name="cardview_dialog__warnings_label">Avertissements :</string>
     <string name="cardview_dialog__auto_bg_update">Mise à jour automatique en arrière-plan</string>
     <string name="cardview_dialog__install">Installer la dernière version</string>
     <string name="download_activity__retry_installation">Réessayer l\'installation</string>
     <string name="cardview_dialog__exit">Fermer</string>
-    <string name="cardview_dialog__eol">Cette appli ne devrait plus être utilisée :</string>
+    <string name="cardview_dialog__eol">Cette appli ne devrait plus être utilisée :</string>
     <string name="foreground__hidden_apps__title">Applis cachées</string>
     <string name="cardview_dialog__hide">Cacher</string>
     <string name="default_theme_preference" translatable="false"></string>
