@@ -12,6 +12,20 @@ import java.time.format.DateTimeFormatter
 @Keep
 object MozillaArchiveConsumer {
     private const val BASE_URL = "https://archive.mozilla.org/pub/"
+    private val MONTH_NAME_TO_MONTH_NUMBER = mapOf(
+        "January" to "01",
+        "February" to "02",
+        "March" to "03",
+        "April" to "04",
+        "May" to "05",
+        "June" to "06",
+        "July" to "07",
+        "August" to "08",
+        "September" to "09",
+        "October" to "10",
+        "November" to "11",
+        "December" to "12"
+    )
 
     suspend fun findLatestVersion(fullUrl: String, versionRegex: Regex, cacheBehaviour: CacheBehaviour): String {
         assert(fullUrl.startsWith(BASE_URL))
@@ -40,10 +54,19 @@ object MozillaArchiveConsumer {
         val regex = Regex("""<td>((\d{1,2}+)-(\w+)-(\d{4}) (\d{1,2}):(\d{1,2}))</td>""")
         val lastModified = regex.find(webpage)?.groups?.get(1)?.value
         requireNotNull(lastModified) { "unable to extract timestamp: $webpage" }
+        return parseTimestamp(lastModified)
+    }
 
-        val parser = DateTimeFormatter.ofPattern("dd-MMM-u HH:mm")
-        val dateTime = LocalDateTime.parse(lastModified, parser)
-        return ZonedDateTime.of(dateTime, ZoneId.of("UTC"))
+    private fun parseTimestamp(timestamp: String): ZonedDateTime {
+        for ((monthName, monthValue) in MONTH_NAME_TO_MONTH_NUMBER) {
+            if (monthName in timestamp) {
+                val improvedTimestamp = timestamp.replace(monthName, monthValue)
+                val parser = DateTimeFormatter.ofPattern("dd-MM-uuuu HH:mm")
+                val dateTime = LocalDateTime.parse(improvedTimestamp, parser)
+                return ZonedDateTime.of(dateTime, ZoneId.of("UTC"))
+            }
+        }
+        throw RuntimeException("invalid timestamp: $timestamp")
     }
 
     suspend fun findLastLink(page: String, cacheBehaviour: CacheBehaviour): String {
