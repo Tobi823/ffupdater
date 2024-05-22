@@ -14,7 +14,7 @@ But other clients like "Foxy Droid" work fine.
 ## APK files on GitHub
 
 The APK files are available on [GitHub](https://github.com/Tobi823/ffupdater/releases/latest) and
-[GitLab](https://gitlab.com/Tobiwan/ffupdater_gitlab/-/releases/latest).
+[GitLab](https://gitlab.com/Tobiwan/ffupdater_gitlab/-/releases).
 
 ## F-Droid repository
 
