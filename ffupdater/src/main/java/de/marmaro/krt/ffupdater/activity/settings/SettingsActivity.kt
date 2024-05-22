@@ -172,9 +172,11 @@ class SettingsActivity : AppCompatActivity() {
             val dnsProvider = findListPref("network__dns_provider")
             val customDohServer = findTextPref("network__custom_doh_server")
             val trustUserCA = findSwitchPref("network__trust_user_cas")
+            val useCloudflareMirrors = findSwitchPref("network__use_cloudflare_mirrors")
             val networkProxy = findTextPref("network__proxy")
 
             trustUserCA.onPreferenceChangeListener = listener
+            useCloudflareMirrors.onPreferenceChangeListener = listener
             dnsProvider.setOnPreferenceChangeListener { pref, newValue ->
                 customDohServer.isVisible = (newValue == CUSTOM_SERVER.name)
                 listener.onPreferenceChange(pref, newValue)

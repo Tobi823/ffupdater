@@ -186,6 +186,13 @@
             app:summary="@string/settings__network__trust_user_cas__summary"
             app:title="@string/settings__network__trust_user_cas__title" />
 
+        <SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:key="network__use_cloudflare_mirrors"
+            app:singleLineTitle="false"
+            app:summary="@string/settings__network__use_cloudflare_mirrors__summary"
+            app:title="@string/settings__network__use_cloudflare_mirrors__title" />
+
         <ListPreference
             app:defaultValue="0"
             app:entries="@array/network__dns_provider__entries"

@@ -40,8 +40,13 @@ object MulchSystemWebView : AppBase() {
     @Throws(NetworkException::class)
     override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
         val abi = DeviceAbiExtractor.findBestAbi(supportedAbis, DeviceSettingsHelper.prefer32BitApks)
+
+        if (preferences.getBoolean("network__use_cloudflare_mirrors", false)) {
+            val downloadSource = "https://divestos.eeyo.re/fdroid/official"
+        }
+
         return CustomRepositoryConsumer.getLatestUpdate(
-            "https://divestos.org/fdroid/official",
+            downloadSource,
             packageName,
             abi,
             cacheBehaviour
