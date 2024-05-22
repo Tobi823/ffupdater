@@ -349,4 +349,6 @@
     <string name="foreground__hidden_apps__title">Aplicaciones ocultas</string>
     <string name="foreground__hidden_apps__summary">Las aplicaciones ocultas permanecerán ocultas en la interfaz de usuario y no se actualizarán automáticamente.</string>
     <string name="download_activity__retry_installation">Reintentar la instalación</string>
+    <string name="settings__network__use_cloudflare_mirrors__summary">Habilite esta opción para reducir la carga de recursos de los servidores primarios cuando estén disponibles.</string>
+    <string name="settings__network__use_cloudflare_mirrors__title">Utilice espejos de Cloudflare</string>
 </resources>
