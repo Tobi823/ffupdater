@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_about_title">À propos de FFUpdater</string>
-    <string name="app_description">Mise à jour pour les navigateurs respectueux de la vie privée</string>
-    <string name="app_icon">icône de l\'application</string>
+    <string name="app_description">Gestionnaire de mises à jour pour les navigateurs respectueux de la vie privée</string>
+    <string name="app_icon">Icône de l\'application</string>
     <string name="app_name">FFUpdater</string>
     <string name="application_installation_was_not_successful">L\'installation de l\'application n\'a pas réussi</string>
-    <string name="application_successfully_installed">Installation de l\'application réussie</string>
+    <string name="application_successfully_installed">L\'application a été installée avec succès</string>
     <string name="available_version">Disponible : %1$s</string>
     <string name="notification__error__text">Veuillez signaler cette erreur. Cliquez pour afficher le rapport d\'erreur.</string>
-    <string name="notification__error__title">Échec de la vérification des mises à jour</string>
+    <string name="notification__error__title">Échec de la vérification de mise à jour en arrière-plan</string>
     <string name="brave__description">Naviguez privé sur Internet, gratuitement ! Le navigateur privé Brave est votre navigateur web rapide, gratuit et sûr avec un bloqueur de pubs et de pop-up intégré. Naviguez et cherchez sur Internet sans être traqué par des publicitaires, virus et pop-up.</string>
     <string name="brave__title">Navigateur internet privé Brave</string>
     <string name="brave__warning">- Brave utilise la base technique de Google Chrome (Chromium) - certaines personnes n\'aiment pas cela. Vous voulez installer Brave \?
@@ -299,4 +299,31 @@
     <string name="privacy_browser__warning">FFUpdater télécharge les fichiers depuis les serveurs de F-Droid et n\'est donc pas plus rapide.</string>
     <string name="privacy_browser__description">Le seul moyen d\'empêcher que les données soient abusées est d\'empêcher d\'abord qu\'elles soient collectées. Navigateur Confidentiel (Privacy Browser) a 2 buts primaires : Minimiser les données qui sont envoyées sur Internet et minimiser les données qui sont stockées sur l\'appareil.</string>
     <string name="main_activity__an_error_occurred"><u>Une erreur est survenue. Réessayez plus tard.</u></string>
+    <string name="main_activity__unexpected_error">Une erreur inattendue a été rencontrée.</string>
+    <string name="notification__uncaught_exception__channel_name">Notifications de crash</string>
+    <string name="notification__uncaught_exception__title">FFUpdater a planté</string>
+    <string name="installer__method__title">Méthode d\'installation</string>
+    <string name="foreground__hidden_apps__summary">Les applis cachées seront cachées dans l\'interface et ne seront pas mises à jour automatiquement.</string>
+    <string name="notification__bg_update_check__unreliable_execution__channel_description">Avertissement concernant l\'exécution peu fiable de la vérification de la mise à jour en arrière-plan</string>
+    <string name="notification__bg_update_check__unreliable_execution__title">La vérification des mises à jour en arrière-plan n\'est pas exécutée de manière fiable</string>
+    <string name="app_installer__failed_to_validate_signature_of_download">Échec lors de la validation de la signature du téléchargement.</string>
+    <string name="installer__android_too_old_for_shizuku">Votre version d\'Android est trop vieille pour Shizuku.</string>
+    <string name="add_app_activity__title_based_on_firefox">Basé sur Firefox</string>
+    <string name="crash_report__report_is_copied_to_clipboard">Le rapport de crash a été copié dans votre presse-papier</string>
+    <string name="notification__uncaught_exception__channel_description">Erreurs inattendues qui ont fait crasher FFUpdater.</string>
+    <string name="add_app_activity__title_good_security_browsers">Navigateur bon pour la sécurité</string>
+    <string name="notification__uncaught_exception__text">Cliquer pour voir le rapport d\'erreur.</string>
+    <string name="app_installer__failed_to_verify_signature_of_installed_app">Échec lors de la vérification des applis installées.</string>
+    <string name="eol_reason__browser_no_longer_maintained">Le navigateur n\'est plus maintenu.</string>
+    <string name="background__installation__when_screen_off__summary">Essaie d\'installer les mises à jour uniquement lorsque que l\'écran est éteint.</string>
+    <string name="background__installation__when_screen_off__title">Installation uniquement lorsque l\'écran est éteint</string>
+    <string name="notification__bg_update_check__unreliable_execution__channel_name">La vérification des mises à jour en arrière-plan n\'a pas été exécuté</string>
+    <string name="cardview_dialog__warnings_label">Avertissements :</string>
+    <string name="cardview_dialog__auto_bg_update">Mise à jour automatique en arrière-plan</string>
+    <string name="cardview_dialog__install">Installer la dernière version</string>
+    <string name="download_activity__retry_installation">Réessayer l\'installation</string>
+    <string name="cardview_dialog__exit">Fermer</string>
+    <string name="cardview_dialog__eol">Cette appli ne devrait plus être utilisée :</string>
+    <string name="foreground__hidden_apps__title">Applis cachées</string>
+    <string name="cardview_dialog__hide">Cacher</string>
 </resources>
