@@ -349,4 +349,6 @@
 \n
 \nhttps://support.torproject.org/misc/bug-or-feedback/ पर जानें कि बग की रिपोर्ट कैसे करें और फीडबैक कैसे दें!</string>
     <string name="download_activity__retry_installation">पुनः स्थापना का प्रयास करें</string>
+    <string name="settings__network__use_cloudflare_mirrors__summary">उपलब्ध होने पर प्राथमिक सर्वर के संसाधन भार को कम करने हेतु सक्षम करें।</string>
+    <string name="settings__network__use_cloudflare_mirrors__title">क्लाउडफ्लेयर मिरर का प्रयोग करें</string>
 </resources>
