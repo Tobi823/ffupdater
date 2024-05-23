@@ -1,2 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="action_about_title">Par FFUpdater</string>
+    <string name="app_icon">lietotnes ikona</string>
+    <string name="app_name">FFUpdater</string>
+    <string name="application_installation_was_not_successful">Neizdevās uzstādīt lietotni</string>
+    <string name="application_successfully_installed">Lietotne veiksmīgi uzstādīta</string>
+    <string name="brave_beta__title">Brave pārlūkprogramma (Beta)</string>
+    <string name="crash_report__got_to_notabug_org">Doties uz notabug.org</string>
+    <string name="notification__download_error__title">Fona atjauninājuma lejupielāde neizdevās</string>
+    <string name="notification__download_running__title">Lejupielādē lietotnes atjauninājumus</string>
+    <string name="app_card__download_the_app">lejupielādēt lietotni</string>
+    <string name="notification__download_running__channel_descr">Rāda, kad fonā tiek lejupielādēti lietotņu atjauninājumi.</string>
+    <string name="notification__download_running__channel_name">Paziņojums par fona lejupielādēm</string>
+    <string name="available_version">Pieejama: %1$s</string>
+    <string name="bromite__title">Bromite</string>
+    <string name="brave__title">Brave pārlūkprogramma</string>
+    <string name="crash_report__copy_crash_report_to_clipboard">Nokopējiet avārijas atskaiti starpliktuvē</string>
+    <string name="crash_report__go_to_github">Doties uz GitHub</string>
+    <string name="crash_report__go_to_gitlab">Doties uz GitLab</string>
+    <string name="notification__eol_apps__channel_name">Paziņojums par novecojušām lietotnēm</string>
+    <string name="notification__eol_apps__text">Jums ir uzstādītas novecojušas lietotnes, kuras vairs nevajadzētu izmantot. Noklikšķiniet, lai iegūtu vairāk informācijas.</string>
+    <string name="notification__eol_apps__title">Uzstādītas novecojušas lietotnes</string>
+    <string name="notification__error__channel_name">Fona kļūdas</string>
+    <string name="brave_nightly__title">Brave pārlūkprogramma (Ik nakts)</string>
+    <string name="bromite__warning">- Bromite izmanto Google Chrome tehnisko pamatu un tādējādi netieši atbalsta Chromium renderēšanas dzinēja monopolstāvokli.</string>
+    <string name="crash_report__explain_text__uncaught_throwable">Diemžēl FFUpdater pēdējo reizi avarēja šīs kļūdas dēļ. Lūdzu, iesniedziet avārijas atskaiti vietnē notabug.org, GitHub vai GitLab. Nokopējiet avārijas atskaiti no starpliktuves ziņojumā un iekļaujiet aprakstu, kā panākt konkrēto problēmu.</string>
+</resources>
