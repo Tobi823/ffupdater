@@ -13,18 +13,18 @@ import java.time.format.DateTimeFormatter
 object MozillaArchiveConsumer {
     private const val BASE_URL = "https://archive.mozilla.org/pub/"
     private val MONTH_NAME_TO_MONTH_NUMBER = mapOf(
-        "January" to "01",
-        "February" to "02",
-        "March" to "03",
-        "April" to "04",
+        "Jan" to "01",
+        "Feb" to "02",
+        "Mar" to "03",
+        "Apr" to "04",
         "May" to "05",
-        "June" to "06",
-        "July" to "07",
-        "August" to "08",
-        "September" to "09",
-        "October" to "10",
-        "November" to "11",
-        "December" to "12"
+        "Jun" to "06",
+        "Jul" to "07",
+        "Aug" to "08",
+        "Sep" to "09",
+        "Oct" to "10",
+        "Nov" to "11",
+        "Dec" to "12",
     )
 
     suspend fun findLatestVersion(fullUrl: String, versionRegex: Regex, cacheBehaviour: CacheBehaviour): String {
