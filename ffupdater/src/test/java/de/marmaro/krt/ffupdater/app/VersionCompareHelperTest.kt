@@ -151,4 +151,10 @@ class VersionCompareHelperTest {
         assertTrue(VersionCompareHelper.isAvailableVersionEqual("128.0a5", "128.0a5"))
         assertFalse(VersionCompareHelper.isAvailableVersionHigher("128.0a5", "128.0a1"))
     }
+
+    @Test
+    fun `compare versions with different length`() {
+        assertTrue(VersionCompareHelper.isAvailableVersionHigher("125.3.0", "126.0"))
+        assertFalse(VersionCompareHelper.isAvailableVersionHigher("126.0", "125.3.0"))
+    }
 }
