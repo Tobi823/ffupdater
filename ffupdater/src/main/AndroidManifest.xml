@@ -25,6 +25,7 @@
         tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+    <uses-permission android:name="android.permission.ENFORCE_UPDATE_OWNERSHIP" />
 
     <!-- Shizuku needs API 23, but I still want to use API 21-->
     <uses-sdk tools:overrideLibrary="rikka.shizuku.api, rikka.shizuku.provider, rikka.shizuku.shared, rikka.shizuku.aidl" />
