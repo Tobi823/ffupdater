@@ -343,4 +343,6 @@
     <string name="foreground__hidden_apps__title">Ukryte aplikacje</string>
     <string name="foreground__hidden_apps__summary">Ukryte aplikacje będą ukryte w interfejsie użytkownika i nie będą aktualizowane automatycznie.</string>
     <string name="download_activity__retry_installation">Ponów instalację</string>
+    <string name="settings__network__use_cloudflare_mirrors__title">Użyj serwerów Cloudflare</string>
+    <string name="settings__network__use_cloudflare_mirrors__summary">Włącz, aby zmiejszyć użycie zasobów głównego serwera kiedy jest dostępna aktualizacja.</string>
 </resources>
