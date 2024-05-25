@@ -1,9 +1,9 @@
 package de.marmaro.krt.ffupdater.network.website
 
 import androidx.annotation.Keep
+import de.marmaro.krt.ffupdater.app.VersionCompareHelper
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
-import io.github.g00fy2.versioncompare.Version
 import java.time.LocalDateTime
 import java.time.ZoneId
 import java.time.ZonedDateTime
@@ -32,11 +32,13 @@ object MozillaArchiveConsumer {
 
         val versions = findAllVersions(fullUrl, cacheBehaviour).filter { versionRegex.matches(it) }
 
-        val latestVersion = versions
-                .map { Version(it) }
-                .maxWith { a, b -> if (a.isHigherThan(b)) 1 else if (a.isEqual(b)) 0 else -1 }
-
-        return requireNotNull(latestVersion.originalString)
+        return versions.maxWith { a, b ->
+            when {
+                VersionCompareHelper.isAvailableVersionHigher(b, a) -> 1
+                VersionCompareHelper.isAvailableVersionEqual(b, a) -> 0
+                else -> -1
+            }
+        }
     }
 
     private suspend fun findAllVersions(fullUrl: String, cacheBehaviour: CacheBehaviour): List<String> {

@@ -137,4 +137,18 @@ class VersionCompareHelperTest {
     fun isAvailableVersionEqual_differentVersion_firefoxFocus_returnFalse() {
         assertFalse(VersionCompareHelper.isAvailableVersionEqual("92.1.1", "92.1.0"))
     }
+
+    @Test
+    fun `compare versions with b suffix`() {
+        assertTrue(VersionCompareHelper.isAvailableVersionHigher("127.0b1", "127.0b5"))
+        assertTrue(VersionCompareHelper.isAvailableVersionEqual("127.0b5", "127.0b5"))
+        assertFalse(VersionCompareHelper.isAvailableVersionHigher("127.0b5", "127.0b1"))
+    }
+
+    @Test
+    fun `compare versions with a suffix`() {
+        assertTrue(VersionCompareHelper.isAvailableVersionHigher("128.0a1", "128.0a5"))
+        assertTrue(VersionCompareHelper.isAvailableVersionEqual("128.0a5", "128.0a5"))
+        assertFalse(VersionCompareHelper.isAvailableVersionHigher("128.0a5", "128.0a1"))
+    }
 }
