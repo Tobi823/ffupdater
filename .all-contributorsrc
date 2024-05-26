@@ -36,6 +36,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "gnuhead-chieb",
+      "name": "gnuhead-chieb",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41156994?v=4",
+      "profile": "https://github.com/gnuhead-chieb",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "contributorsPerLine": 7,
