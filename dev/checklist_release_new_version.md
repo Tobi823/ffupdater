@@ -12,6 +12,7 @@ git fetch --tags
   - double check that Android Studio wont reformat gradlew
 - fix and add unit tests
 - ,ff_weblate
+- maybe: ~/./node_modules/.bin/all-contributors add X code/doc/translation
 - build.gradle: versionCode + versionName
 - commit changes:
   - Release version xx (xx)
