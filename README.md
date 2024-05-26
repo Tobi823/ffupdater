@@ -51,6 +51,8 @@ interaction with:
 - rooted smartphone
 - [Shizuku](https://shizuku.rikka.app/) / [Sui](https://github.com/RikkaApps/Sui) with Android 6 or higher
 
+## Thanks
+
 ## FAQ
 
 - By clicking on the "i"-Icon, you can see the time of the last successful background update check.
@@ -58,6 +60,17 @@ interaction with:
   and not the version name of the app update (finish time). The builds always starts at 5:00 and 17:00 and
   usually takes a few minutes.
 - Please reopen FFUpdater after moving it to the internal/external storage.
+
+## Contributors
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ## How to contribute
 
