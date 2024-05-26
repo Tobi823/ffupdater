@@ -1,6 +1,7 @@
 {
   "projectName": "ffupdater",
   "projectOwner": "Tobi823",
+  "commit": true,
   "files": [
     "README.md"
   ],
