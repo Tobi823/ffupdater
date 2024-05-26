@@ -1,22 +1,25 @@
 {
   "projectName": "ffupdater",
   "projectOwner": "Tobi823",
-  "commit": true,
+  "repoType": "github",
+  "repoHost": "https://github.com",
   "files": [
     "README.md"
   ],
-  "commitType": "docs",
+  "imageSize": 100,
+  "commit": true,
   "commitConvention": "angular",
-  "contributorsPerLine": 7,
   "contributors": [
     {
-      "login": "wolfgang42",
-      "name": "Wolfgang Faust",
-      "avatar_url": "https://avatars.githubusercontent.com/u/2261204?v=4",
-      "profile": "http://www.linestarve.com/",
+      "login": "StoyanDimitrov",
+      "name": "StoyanDimitrov",
+      "avatar_url": "https://avatars.githubusercontent.com/u/10962709?v=4",
+      "profile": "https://github.com/StoyanDimitrov",
       "contributions": [
-        "code"
+        "translation"
       ]
     }
-  ]
+  ],
+  "contributorsPerLine": 7,
+  "linkToUsage": true
 }

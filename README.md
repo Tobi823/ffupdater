@@ -1,4 +1,7 @@
 [<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="80">](https://f-droid.org/app/de.marmaro.krt.ffupdater)
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 # Firefox-Updater
 
@@ -80,9 +83,18 @@ For advanced users: [How to contribute](HOW_TO_CONTRIBUTE.md)
 <table>
   <tbody>
     <tr>
-      <td align="center" valign="top" width="14.28%"><a href="http://www.linestarve.com/"><img src="https://avatars.githubusercontent.com/u/2261204?v=4?s=100" width="100px;" alt="Wolfgang Faust"/><br /><sub><b>Wolfgang Faust</b></sub></a><br /><a href="#code-wolfgang42" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/StoyanDimitrov"><img src="https://avatars.githubusercontent.com/u/10962709?v=4?s=100" width="100px;" alt="StoyanDimitrov"/><br /><sub><b>StoyanDimitrov</b></sub></a><br /><a href="#translation-StoyanDimitrov" title="Translation">🌍</a></td>
     </tr>
   </tbody>
+  <tfoot>
+    <tr>
+      <td align="center" size="13px" colspan="7">
+        <img src="https://raw.githubusercontent.com/all-contributors/all-contributors-cli/1b8533af435da9854653492b1327a23a4dbd0a10/assets/logo-small.svg">
+          <a href="https://all-contributors.js.org/docs/en/bot/usage">Add your contributions</a>
+        </img>
+      </td>
+    </tr>
+  </tfoot>
 </table>
 
 <!-- markdownlint-restore -->
@@ -132,3 +144,16 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
 ````
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
