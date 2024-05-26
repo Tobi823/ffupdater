@@ -63,4 +63,14 @@
 \n - Projektam ir nepieciešams nedaudz vairāk laika, lai realizētu drošības atjauninājumus.</string>
     <string name="app_card__information_about_the_app">Informācija par lietotni</string>
     <string name="notification__install_error__title">%1$s nevarēja atjaunināt</string>
+    <string name="notification__install_success__title">%1$s ir atjaunināts</string>
+    <string name="app_installer__installed_app_has_invalid_signature">Uzstādītā lietotne NAV pārbaudīta</string>
+    <string name="installed_application_is_verified">Uzstādītā lietotne ir pārbaudīta</string>
+    <string name="installed_version">Uzstādīts: %1$s</string>
+    <string name="kiwi__description">Kiwi pārlūkprogramma ir paredzēta interneta sērfošanai, ziņu lasīšanai, video skatīšanai un mūzikas klausīšanai bez kaitinošiem elementiem.</string>
+    <string name="kiwi__title">Kiwi Browser Next</string>
+    <string name="lockwise__eol_reason">Mozilla pārtrauca atbalstu 2021. gada decembrī. Lūdzu, izmantojiet citu paroļu pārvaldnieku.</string>
+    <string name="lockwise__title">Firefox Lockwise</string>
+    <string name="main_activity__github_api_limit_exceeded"><u>Pārsniegts GitHub-API ierobežojums. Mēģiniet vēlreiz pēc stundas.</u></string>
+    <string name="main_activity__no_unmetered_network">Nav bezmaksas tīkla</string>
 </resources>
