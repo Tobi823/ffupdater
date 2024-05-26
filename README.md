@@ -1,6 +1,6 @@
 [<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="80">](https://f-droid.org/app/de.marmaro.krt.ffupdater)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-10-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-11-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 # Firefox-Updater
@@ -95,6 +95,7 @@ For advanced users: [How to contribute](HOW_TO_CONTRIBUTE.md)
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/gdonisi"><img src="https://avatars.githubusercontent.com/u/82442402?v=4?s=100" width="100px;" alt="Giovanni Donisi"/><br /><sub><b>Giovanni Donisi</b></sub></a><br /><a href="#translation-gdonisi" title="Translation">🌍</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/jerryjean"><img src="https://avatars.githubusercontent.com/u/17931090?v=4?s=100" width="100px;" alt="Jerry Jean-Baptiste"/><br /><sub><b>Jerry Jean-Baptiste</b></sub></a><br /><a href="https://github.com/Tobi823/ffupdater/commits?author=jerryjean" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/rusty-snake"><img src="https://avatars.githubusercontent.com/u/41237666?v=4?s=100" width="100px;" alt="rusty-snake"/><br /><sub><b>rusty-snake</b></sub></a><br /><a href="https://github.com/Tobi823/ffupdater/commits?author=rusty-snake" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Usland123"><img src="https://avatars.githubusercontent.com/u/72984028?v=4?s=100" width="100px;" alt="Usland123"/><br /><sub><b>Usland123</b></sub></a><br /><a href="#translation-Usland123" title="Translation">🌍</a></td>
     </tr>
   </tbody>
   <tfoot>
