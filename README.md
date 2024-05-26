@@ -81,6 +81,7 @@ For advanced users: [How to contribute](HOW_TO_CONTRIBUTE.md)
   <tbody>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="http://www.linestarve.com/"><img src="https://avatars.githubusercontent.com/u/2261204?v=4?s=100" width="100px;" alt="Wolfgang Faust"/><br /><sub><b>Wolfgang Faust</b></sub></a><br /><a href="#code-wolfgang42" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/rusty-snake"><img src="https://avatars.githubusercontent.com/u/41237666?v=4?s=100" width="100px;" alt="rusty-snake"/><br /><sub><b>rusty-snake</b></sub></a><br /><a href="#doc-rusty-snake" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
