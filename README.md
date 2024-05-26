@@ -61,7 +61,18 @@ interaction with:
   usually takes a few minutes.
 - Please reopen FFUpdater after moving it to the internal/external storage.
 
-## Contributors
+## How to contribute
+
+You can improve the translation on [Weblate](https://hosted.weblate.org/projects/ffupdater). Current progress:
+[<img align="right" src="https://hosted.weblate.org/widgets/ffupdater/-/287x66-white.png" alt="Get involved in translating FFUpdater" />](https://hosted.weblate.org/engage/ffupdater/?utm_source=widget)
+
+[![Translation status](https://hosted.weblate.org/widgets/ffupdater/-/multi-auto.svg)](https://hosted.weblate.org/engage/ffupdater/?utm_source=widget)
+
+Your translation contribution will be acknowledged in every release changelog.
+
+For advanced users: [How to contribute](HOW_TO_CONTRIBUTE.md)
+
+## Source Code Contributors
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
@@ -71,15 +82,6 @@ interaction with:
 <!-- prettier-ignore-end -->
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
-
-## How to contribute
-
-You can improve the translation on [Weblate](https://hosted.weblate.org/projects/ffupdater). Current progress:
-[<img align="right" src="https://hosted.weblate.org/widgets/ffupdater/-/287x66-white.png" alt="Get involved in translating FFUpdater" />](https://hosted.weblate.org/engage/ffupdater/?utm_source=widget)
-
-[![Translation status](https://hosted.weblate.org/widgets/ffupdater/-/multi-auto.svg)](https://hosted.weblate.org/engage/ffupdater/?utm_source=widget)
-
-For advanced users: [How to contribute](HOW_TO_CONTRIBUTE.md)
 
 ## Additional documentation
 
