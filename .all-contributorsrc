@@ -108,6 +108,15 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "e406hsy",
+      "name": "홍순용",
+      "avatar_url": "https://avatars.githubusercontent.com/u/47596290?v=4",
+      "profile": "https://github.com/e406hsy",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
