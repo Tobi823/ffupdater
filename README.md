@@ -1,6 +1,6 @@
 [<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="80">](https://f-droid.org/app/de.marmaro.krt.ffupdater)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-13-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-14-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 # Firefox-Updater
@@ -98,6 +98,7 @@ For advanced users: [How to contribute](HOW_TO_CONTRIBUTE.md)
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Usland123"><img src="https://avatars.githubusercontent.com/u/72984028?v=4?s=100" width="100px;" alt="Usland123"/><br /><sub><b>Usland123</b></sub></a><br /><a href="#translation-Usland123" title="Translation">🌍</a> <a href="https://github.com/Tobi823/ffupdater/commits?author=Usland123" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/e406hsy"><img src="https://avatars.githubusercontent.com/u/47596290?v=4?s=100" width="100px;" alt="홍순용"/><br /><sub><b>홍순용</b></sub></a><br /><a href="https://github.com/Tobi823/ffupdater/commits?author=e406hsy" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/ubergeek77"><img src="https://avatars.githubusercontent.com/u/3455585?v=4?s=100" width="100px;" alt="ubergeek77"/><br /><sub><b>ubergeek77</b></sub></a><br /><a href="https://github.com/Tobi823/ffupdater/commits?author=ubergeek77" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/guy-teube"><img src="https://avatars.githubusercontent.com/u/18379228?v=4?s=100" width="100px;" alt="guy-teube"/><br /><sub><b>guy-teube</b></sub></a><br /><a href="#translation-guy-teube" title="Translation">🌍</a></td>
     </tr>
   </tbody>
   <tfoot>
