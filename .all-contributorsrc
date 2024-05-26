@@ -45,6 +45,15 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "Nickoriginal",
+      "name": "Nickoriginal",
+      "avatar_url": "https://avatars.githubusercontent.com/u/85299944?v=4",
+      "profile": "https://github.com/Nickoriginal",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
