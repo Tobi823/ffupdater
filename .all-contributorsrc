@@ -54,6 +54,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "motuzj",
+      "name": "Juraj Motuz",
+      "avatar_url": "https://avatars.githubusercontent.com/u/30744041?v=4",
+      "profile": "https://github.com/motuzj",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "contributorsPerLine": 7,

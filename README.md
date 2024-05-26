@@ -1,6 +1,6 @@
 [<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="80">](https://f-droid.org/app/de.marmaro.krt.ffupdater)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 # Firefox-Updater
@@ -88,6 +88,7 @@ For advanced users: [How to contribute](HOW_TO_CONTRIBUTE.md)
       <td align="center" valign="top" width="14.28%"><a href="http://www.linestarve.com/"><img src="https://avatars.githubusercontent.com/u/2261204?v=4?s=100" width="100px;" alt="Wolfgang Faust"/><br /><sub><b>Wolfgang Faust</b></sub></a><br /><a href="https://github.com/Tobi823/ffupdater/commits?author=wolfgang42" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/gnuhead-chieb"><img src="https://avatars.githubusercontent.com/u/41156994?v=4?s=100" width="100px;" alt="gnuhead-chieb"/><br /><sub><b>gnuhead-chieb</b></sub></a><br /><a href="#translation-gnuhead-chieb" title="Translation">🌍</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Nickoriginal"><img src="https://avatars.githubusercontent.com/u/85299944?v=4?s=100" width="100px;" alt="Nickoriginal"/><br /><sub><b>Nickoriginal</b></sub></a><br /><a href="https://github.com/Tobi823/ffupdater/commits?author=Nickoriginal" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/motuzj"><img src="https://avatars.githubusercontent.com/u/30744041?v=4?s=100" width="100px;" alt="Juraj Motuz"/><br /><sub><b>Juraj Motuz</b></sub></a><br /><a href="#translation-motuzj" title="Translation">🌍</a></td>
     </tr>
   </tbody>
   <tfoot>
