@@ -27,6 +27,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "wolfgang42",
+      "name": "Wolfgang Faust",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2261204?v=4",
+      "profile": "http://www.linestarve.com/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
