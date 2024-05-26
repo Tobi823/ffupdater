@@ -81,6 +81,7 @@ For advanced users: [How to contribute](HOW_TO_CONTRIBUTE.md)
   <tbody>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="http://www.linestarve.com/"><img src="https://avatars.githubusercontent.com/u/2261204?v=4?s=100" width="100px;" alt="Wolfgang Faust"/><br /><sub><b>Wolfgang Faust</b></sub></a><br /><a href="#code-wolfgang42" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/ubergeek77"><img src="https://avatars.githubusercontent.com/u/3455585?v=4?s=100" width="100px;" alt="ubergeek77"/><br /><sub><b>ubergeek77</b></sub></a><br /><a href="#doc-ubergeek77" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
