@@ -1,6 +1,6 @@
 [<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="80">](https://f-droid.org/app/de.marmaro.krt.ffupdater)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 # Firefox-Updater
@@ -93,6 +93,7 @@ For advanced users: [How to contribute](HOW_TO_CONTRIBUTE.md)
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/gdonisi"><img src="https://avatars.githubusercontent.com/u/82442402?v=4?s=100" width="100px;" alt="Giovanni Donisi"/><br /><sub><b>Giovanni Donisi</b></sub></a><br /><a href="#translation-gdonisi" title="Translation">🌍</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/jerryjean"><img src="https://avatars.githubusercontent.com/u/17931090?v=4?s=100" width="100px;" alt="Jerry Jean-Baptiste"/><br /><sub><b>Jerry Jean-Baptiste</b></sub></a><br /><a href="https://github.com/Tobi823/ffupdater/commits?author=jerryjean" title="Code">💻</a></td>
     </tr>
   </tbody>
   <tfoot>

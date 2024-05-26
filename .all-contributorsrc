@@ -81,6 +81,15 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "jerryjean",
+      "name": "Jerry Jean-Baptiste",
+      "avatar_url": "https://avatars.githubusercontent.com/u/17931090?v=4",
+      "profile": "https://github.com/jerryjean",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
