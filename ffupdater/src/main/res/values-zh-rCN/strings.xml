@@ -349,4 +349,6 @@
     <string name="foreground__hidden_apps__title">已隐藏的 App</string>
     <string name="foreground__hidden_apps__summary">已隐藏的 app 将不会在用户界面中显示，并且不会被自动升级。</string>
     <string name="download_activity__retry_installation">重新尝试安装</string>
+    <string name="settings__network__use_cloudflare_mirrors__title">使用 Cloudflare 镜像</string>
+    <string name="settings__network__use_cloudflare_mirrors__summary">开启选项在可用时降低主服务器的资源负载。</string>
 </resources>
