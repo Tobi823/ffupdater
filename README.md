@@ -1,6 +1,6 @@
 [<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="80">](https://f-droid.org/app/de.marmaro.krt.ffupdater)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 # Firefox-Updater
@@ -90,6 +90,9 @@ For advanced users: [How to contribute](HOW_TO_CONTRIBUTE.md)
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Nickoriginal"><img src="https://avatars.githubusercontent.com/u/85299944?v=4?s=100" width="100px;" alt="Nickoriginal"/><br /><sub><b>Nickoriginal</b></sub></a><br /><a href="https://github.com/Tobi823/ffupdater/commits?author=Nickoriginal" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/motuzj"><img src="https://avatars.githubusercontent.com/u/30744041?v=4?s=100" width="100px;" alt="Juraj Motuz"/><br /><sub><b>Juraj Motuz</b></sub></a><br /><a href="#translation-motuzj" title="Translation">🌍</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/metezd"><img src="https://avatars.githubusercontent.com/u/37701679?v=4?s=100" width="100px;" alt="metezd"/><br /><sub><b>metezd</b></sub></a><br /><a href="#translation-metezd" title="Translation">🌍</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/gdonisi"><img src="https://avatars.githubusercontent.com/u/82442402?v=4?s=100" width="100px;" alt="Giovanni Donisi"/><br /><sub><b>Giovanni Donisi</b></sub></a><br /><a href="#translation-gdonisi" title="Translation">🌍</a></td>
     </tr>
   </tbody>
   <tfoot>

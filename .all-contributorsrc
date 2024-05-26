@@ -72,6 +72,15 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "gdonisi",
+      "name": "Giovanni Donisi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/82442402?v=4",
+      "profile": "https://github.com/gdonisi",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "contributorsPerLine": 7,
