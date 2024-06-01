@@ -21,6 +21,7 @@ import de.marmaro.krt.ffupdater.background.PeriodicWorkMethodResult.Companion.re
 import de.marmaro.krt.ffupdater.background.PeriodicWorkMethodResult.Companion.success
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.InstalledAppsCache
+import de.marmaro.krt.ffupdater.device.PowerSaveModeReceiver
 import de.marmaro.krt.ffupdater.device.PowerUtil
 import de.marmaro.krt.ffupdater.network.NetworkUtil
 import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
@@ -108,6 +109,9 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
         if (BackgroundSettings.isUpdateCheckOnlyAllowedWhenDeviceIsIdle && PowerUtil.isDeviceInteractive()) {
             return retrySoon("BackgroundJob: Skip because device is not idle.")
         }
+        if (PowerSaveModeReceiver.isPowerSaveModeEnabledForShortTime()) {
+            return retryRegularTimeSlot("BackgroundJob: Skip because power save mode was enabled recently")
+        }
         return success()
     }
 
@@ -150,6 +154,7 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
         }
     }
 
+    @Suppress("ConvertCallChainIntoSequence")
     private suspend fun findOutdatedApps(): List<App> {
         InstalledAppsCache.updateCache(applicationContext)
         val appsToCheck = InstalledAppsCache

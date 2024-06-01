@@ -59,10 +59,10 @@ interaction with:
 ## FAQ
 
 - By clicking on the "i"-Icon, you can see the time of the last successful background update check.
-- Firefox Nightly: Replace the minutes with 'xx' because FFUpdater can only access the start time of the build
-  and not the version name of the app update (finish time). The builds always starts at 5:00 and 17:00 and
-  usually takes a few minutes.
 - Please reopen FFUpdater after moving it to the internal/external storage.
+- When the 'power save mode' is activated, FFUpdater's behavior changes. If the mode is on for less than 24
+  hours, FFUpdater will not perform any background update checks. However, if it remains on for longer,
+  FFUpdater will check for updates in the background, but it will not download them in the background.
 
 ## How to contribute
 

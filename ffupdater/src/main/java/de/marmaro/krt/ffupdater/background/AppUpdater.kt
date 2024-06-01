@@ -19,6 +19,7 @@ import de.marmaro.krt.ffupdater.background.OneTimeWorkMethodResult.Companion.ret
 import de.marmaro.krt.ffupdater.background.OneTimeWorkMethodResult.Companion.stopNextOneTimeDownload
 import de.marmaro.krt.ffupdater.background.OneTimeWorkMethodResult.Companion.success
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
+import de.marmaro.krt.ffupdater.device.PowerSaveModeReceiver
 import de.marmaro.krt.ffupdater.device.PowerUtil
 import de.marmaro.krt.ffupdater.installer.AppInstallerFactory
 import de.marmaro.krt.ffupdater.installer.entity.Installer.NATIVE_INSTALLER
@@ -80,6 +81,14 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) :
         isAppNotDownloaded(installedAppStatus).onFailure { showUpdateAvailableNotification(context, app); return it }
         isUpdateCheckAllowed().onFailure { showUpdateAvailableNotification(context, app); return it }
         isEnoughStorage().onFailure { showUpdateAvailableNotification(context, app); return it }
+
+        if (!PowerSaveModeReceiver.isPowerSaveModeEnabledForShortTime() &&
+            PowerSaveModeReceiver.isPowerSaveModeEnabledForLongerTime()
+        ) {
+            showUpdateAvailableNotification(context, app)
+            Log.i(LOG_TAG, "AppUpdater: Skip download because power save mode is enabled.")
+            return Result.success()
+        }
 
         FileDownloader
                 .isUrlAvailable(app.findImpl().hostnameForInternetCheck)

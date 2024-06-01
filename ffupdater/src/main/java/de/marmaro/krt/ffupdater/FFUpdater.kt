@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.annotation.Keep
 import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.crash.CrashListener
+import de.marmaro.krt.ffupdater.device.PowerSaveModeReceiver
 import de.marmaro.krt.ffupdater.device.PowerUtil
 import de.marmaro.krt.ffupdater.device.StorageCleaner
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
@@ -39,6 +40,8 @@ class FFUpdater : Application() {
         PowerUtil.init(applicationContext)
         FileDownloader.init(applicationContext)
         Migrator.migrate(applicationContext)
+
+        PowerSaveModeReceiver.register(applicationContext, sharedPreferences)
 
         cleanupUnusedApkFiles()
     }
