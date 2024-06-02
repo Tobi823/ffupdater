@@ -3,6 +3,7 @@
 
     <style name="main_activity__theme" parent="@style/Theme.Material3.DayNight.NoActionBar">
         <item name="colorSurface">@color/colorPrimary</item>
+        <item name="android:statusBarColor">@color/colorPrimary</item>
     </style>
 
     <style name="crash_report__theme" parent="Theme.AppCompat.DayNight.DarkActionBar">
