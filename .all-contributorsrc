@@ -136,8 +136,18 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "nortio",
+      "name": "nortio",
+      "avatar_url": "https://avatars.githubusercontent.com/u/22685799?v=4",
+      "profile": "https://github.com/nortio",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
-  "linkToUsage": true
+  "linkToUsage": true,
+  "commitType": "docs"
 }
