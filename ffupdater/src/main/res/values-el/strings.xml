@@ -94,7 +94,8 @@
     <string name="notification__install_success__channel_descr">Κανάλι ειδοποιήσεων για επιτυχημένες ενημερώσεις %1$s.</string>
     <string name="notification__install_success__channel_name">%1$s ειδοποίηση επιτυχούς ενημέρωσης</string>
     <string name="notification__install_success__text">Η εφαρμογή έχει ενημερωθεί στο παρασκήνιο.</string>
-    <string name="kiwi__warning">- Το Kiwi χρησιμοποιεί την τεχνική βάση του Google Chrome και έτσι υποστηρίζει έμμεσα τη μονοπωλιακή θέση της μηχανής απόδοσης Chromium.
+    <string name="kiwi__warning">- Το Kiwi είναι μόνο μερικώς ανοιχτού κώδικα
+\n- Το Kiwi χρησιμοποιεί την τεχνική βάση του Google Chrome και έτσι υποστηρίζει έμμεσα τη μονοπωλιακή θέση της μηχανής απόδοσης Chromium.
 \n- Το Kiwi δεν είναι ένα ιδανικό πρόγραμμα περιήγησης απορρήτου, αλλά έχει καλή υποστήριξη πρόσθετων.
 \n- Το πρόγραμμα περιήγησης πληρώνεται από τις μηχανές αναζήτησης για κάθε αναζήτηση που γίνεται χρησιμοποιώντας το πρόγραμμα περιήγησης Kiwi. Ανάλογα με την επιλογή της μηχανής αναζήτησης, τα αιτήματα μπορεί να υποβάλλονται μέσω διακομιστών Kiwibrowser / Kiwisearchservices.
 \n- Το Google Ads στο Kiwi μπορεί να χρησιμοποιεί τα δεδομένα τοποθεσίας για διαφημίσεις - αλλά μπορείτε να τα απενεργοποιήσετε απενεργοποιώντας τη λειτουργία Discovery. Αυτό όμως θα αλλάξει σύντομα. Δείτε https://privacy.kiwibrowser.org/ για περισσότερες λεπτομέρειες.</string>
@@ -315,7 +316,7 @@
     <string name="installer__android_too_old_for_shizuku">Το Android σας είναι πολύ παλιό για Shizuku.</string>
     <string name="notification__uncaught_exception__title">Το FFUpdater συνετρίβη</string>
     <string name="add_app_activity__title_based_on_firefox">Βασισμένο στον Firefox</string>
-    <string name="add_app_activity__title_good_security_browsers">Καλό Πρόγραμμα περιήγησης Ασφαλείας</string>
+    <string name="add_app_activity__title_good_security_browsers">Προγράμματα περιήγησης με καλή Ασφάλεια</string>
     <string name="notification__uncaught_exception__channel_name">Ειδοποιήσεις σφαλμάτων</string>
     <string name="notification__uncaught_exception__text">Κάντε κλικ για να δείτε την αναφορά σφάλματος.</string>
     <string name="mulch_wv__title">Mulch System WebView</string>
@@ -347,4 +348,7 @@
     <string name="cardview_dialog__hide">Απόκρυψη</string>
     <string name="foreground__hidden_apps__title">Κρυφές εφαρμογές</string>
     <string name="foreground__hidden_apps__summary">Οι κρυφές εφαρμογές θα είναι κρυφές στη διεπαφή χρήστη και δεν θα ενημερώνονται αυτόματα.</string>
+    <string name="settings__network__use_cloudflare_mirrors__summary">Ενεργοποιήστε για μείωση του φόρτου πόρων των κύριων διακομιστών όταν είναι διαθέσιμοι.</string>
+    <string name="settings__network__use_cloudflare_mirrors__title">Χρησιμοποιήστε mirrors του Cloudflare</string>
+    <string name="download_activity__retry_installation">Δοκιμάστε ξανά την εγκατάσταση</string>
 </resources>
