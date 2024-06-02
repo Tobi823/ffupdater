@@ -28,7 +28,6 @@ import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
 import de.marmaro.krt.ffupdater.installer.exceptions.UserInteractionIsRequiredException
 import de.marmaro.krt.ffupdater.network.NetworkUtil
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
-import de.marmaro.krt.ffupdater.network.file.CacheBehaviour.FORCE_NETWORK
 import de.marmaro.krt.ffupdater.network.file.CacheBehaviour.USE_CACHE
 import de.marmaro.krt.ffupdater.network.file.DownloadStatus
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
@@ -164,13 +163,6 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) :
         if (!StorageUtil.isEnoughStorageAvailable(applicationContext)) {
             return stopNextOneTimeDownload("$LOGTAG Not enough storage is available")
         }
-        return success()
-    }
-
-    private suspend fun isDownloadServerAvailable(): OneTimeWorkMethodResult {
-        val url = getApp().findImpl().hostnameForInternetCheck
-        FileDownloader.downloadStringWithCache(url, FORCE_NETWORK, method = "HEAD")
-
         return success()
     }
 
