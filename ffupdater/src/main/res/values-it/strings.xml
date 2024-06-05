@@ -335,4 +335,6 @@
     <string name="foreground__hidden_apps__summary">Le app nascoste saranno nascoste nella UI e non saranno aggiornate in automatico.</string>
     <string name="thorium__description">Il più veloce browser sulla Terra. Fork di Chroium per Linux chiamato con il nome dell\'elemento radioattivo numero 90.</string>
     <string name="download_activity__retry_installation">Ritenta installazione</string>
+    <string name="settings__network__use_cloudflare_mirrors__title">Usa i mirror Cloudflare</string>
+    <string name="settings__network__use_cloudflare_mirrors__summary">Abilita per ridurre il carico delle risorse dei server primari quando disponibile.</string>
 </resources>
