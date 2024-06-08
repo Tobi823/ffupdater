@@ -142,7 +142,11 @@ open class SessionInstaller(private val foreground: Boolean) : AppInstaller {
         if (DeviceSdkTester.supportsAndroid7Nougat24()) params.setOriginatingUid(android.os.Process.myUid())
         if (DeviceSdkTester.supportsAndroid8Oreo26()) params.setInstallReason(PackageManager.INSTALL_REASON_USER)
         if (DeviceSdkTester.supportsAndroid12S31()) params.setRequireUserAction(USER_ACTION_NOT_REQUIRED)
-        if (DeviceSdkTester.supportsAndroid14U34()) params.setDontKillApp(true)
+        if (DeviceSdkTester.supportsAndroid14U34()) {
+            params.setDontKillApp(true)
+            // This only takes effect for initial installs, but is a no-op for updates.
+            params.setRequestUpdateOwnership(true)
+        }
         allowAppReplacement(params)
         return params
     }
