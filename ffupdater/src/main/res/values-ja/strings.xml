@@ -350,4 +350,5 @@
     <string name="foreground__hidden_apps__summary">アプリを非表示にすると、UI に表示されず自動で更新もされません。</string>
     <string name="download_activity__retry_installation">インストールを再試行</string>
     <string name="settings__network__use_cloudflare_mirrors__title">Cloudflare ミラーを使用</string>
+    <string name="settings__network__use_cloudflare_mirrors__summary">有効にすると、利用可能な場合はプライマリーサーバーの読み込みリソースを削減できます。</string>
 </resources>
