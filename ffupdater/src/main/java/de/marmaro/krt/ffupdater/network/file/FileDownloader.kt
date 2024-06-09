@@ -30,6 +30,7 @@ import java.net.Proxy
 import java.security.KeyStore
 import java.security.SecureRandom
 import java.time.Duration
+import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicInteger
 import javax.net.ssl.*
 import kotlin.io.use
@@ -241,6 +242,16 @@ object FileDownloader {
                 builder.proxyAuthenticator(ProxyAuthenticator(proxy.username, proxy.password))
             }
         }
+
+        // time period in which our client should establish a connection with a target host.
+        builder.connectTimeout(1, TimeUnit.MINUTES)
+        // maximum time of inactivity between two data packets when waiting for the server’s response.
+        builder.readTimeout(1, TimeUnit.MINUTES)
+        // maximum time of inactivity between two data packets when sending the request to the server.
+        builder.writeTimeout(1, TimeUnit.MINUTES)
+        // It defines a time limit for a complete HTTP call. This includes resolving DNS, connecting,
+        // writing the request body, server processing, as well as reading the response body.
+        builder.callTimeout(1, TimeUnit.HOURS)
 
         return builder.build()
     }
