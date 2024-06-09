@@ -32,7 +32,6 @@ import de.marmaro.krt.ffupdater.installer.AppInstallerFactory
 import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
 import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkNotSuitableException
-import de.marmaro.krt.ffupdater.network.file.CacheBehaviour.USE_EVEN_OUTDATED_CACHE
 import de.marmaro.krt.ffupdater.network.file.DownloadStatus
 import de.marmaro.krt.ffupdater.notification.NotificationRemover
 import de.marmaro.krt.ffupdater.settings.ForegroundSettings
@@ -254,7 +253,7 @@ class DownloadActivity : AppCompatActivity() {
 
         var status: InstalledAppStatus? = null
         findViewById<View>(R.id.fetchUrl).visibleDuringExecution {
-            status = appImpl.findInstalledAppStatus(applicationContext, USE_EVEN_OUTDATED_CACHE)
+            status = appImpl.findStatusOrUseOldCache(applicationContext)
         }
         gui.show(R.id.fetchedUrlSuccess)
         return status!!

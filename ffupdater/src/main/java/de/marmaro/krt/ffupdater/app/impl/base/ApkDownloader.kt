@@ -92,7 +92,10 @@ interface ApkDownloader : AppAttributes {
         downloadFile: File,
         progress: suspend (Deferred<Any>, Channel<DownloadStatus>) -> R,
     ) {
-        val (deferred, progressChannel) = FileDownloader.downloadFile(latestVersion.downloadUrl, downloadFile)
+        val (deferred, progressChannel) = FileDownloader.downloadFileWithProgress(
+            latestVersion.downloadUrl,
+            downloadFile
+        )
         withContext(Dispatchers.Main) {
             progress(deferred, progressChannel)
         }

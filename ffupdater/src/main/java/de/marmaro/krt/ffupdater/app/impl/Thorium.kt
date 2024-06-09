@@ -11,7 +11,6 @@ import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
-import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 
@@ -37,13 +36,12 @@ object Thorium : AppBase() {
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
+    override suspend fun fetchLatestUpdate(context: Context): LatestVersion {
         val fileName = findFileName()
         val result = GithubConsumer.findLatestRelease(
             repository = GithubConsumer.GithubRepo("Alex313031", "Thorium-Android", 0),
             isValidRelease = { !it.isPreRelease },
             isSuitableAsset = { it.name == fileName },
-            cacheBehaviour = cacheBehaviour,
             requireReleaseDescription = false,
         )
         return LatestVersion(

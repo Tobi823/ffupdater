@@ -9,10 +9,9 @@ import de.marmaro.krt.ffupdater.app.VersionCompareHelper
 import de.marmaro.krt.ffupdater.app.entity.InstalledAppStatus
 import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.device.InstalledAppsCache
+import de.marmaro.krt.ffupdater.network.LatestVersionCache
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
-import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.utils.MeasureExecutionTime
-import java.lang.IllegalStateException
 
 @Keep
 interface InstalledAppStatusFetcher : InstalledVersionFetcher, LatestVersionFetcher, VersionDisplay {
@@ -22,14 +21,30 @@ interface InstalledAppStatusFetcher : InstalledVersionFetcher, LatestVersionFetc
         return VersionCompareHelper.isAvailableVersionHigher(installedVersion, available.version)
     }
 
-    suspend fun findInstalledAppStatus(context: Context, cacheBehaviour: CacheBehaviour): InstalledAppStatus {
-        val available = try {
+    suspend fun findStatusOrUseRecentCache(context: Context): InstalledAppStatus {
+        return findStatusAndCacheIt(context, LatestVersionCache.getRecentCached(app))
+    }
+
+    suspend fun findStatusOrUseOldCache(context: Context): InstalledAppStatus {
+        return findStatusAndCacheIt(context, LatestVersionCache.getOldCached(app))
+    }
+
+    private suspend fun findStatusAndCacheIt(
+        context: Context,
+        cachedLatestVersion: LatestVersion?,
+    ): InstalledAppStatus {
+        if (cachedLatestVersion != null) {
+            return convertToInstalledAppStatus(context, cachedLatestVersion)
+        }
+
+        try {
             Log.d(LOG_TAG, "InstalledAppStatusFetcher: Search for latest ${app.name} update.")
-            val (result, duration) = MeasureExecutionTime.measureMs {
-                fetchLatestUpdate(context.applicationContext, cacheBehaviour)
+            val (latestVersion, duration) = MeasureExecutionTime.measureMs {
+                fetchLatestUpdate(context.applicationContext)
             }
-            Log.i(LOG_TAG, "InstalledAppStatusFetcher: Found ${app.name} ${result.version} (${duration}ms).")
-            result
+            LatestVersionCache.storeLatestVersion(app, latestVersion)
+            Log.i(LOG_TAG, "InstalledAppStatusFetcher: Found ${app.name} ${latestVersion.version} (${duration}ms).")
+            return convertToInstalledAppStatus(context, latestVersion)
         } catch (e: NetworkException) {
             Log.d(LOG_TAG, "InstalledAppStatusFetcher: Can't find latest update for ${app.name}.", e)
             throw NetworkException("can't find latest update for ${app.name}.", e)
@@ -40,11 +55,17 @@ interface InstalledAppStatusFetcher : InstalledVersionFetcher, LatestVersionFetc
             Log.d(LOG_TAG, "InstalledAppStatusFetcher: Can't find latest update for ${app.name}.", e)
             throw IllegalStateException("can't find latest update for ${app.name}.", e)
         }
+    }
+
+    private suspend fun convertToInstalledAppStatus(
+        context: Context,
+        latestVersion: LatestVersion,
+    ): InstalledAppStatus {
         return InstalledAppStatus(
             app = app,
-            latestVersion = available,
-            isUpdateAvailable = isInstalledAppOutdated(context.applicationContext, available),
-            displayVersion = getDisplayAvailableVersion(context.applicationContext, available)
+            latestVersion = latestVersion,
+            isUpdateAvailable = isInstalledAppOutdated(context.applicationContext, latestVersion),
+            displayVersion = getDisplayAvailableVersion(context.applicationContext, latestVersion)
         )
     }
 

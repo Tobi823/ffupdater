@@ -13,7 +13,6 @@ import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.fdroid.FdroidConsumer
-import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 
 /**
@@ -39,8 +38,8 @@ object FennecFdroid : AppBase() {
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
-        val result = FdroidConsumer.getLatestUpdate(packageName, getVersionAcceptor(), cacheBehaviour, context)
+    override suspend fun fetchLatestUpdate(context: Context): LatestVersion {
+        val result = FdroidConsumer.getLatestUpdate(packageName, getVersionAcceptor(), context)
         return LatestVersion(
             downloadUrl = result.downloadUrl,
             version = result.versionName,

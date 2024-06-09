@@ -2,7 +2,6 @@ package de.marmaro.krt.ffupdater.app.impl
 
 import android.content.Context
 import android.os.Build
-import android.util.Log
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
@@ -12,7 +11,6 @@ import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.device.ABI.*
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
-import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 
@@ -42,13 +40,12 @@ object Brave : AppBase() {
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
+    override suspend fun fetchLatestUpdate(context: Context): LatestVersion {
         val fileName = findNameOfApkFile()
         val result = GithubConsumer.findLatestRelease(
             repository = REPOSITORY,
             isValidRelease = { !it.isPreRelease && it.name.startsWith("Release v") },
             isSuitableAsset = { it.name == fileName },
-            cacheBehaviour = cacheBehaviour,
             requireReleaseDescription = false,
         )
         return LatestVersion(

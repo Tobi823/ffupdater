@@ -12,7 +12,6 @@ import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.fdroid.CustomRepositoryConsumer
-import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 
 /**
@@ -37,13 +36,10 @@ object Mulch : AppBase() {
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
+    override suspend fun fetchLatestUpdate(context: Context): LatestVersion {
         val abi = DeviceAbiExtractor.findBestAbi(supportedAbis, DeviceSettingsHelper.prefer32BitApks)
         return CustomRepositoryConsumer.getLatestUpdate(
-            getUrl(context),
-            packageName,
-            abi,
-            cacheBehaviour
+            getUrl(context), packageName, abi
         )
     }
 

@@ -9,7 +9,6 @@ import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.BETTER_THAN_GOOGLE_CHROME
 import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
-import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 
 /**
@@ -37,12 +36,11 @@ object DuckDuckGoAndroid : AppBase() {
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
+    override suspend fun fetchLatestUpdate(context: Context): LatestVersion {
         val result = GithubConsumer.findLatestRelease(
             repository = GithubConsumer.GithubRepo("duckduckgo", "Android", 0),
             isValidRelease = { true },
             isSuitableAsset = { it.nameStartsAndEndsWith("duckduckgo-", "-play-release.apk") },
-            cacheBehaviour = cacheBehaviour,
             requireReleaseDescription = false,
         )
         return LatestVersion(

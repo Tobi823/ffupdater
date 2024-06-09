@@ -6,7 +6,6 @@ import com.google.gson.JsonObject
 import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
-import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.security.Sha256Hash
 import kotlinx.coroutines.Dispatchers
@@ -21,9 +20,8 @@ object CustomRepositoryConsumer {
         repoUrl: String,
         packageName: String,
         abi: ABI,
-        cacheBehaviour: CacheBehaviour,
     ): LatestVersion {
-        val jsonRoot = FileDownloader.downloadJsonObjectWithCache("$repoUrl/index-v1.json", cacheBehaviour)
+        val jsonRoot = FileDownloader.downloadAsJsonObject("$repoUrl/index-v1.json")
         val apkObjects = parseJson(jsonRoot, packageName)
         val apk = apkObjects
             .filter { abi.codeName in it.abis }

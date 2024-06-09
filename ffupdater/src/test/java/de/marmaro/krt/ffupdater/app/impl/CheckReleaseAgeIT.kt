@@ -8,7 +8,6 @@ import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
-import de.marmaro.krt.ffupdater.network.file.CacheBehaviour.FORCE_NETWORK
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 import de.marmaro.krt.ffupdater.settings.NetworkSettings
@@ -116,7 +115,7 @@ class CheckReleaseAgeIT {
         mockkObject(DeviceSdkTester)
         every { DeviceSdkTester.supportsAndroid7Nougat24() } returns true
 
-        FileDownloader.init(context)
+        FileDownloader.init()
     }
 
     private fun isDownloadAvailable(url: String) {
@@ -138,7 +137,7 @@ class CheckReleaseAgeIT {
     @ParameterizedTest
     @MethodSource("generate test data")
     fun `is the latest version of app not too old`(testData: TestData) {
-        val result = runBlocking { testData.appImpl.fetchLatestUpdate(context, FORCE_NETWORK) }
+        val result = runBlocking { testData.appImpl.fetchLatestUpdate(context) }
         isDownloadAvailable(result.downloadUrl)
 
         if (testData.maxAgeInDays != null) {

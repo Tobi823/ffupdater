@@ -9,7 +9,6 @@ import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.OTHER
 import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
-import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 
 /**
@@ -35,12 +34,11 @@ object K9Mail : AppBase() {
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
+    override suspend fun fetchLatestUpdate(context: Context): LatestVersion {
         val result = GithubConsumer.findLatestRelease(
             repository = GithubConsumer.GithubRepo("thunderbird", "thunderbird-android", 0),
             isValidRelease = { true },
             isSuitableAsset = { it.name.matches("k9-([0-9.]+).apk".toRegex()) },
-            cacheBehaviour = cacheBehaviour,
             requireReleaseDescription = false,
         )
         return LatestVersion(

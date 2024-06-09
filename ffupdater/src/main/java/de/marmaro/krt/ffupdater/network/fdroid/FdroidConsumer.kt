@@ -8,7 +8,6 @@ import androidx.preference.PreferenceManager
 import com.google.gson.JsonObject
 import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
-import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -19,17 +18,16 @@ object FdroidConsumer {
     suspend fun getLatestUpdate(
         packageName: String,
         versionAcceptor: (Package) -> Boolean,
-        cacheBehaviour: CacheBehaviour,
         context: Context,
     ): Result {
         val url = "https://f-droid.org/api/v1/packages/$packageName"
-        val rootJson = FileDownloader.downloadJsonObjectWithCache(url, cacheBehaviour)
+        val rootJson = FileDownloader.downloadAsJsonObject(url)
 
         val appInfo = parseJson(rootJson)
 
         val latestVersion = getLatestUpdate(appInfo, versionAcceptor)
-        val commitId = getLastCommitId(packageName, cacheBehaviour)
-        val createdAt = getCreateDate(commitId, cacheBehaviour)
+        val commitId = getLastCommitId(packageName)
+        val createdAt = getCreateDate(commitId)
 
         val downloadHostname = getDownloadHostname(context)
         val downloadUrl = "$downloadHostname/repo/${packageName}_${latestVersion.versionCode}.apk"
@@ -75,15 +73,15 @@ object FdroidConsumer {
                 .maxBy { it.versionCode }
     }
 
-    private suspend fun getLastCommitId(packageName: String, cacheBehaviour: CacheBehaviour): String {
+    private suspend fun getLastCommitId(packageName: String): String {
         val url = "https://gitlab.com/api/v4/projects/36528/repository/files/metadata%2F${packageName}.yml?ref=master"
-        val rootJson = FileDownloader.downloadJsonObjectWithCache(url, cacheBehaviour)
+        val rootJson = FileDownloader.downloadAsJsonObject(url)
         return rootJson["last_commit_id"].asString
     }
 
-    private suspend fun getCreateDate(commitId: String, cacheBehaviour: CacheBehaviour): String {
+    private suspend fun getCreateDate(commitId: String): String {
         val url = "https://gitlab.com/api/v4/projects/36528/repository/commits/$commitId"
-        val rootJson = FileDownloader.downloadJsonObjectWithCache(url, cacheBehaviour)
+        val rootJson = FileDownloader.downloadAsJsonObject(url)
         return rootJson["created_at"].asString
     }
 

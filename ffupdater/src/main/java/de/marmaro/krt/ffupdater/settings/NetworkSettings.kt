@@ -77,7 +77,7 @@ object NetworkSettings {
 
     fun proxy(): ProxyConnectionDetails? {
         val rawString = preferences.getString("network__proxy", "")?.trim()
-        if (rawString == null || rawString.isEmpty()) {
+        if (rawString.isNullOrEmpty()) {
             return null
         }
         val proxyArguments = rawString.split(';')

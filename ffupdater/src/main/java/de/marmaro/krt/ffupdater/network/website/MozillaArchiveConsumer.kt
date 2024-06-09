@@ -2,7 +2,6 @@ package de.marmaro.krt.ffupdater.network.website
 
 import androidx.annotation.Keep
 import de.marmaro.krt.ffupdater.app.VersionCompareHelper
-import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import java.time.LocalDateTime
 import java.time.ZoneId
@@ -40,10 +39,10 @@ object MozillaArchiveConsumer {
         "Dec-" to "12-",
     )
 
-    suspend fun findLatestVersion(fullUrl: String, versionRegex: Regex, cacheBehaviour: CacheBehaviour): String {
+    suspend fun findLatestVersion(fullUrl: String, versionRegex: Regex): String {
         assert(fullUrl.startsWith(BASE_URL))
 
-        val versions = findAllVersions(fullUrl, cacheBehaviour).filter { versionRegex.matches(it) }
+        val versions = findAllVersions(fullUrl).filter { versionRegex.matches(it) }
 
         return versions.maxWith { a, b ->
             when {
@@ -54,8 +53,8 @@ object MozillaArchiveConsumer {
         }
     }
 
-    private suspend fun findAllVersions(fullUrl: String, cacheBehaviour: CacheBehaviour): List<String> {
-        val webpage = FileDownloader.downloadStringWithCache(fullUrl, cacheBehaviour)
+    private suspend fun findAllVersions(fullUrl: String): List<String> {
+        val webpage = FileDownloader.downloadAsString(fullUrl)
         val regex = Regex("""<a href="[a-z0-9.\-_/]+">([a-z0-9.\-_]+)/</a>""")
         val allResults = regex.findAll(webpage)
         val versionStrings = allResults
@@ -64,8 +63,8 @@ object MozillaArchiveConsumer {
         return versionStrings
     }
 
-    suspend fun findDateTimeFromPage(page: String, cacheBehaviour: CacheBehaviour): ZonedDateTime {
-        val webpage = FileDownloader.downloadStringWithCache(page, cacheBehaviour)
+    suspend fun findDateTimeFromPage(page: String): ZonedDateTime {
+        val webpage = FileDownloader.downloadAsString(page)
         val regex = Regex("""<td>((\d{1,2}+)-(\w+)-(\d{4}) (\d{1,2}):(\d{1,2}))</td>""")
         val lastModified = regex.find(webpage)?.groups?.get(1)?.value
         requireNotNull(lastModified) { "unable to extract timestamp: $webpage" }
@@ -84,8 +83,8 @@ object MozillaArchiveConsumer {
         throw RuntimeException("invalid timestamp: $timestamp")
     }
 
-    suspend fun findLastLink(page: String, cacheBehaviour: CacheBehaviour): String {
-        val webpage = FileDownloader.downloadStringWithCache(page, cacheBehaviour)
+    suspend fun findLastLink(page: String): String {
+        val webpage = FileDownloader.downloadAsString(page)
         val regex = Regex("""<a href="([a-z0-9.\-_/]+)">""")
         val links = regex
                 .findAll(webpage)

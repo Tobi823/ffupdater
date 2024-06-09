@@ -1,6 +1,5 @@
 package de.marmaro.krt.ffupdater.network.file
 
-import android.content.Context
 import android.util.Log
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
@@ -30,7 +29,7 @@ import java.net.InetSocketAddress
 import java.net.Proxy
 import java.security.KeyStore
 import java.security.SecureRandom
-import java.util.concurrent.TimeUnit
+import java.time.Duration
 import java.util.concurrent.atomic.AtomicInteger
 import javax.net.ssl.*
 import kotlin.io.use
@@ -42,19 +41,17 @@ import kotlin.io.use
 @Keep
 object FileDownloader {
     private lateinit var client: OkHttpClient
-    private lateinit var clientWithCache: OkHttpClient
 
     /**
      * This function must be called in Activity.onCreate to initialise the object.
      * Recall this function if network settings were changed.
      */
-    fun init(context: Context) {
-        client = createOkHttpClient(context.applicationContext, false)
-        clientWithCache = createOkHttpClient(context.applicationContext, true)
+    fun init() {
+        client = createOkHttpClient()
     }
 
-    fun restart(context: Context) {
-        init(context)
+    fun restart() {
+        init()
     }
 
     @Throws(IllegalArgumentException::class)
@@ -62,25 +59,24 @@ object FileDownloader {
         require(url.startsWith("https://"))
         try {
             val request = Request.Builder()
-                    .url(url)
-                    .cacheControl(CacheControl.FORCE_NETWORK)
-                    .method("HEAD", null)
-            clientWithCache
-                    .newCall(request.build())
-                    .await()
+                .url(url)
+                .cacheControl(CacheControl.FORCE_NETWORK)
+                .method("HEAD", null)
+            client.newCall(request.build())
+                .await()
             return true
         } catch (e: Exception) {
             return false
         }
     }
 
-    suspend fun downloadFile(url: String, file: File): Pair<Deferred<Any>, Channel<DownloadStatus>> {
+    suspend fun downloadFileWithProgress(url: String, file: File): Pair<Deferred<Any>, Channel<DownloadStatus>> {
         val processChannel = Channel<DownloadStatus>(Channel.CONFLATED)
         val deferred = CoroutineScope(Dispatchers.IO).async {
             try {
                 lastChange = System.currentTimeMillis()
                 numberOfRunningDownloads.incrementAndGet()
-                downloadFile(url, file, processChannel)
+                downloadFile2(url, file, processChannel)
             } catch (e: Exception) {
                 throw when (e) {
                     is IOException,
@@ -105,9 +101,8 @@ object FileDownloader {
     @MainThread
     @Throws(NetworkException::class)
     @ReturnValueMustBeClosed
-    suspend fun <R> downloadWithCache(
+    suspend fun <R> downloadAsBufferedReader(
         url: String,
-        cacheBehaviour: CacheBehaviour,
         method: String = "GET",
         requestBody: RequestBody? = null,
         execute: suspend (BufferedReader) -> R,
@@ -115,10 +110,12 @@ object FileDownloader {
         return withContext(Dispatchers.IO) {
             getMutexForUrl(url).withLock {
                 try {
-                    val responseBody = callUrlWithCache(url, cacheBehaviour, method, requestBody, null)
-                    responseBody.charStream().buffered().use { reader ->
-                        execute(reader)
-                    }
+                    val responseBody = callUrl(url, method, requestBody, null)
+                    responseBody.charStream()
+                        .buffered()
+                        .use { reader ->
+                            execute(reader)
+                        }
                 } catch (e: Exception) {
                     when (e) {
                         is IOException,
@@ -134,62 +131,50 @@ object FileDownloader {
 
     @MainThread
     @Throws(NetworkException::class)
-    @ReturnValueMustBeClosed
-    suspend fun downloadStringWithCache(
-        url: String,
-        cacheBehaviour: CacheBehaviour,
-        method: String = "GET",
-        requestBody: RequestBody? = null,
-    ): String {
-        return downloadWithCache(url, cacheBehaviour, method, requestBody) {
+    suspend fun downloadAsString(url: String): String {
+        return downloadAsBufferedReader(url, "GET", null) {
             it.readText()
         }
     }
 
     @MainThread
     @Throws(NetworkException::class)
-    suspend fun downloadJsonObjectWithCache(
-        url: String,
-        cacheBehaviour: CacheBehaviour,
-        method: String = "GET",
-        requestBody: RequestBody? = null,
-    ): JsonObject {
-        return downloadWithCache(url, cacheBehaviour, method, requestBody) {
+    suspend fun downloadAsJsonObject(url: String): JsonObject {
+        return downloadAsBufferedReader(url, "GET", null) {
             try {
                 JsonParser.parseReader(it).asJsonObject
-            } catch (e: Exception) {
-                when (e) {
-                    is JsonParseException,
-                    is IllegalStateException,
-                    -> throw NetworkException("Invalid JSON response.", e)
-                }
-                throw e
+            } catch (e: JsonParseException) {
+                throw NetworkException("Invalid JSON response.", e)
+            } catch (e: IllegalStateException) {
+                throw NetworkException("Invalid JSON response.", e)
             }
         }
     }
 
     @WorkerThread
-    private suspend fun downloadFile(url: String, file: File, processChannel: Channel<DownloadStatus>) {
-        callUrl(url, "GET", null, processChannel).use { response ->
-            val body = validateAndReturnResponseBody(url, response)
+    private suspend fun downloadFile2(url: String, file: File, processChannel: Channel<DownloadStatus>) {
+        callUrl(url, "GET", null, processChannel).use { responseBody ->
             if (file.exists()) {
                 file.delete()
             }
-            file.outputStream().buffered().use { fileWriter ->
-                body.byteStream().buffered().use { responseReader ->
-                    // this method blocks until download is finished
-                    responseReader.copyTo(fileWriter)
-                    fileWriter.flush()
+            file.outputStream()
+                .buffered()
+                .use { fileWriter ->
+                    responseBody.byteStream()
+                        .buffered()
+                        .use { responseReader ->
+                            // this method blocks until download is finished
+                            responseReader.copyTo(fileWriter)
+                            fileWriter.flush()
+                        }
                 }
-            }
         }
     }
 
     private fun validateAndReturnResponseBody(url: String, response: Response): ResponseBody {
         if (url.startsWith(GITHUB_URL) && response.code == 403) {
             throw ApiRateLimitExceededException(
-                "API rate limit for GitHub is exceeded.",
-                Exception("response code is ${response.code}")
+                "API rate limit for GitHub is exceeded.", Exception("response code is ${response.code}")
             )
         }
         if (!response.isSuccessful) {
@@ -204,15 +189,15 @@ object FileDownloader {
         method: String,
         requestBody: RequestBody?,
         processChannel: Channel<DownloadStatus>?,
-    ): Response {
+    ): ResponseBody {
         require(url.startsWith("https://"))
         val request = Request.Builder()
             .url(url)
             .method(method, requestBody)
             .tag(processChannel) // use tag to transfer a Channel to the Interceptor
-        return client
-            .newCall(request.build())
+        val response = client.newCall(request.build())
             .await()
+        return validateAndReturnResponseBody(url, response)
     }
 
     private val mutexForUrls = mutableMapOf<String, Mutex>()
@@ -228,8 +213,7 @@ object FileDownloader {
         mapMutex.withLock {
             if (mutexForUrls.size > 30) {
                 Log.d(FFUpdater.LOG_TAG, "FileDownloader: Cleanup mutexForUrls.")
-                mutexForUrls
-                    .filter { !it.value.isLocked }
+                mutexForUrls.filter { !it.value.isLocked }
                     .map { it.key }
                     .forEach { mutexForUrls.remove(it) }
             }
@@ -237,65 +221,31 @@ object FileDownloader {
         }
     }
 
-    @Throws(IllegalArgumentException::class)
-    private suspend fun callUrlWithCache(
-        url: String,
-        cacheBehaviour: CacheBehaviour,
-        method: String,
-        requestBody: RequestBody?,
-        processChannel: Channel<DownloadStatus>?,
-    ): ResponseBody {
-        require(url.startsWith("https://"))
-        val request = Request.Builder()
-            .url(url)
-            .cacheControl(convertCacheBehaviourToCacheControl(cacheBehaviour))
-            .method(method, requestBody)
-            .tag(processChannel) // use tag to transfer a Channel to the Interceptor
-        val response = clientWithCache
-            .newCall(request.build())
-            .await()
-        return validateAndReturnResponseBody(url, response)
-    }
-
-    private fun convertCacheBehaviourToCacheControl(cacheControl: CacheBehaviour) =
-        when (cacheControl) {
-            CacheBehaviour.FORCE_NETWORK -> CacheControl.FORCE_NETWORK
-            CacheBehaviour.USE_CACHE -> {
-                CacheControl.Builder()
-                    .maxAge(1, TimeUnit.HOURS)
-                    .build()
-            }
-
-            CacheBehaviour.USE_EVEN_OUTDATED_CACHE -> {
-                CacheControl.Builder()
-                    .maxAge(2, TimeUnit.DAYS)
-                    .build()
-            }
-        }
-
-    private fun createOkHttpClient(context: Context, withCache: Boolean): OkHttpClient {
+    private fun createOkHttpClient(): OkHttpClient {
         val builder = OkHttpClient.Builder()
+        builder.addNetworkInterceptor(DownloadProgressInterceptor())
 
-        if (withCache) {
-            val cacheDir = File(context.cacheDir, "http_cache")
-            cacheDir.mkdir()
-            builder.cache(Cache(directory = cacheDir, maxSize = CACHE_SIZE))
+        if (NetworkSettings.areUserCAsTrusted) {
+            val (sslSocketFactory, trustManager) = createSslSocketFactory()
+            builder.sslSocketFactory(sslSocketFactory, trustManager)
         }
 
-        return builder
-            .addNetworkInterceptor(ProgressInterceptor())
-            .apply { createSslSocketFactory()?.let { this.sslSocketFactory(it.first, it.second) } }
-            .apply { createDnsConfiguration()?.let { this.dns(it) } }
-            .apply { createProxyConfiguration()?.let { this.proxy(it) } }
-            .apply { createProxyAuthenticatorConfiguration()?.let { this.proxyAuthenticator(it) } }
-            .build()
+        if (NetworkSettings.dnsProvider != NetworkSettings.DnsProvider.SYSTEM) {
+            builder.dns(createDnsConfiguration())
+        }
+
+        val proxy = NetworkSettings.proxy()
+        if (proxy != null) {
+            builder.proxy(Proxy(proxy.type, InetSocketAddress.createUnresolved(proxy.host, proxy.port)))
+            if (proxy.username != null && proxy.password != null) {
+                builder.proxyAuthenticator(ProxyAuthenticator(proxy.username, proxy.password))
+            }
+        }
+
+        return builder.build()
     }
 
-    private fun createSslSocketFactory(): Pair<SSLSocketFactory, X509TrustManager>? {
-        if (!NetworkSettings.areUserCAsTrusted) {
-            return null // use the system trust manager
-        }
-
+    private fun createSslSocketFactory(): Pair<SSLSocketFactory, X509TrustManager> {
         // https://developer.android.com/reference/java/security/KeyStore
         val systemAndUserCAStore = KeyStore.getInstance("AndroidCAStore")
         systemAndUserCAStore.load(null)
@@ -315,15 +265,15 @@ object FileDownloader {
         return Pair(sslContext.socketFactory, trustManager)
     }
 
-    private fun createDnsConfiguration(): Dns? {
+    private fun createDnsConfiguration(): Dns {
         return when (NetworkSettings.dnsProvider) {
-            NetworkSettings.DnsProvider.SYSTEM -> null
             NetworkSettings.DnsProvider.DIGITAL_SOCIETY_SWITZERLAND_DOH -> digitalSocietySwitzerlandDoH
             NetworkSettings.DnsProvider.QUAD9_DOH -> quad9DoH
             NetworkSettings.DnsProvider.CLOUDFLARE_DOH -> cloudflareDoH
             NetworkSettings.DnsProvider.GOOGLE_DOH -> googleDoH
             NetworkSettings.DnsProvider.CUSTOM_SERVER -> createDnsConfigurationFromUserInput()
             NetworkSettings.DnsProvider.NO -> fakeDnsResolver
+            NetworkSettings.DnsProvider.SYSTEM -> throw IllegalArgumentException("check before if dnsProvider != SYSTEM")
         }
     }
 
@@ -332,27 +282,10 @@ object FileDownloader {
         return createDnsOverHttpsResolver(customServer.host, customServer.ips)
     }
 
-    private fun createProxyConfiguration(): Proxy? {
-        val proxy = NetworkSettings.proxy() ?: return null
-        return Proxy(proxy.type, InetSocketAddress.createUnresolved(proxy.host, proxy.port))
-    }
-
-    private fun createProxyAuthenticatorConfiguration(): Authenticator? {
-        val proxy = NetworkSettings.proxy() ?: return null
-        val username = proxy.username ?: return null
-        val password = proxy.password
-            ?: throw IllegalArgumentException("Invalid proxy configuration. You have to specify a password.")
-        return ProxyAuthenticator(username, password)
-    }
-
-    // simple communication between WorkManager and the InstallActivity to prevent duplicated downloads
-    // persistence/consistence is not very important -> global available variables are ok
-    private const val CACHE_SIZE = 10L * 1024L * 1024L // 10 MiB
-
     private var numberOfRunningDownloads = AtomicInteger(0)
     private var lastChange = System.currentTimeMillis()
-    fun areDownloadsCurrentlyRunning() = (numberOfRunningDownloads.get() != 0) &&
-            ((System.currentTimeMillis() - lastChange) < 3600_000)
+    fun areDownloadsCurrentlyRunning() =
+        (numberOfRunningDownloads.get() != 0) && ((System.currentTimeMillis() - lastChange) < 3600_000)
 
     private const val GITHUB_URL = "https://api.github.com"
 
@@ -361,6 +294,8 @@ object FileDownloader {
     private val bootstrapClient by lazy {
         OkHttpClient.Builder()
             .protocols(listOf(Protocol.HTTP_2, Protocol.HTTP_1_1))
+
+            .connectTimeout(Duration.ofSeconds(60))
             .build()
     }
 

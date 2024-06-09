@@ -38,7 +38,7 @@ class FFUpdater : Application() {
         NetworkSettings.init(sharedPreferences)
 
         PowerUtil.init(applicationContext)
-        FileDownloader.init(applicationContext)
+        FileDownloader.init()
         Migrator.migrate(applicationContext)
 
         PowerSaveModeReceiver.register(applicationContext, sharedPreferences)

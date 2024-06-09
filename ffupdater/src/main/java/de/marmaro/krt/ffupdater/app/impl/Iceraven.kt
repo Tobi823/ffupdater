@@ -12,7 +12,6 @@ import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
-import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 
@@ -43,13 +42,12 @@ object Iceraven : AppBase() {
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
+    override suspend fun fetchLatestUpdate(context: Context): LatestVersion {
         val fileSuffix = findFileSuffix()
         val result = GithubConsumer.findLatestRelease(
             repository = GithubConsumer.GithubRepo("fork-maintainers", "iceraven-browser", 0),
             isValidRelease = { !it.isPreRelease },
             isSuitableAsset = { it.name.endsWith(fileSuffix) },
-            cacheBehaviour = cacheBehaviour,
             requireReleaseDescription = false,
         )
         return LatestVersion(

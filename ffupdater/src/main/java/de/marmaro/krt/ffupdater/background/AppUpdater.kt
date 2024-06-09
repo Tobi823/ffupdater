@@ -28,7 +28,6 @@ import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
 import de.marmaro.krt.ffupdater.installer.exceptions.UserInteractionIsRequiredException
 import de.marmaro.krt.ffupdater.network.NetworkUtil
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
-import de.marmaro.krt.ffupdater.network.file.CacheBehaviour.USE_CACHE
 import de.marmaro.krt.ffupdater.network.file.DownloadStatus
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.notification.NotificationBuilder.showDownloadFailedNotification
@@ -73,7 +72,7 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) :
         val app = getApp()
         val installedAppStatus = app
                 .findImpl()
-                .findInstalledAppStatus(context, USE_CACHE)
+            .findStatusOrUseRecentCache(context)
         Log.i(LOG_TAG, "$LOGTAG Start for ${app.name}.")
 
         isAppStillOutdated(installedAppStatus).onFailure { return it }

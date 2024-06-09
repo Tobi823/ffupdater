@@ -11,7 +11,7 @@ import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.os.Bundle
 import android.text.format.DateUtils
 import android.util.Log
-import android.view.*
+import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
@@ -26,24 +26,24 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.snackbar.Snackbar
-import de.marmaro.krt.ffupdater.activity.add.AddAppActivity
 import de.marmaro.krt.ffupdater.DisplayableException
-import de.marmaro.krt.ffupdater.activity.download.DownloadActivity
 import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
 import de.marmaro.krt.ffupdater.Migrator
 import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.activity.add.AddAppActivity
+import de.marmaro.krt.ffupdater.activity.download.DownloadActivity
 import de.marmaro.krt.ffupdater.activity.settings.SettingsActivity
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.InstalledAppStatus
 import de.marmaro.krt.ffupdater.background.BackgroundWork
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.device.InstalledAppsCache
-import de.marmaro.krt.ffupdater.dialog.*
+import de.marmaro.krt.ffupdater.dialog.RequestInstallationPermissionDialog
+import de.marmaro.krt.ffupdater.dialog.RunningDownloadsDialog
+import de.marmaro.krt.ffupdater.network.LatestVersionCache
 import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.network.exceptions.ApiRateLimitExceededException
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
-import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
-import de.marmaro.krt.ffupdater.network.file.CacheBehaviour.*
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.notification.NotificationBuilder
 import de.marmaro.krt.ffupdater.settings.DataStoreHelper
@@ -111,7 +111,8 @@ class MainActivity : AppCompatActivity() {
     private var userRefreshAppList = OnRefreshListener {
         lifecycleScope.launch(Dispatchers.Main) {
             InstalledAppsCache.updateCache(applicationContext)
-            showInstalledApps(FORCE_NETWORK)
+            LatestVersionCache.deleteCache()
+            showInstalledApps()
         }
     }
 
@@ -123,7 +124,7 @@ class MainActivity : AppCompatActivity() {
     @MainThread
     private suspend fun onResumeSuspended() {
         if (firstStart) InstalledAppsCache.updateCache(applicationContext)
-        showInstalledApps(USE_CACHE)
+        showInstalledApps()
         if (firstStart) startOrRestartBackgroundWork()
         firstStart = false
     }
@@ -143,7 +144,7 @@ class MainActivity : AppCompatActivity() {
         view.layoutManager = LinearLayoutManager(this@MainActivity)
     }
 
-    private suspend fun showInstalledApps(cacheBehaviour: CacheBehaviour) {
+    private suspend fun showInstalledApps() {
         val hiddenApps = ForegroundSettings.hiddenApps
         val correctFingerprintApps = InstalledAppsCache.getInstalledAppsWithCorrectFingerprint(applicationContext)
             .filter { it !in hiddenApps }
@@ -154,10 +155,10 @@ class MainActivity : AppCompatActivity() {
             correctFingerprintApps,
             if (ForegroundSettings.isHideAppsSignedByDifferentCertificate) listOf() else wrongFingerprintApps
         )
-        fetchLatestUpdates(correctFingerprintApps, cacheBehaviour)
+        fetchLatestUpdates(correctFingerprintApps)
     }
 
-    private suspend fun fetchLatestUpdates(apps: List<App>, cacheBehaviour: CacheBehaviour) {
+    private suspend fun fetchLatestUpdates(apps: List<App>) {
         if (isNetworkMeterStatusOk()) {
             showErrorUnmeteredNetwork(apps)
             return
@@ -165,7 +166,7 @@ class MainActivity : AppCompatActivity() {
 
         showLoadAnimationDuringExecution {
             apps.forEach {
-                updateMetadataOf(it, cacheBehaviour)
+                updateMetadataOf(it)
             }
         }
     }
@@ -187,10 +188,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private suspend fun updateMetadataOf(app: App, cacheBehaviour: CacheBehaviour): InstalledAppStatus? {
+    private suspend fun updateMetadataOf(app: App): InstalledAppStatus? {
         try {
             recyclerView.notifyAppChange(app, null)
-            val updateStatus = app.findImpl().findInstalledAppStatus(applicationContext, cacheBehaviour)
+            val updateStatus = app.findImpl()
+                .findStatusOrUseRecentCache(applicationContext)
             recyclerView.notifyAppChange(app, updateStatus)
             recyclerView.notifyClearedErrorForApp(app)
             return updateStatus

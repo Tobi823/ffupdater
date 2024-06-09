@@ -10,7 +10,6 @@ import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.EOL
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.OTHER
 import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
-import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 
 /**
@@ -38,12 +37,11 @@ object Lockwise : AppBase() {
 
     @MainThread
     @Throws(NetworkException::class, IllegalStateException::class)
-    override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
+    override suspend fun fetchLatestUpdate(context: Context): LatestVersion {
         val result = GithubConsumer.findLatestRelease(
             repository = GithubConsumer.GithubRepo("mozilla-lockwise", "lockwise-android", 0),
             isValidRelease = { !it.isPreRelease },
             isSuitableAsset = { it.name.endsWith(".apk") },
-            cacheBehaviour = cacheBehaviour,
             requireReleaseDescription = false,
         )
 

@@ -14,7 +14,6 @@ import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
-import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 
@@ -50,20 +49,20 @@ object TorBrowser : AppBase() {
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
-        val version = findLatestVersion(cacheBehaviour)
+    override suspend fun fetchLatestUpdate(context: Context): LatestVersion {
+        val version = findLatestVersion()
         val downloadUrl = getDownloadUrl(version)
         return LatestVersion(
             downloadUrl = downloadUrl,
             version = version,
-            publishDate = findDateTime(version, cacheBehaviour),
+            publishDate = findDateTime(version),
             exactFileSizeBytesOfDownload = null,
             fileHash = null,
         )
     }
 
-    private suspend fun findLatestVersion(cacheBehaviour: CacheBehaviour): String {
-        val content = FileDownloader.downloadStringWithCache("$MAIN_BASE_URL/", cacheBehaviour)
+    private suspend fun findLatestVersion(): String {
+        val content = FileDownloader.downloadAsString("$MAIN_BASE_URL/")
         val pattern = Regex.escape("<a href=\"") +
                 VERSION_PATTERN +
                 Regex.escape("/\">") +
@@ -88,11 +87,11 @@ object TorBrowser : AppBase() {
     }
 
     @Throws(IllegalStateException::class)
-    private suspend fun findDateTime(version: String, cacheBehaviour: CacheBehaviour): String {
+    private suspend fun findDateTime(version: String): String {
         val abi = getAbiString()
         val fileName = "tor-browser-android-$abi-$version.apk"
         val url = "$MAIN_BASE_URL/$version/?P=$fileName"
-        val content = FileDownloader.downloadStringWithCache(url, cacheBehaviour)
+        val content = FileDownloader.downloadAsString(url)
         check(content.contains(fileName)) { "$fileName is not available on $url" }
 
         val spaces = """\s+"""

@@ -26,7 +26,6 @@ import de.marmaro.krt.ffupdater.device.PowerUtil
 import de.marmaro.krt.ffupdater.network.NetworkUtil
 import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
-import de.marmaro.krt.ffupdater.network.file.CacheBehaviour.USE_CACHE
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.notification.NotificationBuilder.showErrorNotification
 import de.marmaro.krt.ffupdater.notification.NotificationBuilder.showNetworkErrorNotification
@@ -165,7 +164,7 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
                 .map { it.findImpl() }
                 .filter { !it.wasInstalledByOtherApp(applicationContext) }
                 .filter { FileDownloader.isUrlAvailable(it.hostnameForInternetCheck) }
-                .map { it.findInstalledAppStatus(applicationContext, USE_CACHE) }
+            .map { it.findStatusOrUseRecentCache(applicationContext) }
 
         val outdatedApps = appsToCheck
                 .filter { it.isUpdateAvailable }

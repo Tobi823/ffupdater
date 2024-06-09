@@ -16,7 +16,6 @@ import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
-import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 import kotlinx.coroutines.Dispatchers
@@ -45,10 +44,10 @@ object Chromium : AppBase() {
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
+    override suspend fun fetchLatestUpdate(context: Context): LatestVersion {
         val platform = findPlatform()
-        val revision = findLatestRevision(platform, cacheBehaviour)
-        val storageObject = findStorageObject(revision, platform, cacheBehaviour)
+        val revision = findLatestRevision(platform)
+        val storageObject = findStorageObject(revision, platform)
         return LatestVersion(
             downloadUrl = storageObject.downloadUrl,
             version = revision,
@@ -67,19 +66,18 @@ object Chromium : AppBase() {
         return platform
     }
 
-    private suspend fun findLatestRevision(platform: String, cacheBehaviour: CacheBehaviour): String {
+    private suspend fun findLatestRevision(platform: String): String {
         val slash = "%2F"
         val url = "$BASE_DOWNLOAD_URL/${platform}${slash}LAST_CHANGE?alt=media"
-        return FileDownloader.downloadStringWithCache(url, cacheBehaviour)
+        return FileDownloader.downloadAsString(url)
     }
 
     private suspend fun findStorageObject(
         revision: String,
         platform: String,
-        cacheBehaviour: CacheBehaviour,
     ): StorageObject {
         val url = "$BASE_API_URL?delimiter=/&prefix=$platform/${revision}/chrome-android&$ALL_FIELDS"
-        val storageObjects = FileDownloader.downloadJsonObjectWithCache(url, cacheBehaviour)
+        val storageObjects = FileDownloader.downloadAsJsonObject(url)
         return parseJson(storageObjects, platform, revision)
     }
 

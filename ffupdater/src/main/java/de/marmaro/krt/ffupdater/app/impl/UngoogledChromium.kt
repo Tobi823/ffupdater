@@ -11,7 +11,6 @@ import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
-import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 
@@ -40,12 +39,11 @@ object UngoogledChromium : AppBase() {
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
+    override suspend fun fetchLatestUpdate(context: Context): LatestVersion {
         val result = GithubConsumer.findLatestRelease(
             repository = GithubConsumer.GithubRepo("ungoogled-software", "ungoogled-chromium-android", 0),
             isValidRelease = { !it.isPreRelease && "webview" !in it.name },
             isSuitableAsset = { it.name == findFileName() },
-            cacheBehaviour = cacheBehaviour,
             requireReleaseDescription = false,
         )
         return LatestVersion(

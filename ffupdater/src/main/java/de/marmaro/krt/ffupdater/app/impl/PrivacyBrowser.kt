@@ -10,7 +10,6 @@ import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.GOOD_PRIVACY_BROWSER
 import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.fdroid.FdroidConsumer
-import de.marmaro.krt.ffupdater.network.file.CacheBehaviour
 
 /**
  * https://f-droid.org/en/packages/com.stoutner.privacybrowser.standard/
@@ -34,8 +33,8 @@ object PrivacyBrowser : AppBase() {
 
     @MainThread
     @Throws(NetworkException::class)
-    override suspend fun fetchLatestUpdate(context: Context, cacheBehaviour: CacheBehaviour): LatestVersion {
-        val result = FdroidConsumer.getLatestUpdate(packageName, { true }, cacheBehaviour, context)
+    override suspend fun fetchLatestUpdate(context: Context): LatestVersion {
+        val result = FdroidConsumer.getLatestUpdate(packageName, { true }, context)
         return LatestVersion(
             downloadUrl = result.downloadUrl,
             version = result.versionName,

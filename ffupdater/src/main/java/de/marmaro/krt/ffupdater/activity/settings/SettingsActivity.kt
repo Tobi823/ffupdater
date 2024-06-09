@@ -166,7 +166,7 @@ class SettingsActivity : AppCompatActivity() {
 
         private fun setupNetworkSettingsValidator() {
             val listener = Preference.OnPreferenceChangeListener { _, _ ->
-                FileDownloader.restart(requireContext().applicationContext)
+                FileDownloader.restart()
                 true
             }
             val dnsProvider = findListPref("network__dns_provider")
