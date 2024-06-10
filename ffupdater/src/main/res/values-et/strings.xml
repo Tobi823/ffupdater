@@ -178,4 +178,8 @@
     <string name="update_interval__6h">6 tundi</string>
     <string name="update_interval__8h">8 tundi</string>
     <string name="notification__update_available__channel_descr">Uuenduskanal saadavalolevate uuenduste jaoks: %1$s.</string>
+    <string name="notification__download_running__channel_name">Teavitus allalaadimistest taustal</string>
+    <string name="installer__android_too_old_for_shizuku">Sinu nutiseadme Androidi versioon on Shizuku jaoks liiga vana.</string>
+    <string name="background__installation__when_screen_off__summary">Proovi paigaldada uuendusi vaid siis, kui nutiseadme ekraan on välja lülitatud.</string>
+    <string name="background__installation__when_screen_off__title">Paigalda vaid siis, kui ekraan on välja lülitatud</string>
 </resources>
