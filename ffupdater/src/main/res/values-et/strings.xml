@@ -67,4 +67,45 @@
     <string name="brave_nightly__title">Brave veebibrauser (igaöine testversioon)</string>
     <string name="notification__download_error__channel_descr">Kuvatav teade, kui taustal tehtav uuendmine ei õnnestunud.</string>
     <string name="notification__download_error__channel_name">Teavitus taustal tekkinud allalaadimisvigadest</string>
+    <string name="cardview_dialog__hide">Peida</string>
+    <string name="foreground__hidden_apps__summary">Peidetud rakendused pole kasutajaliides nähtavad ja neid ei uuendata automaatselt.</string>
+    <string name="download_activity__fetch_url_for_download">Laadi metainfo siit: %1$s</string>
+    <string name="download_activity__open_cache_explanation">Sa võid avada puhverdatud failide kausta ja kopeerida APK-faili andmekandjale, kus on rohkem vaba ruumi. Kahjuks Android 11+ puhul vaid vähesed failihaldurid saavad avada Android/data kausta.</string>
+    <string name="settings__background__download__metered__title">Laadi rakenduste uuendused alla ka mahupõhiste andmesideühenduste kasutamisel</string>
+    <string name="add_app_activity__title_other_applications">Muud rakendused</string>
+    <string name="add_app_activity__title_good_privacy_browsers">Hea privaatsusega brauserid</string>
+    <string name="add_app_activity__title_from_mozilla">Mozilla poolt loodud brauserid</string>
+    <string name="add_app_activity__title_better_than_google_chrome">Paremad, kui Google Chrome</string>
+    <string name="fennecfdroid__warning">FFUpdater laadib failid F-Droidi serveritest ja seega pole kiirem.</string>
+    <string name="add_app_activity__title_good_security_browsers">Hea turvalisusega brauserid</string>
+    <string name="infobox">See rakendus on privaatsussõbralike brauserite paigaldaja. Uute rakenduste lisamiseks klõpsi plussiga ikooni. Uuenduste kontrolli käivitamiseks viipa alla. Vaikimisi seadistuste alusel FFUpdater kontrollib uuendusi taustal ning nende olemasolul laadib uuendused alla ja paigaldab. Kui soovid seda muuta, siis klõpsi hammasrattaga ikooni ja muuda eelistusi vastavalt.
+\n
+\nViimane taustal toimunud uuenduste kontroll: %1$s</string>
+    <string name="installer__method__shizuku_not_installed">Shizuku pole paigaldatud!</string>
+    <string name="cardview_dialog__not_installed_by_ffupdater">FFUpdater ei paigaldanud või uuendanud seda rakendust. Vältimaks konflikte teiste rakendustega oleme automaatse uuendamise välja lülitanud.</string>
+    <string name="notification__download_running__channel_descr">Kuvatakse, kui rakenduse uuendus on taustal allalaadimisel.</string>
+    <string name="settings__foreground__download__metered__title">Laadi uuendused alla ka mahupõhiste andmesideühenduste kasutamisel</string>
+    <string name="settings__background__download__metered__summary">Me ei soovita seda valikut kasutada mahupõhiste andmesideühendustega.</string>
+    <string name="privacy_browser__warning">FFUpdater laadib failid F-Droidi serveritest ja seega pole kiirem.</string>
+    <string name="cardview_dialog__install">Paigalda viimane versioon</string>
+    <string name="foreground__hide_apps_signed_by_different_certificate__title">Peida rakendused, mis on allkirjastatud erineva sertifikaadiga.</string>
+    <string name="cardview_dialog__exit">Sulge</string>
+    <string name="cardview_dialog__auto_bg_update">Uuenda taustal automaatselt</string>
+    <string name="add_app_activity__title_based_on_firefox">Firefoxil põhinevad brauserid</string>
+    <string name="download_activity__fetched_url_for_download_successfully">Laadisime metainfo siit: %1$s</string>
+    <string name="notification__download_running__title">Laadime alla rakenduste uuendusi</string>
+    <string name="download_activity__file_uri_exposed_toast">Turvakaalutlustel ei saa failide asukohti teistele rakendustele näidata. Palun ava kaust oma eelistatud failihalduriga.</string>
+    <string name="download_activity__github_rate_limit_exceeded">GitHub-API mahupiirang on ületatud. Palun proovi allalaadimist järgmisel täistunnil.</string>
+    <string name="installed_application_is_verified">Paigaldatud rakendus on verifitseeritud</string>
+    <string name="installed_version">Paigaldatud: %1$s</string>
+    <string name="session_installer__status_failure_conflict">Toiming ei õnnestunud, sest tekkis konflikt või ühildumatus ühe teise seadmesse paigaldatud paketiga. Põhjuseks võis olla ka vastuolu õigustega, vigased sertifikaadid, vms. Vea parandamise üks võimalusi on vastuolulise paketi eemaldamine.</string>
+    <string name="download_activity__label">Rakenduse allalaadimine</string>
+    <string name="settings__b_f__delete_cache_if_install_failed">Kui paigaldus ei õnnestu, siis kustuta allalaaditud uuendusfail.</string>
+    <string name="settings__b_f__delete_cache_if_install_successful">Kui paigaldus õnnestub, siis kustuta allalaaditud uuendusfail.</string>
+    <string name="settings__background__download__enabled__summary">Kui uuendus on olemas, siis laadi ta alla. See kiirendab hilisemat uuendusprotsessi.</string>
+    <string name="settings__background__download__enabled__title">Laadi alla rakenduste uuendused</string>
+    <string name="add_app_activity__add_new_application">Lisa uus rakendus</string>
+    <string name="add_app_activity__label">Lisa uus rakendus</string>
+    <string name="add_app_activity__title_end_of_live_browser">Brauserid, mille kasutajatugi hakkab lõppema</string>
+    <string name="download_activity__retry_installation">Proovi paigaldamist uuesti</string>
 </resources>
