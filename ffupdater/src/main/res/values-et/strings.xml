@@ -182,4 +182,12 @@
     <string name="installer__android_too_old_for_shizuku">Sinu nutiseadme Androidi versioon on Shizuku jaoks liiga vana.</string>
     <string name="background__installation__when_screen_off__summary">Proovi paigaldada uuendusi vaid siis, kui nutiseadme ekraan on välja lülitatud.</string>
     <string name="background__installation__when_screen_off__title">Paigalda vaid siis, kui ekraan on välja lülitatud</string>
+    <string name="brave_beta__description">Tere tulemast kasutama Androidi Brave Betat!
+\nProovi uusimaid funktsionaalsusi ja jaga tagasisidet siin lehel: https://brave.com/msupport
+\nSa võid Brave Beta paigaldada kõrvuti tavalise Brave\'i versiooniga.</string>
+    <string name="brave_nightly__description">Tere tulemast kasutama Androidi Brave Nightlyt (arendajatele)!
+\nProovi uusimaid funktsionaalsusi ja jaga tagasisidet siin lehel: https://brave.com/msupport
+\nSa võid Brave Nightly paigaldada kõrvuti tavalise Brave\'i versiooniga.</string>
+    <string name="brave__warning">- Brave\'i tehniline lahenduse põhineb Google Chrome\'il ja seega toetab ta kaudselt Chromiumi renderdusmootori monopoli.
+\n- Brave\'is on kasutusel Ethereumi plokiahelal põhinev Basic Attention Token BAT ning seega on ta seotud krüptoraha tööstusega. Lisaks on plokiahela kasutamisel antud kontekstis mitmeid probleeme ning seda peaks FFUpdateri arendajate arvates vältima.</string>
 </resources>
