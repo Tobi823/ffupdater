@@ -273,4 +273,82 @@
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
     <string name="unsupported_abi_dialog__message">Valitud brauser ei ühildu sinu nutiseadme protsessoriga. Palun vali mõni muu brauser.</string>
     <string name="orbot__title">Orbot: Tor Androidi jaoks</string>
+    <string name="main_activity__unexpected_error">Tekkis tundmatu viga.</string>
+    <string name="mulch_wv__title">Mulchi-põhine System WebView</string>
+    <string name="notification__uncaught_exception__channel_name">Krahhiteavitused</string>
+    <string name="ffupdater__different_signature_message">See FFUpdateri versioon on allkirjastatud F-Droidi poolt ja seega vaid F-Droid saab ka teha uuendusi. Kui soovid kiiremaid versiooniuuendusi, siis eemalda F-Droidi rakendusest FFUpdater ja paigalda versioon otse arendajalt. Sel juhul saab FFUpdater end ise uuendada ega pea ootama kuni korrektne, aga aeglasem F-Droidi uuendusloogika toimib.</string>
+    <string name="main_activity__no_unmetered_network">Mahupiiranguta võrku ei leidu</string>
+    <string name="network__custom_doh_server__title">Kohandatud DoH (DNS over HTTPS) server</string>
+    <string name="network__dns_provider__system">Kasuta operatsioonisüsteemi nimelahendust</string>
+    <string name="network__dns_provider__quad9">DNS over HTTPS: Quad9</string>
+    <string name="network__dns_provider__cloudflare">DNS over HTTPS: Cloudflare</string>
+    <string name="network__dns_provider__google">DNS over HTTPS: Google</string>
+    <string name="notification__update_available__generic_channel_name">Rakenduse uuenduse teavitus</string>
+    <string name="notification__network_error__text">See viga peaks tekkima väga harva. Aga kui seda juhtub sagedasti, siis palun anna meile veast teada. Üksikasjaliku veateate nägemiseks klõpsi siin.</string>
+    <string name="tor_browser_alpha__title">Tor brauseri alfaversioon</string>
+    <string name="generic_app_warning__beta_version">- See rakendus on mõeldud arendajatele ja testijatele. Siin võib olla vigu, mis võivad takistada sinu tavapärast brauserikasutust.</string>
+    <string name="duckduckgo_android__title">DuckDuckGo privaatne brauser</string>
+    <string name="notification__uncaught_exception__text">Vastava krahhiaruande vaatamiseks klõpsi.</string>
+    <string name="notification__bg_update_check__unreliable_execution__text">Seda võisid põhjustada sinu nutiseadme akukasutuse või jõudluse seadistused. Kui klõpsid sead teadet, siis saad selle rakenduse jaoks välja lülitada akukasutuse optimeerimise.</string>
+    <string name="crash_report__report_is_copied_to_clipboard">Krahhiaruanne on kopeeritud lõikelauale</string>
+    <string name="notification__uncaught_exception__channel_description">Ootamatud vead, mis jooksutavad FFUpdateri kokku.</string>
+    <string name="notification__uncaught_exception__title">FFUpdater jooksis kokku</string>
+    <string name="thorium__title">Thoriumi brauser Androidile</string>
+    <string name="thorium__description">Kõige kiirem brauser maakeral. Thorium on variatsioon Linuxile mõeldud Chromiumist, mis on saanud nime radioaktiivse elemendi nr 90 järgi.</string>
+    <string name="vivaldi__description">Tutvu ülikiire veebibrauseriga! Vivaldi on uus, tasuta ja privaatne veebibrauser, mille loomisel on arvestatud paindlikkusega. Palju olulist on juba sisseehitatud: reklaamiblokeerija, hüpikakende blokeerija, jälitajate blokeerija ning privaatne tõlkelahendus. Mitmete lisavalikutega saad kohendada brauserit oma käe järgi: töölauarakenduse-laadsed kaardid, tumedad ja heledad teemad ning küljenduse valikud.</string>
+    <string name="chromium__description">Chromium on avatud lähtekoodiga brauseriarendus, mille eesmärgiks on luua turvalisem, kiirem ja stabiilsem brauser kõikidele veebihuvilistele. Siin veebisaidis leiduvad projekteerimisdokumendid, ülevaade arhitektuurist, testimisteave ning palju muud olulist, mis aitavad sul töötada Chromiumi lähtekoodiga.</string>
+    <string name="network__custom_doh_server__dialog_message">Sisesta ühel näidatud viisil ühenduse andmed kohandatud DoH (DNS over HTTPS) serveri jaoks:
+\n
+\nurl;ip1
+\n
+\nurl;ip1;ip2
+\n
+\nurl;ip1;ip2;ip3
+\n
+\nurl;ip1;ip2;ip3;ip4
+\n
+\nNäiteks: https://dns.google/dns-query;8.8.8.8 või https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
+    <string name="privacy_browser__title">Privacy brauser</string>
+    <string name="firefox_focus_beta__description">Firefox Focus sobib kõige jaoks, mida sa tahad oma põhibrauserist eraldi hoida, sealhulgas kõik need „avasin, vaatasin ja unustasin“ juhtumid. Ei ole kaarte, ei ole jahu ega liigset vahtu. Kõik võrgupõhised jälitusteenused saavad ka blokeeritud. Üks klõps ja sinu veebisirvimisajalugu on kustutatud.
+\n
+\nFirefox Focus on ideaalne privaatseks veebisirvimiseks - minu missiooniks on olla „see pole võõraste asi“ veebibrauser.</string>
+    <string name="duckduckgo_android__description">DuckDuckGo rakendus tagab ühe nupuvajutusega kõige laiaulatuslikuma võrguprivaatsuse kaitse. Laasi meie brauser alla ja sa saad igapäevasesse kasutusse brauseri, mis kaitseb sinu veebiotsingu ja -sirvimise andmeid, annab võimaluse blokeerida sinu e-kirjadest jälitamisteenused ning varjab ka kasutatavaid rakendusi. Vaikimisi ei paku sellist kaitset ja võimalusi palju populaarsed veebibrauserid.</string>
+    <string name="duckduckgo_android__warning">- DuckDuckGo kasutab SystemWebView teeke veebisaitide kuvamiseks.
+\n- Korras on ka üks varasem juhtum, kus kõiki Microsofti teenuste küpsiseid ei blokeeritud.</string>
+    <string name="eol_reason__browser_no_longer_maintained">Seda brauserit enam ei arendata.</string>
+    <string name="notification__bg_update_check__unreliable_execution__title">Taustal tehtav uuenduste kontroll polnud tehtud korralikult</string>
+    <string name="privacy_browser__description">Ainus mõistlik viis vältida sinu andmete kuritarvitamist on neid üldse mitte koguda. Privacy brauseril on kaks põhieesmärki: saata üle interneti võimalikult vähe andmeid ja koguda neid võimalikult vähe sinu nutiseadmes.</string>
+    <string name="mulch_wv__description">See on Chromiumil põhinev privaatsuskeskne ja tugevdatud operatsioonisüsteemi WebView-teek. Palju selles kontekstis mittesobilikku funktsionaalsust on kas eemaldatud või välja lülitatud ning projektist Vanadium on lisatud valik turvalisust parandavat funktsionaalsust.</string>
+    <string name="tor_browser_alpha__description">Tor brauser on ainus Tor projekti poolt toetatud ametlik brauser. Projekt Tor arendab tugevamaid ja parimaid võrguprivaatsusega ja -vabadusega seotud tarvikuid maailmas.
+\n
+\nTor brauser on alati vaba ja tasuta, kuid meie toetajate annetused teevad arendustöö lihtsamaks. Projekt Tor on Ameerika Ühendriikides registreeritud MTÜ, mis vastab 501©(3) reeglitele. Palun kaalu annetamist juba täna. Iga pisike toetus on oluline: https://donate.torproject.org.
+\n
+\nLisateavet vigadest teatamiseks ning tagasiside edastamiseks leiad siit: https://support.torproject.org/misc/bug-or-feedback/!</string>
+    <string name="network__proxy__dialog_message">Kui soovid kasutada SOCKS või HTTP proksiserverit, siis palun sisesta siin ühenduse andmed. Kasuta ühte neist vormingutest:
+\n
+\nSOCKS/HTTP;ip-aadress/domeen;port
+\n
+\nSOCKS/HTTP;ip-aadress/domeen;port;kasutajanimi;salasõna
+\n
+\nNäiteks: SOCKS;1.2.3.4;22 või HTTP;5.6.7.8;80;kasutaja1;suursaladus123 või HTTP;p.webshare.io;80;u;p. Kui soovid kasutada operatsioonisüsteemis seadistatud proksiserverit, siis jäta väli tühjaks.
+\n
+\nPalun arvesta piiranguga: kui sa nimelahenduse seadistustes sätid valikuks „DNS over HTTPS“, siis pead siin ka sisestama proksiserveri puhul domeeni, mitte ip-aadressi. Viimane lihtsalt ei toimi.</string>
+    <string name="orbot__description">Orbot on vaba ja tasuta proksirakendus, mis võimaldab teistel rakendustel kasutada internetiühendust turvalisemalt. Orbot krüptib sinu võrguliikluse ja peidab seda kasutades mitmeid Tori võrgusõlmi üle maailma. Tor on avatud lähtekoodil põhinev tasuta tarkvara ning vaba ja avatud võrk, mis aitab võidelda kolmandate osapoolte võrgupõhise jälgimise vastu. Selline jälgimine ohustab sinu vabadust ja privaatsust, kahjustab sinu äri konfidentsiaalsust ja suhteid ning sageli põhineb riikide julgeolekuteenuste korraldataval võrguliikluse analüüsil.</string>
+    <string name="cardview_dialog__different_signature">Kuna APK-faili allkiri on erinev, siis FFUpdater ei saa seda rakendust uuendada. Üks võimalus on see, et eemaldad rakenduse ja paigaldad ta uuesti FFUpdaterist. Aga palun arvesta, et kõik selle rakenduse andmed sinu kasutajaprofiilist sel juhul kustutatakse - seega palun tee temast enne varukoopia.</string>
+    <string name="network__dns_provider__digital_society_ch">DNS over HTTPS: Digital Society Switzerland</string>
+    <string name="network__dns_provider__custom">Kohandatud DNS over HTTPS server</string>
+    <string name="network__dns_provider__no">Nimelahendus puudub (vaid testimiseks)</string>
+    <string name="background__separate_notification_channels__summary">Kasuta iga rakenduse jaoks eraldi teavituskanaleid</string>
+    <string name="background__separate_notification_channels__title">Eraldi teavituskanalid</string>
+    <string name="notification__update_available__generic_channel_descr">Teavituskanal saadavalolevate rakenduse uuenduste kohta.</string>
+    <string name="notification__network_error__title">Taustateenuse võrguühenduse viga</string>
+    <string name="main_activity__app_was_signed_by_different_certificate">See rakendus on allkirjastatud erineva sertifikaadiga ja FFUpdater ei saa seda uuendada.</string>
+    <string name="firefox_focus_beta__title">Firefox Focuse beetaversioon</string>
+    <string name="notification__bg_update_check__unreliable_execution__channel_name">Taustal tehtav uuenduste kontroll jäi tegemata</string>
+    <string name="notification__bg_update_check__unreliable_execution__channel_description">Hoiatus taustal tehtava ebausaldusväärse uuenduste kontrolli kohta</string>
+    <string name="notification__install_error__generic_channel_descr">Teavituskanal ebaõnnestunud rakenduste uuenduste jaoks.</string>
+    <string name="notification__install_error__generic_channel_name">Teavitus rakenduse uuendamise ebaõnnestumisest</string>
+    <string name="cromite__title">Cromite</string>
+    <string name="cromite__description">Cromite on Bromite\'il põhinev Chromiumi variatsioon, millele on lisatud reklaamiblokeerija ning on arvestatud parema privaatsusega.</string>
+    <string name="fairemail__warning">- Kui uuendad Google Play Store\'ist paigaldatud FairEmaili FFUpdateriga, siis võib tekkida probleeme, nagu näiteks ei pruugi toimida OAuthi ja/või Google Maili tugi. Sel juhul palun ära saada FairEmaili arendajatele veateadet (sest tegid ju uuenduse FFUpdateriga).</string>
 </resources>
