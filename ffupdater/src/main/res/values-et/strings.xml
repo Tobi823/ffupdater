@@ -188,6 +188,89 @@
     <string name="brave_nightly__description">Tere tulemast kasutama Androidi Brave Nightlyt (arendajatele)!
 \nProovi uusimaid funktsionaalsusi ja jaga tagasisidet siin lehel: https://brave.com/msupport
 \nSa võid Brave Nightly paigaldada kõrvuti tavalise Brave\'i versiooniga.</string>
-    <string name="brave__warning">- Brave\'i tehniline lahenduse põhineb Google Chrome\'il ja seega toetab ta kaudselt Chromiumi renderdusmootori monopoli.
+    <string name="brave__warning">- Brave\'i tehniline lahendus põhineb Google Chrome\'il ja seega toetab ta kaudselt Chromiumi renderdusmootori monopoli.
 \n- Brave\'is on kasutusel Ethereumi plokiahelal põhinev Basic Attention Token BAT ning seega on ta seotud krüptoraha tööstusega. Lisaks on plokiahela kasutamisel antud kontekstis mitmeid probleeme ning seda peaks FFUpdateri arendajate arvates vältima.</string>
+    <string name="installer__method__title">Paigaldaja meetod</string>
+    <string name="firefox_nightly__title">Firefox Nightly</string>
+    <string name="firefox_release__title">Firefoxi brauser</string>
+    <string name="firefox_release__warning">- Avatud lähtekoodiga tarkvara jaoks mõeldud F-Droidi rakendustepoest leiad Fennec F-Droidi nime alt parandatud versiooni Firefoxist.</string>
+    <string name="notification__install_error__channel_descr">Teavituskanal ebaõnnestunud uuendustele: %1$s.</string>
+    <string name="settings__foreground__update_check__metered__summary">Luba kontrollida uuenduste olemasolu mobiilse andmeside või muu mahupõhise andmesideühenduse kasutamisel.</string>
+    <string name="settings__theme_battery_saver">Tume teema, kui kasutusel on energiasäästurežiim</string>
+    <string name="settings__foreground__update_check__metered__title">Kontrolli uuendusi mahupõhistes andmesidevõrkudes</string>
+    <string name="vivaldi__title">Vivaldi brauser</string>
+    <string name="mull__title">Mull brauser</string>
+    <string name="ungoogled_chromium__eol_reason">Arendaja on kirjutanud: „Ma ei jõua versioone lähiajal uuendada. Kui võimalik, siis palun selle asemel kasutasmõnda muud [FFUpdateri toetatud] brauserit.“ Vaata ka https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
+    <string name="tor_browser__description">Tor brauser Androidi jaoks on ainus Tor projekti poolt toetatud ametlik brauser. Projekt Tor arendab tugevamaid ja parimaid võrguprivaatsusega ja -vabadusega seotud tarvikuid maailmas.</string>
+    <string name="crash_report_activity__label">Krahhiteavitus</string>
+    <string name="mulch__warning">- Mulchi tehniline lahendus põhineb Google Chrome\'il ja seega toetab ta kaudselt Chromiumi renderdusmootori monopoli.</string>
+    <string name="mulch__title">Mulch</string>
+    <string name="fennecfdroid__title">Fennec F-Droid</string>
+    <string name="kiwi__warning">- Kiwi lähtekood on vaid osaliselt vaba ja avatud tarkvara.
+\n- Kiwi tehniline lahendus põhineb Google Chrome\'il ja seega toetab ta kaudselt Chromiumi renderdusmootori monopoli.
+\n- Kiwi privaatsus pole ideaalne, kuid tal on hea lisamoodulite tugi.
+\n- Otsingumootorid maksavad Kiwi brauseri arendajatele igalt brauserist tehtud otsingu alusel tasu. Olenevalt kasutatavast otsingust võivad päringud liikuda läbi Kiwibrowser või Kiwisearchservices serverite.
+\n- Kiwi brauserist kuvatakse reklaame teenusest Google Ads ning sel juhul on Google\'il ligipääs ka sinu asukohale, kui sa seda otseselt seadistustest ei keela Discovery-valiku alt. See olukord lähiajal muutub. Lisateavet leiad https://privacy.kiwibrowser.org saidist.</string>
+    <string name="vivaldi__warning">- Vivaldi lähtekood põhineb vaid osaliselt vabal ja avatud tarkvaral.
+\n- Vivaldi tehniline lahendus põhineb Google Chrome\'il ja seega toetab ta kaudselt Chromiumi renderdusmootori monopoli.</string>
+    <string name="chromium__warning">- Chromiumi tehniline lahendus põhineb Google Chrome\'il ja seega toetab ta kaudselt Chromiumi renderdusmootori monopoli.</string>
+    <string name="firefox_beta__description">Firefoxi brauser Androidi jaoks on automaatselt privaatne ja väga kiire. Kogudes teavet sinu tegemiste kohta internetis ja aeglustades sinu brauserikasutuse kiirust jälgivad tuhanded seadmejälituslahendused igapäevaselt sinu tegemisi. Vaikimisi blokeerib Firefox 2000 sellist jälitajat ning kasutades reklaamiblokeerijaid saad sa sellist jälgimist veelgi vähendada. Firefoxiga on veebisirvimisel tagatud sinu elementaarne privaatsus ja toimingud on kiired.</string>
+    <string name="firefox_release__description">Firefoxi brauser Androidi jaoks on automaatselt privaatne ja väga kiire. Kogudes teavet sinu tegemiste kohta internetis ja aeglustades sinu brauserikasutuse kiirust jälgivad tuhanded seadmejälituslahendused igapäevaselt sinu tegemisi. Vaikimisi blokeerib Firefox 2000 sellist jälitajat ning kasutades reklaamiblokeerijaid saad sa sellist jälgimist veelgi vähendada. Firefoxiga on veebisirvimisel tagatud sinu elementaarne privaatsus ja toimingud on kiired.</string>
+    <string name="iceraven__title">Iceraveni brauser</string>
+    <string name="download_activity__delete_cache_explanation">Kui sa arvad, et FFUpdater on puhverdanud rakenduse vigase versiooni või soovid lihtsalt hõivatud andmeruumi vabastada, siis klõpsi allalaaditud failide kustutamise nuppu.</string>
+    <string name="installer__method__root">Juurkasutaja paigaldaja: võimaldab uuendada rakendusi ilma kinnituseta, aga eeldab, et nutiseadmele on juurkasutaja ligipääs.</string>
+    <string name="installer__method__shizuku">Shizuku paigaldaja: võimaldab uuenda rakendusi ilma kinnituseta, ega see võimalus eeldab, et nutiseadmes leidub Shizuku rakendus või Sui Magisk moodul.</string>
+    <string name="installer__method__native">Süsteemne paigaldaja: kasutamiseks varuvariandina, kui sessioonipõhine paigaldaja ei toimi.</string>
+    <string name="kiwi__description">Kiwi brauser on mõeldud veebisaitide vaatamiseks, uudiste lugemiseks, videote vaatamiseks ja muusika kuulamiseks ilma liigse segamiseta.</string>
+    <string name="lockwise__title">Firefox Lockwise</string>
+    <string name="main_activity__github_api_limit_exceeded"><u>GitHub-API mõistliku kasutuse piir on ületatud. Palun proovi järgmisel täistunnil uuesti.</u></string>
+    <string name="session_installer__status_failure_storage">Kuna salvestusruumis jäi vaba andmemahtu puudu, siis see toiming ei õnnestunud. Näiteks nutiseadmes võib olla vähe vaba andmeruumi või väline andmekandja pole saadaval. Palun kustuta nutiseadmest mittevajalikud failid või lisa mõni muu väline andmekandja.</string>
+    <string name="ungoogled_chromium__description">Google Chromium - brauser ilma Google\'i lõiminguteta.
+\n
+\nKui sa ei logi sisse oma Google\'i kasutajakontole, siis Chromium on turvalisuse ja privaatsuse mõttes täitsa hea brauser. Aga sellele vaatamata on Chromiumil paras kogus sõltuvusi Google\'i veebiteenustest ja teekidest. Lisaks on Google loonud Chromiumi kasutajate jaoks võimalikult lihtsaks ja intuitiivseks ning seetõttu pole kõik läbipaistev ja kasutajal puudub paljude tegevuste ja funktsionaalsuste üle sisuline kontroll.</string>
+    <string name="mull__description">Mull on privaatsuskeskne brauser, mis põhineb Mozilla loodud renderdusmootoril ja kust on eemaldatud mõned liigsed komponendid. Kasutades eelistusi arkenfox-user.js projektist on lisatud privaatsusega seotud funktsionaalsust Tor Uplift arendusest. Lisaks soovitame, et paigaldad uBlock Origin reklaamiblokeerija.</string>
+    <string name="tor_browser__title">Tor brauser</string>
+    <string name="settings__network__trust_user_cas__summary">Lülita sisse, kui sa eeldad, et muud rakendused võiksid näha ja muuta sinu võrguliiklust. Kui sa pole päris kindel, siis hoia see eelistus väljalülitatuna.</string>
+    <string name="mulch__description">Mulch on Chromiumil põhinev privaatsuskeskne ja tugevdatud brauser. Palju selles kontekstis mittesobilikku funktsionaalsust on kas eemaldatud või välja lülitatud ning projektist Vanadium on lisatud valik turvalisust parandavat funktsionaalsust. Lähtekoodi hoidlas on olemas ka kompileerimisfailid, mis võimaldavad lisada Mulchi süsteemse WebView rollis.</string>
+    <string name="fennecfdroid__description">Fennec F-Droid põhineb viimasel Firefoxi versioonil (koodnimega Fenix). Rakendusest on eemaldatud mõned suletud lähtekoodiga komponendid ja telemeetria, aga brauser jätkuvalt kasutab tööks mitmeid Mozilla ja Google\'i teenuseid mis võimaldavad jälgida ja profileerida kasutajaid.</string>
+    <string name="iceraven__description">Kindlasti pole seda brauserit teinud Mozilla!
+\n
+\nIceraven brauser on Androidile mõeldud veebibrauser, mis põhineb Mozilla Firefoxi Fenixi versioonil ja kasutab GeckoView ja Mozilla Android Components teeke.
+\n
+\nMeie eesmärgiks on teha Firefoxi Androidi versioonile võimalikult lähedane variant, mis võimaldab kasutajatel pruukida täiendavaid seadistusi, kohandada brauserit (sealhulgas laienduste abil) ja saada lisateavet külastatavate veebisaitide kohta ning selle kohta kuidas brauser nende saitidega suhtleb.</string>
+    <string name="installer__method__session">Sessioonipõhine paigaldaja: sobib enamustele nutiseadmetele ning kui Androidi versioon on 12 või suurem, siis peale kasutaja poolt tehtud ühte uuendust tehakse järgmised uuendused taustal automaatselt.</string>
+    <string name="cromite__warning">- Cromite\'i tehniline lahendus põhineb Google Chrome\'il ja seega toetab ta kaudselt Chromiumi renderdusmootori monopoli.</string>
+    <string name="thorium__warning">- Thoriumi tehniline lahendus põhineb Google Chrome\'il ja seega toetab ta kaudselt Chromiumi renderdusmootori monopoli.</string>
+    <string name="bromite__description">Bromite\'i eesmärgiks on pakkuda puhtal kasutajaliidesel põhinevat veebisirvimisvõimalust ilma privaatsust riivavate funktsionaalsusteta ja kiire sisseehitatud reklaamiblokeerijaga. Kasutusel on mõned liidesekohendused, mille eesmärgiks on vähendada reklaamide kuvamist.</string>
+    <string name="bromite__title">Bromite</string>
+    <string name="bromite__warning">- Bromite\'i tehniline lahendus põhineb Google Chrome\'il ja seega toetab ta kaudselt Chromiumi renderdusmootori monopoli.</string>
+    <string name="bromite_systemwebview__description">SystemWebView pakett sisaldab Bromite\'i brauseri- ja renderdusmootori tuuma oma tavafunktsionaalsuses. See annab võimaluse asendada sinu nutiseadme Androidi süsteemis vaikimisi kasutatava brauserikomponendi.</string>
+    <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
+    <string name="firefox_beta__title">Firefoxi Beetaversioon Androidile</string>
+    <string name="firefox_beta__warning">- See rakendus on mõeldud arendajatele ja testijatele. Siin võib olla vigu, mis võivad takistada sinu tavapärast brauserikasutust.</string>
+    <string name="firefox_focus__description">See on Firefoxi brauseri versioon, mille eesmärgiks on kasutajate privaatsust veelgi parandada.</string>
+    <string name="firefox_nightly__description">Varem oli selle rakenduse nimi Firefox Preview ning nüüd Firefox Nightly.
+\n
+\nFirefox Nightly on kõikide Mozilla Firefoxi versioonide arendusvariant.
+\n
+\nFirefox Nightly on eelkõige mõeldud katseliste Firefoxi arenduste tesimiseks. Selle brauserivariandi kasutamisel on sul võimalik varakult proovida selliseid funktsionaalsusi, mis võivad tulevikus tavakasutusse jõuda, aga seejuures puudub rakenduse tavapärane stabiilsus. Lisaks on sul võimalik arendajatele jagada tagasisidet leitud vigade ja probleemide kohta ning sellega mõjutada seda kuidas tulevane Firefoxi versioon saab välja nägema.</string>
+    <string name="iceraven__warning">- Selle projekti arendajad ei anna ühtegi garantiid turvalisuse, uuenduste ega ka stabiilsuse osas.
+\n- Antud brauseri puhul palun arvesta, et turvaparandused on saadaval aeglasemalt, kui tavapärane on.</string>
+    <string name="download_activity__different_installer_info__text">Kui rakenduse paigaldamine järjepidevalt ei toimi, siis proovi seadistustest võtta kasutusele süsteemse paigaldaja.</string>
+    <string name="download_activity__external_storage_not_accessible">Väline andmeruum pole saadaval ja allalaadimist pole võimalik alustada. Olekuteade on:</string>
+    <string name="session_installer__status_failure_incompatible">Toiming ei õnnestunud, sest see võimalus olemuselt ei ühildu antud nutiseadme tarkvaraga. Näiteks võib rakendus eeldada raudvara funktsionaalsust, mida tegelikult olemas pole või lähtekoodis pole liidestust selle nutiseadme ABIga või on vajalik uuema SDK kasutamine, jne.</string>
+    <string name="notification__install_error__channel_name">Teavitus uuenduse ebaõnnestumisest: %1$s</string>
+    <string name="kiwi__title">Kiwi brauseri libisev versioon (Kiwi Browser Next)</string>
+    <string name="lockwise__description">Ligipääs sinu salasõnadele, ainult sulle
+\n
+\nSalvesta oma salasõnad turvaliselt Firefoxis ja saa neile ligi igalt poolt võrgust. Ligipääs sinu veebirakenduste kasutajakontodele otse rakendusest.</string>
+    <string name="lockwise__eol_reason">Mozilla lõpetas selle rakenduse toe detsembris 2021. Palun võta kasutusele mõni muu salasõnahaldur.</string>
+    <string name="main_activity__temporary_network_issue"><u>Võrguühenduse ajutine viga. Palun proovi hiljem uuesti.</u></string>
+    <string name="main_activity__an_error_occurred"><u>Tekkis viga. Palun proovi hiljem uuesti.</u></string>
+    <string name="session_installer__status_failure_blocked">Blokeerimise tõttu see tegevus ei õnnestunud. Näiteks võib nutiseadme reeglistik selle tegevuse blokeerida, samuti võib seda teha pakettide verifitseerija või on antud pakett vajalik süsteemi tuumikfunktsionaalsuse toimimiseks.</string>
+    <string name="session_installer__status_failure_invalid">Kuna üks või enam APK-faili olid vigased, siis see toiming ei õnnestunud. Näiteks võis nende struktuur või sisu olla vigane, aga ka pakendaja allkiri võis olla puudulik, jne.</string>
+    <string name="ungoogled_chromium__warning">- Ungoogled Chromiumi tehniline lahendus põhineb Google Chrome\'il ja seega toetab ta kaudselt Chromiumi renderdusmootori monopoli.</string>
+    <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
+    <string name="unsupported_abi_dialog__message">Valitud brauser ei ühildu sinu nutiseadme protsessoriga. Palun vali mõni muu brauser.</string>
+    <string name="orbot__title">Orbot: Tor Androidi jaoks</string>
 </resources>
