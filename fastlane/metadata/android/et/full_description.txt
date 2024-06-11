@@ -1,0 +1,33 @@
+paigaldab ja uuendab järgmiseid brausereid:
+
+Mozilla poolt loodud või Firefoxil põhinevad brauserid:
+- Fennec F-Droid
+- Firefox Browser, Firefox for Android Beta, Firefox Nightly
+- Firefox Focus, Firefox Focus Beta, Firefox Klar
+- Iceraven
+- Mull Browser
+- Tor Browser, Tor Browser Alpha
+
+Hea privaatsusega brauserid:
+- Bromite, Bromite SystemWebView
+- Mulch, Mulch System WebView
+
+Brauserid, mis on paremad, kui Google Chrome:
+- Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
+- Chromium
+- DuckDuckGo Browser
+- Kiwi Browser Next
+- Privacy Browser (F-Droid)
+- Thorium
+- Vivaldi
+
+Muud rakendused:
+- FairEmail
+- K-9 Mail / Thunderbird Mail
+- Orbot
+
+FFUpdater kontrollib taustal uuendusi ja laadib nad alla. Android 12+ või uuemates ja juurkasutaja õigustes nutiseadmetes võib FFUpdater rakendused ka uuendada ilma kasutaja sekkumiseta.
+
+Lisateavet leiad: https://notabug.org/Tobiwan/ffupdater/src/master/README.md lehelt.
+
+Muudatuste logi: https://notabug.org/Tobiwan/ffupdater/src/master/fastlane/metadata/android/en-US/changelogs

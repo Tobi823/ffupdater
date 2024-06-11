@@ -1,0 +1,5 @@
+* Tänud kaasautoritele Weblate'is: WhiredPlanck, 109247019824, Oğuz Ersen, Giovanni Donisi, MkQtS ja Hin
+  Weisner
+* Parandasime teavituse teksti, kui taustal tehtud uuendus pole õnnestunud viis päeva järjest (senine väärtus: kaks
+  päeva, aga seda oli mõnede kasutajate jaoks liiga vähe).
+* Parandasime krahhiaruannet ja viimati õnnestunud taustal tehtud uuenduse ajatempli fikseerimist

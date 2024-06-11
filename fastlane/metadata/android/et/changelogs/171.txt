@@ -1,0 +1,3 @@
+Versioon 79.2.1 (171)
+- tänud kaasautoritele Weblate'ist: Kazushi Hayama, winver, gallegonovato, Scrambled777, Eryk Michalak, v1s7, Gersonzao, Flavio F. M., syl, Oğuz Ersen and MkQtS
+- kasutame Firefox Release / Beta / Nightly / Focus / Focus Beta / Klar puhul archive.mozilla.org saiti (Tobi823/ffupdater#584)

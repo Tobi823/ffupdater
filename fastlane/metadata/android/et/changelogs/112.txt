@@ -1,0 +1,3 @@
+* Tänud kaasautoritele Weblate'is: Oğuz Ersen and 109247019824
+* Lisasime tagasi Iceraveni
+* Võimaldamaks aegunud rakenduste paigaldamist kohandasime kasutajaliidest
