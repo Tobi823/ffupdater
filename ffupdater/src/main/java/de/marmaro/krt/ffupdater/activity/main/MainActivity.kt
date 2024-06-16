@@ -28,7 +28,6 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.snackbar.Snackbar
 import de.marmaro.krt.ffupdater.DisplayableException
 import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
-import de.marmaro.krt.ffupdater.Migrator
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.activity.add.AddAppActivity
 import de.marmaro.krt.ffupdater.activity.download.DownloadActivity
@@ -55,7 +54,6 @@ import kotlinx.coroutines.launch
 @Keep
 class MainActivity : AppCompatActivity() {
     private lateinit var recyclerView: MainRecyclerView
-    private var firstStart = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -123,10 +121,7 @@ class MainActivity : AppCompatActivity() {
 
     @MainThread
     private suspend fun onResumeSuspended() {
-        if (firstStart) InstalledAppsCache.updateCache(applicationContext)
         showInstalledApps()
-        if (firstStart) startOrRestartBackgroundWork()
-        firstStart = false
     }
 
     private fun askForIgnoringBatteryOptimizationIfNecessary() {
@@ -177,15 +172,6 @@ class MainActivity : AppCompatActivity() {
             recyclerView.notifyErrorForApp(it, R.string.main_activity__no_unmetered_network, e)
         }
         showBriefMessage(R.string.main_activity__no_unmetered_network)
-    }
-
-    private fun startOrRestartBackgroundWork() {
-        if (Migrator.isBackgroundWorkRestartNecessary()) {
-            BackgroundWork.forceRestart(this@MainActivity)
-            Migrator.backgroundWorkHasBeenRestarted()
-        } else {
-            BackgroundWork.start(this@MainActivity)
-        }
     }
 
     private suspend fun updateMetadataOf(app: App): InstalledAppStatus? {

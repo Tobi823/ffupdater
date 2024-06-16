@@ -4,22 +4,19 @@ import android.annotation.SuppressLint
 import android.content.Context
 import androidx.annotation.Keep
 import androidx.preference.PreferenceManager
-import androidx.work.ExistingPeriodicWorkPolicy.*
 import java.io.File
 
 @Keep
 object Migrator {
 
-    private var restartBackgroundWorkNecessary = false
+    private var wasAppUpdated: Boolean? = null
 
     @SuppressLint("ApplySharedPref")
     fun migrate(context: Context) {
         val preferences = PreferenceManager.getDefaultSharedPreferences(context.applicationContext)
         val lastVersionCode = preferences.getInt(FFUPDATER_VERSION_CODE, 0)
 
-        if (lastVersionCode != BuildConfig.VERSION_CODE) {
-            restartBackgroundWorkNecessary = true
-        }
+        wasAppUpdated = (lastVersionCode != BuildConfig.VERSION_CODE)
 
         if (lastVersionCode < 148) { // 78.0.6
             PreferenceManager.getDefaultSharedPreferences(context.applicationContext)
@@ -35,12 +32,8 @@ object Migrator {
             .apply()
     }
 
-    fun isBackgroundWorkRestartNecessary(): Boolean {
-        return restartBackgroundWorkNecessary
-    }
-
-    fun backgroundWorkHasBeenRestarted() {
-        restartBackgroundWorkNecessary = false
+    fun wasAppUpdated(): Boolean {
+        return requireNotNull(wasAppUpdated) { "call migrate() first" }
     }
 
     private const val FFUPDATER_VERSION_CODE = "migrator_ffupdater_version_code"
