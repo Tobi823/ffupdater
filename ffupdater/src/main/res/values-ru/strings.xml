@@ -343,4 +343,6 @@
     <string name="foreground__hidden_apps__title">Скрытые приложения</string>
     <string name="foreground__hidden_apps__summary">Скрытые приложения не будут видны в главном меню и не будут обновляться автоматически.</string>
     <string name="download_activity__retry_installation">Повторить установку</string>
+    <string name="settings__network__use_cloudflare_mirrors__summary">Включите опцию, чтобы снизить нагрузку на основные серверы, когда это возможно.</string>
+    <string name="settings__network__use_cloudflare_mirrors__title">Использовать зеркала Cloudflare</string>
 </resources>
