@@ -343,4 +343,6 @@
     <string name="foreground__hidden_apps__title">Скрити приложения</string>
     <string name="foreground__hidden_apps__summary">Скритите приложения ще бъдат недостъпни и няма да бъдат обновявани автоматично.</string>
     <string name="download_activity__retry_installation">Повторно инсталиране</string>
+    <string name="settings__network__use_cloudflare_mirrors__title">Използване на огледала на Cloudflare</string>
+    <string name="settings__network__use_cloudflare_mirrors__summary">Ако е отметнато, когато е възможно се намалява натоварването на основните сървъри.</string>
 </resources>
