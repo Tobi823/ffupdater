@@ -23,7 +23,9 @@ git fetch --tags
   - (fastlane changelog will be managed by ,ff_release)
 - `,ff_release`
 - in Firefox upload APK in repomaker
-- create Gitlab merge request (see https://gitlab.com/fdroid/fdroiddata/-/merge_requests/13713)
+- create Gitlab merge request - see:
+  - https://gitlab.com/fdroid/fdroiddata/-/merge_requests/13713
+  - https://gitlab.com/fdroid/fdroiddata/-/merge_requests/15090
 
 ```
 Changelogs:
@@ -44,3 +46,12 @@ git branch -r | grep "$REMOTE_NAME/" | grep -v 'master$' | grep -v HEAD| cut -d/
 
 You can either wait for the official F-Droid release, install the APK file from GitHub/GitLab or try my
 personal F-Droid repository (see https://github.com/Tobi823/ffupdater#f-droid-repository).
+
+# Weblate contributors
+
+https://hosted.weblate.org/projects/ffupdater/ffupdater-app-translations/#reports
+
+data = ...
+entries = sorted(entries, key=lambda entry: entry["t_words"], reverse=True)
+users = [entry["name"] for entry in entries if entry["name"] != "Tobias Hellmann"]
+print("Thanks for the Weblate contributions from: " + ", ".join(users))
