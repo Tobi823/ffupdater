@@ -1,0 +1,8 @@
+Versión de lanzamiento 79.2.4 (174)
+- Gracias Nortio por primaryColor para el color de la barra de estado (Tobi823/ffupdater#609)
+- Gracias Andrew Gunnerson (chenxiaolong) por establecer "actualizar propiedad" al instalar una nueva aplicación (Tobi823/ffupdater#591)
+- Gracias por las contribuciones de Weblate de: Priit Jõerüüt, Cirnos, Coool (github.com/Coool), Retrial, Flavio F. M., gallegonovato, Scrambled777, 大王叫我来巡山, Kazushi Hayama, Giovanni Donisi, Kirill Isakov, 109247019824
+- No busque actualizaciones / no descargue actualizaciones con el ahorro de energía habilitado
+- Sin OkHttp para almacenar en caché las respuestas de red, estructura de datos personalizada
+- Trate de fijar los tiempos de espera de descarga aumentando los umbrales de tiempo de espera de Ok
+- Trate de corregir el error de WorkManager si no está inicializado (Tobi823/ffupdater#586)
