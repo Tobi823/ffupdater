@@ -90,4 +90,23 @@
     <string name="fairemail__description">Pilnvērtīga, atvērta un privāta e-pasta lietotne</string>
     <string name="cardview_dialog__warnings_label">Brīdinājumi:</string>
     <string name="running_downloads_dialog__message">Pašlaik lietotne fonā lejupielādē atjauninājumus. Vai vēlaties sākt jaunu lejupielādi, kas var aizņemt ilgāku laiku?</string>
+    <string name="request_installation_permission_dialog__abort">Pārtraukt</string>
+    <string name="foreground__hidden_apps__title">Paslēptās lietotnes</string>
+    <string name="install_activity__download_file_failed__crash_text">Lejupielādes laikā radās šāda kļūda. Ja tas notiek ļoti bieži, lūdzu, ziņojiet par problēmu vietnē notabug.org, GitHub vai GitLab. Lūdzu, neaizmirstiet pievienot kļūdu atskaiti no starpliktuves.</string>
+    <string name="request_installation_permission_dialog__grant_permission">Dot atļauju</string>
+    <string name="request_installation_permission_dialog__message">FFUpdater trūkst atļauja uzstādīt un atjaunināt lietotnes. Jums ir jādod šī atļauja, pretējā gadījumā FFUpdater nedarbosies.</string>
+    <string name="settings_activity__label">Iestatījumi</string>
+    <string name="settings__b_f__delete_cache_if_install_failed">Ja uzstādīšana neizdodas, izdzēst lejupielādēto atjauninājumu.</string>
+    <string name="add_app_activity__title_good_security_browsers">Labas drošas pārlūkprogrammas</string>
+    <string name="request_installation_permission_dialog__title">Uzstādīšanas atļauja</string>
+    <string name="settings__b_f__delete_cache_if_install_successful">Ja uzstādīšana ir veiksmīga, izdzēst lejupielādēto atjauninājumu.</string>
+    <string name="settings__background__installation__enabled__title">Uzstādīt atjauninājumu</string>
+    <string name="installer__android_too_old_for_shizuku">Jūsu Android ir pārāk vecs priekš Shizuku.</string>
+    <string name="download_activity__retry_installation">Atkārtot uzstādīšanu</string>
+    <string name="cardview_dialog__self_description_label">Apraksts:</string>
+    <string name="k9mail__title">K-9 pasts</string>
+    <string name="installer__method__title">Uzstādīšanas veids</string>
+    <string name="firefox_nightly__title">Firefox nakts relīzes</string>
+    <string name="main_activity__temporary_network_issue"><u>Īslaicīga tīkla problēma. Lūdzu, mēģiniet vēlreiz vēlāk.</u></string>
+    <string name="cromite__title">Cromite</string>
 </resources>
