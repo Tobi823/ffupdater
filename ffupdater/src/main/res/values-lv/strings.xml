@@ -66,11 +66,28 @@
     <string name="notification__install_success__title">%1$s ir atjaunināts</string>
     <string name="app_installer__installed_app_has_invalid_signature">Uzstādītā lietotne NAV pārbaudīta</string>
     <string name="installed_application_is_verified">Uzstādītā lietotne ir pārbaudīta</string>
-    <string name="installed_version">Uzstādīts: %1$s</string>
+    <string name="installed_version">Uzstādīta: %1$s</string>
     <string name="kiwi__description">Kiwi pārlūkprogramma ir paredzēta interneta sērfošanai, ziņu lasīšanai, video skatīšanai un mūzikas klausīšanai bez kaitinošiem elementiem.</string>
     <string name="kiwi__title">Kiwi Browser Next</string>
     <string name="lockwise__eol_reason">Mozilla pārtrauca atbalstu 2021. gada decembrī. Lūdzu, izmantojiet citu paroļu pārvaldnieku.</string>
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded"><u>Pārsniegts GitHub-API ierobežojums. Mēģiniet vēlreiz pēc stundas.</u></string>
     <string name="main_activity__no_unmetered_network">Nav bezmaksas tīkla</string>
+    <string name="app_description">Privātuma orientētas pārlūkprogrammas atjauninātājs</string>
+    <string name="ok">Labi</string>
+    <string name="running_downloads_dialog__title">Notiek lejupielādes</string>
+    <string name="ffupdater__different_signature_message">Šī FFUpdater lietotnes versija satur F-Droid parakstu, tāpēc tikai F-Droid var izplatīt atjauninājumus. Lai ātrāk saņemtu jaunāko versiju, atinstalējiet pašreiz uzstādīto FFUpdater un uzstādiet versiju ar izstrādātāja parakstu. Izmantojot šo versiju, FFUpdater var atjaunināt sevi, negaidot F-Droid versijas relīzi.</string>
+    <string name="cardview_dialog__hide">Paslēpt</string>
+    <string name="cardview_dialog__different_signature">FFUpdater nevar atjaunināt šo lietotni, jo APK paraksts ir atšķirīgs. To var novērst, atinstalējot lietotni un atkārtoti uzstādot to ar FFUpdater. Taču visi lietotnes dati tiks izdzēsti. Tāpēc pirms šīs darbības veikšanas neaizmirstiet dublēt lietotnes datus.</string>
+    <string name="fairemail__warning">- Atjauninot FairEmail uzstādītu izmantojot Google Play veikalu ar FFUpdater, var rasties problēmas, piemēram, nedarboties OAuth/Google Mail autorizācija. Nelūdziet FairEmail autoram (izstrādātājam) palīdzību saistībā ar problēmām, ko izraisa FFUpdater.</string>
+    <string name="running_downloads_dialog__yes">Jā</string>
+    <string name="running_downloads_dialog__negative">Nē, nelejupielādēt</string>
+    <string name="duckduckgo_android__warning">- DuckDuckGo izmanto sistēmas tīmekļa skatu (WebView), kas balstās uz Chrome, lai renderētu tīmekļa vietnes.
+\n- Bija strīds, ka ne visi Microsoft sīkfaili tika bloķēti, taču tas ir novērsts.</string>
+    <string name="cardview_dialog__exit">Aizvērt</string>
+    <string name="cardview_dialog__install">Uzstādīt jaunāko versiju</string>
+    <string name="fairemail__title">FairEmail</string>
+    <string name="fairemail__description">Pilnvērtīga, atvērta un privāta e-pasta lietotne</string>
+    <string name="cardview_dialog__warnings_label">Brīdinājumi:</string>
+    <string name="running_downloads_dialog__message">Pašlaik lietotne fonā lejupielādē atjauninājumus. Vai vēlaties sākt jaunu lejupielādi, kas var aizņemt ilgāku laiku?</string>
 </resources>
