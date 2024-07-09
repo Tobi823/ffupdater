@@ -1,0 +1,8 @@
+Versioon 79.2.4 (174)
+- Tänud nortiole for olekuriba värvi jaos kasutatava primaryColor meetodi korrastamise eest (Tobi823/ffupdater#609)
+- Tänud Andrew Gunnersonile (chenxiaolong) uue rakenduse paigaldamisel uue "update ownership" seadistuse implementatsiooni eest (Tobi823/ffupdater#591)
+- Tänud tõlkijatele Weblate'ist: Priit Jõerüüt, Cirnos, Coool (github.com/Coool), Retrial, Flavio F. M., gallegonovato, Scrambled777, 大王叫我来巡山, Kazushi Hayama, Giovanni Donisi, Kirill Isakov, 109247019824
+- Enam FFUpdater ei kontrolli uuendusi ega laadi neid alla, kui energiasäästurežiim on sisselülitatud
+- Me enam ei kasuta OkHttp meetodit võrgupäringute vastuste puhverdamiseks, selle asemel on oma andekogu
+- Parandasime allalaadimise aegumist suurendades OkHttp meetodi aegumise läve
+- Kui WorkManager pole käivitatud, siis proovime seda teha (Tobi823/ffupdater#586)
