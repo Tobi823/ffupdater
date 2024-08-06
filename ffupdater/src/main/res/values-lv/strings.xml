@@ -32,7 +32,7 @@
     <string name="download_activity__sha_256_certificate_fingerprint">SHA-256 sertifikāta pirksta nospiedums:</string>
     <string name="notification__download_error__descr">Atjauninājuma %1$s fona lejupielāde neizdevās. Ja tas notiek bieži, droši ziņojiet problēmu notabug.org, GitHub vai GitLab.</string>
     <string name="notification__eol_apps__channel_description">Paziņojumu kanāls novecojušu lietotņu brīdinājumiem.</string>
-    <string name="firefox_beta__title">Firefox priekš Android Beta</string>
+    <string name="firefox_beta__title">Firefox Beta</string>
     <string name="firefox_beta__warning">- Šī lietotne ir paredzēta izstrādātājiem un testētājiem. Tajā var būt dažādas kļūdas, kas var ietekmēt jūsu ikdienas interneta sērfošanas pieredzi.</string>
     <string name="download_activity__delete_cache_button_text">Iztīrīt kešatmiņu</string>
     <string name="download_activity__delete_cache_explanation">Ja domājat, ka FFUpdater ir kļūdaini saglabājis lietotnes atjauninājumu kešatmiņā vai vienkārši vēlaties atbrīvot vietu, noklikšķiniet uz \"Iztīrīt kešatmiņu\" pogas, lai izdzēstu lejupielādēto failu.</string>
@@ -120,4 +120,6 @@
 \nIzmēģiniet jaunākās funkcijas un sniedziet jūsu agrīnās atsauksmes: https://brave.com/msupport
 \nVarat uzstādīt Brave Nightly līdzās ikdienas stabilajai Brave Android versijai.</string>
     <string name="bromite__description">Bromite mērķis ir nodrošināt netraucētu tīmekļa pārlūkošanas pieredzi bez privātumu aizskarošām funkcijām un ar ātru reklāmu bloķēšanas programmu. Tiek veiktas minimālas lietotāja saskarnes izmaiņas, lai palīdzētu ierobežot ideju \"pārlūkprogramma kā reklāmas platforma\".</string>
+    <string name="firefox_beta__description">Firefox pārlūkprogramma Android ierīcēm pēc noklusējuma ir privāts un neticami ātrs pārlūks. Tūkstošiem tiešsaistes izsekotāju izseko jūs katru dienu, apkopojot informāciju par jūsu tiešsaistes dzīvi un palēninot jūsu darba efektivitāti. Firefox pēc noklusējuma bloķē vairāk nekā 2000 šādus izsekotājus un ļauj uzstādīt reklāmu bloķēšanas papildinājumus, ja vēlaties vēl vairāk pielāgot pārlūku savām vēlmēm. Izmantojot Firefox, jūs iegūsit pelnīto drošību, nepieciešamo darba efektivitāti un veiktspēju privātā mobilajā pārlūkā.</string>
+    <string name="firefox_klar__description">Firefox Klar ir paredzēts Vācijas, Austrijas un Šveices iedzīvotājiem, taču to var izmantot jebkuras citas valsts iedzīvotāji. Tas ir ļoti līdzīgs Firefox Focus, taču nosaukums ir mainīts vāciski runājošajās valstīs, lai izvairītos no sajaukšanas ar Hubert Burda Media Group žurnālu Focus. Atšķirībā no Firefox Focus, Firefox Klar telemetrija pēc noklusējuma ir atspējota stingro Vācijas privātuma likumu dēļ.</string>
 </resources>
