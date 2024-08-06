@@ -23,7 +23,7 @@
     <string name="notification__eol_apps__title">Uzstādītas novecojušas lietotnes</string>
     <string name="notification__error__channel_name">Fona kļūdas</string>
     <string name="brave_nightly__title">Brave pārlūkprogramma (Ik nakts)</string>
-    <string name="bromite__warning">- Bromite izmanto Google Chrome tehnisko pamatu un tādējādi netieši atbalsta Chromium renderēšanas dzinēja monopolstāvokli.</string>
+    <string name="bromite__warning">- Bromite izmanto Google Chrome tehnisko bāzi un tādējādi netieši atbalsta Chromium renderēšanas dzinēja monopolstāvokli.</string>
     <string name="crash_report__explain_text__uncaught_throwable">Diemžēl FFUpdater pēdējo reizi avarēja šīs kļūdas dēļ. Lūdzu, iesniedziet avārijas atskaiti vietnē notabug.org, GitHub vai GitLab. Nokopējiet avārijas atskaiti no starpliktuves ziņojumā un iekļaujiet aprakstu, kā panākt konkrēto problēmu.</string>
     <string name="download_activity__too_low_memory_title">Maz vietas krātuvē</string>
     <string name="notification__download_error__channel_descr">Parādas, kad fona atjauninājumu lejupielāde neizdodas.</string>
@@ -109,4 +109,15 @@
     <string name="firefox_nightly__title">Firefox nakts relīzes</string>
     <string name="main_activity__temporary_network_issue"><u>Īslaicīga tīkla problēma. Lūdzu, mēģiniet vēlreiz vēlāk.</u></string>
     <string name="cromite__title">Cromite</string>
+    <string name="brave_beta__description">Laipni lūdzam Brave Beta Android ierīcēm!
+\nIzmēģiniet jaunākās funkcijas un sniedziet jūsu agrīnās atsauksmes: https://brave.com/msupport
+\nVarat uzstādīt Brave Beta līdzās ikdienas stabilajai Brave Android versijai.</string>
+    <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
+    <string name="notification__error__channel_descr">Rādīt fona atjauninājumu pārbaudītāja kļūdas</string>
+    <string name="notification__error__title">Atjauninājumu fona pārbaude neizdevās</string>
+    <string name="brave__description">Sērfojiet internetu konfidenciāli bez maksas! Brave ir ātra, droša un privāta bezmaksas pārlūkprogramma ar iebūvētu trešās puses reklāmu un uznirstošo logu bloķētāju. Tas pasargā jūs no reklāmu izsekošanas, ļaunprātīgas programmatūras infekcijām un uznirstošajiem logiem.</string>
+    <string name="brave_nightly__description">Laipni lūdzam Brave Nightly (Developer) Android ierīcēm!
+\nIzmēģiniet jaunākās funkcijas un sniedziet jūsu agrīnās atsauksmes: https://brave.com/msupport
+\nVarat uzstādīt Brave Nightly līdzās ikdienas stabilajai Brave Android versijai.</string>
+    <string name="bromite__description">Bromite mērķis ir nodrošināt netraucētu tīmekļa pārlūkošanas pieredzi bez privātumu aizskarošām funkcijām un ar ātru reklāmu bloķēšanas programmu. Tiek veiktas minimālas lietotāja saskarnes izmaiņas, lai palīdzētu ierobežot ideju \"pārlūkprogramma kā reklāmas platforma\".</string>
 </resources>
