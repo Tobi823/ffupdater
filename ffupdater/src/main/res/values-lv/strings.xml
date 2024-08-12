@@ -24,7 +24,7 @@
     <string name="notification__error__channel_name">Fona kļūdas</string>
     <string name="brave_nightly__title">Brave pārlūkprogramma (Ik nakts)</string>
     <string name="bromite__warning">- Bromite izmanto Google Chrome tehnisko bāzi un tādējādi netieši atbalsta Chromium renderēšanas dzinēja monopolstāvokli.</string>
-    <string name="crash_report__explain_text__uncaught_throwable">Diemžēl FFUpdater pēdējo reizi avarēja šīs kļūdas dēļ. Lūdzu, iesniedziet avārijas atskaiti vietnē notabug.org, GitHub vai GitLab. Nokopējiet avārijas atskaiti no starpliktuves ziņojumā un iekļaujiet aprakstu, kā panākt konkrēto problēmu.</string>
+    <string name="crash_report__explain_text__uncaught_throwable">Diemžēl FFUpdater pēdējo reizi avarēja šīs kļūdas dēļ. Lūdzu, ziņojiet par problēmu vietnē notabug.org, GitHub vai GitLab. Lūdzu, neaizmirstiet pievienot avārijas atskaiti no starpliktuves un aprakstu, kā iegūt konkrēto problēmu.</string>
     <string name="download_activity__too_low_memory_title">Maz vietas krātuvē</string>
     <string name="notification__download_error__channel_descr">Parādas, kad fona atjauninājumu lejupielāde neizdodas.</string>
     <string name="notification__download_error__channel_name">Paziņojums par fona lejupielādes kļūdām</string>
@@ -45,7 +45,7 @@
     <string name="download_activity__you_can_now_close_this_window">Tagad varat aizvērt šo logu</string>
     <string name="download_activity__label">Lejupielādēt lietotni</string>
     <string name="notification__install_success__text">Lietotne tika veiksmīgi atjaunināta fonā.</string>
-    <string name="notification__download_error__text">Atjauninājuma %1$s fona lejupielāde neizdevās. Ja šī kļūda rodas bieži, noklikšķiniet šeit, lai skatītu kļūdas atskaiti.</string>
+    <string name="notification__download_error__text">Atjauninājuma %1$s fona lejupielāde neizdevās. Ja tas atkārtojas bieži, noklikšķiniet šeit, lai skatītu kļūdas atskaiti.</string>
     <string name="firefox_focus__description">Šī ir Firefox pārlūkprogrammas modifikācija, kuras mērķis ir uzlabot konfidencialitātes līmeni.</string>
     <string name="firefox_focus__title">Firefox Focus</string>
     <string name="firefox_klar__title">Firefox Klar</string>
@@ -92,7 +92,7 @@
     <string name="running_downloads_dialog__message">Pašlaik lietotne fonā lejupielādē atjauninājumus. Vai vēlaties sākt jaunu lejupielādi, kas var aizņemt ilgāku laiku?</string>
     <string name="request_installation_permission_dialog__abort">Pārtraukt</string>
     <string name="foreground__hidden_apps__title">Paslēptās lietotnes</string>
-    <string name="install_activity__download_file_failed__crash_text">Lejupielādes laikā radās šāda kļūda. Ja tas notiek ļoti bieži, lūdzu, ziņojiet par problēmu vietnē notabug.org, GitHub vai GitLab. Lūdzu, neaizmirstiet pievienot kļūdu atskaiti no starpliktuves.</string>
+    <string name="install_activity__download_file_failed__crash_text">Lejupielādes laikā radās šāda kļūda. Ja tā atkārtojas ļoti bieži, lūdzu, ziņojiet par problēmu vietnē notabug.org, GitHub vai GitLab. Lūdzu, neaizmirstiet pievienot avārijas atskaiti no starpliktuves.</string>
     <string name="request_installation_permission_dialog__grant_permission">Dot atļauju</string>
     <string name="request_installation_permission_dialog__message">FFUpdater trūkst atļauja uzstādīt un atjaunināt lietotnes. Jums ir jādod šī atļauja, pretējā gadījumā FFUpdater nedarbosies.</string>
     <string name="settings_activity__label">Iestatījumi</string>
@@ -122,4 +122,11 @@
     <string name="bromite__description">Bromite mērķis ir nodrošināt netraucētu tīmekļa pārlūkošanas pieredzi bez privātumu aizskarošām funkcijām un ar ātru reklāmu bloķēšanas programmu. Tiek veiktas minimālas lietotāja saskarnes izmaiņas, lai palīdzētu ierobežot ideju \"pārlūkprogramma kā reklāmas platforma\".</string>
     <string name="firefox_beta__description">Firefox pārlūkprogramma Android ierīcēm pēc noklusējuma ir privāts un neticami ātrs pārlūks. Tūkstošiem tiešsaistes izsekotāju izseko jūs katru dienu, apkopojot informāciju par jūsu tiešsaistes dzīvi un palēninot jūsu darba efektivitāti. Firefox pēc noklusējuma bloķē vairāk nekā 2000 šādus izsekotājus un ļauj uzstādīt reklāmu bloķēšanas papildinājumus, ja vēlaties vēl vairāk pielāgot pārlūku savām vēlmēm. Izmantojot Firefox, jūs iegūsit pelnīto drošību, nepieciešamo darba efektivitāti un veiktspēju privātā mobilajā pārlūkā.</string>
     <string name="firefox_klar__description">Firefox Klar ir paredzēts Vācijas, Austrijas un Šveices iedzīvotājiem, taču to var izmantot jebkuras citas valsts iedzīvotāji. Tas ir ļoti līdzīgs Firefox Focus, taču nosaukums ir mainīts vāciski runājošajās valstīs, lai izvairītos no sajaukšanas ar Hubert Burda Media Group žurnālu Focus. Atšķirībā no Firefox Focus, Firefox Klar telemetrija pēc noklusējuma ir atspējota stingro Vācijas privātuma likumu dēļ.</string>
+    <string name="firefox_release__description">Firefox pārlūkprogramma Android ierīcēm pēc noklusējuma ir privāts un neticami ātrs pārlūks. Tūkstošiem tiešsaistes izsekotāju izseko jūs katru dienu, apkopojot informāciju par jūsu tiešsaistes dzīvi un palēninot jūsu darba efektivitāti. Firefox pēc noklusējuma bloķē vairāk nekā 2000 šādus izsekotājus un ļauj uzstādīt reklāmu bloķēšanas papildinājumus, ja vēlaties vēl vairāk pielāgot pārlūku savām vēlmēm. Izmantojot Firefox, jūs iegūsit pelnīto drošību, nepieciešamo darba efektivitāti un veiktspēju privātā mobilajā pārlūkā.</string>
+    <string name="crash_report_activity__label">Avārijas atskaites ziņojums</string>
+    <string name="notification__network_error__text">Šai kļūdai vajadzētu rasties tikai reizēm. Tomēr, ja tas notiek bieži, jums par to jāziņo. Noklikšķiniet šeit, lai skatītu detalizētu kļūdas ziņojumu.</string>
+    <string name="notification__error__text">Lūdzu, ziņojiet par šo kļūdu. Noklikšķiniet, lai skatītu kļūdu ziņojumu.</string>
+    <string name="crash_report__explain_text__download_activity_fetching_url">Izgūstot lejupielādes URL vietni, radās šāda kļūda. Ja tā atkārtojas ļoti bieži, ziņojiet par problēmu vietnē notabug.org, GitHub vai GitLab. Lūdzu, neaizmirstiet pievienot avārijas atskaiti no starpliktuves un aprakstu, kā iegūt kļūdu.</string>
+    <string name="crash_report__explain_text__download_activity_install_file">Instalēšanas laikā radās kļūda. Ja tā atkārtojas bieži, lūdzu, ziņojiet par problēmu vietnē notabug.org, GitHub vai GitLab. Lūdzu, neaizmirstiet pievienot avārijas atskaiti no starpliktuves.</string>
+    <string name="crash_report__explain_text__download_activity_update_check">Pārbaudot atjauninājumus galvenajā lietotnes logā radās šāda kļūda. Ja tā atkārtojas bieži, ziņojiet par problēmu vietnē notabug.org, GitHub vai GitLab. Lūdzu, neaizmirstiet pievienot avārijas atskaiti no starpliktuves un aprakstu, kā iegūt kļūdu.</string>
 </resources>
