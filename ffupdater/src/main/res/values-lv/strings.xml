@@ -119,7 +119,7 @@
     <string name="brave_nightly__description">Laipni lūdzam Brave Nightly (Developer) Android ierīcēm!
 \nIzmēģiniet jaunākās funkcijas un sniedziet jūsu agrīnās atsauksmes: https://brave.com/msupport
 \nVarat uzstādīt Brave Nightly līdzās ikdienas stabilajai Brave Android versijai.</string>
-    <string name="bromite__description">Bromite mērķis ir nodrošināt netraucētu tīmekļa pārlūkošanas pieredzi bez privātumu aizskarošām funkcijām un ar ātru reklāmu bloķēšanas programmu. Tiek veiktas minimālas lietotāja saskarnes izmaiņas, lai palīdzētu ierobežot ideju \"pārlūkprogramma kā reklāmas platforma\".</string>
+    <string name="bromite__description">Bromite mērķis ir nodrošināt netraucētu tīmekļa pārlūkošanas pieredzi bez privātumu aizskarošām funkcijām un ar ātru reklāmu bloķēšanas dzinēju. Tiek veiktas minimālas lietotāja saskarnes izmaiņas, lai palīdzētu ierobežot ideju \"pārlūks kā reklāmas platforma\".</string>
     <string name="firefox_beta__description">Firefox pārlūkprogramma Android ierīcēm pēc noklusējuma ir privāts un neticami ātrs pārlūks. Tūkstošiem tiešsaistes izsekotāju izseko jūs katru dienu, apkopojot informāciju par jūsu tiešsaistes dzīvi un palēninot jūsu darba efektivitāti. Firefox pēc noklusējuma bloķē vairāk nekā 2000 šādus izsekotājus un ļauj uzstādīt reklāmu bloķēšanas papildinājumus, ja vēlaties vēl vairāk pielāgot pārlūku savām vēlmēm. Izmantojot Firefox, jūs iegūsit pelnīto drošību, nepieciešamo darba efektivitāti un veiktspēju privātā mobilajā pārlūkā.</string>
     <string name="firefox_klar__description">Firefox Klar ir paredzēts Vācijas, Austrijas un Šveices iedzīvotājiem, taču to var izmantot jebkuras citas valsts iedzīvotāji. Tas ir ļoti līdzīgs Firefox Focus, taču nosaukums ir mainīts vāciski runājošajās valstīs, lai izvairītos no sajaukšanas ar Hubert Burda Media Group žurnālu Focus. Atšķirībā no Firefox Focus, Firefox Klar telemetrija pēc noklusējuma ir atspējota stingro Vācijas privātuma likumu dēļ.</string>
     <string name="firefox_release__description">Firefox pārlūkprogramma Android ierīcēm pēc noklusējuma ir privāts un neticami ātrs pārlūks. Tūkstošiem tiešsaistes izsekotāju izseko jūs katru dienu, apkopojot informāciju par jūsu tiešsaistes dzīvi un palēninot jūsu darba efektivitāti. Firefox pēc noklusējuma bloķē vairāk nekā 2000 šādus izsekotājus un ļauj uzstādīt reklāmu bloķēšanas papildinājumus, ja vēlaties vēl vairāk pielāgot pārlūku savām vēlmēm. Izmantojot Firefox, jūs iegūsit pelnīto drošību, nepieciešamo darba efektivitāti un veiktspēju privātā mobilajā pārlūkā.</string>
@@ -259,4 +259,30 @@
     <string name="update_notification__title">Pieejams %1$s atjauninājums</string>
     <string name="add_app_activity__title_other_applications">Citas lietotnes</string>
     <string name="add_app_activity__add_new_application">Pievienot jaunu lietotni</string>
+    <string name="fennecfdroid__title">Fennec F-Droid</string>
+    <string name="chromium__warning">- Chromium izmanto Google Chrome tehnisko bāzi un tādējādi netieši atbalsta Chromium renderēšanas dzinēja monopolstāvokli.</string>
+    <string name="mulch__title">Mulch</string>
+    <string name="mulch__warning">- Mulch izmanto Google Chrome tehnisko bāzi un tādējādi netieši atbalsta Chromium renderēšanas dzinēja monopolstāvokli.</string>
+    <string name="network__dns_provider__title">DNS iestatījumi</string>
+    <string name="chromium__title">Chromium</string>
+    <string name="settings__background__update_check__when_device_idle__title">Pārbaudīt atjauninājumus tikai tad, kad ierīce ir dīkstāvē</string>
+    <string name="settings__device_category__title">Ierīce</string>
+    <string name="settings__network_category__title">Tīkls</string>
+    <string name="fennecfdroid__warning">FFUpdater lejupielādē failus no F-Droid serveriem un tāpēc nav ātrāks.</string>
+    <string name="device__prefer_32bit_apks__summary">Iespējojiet, ja ierīcē ir maz RAM atmiņas. Šajā gadījumā FFUpdater izmantos 32-bitu APK failus, kuriem parasti ir nepieciešams mazāk RAM atmiņas.</string>
+    <string name="network__proxy__title">Starpniekserveris</string>
+    <string name="network__dns_provider__digital_society_ch">DNS, izmantojot HTTPS: Šveices digitālā sabiedrība</string>
+    <string name="network__dns_provider__system">Izmantot sistēmas DNS</string>
+    <string name="installer__method__shizuku_not_installed">Shizuku nav uzstādīts!</string>
+    <string name="installer__method__root_not_granted">Saknes (root) tiesības nav piešķirta!</string>
+    <string name="device__prefer_32bit_apks__title">Dot priekšroku 32-bitu APK failiem</string>
+    <string name="network__dns_provider__no">Nav DNS (tikai testēšanai)</string>
+    <string name="network__dns_provider__custom">Pielāgots DNS serveris, izmantojot HTTPS</string>
+    <string name="network__dns_provider__google">DNS, izmantojot HTTPS: Google</string>
+    <string name="network__dns_provider__cloudflare">DNS, izmantojot HTTPS: Cloudflare</string>
+    <string name="installer__method__root">Saknes (root) uzstādītājs: lietotnes atjaunināšana bez apstiprinājuma dialoga. Šim nolūkam ir nepieciešams uzlauzts telefons ar saknes (root) tiesībām.</string>
+    <string name="settings__background__update_check__when_device_idle__unsupported">Šī opcija ir pieejama tikai Android Marshmallow vai jaunākās versijās.</string>
+    <string name="settings__network__use_cloudflare_mirrors__title">Izmantot Cloudflare spoguļus</string>
+    <string name="network__custom_doh_server__title">Pielāgots DNS serveris, izmantojot HTTPS</string>
+    <string name="network__dns_provider__quad9">DNS, izmantojot HTTPS: Quad9</string>
 </resources>
