@@ -130,7 +130,7 @@
     <string name="crash_report__explain_text__download_activity_install_file">Instalēšanas laikā radās kļūda. Ja tā atkārtojas bieži, lūdzu, ziņojiet par problēmu vietnē notabug.org, GitHub vai GitLab. Lūdzu, neaizmirstiet pievienot avārijas atskaiti no starpliktuves.</string>
     <string name="crash_report__explain_text__download_activity_update_check">Pārbaudot atjauninājumus galvenajā lietotnes logā radās šāda kļūda. Ja tā atkārtojas bieži, ziņojiet par problēmu vietnē notabug.org, GitHub vai GitLab. Lūdzu, neaizmirstiet pievienot avārijas atskaiti no starpliktuves un aprakstu, kā iegūt kļūdu.</string>
     <string name="download_activity__file_uri_exposed_toast">Faila ceļu nevar atklāt citām lietotnēm. Lūdzu, atveriet mapi, izmantojot sev vēlamo failu pārvaldnieku.</string>
-    <string name="tor_browser_alpha__description">Tor Browser - vienīgais oficiālais mobilā telefona pārlūks, ko atbalsta Tor Project izstrādātāji, kuri izplata labāko privātuma un brīvības interneta rīku.
+    <string name="tor_browser_alpha__description">Tor - vienīgais oficiālais mobilā telefona pārlūks, kuru atbalsta Tor Project izstrādātāji, kas izplata labāko tiešsaistes privātuma un brīvības interneta rīku.
 \n
 \nTor Browser VIENMĒR būs bez maksas, kas ir iespējams pateicoties ziedojumiem. Tor Project ir 501©(3) bezpeļņas organizācija, kas atrodas ASV. Lūdzu, apsveriet iespēju veikt ziedojumu jau šodien. Katrs ziedojums ir svarīga: https://donate.torproject.org.
 \n
@@ -209,4 +209,54 @@
     <string name="settings__installer_category__title">Uzstādītājs</string>
     <string name="settings__theme_dark">Tumšs</string>
     <string name="settings__theme_light">Gaišs</string>
+    <string name="mull__description">Šis ir uz privātumu vērsts un deblobbed tīmekļa pārlūks, kuras pamatā ir Mozilla tehnoloģijas. Tas atbalsta daudzas Tor Uplift projektā ieviestās funkcijas, izmantojot iestatījumus no arkenfox-user.js projekta. Ieteicams uzstādīt \'uBlock Origin\' paplašinājumu.</string>
+    <string name="settings__network__trust_user_cas__title">Uzticēties lietotāja pievienotajiem iestādes (CA) sertifikātiem</string>
+    <string name="update_interval__5d">ik pēc 5 dienām</string>
+    <string name="update_interval__2w">ik pēc 2 nedēļām</string>
+    <string name="update_interval__8h">ik pēc 8 stundām</string>
+    <string name="update_interval__6h">ik pēc 6 stundām</string>
+    <string name="vivaldi__title">Vivaldi</string>
+    <string name="tor_browser__description">Tor - vienīgais oficiālais mobilā telefona pārlūks, kuru atbalsta Tor Project izstrādātāji, kas izplata labāko tiešsaistes privātuma un brīvības interneta rīku.</string>
+    <string name="orbot__title">Orbot: Tor Android operētājsistēmai</string>
+    <string name="add_app_activity__title_from_mozilla">No Mozilla</string>
+    <string name="add_app_activity__title_good_privacy_browsers">Labi privātuma pārlūki</string>
+    <string name="add_app_activity__title_better_than_google_chrome">Labāki par Google Chrome</string>
+    <string name="unsupported_abi_dialog__title">Neatbalstīta ierīce</string>
+    <string name="update_interval__30min">ik pēc 30 minūtēm</string>
+    <string name="update_interval__3d">ik pēc 3 dienām</string>
+    <string name="vivaldi__warning">- Vivaldi ir tikai daļēji atvērta izejkoda lietotne.
+\n- Tā arī izmanto Google Chrome tehnisko bāzi un tādējādi netieši atbalsta Chromium renderēšanas dzinēja monopolstāvokli.</string>
+    <string name="ungoogled_chromium__eol_reason">Izstrādātājs rakstīja: \"Es kādu laiku nevarēšu atjaunināt lietotni. Ja iespējams, lūdzu, šajā laikā izmantot kādu no pārlūku [ko atbalsta FFUpdater].\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
+    <string name="tor_browser__title">Tor</string>
+    <string name="add_app_activity__label">Pievienot jaunu lietotni</string>
+    <string name="add_app_activity__title_end_of_live_browser">Izstrādātāju pārtrauktie (bez atbalsta) pārlūki</string>
+    <string name="tor_browser_alpha__title">Tor Alfa</string>
+    <string name="update_interval__2d">ik pēc 2 dienām</string>
+    <string name="update_interval__2h">ik pēc 2 stundām</string>
+    <string name="fennecfdroid__description">Fennec F-Droid ir izstrādāts izmantojot jaunāko Firefox versijas kodu (ar nosaukumu Fenix). Tajā ir noņemti patentētie biti un telemetrija, taču tas joprojām veido savienojumus ar pāris Mozilla un Google tīmekļa pakalpojumiem, kas var izsekot lietotājus.</string>
+    <string name="generic_app_warning__beta_version">- Šī lietotne ir paredzēta izstrādātājiem un testētājiem. Tā var saturēt dažādas kļūdas, kas var ietekmēt jūsu ikdienas sērfošanas pieredzi internetā.</string>
+    <string name="notification__network_error__title">Tīkla kļūda fona darbā</string>
+    <string name="notification__install_error__generic_channel_name">Lietotnes atjaunināšanas kļūmes paziņojums</string>
+    <string name="brave__warning">- Brave izmanto Google Chrome tehnisko bāzi un tādējādi netieši atbalsta Chromium renderēšanas dzinēja monopolstāvokli.
+\n- Sakarā ar to, ka Basic Attention Token BAT atrodas Ethereum blokķēdē, projekts ir saistīts ar kriptovalūtu. Blokķēdēm ir daudz problēmu, un, manuprāt, vajadzētu izvairīties no projektiem saistītiem ar tām.</string>
+    <string name="session_installer__require_user_interaction">Nepieciešama lietotāja iejaukšanās. Vispirms ir jāatjaunina lietotne, izmantojot FFUpdater saskarni. Tikai pēc tam būs pieejami fona atjauninājumi atlasītajai lietotnei.</string>
+    <string name="notification__install_error__channel_name">%1$s atjaunināšanas kļūmes paziņojums</string>
+    <string name="unsupported_abi_dialog__message">Atlasītais pārlūks nav saderīgs ar telefona procesoru. Lūdzu, izvēlieties citu pārlūku.</string>
+    <string name="update_interval__12h">ik pēc 12 stundām</string>
+    <string name="update_interval__15min">ik pēc 15 minūtēm</string>
+    <string name="update_interval__18h">ik pēc 18 stundām</string>
+    <string name="update_interval__1d">katru dienu</string>
+    <string name="update_interval__1h">ik stundu</string>
+    <string name="update_interval__1m">vienreiz mēnesī</string>
+    <string name="update_interval__1w">katru nedēļu</string>
+    <string name="update_interval__4d">ik pēc 4 dienām</string>
+    <string name="update_interval__4h">ik pēc 4 stundām</string>
+    <string name="update_interval__6d">ik pēc 6 dienām</string>
+    <string name="notification__update_available__channel_name">%1$s atjauninājuma paziņojums</string>
+    <string name="update_notification__text">Noklikšķiniet, lai uzstādītu atjauninājumu</string>
+    <string name="mull__title">Mull</string>
+    <string name="notification__update_available__channel_descr">Paziņojumu kanāls par pieejamajiem %1$s atjauninājumiem.</string>
+    <string name="update_notification__title">Pieejams %1$s atjauninājums</string>
+    <string name="add_app_activity__title_other_applications">Citas lietotnes</string>
+    <string name="add_app_activity__add_new_application">Pievienot jaunu lietotni</string>
 </resources>
