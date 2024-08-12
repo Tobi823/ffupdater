@@ -129,4 +129,40 @@
     <string name="crash_report__explain_text__download_activity_fetching_url">Izgūstot lejupielādes URL vietni, radās šāda kļūda. Ja tā atkārtojas ļoti bieži, ziņojiet par problēmu vietnē notabug.org, GitHub vai GitLab. Lūdzu, neaizmirstiet pievienot avārijas atskaiti no starpliktuves un aprakstu, kā iegūt kļūdu.</string>
     <string name="crash_report__explain_text__download_activity_install_file">Instalēšanas laikā radās kļūda. Ja tā atkārtojas bieži, lūdzu, ziņojiet par problēmu vietnē notabug.org, GitHub vai GitLab. Lūdzu, neaizmirstiet pievienot avārijas atskaiti no starpliktuves.</string>
     <string name="crash_report__explain_text__download_activity_update_check">Pārbaudot atjauninājumus galvenajā lietotnes logā radās šāda kļūda. Ja tā atkārtojas bieži, ziņojiet par problēmu vietnē notabug.org, GitHub vai GitLab. Lūdzu, neaizmirstiet pievienot avārijas atskaiti no starpliktuves un aprakstu, kā iegūt kļūdu.</string>
+    <string name="download_activity__file_uri_exposed_toast">Faila ceļu nevar atklāt citām lietotnēm. Lūdzu, atveriet mapi, izmantojot sev vēlamo failu pārvaldnieku.</string>
+    <string name="tor_browser_alpha__description">Tor Browser - vienīgais oficiālais mobilā telefona pārlūks, ko atbalsta Tor Project izstrādātāji, kuri izplata labāko privātuma un brīvības interneta rīku.
+\n
+\nTor Browser VIENMĒR būs bez maksas, kas ir iespējams pateicoties ziedojumiem. Tor Project ir 501©(3) bezpeļņas organizācija, kas atrodas ASV. Lūdzu, apsveriet iespēju veikt ziedojumu jau šodien. Katrs ziedojums ir svarīga: https://donate.torproject.org.
+\n
+\nZemāk pieminētajā vietnē uzziniet, kā ziņot par kļūdām un sniegt atsauksmes https://support.torproject.org/misc/bug-or-feedback/!</string>
+    <string name="thorium__description">Ātrākais pārlūks uz Zemes. Chromium atzars, kas paredzēta Linux operētājsistēmai, kas nosaukts radioaktīvā elementa Nr. 90 vārdā.</string>
+    <string name="notification__bg_update_check__unreliable_execution__text">Tas var būt saistīts ar jūsu ierīces akumulatora vai veiktspējas iestatījumiem. Noklikšķiniet uz šī paziņojuma, lai atspējotu akumulatora optimizāciju šai lietotnei.</string>
+    <string name="mulch_wv__title">Mulch System WebView</string>
+    <string name="installer__method__native">Iebūvētais uzstādītājs: rezerves variants, ja sesijas uzstādīšanas lietotne nedarbojas jūsu telefonā.</string>
+    <string name="add_app_activity__title_based_on_firefox">Balstīts uz Firefox</string>
+    <string name="foreground__hidden_apps__summary">Paslēptās lietotnes nebūs redzamas galvenajā izvēlnē un netiks atjauninātas automātiski.</string>
+    <string name="download_activity__different_installer_info__text">Ja uzstādīšana bieži neizdodas, mēģiniet iestatījumos iestatīt \'Iebūvētais uzstādītājs\'.</string>
+    <string name="download_activity__github_rate_limit_exceeded">Pārsniegts GitHub-API likmes ierobežojums. Lūdzu, mēģiniet lejupielādēt vēlreiz pēc stundas.</string>
+    <string name="firefox_focus_beta__title">Firefox Focus Beta</string>
+    <string name="duckduckgo_android__title">DuckDuckGo</string>
+    <string name="crash_report__report_is_copied_to_clipboard">Avārijas atskaite iekopēta starpliktuvē</string>
+    <string name="notification__uncaught_exception__channel_description">Negaidītas kļūdas, kas izraisa FFUpdater avāriju.</string>
+    <string name="app_installer__failed_to_validate_signature_of_download">Lejupielādes parakstu neizdevās pārbaudīt.</string>
+    <string name="app_installer__failed_to_verify_signature_of_installed_app">Neizdevās pārbaudīt uzstādīto lietotni.</string>
+    <string name="thorium__warning">- Thorium izmanto Google Chrome tehnisko bāzi un tādējādi netieši atbalsta Chromium renderēšanas dzinēja monopolstāvokli.</string>
+    <string name="cromite__warning">- Cromite izmanto Google Chrome tehnisko bāzi un tādējādi netieši atbalsta Chromium renderēšanas dzinēja monopolstāvokli.</string>
+    <string name="privacy_browser__title">Privātuma pārlūks</string>
+    <string name="privacy_browser__warning">FFUpdater lejupielādē failus no F-Droid serveriem un tāpēc nav ātrāks.</string>
+    <string name="notification__uncaught_exception__text">Noklikšķiniet, lai skatītu kļūdu ziņojumu.</string>
+    <string name="cardview_dialog__not_installed_by_ffupdater">Šī lietotne nav uzstādīta vai atjaunināta pateicoties FFUpdater. Lai izvairītos no konfliktiem ar citām lietotnēm, automātiskā atjaunināšana ir atspējota.</string>
+    <string name="cardview_dialog__eol">Šo lietotni vairs nevajadzētu izmantot:</string>
+    <string name="k9mail__description">Pilnvērtīgs e-pasta klients</string>
+    <string name="cardview_dialog__auto_bg_update">Automātiskā atjaunināšana fonā</string>
+    <string name="thorium__title">Thorium</string>
+    <string name="main_activity__unexpected_error">Radās neparedzēta kļūda.</string>
+    <string name="cromite__description">Cromite ir Chromium atzars, kuras pamatā ir Bromite kods ar iebūvētu reklāmas bloķētāju un privātuma atbalstu.</string>
+    <string name="notification__uncaught_exception__title">FFUpdater avarēja</string>
+    <string name="notification__bg_update_check__unreliable_execution__title">Fona atjauninājumu pārbaude nav veikta uzticami</string>
+    <string name="notification__bg_update_check__unreliable_execution__channel_description">Brīdinājums par neuzticamu fona atjauninājumu pārbaudi</string>
+    <string name="notification__bg_update_check__unreliable_execution__channel_name">Fona atjauninājumu pārbaude nav izpildīta</string>
 </resources>
