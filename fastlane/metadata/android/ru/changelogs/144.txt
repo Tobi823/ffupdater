@@ -1,4 +1,4 @@
-* Спасибо авторам Weblate: Kazushi Hayama, Retrial, nautilusx, Juraj Motuz, gallegonovato, Alexthegib, markov, Priit Jõerüüt, 109247019824, Eryk Michalak, Giovanni Donisi и Oğuz Ersen
+* Благодарим за вклады на Weblate от Kazushi Hayama, Retrial, nautilusx, Juraj Motuz, gallegonovato, Alexthegib, markov, Priit Jõerüüt, 109247019824, Eryk Michalak, Giovanni Donisi и Oğuz Ersen
 * исправление Firefox Nightly
 * сократить использование сети FFUpdater за счет улучшения сетевого кэша
 * правильно настроено Proguard (программное обеспечение для сжатия размера загрузки и установки FFUpdater)

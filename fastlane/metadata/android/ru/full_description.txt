@@ -1,19 +1,23 @@
 Скачивает и обновляет следующие браузеры:
 
 Браузеры от Mozilla или основанные на Firefox:
-- Firefox Browser, Firefox для Android Beta, Firefox Nightly
-- Firefox Focus, Firefox Klar
+- Fennec F-Droid
+- Firefox Browser, Firefox для Android Бета, Firefox Nightly
+- Firefox Focus, Firefox Focus Бета, Firefox Klar
 - Iceraven
 - Mull Browser
-- Tor Browser
+- Tor Browser, Tor Browser Альфа
 
 Хорошие браузеры для обеспечения конфиденциальности:
 - Bromite, Bromite SystemWebView
+- Mulch, Mulch System WebView
 
 Браузеры, которые лучше, чем Google Chrome:
-- Brave Browser, Brave Browser (Beta), Brave Browser (Nightly)
+- Brave Browser, Brave Browser Бета, Brave Browser (Nightly)
 - Chromium
+- DuckDuckGo Browser
 - Kiwi Browser Next
+- Privacy Browser (F-Droid)
 - Thorium
 - Vivaldi
 
