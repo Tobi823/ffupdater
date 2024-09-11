@@ -22,11 +22,11 @@ interface InstalledAppStatusFetcher : InstalledVersionFetcher, LatestVersionFetc
     }
 
     suspend fun findStatusOrUseRecentCache(context: Context): InstalledAppStatus {
-        return findStatusAndCacheIt(context, LatestVersionCache.getRecentCached(app))
+        return findStatusAndCacheIt(context, LatestVersionCache.getRecent(app))
     }
 
     suspend fun findStatusOrUseOldCache(context: Context): InstalledAppStatus {
-        return findStatusAndCacheIt(context, LatestVersionCache.getOldCached(app))
+        return findStatusAndCacheIt(context, LatestVersionCache.getOld(app))
     }
 
     private suspend fun findStatusAndCacheIt(
@@ -42,7 +42,7 @@ interface InstalledAppStatusFetcher : InstalledVersionFetcher, LatestVersionFetc
             val (latestVersion, duration) = MeasureExecutionTime.measureMs {
                 fetchLatestUpdate(context.applicationContext)
             }
-            LatestVersionCache.storeLatestVersion(app, latestVersion)
+            LatestVersionCache.cache(app, latestVersion)
             Log.i(LOG_TAG, "InstalledAppStatusFetcher: Found ${app.name} ${latestVersion.version} (${duration}ms).")
             return convertToInstalledAppStatus(context, latestVersion)
         } catch (e: NetworkException) {
@@ -61,12 +61,9 @@ interface InstalledAppStatusFetcher : InstalledVersionFetcher, LatestVersionFetc
         context: Context,
         latestVersion: LatestVersion,
     ): InstalledAppStatus {
-        return InstalledAppStatus(
-            app = app,
-            latestVersion = latestVersion,
-            isUpdateAvailable = isInstalledAppOutdated(context.applicationContext, latestVersion),
-            displayVersion = getDisplayAvailableVersion(context.applicationContext, latestVersion)
-        )
+        return InstalledAppStatus(app = app, latestVersion = latestVersion,
+                isUpdateAvailable = isInstalledAppOutdated(context.applicationContext, latestVersion),
+                displayVersion = getDisplayAvailableVersion(context.applicationContext, latestVersion))
     }
 
     suspend fun appWasInstalledCallback(context: Context, available: InstalledAppStatus) {

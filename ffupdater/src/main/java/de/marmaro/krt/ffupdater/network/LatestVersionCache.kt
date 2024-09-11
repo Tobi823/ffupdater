@@ -15,20 +15,20 @@ object LatestVersionCache {
     private val RECENT_CACHE_THRESHOLD = Duration.ofHours(1)
     private val OLD_CACHE_THRESHOLD = Duration.ofDays(2)
 
-    fun storeLatestVersion(app: App, latestVersion: LatestVersion) {
+    fun cache(app: App, latestVersion: LatestVersion) {
         dataCache[app] = latestVersion
         cacheAge[app] = LocalDateTime.now()
     }
 
-    fun getRecentCached(app: App): LatestVersion? {
+    fun getRecent(app: App): LatestVersion? {
         return getCached(app, RECENT_CACHE_THRESHOLD)
     }
 
-    fun getOldCached(app: App): LatestVersion? {
+    fun getOld(app: App): LatestVersion? {
         return getCached(app, OLD_CACHE_THRESHOLD)
     }
 
-    fun deleteCache() {
+    fun clear() {
         dataCache.clear()
         cacheAge.clear()
     }

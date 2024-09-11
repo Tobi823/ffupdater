@@ -109,7 +109,7 @@ class MainActivity : AppCompatActivity() {
     private var userRefreshAppList = OnRefreshListener {
         lifecycleScope.launch(Dispatchers.Main) {
             InstalledAppsCache.updateCache(applicationContext)
-            LatestVersionCache.deleteCache()
+            LatestVersionCache.clear()
             showInstalledApps()
         }
     }
