@@ -295,4 +295,12 @@
     <string name="lockwise__description">PIEKĻUVE PAROLĒM JUMS UN TIKAI JUMS
 \n
 \nDroši izsekojiet savas Firefox paroles un piekļūstiet tām jebkurā vietā. Ātri atvērt jebkuru vietni no lietotnes, lai piekļūtu saviem kontiem.</string>
+    <string name="kiwi__warning">- Kiwi ir tikai daļēji atvērtā koda lietotne.
+\n- Kiwi izmanto Google Chrome tehnisko bāzi un tādējādi netieši atbalsta Chromium renderēšanas dzinēja monopolstāvokli.
+\n- Kiwi nav ideāls privātuma pārlūks, taču tam ir labs papildinājumu atbalsts.
+\n- Pārlūkprogramma gūst peļņu no meklētājprogrammas par katru meklēšanas pieprasījumu, kas veikta Kiwi pārlūkā. Atkarībā no izvēlētās meklētājprogrammas meklēšanas pieprasījumi var tikt nosūtīti caur Kiwibrowser / Kiwisearchservices serveriem.
+\n- Google Ads Kiwi lietotnē var izmantot atrašanās vietas datus, lai rādītu atlasītas reklāmas, taču to var novērst, atspējojot atklāšanas funkciju (Discovery feature) iestatījumos. Taču drīz tas var mainīties. Plašāka informācija pieejama https://privacy.kiwibrowser.org vietnē.</string>
+    <string name="vivaldi__description">Atklājiet pārsteidzoši ātru interneta pārlūku! Vivaldi ir jauna, bezmaksas un privāta tīmekļa pārlūkprogramma, kas izstrādāta, paturot prātā tā elastīgo pielāgojamību. Tā ir aprīkota ar noderīgām funkcijām, tostarp iebūvētu AdBlocker (uznirstošo logu bloķētāju), izsekošanas aizsardzību un privātu vietņu tulkotāju. Pārlūka iespējas, piemēram, pilnvērtīgas darbvirsmas stila cilnes, tumši/gaiši motīvi un izkārtojuma pielāgojamība, palīdz konfigurēt pārlūku pēc jūsu patikas un vēlmēm.</string>
+    <string name="duckduckgo_android__description">DuckDuckGo lietotne nodrošina visplašāko tiešsaistes privātuma aizsardzību vienas pogas nospiešanas attālumā. Tikai ar vienu lejupielādi jūs iegūstat jaunu ikdienas pārlūkprogrammu, kas piedāvā nevainojamu aizsardzību meklēšanas un pārlūkošanas laikā, kā arī piekļuvi saņemto e-pasta ziņojumu un izmantoto lietotņu izsekošanas aizsardzībai. Daudzi no šiem aizsardzības līdzekļiem pēc noklusējuma netiek piedāvāti lielākajā daļā populārāko pārlūku.</string>
+    <string name="bromite_systemwebview__description">SystemWebView pakotne satur Bromite kodola pārlūku/renderēšanas dzinēju un to pašu funkcionalitāti. Tā ļauj iespēju nomainīt noklusējuma pārlūka komponenti visai Android sistēmai.</string>
 </resources>
