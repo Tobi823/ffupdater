@@ -228,7 +228,7 @@
 \n- Tā arī izmanto Google Chrome tehnisko bāzi un tādējādi netieši atbalsta Chromium renderēšanas dzinēja monopolstāvokli.</string>
     <string name="ungoogled_chromium__eol_reason">Izstrādātājs rakstīja: \"Es kādu laiku nevarēšu atjaunināt lietotni. Ja iespējams, lūdzu, šajā laikā izmantot kādu no pārlūku [ko atbalsta FFUpdater].\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
     <string name="tor_browser__title">Tor</string>
-    <string name="add_app_activity__label">Pievienot jaunu lietotni</string>
+    <string name="add_app_activity__label">Pievienot Jaunu Lietotni</string>
     <string name="add_app_activity__title_end_of_live_browser">Izstrādātāju pārtrauktie (bez atbalsta) pārlūki</string>
     <string name="tor_browser_alpha__title">Tor Alfa</string>
     <string name="update_interval__2d">ik pēc 2 dienām</string>
@@ -285,4 +285,14 @@
     <string name="settings__network__use_cloudflare_mirrors__title">Izmantot Cloudflare spoguļus</string>
     <string name="network__custom_doh_server__title">Pielāgots DNS serveris, izmantojot HTTPS</string>
     <string name="network__dns_provider__quad9">DNS, izmantojot HTTPS: Quad9</string>
+    <string name="notification__install_success__channel_name">%1$s veiksmīgi atjaunināts paziņojums</string>
+    <string name="download_activity__open_cache_explanation">Varat atvērt kešatmiņas mapi, lai pārkopētu APK failu krātuvē, kurā ir vairāk brīvas vietas. Diemžēl Android 11 un jaunākās versijās (bez root piekļuves) tikai dažiem failu pārvaldniekiem ir piekļuve šai (Android/data) mapei.
+\nP.S.
+\nLai piešķirt piekļuves tiesības šai mapei, uzstādiet Shizuku (https://github.com/RikkaApps/Shizuku), veiciet nepieciešamās darbības Shizuku lietotnē, lai pēc tam varētu priviliģēt papildus piekļuves tiesības jūsu izmantotajam faila pārvaldniekam. Protams, faila pārvaldnieka lietotnei jāatbalsta Shizuku, citādāk lietotne nebūs pieejama zem Shizuku autorizēto lietotņu saraksta.</string>
+    <string name="session_installer__status_failure">Operācija kopumā neizdevās. Sistēma vienmēr centīsies sniegt precīzu kļūmes iemeslu, taču tikai dažos retos gadījumos tas notiek.</string>
+    <string name="session_installer__status_failure_aborted">Operācija neizdevās, jo tā tika aktīvi pārtraukta. Piemēram, lietotājs aktīvi noraidīja pieprasītās atļaujas vai sesija tika pārtraukta.</string>
+    <string name="notification__uncaught_exception__channel_name">Avārijas paziņojumi</string>
+    <string name="lockwise__description">PIEKĻUVE PAROLĒM JUMS UN TIKAI JUMS
+\n
+\nDroši izsekojiet savas Firefox paroles un piekļūstiet tām jebkurā vietā. Ātri atvērt jebkuru vietni no lietotnes, lai piekļūtu saviem kontiem.</string>
 </resources>
