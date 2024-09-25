@@ -5,7 +5,7 @@
     <string name="app_name">FFUpdater</string>
     <string name="application_installation_was_not_successful">Neizdevās uzstādīt lietotni</string>
     <string name="application_successfully_installed">Lietotne veiksmīgi uzstādīta</string>
-    <string name="brave_beta__title">Brave pārlūkprogramma (Beta)</string>
+    <string name="brave_beta__title">Brave Beta</string>
     <string name="crash_report__got_to_notabug_org">Doties uz notabug.org</string>
     <string name="notification__download_error__title">Fona atjauninājuma lejupielāde neizdevās</string>
     <string name="notification__download_running__title">Lejupielādē lietotnes atjauninājumus</string>
@@ -14,7 +14,7 @@
     <string name="notification__download_running__channel_name">Paziņojums par fona lejupielādēm</string>
     <string name="available_version">Pieejama: %1$s</string>
     <string name="bromite__title">Bromite</string>
-    <string name="brave__title">Brave pārlūkprogramma</string>
+    <string name="brave__title">Brave</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Nokopējiet avārijas atskaiti starpliktuvē</string>
     <string name="crash_report__go_to_github">Doties uz GitHub</string>
     <string name="crash_report__go_to_gitlab">Doties uz GitLab</string>
@@ -22,7 +22,7 @@
     <string name="notification__eol_apps__text">Jums ir uzstādītas novecojušas lietotnes, kuras vairs nevajadzētu izmantot. Noklikšķiniet, lai iegūtu vairāk informācijas.</string>
     <string name="notification__eol_apps__title">Uzstādītas novecojušas lietotnes</string>
     <string name="notification__error__channel_name">Fona kļūdas</string>
-    <string name="brave_nightly__title">Brave pārlūkprogramma (Ik nakts)</string>
+    <string name="brave_nightly__title">Brave (Nakts izlaidumi)</string>
     <string name="bromite__warning">- Bromite izmanto Google Chrome tehnisko bāzi un tādējādi netieši atbalsta Chromium renderēšanas dzinēja monopolstāvokli.</string>
     <string name="crash_report__explain_text__uncaught_throwable">Diemžēl FFUpdater pēdējo reizi avarēja šīs kļūdas dēļ. Lūdzu, ziņojiet par problēmu vietnē notabug.org, GitHub vai GitLab. Lūdzu, neaizmirstiet pievienot avārijas atskaiti no starpliktuves un aprakstu, kā iegūt konkrēto problēmu.</string>
     <string name="download_activity__too_low_memory_title">Maz vietas krātuvē</string>
@@ -46,7 +46,7 @@
     <string name="download_activity__label">Lejupielādēt lietotni</string>
     <string name="notification__install_success__text">Lietotne tika veiksmīgi atjaunināta fonā.</string>
     <string name="notification__download_error__text">Atjauninājuma %1$s fona lejupielāde neizdevās. Ja tas atkārtojas bieži, noklikšķiniet šeit, lai skatītu kļūdas atskaiti.</string>
-    <string name="firefox_focus__description">Šī ir Firefox pārlūkprogrammas modifikācija, kuras mērķis ir uzlabot konfidencialitātes līmeni.</string>
+    <string name="firefox_focus__description">Šī ir Firefox pārlūka modifikācija, kuras mērķis ir uzlabot konfidencialitātes līmeni.</string>
     <string name="firefox_focus__title">Firefox Focus</string>
     <string name="firefox_klar__title">Firefox Klar</string>
     <string name="firefox_release__title">Firefox</string>
@@ -67,13 +67,13 @@
     <string name="app_installer__installed_app_has_invalid_signature">Uzstādītā lietotne NAV pārbaudīta</string>
     <string name="installed_application_is_verified">Uzstādītā lietotne ir pārbaudīta</string>
     <string name="installed_version">Uzstādīta: %1$s</string>
-    <string name="kiwi__description">Kiwi pārlūkprogramma ir paredzēta interneta sērfošanai, ziņu lasīšanai, video skatīšanai un mūzikas klausīšanai bez kaitinošiem elementiem.</string>
+    <string name="kiwi__description">Kiwi pārlūks ir paredzēts interneta sērfošanai, ziņu lasīšanai, video skatīšanai un mūzikas klausīšanai bez kaitinošiem elementiem.</string>
     <string name="kiwi__title">Kiwi Browser Next</string>
     <string name="lockwise__eol_reason">Mozilla pārtrauca atbalstu 2021. gada decembrī. Lūdzu, izmantojiet citu paroļu pārvaldnieku.</string>
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded"><u>Pārsniegts GitHub-API ierobežojums. Mēģiniet vēlreiz pēc stundas.</u></string>
     <string name="main_activity__no_unmetered_network">Nav bezmaksas tīkla</string>
-    <string name="app_description">Privātuma orientētas pārlūkprogrammas atjauninātājs</string>
+    <string name="app_description">Privātuma orientētas pārlūku atjauninātājs</string>
     <string name="ok">Labi</string>
     <string name="running_downloads_dialog__title">Notiek lejupielādes</string>
     <string name="ffupdater__different_signature_message">Šī FFUpdater lietotnes versija satur F-Droid parakstu, tāpēc tikai F-Droid var izplatīt atjauninājumus. Lai ātrāk saņemtu jaunāko versiju, atinstalējiet pašreiz uzstādīto FFUpdater un uzstādiet versiju ar izstrādātāja parakstu. Izmantojot šo versiju, FFUpdater var atjaunināt sevi, negaidot F-Droid versijas relīzi.</string>
@@ -97,7 +97,7 @@
     <string name="request_installation_permission_dialog__message">FFUpdater trūkst atļauja uzstādīt un atjaunināt lietotnes. Jums ir jādod šī atļauja, pretējā gadījumā FFUpdater nedarbosies.</string>
     <string name="settings_activity__label">Iestatījumi</string>
     <string name="settings__b_f__delete_cache_if_install_failed">Ja uzstādīšana neizdodas, izdzēst lejupielādēto atjauninājumu.</string>
-    <string name="add_app_activity__title_good_security_browsers">Labas drošas pārlūkprogrammas</string>
+    <string name="add_app_activity__title_good_security_browsers">Labi droši pārlūki</string>
     <string name="request_installation_permission_dialog__title">Uzstādīšanas atļauja</string>
     <string name="settings__b_f__delete_cache_if_install_successful">Ja uzstādīšana ir veiksmīga, izdzēst lejupielādēto atjauninājumu.</string>
     <string name="settings__background__installation__enabled__title">Uzstādīt atjauninājumu</string>
@@ -209,7 +209,7 @@
     <string name="settings__installer_category__title">Uzstādītājs</string>
     <string name="settings__theme_dark">Tumšs</string>
     <string name="settings__theme_light">Gaišs</string>
-    <string name="mull__description">Šis ir uz privātumu vērsts un deblobbed tīmekļa pārlūks, kuras pamatā ir Mozilla tehnoloģijas. Tas atbalsta daudzas Tor Uplift projektā ieviestās funkcijas, izmantojot iestatījumus no arkenfox-user.js projekta. Ieteicams uzstādīt \'uBlock Origin\' paplašinājumu.</string>
+    <string name="mull__description">Šis ir uz konfidencialitāti vērsts un no bināriem blobiem brīvs pārlūks, kura pamatā ir Mozilla tehnoloģijas. Tajā realizētas daudzas Tor Uplift projektā ieviestās funkcijas, īpaši priekšroku dodot arkenfox-user.js projektam. Ieteicams uzstādīt \'uBlock Origin\' paplašinājumu.</string>
     <string name="settings__network__trust_user_cas__title">Uzticēties lietotāja pievienotajiem iestādes (CA) sertifikātiem</string>
     <string name="update_interval__5d">ik pēc 5 dienām</string>
     <string name="update_interval__2w">ik pēc 2 nedēļām</string>
@@ -219,7 +219,7 @@
     <string name="tor_browser__description">Tor - vienīgais oficiālais mobilā telefona pārlūks, kuru atbalsta Tor Project izstrādātāji, kas izplata labāko tiešsaistes privātuma un brīvības interneta rīku.</string>
     <string name="orbot__title">Orbot: Tor Android operētājsistēmai</string>
     <string name="add_app_activity__title_from_mozilla">No Mozilla</string>
-    <string name="add_app_activity__title_good_privacy_browsers">Labi privātuma pārlūki</string>
+    <string name="add_app_activity__title_good_privacy_browsers">Labi konfidenciāli pārlūki</string>
     <string name="add_app_activity__title_better_than_google_chrome">Labāki par Google Chrome</string>
     <string name="unsupported_abi_dialog__title">Neatbalstīta ierīce</string>
     <string name="update_interval__30min">ik pēc 30 minūtēm</string>
@@ -230,7 +230,7 @@
     <string name="tor_browser__title">Tor</string>
     <string name="add_app_activity__label">Pievienot Jaunu Lietotni</string>
     <string name="add_app_activity__title_end_of_live_browser">Izstrādātāju pārtrauktie (bez atbalsta) pārlūki</string>
-    <string name="tor_browser_alpha__title">Tor Alfa</string>
+    <string name="tor_browser_alpha__title">Tor Alpha</string>
     <string name="update_interval__2d">ik pēc 2 dienām</string>
     <string name="update_interval__2h">ik pēc 2 stundām</string>
     <string name="fennecfdroid__description">Fennec F-Droid ir izstrādāts izmantojot jaunāko Firefox versijas kodu (ar nosaukumu Fenix). Tajā ir noņemti patentētie biti un telemetrija, taču tas joprojām veido savienojumus ar pāris Mozilla un Google tīmekļa pakalpojumiem, kas var izsekot lietotājus.</string>
@@ -298,13 +298,21 @@
     <string name="kiwi__warning">- Kiwi ir tikai daļēji atvērtā koda lietotne.
 \n- Kiwi izmanto Google Chrome tehnisko bāzi un tādējādi netieši atbalsta Chromium renderēšanas dzinēja monopolstāvokli.
 \n- Kiwi nav ideāls privātuma pārlūks, taču tam ir labs papildinājumu atbalsts.
-\n- Pārlūkprogramma gūst peļņu no meklētājprogrammas par katru meklēšanas pieprasījumu, kas veikta Kiwi pārlūkā. Atkarībā no izvēlētās meklētājprogrammas meklēšanas pieprasījumi var tikt nosūtīti caur Kiwibrowser / Kiwisearchservices serveriem.
-\n- Google Ads Kiwi lietotnē var izmantot atrašanās vietas datus, lai rādītu atlasītas reklāmas, taču to var novērst, atspējojot atklāšanas funkciju (Discovery feature) iestatījumos. Taču drīz tas var mainīties. Plašāka informācija pieejama https://privacy.kiwibrowser.org vietnē.</string>
-    <string name="vivaldi__description">Atklājiet pārsteidzoši ātru interneta pārlūku! Vivaldi ir jauna, bezmaksas un privāta tīmekļa pārlūkprogramma, kas izstrādāta, paturot prātā tā elastīgo pielāgojamību. Tā ir aprīkota ar noderīgām funkcijām, tostarp iebūvētu AdBlocker (uznirstošo logu bloķētāju), izsekošanas aizsardzību un privātu vietņu tulkotāju. Pārlūka iespējas, piemēram, pilnvērtīgas darbvirsmas stila cilnes, tumši/gaiši motīvi un izkārtojuma pielāgojamība, palīdz konfigurēt pārlūku pēc jūsu patikas un vēlmēm.</string>
-    <string name="duckduckgo_android__description">DuckDuckGo lietotne nodrošina visplašāko tiešsaistes privātuma aizsardzību vienas pogas nospiešanas attālumā. Tikai ar vienu lejupielādi jūs iegūstat jaunu ikdienas pārlūkprogrammu, kas piedāvā nevainojamu aizsardzību meklēšanas un pārlūkošanas laikā, kā arī piekļuvi saņemto e-pasta ziņojumu un izmantoto lietotņu izsekošanas aizsardzībai. Daudzi no šiem aizsardzības līdzekļiem pēc noklusējuma netiek piedāvāti lielākajā daļā populārāko pārlūku.</string>
+\n- Pārlūks gūst peļņu no meklētājprogrammām par katru meklēšanas pieprasījumu, kas veikta Kiwi pārlūkā. Atkarībā no izvēlētās meklētājprogrammas meklēšanas pieprasījumi var tikt nosūtīti caur Kiwibrowser / Kiwisearchservices serveriem.
+\n- Google Ads Kiwi pārlūkā var izmantot atrašanās vietas datus, lai rādītu atlasītas reklāmas, taču to var novērst, atspējojot atklāšanas funkciju (Discovery feature) iestatījumos. Taču drīz tas var mainīties. Plašāka informācija pieejama https://privacy.kiwibrowser.org vietnē.</string>
+    <string name="vivaldi__description">Atklājiet pārsteidzoši ātru interneta pārlūku! Vivaldi ir jauns, bezmaksas un privāts tīmekļa pārlūks, kas izstrādāts, paturot prātā tā elastīgo pielāgojamību. Tas ir aprīkots ar noderīgām funkcijām, tostarp iebūvētu AdBlocker (uznirstošo logu bloķētāju), izsekošanas aizsardzību un privātu vietņu tulkotāju. Pārlūka iespējas, piemēram, pilnvērtīgas darbvirsmas stila cilnes, tumši/gaiši motīvi un izkārtojuma pielāgojamība, palīdz konfigurēt pārlūku pēc jūsu patikas un vēlmēm.</string>
+    <string name="duckduckgo_android__description">DuckDuckGo lietotne nodrošina visplašāko tiešsaistes privātuma aizsardzību vienas pogas nospiešanas attālumā. Tikai ar vienu lejupielādi jūs iegūstat jaunu ikdienas pārlūku, kas piedāvā nevainojamu aizsardzību meklēšanas un pārlūkošanas laikā, kā arī piekļuvi saņemto e-pasta ziņojumu un izmantoto lietotņu izsekošanas aizsardzībai. Daudzi no šiem aizsardzības līdzekļiem pēc noklusējuma netiek piedāvāti lielākajā daļā populārāko pārlūku.</string>
     <string name="bromite_systemwebview__description">SystemWebView pakotne satur Bromite kodola pārlūku/renderēšanas dzinēju un to pašu funkcionalitāti. Tā ļauj iespēju nomainīt noklusējuma pārlūka komponenti visai Android sistēmai.</string>
     <string name="infobox">Šis ir konfidencialitātes draudzīga pārlūku atjauninātājs. Lai uzstādītu jaunu lietotni, noklikšķiniet uz pluss pogas. Velciet uz leju, lai piespiestu pārbaudīt, vai ir pieejami atjauninājumi. Pēc noklusējuma lietotne fonā periodiski pārbaudīs, vai ir pieejami atjauninājumi, kas pēc tam tiks lejupielādēti un uzstādīti. Noklikšķiniet uz zobrata, lai pielāgotu lietotnes uzvedības iestatījumus.
 \n
 \nPēdējā veiksmīgā atjauninājumu fona pārbaude notika %1$s</string>
     <string name="session_installer__status_failure_storage">Darbība neizdevās krātuves problēmu dēļ. Iemesls, ierīcē var pietrūkt vietas vai ārējais datu nesējs var būt nepieejams. Lietotājs var palīdzēt atbrīvojot vietu vai ievietojot citu ārējo datu nesēju.</string>
+    <string name="iceraven__description">Noteikti ne no Mozillas!
+\n
+\nIceraven Browser ir Android tīmekļa pārlūks, kura pamatā ir Mozillas Fenix Firefox versija, GeckoView un Mozilla Android Components.
+\n
+\nMūsu mērķis ir izveidot pēc iespējas tuvu (maz koda modifikācijam) Firefox Android kopiju, sniedzot lietotājiem vairāk pielāgošanas iespēju (tostarp plašu paplašinājumu bibliotēku), vairāk informācijas par viņu apmeklētajām lapām un to, kā viņu pārlūks mijiedarbojas ar šīm lapām.</string>
+    <string name="mulch_wv__description">Uz drošību orientēta un uzlabota sistēmas WebView, kuras pamatā ir Chromium tehnoloģijas. Pateicoties Vanadium projekta ielāpiem, daudzas pret konfidencialitāte funkcijas ir atspējotas/izvāktas, un vairākas drošības funkcijas ir iespējotas/pievienotas.</string>
+    <string name="settings__network__use_cloudflare_mirrors__summary">Iespējojiet, lai samazinātu primāro serveru resursu slodzi, kad vien iespējams.</string>
+    <string name="settings__network__trust_user_cas__summary">Iespējot, ja datu plūsma jāpārbauda un jāmaina citām lietotnēm. Ja neesat pārliecināts, atstājiet šo opciju atspējotu.</string>
 </resources>
