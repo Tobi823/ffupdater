@@ -138,7 +138,7 @@
     <string name="thorium__description">Ātrākais pārlūks uz Zemes. Chromium atzars, kas paredzēta Linux operētājsistēmai, kas nosaukts radioaktīvā elementa Nr. 90 vārdā.</string>
     <string name="notification__bg_update_check__unreliable_execution__text">Tas var būt saistīts ar jūsu ierīces akumulatora vai veiktspējas iestatījumiem. Noklikšķiniet uz šī paziņojuma, lai atspējotu akumulatora optimizāciju šai lietotnei.</string>
     <string name="mulch_wv__title">Mulch System WebView</string>
-    <string name="installer__method__native">Iebūvētais uzstādītājs: rezerves variants, ja sesijas uzstādīšanas lietotne nedarbojas jūsu telefonā.</string>
+    <string name="installer__method__native">Iebūvētais uzstādītājs: Rezerves variants, ja sesijas uzstādīšana nedarbojas jūsu telefonā.</string>
     <string name="add_app_activity__title_based_on_firefox">Balstīts uz Firefox</string>
     <string name="foreground__hidden_apps__summary">Paslēptās lietotnes nebūs redzamas galvenajā izvēlnē un netiks atjauninātas automātiski.</string>
     <string name="download_activity__different_installer_info__text">Ja uzstādīšana bieži neizdodas, mēģiniet iestatījumos iestatīt \'Iebūvētais uzstādītājs\'.</string>
@@ -199,7 +199,7 @@
     <string name="notification__update_available__generic_channel_descr">Paziņojumu kanāls par pieejamajiem lietotņu atjauninājumiem.</string>
     <string name="notification__update_available__generic_channel_name">Lietotnes atjaunināšanas paziņojums</string>
     <string name="background__separate_notification_channels__summary">Katrai atsevišķai lietotnei izmantot dažādus paziņojumu kanālus</string>
-    <string name="installer__method__shizuku">Shizuku uzstādītājs: lietotņu atjaunināšana bez apstiprinājuma dialoga. Tam nepieciešama Shizuku lietotne vai Sui Magisk modulis.</string>
+    <string name="installer__method__shizuku">Shizuku uzstādītājs: Lietotņu atjaunināšana bez apstiprinājuma dialoga. Tam nepieciešama Shizuku lietotne vai Sui Magisk modulis.</string>
     <string name="settings__background__installation__enabled__summary">Mēģiniet uzstādīt atjauninājumus bez lietotāja iejaukšanās.</string>
     <string name="settings__background__update_check__interval__title">Atjaunināšanas pārbaudes biežums</string>
     <string name="settings__background__update_check__metered__title">Veikt atjauninājumu pārbaudi maksas tīklos</string>
@@ -280,7 +280,7 @@
     <string name="network__dns_provider__custom">Pielāgots DNS serveris, izmantojot HTTPS</string>
     <string name="network__dns_provider__google">DNS, izmantojot HTTPS: Google</string>
     <string name="network__dns_provider__cloudflare">DNS, izmantojot HTTPS: Cloudflare</string>
-    <string name="installer__method__root">Saknes (root) uzstādītājs: lietotnes atjaunināšana bez apstiprinājuma dialoga. Šim nolūkam ir nepieciešams uzlauzts telefons ar saknes (root) tiesībām.</string>
+    <string name="installer__method__root">Saknes (root) uzstādītājs: Lietotnes atjaunināšana bez apstiprinājuma dialoga. Šim nolūkam ir nepieciešams uzlauzts telefons ar saknes (root) tiesībām.</string>
     <string name="settings__background__update_check__when_device_idle__unsupported">Šī opcija ir pieejama tikai Android Marshmallow vai jaunākās versijās.</string>
     <string name="settings__network__use_cloudflare_mirrors__title">Izmantot Cloudflare spoguļus</string>
     <string name="network__custom_doh_server__title">Pielāgots DNS serveris, izmantojot HTTPS</string>
@@ -315,4 +315,26 @@
     <string name="mulch_wv__description">Uz drošību orientēta un uzlabota sistēmas WebView, kuras pamatā ir Chromium tehnoloģijas. Pateicoties Vanadium projekta ielāpiem, daudzas pret konfidencialitāte funkcijas ir atspējotas/izvāktas, un vairākas drošības funkcijas ir iespējotas/pievienotas.</string>
     <string name="settings__network__use_cloudflare_mirrors__summary">Iespējojiet, lai samazinātu primāro serveru resursu slodzi, kad vien iespējams.</string>
     <string name="settings__network__trust_user_cas__summary">Iespējot, ja datu plūsma jāpārbauda un jāmaina citām lietotnēm. Ja neesat pārliecināts, atstājiet šo opciju atspējotu.</string>
+    <string name="network__proxy__dialog_message">Ja vēlaties izmantot SOCKS vai HTTP starpniekserveri, ievadiet šeit savienojuma informāciju. Izmantojiet kādu no zemāk redzamajiem formātiem:
+\n
+\nSOCKS/HTTP;ip/domain;port
+\n
+\nSOCKS/HTTP;ip/domain;port;username;password
+\n
+\nPiemēram: SOCKS;1.2.3.4;22 vai HTTP;5.6.7.8;80;user1;pw123 vai HTTP;p.webshare.io;80;u;p. Ja vēlaties izmantot sistēmas starpniekservera konfigurāciju, atstājiet to tukšu.
+\n
+\nIerobežojums: Ja maināt \'DNS iestatījumi\' uz DNS, izmantojot HTTPS serveri, jāievada starpniekservera domēns. IP adreses nedarbosies.</string>
+    <string name="installer__method__session">Sesijas uzstādītājs: Ieteicams lielākajai daļai ierīču. Operētājsistēmā Android 12 un jaunākās versijās lietotnes var klusi atjaunināt pēc viena lietotāja apstiprinājuma.</string>
+    <string name="chromium__description">Chromium ir atvērtā pirmkoda pārlūka projekts, kura mērķis ir radīt drošāku, ātrāku un stabilāku tīmekļa pieredzi visiem lietotājiem. Viņu vietnē jūs atradīsiet dizaina dokumentus, arhitektūras pārskatus, testēšanas informāciju un daudz ko citu, kas palīdzēs jums uzzināt, kā izveidot un strādāt ar Chromium pirmkodu.</string>
+    <string name="network__custom_doh_server__dialog_message">Ievadiet pielāgotā DoH servera savienojuma informāciju kādā no zemāk redzamajiem formātiem:
+\n
+\nurl;ip1
+\n
+\nurl;ip1;ip2
+\n
+\nurl;ip1;ip2;ip3
+\n
+\nurl;ip1;ip2;ip3;ip4
+\n
+\nPiemēram: https://dns.google/dns-query;8.8.8.8 vai https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
 </resources>
