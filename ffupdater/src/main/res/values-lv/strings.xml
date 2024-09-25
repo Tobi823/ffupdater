@@ -178,7 +178,7 @@
     <string name="settings__theme_battery_saver">Tumšs, kad ir aktīvs akumulatora jaudas taupīšanas režīms</string>
     <string name="notification__install_error__channel_descr">Paziņojumu kanāls par neveiksmīgiem %1$s atjauninājumiem.</string>
     <string name="main_activity__an_error_occurred"><u>Radās kļūda. Mēģiniet vēlreiz vēlāk.</u></string>
-    <string name="session_installer__status_failure_invalid">Darbība neizdevās, jo viens vai vairāki APK bija nederīgi. Piemēram, tie var būt nepareizi veidoti, bojāti, nepareizi parakstīti, neatbilstoši utt.</string>
+    <string name="session_installer__status_failure_invalid">Darbība neizdevās, jo viens vai vairāki APK bija nederīgi. Iemesls, tie var būt nepareizi veidoti, bojāti, nepareizi parakstīti, neatbilstoši utt.</string>
     <string name="settings__background__download__enabled__summary">Ja ir pieejams atjauninājums, lejupielādējiet to. Tas vēlāk paātrinās atjaunināšanas procesu.</string>
     <string name="settings__background__download__enabled__title">Lejupielādēt lietotņu atjauninājumus</string>
     <string name="settings__background__download__metered__summary">Neiesaku lietotājiem ar ierobežotu mobilo datu apjomu.</string>
@@ -289,8 +289,8 @@
     <string name="download_activity__open_cache_explanation">Varat atvērt kešatmiņas mapi, lai pārkopētu APK failu krātuvē, kurā ir vairāk brīvas vietas. Diemžēl Android 11 un jaunākās versijās (bez root piekļuves) tikai dažiem failu pārvaldniekiem ir piekļuve šai (Android/data) mapei.
 \nP.S.
 \nLai piešķirt piekļuves tiesības šai mapei, uzstādiet Shizuku (https://github.com/RikkaApps/Shizuku), veiciet nepieciešamās darbības Shizuku lietotnē, lai pēc tam varētu priviliģēt papildus piekļuves tiesības jūsu izmantotajam faila pārvaldniekam. Protams, faila pārvaldnieka lietotnei jāatbalsta Shizuku, citādāk lietotne nebūs pieejama zem Shizuku autorizēto lietotņu saraksta.</string>
-    <string name="session_installer__status_failure">Operācija kopumā neizdevās. Sistēma vienmēr centīsies sniegt precīzu kļūmes iemeslu, taču tikai dažos retos gadījumos tas notiek.</string>
-    <string name="session_installer__status_failure_aborted">Operācija neizdevās, jo tā tika aktīvi pārtraukta. Piemēram, lietotājs aktīvi noraidīja pieprasītās atļaujas vai sesija tika pārtraukta.</string>
+    <string name="session_installer__status_failure">Darbība kopumā neizdevās. Sistēma vienmēr centīsies sniegt precīzu kļūmes iemeslu, taču tikai dažos retos gadījumos tas notiek.</string>
+    <string name="session_installer__status_failure_aborted">Darbība neizdevās, jo tā tika aktīvi pārtraukta. Iemesls, lietotājs aktīvi noraidīja pieprasītās atļaujas vai sesija tika pārtraukta.</string>
     <string name="notification__uncaught_exception__channel_name">Avārijas paziņojumi</string>
     <string name="lockwise__description">PIEKĻUVE PAROLĒM JUMS UN TIKAI JUMS
 \n
@@ -303,4 +303,8 @@
     <string name="vivaldi__description">Atklājiet pārsteidzoši ātru interneta pārlūku! Vivaldi ir jauna, bezmaksas un privāta tīmekļa pārlūkprogramma, kas izstrādāta, paturot prātā tā elastīgo pielāgojamību. Tā ir aprīkota ar noderīgām funkcijām, tostarp iebūvētu AdBlocker (uznirstošo logu bloķētāju), izsekošanas aizsardzību un privātu vietņu tulkotāju. Pārlūka iespējas, piemēram, pilnvērtīgas darbvirsmas stila cilnes, tumši/gaiši motīvi un izkārtojuma pielāgojamība, palīdz konfigurēt pārlūku pēc jūsu patikas un vēlmēm.</string>
     <string name="duckduckgo_android__description">DuckDuckGo lietotne nodrošina visplašāko tiešsaistes privātuma aizsardzību vienas pogas nospiešanas attālumā. Tikai ar vienu lejupielādi jūs iegūstat jaunu ikdienas pārlūkprogrammu, kas piedāvā nevainojamu aizsardzību meklēšanas un pārlūkošanas laikā, kā arī piekļuvi saņemto e-pasta ziņojumu un izmantoto lietotņu izsekošanas aizsardzībai. Daudzi no šiem aizsardzības līdzekļiem pēc noklusējuma netiek piedāvāti lielākajā daļā populārāko pārlūku.</string>
     <string name="bromite_systemwebview__description">SystemWebView pakotne satur Bromite kodola pārlūku/renderēšanas dzinēju un to pašu funkcionalitāti. Tā ļauj iespēju nomainīt noklusējuma pārlūka komponenti visai Android sistēmai.</string>
+    <string name="infobox">Šis ir konfidencialitātes draudzīga pārlūku atjauninātājs. Lai uzstādītu jaunu lietotni, noklikšķiniet uz pluss pogas. Velciet uz leju, lai piespiestu pārbaudīt, vai ir pieejami atjauninājumi. Pēc noklusējuma lietotne fonā periodiski pārbaudīs, vai ir pieejami atjauninājumi, kas pēc tam tiks lejupielādēti un uzstādīti. Noklikšķiniet uz zobrata, lai pielāgotu lietotnes uzvedības iestatījumus.
+\n
+\nPēdējā veiksmīgā atjauninājumu fona pārbaude notika %1$s</string>
+    <string name="session_installer__status_failure_storage">Darbība neizdevās krātuves problēmu dēļ. Iemesls, ierīcē var pietrūkt vietas vai ārējais datu nesējs var būt nepieejams. Lietotājs var palīdzēt atbrīvojot vietu vai ievietojot citu ārējo datu nesēju.</string>
 </resources>
