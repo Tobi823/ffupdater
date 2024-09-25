@@ -337,4 +337,5 @@
 \nurl;ip1;ip2;ip3;ip4
 \n
 \nPiemēram: https://dns.google/dns-query;8.8.8.8 vai https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
+    <string name="orbot__description">Orbot ir bezmaksas starpniekservera lietotne, kas ļauj citām lietotnēm drošāk izmantot internetu. Orbot izmanto Tor, lai šifrētu interneta trafiku un pēc tam slēpj to, izmantojot virkni datorus visā pasaulē. Tor ir bezmaksas programmatūra un atvērts tīkls, kas palīdz aizsargāties pret tīkla uzraudzības veidu, kas apdraud personas brīvību un privātumu, sensitīvus biznesa darījumus un attiecības, kā arī valsts drošību, kas pazīstama kā trafika analīze.</string>
 </resources>
