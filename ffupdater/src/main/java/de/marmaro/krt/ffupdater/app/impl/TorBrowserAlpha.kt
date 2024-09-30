@@ -14,9 +14,11 @@ import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
+import io.github.g00fy2.versioncompare.Version
 
 /**
  * https://www.torproject.org/download/alpha/
+ * https://dist.torproject.org/torbrowser
  * https://www.apkmirror.com/apk/the-tor-project/tor-browser-for-android-alpha/
  */
 @Keep
@@ -39,72 +41,57 @@ object TorBrowserAlpha : AppBase() {
 
     override suspend fun getInstalledVersion(packageManager: PackageManager): String? {
         val rawVersion = super.getInstalledVersion(packageManager) ?: return null
-        val rightPart = rawVersion.split(" ")[1]
-        return rightPart.trim { it in listOf('(', ')') }
+        return rawVersion.split(" ")
+            .first()
     }
 
     @MainThread
     @Throws(NetworkException::class)
     override suspend fun fetchLatestUpdate(context: Context): LatestVersion {
-        val version = findLatestVersion()
-        val downloadUrl = getDownloadUrl(version)
+        val (version, dateTime) = findLatestVersion()
         return LatestVersion(
-            downloadUrl = downloadUrl,
-            version = version,
-            publishDate = findDateTime(version),
-            exactFileSizeBytesOfDownload = null,
-            fileHash = null,
+                downloadUrl = getDownloadFileUrl(version),
+                version = version,
+                publishDate = dateTime,
+                exactFileSizeBytesOfDownload = null,
+                fileHash = null,
         )
     }
 
-    private suspend fun findLatestVersion(): String {
-        val content = FileDownloader.downloadAsString("$MAIN_BASE_URL/")
+    private suspend fun findLatestVersion(): Pair<String, String> {
+        // search for <a href="tor-browser-android-armv7-14.0a7.apk">tor-browser-android-armv7-14.0a7.apk</a>
         val pattern = Regex.escape("<a href=\"") +
-                VERSION_PATTERN +
-                Regex.escape("/\">") +
+                VERSION_PATTERN + Regex.escape("""/">""") +
                 VERSION_PATTERN +
                 Regex.escape("/</a>")
+        val content = FileDownloader.downloadString("$MAIN_BASE_URL/")
 
-        val match = Regex(pattern).find(content)
-        checkNotNull(match) { "Can't find latest version regex pattern '$pattern'." }
+        val versions = Regex(pattern).findAll(content) // find all potential version values from content
+            .filter { it.groups[1]?.value == it.groups[4]?.value } // check if version value is valid
+            .mapNotNull { it.groups[1]?.value } // use only non null version values
+            .sortedByDescending { Version(it) } // sort and use only the highest version value
+            .toList()
 
-        val firstVersionMatch = match.groups[1]?.value
-        val secondVersionMatch = match.groups[4]?.value
-        checkNotNull(firstVersionMatch) { "Can't extract latest version from regex match." }
-        checkNotNull(secondVersionMatch) { "Can't extract latest version from regex match." }
-        check(firstVersionMatch == secondVersionMatch) { "Extract different versions." }
+        check(versions.isNotEmpty()) { "Found no versions" }
 
-        return firstVersionMatch
-    }
+        // find the latest version with a valid APK file
+        val (version, filesListHtml) = versions.map { it to FileDownloader.downloadString(getFilesListUrl(it)) }
+            .first { (version, fileListHtml) -> fileListHtml.contains(getDownloadFileName(version)) }
 
-    private fun getDownloadUrl(version: String): String {
-        val abi = getAbiString()
-        return "$MAIN_BASE_URL/$version/tor-browser-android-$abi-$version.apk"
+        val dateTime = extractDateTime(getDownloadFileName(version), filesListHtml)
+        return version to dateTime
     }
 
     @Throws(IllegalStateException::class)
-    private suspend fun findDateTime(version: String): String {
-        val abi = getAbiString()
-        val fileName = "tor-browser-android-$abi-$version.apk"
-        val url = "$MAIN_BASE_URL/$version/?P=$fileName"
-        val content = FileDownloader.downloadAsString(url)
-        check(content.contains(fileName)) { "$fileName is not available on $url" }
-
-        val spaces = """\s+"""
-        val pattern = Regex.escape("</a>") +
-                spaces +
-                """(\d{4}-\d{1,2}-\d{1,2}) """ + //for example 2022-12-16
-                """(\d{1,2}:\d{1,2})""" + //for example 13:30
-                spaces +
-                """(\d){2,3}M""" + //for 82M
-                spaces +
-                """\n"""
-        val match = Regex(pattern).find(content)
-        checkNotNull(match) { "Can't find creation date or size with regex pattern: $pattern" }
+    private fun extractDateTime(fileName: String, fileListHtml: String): String {
+        // 2024-09-27 03:13  103M
+        val pattern = Regex.escape("$fileName</a>") + """\s+(\d+-\d+-\d+)\s+(\d+:\d+)\s+(\d+)M\s+\n"""
+        val match = Regex(pattern).find(fileListHtml)
+        checkNotNull(match) { "Can't find creation date and file size of $fileName with regex pattern: $pattern" }
         val date = match.groups[1]
-        checkNotNull(date) { "Can't extract date from regex match." }
+        checkNotNull(date) { "Can't extract date from regex match for $fileName." }
         val time = match.groups[2]
-        checkNotNull(time) { "Can't extract time from regex match." }
+        checkNotNull(time) { "Can't extract time from regex match for $fileName." }
 
         return "${date.value}T${time.value}:00Z"
     }
@@ -117,6 +104,18 @@ object TorBrowserAlpha : AppBase() {
             ABI.X86 -> "x86"
             else -> throw IllegalArgumentException("ABI is not supported")
         }
+    }
+
+    private fun getDownloadFileUrl(version: String): String {
+        return getFilesListUrl(version) + getDownloadFileName(version)
+    }
+
+    private fun getDownloadFileName(version: String): String {
+        return "tor-browser-android-${getAbiString()}-$version.apk"
+    }
+
+    private fun getFilesListUrl(version: String): String {
+        return "$MAIN_BASE_URL/$version/"
     }
 
     private const val MAIN_BASE_URL = "https://dist.torproject.org/torbrowser"
