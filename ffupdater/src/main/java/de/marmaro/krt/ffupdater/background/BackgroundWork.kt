@@ -27,7 +27,7 @@ import de.marmaro.krt.ffupdater.network.NetworkUtil
 import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
-import de.marmaro.krt.ffupdater.notification.NotificationBuilder.showErrorNotification
+import de.marmaro.krt.ffupdater.notification.NotificationBuilder.showGeneralErrorNotification
 import de.marmaro.krt.ffupdater.notification.NotificationBuilder.showNetworkErrorNotification
 import de.marmaro.krt.ffupdater.notification.NotificationRemover
 import de.marmaro.krt.ffupdater.settings.BackgroundSettings
@@ -36,6 +36,7 @@ import de.marmaro.krt.ffupdater.settings.ForegroundSettings
 import de.marmaro.krt.ffupdater.utils.WorkManagerTiming.calcBackoffTime
 import de.marmaro.krt.ffupdater.utils.WorkManagerTiming.getRetriesForTotalBackoffTime
 import java.time.Duration
+import java.util.concurrent.CancellationException
 import java.util.concurrent.TimeUnit.MINUTES
 import java.util.concurrent.TimeUnit.SECONDS
 
@@ -50,6 +51,15 @@ import java.util.concurrent.TimeUnit.SECONDS
 @Keep
 class BackgroundWork(context: Context, workerParams: WorkerParameters) :
     CoroutineWorker(context.applicationContext, workerParams) {
+
+    // retry next regular time slot
+    private val retrySlow = Result.success()
+
+    // dont retry, just simply execute the code at the next time again
+    private val noRetry = Result.success()
+
+    // retry as soon as possible (with backoff time)
+    private val retryFast = Result.retry()
 
     /**
      * Execute the logic for update checking, downloading and installation.
@@ -71,23 +81,22 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
     @MainThread
     override suspend fun doWork(): Result {
         try {
-            Log.i(LOG_TAG, "BackgroundWork: Execute background job.")
-            val result = internalDoWork()
-            Log.i(LOG_TAG, "BackgroundWork: Finish.")
-            return result
+            return internalDoWork()
+        } catch (e: CancellationException) {
+            return retrySlow
         } catch (e: Exception) {
             if (runAttemptCount < MAX_RETRIES) {
                 Log.w(LOG_TAG, "BackgroundWork: Job failed. Restart in ${calcBackoffTime(runAttemptCount)}.", e)
-                return Result.retry()
+                return retryFast
             }
 
             val backgroundException = BackgroundException(e)
             Log.e(LOG_TAG, "BackgroundWorker: Job failed.", backgroundException)
             when (e) {
                 is NetworkException -> showNetworkErrorNotification(applicationContext, backgroundException)
-                else -> showErrorNotification(applicationContext, backgroundException)
+                else -> showGeneralErrorNotification(applicationContext, backgroundException)
             }
-            return Result.success() // BackgroundJob should not be removed from WorkManager schedule
+            return retrySlow
         }
     }
 
@@ -117,6 +126,7 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
     @Suppress("IfThenToElvis")
     @MainThread
     private suspend fun internalDoWork(): Result {
+        Log.i(LOG_TAG, "BackgroundWork: Execute background job.")
         storeBackgroundJobExecutionTime()
         areRunRequirementsMet().onFailure { return it }
 
@@ -137,7 +147,7 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
             }
         }
         lastWorkRequest?.enqueue()
-
+        Log.i(LOG_TAG, "BackgroundWork: Finish.")
         return Result.success()
     }
 

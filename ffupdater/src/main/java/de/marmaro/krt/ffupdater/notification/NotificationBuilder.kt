@@ -17,8 +17,52 @@ import android.os.Build
 import android.provider.Settings
 import androidx.annotation.Keep
 import androidx.annotation.RequiresApi
-import de.marmaro.krt.ffupdater.*
-import de.marmaro.krt.ffupdater.R.string.*
+import de.marmaro.krt.ffupdater.BuildConfig
+import de.marmaro.krt.ffupdater.DisplayableException
+import de.marmaro.krt.ffupdater.R
+import de.marmaro.krt.ffupdater.R.string.crash_report__explain_text__download_activity_install_file
+import de.marmaro.krt.ffupdater.R.string.notification__bg_update_check__unreliable_execution__channel_description
+import de.marmaro.krt.ffupdater.R.string.notification__bg_update_check__unreliable_execution__channel_name
+import de.marmaro.krt.ffupdater.R.string.notification__bg_update_check__unreliable_execution__text
+import de.marmaro.krt.ffupdater.R.string.notification__bg_update_check__unreliable_execution__title
+import de.marmaro.krt.ffupdater.R.string.notification__download_error__channel_descr
+import de.marmaro.krt.ffupdater.R.string.notification__download_error__channel_name
+import de.marmaro.krt.ffupdater.R.string.notification__download_error__descr
+import de.marmaro.krt.ffupdater.R.string.notification__download_error__text
+import de.marmaro.krt.ffupdater.R.string.notification__download_error__title
+import de.marmaro.krt.ffupdater.R.string.notification__download_running__channel_descr
+import de.marmaro.krt.ffupdater.R.string.notification__download_running__channel_name
+import de.marmaro.krt.ffupdater.R.string.notification__download_running__title
+import de.marmaro.krt.ffupdater.R.string.notification__eol_apps__channel_description
+import de.marmaro.krt.ffupdater.R.string.notification__eol_apps__channel_name
+import de.marmaro.krt.ffupdater.R.string.notification__eol_apps__text
+import de.marmaro.krt.ffupdater.R.string.notification__eol_apps__title
+import de.marmaro.krt.ffupdater.R.string.notification__error__channel_descr
+import de.marmaro.krt.ffupdater.R.string.notification__error__channel_name
+import de.marmaro.krt.ffupdater.R.string.notification__error__text
+import de.marmaro.krt.ffupdater.R.string.notification__error__title
+import de.marmaro.krt.ffupdater.R.string.notification__install_error__channel_descr
+import de.marmaro.krt.ffupdater.R.string.notification__install_error__channel_name
+import de.marmaro.krt.ffupdater.R.string.notification__install_error__generic_channel_descr
+import de.marmaro.krt.ffupdater.R.string.notification__install_error__generic_channel_name
+import de.marmaro.krt.ffupdater.R.string.notification__install_error__text
+import de.marmaro.krt.ffupdater.R.string.notification__install_error__title
+import de.marmaro.krt.ffupdater.R.string.notification__install_success__channel_descr
+import de.marmaro.krt.ffupdater.R.string.notification__install_success__channel_name
+import de.marmaro.krt.ffupdater.R.string.notification__install_success__text
+import de.marmaro.krt.ffupdater.R.string.notification__install_success__title
+import de.marmaro.krt.ffupdater.R.string.notification__network_error__text
+import de.marmaro.krt.ffupdater.R.string.notification__network_error__title
+import de.marmaro.krt.ffupdater.R.string.notification__uncaught_exception__channel_description
+import de.marmaro.krt.ffupdater.R.string.notification__uncaught_exception__channel_name
+import de.marmaro.krt.ffupdater.R.string.notification__uncaught_exception__text
+import de.marmaro.krt.ffupdater.R.string.notification__uncaught_exception__title
+import de.marmaro.krt.ffupdater.R.string.notification__update_available__channel_descr
+import de.marmaro.krt.ffupdater.R.string.notification__update_available__channel_name
+import de.marmaro.krt.ffupdater.R.string.notification__update_available__generic_channel_descr
+import de.marmaro.krt.ffupdater.R.string.notification__update_available__generic_channel_name
+import de.marmaro.krt.ffupdater.R.string.update_notification__text
+import de.marmaro.krt.ffupdater.R.string.update_notification__title
 import de.marmaro.krt.ffupdater.activity.download.DownloadActivity
 import de.marmaro.krt.ffupdater.activity.main.MainActivity
 import de.marmaro.krt.ffupdater.app.App
@@ -37,7 +81,7 @@ object NotificationBuilder {
     @Keep
     private data class NotificationData(val id: Int, val title: String, val text: String)
 
-    fun showErrorNotification(context: Context, exception: Exception) {
+    fun showGeneralErrorNotification(context: Context, exception: Exception) {
         val appContext = context.applicationContext
         val channel = ChannelData(
             id = "background_notification",
@@ -220,7 +264,7 @@ object NotificationBuilder {
         showNotification(context, channel, notification, intent)
     }
 
-    fun showErrorNotification(context: Context, throwableAndLogs: ThrowableAndLogs, description: String) {
+    fun showGeneralErrorNotification(context: Context, throwableAndLogs: ThrowableAndLogs, description: String) {
         val channel = ChannelData(
             id = "uncaught_exception_notification",
             name = context.getString(notification__uncaught_exception__channel_name),

@@ -18,7 +18,7 @@ class CrashListener private constructor(
         Log.e(LOG_TAG, "CrashListener: Uncaught exception: ${e.message}")
         val crashData = ThrowableAndLogs(e, LogReader.readLogs())
         val description = applicationContext.getString(R.string.crash_report__explain_text__uncaught_throwable)
-        NotificationBuilder.showErrorNotification(applicationContext, crashData, description)
+        NotificationBuilder.showGeneralErrorNotification(applicationContext, crashData, description)
         defaultHandler?.uncaughtException(t, e)
     }
 

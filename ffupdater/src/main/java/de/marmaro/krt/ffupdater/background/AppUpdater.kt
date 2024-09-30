@@ -32,7 +32,7 @@ import de.marmaro.krt.ffupdater.network.file.DownloadStatus
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.notification.NotificationBuilder.showDownloadFailedNotification
 import de.marmaro.krt.ffupdater.notification.NotificationBuilder.showDownloadRunningNotification
-import de.marmaro.krt.ffupdater.notification.NotificationBuilder.showErrorNotification
+import de.marmaro.krt.ffupdater.notification.NotificationBuilder.showGeneralErrorNotification
 import de.marmaro.krt.ffupdater.notification.NotificationBuilder.showInstallFailureNotification
 import de.marmaro.krt.ffupdater.notification.NotificationBuilder.showInstallSuccessNotification
 import de.marmaro.krt.ffupdater.notification.NotificationBuilder.showNetworkErrorNotification
@@ -46,8 +46,17 @@ import de.marmaro.krt.ffupdater.utils.ifFalse
 import kotlinx.coroutines.CompletableDeferred
 
 @Keep
-class AppUpdater(context: Context, workerParams: WorkerParameters) :
-    CoroutineWorker(context.applicationContext, workerParams) {
+class AppUpdater(context: Context, workerParams: WorkerParameters) : CoroutineWorker(context.applicationContext,
+        workerParams) {
+
+    // retry next regular time slot
+    private val retrySlow = Result.success()
+
+    // dont retry, just simply execute the code at the next time again
+    private val noRetry = Result.success()
+
+    // retry as soon as possible (with backoff time)
+    private val retryFast = Result.retry()
 
     override suspend fun doWork(): Result {
         try {
@@ -55,45 +64,43 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) :
         } catch (e: Exception) {
             if (runAttemptCount < MAX_RETRIES) {
                 Log.w(LOG_TAG, "$LOGTAG Job failed. Restart in ${calcBackoffTime(runAttemptCount)}.", e)
-                return Result.retry()
+                return retryFast
             }
             val exception = AppUpdaterException(e)
             Log.e(LOG_TAG, "$LOGTAG Job failed.", exception)
             when (e) {
                 is NetworkException -> showNetworkErrorNotification(applicationContext, exception)
-                else -> showErrorNotification(applicationContext, exception)
+                else -> showGeneralErrorNotification(applicationContext, exception)
             }
-            return Result.failure() // cancel this and following jobs from the WorkContinuation chain
+            return retrySlow
         }
     }
 
     private suspend fun doWorkInternal(): Result {
         val context = applicationContext
         val app = getApp()
-        val installedAppStatus = app
-                .findImpl()
+        val installedAppStatus = app.findImpl()
             .findStatusOrUseRecentCache(context)
         Log.i(LOG_TAG, "$LOGTAG Start for ${app.name}.")
 
-        isAppStillOutdated(installedAppStatus).onFailure { return it }
+        check(installedAppStatus.isUpdateAvailable) { return retryFast }
+
+        isAppStillOutdated(installedAppStatus)?.let { return it }
         isAppNotDownloaded(installedAppStatus).onFailure { showUpdateAvailableNotification(context, app); return it }
         isUpdateCheckAllowed().onFailure { showUpdateAvailableNotification(context, app); return it }
         isEnoughStorage().onFailure { showUpdateAvailableNotification(context, app); return it }
 
-        if (!PowerSaveModeReceiver.isPowerSaveModeEnabledForShortTime() &&
-            PowerSaveModeReceiver.isPowerSaveModeEnabledForLongerTime()
-        ) {
+        if (!PowerSaveModeReceiver.isPowerSaveModeEnabledForShortTime() && PowerSaveModeReceiver.isPowerSaveModeEnabledForLongerTime()) {
             showUpdateAvailableNotification(context, app)
             Log.i(LOG_TAG, "AppUpdater: Skip download because power save mode is enabled.")
-            return Result.success()
+            return retrySlow
         }
 
-        FileDownloader
-                .isUrlAvailable(app.findImpl().hostnameForInternetCheck)
-                .ifFalse {
-                    Log.w(LOG_TAG, "$LOGTAG Simple network test ws not successful. Abort background update check.")
-                    return Result.retry()
-                }
+        FileDownloader.isUrlAvailable(app.findImpl().hostnameForInternetCheck)
+            .ifFalse {
+                Log.w(LOG_TAG, "$LOGTAG Simple network test ws not successful. Abort background update check.")
+                return retryFast
+            }
 
         try {
             showDownloadRunningNotification(context, app, null, null)
@@ -144,15 +151,16 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) :
 
     private fun isUpdateCheckAllowed(): OneTimeWorkMethodResult {
         return when {
-            !BackgroundSettings.isUpdateCheckEnabled -> stopNextOneTimeDownload("$LOGTAG Background update checks are disabled.")
+            !BackgroundSettings.isUpdateCheckEnabled -> stopNextOneTimeDownload(
+                    "$LOGTAG Background update checks are disabled.")
 
-            !BackgroundSettings.isDownloadEnabled -> stopNextOneTimeDownload("$LOGTAG Background downloads are disabled.")
+            !BackgroundSettings.isDownloadEnabled -> stopNextOneTimeDownload(
+                    "$LOGTAG Background downloads are disabled.")
 
             FileDownloader.areDownloadsCurrentlyRunning() -> retry("$LOGTAG Other downloads are running.")
 
-            !BackgroundSettings.isUpdateCheckOnMeteredAllowed && NetworkUtil.isNetworkMetered(applicationContext) -> retry(
-                "$LOGTAG No unmetered network available for app download."
-            )
+            !BackgroundSettings.isUpdateCheckOnMeteredAllowed && NetworkUtil.isNetworkMetered(
+                    applicationContext) -> retry("$LOGTAG No unmetered network available for app download.")
 
             else -> success()
         }
@@ -182,15 +190,20 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) :
     private suspend fun shouldAppBeInstalled(app: App): OneTimeWorkMethodResult {
         val installerMethod = InstallerSettings.getInstallerMethod()
         return when {
-            !BackgroundSettings.isInstallationEnabled -> stopNextOneTimeDownload("$LOGTAG Automatic background app installation is not enabled.")
+            !BackgroundSettings.isInstallationEnabled -> stopNextOneTimeDownload(
+                    "$LOGTAG Automatic background app installation is not enabled.")
 
-            !DeviceSdkTester.supportsAndroid12S31() && installerMethod == SESSION_INSTALLER -> stopNextOneTimeDownload("$LOGTAG The current installer can not update apps in the background.")
+            !DeviceSdkTester.supportsAndroid12S31() && installerMethod == SESSION_INSTALLER -> stopNextOneTimeDownload(
+                    "$LOGTAG The current installer can not update apps in the background.")
 
-            installerMethod == NATIVE_INSTALLER -> stopNextOneTimeDownload("$LOGTAG The current installer can not update apps in the background.")
+            installerMethod == NATIVE_INSTALLER -> stopNextOneTimeDownload(
+                    "$LOGTAG The current installer can not update apps in the background.")
 
-            BackgroundSettings.isInstallationWhenScreenOff && PowerUtil.isDeviceInteractive() -> retry("$LOGTAG Device is interactive. Abort background installation.")
+            BackgroundSettings.isInstallationWhenScreenOff && PowerUtil.isDeviceInteractive() -> retry(
+                    "$LOGTAG Device is interactive. Abort background installation.")
 
-            DeviceSdkTester.supportsAndroid14U34() && !isGentleUpdatePossible(app) -> retry("$LOGTAG Gentle update is not possible. Abort background installation.")
+            DeviceSdkTester.supportsAndroid14U34() && !isGentleUpdatePossible(app) -> retry(
+                    "$LOGTAG Gentle update is not possible. Abort background installation.")
 
             else -> success()
         }
@@ -233,9 +246,8 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) :
             }
         } catch (e: Exception) {
             if (BackgroundSettings.isDeleteUpdateIfInstallFailed) {
-                app
-                        .findImpl()
-                        .deleteFileCache(applicationContext)
+                app.findImpl()
+                    .deleteFileCache(applicationContext)
             }
             throw e
         }
@@ -247,14 +259,12 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) :
         private const val MAX_RETRIES = 6 // waiting time of all previous retries = about 1 hour
 
         fun createWorkRequest(app: App): OneTimeWorkRequest {
-            val data = Data
-                    .Builder()
-                    .putString(APP_NAME_KEY, app.name)
-                    .build()
-            return OneTimeWorkRequest
-                    .Builder(AppUpdater::class.java)
-                    .setInputData(data)
-                    .build()
+            val data = Data.Builder()
+                .putString(APP_NAME_KEY, app.name)
+                .build()
+            return OneTimeWorkRequest.Builder(AppUpdater::class.java)
+                .setInputData(data)
+                .build()
         }
     }
 

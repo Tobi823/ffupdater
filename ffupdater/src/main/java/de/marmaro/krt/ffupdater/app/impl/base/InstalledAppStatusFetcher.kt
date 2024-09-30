@@ -51,9 +51,6 @@ interface InstalledAppStatusFetcher : InstalledVersionFetcher, LatestVersionFetc
         } catch (e: DisplayableException) {
             Log.d(LOG_TAG, "InstalledAppStatusFetcher: Can't find latest update for ${app.name}.", e)
             throw DisplayableException("can't find latest update for ${app.name}.", e)
-        } catch (e: IllegalStateException) {
-            Log.d(LOG_TAG, "InstalledAppStatusFetcher: Can't find latest update for ${app.name}.", e)
-            throw IllegalStateException("can't find latest update for ${app.name}.", e)
         }
     }
 
