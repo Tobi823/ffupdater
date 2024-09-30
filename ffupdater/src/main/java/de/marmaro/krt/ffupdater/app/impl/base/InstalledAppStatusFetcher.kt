@@ -8,6 +8,7 @@ import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
 import de.marmaro.krt.ffupdater.app.VersionCompareHelper
 import de.marmaro.krt.ffupdater.app.entity.InstalledAppStatus
 import de.marmaro.krt.ffupdater.app.entity.LatestVersion
+import de.marmaro.krt.ffupdater.app.exception.UnrecovableAppFetchException
 import de.marmaro.krt.ffupdater.device.InstalledAppsCache
 import de.marmaro.krt.ffupdater.network.LatestVersionCache
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
@@ -46,14 +47,11 @@ interface InstalledAppStatusFetcher : InstalledVersionFetcher, LatestVersionFetc
             Log.i(LOG_TAG, "InstalledAppStatusFetcher: Found ${app.name} ${latestVersion.version} (${duration}ms).")
             return convertToInstalledAppStatus(context, latestVersion)
         } catch (e: NetworkException) {
-            Log.d(LOG_TAG, "InstalledAppStatusFetcher: Can't find latest update for ${app.name}.", e)
-            throw NetworkException("can't find latest update for ${app.name}.", e)
+            throw NetworkException("Unable to fetch the latest update for ${app.name}.", e)
         } catch (e: DisplayableException) {
-            Log.d(LOG_TAG, "InstalledAppStatusFetcher: Can't find latest update for ${app.name}.", e)
-            throw DisplayableException("can't find latest update for ${app.name}.", e)
-        } catch (e: IllegalStateException) {
-            Log.d(LOG_TAG, "InstalledAppStatusFetcher: Can't find latest update for ${app.name}.", e)
-            throw IllegalStateException("can't find latest update for ${app.name}.", e)
+            throw DisplayableException("Unable to fetch the latest update for ${app.name}.", e)
+        } catch (e: RuntimeException) {
+            throw UnrecovableAppFetchException("Unable to fetch the latest update for ${app.name}.", e)
         }
     }
 

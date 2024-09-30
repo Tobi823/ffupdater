@@ -40,7 +40,7 @@ object Vivaldi : AppBase() {
     @MainThread
     @Throws(NetworkException::class)
     override suspend fun fetchLatestUpdate(context: Context): LatestVersion {
-        val content = FileDownloader.downloadAsString(DOWNLOAD_WEBSITE_URL)
+        val content = FileDownloader.downloadString(DOWNLOAD_WEBSITE_URL)
         val (version, downloadUrl) = extractVersionAndDownloadUrl(content)
         return LatestVersion(
             downloadUrl = downloadUrl,

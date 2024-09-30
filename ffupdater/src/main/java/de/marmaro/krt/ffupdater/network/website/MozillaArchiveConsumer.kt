@@ -54,7 +54,7 @@ object MozillaArchiveConsumer {
     }
 
     private suspend fun findAllVersions(fullUrl: String): List<String> {
-        val webpage = FileDownloader.downloadAsString(fullUrl)
+        val webpage = FileDownloader.downloadString(fullUrl)
         val regex = Regex("""<a href="[a-z0-9.\-_/]+">([a-z0-9.\-_]+)/</a>""")
         val allResults = regex.findAll(webpage)
         val versionStrings = allResults
@@ -64,7 +64,7 @@ object MozillaArchiveConsumer {
     }
 
     suspend fun findDateTimeFromPage(page: String): ZonedDateTime {
-        val webpage = FileDownloader.downloadAsString(page)
+        val webpage = FileDownloader.downloadString(page)
         val regex = Regex("""<td>((\d{1,2}+)-(\w+)-(\d{4}) (\d{1,2}):(\d{1,2}))</td>""")
         val lastModified = regex.find(webpage)?.groups?.get(1)?.value
         requireNotNull(lastModified) { "unable to extract timestamp: $webpage" }
@@ -84,7 +84,7 @@ object MozillaArchiveConsumer {
     }
 
     suspend fun findLastLink(page: String): String {
-        val webpage = FileDownloader.downloadAsString(page)
+        val webpage = FileDownloader.downloadString(page)
         val regex = Regex("""<a href="([a-z0-9.\-_/]+)">""")
         val links = regex
                 .findAll(webpage)

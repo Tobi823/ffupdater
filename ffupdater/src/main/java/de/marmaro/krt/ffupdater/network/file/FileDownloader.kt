@@ -132,7 +132,7 @@ object FileDownloader {
 
     @MainThread
     @Throws(NetworkException::class)
-    suspend fun downloadAsString(url: String): String {
+    suspend fun downloadString(url: String): String {
         return downloadAsBufferedReader(url, "GET", null) {
             it.readText()
         }

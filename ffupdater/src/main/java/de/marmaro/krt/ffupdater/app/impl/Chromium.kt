@@ -69,7 +69,7 @@ object Chromium : AppBase() {
     private suspend fun findLatestRevision(platform: String): String {
         val slash = "%2F"
         val url = "$BASE_DOWNLOAD_URL/${platform}${slash}LAST_CHANGE?alt=media"
-        return FileDownloader.downloadAsString(url)
+        return FileDownloader.downloadString(url)
     }
 
     private suspend fun findStorageObject(

@@ -183,6 +183,7 @@ class MainActivity : AppCompatActivity() {
             recyclerView.notifyClearedErrorForApp(app)
             return updateStatus
         } catch (e: Exception) {
+            Log.e(LOG_TAG, "Failed to update the metadata of ${app.name}", e)
             val textId = when (e) {
                 is ApiRateLimitExceededException -> R.string.main_activity__github_api_limit_exceeded
                 is NetworkException -> R.string.main_activity__temporary_network_issue
