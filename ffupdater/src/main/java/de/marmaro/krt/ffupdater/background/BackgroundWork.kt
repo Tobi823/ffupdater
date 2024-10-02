@@ -10,15 +10,10 @@ import androidx.work.ExistingPeriodicWorkPolicy.CANCEL_AND_REENQUEUE
 import androidx.work.ExistingPeriodicWorkPolicy.UPDATE
 import androidx.work.ExistingWorkPolicy.KEEP
 import androidx.work.PeriodicWorkRequest
-import androidx.work.WorkContinuation
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
 import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.background.PeriodicWorkMethodResult.Companion.neverRetry
-import de.marmaro.krt.ffupdater.background.PeriodicWorkMethodResult.Companion.retryRegularTimeSlot
-import de.marmaro.krt.ffupdater.background.PeriodicWorkMethodResult.Companion.retrySoon
-import de.marmaro.krt.ffupdater.background.PeriodicWorkMethodResult.Companion.success
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.InstalledAppsCache
 import de.marmaro.krt.ffupdater.device.PowerSaveModeReceiver
@@ -49,17 +44,8 @@ import java.util.concurrent.TimeUnit.SECONDS
  * Depending on the device and the settings from the user not all steps will be executed.
  */
 @Keep
-class BackgroundWork(context: Context, workerParams: WorkerParameters) :
-    CoroutineWorker(context.applicationContext, workerParams) {
-
-    // retry next regular time slot
-    private val retrySlow = Result.success()
-
-    // dont retry, just simply execute the code at the next time again
-    private val noRetry = Result.success()
-
-    // retry as soon as possible (with backoff time)
-    private val retryFast = Result.retry()
+class BackgroundWork(context: Context, workerParams: WorkerParameters) : CoroutineWorker(context.applicationContext,
+        workerParams) {
 
     /**
      * Execute the logic for update checking, downloading and installation.
@@ -83,20 +69,23 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
         try {
             return internalDoWork()
         } catch (e: CancellationException) {
-            return retrySlow
+            // retry next regular time slot
+            return Result.success()
         } catch (e: Exception) {
             if (runAttemptCount < MAX_RETRIES) {
-                Log.w(LOG_TAG, "BackgroundWork: Job failed. Restart in ${calcBackoffTime(runAttemptCount)}.", e)
-                return retryFast
+                logWarn("Job failed. Restart in ${calcBackoffTime(runAttemptCount)}.", e)
+                // retry as soon as possible (with backoff time)
+                return Result.retry()
             }
 
             val backgroundException = BackgroundException(e)
-            Log.e(LOG_TAG, "BackgroundWorker: Job failed.", backgroundException)
+            logError("BackgroundWorker: Job failed.", backgroundException)
             when (e) {
                 is NetworkException -> showNetworkErrorNotification(applicationContext, backgroundException)
                 else -> showGeneralErrorNotification(applicationContext, backgroundException)
             }
-            return retrySlow
+            // retry next regular time slot
+            return Result.success()
         }
     }
 
@@ -104,105 +93,119 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
         DataStoreHelper.lastBackgroundCheck2 = System.currentTimeMillis()
     }
 
-    private fun areRunRequirementsMet(): PeriodicWorkMethodResult {
-        if (PowerUtil.isBatteryLow()) {
-            return retryRegularTimeSlot("BackgroundJob: Skip because battery is low.")
-        }
-        if (NetworkUtil.isDataSaverEnabled(applicationContext)) {
-            return retrySoon("BackgroundJob: Skip due to data saver.")
-        }
-        if (!BackgroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(applicationContext)) {
-            return retrySoon("BackgroundJob: Skip because network is metered.")
-        }
-        if (BackgroundSettings.isUpdateCheckOnlyAllowedWhenDeviceIsIdle && PowerUtil.isDeviceInteractive()) {
-            return retrySoon("BackgroundJob: Skip because device is not idle.")
-        }
-        if (PowerSaveModeReceiver.isPowerSaveModeEnabledForShortTime()) {
-            return retryRegularTimeSlot("BackgroundJob: Skip because power save mode was enabled recently")
-        }
-        return success()
-    }
 
-    @Suppress("IfThenToElvis")
     @MainThread
     private suspend fun internalDoWork(): Result {
         Log.i(LOG_TAG, "BackgroundWork: Execute background job.")
         storeBackgroundJobExecutionTime()
-        areRunRequirementsMet().onFailure { return it }
+
+        if (shouldRetryNextTimeSlot()) {
+            return Result.success()
+        }
+        if (shouldFastRetry()) {
+            return Result.retry()
+        }
+        if (shouldNeverRetry()) {
+            return Result.failure()
+        }
 
         NotificationRemover.removeDownloadErrorNotification(applicationContext)
         NotificationRemover.removeAppStatusNotifications(applicationContext)
 
-        checkUpdateCheckAllowed().onFailure { return@internalDoWork it }
-        val outdatedApps = findOutdatedApps().sortedBy { it.installationChronology }
+        val workRequests = findOutdatedApps().sortedBy { it.installationChronology }
+            .map { AppUpdater.createWorkRequest(it) }
 
-        // enqueue all work requests for update check
         val workManager = WorkManager.getInstance(applicationContext)
-        var lastWorkRequest: WorkContinuation? = null
-        for (app in outdatedApps) {
-            lastWorkRequest = if (lastWorkRequest == null) {
-                workManager.beginUniqueWork(DOWNLOADER_INSTALLER_KEY, KEEP, AppUpdater.createWorkRequest(app))
-            } else {
-                lastWorkRequest.then(AppUpdater.createWorkRequest(app))
-            }
-        }
-        lastWorkRequest?.enqueue()
-        Log.i(LOG_TAG, "BackgroundWork: Finish.")
+        workManager.beginUniqueWork(DOWNLOADER_INSTALLER_KEY, KEEP, workRequests)
+            .enqueue()
+
+        logInfo("Finish.")
         return Result.success()
     }
 
-    private fun checkUpdateCheckAllowed(): PeriodicWorkMethodResult {
-        return when {
-            !BackgroundSettings.isUpdateCheckEnabled -> neverRetry("BackgroundWork: Background should be disabled - disable it now.")
-
-            FileDownloader.areDownloadsCurrentlyRunning() -> retrySoon("BackgroundWork: Retry background job because other downloads are running.")
-
-            !BackgroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(applicationContext) -> retrySoon("BackgroundWork: No unmetered network available for update check.")
-
-            else -> success()
+    private fun shouldNeverRetry(): Boolean {
+        if (!BackgroundSettings.isUpdateCheckEnabled) {
+            logInfo("Background should be disabled - disable it now.")
+            return true
         }
+        return false
     }
+
+    private fun shouldRetryNextTimeSlot(): Boolean {
+        if (PowerUtil.isBatteryLow()) {
+            logInfo("Skip because battery is low.")
+            return true
+        }
+        if (PowerSaveModeReceiver.isPowerSaveModeEnabledForShortTime()) {
+            logInfo("Skip because power save mode was enabled recently")
+            return true
+        }
+        return false
+    }
+
+    private fun shouldFastRetry(): Boolean {
+        if (NetworkUtil.isDataSaverEnabled(applicationContext)) {
+            logInfo("Skip due to data saver.")
+            return true
+        }
+        if (!BackgroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(applicationContext)) {
+            logInfo("Skip because network is metered.")
+            return true
+        }
+        if (BackgroundSettings.isUpdateCheckOnlyAllowedWhenDeviceIsIdle && PowerUtil.isDeviceInteractive()) {
+            logInfo("Skip because device is not idle.")
+            return true
+        }
+        if (FileDownloader.areDownloadsCurrentlyRunning()) {
+            logInfo("Retry background job because other downloads are running.")
+            return true
+        }
+        if (!BackgroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(applicationContext)) {
+            logInfo("No unmetered network available for update check.")
+            return true
+        }
+        return false
+    }
+
 
     @Suppress("ConvertCallChainIntoSequence")
     private suspend fun findOutdatedApps(): List<App> {
         InstalledAppsCache.updateCache(applicationContext)
-        val appsToCheck = InstalledAppsCache
-                .getInstalledAppsWithCorrectFingerprint(applicationContext)
-                .filter { it !in BackgroundSettings.excludedAppsFromUpdateCheck }
-                .filter { it !in ForegroundSettings.hiddenApps }
-                .filter { DeviceAbiExtractor.supportsOneOf(it.findImpl().supportedAbis) }
-                .map { it.findImpl() }
-                .filter { !it.wasInstalledByOtherApp(applicationContext) }
-                .filter { FileDownloader.isUrlAvailable(it.hostnameForInternetCheck) }
+        val appsToCheck = InstalledAppsCache.getInstalledAppsWithCorrectFingerprint(applicationContext)
+            .filter { it !in BackgroundSettings.excludedAppsFromUpdateCheck }
+            .filter { it !in ForegroundSettings.hiddenApps }
+            .filter { DeviceAbiExtractor.supportsOneOf(it.findImpl().supportedAbis) }
+            .map { it.findImpl() }
+            .filter { !it.wasInstalledByOtherApp(applicationContext) }
+            .filter { FileDownloader.isUrlAvailable(it.hostnameForInternetCheck) }
             .map { it.findStatusOrUseRecentCache(applicationContext) }
 
-        val outdatedApps = appsToCheck
-                .filter { it.isUpdateAvailable }
-                .map { it.app }
+        val outdatedApps = appsToCheck.filter { it.isUpdateAvailable }
+            .map { it.app }
 
         // delete old cached APK files
         appsToCheck.forEach {
-            it.app
-                    .findImpl()
-                    .deleteFileCacheExceptLatest(applicationContext, it.latestVersion)
+            it.app.findImpl()
+                .deleteFileCacheExceptLatest(applicationContext, it.latestVersion)
         }
 
-        Log.d(LOG_TAG, "BackgroundWork: [${outdatedApps.joinToString(",")}] are outdated.")
+        logInfo("The apps ${outdatedApps.joinToString(",")} are outdated.")
         return outdatedApps
     }
 
     companion object {
         private const val CHECK_FOR_UPDATES_KEY = "update_checker"
         private const val DOWNLOADER_INSTALLER_KEY = "ffupdater_downloader_and_installer"
+        private const val CLASS_LOGTAG = "BackgroundJob:"
         private val MAX_RETRIES = getRetriesForTotalBackoffTime(Duration.ofHours(8))
 
         fun start(context: Context) {
-            Log.i(LOG_TAG, "BackgroundWork: Start BackgroundWork")
+            logInfo("Start BackgroundWork")
             internalStart(context.applicationContext, UPDATE)
         }
 
         fun forceRestart(context: Context) {
-            Log.i(LOG_TAG, "BackgroundWork: Force restart BackgroundWork")
+            logInfo("Force restart BackgroundWork")
             internalStart(context.applicationContext, CANCEL_AND_REENQUEUE)
         }
 
@@ -218,10 +221,9 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
             }
 
             val minutes = BackgroundSettings.updateCheckInterval.toMinutes()
-            val workRequest = PeriodicWorkRequest
-                    .Builder(BackgroundWork::class.java, minutes, MINUTES)
-                    .setInitialDelay(initialDelay.seconds, SECONDS)
-                    .build()
+            val workRequest = PeriodicWorkRequest.Builder(BackgroundWork::class.java, minutes, MINUTES)
+                .setInitialDelay(initialDelay.seconds, SECONDS)
+                .build()
             instance.enqueueUniquePeriodicWork(CHECK_FOR_UPDATES_KEY, policy, workRequest)
         }
 
@@ -242,6 +244,26 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) :
 
             val timeSinceExecution = Duration.ofMillis(System.currentTimeMillis() - lastExecutionTime)
             return timeSinceExecution < intervalWithErrorMargin
+        }
+
+        private fun logInfo(message: String) {
+            Log.i(LOG_TAG, "$CLASS_LOGTAG: $message")
+        }
+
+        private fun logWarn(message: String) {
+            Log.w(LOG_TAG, "$CLASS_LOGTAG: $message")
+        }
+
+        private fun logWarn(message: String, exception: Exception) {
+            Log.w(LOG_TAG, "$CLASS_LOGTAG: $message", exception)
+        }
+
+        private fun logError(message: String) {
+            Log.e(LOG_TAG, "$CLASS_LOGTAG: $message")
+        }
+
+        private fun logError(message: String, exception: Exception) {
+            Log.e(LOG_TAG, "$CLASS_LOGTAG: $message", exception)
         }
     }
 }

@@ -20,6 +20,10 @@ object PowerSaveModeReceiver : BroadcastReceiver() {
     private lateinit var preferences: SharedPreferences
     private lateinit var powerManager: PowerManager
 
+    enum class PowerSaveModeDuration {
+        POWER_SAVE_MODE_NOT_ENABLED, ENABLED_RECENTLY, ENABLED_FOR_LONG_TIME
+    }
+
     /**
      * For PowerManager.ACTION_POWER_SAVE_MODE_CHANGED it is required to register the receiver.
      */
@@ -36,6 +40,20 @@ object PowerSaveModeReceiver : BroadcastReceiver() {
         context.applicationContext.registerReceiver(PowerSaveModeReceiver, filter)
     }
 
+    fun getPowerSaveModeDuration(): PowerSaveModeDuration {
+        val enableTimestamp = preferences.getLong(ATTRIBUTE_NAME, 0)
+        if (!powerManager.isPowerSaveMode || enableTimestamp == 0L) {
+            return PowerSaveModeDuration.POWER_SAVE_MODE_NOT_ENABLED
+        }
+        val duration = Duration.ofNanos(System.nanoTime() - enableTimestamp)
+        if (duration <= thresholdBetweenShortAndLongTime) {
+            return PowerSaveModeDuration.ENABLED_RECENTLY
+        } else {
+            return PowerSaveModeDuration.ENABLED_FOR_LONG_TIME
+        }
+    }
+
+    @Deprecated("remove")
     fun isPowerSaveModeEnabledForShortTime(): Boolean {
         if (!powerManager.isPowerSaveMode) {
             return false
@@ -47,6 +65,7 @@ object PowerSaveModeReceiver : BroadcastReceiver() {
         return timestamp <= thresholdBetweenShortAndLongTime
     }
 
+    @Deprecated("remove")
     fun isPowerSaveModeEnabledForLongerTime(): Boolean {
         if (!powerManager.isPowerSaveMode) {
             return false
@@ -85,6 +104,7 @@ object PowerSaveModeReceiver : BroadcastReceiver() {
                 .apply()
     }
 
+    @Deprecated("remove")
     private fun getTimeDurationOfEnabledPowerSaveMode(): Duration {
         val timestamp = preferences.getLong(ATTRIBUTE_NAME, 0)
         if (timestamp == 0L) {
