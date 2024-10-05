@@ -81,7 +81,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.main_view_toolbar__about -> {
-                    val lastBackgroundUpdateCheckTime = DataStoreHelper.lastBackgroundCheck2
+                    val lastBackgroundUpdateCheckTime = DataStoreHelper.lastAppBackgroundCheck
                     val lastBackgroundUpdateCheckText = if (lastBackgroundUpdateCheckTime != 0L) {
                         DateUtils.getRelativeDateTimeString(
                             this,

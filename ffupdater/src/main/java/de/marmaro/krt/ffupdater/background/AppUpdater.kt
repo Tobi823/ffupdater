@@ -10,12 +10,11 @@ import androidx.work.CoroutineWorker
 import androidx.work.Data
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkerParameters
-import de.marmaro.krt.ffupdater.DisplayableException
 import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.InstalledAppStatus
-import de.marmaro.krt.ffupdater.background.exception.AppUpdaterDownloadException
-import de.marmaro.krt.ffupdater.background.exception.AppUpdaterInstallationException
+import de.marmaro.krt.ffupdater.background.exception.AppUpdaterNonRetryableException
+import de.marmaro.krt.ffupdater.background.exception.AppUpdaterRetryableException
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.device.PowerSaveModeReceiver
 import de.marmaro.krt.ffupdater.device.PowerSaveModeReceiver.PowerSaveModeDuration.ENABLED_RECENTLY
@@ -23,133 +22,106 @@ import de.marmaro.krt.ffupdater.device.PowerUtil
 import de.marmaro.krt.ffupdater.installer.AppInstallerFactory
 import de.marmaro.krt.ffupdater.installer.entity.Installer.NATIVE_INSTALLER
 import de.marmaro.krt.ffupdater.installer.entity.Installer.SESSION_INSTALLER
-import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
-import de.marmaro.krt.ffupdater.installer.exceptions.UserInteractionIsRequiredException
 import de.marmaro.krt.ffupdater.network.NetworkUtil
-import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
+import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.network.file.DownloadStatus
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
-import de.marmaro.krt.ffupdater.notification.NotificationBuilder.showDownloadFailedNotification
 import de.marmaro.krt.ffupdater.notification.NotificationBuilder.showDownloadRunningNotification
 import de.marmaro.krt.ffupdater.notification.NotificationBuilder.showGeneralErrorNotification
-import de.marmaro.krt.ffupdater.notification.NotificationBuilder.showInstallFailureNotification
 import de.marmaro.krt.ffupdater.notification.NotificationBuilder.showInstallSuccessNotification
-import de.marmaro.krt.ffupdater.notification.NotificationBuilder.showNetworkErrorNotification
 import de.marmaro.krt.ffupdater.notification.NotificationBuilder.showUpdateAvailableNotification
+import de.marmaro.krt.ffupdater.notification.NotificationRemover
 import de.marmaro.krt.ffupdater.notification.NotificationRemover.removeDownloadRunningNotification
 import de.marmaro.krt.ffupdater.settings.BackgroundSettings
+import de.marmaro.krt.ffupdater.settings.DataStoreHelper
 import de.marmaro.krt.ffupdater.settings.InstallerSettings
 import de.marmaro.krt.ffupdater.storage.StorageUtil
-import de.marmaro.krt.ffupdater.utils.WorkManagerTiming.calcBackoffTime
 import kotlinx.coroutines.CompletableDeferred
+import java.time.Duration.ofDays
+import kotlin.Result.Companion.failure
+import kotlin.Result.Companion.success
 
 @Keep
-class AppUpdater(context: Context, workerParams: WorkerParameters) : CoroutineWorker(context.applicationContext,
-        workerParams) {
+class AppUpdater(context: Context, workerParams: WorkerParameters) : CoroutineWorker(context, workerParams) {
+
+    private var showUpdateNotification = true
 
     override suspend fun doWork(): Result {
-        try {
-            return doWorkInternal()
-        } catch (e: Exception) {
-            if (runAttemptCount < MAX_RETRIES) {
-                logWarn("Job failed. Restart in ${calcBackoffTime(runAttemptCount)}.", e)
-                return Result.retry()
-            }
-            val exception = AppUpdaterException(e)
-            logError("Job failed.", exception)
-            when (e) {
-                is AppUpdaterDownloadException -> showDownloadFailedNotification(applicationContext, getApp(),
-                        e.getDisplayableException())
+        logInfo("Start doWork for ${getApp()}")
 
-                is AppUpdaterInstallationException -> showInstallFailureNotification(applicationContext, getApp(),
-                        e.getInstallationFailedException().errorCode,
-                        e.getInstallationFailedException().translatedMessage, e)
-
-                is NetworkException -> showNetworkErrorNotification(applicationContext, exception)
-                else -> showGeneralErrorNotification(applicationContext, exception)
+        return doWorkInternal().fold(onSuccess = { Result.success() }, onFailure = {
+            logError("Failed to update app", it)
+            if (showUpdateNotification && (it !is AppUpdaterRetryableException || runAttemptCount >= MAX_RETRIES)) {
+                showUpdateAvailableNotification(applicationContext, getApp())
             }
-            return Result.success()
-        }
+            if (it is AppUpdaterRetryableException) {
+                return@fold getLimitedRetryValue(Result.success(), it)
+            }
+            if (it is AppUpdaterNonRetryableException) {
+                return@fold Result.success()
+            }
+            // unexpected exception: do a limited retry
+            return@fold getLimitedRetryValue(Result.failure(), it)
+        })
     }
 
-    private suspend fun doWorkInternal(): Result {
+    private suspend fun doWorkInternal(): kotlin.Result<Boolean> {
         val app = getApp()
         logInfo("Start for ${app.name}.")
+        NotificationRemover.removeAppStatusNotifications(applicationContext, app)
 
-        val (returnValue, installedAppStatus) = doUpdateCheck(app)
-        if (returnValue != null) {
-            return returnValue
-        }
-
-        val returnValue2 = doDownload(installedAppStatus!!)
-        if (returnValue2 != null) {
-            return returnValue2
-        }
-
-        return doInstallation(installedAppStatus)
+        val installedAppStatus = doUpdateCheck(app).onFailure { return failure(it) }.getOrThrow()
+        // update is available because doUpdateCheck will fail if no update is available
+        showUpdateNotification = true
+        app.findImpl().deleteFileCacheExceptLatest(applicationContext, installedAppStatus.latestVersion)
+        doDownload(installedAppStatus).onFailure { return failure(it) }
+        doInstallation(installedAppStatus).onFailure { return failure(it) }
+        return success(true)
     }
 
-    private suspend fun doUpdateCheck(app: App): Pair<Result?, InstalledAppStatus?> {
-        if (shouldSkipDueToUpdateCheckProblems()) {
-            return Result.success() to null
-        }
-        if (shouldRetryDueToUpdateCheckProblems(app)) {
-            return Result.retry() to null
-        }
+    private suspend fun doUpdateCheck(app: App): kotlin.Result<InstalledAppStatus> {
+        isUpdateCheckPossible(app).onFailure { return failure(it) }
 
-        val installedAppStatus = app.findImpl()
-            .findStatusOrUseRecentCache(applicationContext)
-        return null to installedAppStatus
+        val installedAppStatus = try {
+            app.findImpl().findStatusOrUseRecentCache(applicationContext)
+        } catch (e: Exception) {
+            return failure(e)
+        }
+        if (!installedAppStatus.isUpdateAvailable) {
+            return failure(AppUpdaterNonRetryableException("No update available for ${app.name}."))
+        }
+        return success(installedAppStatus)
     }
 
-    private suspend fun doDownload(installedAppStatus: InstalledAppStatus): Result? {
-        if (shouldSkipDueToDownloadProblems(installedAppStatus)) {
-            showUpdateAvailableNotification(applicationContext, installedAppStatus.app)
-            return Result.success()
-        }
-        if (shouldRetryDueToDownloadProblems(installedAppStatus.app)) {
-            return Result.retry()
-        }
-
+    private suspend fun doDownload(installedAppStatus: InstalledAppStatus): kotlin.Result<Boolean> {
+        isDownloadPossible(installedAppStatus.app).onFailure { return failure(it) }
         val app = installedAppStatus.app
-        val impl = app.findImpl()
-        if (!(impl.isApkDownloaded(applicationContext, installedAppStatus.latestVersion))) {
+        if (app.findImpl().isApkDownloaded(applicationContext, installedAppStatus.latestVersion)) {
             logInfo("File for ${app.name} is already downloaded")
-            return null
+            return success(true)
         }
+
+        isDownloadPossible(installedAppStatus.app).onFailure { return failure(it) }
 
         logInfo("Start downloading ${app.name}")
-        try {
-            showDownloadRunningNotification(applicationContext, app, null, null)
-            downloadApp(installedAppStatus) {
-                showDownloadRunningNotification(applicationContext, app, it.progressInPercent, it.totalMB)
-            }
-        } catch (e: DisplayableException) {
-            throw AppUpdaterDownloadException("Fail to download ${app.name}", e)
-        } finally {
-            removeDownloadRunningNotification(applicationContext, app)
+        showDownloadRunningNotification(applicationContext, app, null, null)
+        val result = downloadApp(installedAppStatus) {
+            showDownloadRunningNotification(applicationContext, app, it.progressInPercent, it.totalMB)
         }
-        return null
+        removeDownloadRunningNotification(applicationContext, app)
+        return result
     }
 
-    private suspend fun doInstallation(appStatus: InstalledAppStatus): Result {
-        if (shouldSkipDueToInstallProblems()) {
-            showUpdateAvailableNotification(applicationContext, appStatus.app)
-            return Result.success()
-        }
-        if (shouldRetryDueToInstallProblems(appStatus.app)) {
-            return Result.retry()
-        }
+    private suspend fun doInstallation(appStatus: InstalledAppStatus): kotlin.Result<Boolean> {
+        isInstallationPossible(appStatus.app).onFailure { return failure(it) }
 
-        try {
-            installApplication(appStatus)
+        return installApplication(appStatus).onSuccess {
             showInstallSuccessNotification(applicationContext, appStatus.app)
-        } catch (e: UserInteractionIsRequiredException) {
+            return success(true)
+        }.onFailure {
             showUpdateAvailableNotification(applicationContext, appStatus.app)
-        } catch (e: InstallationFailedException) {
-            throw AppUpdaterInstallationException("Failed to install app", e)
+            return failure(AppUpdaterNonRetryableException("Installation failed", it))
         }
-        return Result.success()
     }
 
     private fun getApp(): App {
@@ -157,131 +129,110 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) : CoroutineWo
         return App.valueOf(appName)
     }
 
-    private fun shouldSkipDueToUpdateCheckProblems(): Boolean {
-        if (PowerSaveModeReceiver.getPowerSaveModeDuration() == ENABLED_RECENTLY) {
-            logInfo("Skip download because power save mode is enabled.")
-            return true
+    private suspend fun isUpdateCheckPossible(app: App): kotlin.Result<Boolean> {
+
+        if (!FileDownloader.isUrlAvailable(app.findImpl().hostnameForInternetCheck)) {
+            return failure(AppUpdaterRetryableException("Simple network test was not successful. Retry later."))
+        }
+        if (FileDownloader.areDownloadsCurrentlyRunning()) {
+            return failure(AppUpdaterRetryableException("Other downloads are running. Retry later."))
+        }
+        if (!BackgroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(applicationContext)) {
+            return failure(AppUpdaterRetryableException("No unmetered network available for app download. Retry later."))
+        }
+        if (isStopped) {
+            return failure(AppUpdaterNonRetryableException("WorkRequest is stopped."))
         }
         if (!BackgroundSettings.isUpdateCheckEnabled) {
-            logInfo("Background update check is disabled.")
-            return true
+            return failure(AppUpdaterNonRetryableException("Background update check is disabled."))
         }
-        return false
+        if (NetworkUtil.isDataSaverEnabled(applicationContext)) {
+            return failure(AppUpdaterNonRetryableException("Data saver is enabled."))
+        }
+        if (PowerSaveModeReceiver.getPowerSaveModeDuration() == ENABLED_RECENTLY) {
+            return failure(AppUpdaterNonRetryableException("Power save mode is enabled."))
+        }
+        if (PowerUtil.isBatteryLow()) {
+            return failure(AppUpdaterNonRetryableException("Battery is low."))
+        }
+        if (!BackgroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(applicationContext)) {
+            return failure(AppUpdaterNonRetryableException("No unmetered network is available."))
+        }
+        if (BackgroundSettings.isUpdateCheckOnlyAllowedWhenDeviceIsIdle && PowerUtil.isDeviceInteractive()) {
+            return failure(AppUpdaterNonRetryableException("Device is not idle."))
+        }
+        return success(true)
     }
 
-    private suspend fun shouldRetryDueToUpdateCheckProblems(app: App): Boolean {
-        if (!FileDownloader.isUrlAvailable(app.findImpl().hostnameForInternetCheck)) {
-            logWarn("Simple network test ws not successful. Abort background update check.")
-            return true
-        }
-        if (FileDownloader.areDownloadsCurrentlyRunning()) {
-            logInfo("Other downloads are running. Retry later")
-            return true
-        }
-        if (!BackgroundSettings.isUpdateCheckOnMeteredAllowed && NetworkUtil.isNetworkMetered(applicationContext)) {
-            logInfo("No unmetered network available for app download. Retry later.")
-            return true
-        }
-        return false
-    }
-
-    private suspend fun doDownload(
-        app: App,
-        installedAppStatus: InstalledAppStatus,
-        context: Context,
-    ) {
-        val impl = app.findImpl()
-        if (!(impl.isApkDownloaded(applicationContext, installedAppStatus.latestVersion))) {
-            logInfo("File for ${app.name} is already downloaded")
-            return
-        }
-
-        logInfo("Start downloading ${app.name}")
-        try {
-            showDownloadRunningNotification(context, app, null, null)
-            downloadApp(installedAppStatus) {
-                showDownloadRunningNotification(context, app, it.progressInPercent, it.totalMB)
-            }
-        } catch (e: DisplayableException) {
-            throw AppUpdaterDownloadException("Fail to download ${app.name}", e)
-        } finally {
-            removeDownloadRunningNotification(context, app)
-        }
-    }
-
-    private fun shouldSkipDueToDownloadProblems(installedAppStatus: InstalledAppStatus): Boolean {
-        if (!StorageUtil.isEnoughStorageAvailable(applicationContext)) {
-            logInfo("Not enough storage is available")
-            return true
+    private suspend fun isDownloadPossible(app: App): kotlin.Result<Boolean> {
+        if (isStopped) {
+            return failure(AppUpdaterNonRetryableException("WorkRequest is stopped."))
         }
         if (!BackgroundSettings.isDownloadEnabled) {
-            logInfo("Background download is disabled.")
-            return true
-        }
-        return false
-    }
-
-    private suspend fun shouldRetryDueToDownloadProblems(app: App): Boolean {
-        if (!FileDownloader.isUrlAvailable(app.findImpl().hostnameForInternetCheck)) {
-            logWarn("Simple network test ws not successful. Abort background update check.")
-            return true
-        }
-        if (FileDownloader.areDownloadsCurrentlyRunning()) {
-            logInfo("Other downloads are running. Retry later")
-            return true
-        }
-        if (!BackgroundSettings.isUpdateCheckOnMeteredAllowed && NetworkUtil.isNetworkMetered(applicationContext)) {
-            logInfo("No unmetered network available for app download. Retry later.")
-            return true
-        }
-        return false
-    }
-
-    private suspend fun downloadApp(installedAppStatus: InstalledAppStatus, onUpdate: (DownloadStatus) -> Unit) {
-        logInfo("Download update for ${installedAppStatus.app}.")
-        val appImpl = installedAppStatus.app.findImpl()
-        appImpl.download(applicationContext, installedAppStatus.latestVersion) { _, progressChannel ->
-            var lastTime = System.currentTimeMillis()
-            for (progress in progressChannel) {
-                if ((System.currentTimeMillis() - lastTime) >= 1000) {
-                    lastTime = System.currentTimeMillis()
-                    onUpdate(progress)
-                }
-            }
-        }
-    }
-
-    private fun shouldSkipDueToInstallProblems(): Boolean {
-        if (!DeviceSdkTester.supportsAndroid12S31() && InstallerSettings.getInstallerMethod() == SESSION_INSTALLER) {
-            logInfo("The current installer can not update apps in the background.")
-            return true
-        }
-        if (InstallerSettings.getInstallerMethod() == NATIVE_INSTALLER) {
-            logInfo("The current installer can not update apps in the background.")
-            return true
+            return failure(AppUpdaterNonRetryableException("Background download is disabled."))
         }
         if (!StorageUtil.isEnoughStorageAvailable(applicationContext)) {
-            logInfo("Not enough storage is available")
-            return true
+            return failure(AppUpdaterRetryableException("Not enough storage is available."))
         }
-        if (!BackgroundSettings.isInstallationEnabled) {
-            logInfo("Background installation is disabled.")
-            return true
+        if (FileDownloader.areDownloadsCurrentlyRunning()) {
+            return failure(AppUpdaterRetryableException("Other downloads are running. "))
         }
-        return false
+        if (!FileDownloader.isUrlAvailable(app.findImpl().hostnameForInternetCheck)) {
+            return failure(AppUpdaterRetryableException("Simple network test was not successful."))
+        }
+        if (!BackgroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(applicationContext)) {
+            return failure(AppUpdaterRetryableException("No unmetered network available for app download."))
+        }
+        return success(true)
     }
 
-    private suspend fun shouldRetryDueToInstallProblems(app: App): Boolean {
+    private suspend fun downloadApp(
+        installedAppStatus: InstalledAppStatus,
+        onUpdate: (DownloadStatus) -> Unit
+    ): kotlin.Result<Boolean> {
+        logInfo("Download update for ${installedAppStatus.app}.")
+        val appImpl = installedAppStatus.app.findImpl()
+        try {
+            appImpl.download(applicationContext, installedAppStatus.latestVersion) { _, progressChannel ->
+                var lastTime = System.currentTimeMillis()
+                for (progress in progressChannel) {
+                    if ((System.currentTimeMillis() - lastTime) >= 1000) {
+                        lastTime = System.currentTimeMillis()
+                        onUpdate(progress)
+                    }
+                }
+            }
+        } catch (e: Exception) {
+            return failure(e)
+        }
+        return success(true)
+    }
+
+    private suspend fun isInstallationPossible(app: App): kotlin.Result<Boolean> {
+        if (isStopped) {
+            return failure(AppUpdaterNonRetryableException("WorkRequest is stopped."))
+        }
+        if (!DeviceSdkTester.supportsAndroid12S31() && InstallerSettings.getInstallerMethod() == SESSION_INSTALLER) {
+            return failure(AppUpdaterNonRetryableException("The current installer can not update apps in the background."))
+        }
+        if (InstallerSettings.getInstallerMethod() == NATIVE_INSTALLER) {
+            return failure(AppUpdaterNonRetryableException("The current installer can not update apps in the background."))
+        }
+        if (!StorageUtil.isEnoughStorageAvailable(applicationContext)) {
+            return failure(AppUpdaterNonRetryableException("Not enough storage is available."))
+        }
+        if (!BackgroundSettings.isInstallationEnabled) {
+            return failure(AppUpdaterNonRetryableException("Background installation is disabled."))
+        }
         if (BackgroundSettings.isInstallationWhenScreenOff && PowerUtil.isDeviceInteractive()) {
-            logInfo("Device is interactive. Retry background installation later.")
-            return true
+            return failure(AppUpdaterRetryableException("Device is interactive. Retry background installation later."))
         }
         if (DeviceSdkTester.supportsAndroid14U34() && !isGentleUpdatePossible(app)) {
-            logInfo("Gentle update is not possible. Retry installation later.")
-            return true
+            return failure(AppUpdaterRetryableException("Gentle update is not possible. Retry installation later."))
         }
-        return false
+        return success(true)
     }
+
 
     @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
     private suspend fun isGentleUpdatePossible(app: App): Boolean {
@@ -305,7 +256,7 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) : CoroutineWo
         return value
     }
 
-    private suspend fun installApplication(installedAppStatus: InstalledAppStatus) {
+    private suspend fun installApplication(installedAppStatus: InstalledAppStatus): kotlin.Result<Boolean> {
         val app = installedAppStatus.app
         val appImpl = app.findImpl()
         val file = appImpl.getApkFile(applicationContext, installedAppStatus.latestVersion)
@@ -318,46 +269,46 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) : CoroutineWo
             if (BackgroundSettings.isDeleteUpdateIfInstallSuccessful) {
                 appImpl.getApkCacheFolder(applicationContext)
             }
+            return success(true)
         } catch (e: Exception) {
             if (BackgroundSettings.isDeleteUpdateIfInstallFailed) {
-                app.findImpl()
-                    .deleteFileCache(applicationContext)
+                app.findImpl().deleteFileCache(applicationContext)
             }
-            throw e
+            return failure(e)
         }
+    }
+
+    private fun getLimitedRetryValue(valueAfterTooManyRetries: Result, exception: Throwable): Result {
+        if (runAttemptCount < MAX_RETRIES) {
+            return Result.retry()
+        } else {
+            if (unsuccessfulBackgroundCheckForLongTime()) {
+                showGeneralErrorNotification(applicationContext, exception)
+            }
+            return valueAfterTooManyRetries
+        }
+    }
+
+    private fun unsuccessfulBackgroundCheckForLongTime(): Boolean {
+        return (DataStoreHelper.getDurationSinceAllAppsHasBeenChecked() ?: return false) >= ERROR_IGNORE_TIMESPAN
     }
 
     companion object {
         private const val APP_NAME_KEY = "app_name"
-        private const val CLASS_LOGTAG = "BackgroundDownloaderAndInstaller:"
-        private const val MAX_RETRIES = 6 // waiting time of all previous retries = about 1 hour
+        private const val CLASS_LOGTAG = "AppUpdater:"
+        private const val MAX_RETRIES = 5 // total of 15.5min waiting time (30s + 60s + 120s + 240s + 480s)
+        private val ERROR_IGNORE_TIMESPAN = ofDays(2)
 
         fun createWorkRequest(app: App): OneTimeWorkRequest {
-            val data = Data.Builder()
-                .putString(APP_NAME_KEY, app.name)
-                .build()
-            return OneTimeWorkRequest.Builder(AppUpdater::class.java)
-                .setInputData(data)
-                .build()
+            val data = Data.Builder().putString(APP_NAME_KEY, app.name).build()
+            return OneTimeWorkRequest.Builder(AppUpdater::class.java).setInputData(data).addTag(app.name).build()
         }
 
         private fun logInfo(message: String) {
             Log.i(LOG_TAG, "${CLASS_LOGTAG}: $message")
         }
 
-        private fun logWarn(message: String) {
-            Log.w(LOG_TAG, "${CLASS_LOGTAG}: $message")
-        }
-
-        private fun logWarn(message: String, exception: Exception) {
-            Log.w(LOG_TAG, "${CLASS_LOGTAG}: $message", exception)
-        }
-
-        private fun logError(message: String) {
-            Log.e(LOG_TAG, "${CLASS_LOGTAG}: $message")
-        }
-
-        private fun logError(message: String, exception: Exception) {
+        private fun logError(message: String, exception: Throwable) {
             Log.e(LOG_TAG, "${CLASS_LOGTAG}: $message", exception)
         }
     }

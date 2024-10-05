@@ -18,18 +18,12 @@ import android.provider.Settings
 import androidx.annotation.Keep
 import androidx.annotation.RequiresApi
 import de.marmaro.krt.ffupdater.BuildConfig
-import de.marmaro.krt.ffupdater.DisplayableException
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.R.string.crash_report__explain_text__download_activity_install_file
 import de.marmaro.krt.ffupdater.R.string.notification__bg_update_check__unreliable_execution__channel_description
 import de.marmaro.krt.ffupdater.R.string.notification__bg_update_check__unreliable_execution__channel_name
 import de.marmaro.krt.ffupdater.R.string.notification__bg_update_check__unreliable_execution__text
 import de.marmaro.krt.ffupdater.R.string.notification__bg_update_check__unreliable_execution__title
-import de.marmaro.krt.ffupdater.R.string.notification__download_error__channel_descr
-import de.marmaro.krt.ffupdater.R.string.notification__download_error__channel_name
-import de.marmaro.krt.ffupdater.R.string.notification__download_error__descr
-import de.marmaro.krt.ffupdater.R.string.notification__download_error__text
-import de.marmaro.krt.ffupdater.R.string.notification__download_error__title
 import de.marmaro.krt.ffupdater.R.string.notification__download_running__channel_descr
 import de.marmaro.krt.ffupdater.R.string.notification__download_running__channel_name
 import de.marmaro.krt.ffupdater.R.string.notification__download_running__title
@@ -81,7 +75,7 @@ object NotificationBuilder {
     @Keep
     private data class NotificationData(val id: Int, val title: String, val text: String)
 
-    fun showGeneralErrorNotification(context: Context, exception: Exception) {
+    fun showGeneralErrorNotification(context: Context, exception: Throwable) {
         val appContext = context.applicationContext
         val channel = ChannelData(
             id = "background_notification",
@@ -161,25 +155,6 @@ object NotificationBuilder {
             text = text,
         )
         showNotification(context, channel, notification, null)
-    }
-
-    fun showDownloadFailedNotification(context: Context, app: App, exception: DisplayableException) {
-        val appContext = context.applicationContext
-        val appTitle = appContext.getString(app.findImpl().title)
-        val channel = ChannelData(
-            id = "download_error_notification",
-            name = appContext.getString(notification__download_error__channel_name),
-            description = appContext.getString(notification__download_error__channel_descr),
-        )
-        val notification = NotificationData(
-            id = DOWNLOAD_ERROR_CODE + app.ordinal,
-            title = appContext.getString(notification__download_error__title),
-            text = appContext.getString(notification__download_error__text, appTitle),
-        )
-        val throwableAndLogs = ThrowableAndLogs(exception, LogReader.readLogs())
-        val description = appContext.getString(notification__download_error__descr, appTitle)
-        val intent = CrashReportActivity.createIntent(appContext, throwableAndLogs, description)
-        showNotification(appContext, channel, notification, intent)
     }
 
     fun showInstallSuccessNotification(context: Context, app: App) {

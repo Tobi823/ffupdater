@@ -67,3 +67,8 @@ inline fun View.goneAfterExecution(block: () -> Unit) {
 inline fun View.setVisibleOrGone(visible: Boolean) {
     this.visibility = if (visible) View.VISIBLE else View.GONE
 }
+
+fun max(d1: java.time.Duration, d2: java.time.Duration): java.time.Duration {
+    val ns = kotlin.math.max(d1.toNanos(), d2.toNanos())
+    return java.time.Duration.ofNanos(ns)
+}

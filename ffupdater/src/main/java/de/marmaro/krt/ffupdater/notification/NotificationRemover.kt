@@ -4,7 +4,6 @@ import android.app.NotificationManager
 import android.content.Context
 import androidx.annotation.Keep
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.notification.NotificationBuilder.DOWNLOAD_ERROR_CODE
 import de.marmaro.krt.ffupdater.notification.NotificationBuilder.DOWNLOAD_IS_RUNNING_CODE
 import de.marmaro.krt.ffupdater.notification.NotificationBuilder.INSTALL_FAILURE_ERROR
 import de.marmaro.krt.ffupdater.notification.NotificationBuilder.INSTALL_SUCCESS_CODE
@@ -21,13 +20,6 @@ object NotificationRemover {
     fun removeDownloadRunningNotification(context: Context, app: App) {
         getNotificationManager(context)
             .cancel(DOWNLOAD_IS_RUNNING_CODE + app.ordinal)
-    }
-
-    fun removeDownloadErrorNotification(context: Context) {
-        App.values().forEach {
-            getNotificationManager(context)
-                .cancel(DOWNLOAD_ERROR_CODE + it.ordinal)
-        }
     }
 
     private fun removeInstallSuccessNotification(context: Context, app: App) {
