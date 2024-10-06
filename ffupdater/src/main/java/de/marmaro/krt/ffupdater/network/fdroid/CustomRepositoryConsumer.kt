@@ -4,6 +4,7 @@ import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import com.google.gson.JsonObject
 import de.marmaro.krt.ffupdater.app.entity.LatestVersion
+import de.marmaro.krt.ffupdater.app.entity.Version
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
@@ -28,7 +29,7 @@ object CustomRepositoryConsumer {
             .maxBy { it.versionCode }
         return LatestVersion(
             downloadUrl = "$repoUrl/${apk.apkName}",
-            version = apk.versionName,
+            version = Version(apk.versionName),
             publishDate = Instant.ofEpochMilli(apk.added).toString(),
             exactFileSizeBytesOfDownload = apk.size,
             fileHash = Sha256Hash(apk.hash),

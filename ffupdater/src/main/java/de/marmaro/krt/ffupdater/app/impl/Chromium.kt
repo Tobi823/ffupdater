@@ -13,6 +13,7 @@ import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.BETTER_THAN_GOOGLE_CHROME
 import de.marmaro.krt.ffupdater.app.entity.InstalledAppStatus
 import de.marmaro.krt.ffupdater.app.entity.LatestVersion
+import de.marmaro.krt.ffupdater.app.entity.Version
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
@@ -50,7 +51,7 @@ object Chromium : AppBase() {
         val storageObject = findStorageObject(revision, platform)
         return LatestVersion(
             downloadUrl = storageObject.downloadUrl,
-            version = revision,
+            version = Version(revision),
             publishDate = storageObject.timestamp,
             exactFileSizeBytesOfDownload = storageObject.fileSizeBytes,
             fileHash = null,
@@ -119,7 +120,7 @@ object Chromium : AppBase() {
     @SuppressLint("ApplySharedPref")
     override suspend fun appWasInstalledCallback(context: Context, available: InstalledAppStatus) {
         PreferenceManager.getDefaultSharedPreferences(context).edit()
-            .putString(INSTALLED_VERSION_REVISION, available.latestVersion.version)
+            .putString(INSTALLED_VERSION_REVISION, available.latestVersion.version.versionText)
             .putString(INSTALLED_VERSION_TIMESTAMP, available.latestVersion.publishDate)
             .commit()
         // this must be called last because the update is only recognized after setting the other values
@@ -132,7 +133,7 @@ object Chromium : AppBase() {
     ): Boolean {
         try {
             val preferences = PreferenceManager.getDefaultSharedPreferences(context)
-            if (preferences.getString(INSTALLED_VERSION_REVISION, "-1") != available.version) {
+            if (preferences.getString(INSTALLED_VERSION_REVISION, "-1") != available.version.versionText) {
                 return true
             }
             if (preferences.getString(INSTALLED_VERSION_TIMESTAMP, "") != available.publishDate) {

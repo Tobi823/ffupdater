@@ -39,10 +39,11 @@ object TorBrowserAlpha : AppBase() {
     override val displayCategory = listOf(BASED_ON_FIREFOX, GOOD_PRIVACY_BROWSER, GOOD_SECURITY_BROWSER)
     override val hostnameForInternetCheck = "https://dist.torproject.org"
 
-    override suspend fun getInstalledVersion(packageManager: PackageManager): String? {
-        val rawVersion = super.getInstalledVersion(packageManager) ?: return null
-        return rawVersion.split(" ")
+    override suspend fun getInstalledVersion(packageManager: PackageManager): de.marmaro.krt.ffupdater.app.entity.Version? {
+        val rawVersionText = super.getInstalledVersion(packageManager)?.versionText ?: return null
+        val newVersionText = rawVersionText.split(" ")
             .first()
+        return de.marmaro.krt.ffupdater.app.entity.Version(newVersionText)
     }
 
     @MainThread
@@ -51,7 +52,7 @@ object TorBrowserAlpha : AppBase() {
         val (version, dateTime) = findLatestVersion()
         return LatestVersion(
                 downloadUrl = getDownloadFileUrl(version),
-                version = version,
+            version = de.marmaro.krt.ffupdater.app.entity.Version(version),
                 publishDate = dateTime,
                 exactFileSizeBytesOfDownload = null,
                 fileHash = null,

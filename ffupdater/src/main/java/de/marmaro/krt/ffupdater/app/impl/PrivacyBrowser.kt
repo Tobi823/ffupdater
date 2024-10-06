@@ -8,6 +8,7 @@ import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.GOOD_PRIVACY_BROWSER
 import de.marmaro.krt.ffupdater.app.entity.LatestVersion
+import de.marmaro.krt.ffupdater.app.entity.Version
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.fdroid.FdroidConsumer
 
@@ -37,7 +38,7 @@ object PrivacyBrowser : AppBase() {
         val result = FdroidConsumer.getLatestUpdate(packageName, { true }, context)
         return LatestVersion(
             downloadUrl = result.downloadUrl,
-            version = result.versionName,
+            version = Version(result.versionName),
             publishDate = result.createdAt,
             exactFileSizeBytesOfDownload = null,
             fileHash = null,

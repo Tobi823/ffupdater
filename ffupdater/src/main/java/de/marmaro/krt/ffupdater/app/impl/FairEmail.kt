@@ -8,6 +8,7 @@ import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.OTHER
 import de.marmaro.krt.ffupdater.app.entity.LatestVersion
+import de.marmaro.krt.ffupdater.app.entity.Version
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 
@@ -42,7 +43,7 @@ object FairEmail : AppBase() {
         )
         return LatestVersion(
             downloadUrl = result.url,
-            version = result.tagName,
+            version = Version(result.tagName),
             publishDate = result.releaseDate,
             exactFileSizeBytesOfDownload = result.fileSizeBytes,
             fileHash = null,

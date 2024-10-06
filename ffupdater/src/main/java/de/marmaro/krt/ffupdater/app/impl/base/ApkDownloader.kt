@@ -83,7 +83,7 @@ interface ApkDownloader : AppAttributes {
     }
 
     private fun getSanitizedVersion(latestVersion: LatestVersion): String {
-        return latestVersion.version.replace("""\W""".toRegex(), "_")
+        return latestVersion.version.versionText.replace("""\W""".toRegex(), "_")
     }
 
     private suspend fun <R> download(

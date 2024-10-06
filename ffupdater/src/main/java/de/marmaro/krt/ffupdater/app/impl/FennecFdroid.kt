@@ -9,6 +9,7 @@ import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.BASED_ON_FIREFOX
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.GOOD_PRIVACY_BROWSER
 import de.marmaro.krt.ffupdater.app.entity.LatestVersion
+import de.marmaro.krt.ffupdater.app.entity.Version
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
@@ -42,7 +43,7 @@ object FennecFdroid : AppBase() {
         val result = FdroidConsumer.getLatestUpdate(packageName, getVersionAcceptor(), context)
         return LatestVersion(
             downloadUrl = result.downloadUrl,
-            version = result.versionName,
+            version = Version(result.versionName),
             publishDate = result.createdAt,
             exactFileSizeBytesOfDownload = null,
             fileHash = null,

@@ -10,12 +10,16 @@ import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 interface VersionDisplay : InstalledVersionFetcher {
     @AnyThread
     suspend fun getDisplayInstalledVersion(context: Context): String {
-        return context.getString(R.string.installed_version, getInstalledVersion(context.packageManager))
+        val version = getInstalledVersion(context.packageManager) ?: return ""
+        val buildDate = version.buildDate?.let { " [$it]" } ?: ""
+        return context.getString(R.string.installed_version, version.versionText + buildDate)
     }
 
     @AnyThread
     fun getDisplayAvailableVersion(context: Context, availableVersionResult: LatestVersion): String {
-        return context.getString(R.string.available_version, availableVersionResult.version)
+        val version = availableVersionResult.version
+        val buildDate = version.buildDate?.let { " [$it]" } ?: ""
+        return context.getString(R.string.available_version, version.versionText + buildDate)
     }
 
 }

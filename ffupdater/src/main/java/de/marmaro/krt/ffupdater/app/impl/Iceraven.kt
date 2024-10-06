@@ -9,6 +9,7 @@ import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.BASED_ON_FIREFOX
 import de.marmaro.krt.ffupdater.app.entity.LatestVersion
+import de.marmaro.krt.ffupdater.app.entity.Version
 import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
@@ -35,9 +36,10 @@ object Iceraven : AppBase() {
     override val displayCategory = listOf(BASED_ON_FIREFOX)
     override val hostnameForInternetCheck = "https://api.github.com"
 
-    override suspend fun getInstalledVersion(packageManager: PackageManager): String? {
-        val installedVersion = super.getInstalledVersion(packageManager)
-        return installedVersion?.replace("iceraven-", "")
+    override suspend fun getInstalledVersion(packageManager: PackageManager): Version? {
+        val installedVersion = super.getInstalledVersion(packageManager)?.versionText ?: return null
+        val newVersionText = installedVersion.replace("iceraven-", "")
+        return Version(newVersionText)
     }
 
     @MainThread
@@ -50,9 +52,10 @@ object Iceraven : AppBase() {
             isSuitableAsset = { it.name.endsWith(fileSuffix) },
             requireReleaseDescription = false,
         )
+        val version = result.tagName.replace("iceraven-", "")
         return LatestVersion(
             downloadUrl = result.url,
-            version = result.tagName.replace("iceraven-", ""),
+            version = Version(version),
             publishDate = result.releaseDate,
             exactFileSizeBytesOfDownload = result.fileSizeBytes,
             fileHash = null,

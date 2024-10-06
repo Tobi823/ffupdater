@@ -19,7 +19,12 @@ interface InstalledAppStatusFetcher : InstalledVersionFetcher, LatestVersionFetc
 
     suspend fun isInstalledAppOutdated(context: Context, available: LatestVersion): Boolean {
         val installedVersion = getInstalledVersion(context.packageManager) ?: return true
-        return VersionCompareHelper.isAvailableVersionHigher(installedVersion, available.version)
+        if (installedVersion.versionText == available.version.versionText && installedVersion.buildDate != null && available.version.buildDate != null) {
+            return available.version.buildDate.isAfter(installedVersion.buildDate)
+        }
+        return VersionCompareHelper.isAvailableVersionHigher(
+            installedVersion.versionText, available.version.versionText
+        )
     }
 
     suspend fun findStatusOrUseRecentCache(context: Context): InstalledAppStatus {
@@ -59,9 +64,12 @@ interface InstalledAppStatusFetcher : InstalledVersionFetcher, LatestVersionFetc
         context: Context,
         latestVersion: LatestVersion,
     ): InstalledAppStatus {
-        return InstalledAppStatus(app = app, latestVersion = latestVersion,
-                isUpdateAvailable = isInstalledAppOutdated(context.applicationContext, latestVersion),
-                displayVersion = getDisplayAvailableVersion(context.applicationContext, latestVersion))
+        return InstalledAppStatus(
+            app = app,
+            latestVersion = latestVersion,
+            isUpdateAvailable = isInstalledAppOutdated(context.applicationContext, latestVersion),
+            displayVersion = getDisplayAvailableVersion(context.applicationContext, latestVersion)
+        )
     }
 
     suspend fun appWasInstalledCallback(context: Context, available: InstalledAppStatus) {

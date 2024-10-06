@@ -9,7 +9,7 @@ import kotlinx.parcelize.Parcelize
 @Keep
 data class LatestVersion(
     val downloadUrl: String,
-    val version: String,
+    val version: Version,
     val publishDate: String?,
     val exactFileSizeBytesOfDownload: Long?,
     val fileHash: Sha256Hash?,

@@ -8,6 +8,7 @@ import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.FROM_MOZILLA
 import de.marmaro.krt.ffupdater.app.entity.LatestVersion
+import de.marmaro.krt.ffupdater.app.entity.Version
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.website.MozillaArchiveConsumer
@@ -44,7 +45,7 @@ object FirefoxFocusBeta : AppBase() {
         val dateTime = MozillaArchiveConsumer.findDateTimeFromPage(page)
         return LatestVersion(
             downloadUrl = downloadUrl,
-            version = version,
+            version = Version(version),
             publishDate = dateTime.toString(),
             exactFileSizeBytesOfDownload = null,
             fileHash = null,
