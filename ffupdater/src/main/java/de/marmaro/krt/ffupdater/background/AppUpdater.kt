@@ -44,14 +44,14 @@ import kotlin.Result.Companion.success
 @Keep
 class AppUpdater(context: Context, workerParams: WorkerParameters) : CoroutineWorker(context, workerParams) {
 
-    private var showUpdateNotification = true
+    private var showUpdateNotification = false
 
     override suspend fun doWork(): Result {
         logInfo("Start doWork for ${getApp()}")
 
         return doWorkInternal().fold(onSuccess = { Result.success() }, onFailure = {
             logError("Failed to update app", it)
-            if (showUpdateNotification && (it !is AppUpdaterRetryableException || runAttemptCount >= MAX_RETRIES)) {
+            if (showUpdateNotification && !(it is AppUpdaterRetryableException && runAttemptCount < MAX_RETRIES)) {
                 showUpdateAvailableNotification(applicationContext, getApp())
             }
             if (it is AppUpdaterRetryableException) {
