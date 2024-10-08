@@ -16,6 +16,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.withContext
 import java.io.File
+import java.time.format.DateTimeFormatter
 import java.util.zip.ZipFile
 
 @Keep
@@ -83,7 +84,10 @@ interface ApkDownloader : AppAttributes {
     }
 
     private fun getSanitizedVersion(latestVersion: LatestVersion): String {
-        return latestVersion.version.versionText.replace("""\W""".toRegex(), "_")
+        val version = latestVersion.version
+        val sanitizedVersionText = version.versionText.replace("""\W""".toRegex(), "_")
+        val dateOrEmptyString = version.buildDate?.format(DateTimeFormatter.BASIC_ISO_DATE)?.let { "_$it" } ?: ""
+        return sanitizedVersionText + dateOrEmptyString
     }
 
     private suspend fun <R> download(
