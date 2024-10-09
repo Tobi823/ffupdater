@@ -118,4 +118,15 @@
     <string name="settings__foreground__theme_preference__title">Pilih tema</string>
     <string name="settings__foreground__update_check__metered__summary">Izinkan pemeriksaan pembaruan pada jaringan terukur seperti data seluler.</string>
     <string name="settings__foreground_category__summary">Pengaturan ketika antarmuka pengguna terlihat.</string>
+    <string name="foreground__hidden_apps__title">Aplikasi tersembunyi</string>
+    <string name="cardview_dialog__eol">Aplikasi ini seharusnya tidak lagi digunakan:</string>
+    <string name="cardview_dialog__exit">Tutup</string>
+    <string name="cardview_dialog__auto_bg_update">Pembaruan latar belakang otomatis</string>
+    <string name="cardview_dialog__install">Instal versi terbaru</string>
+    <string name="cardview_dialog__different_signature">FFUpdater tidak dapat memperbarui aplikasi ini karena tanda tangan APK berbeda. Anda bisa memperbaikinya dengan menghapus aplikasi dan memasangnya kembali dengan FFUpdater. Namun, hal ini akan menghapus semua data Anda di dalam aplikasi. Jadi, ingatlah untuk mencadangkan data Anda sebelumnya.</string>
+    <string name="fairemail__warning">- Memperbarui FairEmail versi Google Play Store dengan FFUpdater dapat menyebabkan masalah, seperti misalnya dukungan OAuth/Google Mail yang tidak berfungsi. Jangan meminta bantuan kepada pembuat FairEmail untuk mengatasi masalah yang disebabkan oleh FFUpdater.</string>
+    <string name="cardview_dialog__not_installed_by_ffupdater">Aplikasi ini tidak diinstal atau diperbarui oleh FFUpdater. Untuk menghindari konflik dengan aplikasi lain, pembaruan otomatis dinonaktifkan.</string>
+    <string name="foreground__hidden_apps__summary">Aplikasi tersembunyi akan disembunyikan di UI dan tidak akan diperbarui secara otomatis.</string>
+    <string name="cardview_dialog__hide">Sembunyikan</string>
+    <string name="download_activity__retry_installation">Ulangi instalasi</string>
 </resources>

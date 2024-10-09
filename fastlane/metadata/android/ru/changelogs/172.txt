@@ -1,0 +1,3 @@
+Релизная версия 79.2.2 (172)
+- Благодарим за вклады на Weblate от Rheydskey, Scrambled777, gallegonovato и 109247019824
+- Исправлена проблема с загрузкой обновлений для Firefox Release / Бета / Nightly / Focus / Focus Бета / Klar (Tobi823/ffupdater#589)

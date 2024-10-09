@@ -1,0 +1,6 @@
+Релизная версия 79.2.3 (173)
+
+- Благодарим за вклады на Weblate от Rheydskey, ℂ𝕠𝕠𝕠𝕝 (github.com/Coool), Scrambled777, gallegonovato, 大王叫我来巡山, Eryk Michalak, Oğuz Ersen, Kazushi Hayama и 109247019824
+- Исправлены проблемы с Firefox Release загрузкой (Tobi823/ffupdater#592)
+- Не выполнял проверку фоновых обновлений, если базовый сетевой тест не удался. (Tobi823/ffupdater#578)
+- Обновлены зависимости
