@@ -1,1 +1,1 @@
-add changelog for F-Droid
+fix build script (because gradle config cache)
