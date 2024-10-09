@@ -22,7 +22,7 @@
     <string name="notification__eol_apps__text">Jums ir uzstādītas novecojušas lietotnes, kuras vairs nevajadzētu izmantot. Noklikšķiniet, lai iegūtu vairāk informācijas.</string>
     <string name="notification__eol_apps__title">Uzstādītas novecojušas lietotnes</string>
     <string name="notification__error__channel_name">Fona kļūdas</string>
-    <string name="brave_nightly__title">Brave (Nakts izlaidumi)</string>
+    <string name="brave_nightly__title">Brave (Nakts izlaidums)</string>
     <string name="bromite__warning">- Bromite izmanto Google Chrome tehnisko bāzi un tādējādi netieši atbalsta Chromium renderēšanas dzinēja monopolstāvokli.</string>
     <string name="crash_report__explain_text__uncaught_throwable">Diemžēl FFUpdater pēdējo reizi avarēja šīs kļūdas dēļ. Lūdzu, ziņojiet par problēmu notabug.org, GitHub vai GitLab vietnē. Lūdzu, neaizmirstiet pievienot avārijas atskaiti no starpliktuves un aprakstu, kā iegūt konkrēto problēmu.</string>
     <string name="download_activity__too_low_memory_title">Maz vietas krātuvē</string>
@@ -106,7 +106,7 @@
     <string name="cardview_dialog__self_description_label">Apraksts:</string>
     <string name="k9mail__title">K-9 pasts</string>
     <string name="installer__method__title">Uzstādīšanas veids</string>
-    <string name="firefox_nightly__title">Firefox nakts relīzes</string>
+    <string name="firefox_nightly__title">Firefox (Nakts izlaidums)</string>
     <string name="main_activity__temporary_network_issue"><u>Īslaicīga tīkla problēma. Lūdzu, mēģiniet vēlreiz vēlāk.</u></string>
     <string name="cromite__title">Cromite</string>
     <string name="brave_beta__description">Laipni lūdzam Brave Beta Android ierīcēm!
@@ -116,9 +116,7 @@
     <string name="notification__error__channel_descr">Rādīt fona atjauninājumu pārbaudītāja kļūdas</string>
     <string name="notification__error__title">Atjauninājumu fona pārbaude neizdevās</string>
     <string name="brave__description">Sērfojiet internetu konfidenciāli bez maksas! Brave ir ātra, droša un privāta bezmaksas pārlūkprogramma ar iebūvētu trešās puses reklāmu un uznirstošo logu bloķētāju. Tas pasargā jūs no reklāmu izsekošanas, ļaunprātīgas programmatūras infekcijām un uznirstošajiem logiem.</string>
-    <string name="brave_nightly__description">Laipni lūdzam Brave Nightly (Developer) Android ierīcēm!
-\nIzmēģiniet jaunākās funkcijas un sniedziet jūsu agrīnās atsauksmes: https://brave.com/msupport
-\nVarat uzstādīt Brave Nightly līdzās ikdienas stabilajai Brave Android versijai.</string>
+    <string name="brave_nightly__description">Laipni lūdzam Brave (Nakts izlaidums) Android ierīcēm!\nIzmēģiniet jaunākās funkcijas un sniedziet jūsu agrīnās atsauksmes: https://brave.com/msupport\nVarat uzstādīt Brave (Nakts izlaidums) līdzās ikdienas stabilajai Brave versijai. Šī lietotne ir paredzēta izstrādātājiem nevis ikdienas lietošanai.</string>
     <string name="bromite__description">Bromite mērķis ir nodrošināt netraucētu tīmekļa pārlūkošanas pieredzi bez privātumu aizskarošām funkcijām un ar ātru reklāmu bloķēšanas dzinēju. Tiek veiktas minimālas lietotāja saskarnes izmaiņas, lai palīdzētu ierobežot ideju \"pārlūks kā reklāmas platforma\".</string>
     <string name="firefox_beta__description">Firefox pārlūkprogramma Android ierīcēm pēc noklusējuma ir privāts un neticami ātrs pārlūks. Tūkstošiem tiešsaistes izsekotāju izseko jūs katru dienu, apkopojot informāciju par jūsu tiešsaistes dzīvi un palēninot jūsu darba efektivitāti. Firefox pēc noklusējuma bloķē vairāk nekā 2000 šādus izsekotājus un ļauj uzstādīt reklāmu bloķēšanas papildinājumus, ja vēlaties vēl vairāk pielāgot pārlūku savām vēlmēm. Izmantojot Firefox, jūs iegūsit pelnīto drošību, nepieciešamo darba efektivitāti un veiktspēju privātā mobilajā pārlūkā.</string>
     <string name="firefox_klar__description">Firefox Klar ir paredzēts Vācijas, Austrijas un Šveices iedzīvotājiem, taču to var izmantot jebkuras citas valsts iedzīvotāji. Tas ir ļoti līdzīgs Firefox Focus, taču nosaukums ir mainīts vāciski runājošajās valstīs, lai izvairītos no sajaukšanas ar Hubert Burda Media Group žurnālu Focus. Atšķirībā no Firefox Focus, Firefox Klar telemetrija pēc noklusējuma ir atspējota stingro Vācijas privātuma likumu dēļ.</string>
@@ -289,7 +287,7 @@
     <string name="download_activity__open_cache_explanation">Varat atvērt kešatmiņas mapi, lai pārkopētu APK failu krātuvē, kurā ir vairāk brīvas vietas. Diemžēl Android 11 un jaunākās versijās (bez root piekļuves) tikai dažiem failu pārvaldniekiem ir piekļuve šai (Android/data) mapei.
 \nP.S.
 \nLai piešķirt piekļuves tiesības šai mapei, uzstādiet Shizuku (https://github.com/RikkaApps/Shizuku), veiciet nepieciešamās darbības Shizuku lietotnē, lai pēc tam varētu priviliģēt papildus piekļuves tiesības jūsu izmantotajam faila pārvaldniekam. Protams, faila pārvaldnieka lietotnei jāatbalsta Shizuku, citādāk lietotne nebūs pieejama zem Shizuku autorizēto lietotņu saraksta.</string>
-    <string name="session_installer__status_failure">Darbība kopumā neizdevās. Sistēma vienmēr centīsies sniegt precīzu kļūmes iemeslu, taču tikai dažos retos gadījumos tas notiek.</string>
+    <string name="session_installer__status_failure">Darbība kopumā neizdevās. Sistēma vienmēr centīsies sniegt precīzu kļūmes iemeslu, taču tas notiek tikai dažos retos gadījumos.</string>
     <string name="session_installer__status_failure_aborted">Darbība neizdevās, jo tā tika aktīvi pārtraukta. Iemesls, lietotājs aktīvi noraidīja pieprasītās atļaujas vai sesija tika pārtraukta.</string>
     <string name="notification__uncaught_exception__channel_name">Avārijas paziņojumi</string>
     <string name="lockwise__description">PIEKĻUVE PAROLĒM JUMS UN TIKAI JUMS
@@ -324,7 +322,7 @@
 \nPiemēram: SOCKS;1.2.3.4;22 vai HTTP;5.6.7.8;80;user1;pw123 vai HTTP;p.webshare.io;80;u;p. Ja vēlaties izmantot sistēmas starpniekservera konfigurāciju, atstājiet to tukšu.
 \n
 \nIerobežojums: Ja maināt \'DNS iestatījumi\' uz DNS, izmantojot HTTPS serveri, jāievada starpniekservera domēns. IP adreses nedarbosies.</string>
-    <string name="installer__method__session">Sesijas uzstādītājs: Ieteicams lielākajai daļai ierīču. Operētājsistēmā Android 12 un jaunākās versijās lietotnes var klusi atjaunināt pēc viena lietotāja apstiprinājuma.</string>
+    <string name="installer__method__session">Sesijas uzstādītājs: Ieteicams lielākajai daļai ierīču. Android 12 un jaunākās versijās lietotnes var klusi un netraucēti atjaunināt pēc viena lietotāja apstiprinājuma.</string>
     <string name="chromium__description">Chromium ir atvērtā pirmkoda pārlūka projekts, kura mērķis ir radīt drošāku, ātrāku un stabilāku tīmekļa pieredzi visiem lietotājiem. Viņu vietnē jūs atradīsiet dizaina dokumentus, arhitektūras pārskatus, testēšanas informāciju un daudz ko citu, kas palīdzēs jums uzzināt, kā izveidot un strādāt ar Chromium pirmkodu.</string>
     <string name="network__custom_doh_server__dialog_message">Ievadiet pielāgotā DoH servera savienojuma informāciju kādā no zemāk redzamajiem formātiem:
 \n
@@ -338,4 +336,7 @@
 \n
 \nPiemēram: https://dns.google/dns-query;8.8.8.8 vai https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
     <string name="orbot__description">Orbot ir bezmaksas starpniekservera lietotne, kas ļauj citām lietotnēm drošāk izmantot internetu. Orbot izmanto Tor, lai šifrētu interneta trafiku un pēc tam slēpj to, izmantojot virkni datorus visā pasaulē. Tor ir bezmaksas programmatūra un atvērts tīkls, kas palīdz aizsargāties pret tīkla uzraudzības veidu, kas apdraud personas brīvību un privātumu, sensitīvus biznesa darījumus un attiecības, kā arī valsts drošību, kas pazīstama kā trafika analīze.</string>
+    <string name="session_installer__status_failure_blocked">Darbība neizdevās, jo tā tika bloķēta. Iemesls, ierīces politikas dēļ, pakotnes pārbaudītāja dēļ vai var būt nepieciešama lietotne, lai varētu veikt sistēmas pamatdarbības.</string>
+    <string name="session_installer__status_failure_conflict">Darbība neizdevās, jo tā ir pretrunā (vai nav saderīga) ar citu lietotni, kas jau ir uzstādīta ierīcē. Iemesls, esošā atļauja, nesaderīgi sertifikāti utt. Lai atrisinātu konflikta problēmu, lietotājs var atinstalēt uzstādīto lietotni.</string>
+    <string name="firefox_nightly__description">Lūdzu, ņemiet vērā, ka šī lietotne agrāk tika saukta par Firefox Preview. Tagad to sauc par Firefox Nightly (Nakts izlaidums).\n\nFirefox (Nakts izlaidums) ir izstrādes versija jauno topošo Mozilla Firefox izlaidumu versijām.\n\nFirefox (Nakts izlaidums) versija ir paredzēta, lai demonstrētu jaunas, eksperimentālas Firefox versijas. Nakts izlaidums ļauj lietotājiem iepazīt jaunākās Firefox inovācijas nestabilā vidē un sniegt atsauksmes par jaunajām funkcijām un veiktspējas uzlabojumiem, lai palīdzētu saprast, kā vajadzētu izskatīties stabilai ikdienas versijai.</string>
 </resources>
