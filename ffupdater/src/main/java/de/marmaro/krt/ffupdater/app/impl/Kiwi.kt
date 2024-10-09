@@ -36,6 +36,7 @@ object Kiwi : AppBase() {
     override val projectPage = "https://github.com/kiwibrowser/src.next"
     override val displayCategory = listOf(EOL)
     override val hostnameForInternetCheck = "https://api.github.com"
+    override val eolReason = R.string.eol_reason__browser_no_longer_maintained
 
     @MainThread
     @Throws(NetworkException::class)
