@@ -68,9 +68,9 @@ android {
     compileSdk 34
 
     defaultConfig {
-        versionCode 174
+        versionCode 175
         //  (incompatible changes) . (backwards compatible functionality) . (backwards compatible bug fixes)
-        versionName "79.2.4"
+        versionName "79.2.5"
         minSdk 21
         targetSdk 34
         vectorDrawables.useSupportLibrary = true
