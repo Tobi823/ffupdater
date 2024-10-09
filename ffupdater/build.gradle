@@ -136,11 +136,9 @@ android {
     }
 }
 
-
-tasks.register('printVersionName') {
-    project.logger.error(android.defaultConfig.versionName)
-}
-
-tasks.register('printVersionCode') {
-    project.logger.error(android.defaultConfig.versionCode.toString())
+tasks.register('printVersionNameAndVersion') {
+    def versionNameAndCode = android.defaultConfig.versionName + "\n" + android.defaultConfig.versionCode.toString()
+    doFirst {
+        logger.error(versionNameAndCode)
+    }
 }
