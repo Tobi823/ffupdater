@@ -8,7 +8,6 @@ abstract class BaseTest {
         @AfterAll
         @JvmStatic
         fun afterAll() {
-            println("test")
             unmockkAll()
         }
     }

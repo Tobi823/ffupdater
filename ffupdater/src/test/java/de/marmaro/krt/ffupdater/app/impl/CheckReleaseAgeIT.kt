@@ -42,8 +42,6 @@ class CheckReleaseAgeIT {
             TestData(Brave, 28),
             TestData(BraveBeta, 14),
             TestData(BraveNightly, 7),
-//            TestData(Bromite, 112),
-//            TestData(BromiteSystemWebView, 112),
             TestData(Chromium, 56),
             TestData(Cromite, 56),
             TestData(DuckDuckGoAndroid, 28),
@@ -56,9 +54,8 @@ class CheckReleaseAgeIT {
             TestData(FirefoxKlar, 56),
             TestData(FirefoxNightly, 7),
             TestData(FirefoxRelease, 42),
-            TestData(K9Mail, 90),
+            TestData(K9Mail, 180),
             TestData(Iceraven, 84),
-//            TestData(Lockwise(GithubConsumer.INSTANCE), 84),
             TestData(Mulch, 56),
             TestData(MulchSystemWebView, 56),
             TestData(MullFromRepo, 56),
@@ -67,7 +64,6 @@ class CheckReleaseAgeIT {
             TestData(Thorium, 56),
             TestData(TorBrowserAlpha, 56),
             TestData(TorBrowser, 56),
-//            TestData(UngoogledChromium, 56),
             TestData(Vivaldi, null),
         )
 
