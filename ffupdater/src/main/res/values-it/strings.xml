@@ -42,7 +42,7 @@
     <string name="app_card__download_the_app">scarica l\'app</string>
     <string name="notification__eol_apps__channel_description">Canale di notifica per avvisi su app obsolete.</string>
     <string name="notification__eol_apps__channel_name">Notifica per app obsolete</string>
-    <string name="notification__eol_apps__text">Hai app obsolete che non dovrebbero essere più usate. Clicca per maggiori informazioni.</string>
+    <string name="notification__eol_apps__text">Hai app obsolete che non dovrebbero essere più usate: %1$s</string>
     <string name="notification__eol_apps__title">App obsolete installate</string>
     <string name="notification__error__channel_descr">Mostra errori della verifica degli aggiornamenti in sfondo</string>
     <string name="notification__error__channel_name">Errori in sfondo</string>

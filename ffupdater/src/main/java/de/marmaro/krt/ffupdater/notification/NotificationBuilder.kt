@@ -208,7 +208,7 @@ object NotificationBuilder {
         showNotification(appContext, channel, notification, intent)
     }
 
-    fun showEolAppsNotification(context: Context) {
+    fun showEolAppsNotification(context: Context, apps: List<String>) {
         val channel = ChannelData(
             id = "eol_apps_notification",
             name = context.getString(notification__eol_apps__channel_name),
@@ -217,7 +217,7 @@ object NotificationBuilder {
         val notification = NotificationData(
             id = EOL_APPS_CODE,
             title = context.getString(notification__eol_apps__title),
-            text = context.getString(notification__eol_apps__text),
+            text = context.getString(notification__eol_apps__text, apps.joinToString(", ")),
         )
         showNotification(context, channel, notification, MainActivity.createIntent(context))
     }

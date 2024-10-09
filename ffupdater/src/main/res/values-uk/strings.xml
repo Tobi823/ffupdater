@@ -184,7 +184,7 @@
     <string name="notification__download_error__channel_descr">Відображається, коли завантаження оновлень у фоновому режимі не вдається.</string>
     <string name="notification__download_error__descr">Не вдалося виконати фонове завантаження оновлення %1$s. Якщо ця помилка виникає часто, не соромтеся повідомити про неї на notabug.org, GitHub або GitLab.</string>
     <string name="notification__download_error__text">Не вдалося виконати фонове завантаження оновлення %1$s. Якщо ця помилка виникає часто, натисніть тут, щоб переглянути звіт про помилку.</string>
-    <string name="notification__eol_apps__text">У вас є застарілі застосунки, якими більше не слід користуватися. Натисніть для отримання додаткової інформації.</string>
+    <string name="notification__eol_apps__text">У вас є застарілі застосунки, якими більше не слід користуватися: %1$s</string>
     <string name="notification__eol_apps__channel_name">Сповіщення про застарілі застосунки</string>
     <string name="download_activity__different_installer_info__text">Якщо встановлення часто зазнає помилок, спробуйте переключитися на \"нативний інсталятор\" у налаштуваннях.</string>
     <string name="download_activity__file_uri_exposed_toast">Неможливо відкрити шлях до файлу іншим застосункам. Будь ласка, відкрийте теку самостійно за допомогою вашого улюбленого файлового менеджера.</string>

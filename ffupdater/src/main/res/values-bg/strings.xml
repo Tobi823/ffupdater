@@ -46,7 +46,7 @@
     <string name="app_card__download_the_app">изтегляне на приложение</string>
     <string name="notification__eol_apps__channel_description">Категория известия за наличие на изведени от употреба приложения.</string>
     <string name="notification__eol_apps__channel_name">Известие при наличие на изведено от употреба приложение</string>
-    <string name="notification__eol_apps__text">Имате изведени от употреба приложения, които не бива да ползвате. Докоснете за детайли.</string>
+    <string name="notification__eol_apps__text">Имате изведени от употреба приложения, които не бива да ползвате: %1$s</string>
     <string name="notification__eol_apps__title">Инсталирано е изведено от употреба приложение</string>
     <string name="notification__error__channel_descr">Категория известия за грешки при проверката за обновяване във фонов режим.</string>
     <string name="notification__error__channel_name">Известие при грешка в проверка за обновяване във фонов режим</string>

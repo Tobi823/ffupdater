@@ -46,7 +46,7 @@
     <string name="app_card__download_the_app">下载应用程序</string>
     <string name="notification__eol_apps__channel_description">用于警告过时应用有关信息的通知频道。</string>
     <string name="notification__eol_apps__channel_name">过时应用通知</string>
-    <string name="notification__eol_apps__text">您有不应当再继续使用的过时应用。点击了解更多信息。</string>
+    <string name="notification__eol_apps__text">您有不应当再继续使用的过时应用。点击了解更多信息。: %1$s</string>
     <string name="notification__eol_apps__title">已安装的过时应用</string>
     <string name="notification__error__channel_descr">显示后台更新检查器错误</string>
     <string name="notification__error__channel_name">后台错误</string>

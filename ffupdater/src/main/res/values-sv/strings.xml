@@ -21,7 +21,7 @@
     <string name="crash_report__copy_crash_report_to_clipboard">Kopiera krashlogg till urklipp</string>
     <string name="notification__download_error__channel_name">Aviseringar om fel vid hämtningar i bakgrunden</string>
     <string name="notification__download_error__channel_descr">Visar när uppdateringshämtningar i bakgrunden misslyckas.</string>
-    <string name="notification__eol_apps__text">Du har utgångna appar som inte bör användas längre. Klicka här för mer information.</string>
+    <string name="notification__eol_apps__text">Du har utgångna appar som inte bör användas längre: %1$s</string>
     <string name="application_installation_was_not_successful">Applikationsinstallation misslyckades</string>
     <string name="brave_nightly__title">Brave Browser (Nightly)</string>
     <string name="notification__download_running__channel_descr">Visar när appuppdateringar laddas ner i bakgrunden.</string>

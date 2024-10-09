@@ -46,7 +46,7 @@
     <string name="app_card__download_the_app">uygulamayı indir</string>
     <string name="notification__eol_apps__channel_description">Güncel olmayan uygulamalarla ilgili uyarılar için bildirim kanalı.</string>
     <string name="notification__eol_apps__channel_name">Güncel olmayan uygulamalar bildirimi</string>
-    <string name="notification__eol_apps__text">Artık kullanılmaması gereken güncel olmayan uygulamalarınız var. Daha fazla bilgi için tıklayın.</string>
+    <string name="notification__eol_apps__text">Artık kullanılmaması gereken güncel olmayan uygulamalarınız var: %1$s</string>
     <string name="notification__eol_apps__title">Güncel olmayan uygulamalar kurulu</string>
     <string name="notification__error__channel_descr">Arka plan güncelleme denetleyicisinin hatalarını göster</string>
     <string name="notification__error__channel_name">Arka plan hataları</string>

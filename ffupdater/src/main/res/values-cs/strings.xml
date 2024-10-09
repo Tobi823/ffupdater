@@ -185,7 +185,7 @@
     <string name="notification__download_error__text">Stažení aktualizace pro %1$s na pozadí se nezdařilo. Pokud se tato chyba vyskytuje často, klikněte pro zobrazení chybového hlášení.</string>
     <string name="notification__download_error__title">Stažení aktualizace na pozadí se nezdařilo</string>
     <string name="notification__eol_apps__channel_description">Kanál upozornění na zastaralé aplikace.</string>
-    <string name="notification__eol_apps__text">Máte zastaralé aplikace, které by se již neměli dál používat. Klikněte pro více informací.</string>
+    <string name="notification__eol_apps__text">Máte zastaralé aplikace, které by se již neměli dál používat: %1$s</string>
     <string name="notification__eol_apps__title">Jsou nainstalované zastaralé aplikace</string>
     <string name="kiwi__warning">- Kiwi používá technický základ Google Chrome, a tak nepřímo podporuje monopolní renderovací jádro Chromium.
 \n- Kiwi není ideální prohlížeč pro ochranu soukromí, ale má dobrou podporu doplňků.

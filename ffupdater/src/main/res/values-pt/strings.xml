@@ -34,7 +34,7 @@
     <string name="app_card__download_the_app">transferir o aplicativo</string>
     <string name="notification__eol_apps__channel_description">Canal de notificação para avisos sobre aplicações desatualizadas.</string>
     <string name="notification__eol_apps__channel_name">Notificação de aplicações desatualizadas</string>
-    <string name="notification__eol_apps__text">Tem aplicações desatualizadas que já não devem ser utilizadas. Clique para mais informações.</string>
+    <string name="notification__eol_apps__text">Tem aplicações desatualizadas que já não devem ser utilizadas: %1$s</string>
     <string name="download_activity__fetched_url_for_download_successfully">Metadados obtidos a partir de %1$s</string>
     <string name="download_activity__file_uri_exposed_toast">Não se pode expor o caminho do ficheiro a outras aplicações. Por favor, abra você mesmo a pasta com o seu gestor de ficheiros preferido.</string>
     <string name="download_activity__github_rate_limit_exceeded">GitHub-o limite de taxa da API foi excedido. Por favor, tente o download novamente na próxima hora.</string>

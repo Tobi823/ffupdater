@@ -244,7 +244,7 @@
     <string name="download_activity__fetched_url_for_download_successfully">%1$s से मेटाडेटा प्राप्त किया गया</string>
     <string name="download_activity__download_failed">डाउनलोड विफल</string>
     <string name="download_activity__delete_cache_button_text">कैश साफ़ करें</string>
-    <string name="notification__eol_apps__text">आपके पास पुराने ऐप्स हैं जिनका अब उपयोग नहीं किया जाना चाहिए। अधिक जानकारी के लिए क्लिक करें।</string>
+    <string name="notification__eol_apps__text">आपके पास पुराने ऐप्स हैं जिनका अब उपयोग नहीं किया जाना चाहिए। अधिक जानकारी के लिए क्लिक करें। : %1$s</string>
     <string name="iceraven__warning">- अनुरक्षक सुरक्षा या अपडेट या यहां तक कि स्थिरता की कोई वारंटी या गारंटी नहीं देता है।
 \n - सुरक्षा अपडेट प्रदान करने में परियोजना को सामान्य से अधिक समय लगता है।</string>
     <string name="firefox_focus__description">यह Firefox ब्राउज़र का एक संशोधन है जिसका उद्देश्य गोपनीयता बढ़ाना है।</string>

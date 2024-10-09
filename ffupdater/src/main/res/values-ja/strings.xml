@@ -180,7 +180,7 @@
     <string name="download_activity__open_folder">フォルダーを開く</string>
     <string name="iceraven__warning">- メンテナーはセキュリティやアップデート、安定性についてのいかなる保証も提供していません。
 \n - このプロジェクトはセキュリティアップデートの提供に一般より長い時間を要します。</string>
-    <string name="notification__eol_apps__text">開発終了のため使用を継続すべきでないアプリがインストールされています。詳細はこちらからご確認ください。</string>
+    <string name="notification__eol_apps__text">開発終了のため使用を継続すべきでないアプリがインストールされています。詳細はこちらからご確認ください。: %1$s</string>
     <string name="notification__download_error__channel_name">バックグラウンドでのダウンロードエラーについての通知</string>
     <string name="notification__download_error__channel_descr">バックグラウンドでの更新のダウンロードに失敗すると表示されます。</string>
     <string name="notification__download_error__descr">%1$s のバックグラウンドでのダウンロードに失敗しました。同様のエラーが頻繁に発生する場合は、notabug.org、GitHub、または GitLab にクラッシュレポートを提出してください。</string>

@@ -209,7 +209,7 @@
     <string name="notification__download_error__title">La descarga en segundo plano de la actualización falló</string>
     <string name="notification__eol_apps__channel_description">Canal de notificaciones para avisar de aplicaciones obsoletas.</string>
     <string name="notification__eol_apps__channel_name">Notificación de aplicaciones obsoletas</string>
-    <string name="notification__eol_apps__text">Tiene aplicaciones obsoletas que ya no deberían usarse. Haga clic para obtener más información.</string>
+    <string name="notification__eol_apps__text">Tiene aplicaciones obsoletas que ya no deberían usarse: %1$s</string>
     <string name="tor_browser__title">Tor Browser</string>
     <string name="tor_browser__description">Tor Browser para Android es el único navegador móvil oficial compatible con Tor Project, desarrolladores de la herramienta más sólida del mundo para la privacidad y la libertad en línea.</string>
     <string name="orbot__title">Orbot: Tor para Android</string>

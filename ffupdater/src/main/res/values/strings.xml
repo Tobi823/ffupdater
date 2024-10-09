@@ -42,7 +42,7 @@
     <string name="app_card__download_the_app">download the app</string>
     <string name="notification__eol_apps__channel_description">Notification channel for warnings about outdated apps.</string>
     <string name="notification__eol_apps__channel_name">Outdated apps notification</string>
-    <string name="notification__eol_apps__text">You have outdated apps which should not be used anymore. Click for more information.</string>
+    <string name="notification__eol_apps__text">You have outdated apps which should not be used anymore: %1$s</string>
     <string name="notification__eol_apps__title">Outdated apps installed</string>
     <string name="notification__error__channel_descr">Show errors of the background update checker</string>
     <string name="notification__error__channel_name">Background errors</string>

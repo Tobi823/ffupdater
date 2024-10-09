@@ -182,7 +182,7 @@
     <string name="app_card__download_the_app">download appen</string>
     <string name="notification__eol_apps__channel_description">Notifikationskanal for advarsler om forældede apps.</string>
     <string name="notification__eol_apps__channel_name">Notifikation om forældede apps</string>
-    <string name="notification__eol_apps__text">Du har forældede apps, som ikke bør bruges længere. Klik for mere information.</string>
+    <string name="notification__eol_apps__text">Du har forældede apps, som ikke bør bruges længere: %1$s.</string>
     <string name="notification__eol_apps__title">Forældede apps installeret</string>
     <string name="notification__error__channel_name">Baggrundsfejl</string>
     <string name="firefox_beta__title">Firefox til Android Beta</string>

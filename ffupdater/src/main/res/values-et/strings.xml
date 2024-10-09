@@ -27,7 +27,7 @@
     <string name="notification__error__channel_name">Taustal toimiva teenuse vead</string>
     <string name="notification__eol_apps__channel_description">Aegunud rakenduste hoiatused.</string>
     <string name="notification__eol_apps__channel_name">Aegunud rakenduse hoiatus</string>
-    <string name="notification__eol_apps__text">Sul on nutiseadmes aegunud rakendusi, mida ei peaks enam kasutama. Lisainfo lugemiseks klõpsi siin.</string>
+    <string name="notification__eol_apps__text">Sul on nutiseadmes aegunud rakendusi, mida ei peaks enam kasutama: %1$s</string>
     <string name="notification__eol_apps__title">Paigaldatud on aegunud rakendusi</string>
     <string name="notification__error__channel_descr">Näita uuendusi kontrolliva taustateenuse vigu</string>
     <string name="firefox_klar__description">Firefox Klar on arendatud kasutajatele Saksamaal, Austrias ja Šveitsis, kuid seda võib kasutada igal pool üle maailma. Rakendus on väga sarnane Firefox Focus\'ega ja nimevahetus saksakeelsetes maades tehti liigse sarnasusega ajakirjaga Focus, mida annab vällja Hubert Burda Media Grupp. Lisaks on saksa rangete privaatsusseaduste tõttu erinevalt Firefox Focus\'est Firefox Klar\'is telemeetria välja lülitatud.</string>

@@ -101,7 +101,7 @@
     <string name="crash_report__explain_text__download_activity_install_file">Lỗi này xảy ra trong quá trình cài đặt. Nếu lỗi này xảy ra thường xuyên, vui lòng gửi bản báo cáo sự cố qua notabug.org, GitHub hoặc GitLab.</string>
     <string name="firefox_focus__description">Đây là một bản sửa đổi của trình duyệt Firefox hướng tới tăng cường sự riêng tư.</string>
     <string name="notification__download_error__channel_descr">Hiện khi cập nhật tải xuống dưới nền không thành công.</string>
-    <string name="notification__eol_apps__text">Bạn có ứng dụng quá hạn tức không nên được sử dụng nữa. Bấm để xem thêm thông tin.</string>
+    <string name="notification__eol_apps__text">Bạn có ứng dụng quá hạn tức không nên được sử dụng nữa: %1$s</string>
     <string name="app_card__information_about_the_app">Thông tin về ứng dụng</string>
     <string name="download_activity__downloaded_application_from">Ứng dụng đã tải xuống từ:</string>
     <string name="firefox_klar__description">Firefox Klar được phát triển cho người dùng tại Đức, Áo và Thụy Sĩ nhưng có thể được sử dụng bởi người dùng ở bất kì quốc gia nào. Nó rất giống với Firefox Focus nhưng tên đã bị thay đổi ở các quốc gia nói tiếng Đức để tránh gây hiểu lầm với tạp chí Focus bởi tập đoàn truyền thông Hubert Burda Media. Không giống với Firefox Focus, Firefox Klar có lựa chọn dữ liệu được tắt theo mặc định do các luật về quyền riêng tư chặt chẽ của Đức.</string>

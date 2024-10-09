@@ -1,15 +1,40 @@
 package de.marmaro.krt.ffupdater.app
 
 import androidx.annotation.Keep
-import de.marmaro.krt.ffupdater.app.impl.*
+import de.marmaro.krt.ffupdater.app.impl.AppBase
+import de.marmaro.krt.ffupdater.app.impl.Brave
+import de.marmaro.krt.ffupdater.app.impl.BraveBeta
+import de.marmaro.krt.ffupdater.app.impl.BraveNightly
+import de.marmaro.krt.ffupdater.app.impl.Chromium
+import de.marmaro.krt.ffupdater.app.impl.Cromite
+import de.marmaro.krt.ffupdater.app.impl.DuckDuckGoAndroid
+import de.marmaro.krt.ffupdater.app.impl.FFUpdater
+import de.marmaro.krt.ffupdater.app.impl.FairEmail
+import de.marmaro.krt.ffupdater.app.impl.FennecFdroid
+import de.marmaro.krt.ffupdater.app.impl.FirefoxBeta
+import de.marmaro.krt.ffupdater.app.impl.FirefoxFocus
+import de.marmaro.krt.ffupdater.app.impl.FirefoxFocusBeta
+import de.marmaro.krt.ffupdater.app.impl.FirefoxKlar
+import de.marmaro.krt.ffupdater.app.impl.FirefoxNightly
+import de.marmaro.krt.ffupdater.app.impl.FirefoxRelease
+import de.marmaro.krt.ffupdater.app.impl.Iceraven
+import de.marmaro.krt.ffupdater.app.impl.K9Mail
+import de.marmaro.krt.ffupdater.app.impl.Kiwi
+import de.marmaro.krt.ffupdater.app.impl.Mulch
+import de.marmaro.krt.ffupdater.app.impl.MulchSystemWebView
+import de.marmaro.krt.ffupdater.app.impl.MullFromRepo
+import de.marmaro.krt.ffupdater.app.impl.Orbot
+import de.marmaro.krt.ffupdater.app.impl.PrivacyBrowser
+import de.marmaro.krt.ffupdater.app.impl.Thorium
+import de.marmaro.krt.ffupdater.app.impl.TorBrowser
+import de.marmaro.krt.ffupdater.app.impl.TorBrowserAlpha
+import de.marmaro.krt.ffupdater.app.impl.Vivaldi
 
 @Keep
 enum class App {
     BRAVE,
     BRAVE_BETA,
     BRAVE_NIGHTLY,
-    BROMITE,
-    BROMITE_SYSTEMWEBVIEW,
     CHROMIUM,
     CROMITE,
     DUCKDUCKGO_ANDROID,
@@ -25,7 +50,6 @@ enum class App {
     ICERAVEN,
     K9MAIL,
     KIWI,
-    LOCKWISE,
     MULCH,
     MULCH_SYSTEMWEBVIEW,
     MULL_FROM_REPO,
@@ -34,7 +58,6 @@ enum class App {
     THORIUM,
     TOR_BROWSER,
     TOR_BROWSER_ALPHA,
-    UNGOOGLED_CHROMIUM,
     VIVALDI,
     ;
 
@@ -44,8 +67,6 @@ enum class App {
             BRAVE -> Brave
             BRAVE_BETA -> BraveBeta
             BRAVE_NIGHTLY -> BraveNightly
-            BROMITE -> Bromite
-            BROMITE_SYSTEMWEBVIEW -> BromiteSystemWebView
             CHROMIUM -> Chromium
             CROMITE -> Cromite
             DUCKDUCKGO_ANDROID -> DuckDuckGoAndroid
@@ -61,7 +82,6 @@ enum class App {
             ICERAVEN -> Iceraven
             K9MAIL -> K9Mail
             KIWI -> Kiwi
-            LOCKWISE -> Lockwise
             MULCH -> Mulch
             MULCH_SYSTEMWEBVIEW -> MulchSystemWebView
             MULL_FROM_REPO -> MullFromRepo
@@ -70,7 +90,6 @@ enum class App {
             THORIUM -> Thorium
             TOR_BROWSER -> TorBrowser
             TOR_BROWSER_ALPHA -> TorBrowserAlpha
-            UNGOOGLED_CHROMIUM -> UngoogledChromium
             VIVALDI -> Vivaldi
         }
     }

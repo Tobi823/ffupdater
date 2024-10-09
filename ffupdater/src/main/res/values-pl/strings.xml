@@ -178,7 +178,7 @@
     <string name="notification__download_error__channel_name">Powiadomienie o błędach podczas pobierania w tle</string>
     <string name="notification__download_error__title">Pobieranie aktualizacji w tle nie powiodło się</string>
     <string name="notification__eol_apps__channel_name">Powiadomienie o nieaktualnych aplikacjach</string>
-    <string name="notification__eol_apps__text">Masz nieaktualne aplikacje, które nie powinny być już używane. Kliknij po więcej informacji.</string>
+    <string name="notification__eol_apps__text">Masz nieaktualne aplikacje, które nie powinny być już używane: %1$s</string>
     <string name="add_app_activity__title_good_privacy_browsers">Przeglądarki dobre dla prywatności</string>
     <string name="add_app_activity__title_other_applications">Inne aplikacje</string>
     <string name="mull__title">Mull</string>

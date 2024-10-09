@@ -253,7 +253,7 @@
     <string name="background__separate_notification_channels__summary">Использовать различные каналы уведомлений для каждого отдельного приложения</string>
     <string name="notification__eol_apps__channel_description">Канал уведомлений для предупреждений об устаревших приложениях.</string>
     <string name="notification__eol_apps__channel_name">Уведомление об устаревших приложениях</string>
-    <string name="notification__eol_apps__text">У вас установлены устаревшие приложения, которые больше не следует использовать. Нажмите для получения дополнительной информации.</string>
+    <string name="notification__eol_apps__text">У вас установлены устаревшие приложения, которые больше не следует использовать: %1$s</string>
     <string name="notification__eol_apps__title">Установлены устаревшие приложения</string>
     <string name="main_activity__an_error_occurred"><u>Произошла ошибка. Повторите попытку позже.</u></string>
     <string name="tor_browser__title">Tor Browser</string>

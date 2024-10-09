@@ -7,33 +7,49 @@ import androidx.annotation.Keep
 import de.marmaro.krt.ffupdater.BuildConfig
 import de.marmaro.krt.ffupdater.device.InstalledAppsCache
 import de.marmaro.krt.ffupdater.notification.NotificationBuilder
+import de.marmaro.krt.ffupdater.security.PackageManagerUtil
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 
 @Keep
+// TODO remove Bromite, Bromite SystemWebView, Lockwise and
 class EolAppsWarnerReceiver : BroadcastReceiver() {
     private val scope = CoroutineScope(SupervisorJob())
 
     override fun onReceive(context: Context?, intent: Intent) {
-        if (context == null ||
-            intent.action != Intent.ACTION_MY_PACKAGE_REPLACED ||
-            intent.`package` != BuildConfig.APPLICATION_ID
-        ) {
+        if (context == null || intent.action != Intent.ACTION_MY_PACKAGE_REPLACED || intent.`package` != BuildConfig.APPLICATION_ID) {
             return
         }
+        showNotificationIfEolAppsAreInstalled(context)
+    }
 
+    private fun showNotificationIfEolAppsAreInstalled(context: Context) {
         scope.launch(Dispatchers.IO) {
-            val eolInstalled = InstalledAppsCache
-                .getInstalledAppsWithCorrectFingerprint(context.applicationContext)
-                .asSequence()
-                .map { it.findImpl() }
-                .filter { it.isEol() }
-                .any()
-            if (eolInstalled) {
-                NotificationBuilder.showEolAppsNotification(context.applicationContext)
+            val eolApps = findInstalledSupportedEolApps(context) + findInstalledUnsupportedEolApps(context)
+            if (eolApps.isNotEmpty()) {
+                NotificationBuilder.showEolAppsNotification(context.applicationContext, eolApps)
             }
         }
+    }
+
+    private suspend fun findInstalledSupportedEolApps(context: Context): List<String> {
+        return InstalledAppsCache.getInstalledAppsWithCorrectFingerprint(context.applicationContext)
+            .map { it.findImpl() }.filter { it.isEol() }.map { context.getString(it.title) }
+    }
+
+    private suspend fun findInstalledUnsupportedEolApps(context: Context): List<String> {
+        return noLongerSupportedEolApps.filter { PackageManagerUtil.isAppInstalled(context.packageManager, it.value) }
+            .map { it.key }
+    }
+
+    companion object {
+        val noLongerSupportedEolApps = mapOf(
+            "Bromite" to "org.bromite.bromite",
+            "Bromite SystemWebView" to "org.bromite.webview",
+            "Lockwise" to "mozilla.lockbox",
+            "UngoogledChromium" to "org.ungoogled.chromium.stable"
+        )
     }
 }

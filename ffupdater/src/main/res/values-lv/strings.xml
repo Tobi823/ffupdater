@@ -19,7 +19,7 @@
     <string name="crash_report__go_to_github">Doties uz GitHub</string>
     <string name="crash_report__go_to_gitlab">Doties uz GitLab</string>
     <string name="notification__eol_apps__channel_name">Paziņojums par novecojušām lietotnēm</string>
-    <string name="notification__eol_apps__text">Jums ir uzstādītas novecojušas lietotnes, kuras vairs nevajadzētu izmantot. Noklikšķiniet, lai iegūtu vairāk informācijas.</string>
+    <string name="notification__eol_apps__text">Jums ir uzstādītas novecojušas lietotnes, kuras vairs nevajadzētu izmantot: %1$s</string>
     <string name="notification__eol_apps__title">Uzstādītas novecojušas lietotnes</string>
     <string name="notification__error__channel_name">Fona kļūdas</string>
     <string name="brave_nightly__title">Brave (Nakts izlaidums)</string>

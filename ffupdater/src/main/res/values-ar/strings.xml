@@ -83,7 +83,7 @@
     <string name="app_card__download_the_app">قم بتنزيل التطبيق</string>
     <string name="notification__eol_apps__channel_description">قناة إشعارات للتحذيرات حول التطبيقات القديمة.</string>
     <string name="notification__eol_apps__channel_name">إشعار التطبيقات القديمة</string>
-    <string name="notification__eol_apps__text">لديك تطبيقات قديمة لا ينبغي استخدامها بعد الآن. انقر للحصول على مزيد من المعلومات.</string>
+    <string name="notification__eol_apps__text">لديك تطبيقات قديمة لا ينبغي استخدامها بعد الآن. : %1$s</string>
     <string name="kiwi__description">تم تصميم متصفح Kiwi لتصفح الإنترنت وقراءة الأخبار ومشاهدة مقاطع الفيديو والاستماع إلى الموسيقى دون أي إزعاجات.</string>
     <string name="firefox_beta__description">يتميز متصفح Firefox لنظام Android بأنه خاص تلقائيًا وسريع بشكل لا يصدق. يتابعك الآلاف من المتتبعين عبر الإنترنت يوميًا، ويجمعون معلومات حول مكان اتصالك بالإنترنت ويبطئون سرعتك. يحظر Firefox ما يزيد عن 2000 من أدوات التتبع هذه افتراضيًا، وتتوفر وظائف إضافية لحظر الإعلانات إذا كنت تريد تخصيص متصفحك بشكل أكبر. مع Firefox، ستحصل على الأمان الذي تستحقه والسرعة التي تحتاجها في متصفح خاص على الهاتف المحمول.</string>
     <string name="firefox_beta__title">Firefox النسخة التجريبية</string>

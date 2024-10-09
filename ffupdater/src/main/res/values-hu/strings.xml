@@ -36,7 +36,7 @@
     <string name="notification__download_running__title">Alkalmazás frissítések letöltése</string>
     <string name="notification__eol_apps__channel_description">Értesítési csatorna az elavult alkalmazásokra vonatkozó figyelmeztetésekhez.</string>
     <string name="notification__eol_apps__channel_name">Elavult alkalmazások értesítése</string>
-    <string name="notification__eol_apps__text">Vannak elavult alkalmazásai, amelyeket már nem szabad használni. Kattintson ide további információkért.</string>
+    <string name="notification__eol_apps__text">Vannak elavult alkalmazásai, amelyeket már nem szabad használni: %1$s</string>
     <string name="notification__eol_apps__title">Elavult alkalmazások telepítése</string>
     <string name="notification__error__channel_descr">A háttérben futó frissítésellenőrző hibáinak megjelenítése</string>
     <string name="brave_beta__title">Brave Böngésző (Béta)</string>

@@ -188,7 +188,7 @@
     <string name="notification__download_error__title">Erro no download da atualização em segundo plano</string>
     <string name="notification__eol_apps__channel_description">Canal de notificação para avisos sobre aplicativos desatualizados.</string>
     <string name="notification__eol_apps__channel_name">Notificação de aplicativos desatualizados</string>
-    <string name="notification__eol_apps__text">Você tem apps desatualizados que não devem mais ser usados. Clique para mais informações.</string>
+    <string name="notification__eol_apps__text">Você tem apps desatualizados que não devem mais ser usados: %1$s</string>
     <string name="notification__eol_apps__title">Aplicativos desatualizados instalados</string>
     <string name="lockwise__eol_reason">A Mozilla abandonou o suporte em dezembro de 2021. Mude para outro cofre de senha.</string>
     <string name="mull__title">Navegador Mull</string>
