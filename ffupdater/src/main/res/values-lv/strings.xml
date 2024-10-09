@@ -73,7 +73,7 @@
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded"><u>Pārsniegts GitHub-API ierobežojums. Mēģiniet vēlreiz pēc stundas.</u></string>
     <string name="main_activity__no_unmetered_network">Nav bezmaksas tīkla</string>
-    <string name="app_description">Privātuma orientētas pārlūku atjauninātājs</string>
+    <string name="app_description">Konfidencialitātes orientētu pārlūku atjauninātājs</string>
     <string name="ok">Labi</string>
     <string name="running_downloads_dialog__title">Notiek lejupielādes</string>
     <string name="ffupdater__different_signature_message">Šī FFUpdater lietotnes versija satur F-Droid parakstu, tāpēc tikai F-Droid var izplatīt atjauninājumus. Lai ātrāk saņemtu jaunāko versiju, atinstalējiet pašreiz uzstādīto FFUpdater un uzstādiet versiju ar izstrādātāja parakstu. Izmantojot šo versiju, FFUpdater var atjaunināt sevi, negaidot F-Droid versijas relīzi.</string>
@@ -87,7 +87,7 @@
     <string name="cardview_dialog__exit">Aizvērt</string>
     <string name="cardview_dialog__install">Uzstādīt jaunāko versiju</string>
     <string name="fairemail__title">FairEmail</string>
-    <string name="fairemail__description">Pilnvērtīga, atvērta un privāta e-pasta lietotne</string>
+    <string name="fairemail__description">Pilnvērtīga, atvērta un konfidencialitātes draudzīga e-pasta lietotne</string>
     <string name="cardview_dialog__warnings_label">Brīdinājumi:</string>
     <string name="running_downloads_dialog__message">Pašlaik lietotne fonā lejupielādē atjauninājumus. Vai vēlaties sākt jaunu lejupielādi, kas var aizņemt ilgāku laiku?</string>
     <string name="request_installation_permission_dialog__abort">Pārtraukt</string>
@@ -117,9 +117,9 @@
     <string name="notification__error__title">Atjauninājumu fona pārbaude neizdevās</string>
     <string name="brave__description">Sērfojiet internetu konfidenciāli bez maksas! Brave ir ātra, droša un privāta bezmaksas pārlūkprogramma ar iebūvētu trešās puses reklāmu un uznirstošo logu bloķētāju. Tas pasargā jūs no reklāmu izsekošanas, ļaunprātīgas programmatūras infekcijām un uznirstošajiem logiem.</string>
     <string name="brave_nightly__description">Laipni lūdzam Brave (Nakts izlaidums) Android ierīcēm!\nIzmēģiniet jaunākās funkcijas un sniedziet jūsu agrīnās atsauksmes: https://brave.com/msupport\nVarat uzstādīt Brave (Nakts izlaidums) līdzās ikdienas stabilajai Brave versijai. Šī lietotne ir paredzēta izstrādātājiem nevis ikdienas lietošanai.</string>
-    <string name="bromite__description">Bromite mērķis ir nodrošināt netraucētu tīmekļa pārlūkošanas pieredzi bez privātumu aizskarošām funkcijām un ar ātru reklāmu bloķēšanas dzinēju. Tiek veiktas minimālas lietotāja saskarnes izmaiņas, lai palīdzētu ierobežot ideju \"pārlūks kā reklāmas platforma\".</string>
+    <string name="bromite__description">Bromite mērķis ir nodrošināt netraucētu tīmekļa pārlūkošanas pieredzi bez konfidencialitātes aizskarošām funkcijām un ar ātru reklāmu bloķēšanas dzinēju. Tiek veiktas minimālas lietotāja saskarnes izmaiņas, lai palīdzētu ierobežot ideju \"pārlūks kā reklāmas platforma\".</string>
     <string name="firefox_beta__description">Firefox pārlūkprogramma Android ierīcēm pēc noklusējuma ir privāts un neticami ātrs pārlūks. Tūkstošiem tiešsaistes izsekotāju izseko jūs katru dienu, apkopojot informāciju par jūsu tiešsaistes dzīvi un palēninot jūsu darba efektivitāti. Firefox pēc noklusējuma bloķē vairāk nekā 2000 šādus izsekotājus un ļauj uzstādīt reklāmu bloķēšanas papildinājumus, ja vēlaties vēl vairāk pielāgot pārlūku savām vēlmēm. Izmantojot Firefox, jūs iegūsit pelnīto drošību, nepieciešamo darba efektivitāti un veiktspēju privātā mobilajā pārlūkā.</string>
-    <string name="firefox_klar__description">Firefox Klar ir paredzēts Vācijas, Austrijas un Šveices iedzīvotājiem, taču to var izmantot jebkuras citas valsts iedzīvotāji. Tas ir ļoti līdzīgs Firefox Focus, taču nosaukums ir mainīts vāciski runājošajās valstīs, lai izvairītos no sajaukšanas ar Hubert Burda Media Group žurnālu Focus. Atšķirībā no Firefox Focus, Firefox Klar telemetrija pēc noklusējuma ir atspējota stingro Vācijas privātuma likumu dēļ.</string>
+    <string name="firefox_klar__description">Firefox Klar ir paredzēts Vācijas, Austrijas un Šveices iedzīvotājiem, taču to var izmantot jebkuras citas valsts iedzīvotāji. Tas ir ļoti līdzīgs Firefox Focus, taču nosaukums ir mainīts vāciski runājošajās valstīs, lai izvairītos no sajaukšanas ar Hubert Burda Media Group žurnālu Focus. Atšķirībā no Firefox Focus, Firefox Klar telemetrija pēc noklusējuma ir atspējota stingro Vācijas konfidencialitātes likumu dēļ.</string>
     <string name="firefox_release__description">Firefox pārlūkprogramma Android ierīcēm pēc noklusējuma ir privāts un neticami ātrs pārlūks. Tūkstošiem tiešsaistes izsekotāju izseko jūs katru dienu, apkopojot informāciju par jūsu tiešsaistes dzīvi un palēninot jūsu darba efektivitāti. Firefox pēc noklusējuma bloķē vairāk nekā 2000 šādus izsekotājus un ļauj uzstādīt reklāmu bloķēšanas papildinājumus, ja vēlaties vēl vairāk pielāgot pārlūku savām vēlmēm. Izmantojot Firefox, jūs iegūsit pelnīto drošību, nepieciešamo darba efektivitāti un veiktspēju privātā mobilajā pārlūkā.</string>
     <string name="crash_report_activity__label">Avārijas atskaites ziņojums</string>
     <string name="notification__network_error__text">Šai kļūdai vajadzētu rasties tikai reizēm. Tomēr, ja tas notiek bieži, jums par to jāziņo. Noklikšķiniet šeit, lai skatītu detalizētu kļūdas ziņojumu.</string>
@@ -128,11 +128,7 @@
     <string name="crash_report__explain_text__download_activity_install_file">Instalēšanas laikā radās kļūda. Ja tā atkārtojas bieži, lūdzu, ziņojiet par problēmu notabug.org, GitHub vai GitLab vietnē. Lūdzu, neaizmirstiet pievienot avārijas atskaiti no starpliktuves.</string>
     <string name="crash_report__explain_text__download_activity_update_check">Pārbaudot atjauninājumus galvenajā lietotnes logā radās šāda kļūda. Ja tā atkārtojas bieži, ziņojiet par problēmu notabug.org, GitHub vai GitLab vietnē. Lūdzu, neaizmirstiet pievienot avārijas atskaiti no starpliktuves un aprakstu, kā iegūt kļūdu.</string>
     <string name="download_activity__file_uri_exposed_toast">Faila ceļu nevar atklāt citām lietotnēm. Lūdzu, atveriet mapi, izmantojot sev vēlamo failu pārvaldnieku.</string>
-    <string name="tor_browser_alpha__description">Tor - vienīgais oficiālais mobilā telefona pārlūks, kuru atbalsta Tor Project izstrādātāji, kas izplata labāko tiešsaistes privātuma un brīvības interneta rīku.
-\n
-\nTor Browser VIENMĒR būs bez maksas, kas ir iespējams pateicoties ziedojumiem. Tor Project ir 501©(3) bezpeļņas organizācija, kas atrodas ASV. Lūdzu, apsveriet iespēju veikt ziedojumu jau šodien. Katrs ziedojums ir svarīga: https://donate.torproject.org.
-\n
-\nZemāk pieminētajā vietnē uzziniet, kā ziņot par kļūdām un sniegt atsauksmes https://support.torproject.org/misc/bug-or-feedback/!</string>
+    <string name="tor_browser_alpha__description">Tor - vienīgais oficiālais mobilā telefona pārlūks, kuru atbalsta Tor Project izstrādātāji, kas izplata labāko tiešsaistes konfidencialitātes un brīvības interneta rīku.\n\nTor Browser VIENMĒR būs bez maksas, kas ir iespējams pateicoties ziedojumiem. Tor Project ir 501©(3) bezpeļņas organizācija, kas atrodas ASV. Lūdzu, apsveriet iespēju veikt ziedojumu jau šodien. Katrs ziedojums ir svarīga: https://donate.torproject.org.\n\nZemāk pieminētajā vietnē uzziniet, kā ziņot par kļūdām un sniegt atsauksmes https://support.torproject.org/misc/bug-or-feedback/!</string>
     <string name="thorium__description">Ātrākais pārlūks uz Zemes. Chromium atzars, kas paredzēta Linux operētājsistēmai, kas nosaukts radioaktīvā elementa Nr. 90 vārdā.</string>
     <string name="notification__bg_update_check__unreliable_execution__text">Tas var būt saistīts ar jūsu ierīces akumulatora vai veiktspējas iestatījumiem. Noklikšķiniet uz šī paziņojuma, lai atspējotu akumulatora optimizāciju šai lietotnei.</string>
     <string name="mulch_wv__title">Mulch System WebView</string>
@@ -149,7 +145,7 @@
     <string name="app_installer__failed_to_verify_signature_of_installed_app">Neizdevās pārbaudīt uzstādīto lietotni.</string>
     <string name="thorium__warning">- Thorium izmanto Google Chrome tehnisko bāzi un tādējādi netieši atbalsta Chromium renderēšanas dzinēja monopolstāvokli.</string>
     <string name="cromite__warning">- Cromite izmanto Google Chrome tehnisko bāzi un tādējādi netieši atbalsta Chromium renderēšanas dzinēja monopolstāvokli.</string>
-    <string name="privacy_browser__title">Privātuma pārlūks</string>
+    <string name="privacy_browser__title">Konfidencialitātes pārlūks</string>
     <string name="privacy_browser__warning">FFUpdater lejupielādē failus no F-Droid serveriem un tāpēc nav ātrāks.</string>
     <string name="notification__uncaught_exception__text">Noklikšķiniet, lai skatītu kļūdu ziņojumu.</string>
     <string name="cardview_dialog__not_installed_by_ffupdater">Šī lietotne nav uzstādīta vai atjaunināta pateicoties FFUpdater. Lai izvairītos no konfliktiem ar citām lietotnēm, automātiskā atjaunināšana ir atspējota.</string>
@@ -158,7 +154,7 @@
     <string name="cardview_dialog__auto_bg_update">Automātiskā atjaunināšana fonā</string>
     <string name="thorium__title">Thorium</string>
     <string name="main_activity__unexpected_error">Radās neparedzēta kļūda.</string>
-    <string name="cromite__description">Cromite ir Chromium atzars, kuras pamatā ir Bromite kods ar iebūvētu reklāmas bloķētāju un privātuma atbalstu.</string>
+    <string name="cromite__description">Cromite ir Chromium atzars, kuras pamatā ir Bromite kods ar iebūvētu reklāmas bloķētāju un konfidencialitātes atbalstu.</string>
     <string name="notification__uncaught_exception__title">FFUpdater avarēja</string>
     <string name="notification__bg_update_check__unreliable_execution__title">Fona atjauninājumu pārbaude nav veikta uzticami</string>
     <string name="notification__bg_update_check__unreliable_execution__channel_description">Brīdinājums par neuzticamu fona atjauninājumu pārbaudi</string>
@@ -186,14 +182,12 @@
     <string name="settings__foreground__update_check__metered__summary">Atļaut atjauninājuma pārbaudi maksas tīklos, piemēram, mobilo datu tīklos.</string>
     <string name="settings__foreground__update_check__metered__title">Veikt atjauninājumu pārbaudi maksas tīklos</string>
     <string name="settings__foreground__theme_preference__title">Izvēlieties motīvu</string>
-    <string name="ungoogled_chromium__description">Google Chromium bez Google integrācijas.
-\n
-\nChromium lietošana bez Google konta diezgan labi tiek galā ar drošību un privātumu. Tomēr Chromium joprojām ir zināmā mērā atkarīgs no Google tīkla pakalpojumiem un tā patentētajiem binārajiem failiem. Turklāt Google izstrādāja Chromium tā, lai tas būtu vienkāršs un intuitīvi saprotams jebkuram lietotājam, kas nozīmē, ka tiek apdraudēta lietotnes un tā iekšējo darbību caurskatāmība.</string>
+    <string name="ungoogled_chromium__description">Google Chromium bez Google integrācijas.\n\nChromium lietošana bez Google konta diezgan labi tiek galā ar drošību un konfidencialitāti. Tomēr Chromium joprojām ir zināmā mērā atkarīgs no Google tīkla pakalpojumiem un tā patentētajiem binārajiem failiem. Turklāt Google izstrādāja Chromium tā, lai tas būtu vienkāršs un intuitīvi saprotams jebkuram lietotājam, kas nozīmē, ka tiek apdraudēta lietotnes un tā iekšējo darbību caurskatāmība.</string>
     <string name="ungoogled_chromium__warning">- Google brīvs (Ungoogled) Chromium izmanto Google Chrome tehnisko bāzi un tādējādi netieši atbalsta Chromium renderēšanas dzinēja monopolstāvokli.</string>
     <string name="foreground__hide_apps_signed_by_different_certificate__title">Slēpt lietotnes, kas parakstītas ar citu sertifikātu.</string>
     <string name="background__installation__when_screen_off__summary">Mēģiniet uzstādīt atjauninājumus tikai tad, kad ekrāns ir izslēgts.</string>
     <string name="background__installation__when_screen_off__title">Uzstādīt tikai tad, kad ekrāns ir izslēgts</string>
-    <string name="privacy_browser__description">Vienīgais veids, kā novērst datu ļaunprātīgu izmantošanu, ir novērst to ievākšanu. Privātuma pārlūkam ir divi galvenie mērķi: minimizēt nosūtāmo datu apjomu internetā un saglabājamo datu apjomu ierīcē.</string>
+    <string name="privacy_browser__description">Vienīgais veids, kā novērst datu ļaunprātīgu izmantošanu, ir novērst to ievākšanu. Konfidencialitātes pārlūkam ir divi galvenie mērķi: minimizēt nosūtāmo datu apjomu internetā un saglabājamo datu apjomu ierīcē.</string>
     <string name="notification__update_available__generic_channel_descr">Paziņojumu kanāls par pieejamajiem lietotņu atjauninājumiem.</string>
     <string name="notification__update_available__generic_channel_name">Lietotnes atjaunināšanas paziņojums</string>
     <string name="background__separate_notification_channels__summary">Katrai atsevišķai lietotnei izmantot dažādus paziņojumu kanālus</string>
@@ -214,10 +208,10 @@
     <string name="update_interval__8h">ik pēc 8 stundām</string>
     <string name="update_interval__6h">ik pēc 6 stundām</string>
     <string name="vivaldi__title">Vivaldi</string>
-    <string name="tor_browser__description">Tor - vienīgais oficiālais mobilā telefona pārlūks, kuru atbalsta Tor Project izstrādātāji, kas izplata labāko tiešsaistes privātuma un brīvības interneta rīku.</string>
+    <string name="tor_browser__description">Tor - vienīgais oficiālais mobilā telefona pārlūks, kuru atbalsta Tor Project izstrādātāji, kas izplata labāko tiešsaistes konfidencialitātes un brīvības interneta rīku.</string>
     <string name="orbot__title">Orbot: Tor Android operētājsistēmai</string>
     <string name="add_app_activity__title_from_mozilla">No Mozilla</string>
-    <string name="add_app_activity__title_good_privacy_browsers">Labi konfidenciāli pārlūki</string>
+    <string name="add_app_activity__title_good_privacy_browsers">Labi konfidencialitātes pārlūki</string>
     <string name="add_app_activity__title_better_than_google_chrome">Labāki par Google Chrome</string>
     <string name="unsupported_abi_dialog__title">Neatbalstīta ierīce</string>
     <string name="update_interval__30min">ik pēc 30 minūtēm</string>
@@ -293,24 +287,18 @@
     <string name="lockwise__description">PIEKĻUVE PAROLĒM JUMS UN TIKAI JUMS
 \n
 \nDroši izsekojiet savas Firefox paroles un piekļūstiet tām jebkurā vietā. Ātri atvērt jebkuru vietni no lietotnes, lai piekļūtu saviem kontiem.</string>
-    <string name="kiwi__warning">- Kiwi ir tikai daļēji atvērtā koda lietotne.
-\n- Kiwi izmanto Google Chrome tehnisko bāzi un tādējādi netieši atbalsta Chromium renderēšanas dzinēja monopolstāvokli.
-\n- Kiwi nav ideāls privātuma pārlūks, taču tam ir labs papildinājumu atbalsts.
-\n- Pārlūks gūst peļņu no meklētājprogrammām par katru meklēšanas pieprasījumu, kas veikta Kiwi pārlūkā. Atkarībā no izvēlētās meklētājprogrammas meklēšanas pieprasījumi var tikt nosūtīti caur Kiwibrowser / Kiwisearchservices serveriem.
-\n- Google Ads Kiwi pārlūkā var izmantot atrašanās vietas datus, lai rādītu atlasītas reklāmas, taču to var novērst, atspējojot atklāšanas funkciju (Discovery feature) iestatījumos. Taču drīz tas var mainīties. Plašāka informācija pieejama https://privacy.kiwibrowser.org vietnē.</string>
+    <string name="kiwi__warning">- Kiwi ir tikai daļēji atvērtā koda lietotne.\n- Kiwi izmanto Google Chrome tehnisko bāzi un tādējādi netieši atbalsta Chromium renderēšanas dzinēja monopolstāvokli.\n- Kiwi nav ideāls konfidencialitātes pārlūks, taču tam ir labs papildinājumu atbalsts.\n- Pārlūks gūst peļņu no meklētājprogrammām par katru meklēšanas pieprasījumu, kas veikta Kiwi pārlūkā. Atkarībā no izvēlētās meklētājprogrammas meklēšanas pieprasījumi var tikt nosūtīti caur Kiwibrowser / Kiwisearchservices serveriem.\n- Google Ads Kiwi pārlūkā var izmantot atrašanās vietas datus, lai rādītu atlasītas reklāmas, taču to var novērst, atspējojot atklāšanas funkciju (Discovery feature) iestatījumos. Taču drīz tas var mainīties. Plašāka informācija pieejama https://privacy.kiwibrowser.org vietnē.</string>
     <string name="vivaldi__description">Atklājiet pārsteidzoši ātru interneta pārlūku! Vivaldi ir jauns, bezmaksas un privāts tīmekļa pārlūks, kas izstrādāts, paturot prātā tā elastīgo pielāgojamību. Tas ir aprīkots ar noderīgām funkcijām, tostarp iebūvētu AdBlocker (uznirstošo logu bloķētāju), izsekošanas aizsardzību un privātu vietņu tulkotāju. Pārlūka iespējas, piemēram, pilnvērtīgas darbvirsmas stila cilnes, tumši/gaiši motīvi un izkārtojuma pielāgojamība, palīdz konfigurēt pārlūku pēc jūsu patikas un vēlmēm.</string>
-    <string name="duckduckgo_android__description">DuckDuckGo lietotne nodrošina visplašāko tiešsaistes privātuma aizsardzību vienas pogas nospiešanas attālumā. Tikai ar vienu lejupielādi jūs iegūstat jaunu ikdienas pārlūku, kas piedāvā nevainojamu aizsardzību meklēšanas un pārlūkošanas laikā, kā arī piekļuvi saņemto e-pasta ziņojumu un izmantoto lietotņu izsekošanas aizsardzībai. Daudzi no šiem aizsardzības līdzekļiem pēc noklusējuma netiek piedāvāti lielākajā daļā populārāko pārlūku.</string>
+    <string name="duckduckgo_android__description">DuckDuckGo lietotne nodrošina visplašāko tiešsaistes konfidencialitātes aizsardzību vienas pogas nospiešanas attālumā. Tikai ar vienu lejupielādi jūs iegūstat jaunu ikdienas pārlūku, kas piedāvā nevainojamu aizsardzību meklēšanas un pārlūkošanas laikā, kā arī piekļuvi saņemto e-pasta ziņojumu un izmantoto lietotņu izsekošanas aizsardzībai. Daudzi no šiem aizsardzības līdzekļiem pēc noklusējuma netiek piedāvāti lielākajā daļā populārāko pārlūku.</string>
     <string name="bromite_systemwebview__description">SystemWebView pakotne satur Bromite kodola pārlūku/renderēšanas dzinēju un to pašu funkcionalitāti. Tā ļauj iespēju nomainīt noklusējuma pārlūka komponenti visai Android sistēmai.</string>
-    <string name="infobox">Šis ir konfidencialitātes draudzīga pārlūku atjauninātājs. Lai uzstādītu jaunu lietotni, noklikšķiniet uz pluss pogas. Velciet uz leju, lai piespiestu pārbaudīt, vai ir pieejami atjauninājumi. Pēc noklusējuma lietotne fonā periodiski pārbaudīs, vai ir pieejami atjauninājumi, kas pēc tam tiks lejupielādēti un uzstādīti. Noklikšķiniet uz zobrata, lai pielāgotu lietotnes uzvedības iestatījumus.
-\n
-\nPēdējā veiksmīgā atjauninājumu fona pārbaude notika %1$s</string>
+    <string name="infobox">Šis ir konfidencialitātes draudzīga pārlūku atjauninātājs. Lai uzstādītu jaunu lietotni, noklikšķiniet uz pluss pogas. Velciet uz leju, lai piespiestu pārbaudīt, vai ir pieejami atjauninājumi. Pēc noklusējuma lietotne periodiski fonā pārbaudīs, vai ir pieejami atjauninājumi, kas pēc tam tiks lejupielādēti un uzstādīti. Noklikšķiniet uz zobrata, lai pielāgotu lietotnes uzvedības iestatījumus.\n\nPēdējā veiksmīgā atjauninājumu fona pārbaude notika %1$s</string>
     <string name="session_installer__status_failure_storage">Darbība neizdevās krātuves problēmu dēļ. Iemesls, ierīcē var pietrūkt vietas vai ārējais datu nesējs var būt nepieejams. Lietotājs var palīdzēt atbrīvojot vietu vai ievietojot citu ārējo datu nesēju.</string>
     <string name="iceraven__description">Noteikti ne no Mozillas!
 \n
 \nIceraven Browser ir Android tīmekļa pārlūks, kura pamatā ir Mozillas Fenix Firefox versija, GeckoView un Mozilla Android Components.
 \n
 \nMūsu mērķis ir izveidot pēc iespējas tuvu (maz koda modifikācijam) Firefox Android kopiju, sniedzot lietotājiem vairāk pielāgošanas iespēju (tostarp plašu paplašinājumu bibliotēku), vairāk informācijas par viņu apmeklētajām lapām un to, kā viņu pārlūks mijiedarbojas ar šīm lapām.</string>
-    <string name="mulch_wv__description">Uz drošību orientēta un uzlabota sistēmas WebView, kuras pamatā ir Chromium tehnoloģijas. Pateicoties Vanadium projekta ielāpiem, daudzas pret konfidencialitāte funkcijas ir atspējotas/izvāktas, un vairākas drošības funkcijas ir iespējotas/pievienotas.</string>
+    <string name="mulch_wv__description">Uz drošību orientēta un uzlabota sistēmas WebView, kuras pamatā ir Chromium tehnoloģijas. Pateicoties Vanadium projekta ielāpiem, daudzas pret konfidencialitātes funkcijas ir atspējotas/izvāktas, un vairākas drošības funkcijas ir iespējotas/pievienotas.</string>
     <string name="settings__network__use_cloudflare_mirrors__summary">Iespējojiet, lai samazinātu primāro serveru resursu slodzi, kad vien iespējams.</string>
     <string name="settings__network__trust_user_cas__summary">Iespējot, ja datu plūsma jāpārbauda un jāmaina citām lietotnēm. Ja neesat pārliecināts, atstājiet šo opciju atspējotu.</string>
     <string name="network__proxy__dialog_message">Ja vēlaties izmantot SOCKS vai HTTP starpniekserveri, ievadiet šeit savienojuma informāciju. Izmantojiet kādu no zemāk redzamajiem formātiem:
@@ -335,8 +323,13 @@
 \nurl;ip1;ip2;ip3;ip4
 \n
 \nPiemēram: https://dns.google/dns-query;8.8.8.8 vai https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
-    <string name="orbot__description">Orbot ir bezmaksas starpniekservera lietotne, kas ļauj citām lietotnēm drošāk izmantot internetu. Orbot izmanto Tor, lai šifrētu interneta trafiku un pēc tam slēpj to, izmantojot virkni datorus visā pasaulē. Tor ir bezmaksas programmatūra un atvērts tīkls, kas palīdz aizsargāties pret tīkla uzraudzības veidu, kas apdraud personas brīvību un privātumu, sensitīvus biznesa darījumus un attiecības, kā arī valsts drošību, kas pazīstama kā trafika analīze.</string>
+    <string name="orbot__description">Orbot ir bezmaksas starpniekservera lietotne, kas ļauj citām lietotnēm drošāk izmantot internetu. Orbot izmanto Tor, lai šifrētu interneta trafiku un pēc tam to slēpj, izmantojot virkni datorus visā pasaulē. Tor ir bezmaksas programmatūra un atvērts tīkls, kas palīdz aizsargāties no tīkla uzraudzības, kas apdraud personas brīvību un konfidencialitāti, sensitīvus biznesa darījumus un attiecības, kā arī valsts drošību, kas pazīstama kā trafika analīze.</string>
     <string name="session_installer__status_failure_blocked">Darbība neizdevās, jo tā tika bloķēta. Iemesls, ierīces politikas dēļ, pakotnes pārbaudītāja dēļ vai var būt nepieciešama lietotne, lai varētu veikt sistēmas pamatdarbības.</string>
     <string name="session_installer__status_failure_conflict">Darbība neizdevās, jo tā ir pretrunā (vai nav saderīga) ar citu lietotni, kas jau ir uzstādīta ierīcē. Iemesls, esošā atļauja, nesaderīgi sertifikāti utt. Lai atrisinātu konflikta problēmu, lietotājs var atinstalēt uzstādīto lietotni.</string>
     <string name="firefox_nightly__description">Lūdzu, ņemiet vērā, ka šī lietotne agrāk tika saukta par Firefox Preview. Tagad to sauc par Firefox Nightly (Nakts izlaidums).\n\nFirefox (Nakts izlaidums) ir izstrādes versija jauno topošo Mozilla Firefox izlaidumu versijām.\n\nFirefox (Nakts izlaidums) versija ir paredzēta, lai demonstrētu jaunas, eksperimentālas Firefox versijas. Nakts izlaidums ļauj lietotājiem iepazīt jaunākās Firefox inovācijas nestabilā vidē un sniegt atsauksmes par jaunajām funkcijām un veiktspējas uzlabojumiem, lai palīdzētu saprast, kā vajadzētu izskatīties stabilai ikdienas versijai.</string>
+    <string name="notification__install_success__channel_descr">Paziņojumu kanāls par veiksmīgiem %1$s atjauninājumiem.</string>
+    <string name="settings__background__update_check__when_device_idle__summary">Iespējojiet šo opciju, ja nevēlaties, lai jūsu lietotnes tiktu restartētas, veicot fona atjaunināšanu. Atspējojiet šo opciju, ja vēlaties prognozējamāku grafiku fona atjauninājumu pārbaudēm.</string>
+    <string name="notification__install_error__generic_channel_descr">Paziņojumu kanāls par neveiksmīgiem lietotņu atjauninājumiem.</string>
+    <string name="session_installer__status_failure_incompatible">Darbība neizdevās, jo tā būtībā nav saderīga ar šo ierīci. Iemesls, lietotnei trūkst nepieciešamā aparatūras funkcija, trūkt vietējā koda ABI, ko atbalsta ierīce, vai tai nepieciešama jaunāka SDK versija utt.</string>
+    <string name="mulch__description">Uz drošību orientēts un rūdīts tīmekļa pārlūks, kura pamatā ir Chromium tehnoloģijas. Pateicoties Vanadium projekta ielāpiem, daudzas pret konfidencialitātes funkcijas ir atspējotas/izvāktas, un vairākas drošības funkcijas ir iespējotas/pievienotas. Avota koda repozitorijā ir iekļauti arī priekšbūvējumi un makefaili, kas ļauj citām operētājsistēmām iekļaut Mulch kā sistēmas WebView.</string>
 </resources>
