@@ -1,1 +1,1 @@
-build script
+add changelog for F-Droid
