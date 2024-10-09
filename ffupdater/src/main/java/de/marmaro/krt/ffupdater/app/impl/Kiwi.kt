@@ -6,7 +6,7 @@ import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.BETTER_THAN_GOOGLE_CHROME
+import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.EOL
 import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.app.entity.Version
 import de.marmaro.krt.ffupdater.device.ABI
@@ -21,6 +21,7 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
  * https://www.apkmirror.com/apk/geometry-ou/kiwi-browser-fast-quiet/
  */
 @Keep
+@Deprecated("long time no update")
 object Kiwi : AppBase() {
     override val app = App.KIWI
     override val packageName = "com.kiwibrowser.browser"
@@ -33,7 +34,7 @@ object Kiwi : AppBase() {
     override val supportedAbis = ARM32_ARM64_X86_X64
     override val signatureHash = "829b930e919cd56c9a67617c312e3b425a38894b929e735c3d391d9c51b9e4c0"
     override val projectPage = "https://github.com/kiwibrowser/src.next"
-    override val displayCategory = listOf(BETTER_THAN_GOOGLE_CHROME)
+    override val displayCategory = listOf(EOL)
     override val hostnameForInternetCheck = "https://api.github.com"
 
     @MainThread
