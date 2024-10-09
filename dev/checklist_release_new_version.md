@@ -17,6 +17,12 @@ git fetch --tags
 - commit changes:
   - Release version xx (xx)
   - Weblate contributors
+    - Insights > Translation reports > left box
+    - Report format: reStructuredText + Report period: last release until today
+    - Copy text into scratch file
+    - Replace `<.*> ` with ``, `\n\n` with `\n` multiple times
+    - Add to commit add: Thanks for translating on https://hosted.weblate.org/projects/ffupdater:
+    - Add user list to commit
   - `Tobiwan/ffupdater#XXX` for issues/pull requests from notabug.org
   - `Tobi823/ffupdater#XXX` for issues/pull requests from Github
   - `Tobiwan/ffupdater_gitlab#XXX` for issues/merge requests from Gitlab
