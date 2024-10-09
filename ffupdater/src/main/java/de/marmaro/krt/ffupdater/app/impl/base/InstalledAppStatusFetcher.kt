@@ -56,6 +56,7 @@ interface InstalledAppStatusFetcher : InstalledVersionFetcher, LatestVersionFetc
         } catch (e: DisplayableException) {
             throw DisplayableException("Unable to fetch the latest update for ${app.name}.", e)
         } catch (e: RuntimeException) {
+            // TODO dont catch JobCancellationException!
             throw UnrecovableAppFetchException("Unable to fetch the latest update for ${app.name}.", e)
         }
     }
