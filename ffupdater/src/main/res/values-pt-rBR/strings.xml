@@ -260,4 +260,17 @@
     <string name="mulch__warning">- Mulch usa os fundamentos técnicos do Google Chrome e dessa forma apoia indiretamente a posição do monopólio do motor de renderização do Chromium.</string>
     <string name="fennecfdroid__warning">O FFUpdater baixa os arquivos dos servidores do F-Droid e, portanto, não é muito rapido.</string>
     <string name="network__custom_doh_server__dialog_message">Insira os detalhes da conexão do servidor customizado de DoH em um desses formatos:\n\nurl;ip1\n\nurl;ip1:ip2\n\nurl;ip1;ip2;ip3\n\nurl;ip1;ip2;ip3;ip4\n\nPor exemplo: https://dns.google/dns-query;8.8.8.8 ou https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
+    <string name="network__proxy__title">Servidor Proxy</string>
+    <string name="device__prefer_32bit_apks__title">Prefirir APKs de 32-bits</string>
+    <string name="installer__method__session">Instalador de sessão: Recomendado para a maioria dos dispositivos. No android 12 e posterior, os aplicativos podem ser instalados silenciosamente depois de uma confirmação do usuário.</string>
+    <string name="installer__method__native">Instalador nativo: Fallback se o instalador da sessão não funciona no seu smartphone.</string>
+    <string name="installer__method__shizuku">Instalador Shizuku: Atualize apps sem o diálogo de confirmação. Isso requer o aplicativo do Shizuku ou o módulo Sui Magisk.</string>
+    <string name="installer__method__root_not_granted">Autorização de root não garantida!</string>
+    <string name="notification__update_available__generic_channel_descr">Canal de notificações para as atualizações de aplicativos disponíveis.</string>
+    <string name="installer__method__shizuku_not_installed">Shizuku não está instalado!</string>
+    <string name="network__dns_provider__digital_society_ch">DNS sobre HTTPS: Sociedade Suíça Digital</string>
+    <string name="notification__update_available__generic_channel_name">Notificação de atualização do aplicativo</string>
+    <string name="network__proxy__dialog_message">Se você quer usar um proxy SOCKS ou HTTP, insira os detalhes da conexão aqui. Use um desses formatos:\n\nSOCKS/HTTP;ip/domínio;porta\n\nSOCKS/HTTP;ip/domínio;porta;usuário;senha\n\nPor exemplo: SOCKS;1.2.3.4;22 ou HTTP;5.6.7.8;80;usuario1;pw123 ou HTTP;p.webshare.io;80;u;p. Deixe em branco se você quer usar a configuração de proxy do sistema.\n\nLimitação: Se você mudar \'Configurações de DNS\' nas configurações para um servidor DNS sobre HTTPS, você vai ter que entrar o domínio do servidor proxy. Os IPs não irão funcionar.</string>
+    <string name="device__prefer_32bit_apks__summary">Habilite se o seu dispositivo costuma ser lento na memória. FFUpdater irá usar APKs de 32-bits, que geralmente precisa de pouca memória.</string>
+    <string name="installer__method__root">Instalador Root: Atualize os aplicativos sem o diálogo de confirmação. Isso requer um smartphone rooteado.</string>
 </resources>
