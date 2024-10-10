@@ -273,4 +273,26 @@
     <string name="network__proxy__dialog_message">Se você quer usar um proxy SOCKS ou HTTP, insira os detalhes da conexão aqui. Use um desses formatos:\n\nSOCKS/HTTP;ip/domínio;porta\n\nSOCKS/HTTP;ip/domínio;porta;usuário;senha\n\nPor exemplo: SOCKS;1.2.3.4;22 ou HTTP;5.6.7.8;80;usuario1;pw123 ou HTTP;p.webshare.io;80;u;p. Deixe em branco se você quer usar a configuração de proxy do sistema.\n\nLimitação: Se você mudar \'Configurações de DNS\' nas configurações para um servidor DNS sobre HTTPS, você vai ter que entrar o domínio do servidor proxy. Os IPs não irão funcionar.</string>
     <string name="device__prefer_32bit_apks__summary">Habilite se o seu dispositivo costuma ser lento na memória. FFUpdater irá usar APKs de 32-bits, que geralmente precisa de pouca memória.</string>
     <string name="installer__method__root">Instalador Root: Atualize os aplicativos sem o diálogo de confirmação. Isso requer um smartphone rooteado.</string>
+    <string name="eol_reason__browser_no_longer_maintained">O navegador não é mais atualizado.</string>
+    <string name="firefox_focus_beta__title">Firefox Focus Beta</string>
+    <string name="foreground__hide_apps_signed_by_different_certificate__title">Ocultar aplicativos que foram assinados com um certificado diferente.</string>
+    <string name="privacy_browser__title">Navegador Privado</string>
+    <string name="notification__bg_update_check__unreliable_execution__title">A checagem de atualizações em segundo plano não foi execultado de forma confiável</string>
+    <string name="notification__bg_update_check__unreliable_execution__text">Talvez foi causado pela bateria ou pela configuração de desempenho no seu dispositivo. Clique nessa notificação para desativar a otimização de bateria para esse aplicativo.</string>
+    <string name="notification__uncaught_exception__title">O FFUpdater crashou</string>
+    <string name="notification__uncaught_exception__text">Clique para ver o relatório de erro.</string>
+    <string name="mulch_wv__title">Mulch System WebView</string>
+    <string name="notification__install_error__generic_channel_descr">Canal de notificando para atualizações não sucedidas de aplicativos.</string>
+    <string name="notification__install_error__generic_channel_name">Notificação de falha na atualização do aplicativo</string>
+    <string name="main_activity__app_was_signed_by_different_certificate">Esse aplicativo foi assinado com um certificado diferente e não pode ser atualizado pelo FFUpdater.</string>
+    <string name="privacy_browser__warning">O FFUpdater baixa os arquivos pelos servidores do F-Droid, e, portanto, não é muito rápido.</string>
+    <string name="background__installation__when_screen_off__title">Instalar apenas quando a tela estiver desligada</string>
+    <string name="notification__bg_update_check__unreliable_execution__channel_description">Aviso sobre execução não confiável da verificação de atualização em segundo plano</string>
+    <string name="crash_report__report_is_copied_to_clipboard">Relatório de erro foi copiado para a área de transferência</string>
+    <string name="notification__uncaught_exception__channel_description">Erros inesperados que bloquearam o FFUpdater.</string>
+    <string name="generic_app_warning__beta_version">- Esse aplicativo foi criado para desenvolvedores e testadores. Isso pode ter vários bugs que podem afetar o seu trabalho habitual com o navegador.</string>
+    <string name="notification__network_error__text">Esse erro só deve acontecer raramente. Porem, se occorer com freqüência, você deve reportar isso. Clique aqui para ver a mensagem detalhada de erro.</string>
+    <string name="duckduckgo_android__warning">- DuckDuckGo usa o webview do sistema para exibir sites.\n- tinha uma controvérsia sobre o navegador não bloquear todos os cookies da Microsoft - mais esse problema for concertado.</string>
+    <string name="notification__bg_update_check__unreliable_execution__channel_name">A checagem de atualizações em segundo plano não foi executada</string>
+    <string name="installer__android_too_old_for_shizuku">O seu Android é muito antigo para o Shizuku.</string>
 </resources>
