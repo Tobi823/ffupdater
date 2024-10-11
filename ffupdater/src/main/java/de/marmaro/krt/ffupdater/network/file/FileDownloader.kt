@@ -252,6 +252,9 @@ object FileDownloader {
         // It defines a time limit for a complete HTTP call. This includes resolving DNS, connecting,
         // writing the request body, server processing, as well as reading the response body.
         builder.callTimeout(1, TimeUnit.HOURS)
+        // try fixing SocketTimeoutException by disabling ConnectionPool
+        val connectionPool = ConnectionPool(0, 1, TimeUnit.MINUTES)
+        builder.connectionPool(connectionPool)
 
         return builder.build()
     }
