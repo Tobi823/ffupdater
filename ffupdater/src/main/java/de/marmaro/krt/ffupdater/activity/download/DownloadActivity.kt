@@ -338,9 +338,10 @@ class DownloadActivity : AppCompatActivity() {
         val appImpl = app.findImpl()
         val coroutineContext = downloadViewModel.viewModelScope.coroutineContext
         withContext(coroutineContext) {
-            appImpl.download(applicationContext, status.latestVersion) { deferred, progressChannel ->
-                downloadViewModel.storeNewRunningDownload(status, deferred, progressChannel)
-                gui.showDownloadProgress(progressChannel)
+            appImpl.download4(applicationContext, status.latestVersion) { progress ->
+                // TODO
+                // downloadViewModel.storeNewRunningDownload(status, deferred, progressChannel)
+                gui.showDownloadProgress2(progress)
             }
         }
     }

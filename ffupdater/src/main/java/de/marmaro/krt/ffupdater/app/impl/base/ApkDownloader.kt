@@ -36,6 +36,20 @@ interface ApkDownloader : AppAttributes {
         }
     }
 
+    suspend fun <R> download4(
+        context: Context,
+        latestVersion: LatestVersion,
+        progress: suspend (DownloadStatus) -> R,
+    ) {
+        val downloadFile = getDownloadFile(context.applicationContext)
+        downloadFile.delete()
+        try {
+            download4(context, latestVersion, downloadFile, progress)
+        } finally {
+            downloadFile.delete()
+        }
+    }
+
     suspend fun isApkDownloaded(context: Context, latestVersion: LatestVersion): Boolean {
         val file = getApkFile(context.applicationContext, latestVersion)
         return file.exists() && StorageUtil.isValidZipOrApkFile(file)
@@ -88,6 +102,19 @@ interface ApkDownloader : AppAttributes {
         val sanitizedVersionText = version.versionText.replace("""\W""".toRegex(), "_")
         val dateOrEmptyString = version.buildDate?.format(DateTimeFormatter.BASIC_ISO_DATE)?.let { "_$it" } ?: ""
         return sanitizedVersionText + dateOrEmptyString
+    }
+
+    private suspend fun <R> download4(
+        context: Context,
+        latestVersion: LatestVersion,
+        downloadFile: File,
+        progress: suspend (DownloadStatus) -> R,
+    ) {
+        FileDownloader.downloadFileWithProgress4(
+            latestVersion.downloadUrl, downloadFile, progress
+        )
+        checkDownloadFile(downloadFile, latestVersion)
+        processDownload(context.applicationContext, downloadFile, latestVersion)
     }
 
     private suspend fun <R> download(

@@ -34,6 +34,7 @@ import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicInteger
 import javax.net.ssl.*
 import kotlin.io.use
+import kotlin.math.max
 
 /**
  * This class can be reused to a certain extend and must only be used synchronous.
@@ -59,15 +60,46 @@ object FileDownloader {
     suspend fun isUrlAvailable(url: String): Boolean {
         require(url.startsWith("https://"))
         try {
-            val request = Request.Builder()
-                .url(url)
-                .cacheControl(CacheControl.FORCE_NETWORK)
-                .method("HEAD", null)
-            client.newCall(request.build())
-                .await()
+            val request = Request.Builder().url(url).cacheControl(CacheControl.FORCE_NETWORK).method("HEAD", null)
+            client.newCall(request.build()).await()
             return true
         } catch (e: Exception) {
             return false
+        }
+    }
+
+    // https://www.cygonna.com/2024/02/use-okhttp-to-download-file-and-show.html
+    suspend fun <R> downloadFileWithProgress4(url: String, file: File, progress: suspend (DownloadStatus) -> R) {
+        val request = Request.Builder().url(url).method("GET", null)
+        val response = client.newCall(request.build()).await()
+        val responseBody = validateAndReturnResponseBody(url, response)
+        val totalSize = responseBody.contentLength()
+        var writtenBytes: Long = 0
+        var previousPercentValue = -1
+        val buffer = ByteArray(8 * 1024)
+        withContext(Dispatchers.IO) {
+            file.outputStream().use { fileStream ->
+                responseBody.byteStream().use { networkStream ->
+                    withContext(Dispatchers.Main) {
+                        progress.invoke(DownloadStatus(0, writtenBytes))
+                    }
+                    while (true) {
+                        val byteRead = networkStream.read(buffer)
+                        val percent = (writtenBytes.toFloat() / totalSize.toFloat() * 100).toInt()
+                        writtenBytes += max(byteRead, 0) // dont add -1 (signal for finish) to writtenBytes
+                        if (percent != previousPercentValue) {
+                            previousPercentValue = percent
+                            withContext(Dispatchers.Main) {
+                                progress.invoke(DownloadStatus(percent, writtenBytes))
+                            }
+                        }
+                        if (byteRead == -1) {
+                            return@withContext
+                        }
+                        fileStream.write(buffer, 0, byteRead)
+                    }
+                }
+            }
         }
     }
 
@@ -83,7 +115,7 @@ object FileDownloader {
                     is IOException,
                     is IllegalArgumentException,
                     is NetworkException,
-                    -> NetworkException("Download of $url failed.", e)
+                        -> NetworkException("Download of $url failed.", e)
 
                     else -> e
                 }
@@ -112,17 +144,15 @@ object FileDownloader {
             getMutexForUrl(url).withLock {
                 try {
                     val responseBody = callUrl(url, method, requestBody, null)
-                    responseBody.charStream()
-                        .buffered()
-                        .use { reader ->
-                            execute(reader)
-                        }
+                    responseBody.charStream().buffered().use { reader ->
+                        execute(reader)
+                    }
                 } catch (e: Exception) {
                     when (e) {
                         is IOException,
                         is IllegalArgumentException,
                         is NetworkException,
-                        -> throw NetworkException("Request of HTTP-API $url failed.", e)
+                            -> throw NetworkException("Request of HTTP-API $url failed.", e)
                     }
                     throw e
                 }
@@ -158,17 +188,13 @@ object FileDownloader {
             if (file.exists()) {
                 file.delete()
             }
-            file.outputStream()
-                .buffered()
-                .use { fileWriter ->
-                    responseBody.byteStream()
-                        .buffered()
-                        .use { responseReader ->
-                            // this method blocks until download is finished
-                            responseReader.copyTo(fileWriter)
-                            fileWriter.flush()
-                        }
+            file.outputStream().buffered().use { fileWriter ->
+                responseBody.byteStream().buffered().use { responseReader ->
+                    // this method blocks until download is finished
+                    responseReader.copyTo(fileWriter)
+                    fileWriter.flush()
                 }
+            }
         }
     }
 
@@ -192,12 +218,9 @@ object FileDownloader {
         processChannel: Channel<DownloadStatus>?,
     ): ResponseBody {
         require(url.startsWith("https://"))
-        val request = Request.Builder()
-            .url(url)
-            .method(method, requestBody)
+        val request = Request.Builder().url(url).method(method, requestBody)
             .tag(processChannel) // use tag to transfer a Channel to the Interceptor
-        val response = client.newCall(request.build())
-            .await()
+        val response = client.newCall(request.build()).await()
         return validateAndReturnResponseBody(url, response)
     }
 
@@ -214,9 +237,7 @@ object FileDownloader {
         mapMutex.withLock {
             if (mutexForUrls.size > 30) {
                 Log.d(FFUpdater.LOG_TAG, "FileDownloader: Cleanup mutexForUrls.")
-                mutexForUrls.filter { !it.value.isLocked }
-                    .map { it.key }
-                    .forEach { mutexForUrls.remove(it) }
+                mutexForUrls.filter { !it.value.isLocked }.map { it.key }.forEach { mutexForUrls.remove(it) }
             }
             return mutexForUrls.getOrPut(url) { Mutex() }// not atomic
         }
@@ -306,11 +327,9 @@ object FileDownloader {
     // https://github.com/square/okhttp/blob/7768de7baaa992adcd384871cb8720873f6b8fd0/okhttp-dnsoverhttps/src/test/java/okhttp3/dnsoverhttps/DnsOverHttpsTest.java
     // sharing an OkHttpClient is safe
     private val bootstrapClient by lazy {
-        OkHttpClient.Builder()
-            .protocols(listOf(Protocol.HTTP_2, Protocol.HTTP_1_1))
+        OkHttpClient.Builder().protocols(listOf(Protocol.HTTP_2, Protocol.HTTP_1_1))
 
-            .connectTimeout(Duration.ofSeconds(60))
-            .build()
+            .connectTimeout(Duration.ofSeconds(60)).build()
     }
 
     // https://de.wikipedia.org/wiki/DNS_over_HTTPS
@@ -348,11 +367,8 @@ object FileDownloader {
     }
 
     private fun createDnsOverHttpsResolver(url: String, ips: List<String>): DnsOverHttps {
-        return DnsOverHttps.Builder()
-            .client(bootstrapClient)
-            .url(url.toHttpUrl())
-            .bootstrapDnsHosts(ips.map { InetAddress.getByName(it) })
-            .build()
+        return DnsOverHttps.Builder().client(bootstrapClient).url(url.toHttpUrl())
+            .bootstrapDnsHosts(ips.map { InetAddress.getByName(it) }).build()
     }
 
     private val fakeDnsResolver by lazy {

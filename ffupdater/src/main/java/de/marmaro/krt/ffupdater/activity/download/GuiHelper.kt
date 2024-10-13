@@ -97,6 +97,19 @@ class GuiHelper(val activity: DownloadActivity) {
         }
     }
 
+    suspend fun showDownloadProgress2(progress: DownloadStatus) {
+        if (progress.progressInPercent != null) {
+            activity.findViewById<ProgressBar>(R.id.downloadingFileProgressBar).progress = progress.progressInPercent
+        }
+
+        val text = when {
+            progress.progressInPercent != null -> "(${progress.progressInPercent}%)"
+            else -> "(${progress.totalMB}MB)"
+        }
+        val statusText = activity.getString(R.string.download_activity__download_app_with_status)
+        setText(R.id.downloadingFileText, "$statusText $text")
+    }
+
     @MainThread
     fun displayFetchFailure(exception: DisplayableException) {
         val message = when (exception) {
