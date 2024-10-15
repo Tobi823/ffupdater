@@ -1,0 +1,4 @@
+78.1.5 (154) versija realizēta 2023.08.31
+
+* Brave, Brave Beta, Brave (Nakts izlaidums) labojums jauniem tālruņiem (izmanto Bravearm64Universal.apk, nevis BraveMonoarm64.apk) (Tobi823/ffupdater#475)
+* Aizvāktas novecojušās Brave, Brave Beta, Brave (Nakts izlaidums) versijas, kas paredzētas Android 6 operētājsistēmai

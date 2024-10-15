@@ -1,0 +1,4 @@
+78.1.4 (153) versija realizēta 2023.08.31
+
+* Paldies par Weblate tulkotāju ieguldījumu: gallegonovato, Alexthegib, 109247019824 un Giovanni Donisi
+* salabota problēma saistītu ar Tor Alpha (Tobi823/ffupdater#485)
