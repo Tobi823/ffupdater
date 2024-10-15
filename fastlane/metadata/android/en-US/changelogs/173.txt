@@ -1,6 +1,6 @@
 Release version 79.2.3 (173)
 
-- Thanks for the Weblate contributions from: Rheydskey, Coool (github.com/Coool), Scrambled777, gallegonovato, 大王叫我来巡山, Eryk Michalak, Oğuz Ersen, Kazushi Hayama and 109247019824
+- Thanks for the Weblate contributions from: Rheydskey, ℂ𝕠𝕠𝕠𝕝 (𝕘𝕚𝕥𝕙𝕦𝕓.𝕔𝕠𝕞/ℂ𝕠𝕠𝕠𝕝) translated 8.2% (25 of 302 strings), Scrambled777, gallegonovato, 大王叫我来巡山, Eryk Michalak, Oğuz Ersen, Kazushi Hayama and 109247019824
 - Fix download problems with Firefox Release (Tobi823/ffupdater#592)
 - Dont perform background update check if a basic network test is not successful (Tobi823/ffupdater#578)
 - Update dependencies

@@ -1,7 +1,7 @@
 Release version 79.2.4 (174)
 - Thanks nortio for fixing primaryColor for status bar color (Tobi823/ffupdater#609)
 - Thanks Andrew Gunnerson (chenxiaolong) for setting "update ownership" when installing a new app (Tobi823/ffupdater#591)
-- Thanks for the Weblate contributions from: Priit Jõerüüt, Cirnos, Coool (github.com/Coool), Retrial, Flavio F. M., gallegonovato, Scrambled777, 大王叫我来巡山, Kazushi Hayama, Giovanni Donisi, Kirill Isakov, 109247019824
+- Thanks for the Weblate contributions from: Priit Jõerüüt, Cirnos, ℂ𝕠𝕠𝕠𝕝 (𝕘𝕚𝕥𝕙𝕦𝕓.𝕔𝕠𝕞/ℂ𝕠𝕠𝕠𝕝) translated 23.5% (71 of 302 strings), Retrial, Flavio F. M., gallegonovato, Scrambled777, 大王叫我来巡山, Kazushi Hayama, Giovanni Donisi, Kirill Isakov, 109247019824
 - Dont check for updates / don't download updates when power save mode is enabled
 - Dont use OkHttp to cache network responses, use custom data structure
 - Try to fix download timeouts by increasing OkHttp timeout thresholds
