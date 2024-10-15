@@ -193,7 +193,7 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) : CoroutineWo
         logInfo("Download update for ${installedAppStatus.app}.")
         val appImpl = installedAppStatus.app.findImpl()
         try {
-            appImpl.download4(applicationContext, installedAppStatus.latestVersion) { progress ->
+            appImpl.download(applicationContext, installedAppStatus.latestVersion) { progress ->
                 onUpdate(progress)
             }
         } catch (e: Exception) {

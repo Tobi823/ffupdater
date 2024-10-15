@@ -11,9 +11,7 @@ import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.DownloadStatus
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.storage.StorageUtil
-import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.withContext
 import java.io.File
 import java.time.format.DateTimeFormatter
@@ -25,26 +23,12 @@ interface ApkDownloader : AppAttributes {
     suspend fun <R> download(
         context: Context,
         latestVersion: LatestVersion,
-        progress: suspend (Deferred<Any>, Channel<DownloadStatus>) -> R,
-    ) {
-        val downloadFile = getDownloadFile(context.applicationContext)
-        downloadFile.delete()
-        try {
-            download(context, latestVersion, downloadFile, progress)
-        } finally {
-            downloadFile.delete()
-        }
-    }
-
-    suspend fun <R> download4(
-        context: Context,
-        latestVersion: LatestVersion,
         progress: suspend (DownloadStatus) -> R,
     ) {
         val downloadFile = getDownloadFile(context.applicationContext)
         downloadFile.delete()
         try {
-            download4(context, latestVersion, downloadFile, progress)
+            download(context, latestVersion, downloadFile, progress)
         } finally {
             downloadFile.delete()
         }
@@ -104,7 +88,7 @@ interface ApkDownloader : AppAttributes {
         return sanitizedVersionText + dateOrEmptyString
     }
 
-    private suspend fun <R> download4(
+    private suspend fun <R> download(
         context: Context,
         latestVersion: LatestVersion,
         downloadFile: File,
@@ -113,24 +97,6 @@ interface ApkDownloader : AppAttributes {
         FileDownloader.downloadFileWithProgress4(
             latestVersion.downloadUrl, downloadFile, progress
         )
-        checkDownloadFile(downloadFile, latestVersion)
-        processDownload(context.applicationContext, downloadFile, latestVersion)
-    }
-
-    private suspend fun <R> download(
-        context: Context,
-        latestVersion: LatestVersion,
-        downloadFile: File,
-        progress: suspend (Deferred<Any>, Channel<DownloadStatus>) -> R,
-    ) {
-        val (deferred, progressChannel) = FileDownloader.downloadFileWithProgress(
-            latestVersion.downloadUrl,
-            downloadFile
-        )
-        withContext(Dispatchers.Main) {
-            progress(deferred, progressChannel)
-        }
-        deferred.await()
         checkDownloadFile(downloadFile, latestVersion)
         processDownload(context.applicationContext, downloadFile, latestVersion)
     }

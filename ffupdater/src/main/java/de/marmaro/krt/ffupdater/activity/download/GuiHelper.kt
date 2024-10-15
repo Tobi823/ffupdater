@@ -18,7 +18,6 @@ import de.marmaro.krt.ffupdater.network.exceptions.NetworkNotSuitableException
 import de.marmaro.krt.ffupdater.network.file.DownloadStatus
 import de.marmaro.krt.ffupdater.settings.ForegroundSettings
 import de.marmaro.krt.ffupdater.settings.InstallerSettings
-import kotlinx.coroutines.channels.Channel
 
 class GuiHelper(val activity: DownloadActivity) {
 
@@ -81,23 +80,7 @@ class GuiHelper(val activity: DownloadActivity) {
         }
     }
 
-    suspend fun showDownloadProgress(progressChannel: Channel<DownloadStatus>) {
-        for (progress in progressChannel) {
-            if (progress.progressInPercent != null) {
-                activity.findViewById<ProgressBar>(R.id.downloadingFileProgressBar).progress =
-                    progress.progressInPercent
-            }
-
-            val text = when {
-                progress.progressInPercent != null -> "(${progress.progressInPercent}%)"
-                else -> "(${progress.totalMB}MB)"
-            }
-            val statusText = activity.getString(R.string.download_activity__download_app_with_status)
-            setText(R.id.downloadingFileText, "$statusText $text")
-        }
-    }
-
-    suspend fun showDownloadProgress2(progress: DownloadStatus) {
+    fun showDownloadProgress(progress: DownloadStatus) {
         if (progress.progressInPercent != null) {
             activity.findViewById<ProgressBar>(R.id.downloadingFileProgressBar).progress = progress.progressInPercent
         }

@@ -262,7 +262,8 @@ class DownloadActivity : AppCompatActivity() {
     private suspend fun executeDownloadProcess(status: InstalledAppStatus): Boolean {
         debug("check if an existing download can be reused")
         if (downloadViewModel.isDownloadForCurrentAppRunning(status)) {
-            return reuseCurrentDownload(status)
+            // TODO
+//            return reuseCurrentDownload(status)
         }
 
         debug("check if no APK file is cached")
@@ -294,15 +295,15 @@ class DownloadActivity : AppCompatActivity() {
 
     @MainThread
     private suspend fun reuseCurrentDownloadWithoutErrorChecking(status: InstalledAppStatus) {
-        debug("reuse existing download")
-        gui.setText(R.id.downloadingFileUrl, status.latestVersion.downloadUrl)
-        gui.setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status))
-
-        findViewById<View>(R.id.downloadingFile).visibleDuringExecution {
-            gui.showDownloadProgress(downloadViewModel.progressChannel!!)
-            // NPE was thrown in https://github.com/Tobi823/ffupdater/issues/359 - it should be safe to ignore null values
-            downloadViewModel.deferred?.await()
-        }
+//        debug("reuse existing download")
+//        gui.setText(R.id.downloadingFileUrl, status.latestVersion.downloadUrl)
+//        gui.setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status))
+//
+//        findViewById<View>(R.id.downloadingFile).visibleDuringExecution {
+//            gui.showDownloadProgress(downloadViewModel.progressChannel!!)
+//            // NPE was thrown in https://github.com/Tobi823/ffupdater/issues/359 - it should be safe to ignore null values
+//            downloadViewModel.deferred?.await()
+//        }
     }
 
     @MainThread
@@ -338,10 +339,10 @@ class DownloadActivity : AppCompatActivity() {
         val appImpl = app.findImpl()
         val coroutineContext = downloadViewModel.viewModelScope.coroutineContext
         withContext(coroutineContext) {
-            appImpl.download4(applicationContext, status.latestVersion) { progress ->
+            appImpl.download(applicationContext, status.latestVersion) { progress ->
                 // TODO
                 // downloadViewModel.storeNewRunningDownload(status, deferred, progressChannel)
-                gui.showDownloadProgress2(progress)
+                gui.showDownloadProgress(progress)
             }
         }
     }

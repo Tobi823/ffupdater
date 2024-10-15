@@ -143,7 +143,7 @@ object FileDownloader {
         return withContext(Dispatchers.IO) {
             getMutexForUrl(url).withLock {
                 try {
-                    val responseBody = callUrl(url, method, requestBody, null)
+                    val responseBody = callUrl(url, method, requestBody)
                     responseBody.charStream().buffered().use { reader ->
                         execute(reader)
                     }
@@ -184,7 +184,7 @@ object FileDownloader {
 
     @WorkerThread
     private suspend fun downloadFile2(url: String, file: File, processChannel: Channel<DownloadStatus>) {
-        callUrl(url, "GET", null, processChannel).use { responseBody ->
+        callUrl(url, "GET", null).use { responseBody ->
             if (file.exists()) {
                 file.delete()
             }
@@ -215,11 +215,9 @@ object FileDownloader {
         url: String,
         method: String,
         requestBody: RequestBody?,
-        processChannel: Channel<DownloadStatus>?,
     ): ResponseBody {
         require(url.startsWith("https://"))
         val request = Request.Builder().url(url).method(method, requestBody)
-            .tag(processChannel) // use tag to transfer a Channel to the Interceptor
         val response = client.newCall(request.build()).await()
         return validateAndReturnResponseBody(url, response)
     }
@@ -245,7 +243,6 @@ object FileDownloader {
 
     private fun createOkHttpClient(): OkHttpClient {
         val builder = OkHttpClient.Builder()
-        builder.addNetworkInterceptor(DownloadProgressInterceptor())
 
         if (NetworkSettings.areUserCAsTrusted) {
             val (sslSocketFactory, trustManager) = createSslSocketFactory()
