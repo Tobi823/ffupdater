@@ -1,7 +1,7 @@
 Релизная версия 79.2.4 (174)
 - Спасибо nortio за исправление primaryColor для цвета строки состояния (Tobi823/ffupdater#609)
 - Спасибо Andrew Gunnerson (chenxiaolong) за настройку "обновить право владельца" при установке нового приложения (Tobi823/ffupdater#591)
-- Благодарим за вклады на Weblate от Priit Jõerüüt, Cirnos, ℂ𝕠𝕠𝕠𝕝 (github.com/Coool), Retrial, Flavio F. M., gallegonovato, Scrambled777, 大王叫我来巡山, Kazushi Hayama, Giovanni Donisi, Kirill Isakov, 109247019824
+- Благодарим за вклады на Weblate от Priit Jõerüüt, Cirnos, ℂ𝕠𝕠𝕠𝕝 (𝕘𝕚𝕥𝕙𝕦𝕓.𝕔𝕠𝕞/ℂ𝕠𝕠𝕠𝕝) перевел 23.5% (71 из 302 строк), Retrial, Flavio F. M., gallegonovato, Scrambled777, 大王叫我来巡山, Kazushi Hayama, Giovanni Donisi, Kirill Isakov, 109247019824
 - Не проверять наличие обновлений/не загружать обновления, если включен режим энергосбережения
 - Не использовать OkHttp для кэширования сетевых ответов, использовать пользовательскую структуру данных
 - Попытка исправить тайм-ауты загрузки путем увеличения пороговых значений тайм-аута OkHttp
