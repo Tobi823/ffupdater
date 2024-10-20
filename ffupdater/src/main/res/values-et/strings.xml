@@ -69,7 +69,7 @@
     <string name="notification__download_error__channel_name">Teavitus taustal tekkinud allalaadimisvigadest</string>
     <string name="cardview_dialog__hide">Peida</string>
     <string name="foreground__hidden_apps__summary">Peidetud rakendused pole kasutajaliides nähtavad ja neid ei uuendata automaatselt.</string>
-    <string name="download_activity__fetch_url_for_download">Laadi metainfo siit: %1$s</string>
+    <string name="download_activity__fetch_url_for_download">Laadime metainfo siit: %1$s</string>
     <string name="download_activity__open_cache_explanation">Sa võid avada puhverdatud failide kausta ja kopeerida APK-faili andmekandjale, kus on rohkem vaba ruumi. Kahjuks Android 11+ puhul vaid vähesed failihaldurid saavad avada Android/data kausta.</string>
     <string name="settings__background__download__metered__title">Laadi rakenduste uuendused alla ka mahupõhiste andmesideühenduste kasutamisel</string>
     <string name="add_app_activity__title_other_applications">Muud rakendused</string>
@@ -144,7 +144,7 @@
     <string name="update_notification__title">Uuendus on saadaval: %1$s</string>
     <string name="k9mail__title">K-9 Mail</string>
     <string name="fairemail__description">Täisfunktsionaalne, avatud lähtekoodil põhinev ja privaatsussõbralik e-postiklient Androidi jaoks</string>
-    <string name="cardview_dialog__eol">Seda rakendus ei peaks enam kasutama:</string>
+    <string name="cardview_dialog__eol">Seda rakendust ei peaks enam kasutama:</string>
     <string name="settings__network__use_cloudflare_mirrors__title">Kasuta Cloudflare\'i peegelservereid</string>
     <string name="chromium__title">Chromium</string>
     <string name="installer__method__root_not_granted">Juurkasutaja õigusi pole!</string>
@@ -200,7 +200,7 @@
     <string name="settings__foreground__update_check__metered__title">Kontrolli uuendusi mahupõhistes andmesidevõrkudes</string>
     <string name="vivaldi__title">Vivaldi brauser</string>
     <string name="mull__title">Mull brauser</string>
-    <string name="ungoogled_chromium__eol_reason">Arendaja on kirjutanud: „Ma ei jõua versioone lähiajal uuendada. Kui võimalik, siis palun selle asemel kasutasmõnda muud [FFUpdateri toetatud] brauserit.“ Vaata ka https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
+    <string name="ungoogled_chromium__eol_reason">Arendaja on kirjutanud: „Ma ei jõua versioone lähiajal uuendada. Kui võimalik, siis palun kasuta selle asemel mõnda muud [FFUpdateri toetatud] brauserit.“ Vaata ka https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
     <string name="tor_browser__description">Tor brauser Androidi jaoks on ainus Tor projekti poolt toetatud ametlik brauser. Projekt Tor arendab tugevamaid ja parimaid võrguprivaatsusega ja -vabadusega seotud tarvikuid maailmas.</string>
     <string name="crash_report_activity__label">Krahhiteavitus</string>
     <string name="mulch__warning">- Mulchi tehniline lahendus põhineb Google Chrome\'il ja seega toetab ta kaudselt Chromiumi renderdusmootori monopoli.</string>
