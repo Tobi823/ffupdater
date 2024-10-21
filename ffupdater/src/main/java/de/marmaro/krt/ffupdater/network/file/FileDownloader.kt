@@ -103,31 +103,6 @@ object FileDownloader {
         }
     }
 
-    suspend fun downloadFileWithProgress(url: String, file: File): Pair<Deferred<Any>, Channel<DownloadStatus>> {
-        val processChannel = Channel<DownloadStatus>(Channel.CONFLATED)
-        val deferred = CoroutineScope(Dispatchers.IO).async {
-            try {
-                lastChange = System.currentTimeMillis()
-                numberOfRunningDownloads.incrementAndGet()
-                downloadFile2(url, file, processChannel)
-            } catch (e: Exception) {
-                throw when (e) {
-                    is IOException,
-                    is IllegalArgumentException,
-                    is NetworkException,
-                        -> NetworkException("Download of $url failed.", e)
-
-                    else -> e
-                }
-            } finally {
-                lastChange = System.currentTimeMillis()
-                numberOfRunningDownloads.decrementAndGet()
-                processChannel.close()
-            }
-        }
-        return Pair(deferred, processChannel)
-    }
-
     /**
      *
      */
@@ -273,6 +248,7 @@ object FileDownloader {
         // try fixing SocketTimeoutException by disabling ConnectionPool
         val connectionPool = ConnectionPool(0, 1, TimeUnit.MINUTES)
         builder.connectionPool(connectionPool)
+        builder.protocols(listOf(Protocol.HTTP_1_1, Protocol.HTTP_1_0))
 
         return builder.build()
     }
