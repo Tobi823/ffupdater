@@ -248,7 +248,7 @@ object FileDownloader {
         // try fixing SocketTimeoutException by disabling ConnectionPool
         val connectionPool = ConnectionPool(0, 1, TimeUnit.MINUTES)
         builder.connectionPool(connectionPool)
-        builder.protocols(listOf(Protocol.HTTP_1_1, Protocol.HTTP_1_0))
+        builder.protocols(listOf(Protocol.HTTP_1_1))
 
         return builder.build()
     }
