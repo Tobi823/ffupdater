@@ -7,7 +7,7 @@
 
 Installs and updates the following browsers:
 
-Browsers from Mozilla or based on Firefox:
+Software from Mozilla or based on Firefox:
 
 - [Fennec F-Droid](https://f-droid.org/packages/org.mozilla.fennec_fdroid/)
 - [Firefox Browser](https://play.google.com/store/apps/details?id=org.mozilla.firefox),
@@ -22,6 +22,9 @@ Browsers from Mozilla or based on Firefox:
 - [Iceraven](https://github.com/fork-maintainers/iceraven-browser)
 - [Tor Browser](https://www.torproject.org/download),
   [Tor Browser Alpha](https://www.torproject.org/download/alpha/)
+- [Thunderbird for Android](https://play.google.com/store/apps/details?id=net.thunderbird.android),
+  [Thunderbird for Android Beta](https://play.google.com/store/apps/details?id=net.thunderbird.android.beta)
+  ([GitHub Repository](https://github.com/thunderbird/thunderbird-android/))
 
 Good privacy browsers:
 
@@ -44,7 +47,7 @@ Browser which are better than Google Chrome:
 Other applications:
 
 - [FairEmail](https://github.com/M66B/FairEmail)
-- [K-9 Mail / Thunderbird Android](https://github.com/k9mail/k9mail.app)
+- [K-9 Mail](https://k9mail.app)
 - [Orbot](https://github.com/guardianproject/orbot)
 
 FFUpdater checks for updates in the background and downloads them as well. Apps can be updated without user
