@@ -26,7 +26,7 @@ object ThunderbirdBeta : AppBase() {
     override val packageName = "net.thunderbird.android.beta"
     override val title = R.string.thunderbird_beta__title
     override val description = R.string.thunderbird__description
-    override val installationWarning: Int? = null
+    override val installationWarning = R.string.generic_beta__warning
     override val downloadSource = "Mozilla Archive"
     override val icon = R.drawable.ic_logo_thunderbird_beta
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
