@@ -69,7 +69,7 @@ object FileDownloader {
     }
 
     // https://www.cygonna.com/2024/02/use-okhttp-to-download-file-and-show.html
-    suspend fun <R> downloadFileWithProgress4(url: String, file: File, progress: suspend (DownloadStatus) -> R) {
+    suspend fun <R> downloadFileWithProgress(url: String, file: File, progress: suspend (DownloadStatus) -> R) {
         val request = Request.Builder().url(url).method("GET", null)
         val response = client.newCall(request.build()).await()
         val responseBody = validateAndReturnResponseBody(url, response)
@@ -300,8 +300,7 @@ object FileDownloader {
     // https://github.com/square/okhttp/blob/7768de7baaa992adcd384871cb8720873f6b8fd0/okhttp-dnsoverhttps/src/test/java/okhttp3/dnsoverhttps/DnsOverHttpsTest.java
     // sharing an OkHttpClient is safe
     private val bootstrapClient by lazy {
-        OkHttpClient.Builder().protocols(listOf(Protocol.HTTP_2, Protocol.HTTP_1_1))
-
+        OkHttpClient.Builder().protocols(listOf(Protocol.HTTP_1_1))
             .connectTimeout(Duration.ofSeconds(60)).build()
     }
 

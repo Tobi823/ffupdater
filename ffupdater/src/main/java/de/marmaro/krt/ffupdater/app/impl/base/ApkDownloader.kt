@@ -94,7 +94,7 @@ interface ApkDownloader : AppAttributes {
         downloadFile: File,
         progress: suspend (DownloadStatus) -> R,
     ) {
-        FileDownloader.downloadFileWithProgress4(
+        FileDownloader.downloadFileWithProgress(
             latestVersion.downloadUrl, downloadFile, progress
         )
         checkDownloadFile(downloadFile, latestVersion)
