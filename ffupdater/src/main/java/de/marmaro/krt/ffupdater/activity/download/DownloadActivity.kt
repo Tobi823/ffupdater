@@ -44,6 +44,7 @@ import de.marmaro.krt.ffupdater.utils.visibleAfterExecution
 import de.marmaro.krt.ffupdater.utils.visibleDuringExecution
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -83,7 +84,7 @@ class DownloadActivity : AppCompatActivity() {
         }
 
         fun isDownloadForCurrentAppRunning(status: InstalledAppStatus): Boolean {
-            return this.status == status && deferred?.isActive == true
+            return this.status?.app == status.app && this.status?.latestVersion == status.latestVersion && deferred?.isActive == true
         }
 
         fun clear() {
@@ -282,7 +283,12 @@ class DownloadActivity : AppCompatActivity() {
     private suspend fun reuseCurrentDownload(status: InstalledAppStatus): Boolean {
         debug("start reusing existing download")
         return try {
-            reuseCurrentDownloadWithoutErrorChecking(status)
+            findViewById<View>(R.id.downloadingFile).visibleDuringExecution {
+                findViewById<View>(R.id.downloadedFile).visibleAfterExecution {
+                    reuseCurrentDownloadWithoutErrorChecking(status)
+                }
+            }
+
             true
         } catch (e: Exception) {
             debug("reusing the existing download of $[app.name} failed", e)
@@ -297,19 +303,29 @@ class DownloadActivity : AppCompatActivity() {
         debug("reuse existing download")
         gui.setText(R.id.downloadingFileUrl, status.latestVersion.downloadUrl)
         gui.setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status))
-
         findViewById<View>(R.id.downloadingFile).visibleDuringExecution {
-            gui.showDownloadProgress(downloadViewModel.progressChannel!!)
-            // NPE was thrown in https://github.com/Tobi823/ffupdater/issues/359 - it should be safe to ignore null values
-            downloadViewModel.deferred?.await()
+            for (update in downloadViewModel.progressChannel!!) {
+                withContext(Dispatchers.Main) {
+                    gui.updateDownloadProgressIndication(update)
+                }
+            }
         }
+        downloadViewModel.deferred!!.await()
     }
 
     @MainThread
     private suspend fun startDownload(status: InstalledAppStatus): Boolean {
-        debug("start download (1/3)")
+        debug("start download (1/2)")
         return try {
-            startDownloadWithoutErrorChecking(status)
+            gui.setText(R.id.downloadingFileUrl, status.latestVersion.downloadUrl)
+            gui.setText(R.id.downloadedFileUrl, status.latestVersion.downloadUrl)
+            gui.setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status))
+            findViewById<View>(R.id.downloadingFile).visibleDuringExecution {
+                findViewById<View>(R.id.downloadedFile).visibleAfterExecution {
+                    downloadWithUiProgressIndication(status)
+                }
+            }
+            true
         } catch (e: Exception) {
             debug("download failed", e)
             if (e !is DisplayableException) throw e
@@ -319,30 +335,24 @@ class DownloadActivity : AppCompatActivity() {
     }
 
     @MainThread
-    private suspend fun startDownloadWithoutErrorChecking(status: InstalledAppStatus): Boolean {
-        debug("start downloading (2/3)")
-        gui.setText(R.id.downloadingFileUrl, status.latestVersion.downloadUrl)
-        gui.setText(R.id.downloadedFileUrl, status.latestVersion.downloadUrl)
-        gui.setText(R.id.downloadingFileText, getString(download_activity__download_app_with_status))
-        findViewById<View>(R.id.downloadingFile).visibleDuringExecution {
-            findViewById<View>(R.id.downloadedFile).visibleAfterExecution {
-                startDownloadInternal(status)
-            }
-        }
-        return true
-    }
+    private suspend fun downloadWithUiProgressIndication(status: InstalledAppStatus) {
+        debug("start downloading (2/2)")
 
-    @MainThread
-    private suspend fun startDownloadInternal(status: InstalledAppStatus) {
-        debug("start downloading (3/3)")
-        val appImpl = app.findImpl()
-        val coroutineContext = downloadViewModel.viewModelScope.coroutineContext
-        withContext(coroutineContext) {
-            appImpl.download(applicationContext, status.latestVersion) { deferred, progressChannel ->
-                downloadViewModel.storeNewRunningDownload(status, deferred, progressChannel)
-                gui.showDownloadProgress(progressChannel)
+        val viewModelDownload = downloadViewModel.viewModelScope.launch {
+            val channel = Channel<DownloadStatus>()
+            val download = async {
+                appImpl.download(applicationContext, status.latestVersion, channel)
+            }
+            downloadViewModel.storeNewRunningDownload(status, download, channel)
+        }
+
+        for (update in downloadViewModel.progressChannel!!) {
+            withContext(Dispatchers.Main) {
+                gui.updateDownloadProgressIndication(update)
             }
         }
+
+        viewModelDownload.join()
     }
 
     @MainThread

@@ -37,6 +37,11 @@ import de.marmaro.krt.ffupdater.settings.DataStoreHelper
 import de.marmaro.krt.ffupdater.settings.InstallerSettings
 import de.marmaro.krt.ffupdater.storage.StorageUtil
 import kotlinx.coroutines.CompletableDeferred
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.withContext
 import java.time.Duration.ofDays
 import kotlin.Result.Companion.failure
 import kotlin.Result.Companion.success
@@ -106,7 +111,9 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) : CoroutineWo
         logInfo("Start downloading ${app.name}")
         showDownloadRunningNotification(applicationContext, app, null, null)
         val result = downloadApp(installedAppStatus) {
-            showDownloadRunningNotification(applicationContext, app, it.progressInPercent, it.totalMB)
+            withContext(Dispatchers.Main) {
+                showDownloadRunningNotification(applicationContext, app, it.progressInPercent, it.totalMB)
+            }
         }
         removeDownloadRunningNotification(applicationContext, app)
         return result
@@ -187,20 +194,27 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) : CoroutineWo
     }
 
     private suspend fun downloadApp(
-        installedAppStatus: InstalledAppStatus,
-        onUpdate: (DownloadStatus) -> Unit
+        installedAppStatus: InstalledAppStatus, onUpdate: suspend (DownloadStatus) -> Unit
     ): kotlin.Result<Boolean> {
         logInfo("Download update for ${installedAppStatus.app}.")
         val appImpl = installedAppStatus.app.findImpl()
         try {
-            appImpl.download(applicationContext, installedAppStatus.latestVersion) { _, progressChannel ->
+            coroutineScope {
+                logInfo("Download update for ${installedAppStatus.app}.")
+                val progress = Channel<DownloadStatus>()
+                val download = async {
+                    appImpl.download(applicationContext, installedAppStatus.latestVersion, progress)
+                }
+
                 var lastTime = System.currentTimeMillis()
-                for (progress in progressChannel) {
-                    if ((System.currentTimeMillis() - lastTime) >= 1000) {
+                for (update in progress) {
+                    if ((System.currentTimeMillis() - lastTime) >= UPDATE_NOTIFICATION_ONLY_AFTER_MS) {
                         lastTime = System.currentTimeMillis()
-                        onUpdate(progress)
+                        onUpdate(update)
                     }
                 }
+
+                download.await()
             }
         } catch (e: Exception) {
             return failure(e)
@@ -298,6 +312,7 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) : CoroutineWo
         private const val CLASS_LOGTAG = "AppUpdater:"
         private const val MAX_RETRIES = 5 // total of 15.5min waiting time (30s + 60s + 120s + 240s + 480s)
         private val ERROR_IGNORE_TIMESPAN = ofDays(2)
+        private const val UPDATE_NOTIFICATION_ONLY_AFTER_MS = 3000
 
         fun createWorkRequest(app: App): OneTimeWorkRequest {
             val data = Data.Builder().putString(APP_NAME_KEY, app.name).build()

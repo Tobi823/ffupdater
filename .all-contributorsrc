@@ -154,6 +154,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "TeeTeeHaa",
+      "name": "TeeTeeHaa",
+      "avatar_url": "https://avatars.githubusercontent.com/u/739754?v=4",
+      "profile": "https://github.com/TeeTeeHaa",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,

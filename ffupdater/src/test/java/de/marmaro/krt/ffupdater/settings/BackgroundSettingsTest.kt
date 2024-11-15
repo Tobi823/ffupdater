@@ -35,8 +35,6 @@ class BackgroundSettingsTest : BaseTest() {
             Arguments.of(App.BRAVE, "BRAVE"),
             Arguments.of(App.BRAVE_BETA, "BRAVE_BETA"),
             Arguments.of(App.BRAVE_NIGHTLY, "BRAVE_NIGHTLY"),
-            Arguments.of(App.BROMITE, "BROMITE"),
-            Arguments.of(App.BROMITE_SYSTEMWEBVIEW, "BROMITE_SYSTEMWEBVIEW"),
             Arguments.of(App.FFUPDATER, "FFUPDATER"),
             Arguments.of(App.FIREFOX_BETA, "FIREFOX_BETA"),
             Arguments.of(App.FIREFOX_FOCUS, "FIREFOX_FOCUS"),
