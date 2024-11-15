@@ -11,7 +11,6 @@ import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.DownloadStatus
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.storage.StorageUtil
-import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.withContext
@@ -22,10 +21,10 @@ import java.util.zip.ZipFile
 @Keep
 interface ApkDownloader : AppAttributes {
 
-    suspend fun <R> download(
+    suspend fun download(
         context: Context,
         latestVersion: LatestVersion,
-        progress: suspend (Deferred<Any>, Channel<DownloadStatus>) -> R,
+        progress: Channel<DownloadStatus>,
     ) {
         val downloadFile = getDownloadFile(context.applicationContext)
         downloadFile.delete()
@@ -53,8 +52,7 @@ interface ApkDownloader : AppAttributes {
     suspend fun deleteFileCache(context: Context) {
         withContext(Dispatchers.IO) {
             getApkCacheFolder(context.applicationContext).listFiles()!!
-                .filter { it.name.startsWith("${getSanitizedPackageName()}_") }
-                .filter { it.name.endsWith(".apk") }
+                .filter { it.name.startsWith("${getSanitizedPackageName()}_") }.filter { it.name.endsWith(".apk") }
                 .forEach {
                     Log.d(LOG_TAG, "ApkDownloader: Delete cached APK of ${app.name} (${it.absolutePath}).")
                     it.delete()
@@ -65,10 +63,8 @@ interface ApkDownloader : AppAttributes {
     suspend fun deleteFileCacheExceptLatest(context: Context, latestVersion: LatestVersion) {
         withContext(Dispatchers.IO) {
             val latestFile = getApkFile(context.applicationContext, latestVersion)
-            getApkCacheFolder(context.applicationContext).listFiles()!!
-                .filter { it != latestFile }
-                .filter { it.name.startsWith("${getSanitizedPackageName()}_") }
-                .filter { it.name.endsWith(".apk") }
+            getApkCacheFolder(context.applicationContext).listFiles()!!.filter { it != latestFile }
+                .filter { it.name.startsWith("${getSanitizedPackageName()}_") }.filter { it.name.endsWith(".apk") }
                 .also { if (it.isNotEmpty()) Log.i(LOG_TAG, "ApkDownloader: Delete older files from ${app.name}") }
                 .forEach { it.delete() }
         }
@@ -90,20 +86,13 @@ interface ApkDownloader : AppAttributes {
         return sanitizedVersionText + dateOrEmptyString
     }
 
-    private suspend fun <R> download(
+    private suspend fun download(
         context: Context,
         latestVersion: LatestVersion,
         downloadFile: File,
-        progress: suspend (Deferred<Any>, Channel<DownloadStatus>) -> R,
+        progress: Channel<DownloadStatus>,
     ) {
-        val (deferred, progressChannel) = FileDownloader.downloadFileWithProgress(
-            latestVersion.downloadUrl,
-            downloadFile
-        )
-        withContext(Dispatchers.Main) {
-            progress(deferred, progressChannel)
-        }
-        deferred.await()
+        FileDownloader.downloadFileWithProgress(latestVersion.downloadUrl, downloadFile, progress)
         checkDownloadFile(downloadFile, latestVersion)
         processDownload(context.applicationContext, downloadFile, latestVersion)
     }
