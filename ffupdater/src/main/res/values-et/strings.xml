@@ -247,7 +247,6 @@
     <string name="bromite_systemwebview__description">SystemWebView pakett sisaldab Bromite\'i brauseri- ja renderdusmootori tuuma oma tavafunktsionaalsuses. See annab võimaluse asendada sinu nutiseadme Androidi süsteemis vaikimisi kasutatava brauserikomponendi.</string>
     <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="firefox_beta__title">Firefoxi Beetaversioon Androidile</string>
-    <string name="firefox_beta__warning">- See rakendus on mõeldud arendajatele ja testijatele. Siin võib olla vigu, mis võivad takistada sinu tavapärast brauserikasutust.</string>
     <string name="firefox_focus__description">See on Firefoxi brauseri versioon, mille eesmärgiks on kasutajate privaatsust veelgi parandada.</string>
     <string name="firefox_nightly__description">Varem oli selle rakenduse nimi Firefox Preview ning nüüd Firefox Nightly.
 \n

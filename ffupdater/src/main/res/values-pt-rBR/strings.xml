@@ -40,7 +40,6 @@
     <string name="notification__error__channel_name">Erros em segundo plano</string>
     <string name="firefox_beta__description">Firefox para Android e incrivelmente rápido é seguro. Milhares de rastreadores estão acompanhando você todos os dias, coletando informações sobre onde você vai e portanto diminuindo a velocidade de navegação. Firefox bloqueia por padrão mais de 2000 destes rastreadores e tem disponíveis extensões de bloqueadores de anúncios, caso precisar personalizar seu navegador ainda mais. Com Firefox, você terá a segurança que merece e a velocidade que precisa.</string>
     <string name="firefox_beta__title">Firefox Beta</string>
-    <string name="firefox_beta__warning">- Foi criado para desenvolvedores e testadores. Pode conter vários bugs que podem afetar sua interação com o navegador.</string>
     <string name="firefox_focus__description">Uma modificação do Firefox com o objetivo de aumentar sua privacidade.</string>
     <string name="firefox_focus__title">Firefox Focus</string>
     <string name="firefox_klar__description">Firefox Klar é desenvolvido para mecado de Alemanha, Áustria e Suíça, mas pode ser usado por usuários em qualquer país. É muito semelhante ao Firefox Focus, mas o nome foi mudado nos países da língua alemã para evitar confusão com a revista Focus do grupo Hubert Burda Media. Ao contrário do Firefox Focus, o Firefox Klar tem a telemetria desativada por padrão devido às rígidas leis de privacidade alemãs.</string>

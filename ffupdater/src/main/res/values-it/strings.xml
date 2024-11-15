@@ -48,7 +48,6 @@
     <string name="notification__error__channel_name">Errori in sfondo</string>
     <string name="firefox_beta__description">Firefox Browser per Android è automaticamente privato e incredibilmente veloce. Migliaia di traccianti online ti seguono tutti i giorni, raccogliendo informazioni su dove vai online e rallentando la tua velocità. Firefox blocca più di 2000 traccianti di default e sono disponibili estensioni di blocco delle pubblicità se vuoi personalizzare il tuo browser ancora di più. Con Firefox, otterrai la sicurezza che meriti e la velocità di cui hai bisogno in un browser mobile privato.</string>
     <string name="firefox_beta__title">Firefox per Android Beta</string>
-    <string name="firefox_beta__warning">- Questa app è progettata per sviluppatori e tester. Può contenere vari bug che possono influenzare il tuo solito lavoro con il browser.</string>
     <string name="firefox_focus__description">Questa è una modifica del browser Firefox finalizzata ad aumentare la privacy.</string>
     <string name="firefox_focus__title">Firefox Focus</string>
     <string name="firefox_klar__description">Firefox Klar è sviluppato per Germania, Austria e Svizzera ma può essere utilizzato dagli utenti in qualsiasi paese. È molto simile a Firefox Focus, ma il nome è stato cambiato nei paesi di lingua tedesca per evitare confusione con la rivista Focus del gruppo Hubert Burda Media. A differenza di Firefox Focus, Firefox Klar ha la telemetria disabilitata per impostazione predefinita a causa delle rigide leggi tedesche sulla privacy.</string>

@@ -39,7 +39,6 @@
     <string name="notification__error__channel_name">Chyby na pozadí</string>
     <string name="firefox_beta__description">Prohlížeč Firefox pro Android je automaticky a úžasně rychlý. Každý den vás monitorují tisíce online sledovacích prvků, shromažďují informace o tom, jaké stránky navštívíte, a zpomalují vaši rychlost. Firefox ve výchozím nastavení blokuje více než 2 000 těchto sledovacích prvků, a pokud chcete svůj prohlížeč ještě více přizpůsobit, máte k dispozici doplňky pro blokování reklam. Díky prohlížeči Firefox získáte zabezpečení, jaké si zasloužíte, a rychlost, kterou potřebujete v soukromém mobilním prohlížeči.</string>
     <string name="firefox_beta__title">Firefox Beta pro Android</string>
-    <string name="firefox_beta__warning">- Tato aplikace je určena pro vývojáře a testery. Může obsahovat mnoho bugů, které mohou ovlivnit vaši běžnou práci s prohlížečem.</string>
     <string name="firefox_focus__description">Modifikace Firefox prohlížeče zaměřená na ochranu soukromí.</string>
     <string name="firefox_focus__title">Firefox Focus</string>
     <string name="firefox_klar__description">Firefox Klar je určen pro Německo, Rakousko a Švýcarsko, ale je dostupný i uživatelům z ostatních zemím. Prohlížeč je velmi podobný prohlížeči Firefox Focus, ale jeho jméno bylo v německy mluvících zemí změněno, aby nedošlo k záměně s časopisem Focus vydávaným skupinou Hubert Burda Media. Na rozdíl od Firefox Focusu má Firefox Klar telemetrii ve výchozím nastavení zakázanou kvůli přísným německým zákonům o ochraně osobních údajů.</string>

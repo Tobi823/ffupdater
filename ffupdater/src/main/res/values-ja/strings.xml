@@ -41,7 +41,6 @@
     <string name="notification__error__channel_name">バックグラウンドのエラー</string>
     <string name="firefox_beta__description">Android 版 Firefox ブラウザーは、プライベートで、非常に高速です。何千ものオンライントラッカーが毎日あなたを追跡し、あなたがオンラインで何にアクセスしたかなどの情報を収集し、ブラウジング速度を低下させています。Firefox は、デフォルトで 2000 以上のこのようなトラッカーをブロックしていて、広告ブロックのアドオンを利用したカスタマイズもできます。Firefox は、あなたが必要とするセキュリティとスピードを実現するプライベートなモバイルブラウザーです。</string>
     <string name="firefox_beta__title">Firefox Beta</string>
-    <string name="firefox_beta__warning">- このアプリは開発者やテスター向けに開発されたものです。作業に影響を与えるさまざまなバグが含まれている可能性があります。</string>
     <string name="firefox_focus__description">このアプリはより良いプライバシーを目的とした Firefox ブラウザーの変種です。</string>
     <string name="firefox_focus__title">Firefox Focus</string>
     <string name="firefox_klar__description">Firefox Klar は、ドイツ、オーストリア、スイス向けに開発されていますが、どの国のユーザーでも使用できます。Firefox Focus と非常によく似ていますが、Hubert Burda Media group の雑誌 Focus との混同を避けるためドイツ語圏では名前が変更されています。Firefox Focus とは異なり、Firefox Klar は、ドイツの厳格なプライバシー法に従いデフォルトでテレメトリーが無効になっています。</string>
