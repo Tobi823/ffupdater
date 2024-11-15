@@ -59,6 +59,8 @@
         <package android:name="org.mozilla.focus.beta" />
         <package android:name="org.mozilla.klar" />
         <package android:name="org.mozilla.rocket" />
+        <package android:name="net.thunderbird.android" />
+        <package android:name="net.thunderbird.android.beta" />
         <package android:name="org.torproject.android" />
         <package android:name="org.torproject.torbrowser" />
         <package android:name="org.torproject.torbrowser_alpha" />

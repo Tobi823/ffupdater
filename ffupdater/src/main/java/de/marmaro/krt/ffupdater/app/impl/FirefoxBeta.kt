@@ -24,8 +24,8 @@ object FirefoxBeta : AppBase() {
     override val packageName = "org.mozilla.firefox_beta"
     override val title = R.string.firefox_beta__title
     override val description = R.string.firefox_beta__description
-    override val installationWarning = R.string.firefox_beta__warning
-    override val downloadSource = "Github"
+    override val installationWarning = R.string.generic_beta__warning
+    override val downloadSource = "Mozilla Archive"
     override val icon = R.drawable.ic_logo_firefox_beta
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = ARM32_ARM64_X86_X64
