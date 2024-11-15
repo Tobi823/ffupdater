@@ -9,11 +9,8 @@ import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.FROM_MOZILLA
 import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.app.entity.Version
-import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
-import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 import de.marmaro.krt.ffupdater.network.website.MozillaArchiveConsumer
-import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 
 /**
  * https://github.com/k9mail/k9mail.app
@@ -34,7 +31,7 @@ object ThunderbirdBeta : AppBase() {
     override val signatureHash = "056bfafb450249502fd9226228704c2529e1b822da06760d47a85c9557741fbd"
     override val projectPage = "https://github.com/thunderbird/thunderbird-android"
     override val displayCategory = listOf(FROM_MOZILLA)
-    override val hostnameForInternetCheck = "https://api.github.com"
+    override val hostnameForInternetCheck = "https://archive.mozilla.org"
 
     @MainThread
     @Throws(NetworkException::class)
