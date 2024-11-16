@@ -93,10 +93,8 @@
     <string name="installed_version">Instalado: %1$s</string>
     <string name="kiwi__description">O Navegador Kiwi é feito para navegar na internet, ler notícias, assistir vídeos e ouvir música, sem incômodos.</string>
     <string name="kiwi__title">Navegador Kiwi Next</string>
-    <string name="kiwi__warning">- O Kiwi é parcialmente open-source \n- O Kiwi implementa os fundamentos técnicos do Google Chrome (Chromium) e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium.\n- O Kiwi não é um navegador de privacidade ideal mas tem um bom suporte a addons.\n- O navegador está sendo pago pelos motores de busca por cada pesquisa feita utilizando o Kiwi Browser. Dependendo da escolha do motor de busca, os pedidos podem ser feitos através dos servidores Kiwibrowser / Kiwisearchservices.</string>
-    <string name="lockwise__description">ACESSO VIA SENHA, &amp; APENAS VOCÊ
-\n
-\nGerencie com segurança suas senhas do Firefox &amp; acesse-as em qualquer lugar. Abra rapidamente qualquer site via app para entrar em suas contas.</string>
+    <string name="kiwi__warning">- O Kiwi só é código aberto parcialmente\n- O Kiwi usa os fundamentos técnicos do Google Chrome e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium.\n- O Kiwi não é um navegador de privacidade ideal mas tem um bom suporte a extensões.\n- O navegador está sendo pago pelos motores de busca por cada pesquisa feita utilizando o Kiwi Browser. Dependendo da escolha do motor de busca, os pedidos podem ser feitos através dos servidores Kiwibrowser / Kiwisearchservices.\n- O Google Ads no Kiwi pode usar os dados de localização para anúncios - mas você pode desativá-los desativando a função Descoberta. Mas isso mudará em breve. Veja https://privacy.kiwibrowser.org/ para mais detalhes.</string>
+    <string name="lockwise__description">ACESSO VIA SENHA PARA VOCÊ, E APENAS VOCÊ \n \nGerencie com segurança suas senhas do Firefox e acesse-as em qualquer lugar. Abra rapidamente qualquer site pelo aplicativo para entrar em suas contas.</string>
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>O limite de consultas do API do GitHub foi excedido. Tente outra vez mais tarde.</u>"</string>
     <string name="main_activity__no_unmetered_network">Nenhuma rede não contatada</string>
@@ -278,7 +276,7 @@
     <string name="notification__bg_update_check__unreliable_execution__text">Talvez foi causado pela bateria ou pela configuração de desempenho no seu dispositivo. Clique nessa notificação para desativar a otimização de bateria para esse aplicativo.</string>
     <string name="notification__uncaught_exception__title">O FFUpdater crashou</string>
     <string name="notification__uncaught_exception__text">Clique para ver o relatório de erro.</string>
-    <string name="mulch_wv__title">Mulch System WebView</string>
+    <string name="mulch_wv__title">Mulch WebView de Sistema</string>
     <string name="notification__install_error__generic_channel_descr">Canal de notificando para atualizações não sucedidas de aplicativos.</string>
     <string name="notification__install_error__generic_channel_name">Notificação de falha na atualização do aplicativo</string>
     <string name="main_activity__app_was_signed_by_different_certificate">Esse aplicativo foi assinado com um certificado diferente e não pode ser atualizado pelo FFUpdater.</string>
@@ -315,4 +313,8 @@
     <string name="fairemail__description">Aplicativo de email com todas as funções, código aberto e respeita a privacidade</string>
     <string name="cardview_dialog__install">Instalar a última versão</string>
     <string name="fairemail__warning">- Atualizando a versão da Google Play Store do FairEmail com o FFUpdater pode levar a problemas, como por exemplo: não ter suporte funcional ao OAuth/Email do Google. Não pergunte ao autor do FairEmail por suporte por problemas causados pelo FFUpdater.</string>
+    <string name="thunderbird__title">Thunderbird</string>
+    <string name="thunderbird__description">Thunderbird é um aplicativo de e-mail poderoso focado em privacidade. Gerencie sem esforço múltiplas contas de e-mail a partir de um único aplicativo, com uma opção de Caixa de Entrada Unificada para produtividade máxima. Construído em tecnologia código aberto e apoiado por um time dedicado de desenvolvedores junto de uma comunidade global de voluntários, Thunderbird nunca trata seus dados privados como um produto. Apoiado apenas por contribuições financeiras de nossos usuários, para que você nunca precise mais ver anúncios misturados com seus e-mails.</string>
+    <string name="thunderbird_beta__title">Thunderbird Beta</string>
+    <string name="generic_beta__warning">- Este é um aplicativo beta, feito para desenvolvedores e testadores. Ele pode conter vários erros que podem afetar sua experiência.</string>
 </resources>
