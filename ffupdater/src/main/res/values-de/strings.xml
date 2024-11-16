@@ -153,7 +153,7 @@
     <string name="settings__installer_category__title">Allgemein</string>
     <string name="settings__theme_battery_saver">Dunkel, wenn Energiesparmodus aktiv ist</string>
     <string name="settings__theme_dark">Dunkles Farbschema</string>
-    <string name="settings__theme_light">Helles Farbschema</string>
+    <string name="settings__theme_light">Hell</string>
     <string name="settings__theme_system_default">Systemstandard verwenden</string>
     <string name="ungoogled_chromium__description">Google Chromium, ohne die Integration mit Google.\n\nOhne Anmeldung bei einem Google-Konto schneidet Chromium in puncto Sicherheit und Datenschutz recht gut ab. Allerdings ist Chromium immer noch von Google-Webdiensten und -Binärdateien abhängig. Außerdem hat Google Chromium so konzipiert, dass es für die Benutzer einfach und intuitiv zu bedienen ist, was bedeutet, dass es bei der Transparenz und der Kontrolle der internen Vorgänge Kompromisse eingeht.</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
@@ -341,4 +341,6 @@
     <string name="settings__network__use_cloudflare_mirrors__summary">Aktivieren um die Ressourcenlast der primären Server zu reduzieren, wenn verfügbar.</string>
     <string name="settings__network__use_cloudflare_mirrors__title">Cloudflare-Mirror verwenden</string>
     <string name="download_activity__retry_installation">Installation erneut versuchen</string>
+    <string name="thunderbird__title">Thunderbird</string>
+    <string name="thunderbird_beta__title">Thunderbird Beta</string>
 </resources>
