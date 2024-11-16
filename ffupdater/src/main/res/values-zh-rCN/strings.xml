@@ -350,4 +350,8 @@
     <string name="download_activity__retry_installation">重新尝试安装</string>
     <string name="settings__network__use_cloudflare_mirrors__title">使用 Cloudflare 镜像</string>
     <string name="settings__network__use_cloudflare_mirrors__summary">开启选项在可用时降低主服务器的资源负载。</string>
+    <string name="generic_beta__warning">- 这是个公测版应用，为开发者和测试者设计。它可能包含可影响您体验的多个 bug。</string>
+    <string name="thunderbird__title">Thunderbird</string>
+    <string name="thunderbird_beta__title">Thunderbird Beta</string>
+    <string name="thunderbird__description">Thunderbird 是一款功能强大、关注隐私的电子邮件应用。轻而易举地从一个应用管理多个电子邮件账户，统一收件箱选项最大化生产力。基于开源技术构建，受专门的开发者团队和全球志愿者社区支持，Thunderbird 永远不会将您的私人数据当成产品。Thunderbird 完全由用户出钱资助，你永远不必再看到邮件和广告混在一起出现。</string>
 </resources>
