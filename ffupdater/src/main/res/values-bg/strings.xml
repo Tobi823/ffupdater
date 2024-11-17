@@ -344,4 +344,8 @@
     <string name="download_activity__retry_installation">Повторно инсталиране</string>
     <string name="settings__network__use_cloudflare_mirrors__title">Използване на огледала на Cloudflare</string>
     <string name="settings__network__use_cloudflare_mirrors__summary">Ако е отметнато, когато е възможно се намалява натоварването на основните сървъри.</string>
+    <string name="thunderbird__title">Thunderbird</string>
+    <string name="thunderbird_beta__title">Thunderbird Beta</string>
+    <string name="generic_beta__warning">- Приложението е бета, предназначено за разработчици и изпитатели. Може да има дефекти, които да влияят отрицателно върху изживяването.</string>
+    <string name="thunderbird__description">Thunderbird е мощно приложение за електронна поща, насочено към защитата на личните данни. Управлявайте безпроблемно няколко профила от едно приложение с възможност за Обединена входяща поща за максимална продуктивност. Създаден на базата на технология с отворен код и поддържан от отдаден екип от разработчици заедно с глобална общност от доброволци, Thunderbird никога не борави с личните ви данни като с продукт. Поддържа се единствено чрез дарения от потребители, така че никога няма да ви се налага да виждате реклами, смесени с писмата.</string>
 </resources>
