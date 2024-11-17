@@ -39,7 +39,7 @@ object K9Mail : AppBase() {
         val result = GithubConsumer.findLatestRelease(
             repository = GithubConsumer.GithubRepo("thunderbird", "thunderbird-android", 0),
             isValidRelease = { true },
-            isSuitableAsset = { it.name.matches("k9-([0-9.]+).apk".toRegex()) },
+            isSuitableAsset = { it.name.matches("k9mail-([0-9.]+).apk".toRegex()) },
             requireReleaseDescription = false,
         )
         return LatestVersion(
