@@ -350,4 +350,8 @@
     <string name="cromite__title">Cromite</string>
     <string name="cromite__description">Cromite on Bromite\'il põhinev Chromiumi variatsioon, millele on lisatud reklaamiblokeerija ning on arvestatud parema privaatsusega.</string>
     <string name="fairemail__warning">- Kui uuendad Google Play Store\'ist paigaldatud FairEmaili FFUpdateriga, siis võib tekkida probleeme, nagu näiteks ei pruugi toimida OAuthi ja/või Google Maili tugi. Sel juhul palun ära saada FairEmaili arendajatele veateadet (sest tegid ju uuenduse FFUpdateriga).</string>
+    <string name="thunderbird_beta__title">Thunderbirdi beetaversioon</string>
+    <string name="thunderbird__title">Thunderbird</string>
+    <string name="generic_beta__warning">- See on rakenduse beetaversioon, mis on mõeldud arendajatele ja testijatele. Siin võib leiduda vigu, mis takistavad rakenduse kasutamist.</string>
+    <string name="thunderbird__description">Thunderbird on võimas privaatsuskeskne e-postirakendus. Saad mugavalt kasutada ühes rakenduses mitut e-posti kontot ning ühise koondsisendkausta võimalus parandab sinu tõhusust. Rakendus põhineb avatud lähtekoodil, projekti veab pühendunud tiim arendajaid, kelle toeks on ülemaailmne vabatahtlike kogukond. Thunderbird mitte kunagi ei kasuta sinu privaatseid andmeid tootena - meie rahastamine põhineb vaid kasutajate toetustel ning sinu e-kirjade vahel me iialgi ei kuva reklaame.</string>
 </resources>
