@@ -1,7 +1,9 @@
 [user]
 	name=Tobi823
-    signingkey=CE72BFF6A293A85762D4901E426C5FB1C7840C5F
+	signingkey=docs/ffupdater_git_signing_key_ed25519.pub
     email=ffupdater@mailbox.org
+[gpg]
+	format=ssh
 [commit]
 	gpgsign = true
 [tag]

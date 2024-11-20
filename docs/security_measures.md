@@ -9,5 +9,5 @@
 - ~~Git commits will be signed with the GPG key
   CE72BFF6A293A85762D4901E426C5FB1C7840C5F [public key](ffupdater_gpg_public.key)~~
 - Git commits will be signed with the ssh-ed25519 key:
-  AAAAC3NzaC1lZDI1NTE5AAAAIJE17LRw9gdAka03KYwdFj88b3sDEODRBlIY1smsvOMx
+  AAAAC3NzaC1lZDI1NTE5AAAAIJE17LRw9gdAka03KYwdFj88b3sDEODRBlIY1smsvOMx [public key](ffupdater_git_signing_key_ed25519.pub)
 - APK will be signed with the key [apk_signature](../dev/signatures/apk_signature.txt)
