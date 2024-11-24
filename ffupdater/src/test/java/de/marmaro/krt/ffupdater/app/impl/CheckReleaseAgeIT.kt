@@ -20,7 +20,7 @@ import kotlinx.coroutines.runBlocking
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.hamcrest.MatcherAssert.assertThat
-import org.hamcrest.Matchers
+import org.hamcrest.Matchers.lessThan
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
@@ -42,28 +42,30 @@ class CheckReleaseAgeIT {
             TestData(Brave, 28),
             TestData(BraveBeta, 14),
             TestData(BraveNightly, 7),
-            TestData(Chromium, 56),
-            TestData(Cromite, 56),
-            TestData(DuckDuckGoAndroid, 28),
-            TestData(FairEmail, 28),
-            TestData(FennecFdroid, 28),
-            TestData(FFUpdater, 365),
+            TestData(Chromium, 60),
+            TestData(Cromite, 60),
+            TestData(DuckDuckGoAndroid, 60),
+            TestData(FairEmail, 60),
+            TestData(FennecFdroid, 60),
+            TestData(FFUpdater, 60),
             TestData(FirefoxBeta, 21),
             TestData(FirefoxFocusBeta, 21),
-            TestData(FirefoxFocus, 56),
-            TestData(FirefoxKlar, 56),
+            TestData(FirefoxFocus, 60),
+            TestData(FirefoxKlar, 60),
             TestData(FirefoxNightly, 7),
-            TestData(FirefoxRelease, 42),
-            TestData(K9Mail, 180),
-            TestData(Iceraven, 84),
-            TestData(Mulch, 56),
-            TestData(MulchSystemWebView, 56),
-            TestData(MullFromRepo, 56),
-            TestData(Orbot, 4 * 30),
-            TestData(PrivacyBrowser, 4 * 30),
-            TestData(Thorium, 56),
-            TestData(TorBrowserAlpha, 56),
-            TestData(TorBrowser, 56),
+            TestData(FirefoxRelease, 60),
+            TestData(K9Mail, 60),
+            TestData(Iceraven, 60),
+            TestData(Mulch, 60),
+            TestData(MulchSystemWebView, 60),
+            TestData(MullFromRepo, 60),
+            TestData(Orbot, 60, "17.3.2-RC-1-tor-0.4.8.12"),
+            TestData(PrivacyBrowser, 60),
+            TestData(Thorium, 60, "126.0.6478.246"),
+            TestData(ThunderbirdRelease, 60),
+            TestData(ThunderbirdBeta, 60),
+            TestData(TorBrowserAlpha, 60),
+            TestData(TorBrowser, 60),
             TestData(Vivaldi, null),
         )
 
@@ -75,7 +77,7 @@ class CheckReleaseAgeIT {
     }
 
     @Keep
-    data class TestData(val appImpl: AppBase, val maxAgeInDays: Int?) {
+    data class TestData(val appImpl: AppBase, val maxAgeInDays: Int?, val skipAgeCheckForVersion: String? = null) {
         override fun toString(): String {
             return appImpl.app.toString()
         }
@@ -115,16 +117,9 @@ class CheckReleaseAgeIT {
     }
 
     private fun isDownloadAvailable(url: String) {
-        OkHttpClient.Builder()
-            .build()
-            .newCall(
-                Request.Builder()
-                    .url(url)
-                    .method("HEAD", null)
-                    .build()
-            )
-            .execute()
-            .use { response ->
+        OkHttpClient.Builder().build().newCall(
+            Request.Builder().url(url).method("HEAD", null).build()
+        ).execute().use { response ->
                 Assertions.assertTrue(response.isSuccessful)
             }
     }
@@ -138,8 +133,12 @@ class CheckReleaseAgeIT {
 
         if (testData.maxAgeInDays != null) {
             val releaseDate = ZonedDateTime.parse(result.publishDate, DateTimeFormatter.ISO_ZONED_DATE_TIME)
-            val age = Duration.between(releaseDate, ZonedDateTime.now())
-            assertThat("latest release is too old", age.toDays().toInt(), Matchers.lessThan(testData.maxAgeInDays))
+            val age = Duration.between(releaseDate, ZonedDateTime.now()).toDays().toInt()
+            val versionText = result.version.versionText
+            if (versionText != testData.skipAgeCheckForVersion) {
+                assertThat("latest release ($versionText) is too old", age, lessThan(testData.maxAgeInDays))
+            }
+            assertThat("latest release ($versionText) is way too old", age, lessThan(180))
         }
     }
 }

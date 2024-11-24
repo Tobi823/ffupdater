@@ -11,7 +11,7 @@ object VersionCompareHelper {
             val installed = convertToVersion(installedVersion)
             val available = convertToVersion(availableVersion)
             // check if the version schema was changed. e.g. Tor Browser switched from 128.x.x to 14.x.x
-            val versionComparisonNoLongerPossible = (abs(available.major - installed.major) > 0)
+            val versionComparisonNoLongerPossible = (abs(available.major - installed.major) > 10)
             available > installed || versionComparisonNoLongerPossible
         } catch (e: IllegalArgumentException) {
             installedVersion != availableVersion
