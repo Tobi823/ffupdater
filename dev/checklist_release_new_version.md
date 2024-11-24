@@ -19,8 +19,7 @@ git fetch --tags
   - Weblate contributors
     - Insights > Translation reports > left box
     - Report format: reStructuredText + Report period: last release until today
-    - Copy text into scratch file
-    - Replace `<.*> ` with ``, `\n\n` with `\n` multiple times
+    - Use bin/ffupdater/weblate_contributors.py
     - Add to commit add: Thanks for translating on https://hosted.weblate.org/projects/ffupdater:
     - Add user list to commit
   - `Tobiwan/ffupdater#XXX` for issues/pull requests from notabug.org
