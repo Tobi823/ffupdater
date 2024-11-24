@@ -248,7 +248,6 @@
     <string name="iceraven__warning">- अनुरक्षक सुरक्षा या अपडेट या यहां तक कि स्थिरता की कोई वारंटी या गारंटी नहीं देता है।
 \n - सुरक्षा अपडेट प्रदान करने में परियोजना को सामान्य से अधिक समय लगता है।</string>
     <string name="firefox_focus__description">यह Firefox ब्राउज़र का एक संशोधन है जिसका उद्देश्य गोपनीयता बढ़ाना है।</string>
-    <string name="firefox_beta__warning">- यह ऐप डेवलपर्स और परीक्षकों के लिए डिज़ाइन किया गया है। इसमें विभिन्न बग हो सकते हैं जो ब्राउज़र के साथ आपके सामान्य कार्य को प्रभावित कर सकते हैं।</string>
     <string name="app_card__download_the_app">ऐप डाउनलोड करें</string>
     <string name="notification__download_running__title">ऐप अपडेट डाउनलोड हो रहा है</string>
     <string name="notification__download_running__channel_descr">पृष्ठभूमि में ऐप अपडेट डाउनलोड होने पर दिखाता है।</string>

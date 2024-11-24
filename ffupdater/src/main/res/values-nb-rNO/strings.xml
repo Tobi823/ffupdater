@@ -35,7 +35,6 @@
     <string name="app_card__download_the_app">last ned programmet</string>
     <string name="notification__error__channel_descr">Vis feil i bakgrunnsoppdateringssjekken</string>
     <string name="notification__error__channel_name">Bakgrunnsfeil</string>
-    <string name="firefox_beta__warning">- Programmet er designet for utviklere og testere. Det kan inneholde forskjellige feil som kan ha innvirkning på vanlig bruk av nettleseren.</string>
     <string name="firefox_focus__description">Dette er en endring av Firefox-nettleseren myntet på økt personvern.</string>
     <string name="firefox_focus__title">Firefox Focus</string>
     <string name="firefox_klar__description">Utviklet for Tyskland, Østerrike, og Sveits, men kan brukes av alle. Ligner Firefox Focus, men navnet ble endret i tysktalende land for å skille seg fra magasinet Focus av Hubert Burda-mediagruppen. Til forskjell fra Firefox Focus har Klar telemetri avslått som forvalg, som følge av strenge personvernslover i Tyskland.</string>

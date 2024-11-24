@@ -45,7 +45,6 @@
     <string name="notification__error__channel_name">Fehler im Hintergrund</string>
     <string name="firefox_beta__description">Der Firefox Browser für Android blockt standardmäßig über 2000 Online-Tracker, die dir jeden Tag durchs Web folgen wollen – automatisch und mit dem verbesserten Tracking-Schutz. Warum? Um deine Privatsphäre zu schützen und Unternehmen davon abzuhalten, deine persönlichen Daten ohne deine Zustimmung zu sammeln und daraus Profit zu schlagen. Außerdem kannst du so noch schneller durchs Web surfen und bekommst nicht nur die Privatsphäre, die du verdienst, sondern auch den schnellen mobilen Browser, den du brauchst. Mit Adblocker Add-ons kannst du deinen Browser zusätzlich auf deine Bedürfnisse anpassen.</string>
     <string name="firefox_beta__title">Firefox for Android Beta</string>
-    <string name="firefox_beta__warning">- Diese App ist für Entwickler und Tester gedacht. Sie kann verschiedene Fehler enthalten, die Ihre übliche Arbeit mit dem Browser beeinträchtigen können.</string>
     <string name="firefox_focus__description">Dies ist eine Modifikation des Firefox-Browsers mit dem Ziel, die Privatsphäre zu erhöhen.</string>
     <string name="firefox_focus__title">Firefox Focus</string>
     <string name="firefox_klar__description">Firefox Klar wurde für Deutschland, Österreich und die Schweiz entwickelt, kann aber von Nutzern in jedem Land verwendet werden. Er ist Firefox Focus sehr ähnlich, aber der Name wurde im deutschsprachigen Raum geändert, um Verwechslungen mit der Zeitschrift Focus der Hubert Burda Media Gruppe zu vermeiden. Im Gegensatz zu Firefox Focus ist bei Firefox Klar die Telemetrie aufgrund der strengen deutschen Datenschutzgesetze standardmäßig deaktiviert.</string>
@@ -102,10 +101,7 @@
     <string name="installed_version">Installiert: %1$s</string>
     <string name="kiwi__description">Kiwi Browser wurde entwickelt, um im Internet zu surfen, Nachrichten zu lesen, Videos anzuschauen und Musik zu hören, ohne dabei zu stören.</string>
     <string name="kiwi__title">Kiwi Browser Next</string>
-    <string name="kiwi__warning">- Kiwi nutzt die technische Grundlage von Google Chrome und unterstützt damit indirekt die Monopolstellung der Chromium-Rendering-Engine.
-\n- Kiwi ist kein idealer Datenschutz-Browser, hat aber eine gute Addon-Unterstützung.
-\n- Der Browser wird von Suchmaschinen für jede durchgeführte Suche bezahlt. Je nach Wahl der Suchmaschine können die Anfragen über die Kiwibrowser / Kiwisearchservices-Server laufen.
-\n- Google Ads in Kiwi kann die Standortdaten für Anzeigen verwenden - du kannst dies jedoch deaktivieren, indem du die Entdeckungsfunktion deaktivierst. Dies wird sich jedoch bald ändern. Siehe https://privacy.kiwibrowser.org/ für weitere Details.</string>
+    <string name="kiwi__warning">- Kiwi ist nur teilweise Open-Source\n- Kiwi nutzt die technische Grundlage von Google Chrome und unterstützt damit indirekt die Monopolstellung der Chromium-Rendering-Engine.\n- Kiwi ist kein idealer Datenschutz-Browser, hat aber eine gute Addon-Unterstützung.\n- Der Browser wird von Suchmaschinen für jede durchgeführte Suche bezahlt. Je nach Wahl der Suchmaschine können die Anfragen über die Kiwibrowser / Kiwisearchservices-Server laufen.\n- Google Ads in Kiwi kann die Standortdaten für Anzeigen verwenden - du kannst dies jedoch deaktivieren, indem du die Entdeckungsfunktion deaktivierst. Dies wird sich jedoch bald ändern. Siehe https://privacy.kiwibrowser.org/ für weitere Details.</string>
     <string name="lockwise__description">PASSWORT-ZUGANG FÜR DICH, UND NUR DICH
 \n
 \nVerwahre deine Firefox-Passwörter sicher und greife überall darauf zu. Schnelles Öffnen einer beliebigen Website aus der App heraus, um in deine Konten zu gelangen.</string>
@@ -157,7 +153,7 @@
     <string name="settings__installer_category__title">Allgemein</string>
     <string name="settings__theme_battery_saver">Dunkel, wenn Energiesparmodus aktiv ist</string>
     <string name="settings__theme_dark">Dunkles Farbschema</string>
-    <string name="settings__theme_light">Helles Farbschema</string>
+    <string name="settings__theme_light">Hell</string>
     <string name="settings__theme_system_default">Systemstandard verwenden</string>
     <string name="ungoogled_chromium__description">Google Chromium, ohne die Integration mit Google.\n\nOhne Anmeldung bei einem Google-Konto schneidet Chromium in puncto Sicherheit und Datenschutz recht gut ab. Allerdings ist Chromium immer noch von Google-Webdiensten und -Binärdateien abhängig. Außerdem hat Google Chromium so konzipiert, dass es für die Benutzer einfach und intuitiv zu bedienen ist, was bedeutet, dass es bei der Transparenz und der Kontrolle der internen Vorgänge Kompromisse eingeht.</string>
     <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
@@ -342,4 +338,9 @@
     <string name="cardview_dialog__hide">Verstecken</string>
     <string name="foreground__hidden_apps__title">Versteckte Apps</string>
     <string name="foreground__hidden_apps__summary">Versteckte Apps werden in der Benutzeroberfläche nicht angezeigt und nicht automatisch aktualisiert.</string>
+    <string name="settings__network__use_cloudflare_mirrors__summary">Aktivieren um die Ressourcenlast der primären Server zu reduzieren, wenn verfügbar.</string>
+    <string name="settings__network__use_cloudflare_mirrors__title">Cloudflare-Mirror verwenden</string>
+    <string name="download_activity__retry_installation">Installation erneut versuchen</string>
+    <string name="thunderbird__title">Thunderbird</string>
+    <string name="thunderbird_beta__title">Thunderbird Beta</string>
 </resources>

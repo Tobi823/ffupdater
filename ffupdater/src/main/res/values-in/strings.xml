@@ -52,7 +52,6 @@
     <string name="notification__eol_apps__text">Anda memiliki aplikasi usang yang seharusnya tidak digunakan lagi: %1$s</string>
     <string name="bromite__warning">- Bromite menggunakan fondasi teknis Google Chrome dan dengan demikian secara tidak langsung mendukung posisi monopoli mesin render Chromium.</string>
     <string name="firefox_beta__description">Peramban Firefox untuk Android secara otomatis bersifat pribadi dan sangat cepat. Ribuan pelacak online mengikuti Anda setiap hari, mengumpulkan informasi tentang ke mana saja Anda online dan memperlambat kecepatan Anda. Firefox memblokir lebih dari 2000 pelacak ini secara bawaan dan ada ekstensi pemblokir iklan yang tersedia jika Anda ingin menyesuaikan peramban Anda lebih jauh lagi. Dengan Firefox, Anda akan mendapatkan keamanan yang layak Anda dapatkan dan kecepatan yang Anda butuhkan dalam peramban seluler pribadi.</string>
-    <string name="firefox_beta__warning">- Aplikasi ini dirancang untuk pengembang dan penguji. Aplikasi ini mungkin mengandung berbagai kode eror yang dapat memengaruhi pekerjaan Anda dengan peramban.</string>
     <string name="firefox_focus__title">Firefox Focus</string>
     <string name="firefox_focus__description">Ini adalah modifikasi dari peramban Firefox yang ditujukan untuk meningkatkan privasi.</string>
     <string name="firefox_klar__title">Firefox Klar</string>

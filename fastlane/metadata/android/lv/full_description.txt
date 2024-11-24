@@ -1,0 +1,37 @@
+Uzstāda un atjaunina šādus pārlūkus:
+
+Pārlūki no Mozilla vai balstīti uz Firefox:
+- Fennec F-Droid
+- Firefox, Firefox Beta, Firefox (Nakts izlaidums)
+- Firefox Focus, Firefox Focus Beta, Firefox Klar
+- Iceraven
+- Mull
+- Tor, Tor Alpha
+
+Labi konfidencialitātes pārlūki:
+- Bromite, Bromite SystemWebView
+- Mulch, Mulch System WebView
+
+Pārlūki labāki par Google Chrome:
+- Brave, Brave Beta, Brave (Nakts izlaidums)
+- Cromite
+- Chromium
+- DuckDuckGo
+- Kiwi Browser Next
+- Privacy pārlūks (F-Droid)
+- Thorium
+- Vivaldi
+
+Citas lietotnes:
+- FairEmail
+- K-9 e-pasts / Thunderbird e-pasts
+- Orbot
+
+FFUpdater pārbauda atjauninājumus fonā un lejupielādē tos. FFUpdater var atjaunināt lietotnes bez lietotāja iejaukšanās:
+- ierīcēs, kurās uzstādīts Android 12 vai jaunāka versija
+- ierīcēs ar saknes (root) piekļuves tiesībām
+- izmantojot Shizuku / Sui ierīcēs, kurās uzstādīts Android 6 vai jaunāka versija
+
+Lai iegūtu papildinformāciju, apmeklējiet https://notabug.org/Tobiwan/ffupdater/src/master/README.md vietni.
+
+Pārtulkoti izmaiņu žurnāli: https://github.com/Tobi823/ffupdater/tree/master/fastlane/metadata/android/lv/changelogs

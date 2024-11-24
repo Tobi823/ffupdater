@@ -76,7 +76,6 @@
     <string name="notification__install_error__channel_descr">Kênh thông báo cho %1$s cập nhật không thành công.</string>
     <string name="crash_report__explain_text__uncaught_throwable">Không may thay, FFUpdater đã gặp sự cố vào lần trước và đã ghi lại lỗi này. Vui lòng gửi bản báo cáo sự cố quá notabug.org, GitHub hoặc GitLab.</string>
     <string name="firefox_nightly__title">Firefox Nightly</string>
-    <string name="firefox_beta__warning">- Ứng dụng này được thiết kế cho các nhà phát triển và người thử nghiệm. Nó có thể chứa nhiều lỗi có thể gây ảnh hưởng đến công việc thông thường của bạn với trình duyệt.</string>
     <string name="notification__download_error__channel_name">Thông báo về lỗi tải xuống dưới nền</string>
     <string name="brave__description">Duyệt internet một cách riêng tư, miễn phí! Trình duyệt riêng tư Brave là trình duyệt web nhanh, miễn phí và an toàn của bạn với trình chặn quảng cáo và cửa sổ nổi. Duyệt và tìm kiếm trên internet một cách riêng tư mà không bị theo dõi bởi các nhà quảng cáo, mã độc và cửa sổ nổi.</string>
     <string name="application_successfully_installed">Ứng dụng đã được cài đặt</string>

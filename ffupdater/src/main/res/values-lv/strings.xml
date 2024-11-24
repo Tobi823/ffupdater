@@ -33,7 +33,6 @@
     <string name="notification__download_error__descr">Atjauninājuma %1$s fona lejupielāde neizdevās. Ja tas notiek bieži, droši ziņojiet problēmu notabug.org, GitHub vai GitLab.</string>
     <string name="notification__eol_apps__channel_description">Paziņojumu kanāls novecojušu lietotņu brīdinājumiem.</string>
     <string name="firefox_beta__title">Firefox Beta</string>
-    <string name="firefox_beta__warning">- Šī lietotne ir paredzēta izstrādātājiem un testētājiem. Tajā var būt dažādas kļūdas, kas var ietekmēt jūsu ikdienas interneta sērfošanas pieredzi.</string>
     <string name="download_activity__delete_cache_button_text">Iztīrīt kešatmiņu</string>
     <string name="download_activity__delete_cache_explanation">Ja domājat, ka FFUpdater ir kļūdaini saglabājis lietotnes atjauninājumu kešatmiņā vai vienkārši vēlaties atbrīvot vietu, noklikšķiniet uz \"Iztīrīt kešatmiņu\" pogas, lai izdzēstu lejupielādēto failu.</string>
     <string name="download_activity__download_failed">Neizdevās lejupielādēt</string>
@@ -73,7 +72,7 @@
     <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded"><u>Pārsniegts GitHub-API ierobežojums. Mēģiniet vēlreiz pēc stundas.</u></string>
     <string name="main_activity__no_unmetered_network">Nav bezmaksas tīkla</string>
-    <string name="app_description">Konfidencialitātes orientētu pārlūku atjauninātājs</string>
+    <string name="app_description">Konfidencialitātes orientēta pārlūku atjauninātājs</string>
     <string name="ok">Labi</string>
     <string name="running_downloads_dialog__title">Notiek lejupielādes</string>
     <string name="ffupdater__different_signature_message">Šī FFUpdater lietotnes versija satur F-Droid parakstu, tāpēc tikai F-Droid var izplatīt atjauninājumus. Lai ātrāk saņemtu jaunāko versiju, atinstalējiet pašreiz uzstādīto FFUpdater un uzstādiet versiju ar izstrādātāja parakstu. Izmantojot šo versiju, FFUpdater var atjaunināt sevi, negaidot F-Droid versijas relīzi.</string>
@@ -128,7 +127,7 @@
     <string name="crash_report__explain_text__download_activity_install_file">Instalēšanas laikā radās kļūda. Ja tā atkārtojas bieži, lūdzu, ziņojiet par problēmu notabug.org, GitHub vai GitLab vietnē. Lūdzu, neaizmirstiet pievienot avārijas atskaiti no starpliktuves.</string>
     <string name="crash_report__explain_text__download_activity_update_check">Pārbaudot atjauninājumus galvenajā lietotnes logā radās šāda kļūda. Ja tā atkārtojas bieži, ziņojiet par problēmu notabug.org, GitHub vai GitLab vietnē. Lūdzu, neaizmirstiet pievienot avārijas atskaiti no starpliktuves un aprakstu, kā iegūt kļūdu.</string>
     <string name="download_activity__file_uri_exposed_toast">Faila ceļu nevar atklāt citām lietotnēm. Lūdzu, atveriet mapi, izmantojot sev vēlamo failu pārvaldnieku.</string>
-    <string name="tor_browser_alpha__description">Tor - vienīgais oficiālais mobilā telefona pārlūks, kuru atbalsta Tor Project izstrādātāji, kas izplata labāko tiešsaistes konfidencialitātes un brīvības interneta rīku.\n\nTor Browser VIENMĒR būs bez maksas, kas ir iespējams pateicoties ziedojumiem. Tor Project ir 501©(3) bezpeļņas organizācija, kas atrodas ASV. Lūdzu, apsveriet iespēju veikt ziedojumu jau šodien. Katrs ziedojums ir svarīga: https://donate.torproject.org.\n\nZemāk pieminētajā vietnē uzziniet, kā ziņot par kļūdām un sniegt atsauksmes https://support.torproject.org/misc/bug-or-feedback/!</string>
+    <string name="tor_browser_alpha__description">Tor - vienīgais oficiālais mobilā telefona pārlūks, kuru atbalsta Tor Project izstrādātāji, kas izplata labāko tiešsaistes konfidencialitātes un brīvības interneta rīku.\n\nTor Browser VIENMĒR būs bez maksas, kas ir iespējams pateicoties ziedojumiem. Tor Project ir 501©(3) bezpeļņas organizācija, kas atrodas ASV. Lūdzu, apsveriet iespēju veikt ziedojumu jau šodien. Katrs ziedojums ir svarīgs: https://donate.torproject.org.\n\nZemāk pieminētajā vietnē uzziniet, kā ziņot par kļūdām un sniegt atsauksmes https://support.torproject.org/misc/bug-or-feedback/!</string>
     <string name="thorium__description">Ātrākais pārlūks uz Zemes. Chromium atzars, kas paredzēta Linux operētājsistēmai, kas nosaukts radioaktīvā elementa Nr. 90 vārdā.</string>
     <string name="notification__bg_update_check__unreliable_execution__text">Tas var būt saistīts ar jūsu ierīces akumulatora vai veiktspējas iestatījumiem. Noklikšķiniet uz šī paziņojuma, lai atspējotu akumulatora optimizāciju šai lietotnei.</string>
     <string name="mulch_wv__title">Mulch System WebView</string>
@@ -145,13 +144,13 @@
     <string name="app_installer__failed_to_verify_signature_of_installed_app">Neizdevās pārbaudīt uzstādīto lietotni.</string>
     <string name="thorium__warning">- Thorium izmanto Google Chrome tehnisko bāzi un tādējādi netieši atbalsta Chromium renderēšanas dzinēja monopolstāvokli.</string>
     <string name="cromite__warning">- Cromite izmanto Google Chrome tehnisko bāzi un tādējādi netieši atbalsta Chromium renderēšanas dzinēja monopolstāvokli.</string>
-    <string name="privacy_browser__title">Konfidencialitātes pārlūks</string>
+    <string name="privacy_browser__title">Privacy pārlūks</string>
     <string name="privacy_browser__warning">FFUpdater lejupielādē failus no F-Droid serveriem un tāpēc nav ātrāks.</string>
     <string name="notification__uncaught_exception__text">Noklikšķiniet, lai skatītu kļūdu ziņojumu.</string>
     <string name="cardview_dialog__not_installed_by_ffupdater">Šī lietotne nav uzstādīta vai atjaunināta pateicoties FFUpdater. Lai izvairītos no konfliktiem ar citām lietotnēm, automātiskā atjaunināšana ir atspējota.</string>
     <string name="cardview_dialog__eol">Šo lietotni vairs nevajadzētu izmantot:</string>
     <string name="k9mail__description">Pilnvērtīgs e-pasta klients</string>
-    <string name="cardview_dialog__auto_bg_update">Automātiskā atjaunināšana fonā</string>
+    <string name="cardview_dialog__auto_bg_update">Automātiski atjaunināt fonā</string>
     <string name="thorium__title">Thorium</string>
     <string name="main_activity__unexpected_error">Radās neparedzēta kļūda.</string>
     <string name="cromite__description">Cromite ir Chromium atzars, kuras pamatā ir Bromite kods ar iebūvētu reklāmas bloķētāju un konfidencialitātes atbalstu.</string>
@@ -162,7 +161,7 @@
     <string name="settings__background__update_check__excluded_apps__title">Izslēgt lietotnes no atjauninājumu pārbaudes</string>
     <string name="settings__foreground_category__title">Priekšplānā</string>
     <string name="settings__theme_system_default">Izmantot sistēmas noklusējuma iestatījumus</string>
-    <string name="ungoogled_chromium__title">Google brīvs (Ungoogled) Chromium</string>
+    <string name="ungoogled_chromium__title">Ungoogled (brīvs no Google pakalpojumiem) Chromium</string>
     <string name="background__separate_notification_channels__title">Dažādi paziņojumu kanāli</string>
     <string name="main_activity__app_was_signed_by_different_certificate">Šī lietotne ir parakstīta ar citu sertifikātu, un to nevar atjaunināt, izmantojot FFUpdater.</string>
     <string name="eol_reason__browser_no_longer_maintained">Pārlūks vairs netiek uzturēts.</string>
@@ -175,7 +174,7 @@
     <string name="session_installer__status_failure_invalid">Darbība neizdevās, jo viens vai vairāki APK bija nederīgi. Iemesls, tie var būt nepareizi veidoti, bojāti, nepareizi parakstīti, neatbilstoši utt.</string>
     <string name="settings__background__download__enabled__summary">Ja ir pieejams atjauninājums, lejupielādējiet to. Tas vēlāk paātrinās atjaunināšanas procesu.</string>
     <string name="settings__background__download__enabled__title">Lejupielādēt lietotņu atjauninājumus</string>
-    <string name="settings__background__download__metered__summary">Neiesaku lietotājiem ar ierobežotu mobilo datu apjomu.</string>
+    <string name="settings__background__download__metered__summary">Nav ieteicams lietotājiem ar ierobežotu mobilo datu apjomu.</string>
     <string name="settings__background__update_check__enabled__summary">Regulāri pārbaudīt, vai nav pieejami jauni atjauninājumi.</string>
     <string name="settings__background__update_check__enabled__title">Atjauninājumu pārbaude</string>
     <string name="settings__background__update_check__excluded_apps__summary">Noderīgi, ja nevēlaties atjaunināt lietotni un nevēlaties saņemt paziņojumu, kad tā tiek atjaunināta.</string>
@@ -183,7 +182,7 @@
     <string name="settings__foreground__update_check__metered__title">Veikt atjauninājumu pārbaudi maksas tīklos</string>
     <string name="settings__foreground__theme_preference__title">Izvēlieties motīvu</string>
     <string name="ungoogled_chromium__description">Google Chromium bez Google integrācijas.\n\nChromium lietošana bez Google konta diezgan labi tiek galā ar drošību un konfidencialitāti. Tomēr Chromium joprojām ir zināmā mērā atkarīgs no Google tīkla pakalpojumiem un tā patentētajiem binārajiem failiem. Turklāt Google izstrādāja Chromium tā, lai tas būtu vienkāršs un intuitīvi saprotams jebkuram lietotājam, kas nozīmē, ka tiek apdraudēta lietotnes un tā iekšējo darbību caurskatāmība.</string>
-    <string name="ungoogled_chromium__warning">- Google brīvs (Ungoogled) Chromium izmanto Google Chrome tehnisko bāzi un tādējādi netieši atbalsta Chromium renderēšanas dzinēja monopolstāvokli.</string>
+    <string name="ungoogled_chromium__warning">- Ungoogled (brīvs no Google pakalpojumiem) Chromium izmanto Google Chrome tehnisko bāzi un tādējādi netieši atbalsta Chromium renderēšanas dzinēja monopolstāvokli.</string>
     <string name="foreground__hide_apps_signed_by_different_certificate__title">Slēpt lietotnes, kas parakstītas ar citu sertifikātu.</string>
     <string name="background__installation__when_screen_off__summary">Mēģiniet uzstādīt atjauninājumus tikai tad, kad ekrāns ir izslēgts.</string>
     <string name="background__installation__when_screen_off__title">Uzstādīt tikai tad, kad ekrāns ir izslēgts</string>
@@ -284,14 +283,12 @@
     <string name="session_installer__status_failure">Darbība kopumā neizdevās. Sistēma vienmēr centīsies sniegt precīzu kļūmes iemeslu, taču tas notiek tikai dažos retos gadījumos.</string>
     <string name="session_installer__status_failure_aborted">Darbība neizdevās, jo tā tika aktīvi pārtraukta. Iemesls, lietotājs aktīvi noraidīja pieprasītās atļaujas vai sesija tika pārtraukta.</string>
     <string name="notification__uncaught_exception__channel_name">Avārijas paziņojumi</string>
-    <string name="lockwise__description">PIEKĻUVE PAROLĒM JUMS UN TIKAI JUMS
-\n
-\nDroši izsekojiet savas Firefox paroles un piekļūstiet tām jebkurā vietā. Ātri atvērt jebkuru vietni no lietotnes, lai piekļūtu saviem kontiem.</string>
+    <string name="lockwise__description">JŪSU PAROLES, KURĀM PIEKĻŪT VAR TIKAI JŪS\n\nDroši izsekojiet savas Firefox paroles un piekļūstiet tām jebkurā vietā. Ātri atvēr jebkuru vietni no lietotnes, lai piekļūtu saviem kontiem.</string>
     <string name="kiwi__warning">- Kiwi ir tikai daļēji atvērtā koda lietotne.\n- Kiwi izmanto Google Chrome tehnisko bāzi un tādējādi netieši atbalsta Chromium renderēšanas dzinēja monopolstāvokli.\n- Kiwi nav ideāls konfidencialitātes pārlūks, taču tam ir labs papildinājumu atbalsts.\n- Pārlūks gūst peļņu no meklētājprogrammām par katru meklēšanas pieprasījumu, kas veikta Kiwi pārlūkā. Atkarībā no izvēlētās meklētājprogrammas meklēšanas pieprasījumi var tikt nosūtīti caur Kiwibrowser / Kiwisearchservices serveriem.\n- Google Ads Kiwi pārlūkā var izmantot atrašanās vietas datus, lai rādītu atlasītas reklāmas, taču to var novērst, atspējojot atklāšanas funkciju (Discovery feature) iestatījumos. Taču drīz tas var mainīties. Plašāka informācija pieejama https://privacy.kiwibrowser.org vietnē.</string>
     <string name="vivaldi__description">Atklājiet pārsteidzoši ātru interneta pārlūku! Vivaldi ir jauns, bezmaksas un privāts tīmekļa pārlūks, kas izstrādāts, paturot prātā tā elastīgo pielāgojamību. Tas ir aprīkots ar noderīgām funkcijām, tostarp iebūvētu AdBlocker (uznirstošo logu bloķētāju), izsekošanas aizsardzību un privātu vietņu tulkotāju. Pārlūka iespējas, piemēram, pilnvērtīgas darbvirsmas stila cilnes, tumši/gaiši motīvi un izkārtojuma pielāgojamība, palīdz konfigurēt pārlūku pēc jūsu patikas un vēlmēm.</string>
     <string name="duckduckgo_android__description">DuckDuckGo lietotne nodrošina visplašāko tiešsaistes konfidencialitātes aizsardzību vienas pogas nospiešanas attālumā. Tikai ar vienu lejupielādi jūs iegūstat jaunu ikdienas pārlūku, kas piedāvā nevainojamu aizsardzību meklēšanas un pārlūkošanas laikā, kā arī piekļuvi saņemto e-pasta ziņojumu un izmantoto lietotņu izsekošanas aizsardzībai. Daudzi no šiem aizsardzības līdzekļiem pēc noklusējuma netiek piedāvāti lielākajā daļā populārāko pārlūku.</string>
     <string name="bromite_systemwebview__description">SystemWebView pakotne satur Bromite kodola pārlūku/renderēšanas dzinēju un to pašu funkcionalitāti. Tā ļauj iespēju nomainīt noklusējuma pārlūka komponenti visai Android sistēmai.</string>
-    <string name="infobox">Šis ir konfidencialitātes draudzīga pārlūku atjauninātājs. Lai uzstādītu jaunu lietotni, noklikšķiniet uz pluss pogas. Velciet uz leju, lai piespiestu pārbaudīt, vai ir pieejami atjauninājumi. Pēc noklusējuma lietotne periodiski fonā pārbaudīs, vai ir pieejami atjauninājumi, kas pēc tam tiks lejupielādēti un uzstādīti. Noklikšķiniet uz zobrata, lai pielāgotu lietotnes uzvedības iestatījumus.\n\nPēdējā veiksmīgā atjauninājumu fona pārbaude notika %1$s</string>
+    <string name="infobox">Šis ir konfidencialitātes draudzīga pārlūku atjauninātājs. Lai uzstādītu jaunu pārluka lietotni, noklikšķiniet uz telefona lejupielādes ikonas. Velciet uz leju, lai veiktu atjauninājuma pārbaudi. Pēc noklusējuma lietotne periodiski fonā veiks atjauninājuma pārbaudi. Ja būs pieejami atjauninājumi tie tiks lejupielādēti un uzstādīti. Noklikšķiniet uz zobrata, lai pielāgotu lietotnes uzvedības iestatījumus.\n\nPēdējā veiksmīgā atjauninājumu fona pārbaude notika %1$s</string>
     <string name="session_installer__status_failure_storage">Darbība neizdevās krātuves problēmu dēļ. Iemesls, ierīcē var pietrūkt vietas vai ārējais datu nesējs var būt nepieejams. Lietotājs var palīdzēt atbrīvojot vietu vai ievietojot citu ārējo datu nesēju.</string>
     <string name="iceraven__description">Noteikti ne no Mozillas!
 \n
@@ -301,15 +298,7 @@
     <string name="mulch_wv__description">Uz drošību orientēta un uzlabota sistēmas WebView, kuras pamatā ir Chromium tehnoloģijas. Pateicoties Vanadium projekta ielāpiem, daudzas pret konfidencialitātes funkcijas ir atspējotas/izvāktas, un vairākas drošības funkcijas ir iespējotas/pievienotas.</string>
     <string name="settings__network__use_cloudflare_mirrors__summary">Iespējojiet, lai samazinātu primāro serveru resursu slodzi, kad vien iespējams.</string>
     <string name="settings__network__trust_user_cas__summary">Iespējot, ja datu plūsma jāpārbauda un jāmaina citām lietotnēm. Ja neesat pārliecināts, atstājiet šo opciju atspējotu.</string>
-    <string name="network__proxy__dialog_message">Ja vēlaties izmantot SOCKS vai HTTP starpniekserveri, ievadiet šeit savienojuma informāciju. Izmantojiet kādu no zemāk redzamajiem formātiem:
-\n
-\nSOCKS/HTTP;ip/domain;port
-\n
-\nSOCKS/HTTP;ip/domain;port;username;password
-\n
-\nPiemēram: SOCKS;1.2.3.4;22 vai HTTP;5.6.7.8;80;user1;pw123 vai HTTP;p.webshare.io;80;u;p. Ja vēlaties izmantot sistēmas starpniekservera konfigurāciju, atstājiet to tukšu.
-\n
-\nIerobežojums: Ja maināt \'DNS iestatījumi\' uz DNS, izmantojot HTTPS serveri, jāievada starpniekservera domēns. IP adreses nedarbosies.</string>
+    <string name="network__proxy__dialog_message">Ja vēlaties izmantot SOCKS vai HTTP starpniekserveri, ievadiet šeit savienojuma informāciju. Izmantojiet kādu no zemāk redzamajiem formātiem:\n\nSOCKS/HTTP;ip/domēns;ports\n\nSOCKS/HTTP;ip/domēns;ports;lietotājvārds;parole\n\nPiemēram: SOCKS;1.2.3.4;22 vai HTTP;5.6.7.8;80;lietotājs1;parole123 vai HTTP;p.webshare.io;80;u;p. Ja vēlaties izmantot sistēmas starpniekservera konfigurāciju, atstājiet to tukšu.\n\nIerobežojums: Ja maināt \'DNS iestatījumi\' uz DNS, izmantojot HTTPS serveri, jāievada starpniekservera domēns. IP adreses nedarbosies.</string>
     <string name="installer__method__session">Sesijas uzstādītājs: Ieteicams lielākajai daļai ierīču. Android 12 un jaunākās versijās lietotnes var klusi un netraucēti atjaunināt pēc viena lietotāja apstiprinājuma.</string>
     <string name="chromium__description">Chromium ir atvērtā pirmkoda pārlūka projekts, kura mērķis ir radīt drošāku, ātrāku un stabilāku tīmekļa pieredzi visiem lietotājiem. Viņu vietnē jūs atradīsiet dizaina dokumentus, arhitektūras pārskatus, testēšanas informāciju un daudz ko citu, kas palīdzēs jums uzzināt, kā izveidot un strādāt ar Chromium pirmkodu.</string>
     <string name="network__custom_doh_server__dialog_message">Ievadiet pielāgotā DoH servera savienojuma informāciju kādā no zemāk redzamajiem formātiem:
@@ -332,4 +321,5 @@
     <string name="notification__install_error__generic_channel_descr">Paziņojumu kanāls par neveiksmīgiem lietotņu atjauninājumiem.</string>
     <string name="session_installer__status_failure_incompatible">Darbība neizdevās, jo tā būtībā nav saderīga ar šo ierīci. Iemesls, lietotnei trūkst nepieciešamā aparatūras funkcija, trūkt vietējā koda ABI, ko atbalsta ierīce, vai tai nepieciešama jaunāka SDK versija utt.</string>
     <string name="mulch__description">Uz drošību orientēts un rūdīts tīmekļa pārlūks, kura pamatā ir Chromium tehnoloģijas. Pateicoties Vanadium projekta ielāpiem, daudzas pret konfidencialitātes funkcijas ir atspējotas/izvāktas, un vairākas drošības funkcijas ir iespējotas/pievienotas. Avota koda repozitorijā ir iekļauti arī priekšbūvējumi un makefaili, kas ļauj citām operētājsistēmām iekļaut Mulch kā sistēmas WebView.</string>
+    <string name="firefox_focus_beta__description">Izmantojiet Firefox Focus visam, kur nevēlaties izmantot galveno pārlūku — lai izmantotu tajos, ātri apskatīt, aizvērt un aizmirst par to, momentos. Bez cilnēm, bez satraukuma, bez muļķībām. Bloķē arī tiešsaistes izsekotājus. Viens pieskāriens, un jūsu pārlūkošanas vēsture ir pilnībā iznīcināta.\n\nFirefox Focus ir ideāls rīks, lai iekļūt/pamest, meklēt un iznīcināt. Tīmekļa pārlūks - esmu misijā, kuram nav darīšana kādā, ko, kur un kāpēc.</string>
 </resources>

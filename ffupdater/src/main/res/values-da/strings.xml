@@ -186,7 +186,6 @@
     <string name="notification__eol_apps__title">Forældede apps installeret</string>
     <string name="notification__error__channel_name">Baggrundsfejl</string>
     <string name="firefox_beta__title">Firefox til Android Beta</string>
-    <string name="firefox_beta__warning">- Denne app er designet til udviklere og testere. Den kan indeholde forskellige fejl, der kan påvirke dit sædvanlige arbejde med browseren.</string>
     <string name="firefox_focus__description">Dette er en ændring af Firefox-browseren, der har til formål at øge privatlivets fred.</string>
     <string name="firefox_focus__title">Firefox Focus</string>
     <string name="firefox_klar__title">Firefox Klar</string>

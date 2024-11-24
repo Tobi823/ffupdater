@@ -52,7 +52,6 @@
     <string name="notification__error__channel_name">后台错误</string>
     <string name="firefox_beta__description">Firefox 浏览器 Android 版天生私密，并且难以置信得快。成千上万的在线追踪器每天都在跟踪你，收集你的上网信息还减慢浏览速度。Firefox 默认拦截了超 2000 个追踪器，并且支持广告屏蔽插件，能让你进一步定制您的浏览器。使用 Firefox，您能在这一私密的移动浏览器中兼顾您需要的安全与速度。</string>
     <string name="firefox_beta__title">Firefox Android 公测版</string>
-    <string name="firefox_beta__warning">- 此应用是为开发和测试人员设计的。它可能包含各种能影响您正常使用浏览器的缺陷。</string>
     <string name="firefox_focus__description">这是 Firefox 的一个衍生修改版，旨在增强隐私。</string>
     <string name="firefox_focus__title">Firefox Focus</string>
     <string name="firefox_klar__description">Firefox Klar 是为德国、奥地利和瑞士开发的浏览器，但任何国家的用户都可以使用。它与 Firefox Focus 非常相似，但在德语国家改了名字，以避免与布尔达传媒集团（Hubert Burda Media group）出版的《焦点周刊（Focus）》杂志相混淆。与 Firefox Focus 不同，Firefox Klar 由于德国严格的隐私法律而默认禁用了遥测功能。</string>
@@ -351,4 +350,8 @@
     <string name="download_activity__retry_installation">重新尝试安装</string>
     <string name="settings__network__use_cloudflare_mirrors__title">使用 Cloudflare 镜像</string>
     <string name="settings__network__use_cloudflare_mirrors__summary">开启选项在可用时降低主服务器的资源负载。</string>
+    <string name="generic_beta__warning">- 这是个公测版应用，为开发者和测试者设计。它可能包含可影响您体验的多个 bug。</string>
+    <string name="thunderbird__title">Thunderbird</string>
+    <string name="thunderbird_beta__title">Thunderbird Beta</string>
+    <string name="thunderbird__description">Thunderbird 是一款功能强大、关注隐私的电子邮件应用。轻而易举地从一个应用管理多个电子邮件账户，统一收件箱选项最大化生产力。基于开源技术构建，受专门的开发者团队和全球志愿者社区支持，Thunderbird 永远不会将您的私人数据当成产品。Thunderbird 完全由用户出钱资助，你永远不必再看到邮件和广告混在一起出现。</string>
 </resources>

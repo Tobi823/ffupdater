@@ -39,7 +39,6 @@
     <string name="notification__eol_apps__channel_description">Κανάλι ειδοποιήσεων για προειδοποιήσεις σχετικά με παλιές εφαρμογές.</string>
     <string name="notification__eol_apps__channel_name">Ειδοποίηση παλιών εφαρμογών</string>
     <string name="firefox_beta__title">Firefox για Android Beta</string>
-    <string name="firefox_beta__warning">- Αυτή η εφαρμογή έχει σχεδιαστεί για προγραμματιστές και δοκιμαστές. Μπορεί να περιέχει διάφορα σφάλματα που μπορεί να επηρεάσουν τη συνήθη εργασία σας με το πρόγραμμα περιήγησης.</string>
     <string name="firefox_focus__title">Firefox Focus</string>
     <string name="firefox_klar__title">Firefox Klar</string>
     <string name="firefox_nightly__title">Firefox Nightly</string>

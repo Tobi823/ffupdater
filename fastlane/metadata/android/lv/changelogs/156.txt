@@ -1,0 +1,4 @@
+78.1.7 (156) versija realizēta 2023.09.23
+
+* Paldies par Weblate tulkotāju ieguldījumu: Eryk Michalak, nautilusx, Juraj Motuz un gallegonovato
+* Izlabota problēma saistīta ar saknes (root) uzstādītāju (Tobi823/ffupdater#462)
