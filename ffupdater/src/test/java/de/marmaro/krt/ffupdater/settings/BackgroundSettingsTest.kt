@@ -230,7 +230,7 @@ class BackgroundSettingsTest : BaseTest() {
                 "PRIVACY_BROWSER",
                 "THORIUM",
                 "THUNDERBIRD",
-                "THUNDERBIRD_BETA,",
+                "THUNDERBIRD_BETA",
                 "TOR_BROWSER",
                 "TOR_BROWSER_ALPHA",
                 "UNGOOGLED_CHROMIUM",
