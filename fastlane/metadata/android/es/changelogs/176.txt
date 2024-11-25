@@ -1,0 +1,8 @@
+Versión 79.3.0 (176)
+- Gracias a los colaboradores Weblate: Coool, tetify, jrthwlate, Cirnos, nautilusx, gallegonovato, 109247019824, hamburger2048, kazushi3 y Atalanttore
+- Clave de Git
+- Thunderbird y Thunderbird Beta (gracias kewisch; Tobi823/ ffupdater #642)
+- Reparar errores K-9 (gracias kewisch; Tobi823/ ffupdater #648)
+- Reparar fallos HTTP 2.0 en smartphones (gracias TeeTeeHaa; Tobi823/ ffupdater #629)
+- Kiwi casi sin soporte
+- Eliminar Bromite , Bromite SystemWebView , Lockwise y UngoogledChromium
