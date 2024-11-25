@@ -1,0 +1,3 @@
+Έκδοση 79.2.1 (171)
+- Ευχαριστούμε για τις συνεισφορές του Weblate από τους: Kazushi Hayama, winver, gallegonovato, Scrambled777, Eryk Michalak, v1s7, Gersonzao, Flavio F. M., syl, Oğuz Ersen και MkQtS
+- χρησιμοποιήστε το archive.mozilla.org για έκδοση Firefox / Beta / Nightly / Focus / Focus Beta / Klar (Tobi823/ffupdater#584)

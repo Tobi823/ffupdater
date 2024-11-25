@@ -1,0 +1,8 @@
+Έκδοση 79.3.0 (176)
+- Ευχαριστούμε για τις συνεισφορές τους στο Weblate, τους: Coool, tetify, jrthwlate, Cirnos, nautilusx, gallegonovato, 109247019824, hamburger2048, kazushi3 και Atalanttore
+- Αλλαγή κλειδιού υπογραφής Git
+- Προσθήκη υποστήριξης για Thunderbird και Thunderbird Beta (ευχαριστώ kewisch; Tobi823/ffupdater#642)
+- Διόρθωση του K-9 Mail (ευχαριστώ kewisch; Tobi823/ffupdater#648)
+- Διορθώθηκαν προβλήματα δικτύου με το HTTP 2.0 σε ορισμένα smartphone (ευχαριστώ TeeTeeHaa; Tobi823/ffupdater#629)
+- Το Kiwi είναι πλέον EOL
+- Κατάργηση Bromite, Bromite SystemWebView, Lockwise και UngoogledChromium
