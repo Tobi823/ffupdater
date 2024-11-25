@@ -350,4 +350,8 @@
     <string name="settings__network__use_cloudflare_mirrors__summary">Ενεργοποιήστε για μείωση του φόρτου πόρων των κύριων διακομιστών όταν είναι διαθέσιμοι.</string>
     <string name="settings__network__use_cloudflare_mirrors__title">Χρησιμοποιήστε mirrors του Cloudflare</string>
     <string name="download_activity__retry_installation">Δοκιμάστε ξανά την εγκατάσταση</string>
+    <string name="generic_beta__warning">Αυτή είναι μια εφαρμογή beta, σχεδιασμένη για προγραμματιστές και δοκιμαστές. Μπορεί να περιέχει διάφορα σφάλματα που μπορεί να επηρεάσουν την εμπειρία σας.</string>
+    <string name="thunderbird__title">Thunderbird</string>
+    <string name="thunderbird_beta__title">Thunderbird Beta</string>
+    <string name="thunderbird__description">Το Thunderbird είναι μια ισχυρή εφαρμογή ηλεκτρονικού ταχυδρομείου που εστιάζει στο απόρρητο. Διαχειριστείτε εύκολα πολλούς λογαριασμούς email από μία εφαρμογή, με την επιλογή Unified Inbox για μέγιστη παραγωγικότητα. Χτισμένο σε τεχνολογία ανοιχτού κώδικα και υποστηριζόμενο από μια αφοσιωμένη ομάδα προγραμματιστών μαζί με μια παγκόσμια κοινότητα εθελοντών, το Thunderbird δεν αντιμετωπίζει ποτέ τα προσωπικά σας δεδομένα ως προϊόν. Υποστηρίζεται αποκλειστικά από οικονομικές συνεισφορές των χρηστών μας, ώστε να μην χρειάζεται να ξαναδείτε διαφημίσεις αναμεμειγμένες με τα email σας.</string>
 </resources>
