@@ -296,7 +296,7 @@
     <string name="notification__bg_update_check__unreliable_execution__channel_name">Kontrola aktualizací na pozadí nebyla provedena</string>
     <string name="notification__bg_update_check__unreliable_execution__text">Možná je to způsobeno nastavením baterie nebo výkonu vašeho zařízení. Kliknutím na toto upozornění zakážete optimalizaci baterie pro tuto aplikaci.</string>
     <string name="add_app_activity__title_based_on_firefox">Založen na Firefoxu</string>
-    <string name="add_app_activity__title_good_security_browsers">Dobrý bezpečný prohlížeč</string>
+    <string name="add_app_activity__title_good_security_browsers">Dobré bezpečné prohlížeče</string>
     <string name="notification__uncaught_exception__channel_name">Oznámení o pádu aplikace</string>
     <string name="notification__uncaught_exception__text">Kliknutím zobrazíte chybovou zprávu.</string>
     <string name="installer__android_too_old_for_shizuku">Vaše Android zařízení je pro Shizuku příliš zastaralé.</string>
@@ -334,4 +334,11 @@
     <string name="fairemail__description">Emailová aplikace pro Android, která je plnohodnotná, open source a šetrná k soukromí</string>
     <string name="cardview_dialog__different_signature">FFUpdater nemůže tuto aplikaci aktualizovat neboť se podpisy souborů APK liší. Chybu můžete vyřešit odinstalováním aplikace a opětovným nainstalováním v FFUpdateru. Avšak tento krok vám bohužel také smaže všechny osobní data v aplikaci. Proto doporučujeme před tímto krokem zálohovat vaše data.</string>
     <string name="foreground__hidden_apps__summary">Skryté aplikace budou v uživatelském rozhraní skryté a nebudou automaticky aktualizovány.</string>
+    <string name="settings__network__use_cloudflare_mirrors__summary">Zapnutím snížíte zatížení hlavních serverů, pokud je to možné.</string>
+    <string name="generic_beta__warning">- Toto je beta verze aplikace určená pro vývojáře a testery. Může obsahovat různé chyby, které mohou ovlivnit váš uživatelský zážitek.</string>
+    <string name="thunderbird__title">Thunderbird</string>
+    <string name="thunderbird_beta__title">Thunderbird Beta</string>
+    <string name="thunderbird__description">Thunderbird je výkonná e-mailová aplikace zaměřená na soukromí. Spravujte bez námahy více e-mailových účtů z jedné aplikace s možností sjednocené doručené pošty pro maximální produktivitu. Thunderbird, postavený na technologii open source a podporovaný specializovaným týmem vývojářů spolu s globální komunitou dobrovolníků, nikdy nepovažuje vaše soukromá data za produkt. Podporováno výhradně finančními příspěvky od našich uživatelů, takže už nikdy nebudete muset vidět reklamy smíchané s vašimi e-maily.</string>
+    <string name="settings__network__use_cloudflare_mirrors__title">Používat Cloudflare servery</string>
+    <string name="download_activity__retry_installation">Opakovat instalaci</string>
 </resources>
