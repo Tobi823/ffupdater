@@ -42,9 +42,10 @@ object K9Mail : AppBase() {
             isSuitableAsset = { it.name.matches("k9mail-([0-9.]+).apk".toRegex()) },
             requireReleaseDescription = false,
         )
+        val version = result.tagName.replace("K9MAIL_", "").replace("_", ".")
         return LatestVersion(
             downloadUrl = result.url,
-            version = Version(result.tagName),
+            version = Version(version),
             publishDate = result.releaseDate,
             exactFileSizeBytesOfDownload = result.fileSizeBytes,
             fileHash = null,
