@@ -41,8 +41,7 @@ object TorBrowserAlpha : AppBase() {
 
     override suspend fun getInstalledVersion(packageManager: PackageManager): de.marmaro.krt.ffupdater.app.entity.Version? {
         val rawVersionText = super.getInstalledVersion(packageManager)?.versionText ?: return null
-        val newVersionText = rawVersionText.split(" ")
-            .first()
+        val newVersionText = rawVersionText.split(" ").first()
         return de.marmaro.krt.ffupdater.app.entity.Version(newVersionText)
     }
 
