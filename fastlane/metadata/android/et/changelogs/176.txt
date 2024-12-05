@@ -1,0 +1,8 @@
+Rakenduse versioon 79.3.0 (176)
+- Tänud tõlkijatele Weblate'is: Coool, tetify, jrthwlate, Cirnos, nautilusx, gallegonovato, 109247019824, hamburger2048, kazushi3 and Atalanttore
+- Muutsime Giti allkirjavõtme
+- Lisasime Thunderbird ja Thunderbird Beta toe (tänud kewisch; Tobi823/ffupdater#642)
+- Parandasime K-9 Maili (tänud kewisch; Tobi823/ffupdater#648)
+- Parandasime HTTP 2.0 võrguvead mõnedes nutitelefonides (tänud TeeTeeHaa; Tobi823/ffupdater#629)
+- Kiwi tugi on lõppenud
+- Eemaldasime: Bromite, Bromite SystemWebView, Lockwise ja UngoogledChromium
