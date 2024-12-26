@@ -1,0 +1,8 @@
+வெளியீட்டு பதிப்பு 79.3.0 (176)
+ .
+ - அறிவிலி கையொப்ப விசையை மாற்றவும்
+ .
+ .
+ - சில ச்மார்ட்போன்களில் HTTP 2.0 உடன் பிணையம் சிக்கல்களை சரிசெய்யவும் (நன்றி Teeteehaa; tobi823/ffupdater#629)
+ - கிவி இப்போது ஈல்
+ - அகற்று Bromite, Bromite SystemWebView, Lockwise and UngoogledChromium
