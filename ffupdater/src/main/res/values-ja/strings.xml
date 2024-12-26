@@ -275,7 +275,7 @@
     <string name="installer__method__shizuku">Shizuku インストーラー: 確認ダイアログを表示せずアプリを更新します。Shizuku アプリまたは Sui Magisk モジュールが必要です。</string>
     <string name="notification__network_error__title">バックグラウンドでのネットワークエラー</string>
     <string name="notification__network_error__text">このエラーはめったに発生しないはずです。頻繁に発生する場合は、報告してください。タップすると、エラーメッセージの詳細を確認できます。</string>
-    <string name="generic_app_warning__beta_version">- このアプリは開発者とテスターのために設計されています。一般的なブラウザーの使用に影響する、複数のバグが含まれている可能性があります。</string>
+    <string name="generic_app_warning__beta_version">- このアプリは開発者とテスターのために設計されています。通常使用に影響する、複数のバグが含まれている可能性があります。</string>
     <string name="firefox_focus_beta__title">Firefox Focus Beta</string>
     <string name="network__dns_provider__cloudflare">DNS over HTTPS: Cloudflare</string>
     <string name="notification__update_available__generic_channel_descr">利用できるアプリ更新の通知チャンネル。</string>
