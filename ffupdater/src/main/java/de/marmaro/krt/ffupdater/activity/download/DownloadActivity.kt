@@ -338,21 +338,19 @@ class DownloadActivity : AppCompatActivity() {
     private suspend fun downloadWithUiProgressIndication(status: InstalledAppStatus) {
         debug("start downloading (2/2)")
 
-        val viewModelDownload = downloadViewModel.viewModelScope.launch {
-            val channel = Channel<DownloadStatus>()
-            val download = async {
-                appImpl.download(applicationContext, status.latestVersion, channel)
-            }
-            downloadViewModel.storeNewRunningDownload(status, download, channel)
+
+        val channel = Channel<DownloadStatus>()
+        val download = downloadViewModel.viewModelScope.async {
+            appImpl.download(applicationContext, status.latestVersion, channel)
         }
+        downloadViewModel.storeNewRunningDownload(status, download, channel)
 
         for (update in downloadViewModel.progressChannel!!) {
             withContext(Dispatchers.Main) {
                 gui.updateDownloadProgressIndication(update)
             }
         }
-
-        viewModelDownload.join()
+        download.await()
     }
 
     @MainThread
