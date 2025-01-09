@@ -152,7 +152,7 @@ class CardviewOptionsDialog : AppCompatDialogFragment() {
     }
 
     fun show(manager: FragmentManager, tempContext: Context) {
-        setStyle(STYLE_NO_FRAME, R.style.Theme_Material3_DayNight_Dialog_Alert)
+        setStyle(STYLE_NO_FRAME, com.google.android.material.R.style.Theme_Material3_DayNight_Dialog_Alert)
         show(manager, "cardview_options_dialog")
     }
 

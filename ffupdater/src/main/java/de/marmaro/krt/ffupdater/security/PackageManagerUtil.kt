@@ -67,11 +67,13 @@ object PackageManagerUtil {
 
     @Suppress("DEPRECATION")
     private fun extractSignature(packageInfo: PackageInfo?): Signature? {
-        if (DeviceSdkTester.supportsAndroid9P28() && packageInfo?.signingInfo != null) {
-            return extractSignature(packageInfo.signingInfo)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            packageInfo?.signingInfo?.let { signingInfo ->
+                return extractSignature(signingInfo)
+            }
         }
-        if (packageInfo?.signatures != null) {
-            return extractSignature(packageInfo.signatures)
+        packageInfo?.signatures?.let { signatures ->
+            return extractSignature(signatures)
         }
         return null
     }
