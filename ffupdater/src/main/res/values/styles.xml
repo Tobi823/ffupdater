@@ -6,7 +6,7 @@
         <item name="android:statusBarColor">@color/colorPrimary</item>
     </style>
 
-    <style name="crash_report__theme" parent="Theme.AppCompat.DayNight.DarkActionBar">
+    <style name="crash_report__theme" parent="@style/Theme.Material3.DayNight">
         <item name="colorPrimary">@color/crash_report__error_red</item>
         <item name="colorPrimaryDark">@color/crash_report__error_red</item>
         <item name="colorAccent">@color/crash_report__color_accent</item>

@@ -6,12 +6,18 @@ import android.os.Bundle
 import android.os.Environment
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Button
+import androidx.activity.enableEdgeToEdge
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.graphics.Insets
+import androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updateLayoutParams
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -97,11 +103,21 @@ class DownloadActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_download)
         AppCompatDelegate.setDefaultNightMode(ForegroundSettings.themePreference)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON) // prevent network timeouts
+        // I did not understand Android edge-to-edge completely,
+        // but this should prevent elements hidden behind the system bars.
+        setOnApplyWindowInsetsListener(findViewById(R.id.download_activity__main_layout)) { v: View, insets: WindowInsetsCompat ->
+            val bars: Insets = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                setMargins(leftMargin, topMargin + bars.top, rightMargin, bottomMargin + bars.bottom)
+            }
+            insets
+        }
 
         val appFromExtras = intent.extras?.getString(EXTRA_APP_NAME)
         // check if this activity was unintentionally started again after finishing the download
@@ -141,9 +157,9 @@ class DownloadActivity : AppCompatActivity() {
     }
 
     // other download notification has been pushed
-    override fun onNewIntent(intent: Intent?) {
+    override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
-        val appFromExtras = intent?.extras?.getString(EXTRA_APP_NAME)
+        val appFromExtras = intent.extras?.getString(EXTRA_APP_NAME)
         // check if this activity was unintentionally started again after finishing the download
         if (appFromExtras == null) {
             finish()

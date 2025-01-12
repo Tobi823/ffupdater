@@ -2,10 +2,17 @@ package de.marmaro.krt.ffupdater.activity.settings
 
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.view.View
+import android.view.ViewGroup
+import androidx.activity.enableEdgeToEdge
 import androidx.annotation.Keep
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.graphics.Insets
+import androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updateLayoutParams
 import androidx.lifecycle.lifecycleScope
 import androidx.preference.EditTextPreference
 import androidx.preference.ListPreference
@@ -34,16 +41,28 @@ import rikka.shizuku.Shizuku
  */
 @Keep
 class SettingsActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
         AppCompatDelegate.setDefaultNightMode(ForegroundSettings.themePreference)
         if (savedInstanceState == null) { //https://stackoverflow.com/a/60348385
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.settings, SettingsFragment())
+            supportFragmentManager.beginTransaction().replace(R.id.settings_activity__main_layout, SettingsFragment())
                 .commit()
         }
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        // I did not understand Android edge-to-edge completely,
+        // but this should prevent elements hidden behind the system bars.
+        // (I'm still frustrated on how complex and "not to the point" the Android documentation is.
+        // And that the code examples require special setups)
+        setOnApplyWindowInsetsListener(findViewById(R.id.settings_activity__main_layout)) { v: View, insets: WindowInsetsCompat ->
+            val bars: Insets = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                setMargins(leftMargin, topMargin + bars.top, rightMargin, bottomMargin + bars.bottom)
+            }
+            insets
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -79,22 +98,14 @@ class SettingsActivity : AppCompatActivity() {
 
         private fun loadHiddenAppNames() {
             val hiddenApps = findMultiPref("foreground__hidden_apps")
-            hiddenApps.entries = App.values()
-                .map { getString(it.findImpl().title) }
-                .toTypedArray()
-            hiddenApps.entryValues = App.values()
-                .map { it.name }
-                .toTypedArray()
+            hiddenApps.entries = App.values().map { getString(it.findImpl().title) }.toTypedArray()
+            hiddenApps.entryValues = App.values().map { it.name }.toTypedArray()
         }
 
         private fun loadExcludedAppNames() {
             val excludedApps = findMultiPref("background__update_check__excluded_apps")
-            excludedApps.entries = App.values()
-                .map { getString(it.findImpl().title) }
-                .toTypedArray()
-            excludedApps.entryValues = App.values()
-                .map { it.name }
-                .toTypedArray()
+            excludedApps.entries = App.values().map { getString(it.findImpl().title) }.toTypedArray()
+            excludedApps.entryValues = App.values().map { it.name }.toTypedArray()
         }
 
         private fun listenForBackgroundJobRestarts() {

@@ -12,6 +12,8 @@ import android.os.Bundle
 import android.text.format.DateUtils
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
@@ -19,6 +21,10 @@ import androidx.annotation.UiThread
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.Insets
+import androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updateLayoutParams
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -56,11 +62,21 @@ class MainActivity : AppCompatActivity() {
     private lateinit var recyclerView: MainRecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         AppCompatDelegate.setDefaultNightMode(ForegroundSettings.themePreference)
         requestForNotificationPermissionIfNecessary()
         askForIgnoringBatteryOptimizationIfNecessary()
+        // I did not understand Android edge-to-edge completely,
+        // but this should prevent elements hidden behind the system bars.
+        setOnApplyWindowInsetsListener(findViewById(R.id.swipeContainer)) { v: View, insets: WindowInsetsCompat ->
+            val bars: Insets = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                setMargins(leftMargin, topMargin, rightMargin, bottomMargin + bars.bottom)
+            }
+            insets
+        }
 
         val swipeContainer = findViewById<SwipeRefreshLayout>(R.id.swipeContainer)
         swipeContainer.setOnRefreshListener(userRefreshAppList)

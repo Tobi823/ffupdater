@@ -21,11 +21,17 @@ import android.os.Build.VERSION.RELEASE
 import android.os.Build.VERSION.SDK_INT
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.activity.enableEdgeToEdge
 import androidx.annotation.Keep
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.Insets
+import androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updateLayoutParams
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
 import de.marmaro.krt.ffupdater.BuildConfig.BUILD_TYPE
@@ -46,9 +52,19 @@ class CrashReportActivity : AppCompatActivity() {
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_crash_report)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        // I did not understand Android edge-to-edge completely,
+        // but this should prevent elements hidden behind the system bars.
+        setOnApplyWindowInsetsListener(findViewById(R.id.crash_report_activity__main_layout)) { v: View, insets: WindowInsetsCompat ->
+            val bars: Insets = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                setMargins(leftMargin, topMargin + bars.top, rightMargin, bottomMargin + bars.bottom)
+            }
+            insets
+        }
 
         explanation = intent.extras?.getString(EXTRA_EXCEPTION_EXPLANATION, "") ?: ""
         stackTrace = intent.extras?.getString(EXTRA_EXCEPTION_STACK_TRACE, "") ?: ""

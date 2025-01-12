@@ -9,6 +9,7 @@
     tools:ignore="PrivateResource">
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/crash_report_activity__main_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
