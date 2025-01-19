@@ -49,6 +49,7 @@ Other applications:
 - [FairEmail](https://github.com/M66B/FairEmail)
 - [K-9 Mail](https://k9mail.app)
 - [Orbot](https://github.com/guardianproject/orbot)
+- [Thunderbird for Android](https://www.thunderbird.net/en-US/thunderbird/all)
 
 FFUpdater checks for updates in the background and downloads them as well. Apps can be updated without user
 interaction with:
