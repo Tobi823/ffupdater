@@ -7,7 +7,7 @@ import androidx.annotation.MainThread
 import androidx.preference.PreferenceManager
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.BETTER_THAN_GOOGLE_CHROME
+import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.EOL
 import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
@@ -18,6 +18,7 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
  * https://github.com/Divested-Mobile/mull-fenix
  */
 @Keep
+@Deprecated("This app will no longer be maintained.")
 object Mulch : AppBase() {
     override val app = App.MULCH
     override val packageName = "us.spotco.mulch"
@@ -31,7 +32,7 @@ object Mulch : AppBase() {
 
     override val signatureHash = "260e0a49678c78b70c02d6537add3b6dc0a17171bbde8ce75fd4026a8a3e18d2"
     override val projectPage = "https://divestos.org/fdroid/official/"
-    override val displayCategory = listOf(BETTER_THAN_GOOGLE_CHROME)
+    override val displayCategory = listOf(EOL)
     override val hostnameForInternetCheck = "https://divestos.org"
 
     @MainThread

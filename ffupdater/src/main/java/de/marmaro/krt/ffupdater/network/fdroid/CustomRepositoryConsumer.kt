@@ -14,6 +14,7 @@ import kotlinx.coroutines.withContext
 import java.time.Instant
 
 @Keep
+@Deprecated("This was only be used by DivestOS app which will no longer be maintained.")
 object CustomRepositoryConsumer {
 
     @MainThread

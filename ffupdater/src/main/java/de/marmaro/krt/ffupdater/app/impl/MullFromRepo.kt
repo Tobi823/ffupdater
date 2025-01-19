@@ -18,6 +18,7 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
  * https://f-droid.org/en/packages/us.spotco.fennec_dos/
  */
 @Keep
+@Deprecated("This app will no longer be maintained.")
 object MullFromRepo : AppBase() {
     override val app = App.MULL_FROM_REPO
     override val packageName = "us.spotco.fennec_dos"
