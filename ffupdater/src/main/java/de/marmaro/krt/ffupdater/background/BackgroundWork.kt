@@ -16,12 +16,10 @@ import androidx.work.WorkRequest.Companion.MAX_BACKOFF_MILLIS
 import androidx.work.WorkerParameters
 import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.device.InstalledAppsCache
 import de.marmaro.krt.ffupdater.notification.NotificationBuilder.showGeneralErrorNotification
 import de.marmaro.krt.ffupdater.settings.BackgroundSettings
 import de.marmaro.krt.ffupdater.settings.DataStoreHelper
-import de.marmaro.krt.ffupdater.settings.ForegroundSettings
 import de.marmaro.krt.ffupdater.utils.max
 import java.time.Duration
 import java.util.concurrent.TimeUnit.MINUTES
@@ -74,7 +72,8 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) : Corouti
             return Result.failure()
         }
 
-        val apps = findApps()
+        InstalledAppsCache.updateCache(applicationContext)
+        val apps = InstalledAppsCache.getAppsApplicableForBackgroundUpdate(applicationContext)
         logInfo("Enqueuing work requests for: {$apps}")
         val appWorkRequests = generateWorkRequestsForApps(apps)
 
@@ -85,16 +84,6 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) : Corouti
 
         logInfo("Done enqueuing work requests.")
         return Result.success()
-    }
-
-    @Suppress("ConvertCallChainIntoSequence")
-    private suspend fun findApps(): List<App> {
-        InstalledAppsCache.updateCache(applicationContext)
-        return InstalledAppsCache.getInstalledAppsWithCorrectFingerprint(applicationContext)
-            .filter { it !in BackgroundSettings.excludedAppsFromUpdateCheck }
-            .filter { it !in ForegroundSettings.hiddenApps }
-            .filter { DeviceAbiExtractor.supportsOneOf(it.findImpl().supportedAbis) }.map { it.findImpl() }
-            .filter { !it.wasInstalledByOtherApp(applicationContext) }.map { it.app }.toList()
     }
 
     private fun generateWorkRequestsForApps(apps: List<App>): List<OneTimeWorkRequest> {

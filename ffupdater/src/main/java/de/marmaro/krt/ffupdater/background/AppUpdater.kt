@@ -138,6 +138,9 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) : CoroutineWo
 
     private suspend fun isUpdateCheckPossible(app: App): kotlin.Result<Boolean> {
 
+        if (isStopped) {
+            return failure(AppUpdaterNonRetryableException("WorkRequest is stopped."))
+        }
         if (!FileDownloader.isUrlAvailable(app.findImpl().hostnameForInternetCheck)) {
             return failure(AppUpdaterRetryableException("Simple network test was not successful. Retry later."))
         }
@@ -146,9 +149,6 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) : CoroutineWo
         }
         if (!BackgroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(applicationContext)) {
             return failure(AppUpdaterRetryableException("No unmetered network available for app download. Retry later."))
-        }
-        if (isStopped) {
-            return failure(AppUpdaterNonRetryableException("WorkRequest is stopped."))
         }
         if (!BackgroundSettings.isUpdateCheckEnabled) {
             return failure(AppUpdaterNonRetryableException("Background update check is disabled."))
@@ -213,7 +213,6 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) : CoroutineWo
                         onUpdate(update)
                     }
                 }
-
                 download.await()
             }
         } catch (e: Exception) {

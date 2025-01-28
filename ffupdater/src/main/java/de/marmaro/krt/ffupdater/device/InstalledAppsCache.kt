@@ -6,6 +6,8 @@ import androidx.annotation.Keep
 import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.InstallationStatus
+import de.marmaro.krt.ffupdater.settings.BackgroundSettings
+import de.marmaro.krt.ffupdater.settings.ForegroundSettings
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
@@ -19,6 +21,14 @@ object InstalledAppsCache {
     private var isInitialized = false
     private val mutex = Mutex()
     private var lastUpdate = 0L
+
+    suspend fun getAppsApplicableForBackgroundUpdate(context: Context): List<App> {
+        return getInstalledAppsWithCorrectFingerprint(context).asSequence()
+            .filter { it !in BackgroundSettings.excludedAppsFromUpdateCheck }
+            .filter { it !in ForegroundSettings.hiddenApps }
+            .filter { DeviceAbiExtractor.supportsOneOf(it.findImpl().supportedAbis) }.map { it.findImpl() }
+            .filter { !it.wasInstalledByOtherApp(context) }.map { it.app }.toList()
+    }
 
     suspend fun getInstalledAppsWithCorrectFingerprint(context: Context): List<App> {
         initializeCacheIfNecessary(context.applicationContext)
