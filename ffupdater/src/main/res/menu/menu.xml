@@ -8,13 +8,13 @@
     <item
         android:id="@+id/main_view_toolbar__update_all_apps"
         android:icon="@drawable/ic_action__update_all_apps"
-        android:title="Update all apps"
+        android:title="@string/main_activity_menu__update_all_apps__label"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/main_view_toolbar__add_app"
         android:icon="@drawable/ic_install_mobile_24"
-        android:title="Install app"
+        android:title="@string/main_activity_menu__install_app__label"
         app:showAsAction="ifRoom"/>
 
     <item

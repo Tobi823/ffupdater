@@ -85,12 +85,14 @@ class MainActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.main_view_toolbar__update_all_apps -> {
                     lifecycleScope.launch(Dispatchers.Main) {
-                        AlertDialog.Builder(this@MainActivity).setTitle("Update all apps")
-                            .setMessage("Should all outdated and not disabled apps be updated? The updates will be downloaded in the background. A notification will inform you when the the download is finished. You have to click it to start the update process.")
-                            .setPositiveButton("Update apps") { dialog: DialogInterface, _: Int ->
+                        AlertDialog.Builder(this@MainActivity)
+                            .setTitle(R.string.main_activity__update_all_apps_dialog__title)
+                            .setMessage(R.string.main_activity__update_all_apps_dialog__message)
+                            .setPositiveButton(R.string.main_activity__update_all_apps_dialog__confirm) { dialog: DialogInterface, _: Int ->
                                 UpdateAllAppsWorker.start(applicationContext)
                                 dialog.dismiss()
-                            }.setNegativeButton("Abort") { dialog: DialogInterface, _: Int -> dialog.dismiss() }
+                            }
+                            .setNegativeButton(R.string.main_activity__update_all_apps_dialog__abort) { dialog: DialogInterface, _: Int -> dialog.dismiss() }
                             .create().show()
                     }
                     true

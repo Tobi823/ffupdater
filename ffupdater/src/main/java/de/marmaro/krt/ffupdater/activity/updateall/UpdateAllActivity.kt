@@ -15,7 +15,6 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
 import androidx.lifecycle.lifecycleScope
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.InstalledAppStatus
 import de.marmaro.krt.ffupdater.app.impl.AppBase
 import de.marmaro.krt.ffupdater.device.InstalledAppsCache
@@ -57,34 +56,35 @@ class UpdateAllActivity : AppCompatActivity() {
             val appStatus = allApps.map { it.findImpl().findStatusOrUseOldCache(context) } //
                 .filter { it.isUpdateAvailable }
             if (appStatus.isEmpty()) {
-                showText("No updates available for installation. Abort.")
+                showText(getString(R.string.update_all_activity__no_updates_available))
                 return@withContext
             }
 
-            showText("These apps will be updated soon: " + appStatus.joinToString(",") { context.getString(it.app.findImpl().title) })
+            val appStr = appStatus.joinToString(",") { context.getString(it.app.findImpl().title) }
+            showText(getString(R.string.update_all_activity__these_apps_will_be_updated, appStr))
             for (status in appStatus) {
-                updateApp(status.app, status.app.findImpl(), status)
+                updateApp(status.app.findImpl(), status)
             }
-            showText("Done. All apps were updated (if possible). You can close the app now.")
+            showText(getString(R.string.update_all_activity__all_apps_updated))
         }
     }
 
-    private suspend fun updateApp(app: App, appImpl: AppBase, status: InstalledAppStatus) {
+    private suspend fun updateApp(appImpl: AppBase, status: InstalledAppStatus) {
         val title = applicationContext.getString(appImpl.title)
-        showText("Start update installation for '$title'")
+        showText(getString(R.string.update_all_activity__start_update, title))
         val file = status.app.findImpl().getApkFile(applicationContext, status.latestVersion)
         if (!file.exists()) {
-            showText("Downloaded file for '$title' does not exists, continue with the next app.")
+            showText(getString(R.string.update_all_activity__downloaded_file_is_missing, title))
             return
         }
-        showText("Start installation of '$title'.")
+        showText(getString(R.string.update_all_activity__start_installation, title))
         val result = try {
             installer.startInstallation(applicationContext, file, status.app.findImpl())
         } catch (e: InstallationFailedException) {
-            showText("Installation of '$title' failed. Continue with the next app.")
+            showText(getString(R.string.update_all_activity__installation_failed, title))
             return
         }
-        showText("Installation of '$title' successful. Certificate hash: ${result.certificateHash}")
+        showText(getString(R.string.update_all_activity__installation_successful, title, result.certificateHash))
     }
 
     private suspend fun showText(str: String) {
@@ -104,7 +104,6 @@ class UpdateAllActivity : AppCompatActivity() {
     companion object {
         fun createIntent(context: Context): Intent {
             return Intent(context, UpdateAllActivity::class.java)
-            // intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         }
     }
 }

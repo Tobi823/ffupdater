@@ -104,7 +104,7 @@
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".activity.updateall.UpdateAllActivity"
-            android:label="Update All Apps"
+            android:label="@string/update_all_activity__label"
             android:launchMode="singleTop"
             android:theme="@style/Theme.Material3.DayNight"
             android:windowSoftInputMode="adjustResize" />
