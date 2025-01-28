@@ -3,7 +3,6 @@ package de.marmaro.krt.ffupdater.activity.add
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.annotation.Keep
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AppCompatActivity
@@ -33,7 +32,6 @@ class AddAppActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         // edge to edge is already supported by this layout
-        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_app)
         AppCompatDelegate.setDefaultNightMode(ForegroundSettings.themePreference)

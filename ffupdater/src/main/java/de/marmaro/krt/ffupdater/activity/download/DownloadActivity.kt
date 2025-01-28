@@ -103,7 +103,6 @@ class DownloadActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_download)
         AppCompatDelegate.setDefaultNightMode(ForegroundSettings.themePreference)
