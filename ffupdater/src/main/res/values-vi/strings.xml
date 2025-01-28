@@ -43,10 +43,7 @@
     <string name="download_activity__use_cached_downloaded_apk">Sử dụng tệp đã tải xuống từ:</string>
     <string name="notification__download_running__title">Đang tải xuống cập nhật ứng dụng</string>
     <string name="notification__install_success__text">Ứng dụng đã được cập nhật dưới nền.</string>
-    <string name="kiwi__warning">- Kiwi sử dụng nền tảng kỹ thuật của Google Chrome và do đó gián tiếp hỗ trợ cho vị thế độc quyền của công cụ kết xuất Chromium.
-\n- Kiwi không phải là một trình duyệt bảo mật lý tưởng nhưng có hỗ trợ addon tốt.
-\n- Trình duyệt đang được các công cụ tìm kiếm trả tiền cho mỗi tìm kiếm được thực hiện bằng Trình duyệt Kiwi. Tùy thuộc vào lựa chọn công cụ tìm kiếm, các yêu cầu có thể đi qua máy chủ Kiwisearchservices của Kiwibrowser.
-\n- Quảng cáo Google ở Kiwi có thể sử dụng dữ liệu vị trí cho quảng cáo - nhưng bạn có thể tắt dữ liệu này bằng cách tắt tính năng Khám phá. Nhưng điều này sẽ sớm thay đổi. Xem https://privacy.kiwibrowser.org/ để biết thêm chi tiết.</string>
+    <string name="kiwi__warning">- Kiwi sử dụng nền tảng kỹ thuật của Google Chrome và do đó gián tiếp hỗ trợ cho vị thế độc quyền của công cụ kết xuất Chromium. \n- Kiwi không phải là một trình duyệt bảo mật lý tưởng nhưng có hỗ trợ addon tốt. \n- Trình duyệt đang được các công cụ tìm kiếm trả tiền cho mỗi tìm kiếm được thực hiện bằng Trình duyệt Kiwi. Tùy thuộc vào lựa chọn công cụ tìm kiếm, các yêu cầu có thể đi qua máy chủ Kiwisearchservices của Kiwibrowser. \n- Quảng cáo Google ở Kiwi có thể sử dụng dữ liệu vị trí cho quảng cáo - nhưng bạn có thể tắt dữ liệu này bằng cách tắt tính năng Khám phá. Nhưng điều này sẽ sớm thay đổi. Xem https://privacy.kiwibrowser.org/ để biết thêm chi tiết.</string>
     <string name="brave_beta__title">Trình duyệt Brave (Beta)</string>
     <string name="notification__install_success__title">%1$s đã được cập nhật</string>
     <string name="download_activity__file_uri_exposed_toast">Không thể hiển thị đường dẫn tệp tới các ứng dụng khác. Vui lòng tự mở thư mục bằng trình quản lý tệp ưa thích của bạn.</string>
@@ -276,4 +273,26 @@
     <string name="foreground__hidden_apps__summary">Các ứng dụng ẩn sẽ ẩn trong giao diện người dùng và không được cập nhật tự động.</string>
     <string name="thorium__description">Trình duyệt nhanh nhất trên trái đất. Bản rẽ nhánh của Chromium cho Linux được đặt tên theo nguyên tố phóng xạ số 90.</string>
     <string name="background__installation__when_screen_off__title">Chỉ cài đặt khi tắt màn hình</string>
+    <string name="main_activity__update_all_apps_dialog__confirm"></string>
+    <string name="main_activity__update_all_apps_dialog__abort"></string>
+    <string name="update_all_activity__label"></string>
+    <string name="main_activity__update_all_apps_dialog__title"></string>
+    <string name="main_activity__update_all_apps_dialog__message"></string>
+    <string name="main_activity_menu__update_all_apps__label"></string>
+    <string name="update_all_activity__start_update"></string>
+    <string name="update_all_activity__no_updates_available"></string>
+    <string name="update_all_activity__start_installation"></string>
+    <string name="main_activity_menu__install_app__label"></string>
+    <string name="update_all_activity__installation_successful"></string>
+    <string name="update_all_activity__installation_failed"></string>
+    <string name="update_all_activity__these_apps_will_be_updated"></string>
+    <string name="download_activity__retry_installation"></string>
+    <string name="thunderbird__description"></string>
+    <string name="generic_beta__warning"></string>
+    <string name="thunderbird__title"></string>
+    <string name="thunderbird_beta__title"></string>
+    <string name="settings__network__use_cloudflare_mirrors__summary"></string>
+    <string name="settings__network__use_cloudflare_mirrors__title"></string>
+    <string name="default_theme_preference" translatable="false"></string>
+    <string name="update_all_activity__all_apps_updated"></string>
 </resources>
