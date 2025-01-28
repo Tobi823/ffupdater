@@ -277,7 +277,7 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) : CoroutineWo
 
         try {
             logInfo("Update/install $app.")
-            val installer = AppInstallerFactory.createBackgroundAppInstaller(app)
+            val installer = AppInstallerFactory.createBackgroundAppInstaller()
             installer.startInstallation(applicationContext, file, appImpl)
             appImpl.appWasInstalledCallback(applicationContext, installedAppStatus)
             if (BackgroundSettings.isDeleteUpdateIfInstallSuccessful) {

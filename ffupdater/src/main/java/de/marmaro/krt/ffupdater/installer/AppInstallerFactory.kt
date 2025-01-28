@@ -1,7 +1,6 @@
 package de.marmaro.krt.ffupdater.installer
 
 import androidx.activity.ComponentActivity
-import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.installer.entity.Installer
 import de.marmaro.krt.ffupdater.installer.impl.IntentInstaller
 import de.marmaro.krt.ffupdater.installer.impl.RootInstaller
@@ -10,9 +9,8 @@ import de.marmaro.krt.ffupdater.installer.impl.ShizukuInstaller
 import de.marmaro.krt.ffupdater.settings.InstallerSettings
 
 object AppInstallerFactory {
-    public fun createForegroundAppInstaller(
+    fun createForegroundAppInstaller(
         activity: ComponentActivity,
-        app: App,
     ): AppInstaller {
         val registry = activity.activityResultRegistry
         return when (InstallerSettings.getInstallerMethod()) {
@@ -23,9 +21,7 @@ object AppInstallerFactory {
         }
     }
 
-    public  fun createBackgroundAppInstaller(
-        app: App,
-    ): AppInstaller {
+    fun createBackgroundAppInstaller(): AppInstaller {
         return when (InstallerSettings.getInstallerMethod()) {
             Installer.SESSION_INSTALLER -> SessionInstaller(false)
             Installer.NATIVE_INSTALLER -> throw Exception("Installer can not update apps in background")

@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Button
-import androidx.activity.enableEdgeToEdge
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import androidx.appcompat.app.AppCompatActivity
@@ -133,7 +132,7 @@ class DownloadActivity : AppCompatActivity() {
         app = App.valueOf(appFromExtras)
         appImpl = app.findImpl()
         gui = GuiHelper(this)
-        installer = AppInstallerFactory.createForegroundAppInstaller(this, app)
+        installer = AppInstallerFactory.createForegroundAppInstaller(this)
         lifecycle.addObserver(installer)
 
         findViewById<Button>(R.id.install_activity__delete_cache_button).setOnClickListener {
