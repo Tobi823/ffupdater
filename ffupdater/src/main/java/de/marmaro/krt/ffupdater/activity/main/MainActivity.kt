@@ -62,7 +62,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var recyclerView: MainRecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         AppCompatDelegate.setDefaultNightMode(ForegroundSettings.themePreference)
