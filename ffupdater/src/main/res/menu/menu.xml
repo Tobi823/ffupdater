@@ -6,6 +6,12 @@
       tools:context=".activities.MainActivity">
 
     <item
+        android:id="@+id/main_view_toolbar__update_all_apps"
+        android:icon="@drawable/ic_action__update_all_apps"
+        android:title="Update all apps"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/main_view_toolbar__add_app"
         android:icon="@drawable/ic_install_mobile_24"
         android:title="Install app"
@@ -21,5 +27,5 @@
         android:id="@+id/main_view_toolbar__about"
         android:icon="@drawable/ic_info_white_24dp"
         android:title="@string/action_about_title"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="never" />
 </menu>

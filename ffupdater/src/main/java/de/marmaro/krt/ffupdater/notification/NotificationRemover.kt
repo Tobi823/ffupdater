@@ -4,6 +4,7 @@ import android.app.NotificationManager
 import android.content.Context
 import androidx.annotation.Keep
 import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.notification.NotificationBuilder.DOWNLOAD_ALL_UPDATES
 import de.marmaro.krt.ffupdater.notification.NotificationBuilder.DOWNLOAD_IS_RUNNING_CODE
 import de.marmaro.krt.ffupdater.notification.NotificationBuilder.INSTALL_FAILURE_ERROR
 import de.marmaro.krt.ffupdater.notification.NotificationBuilder.INSTALL_SUCCESS_CODE
@@ -41,6 +42,10 @@ object NotificationRemover {
     fun removeAppStatusNotifications(context: Context) {
         App.values()
             .forEach { removeAppStatusNotifications(context, it) }
+    }
+
+    fun removeDownloadAllUpdatesNotification(context: Context) {
+        getNotificationManager(context).cancel(DOWNLOAD_ALL_UPDATES)
     }
 
     private fun getNotificationManager(context: Context): NotificationManager {

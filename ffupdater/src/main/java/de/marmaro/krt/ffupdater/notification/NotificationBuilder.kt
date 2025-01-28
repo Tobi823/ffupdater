@@ -59,6 +59,7 @@ import de.marmaro.krt.ffupdater.R.string.update_notification__text
 import de.marmaro.krt.ffupdater.R.string.update_notification__title
 import de.marmaro.krt.ffupdater.activity.download.DownloadActivity
 import de.marmaro.krt.ffupdater.activity.main.MainActivity
+import de.marmaro.krt.ffupdater.activity.updateall.UpdateAllActivity
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.crash.CrashReportActivity
 import de.marmaro.krt.ffupdater.crash.LogReader
@@ -117,13 +118,11 @@ object NotificationBuilder {
                 "update_notification__${app.name.lowercase()}"
             } else {
                 "update_notification__general"
-            },
-            name = if (useDifferentChannels) {
+            }, name = if (useDifferentChannels) {
                 context.getString(notification__update_available__channel_name, appTitle)
             } else {
                 context.getString(notification__update_available__generic_channel_name)
-            },
-            description = if (useDifferentChannels) {
+            }, description = if (useDifferentChannels) {
                 context.getString(notification__update_available__channel_descr, appTitle)
             } else {
                 context.getString(notification__update_available__generic_channel_descr)
@@ -222,6 +221,59 @@ object NotificationBuilder {
         showNotification(context, channel, notification, MainActivity.createIntent(context))
     }
 
+    class UpdateAllUpdates {
+        companion object {
+            private val channel = ChannelData(
+                id = "update_all_apps",
+                name = "Channel for the 'Update all apps' feature",
+                description = "Show notifications when all updates are downloaded or all updates can be installed"
+            )
+
+            fun showStartNotification(context: Context) {
+                val notification = NotificationData(
+                    id = DOWNLOAD_ALL_UPDATES,
+                    title = "Download all available updates",
+                    text = "Download updates to install them all at once. Another notification will be displayed when all updates are downloaded.",
+                )
+                showNotification(context, channel, notification)
+            }
+
+            fun hideStartNotification(context: Context) {
+                getNotificationManager(context).cancel(DOWNLOAD_ALL_UPDATES)
+            }
+
+            fun showFinishNotification(context: Context) {
+                val notification = NotificationData(
+                    id = DOWNLOAD_ALL_UPDATES_FINISHED,
+                    title = "Update for all apps are downloaded",
+                    text = "Click here to install all updates",
+                )
+                showNotification(context, channel, notification, UpdateAllActivity.createIntent(context))
+            }
+
+            fun hideFinishNotification(context: Context) {
+                getNotificationManager(context).cancel(DOWNLOAD_ALL_UPDATES_FINISHED)
+            }
+
+            fun showErrorNotification(context: Context, exception: Exception) {
+                val notification = NotificationData(
+                    id = DOWNLOAD_ALL_UPDATES_FAILED,
+                    title = "Failed to download all app updates",
+                    text = "Click to view error",
+                )
+                val intent = CrashReportActivity.createIntent(
+                    context.applicationContext, ThrowableAndLogs(exception, LogReader.readLogs()), notification.text
+                )
+                showNotification(context.applicationContext, channel, notification, intent)
+            }
+
+            fun hideErrorNotification(context: Context) {
+                getNotificationManager(context).cancel(DOWNLOAD_ALL_UPDATES_FAILED)
+            }
+        }
+    }
+
+
     @RequiresApi(Build.VERSION_CODES.M)
     fun showBackgroundUpdateCheckUnreliableExecutionNotification(context: Context) {
         val channel = ChannelData(
@@ -273,12 +325,10 @@ object NotificationBuilder {
             @Suppress("DEPRECATION") Notification.Builder(context)
         }
 
-        notificationBuilder
-            .setSmallIcon(R.drawable.ic_launcher_small_monochrome, 0)
+        notificationBuilder.setSmallIcon(R.drawable.ic_launcher_small_monochrome, 0)
             .setLargeIcon(BitmapFactory.decodeResource(context.resources, R.mipmap.ic_launcher))
-            .setStyle(Notification.BigTextStyle().bigText(notification.text))
-            .setContentTitle(notification.title).setContentText(notification.text).setOnlyAlertOnce(true)
-            .setAutoCancel(true)
+            .setStyle(Notification.BigTextStyle().bigText(notification.text)).setContentTitle(notification.title)
+            .setContentText(notification.text).setOnlyAlertOnce(true).setAutoCancel(true)
 
         if (intent != null) {
             val flags = FLAG_UPDATE_CURRENT + (if (DeviceSdkTester.supportsAndroid12S31()) FLAG_IMMUTABLE else 0)
@@ -289,6 +339,10 @@ object NotificationBuilder {
         val androidNotification = notificationBuilder.build()
         notificationManager.notify(notification.id, androidNotification)
         return androidNotification
+    }
+
+    fun removeDownloadAllUpdatesNotification(context: Context) {
+        getNotificationManager(context).cancel(DOWNLOAD_ALL_UPDATES)
     }
 
     private fun getNotificationManager(context: Context): NotificationManager {
@@ -303,5 +357,9 @@ object NotificationBuilder {
     const val DOWNLOAD_ERROR_CODE = 700
     private const val EOL_APPS_CODE = 800
     private const val BACKGROUND_UPDATE_CHECK_CODE = 900
+    const val DOWNLOAD_ALL_UPDATES = 1000
+    const val DOWNLOAD_ALL_UPDATES_FINISHED = 1001
+    const val DOWNLOAD_ALL_UPDATES_FAILED = 1002
+    private const val START_UPDATE_ALL_APPS = 1001
 
 }

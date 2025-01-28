@@ -13,7 +13,6 @@ import android.text.format.DateUtils
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
@@ -41,6 +40,7 @@ import de.marmaro.krt.ffupdater.activity.settings.SettingsActivity
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.InstalledAppStatus
 import de.marmaro.krt.ffupdater.background.BackgroundWork
+import de.marmaro.krt.ffupdater.background.UpdateAllAppsWorker
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.device.InstalledAppsCache
 import de.marmaro.krt.ffupdater.dialog.RequestInstallationPermissionDialog
@@ -83,6 +83,18 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<MaterialToolbar>(R.id.materialToolbar).setOnMenuItemClickListener {
             when (it.itemId) {
+                R.id.main_view_toolbar__update_all_apps -> {
+                    lifecycleScope.launch(Dispatchers.Main) {
+                        AlertDialog.Builder(this@MainActivity).setTitle("Update all apps")
+                            .setMessage("Should all outdated and not disabled apps be updated? The updates will be downloaded in the background. A notification will inform you when the the download is finished. You have to click it to start the update process.")
+                            .setPositiveButton("Update apps") { dialog: DialogInterface, _: Int ->
+                                UpdateAllAppsWorker.start(applicationContext)
+                                dialog.dismiss()
+                            }.setNegativeButton("Abort") { dialog: DialogInterface, _: Int -> dialog.dismiss() }
+                            .create().show()
+                    }
+                    true
+                }
                 R.id.main_view_toolbar__add_app -> {
                     lifecycleScope.launch(Dispatchers.Main) {
                         InstalledAppsCache.updateCache(applicationContext)
