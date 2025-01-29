@@ -1,0 +1,1 @@
+- korratava kompileerimise vigade parandamiseks lülitasime välja sõltuviste infobloki
