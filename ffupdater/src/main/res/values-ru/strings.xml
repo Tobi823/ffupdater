@@ -145,7 +145,7 @@
     <string name="settings__background__update_check__interval__title">Интервал проверки обновлений</string>
     <string name="settings__background__update_check__metered__title">Проверка обновлений в сетях с тарификацией</string>
     <string name="settings__background_category__summary">Настройки, когда приложение работает в фоновом режиме и невидимо для пользователя.</string>
-    <string name="settings__background_category__title">Фон</string>
+    <string name="settings__background_category__title">В фоновом режиме</string>
     <string name="settings__foreground__download__metered__title">Загрузка обновлений в сетях с тарификацией</string>
     <string name="settings__foreground__theme_preference__summary">Выбор между светлой и тёмной темой</string>
     <string name="settings__foreground__theme_preference__title">Выбор темы</string>
@@ -348,4 +348,19 @@
     <string name="generic_beta__warning">- Это бета-версия приложения, предназначенная для разработчиков и тестировщиков. Она может содержать ошибки, которые могут повлиять на вашу работу.</string>
     <string name="thunderbird__title">Thunderbird</string>
     <string name="thunderbird_beta__title">Thunderbird Beta</string>
+    <string name="main_activity__update_all_apps_dialog__confirm">Обновить приложения</string>
+    <string name="main_activity__update_all_apps_dialog__abort">Отмена</string>
+    <string name="main_activity__update_all_apps_dialog__title">Обновить все приложения</string>
+    <string name="update_all_activity__label">Обновить Все Приложения</string>
+    <string name="main_activity_menu__update_all_apps__label">Обновление всех приложений</string>
+    <string name="main_activity_menu__install_app__label">Установить приложение</string>
+    <string name="update_all_activity__no_updates_available">Отсутствуют обновления, доступные для установки. Отмена.</string>
+    <string name="update_all_activity__these_apps_will_be_updated">Эти приложения будут обновлены: %1$s</string>
+    <string name="update_all_activity__start_update">Начать установку обновления «%1$s»</string>
+    <string name="update_all_activity__downloaded_file_is_missing">Загруженный файл с обновлением «%1$s» не существует, обновляем следующее приложение.</string>
+    <string name="update_all_activity__start_installation">Начать установку «%1$s».</string>
+    <string name="update_all_activity__installation_successful">Приложение «%1$s» обновлено. Отпечаток сертификата: %2$s</string>
+    <string name="update_all_activity__installation_failed">Не удалось установить «%1$s». Обновляем следующее приложение.</string>
+    <string name="update_all_activity__all_apps_updated">Готово. Все приложения были обновлены (где это возможно). Теперь можно закрыть приложение.</string>
+    <string name="main_activity__update_all_apps_dialog__message">Следует ли обновлять устаревшие и не отключенные приложения? Обновления будут загружаться в фоновом режиме. Когда загрузка будет завершена, Вы будете оповещены уведомлением. Вам необходимо нажать на него, чтобы запустить обновление.</string>
 </resources>
