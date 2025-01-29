@@ -1,0 +1,1 @@
+- korratava kompileerimise vigade parandamiseks asendasime varargs meetodi loendiga
