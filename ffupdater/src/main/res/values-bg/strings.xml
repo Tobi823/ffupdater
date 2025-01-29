@@ -112,7 +112,7 @@
     <string name="main_activity__no_unmetered_network">Няма мрежи без отчитане</string>
     <string name="main_activity__temporary_network_issue">"<u>Временен проблем в мрежата. Опитайте по-късно</u>"</string>
     <string name="ok">Добре</string>
-    <string name="request_installation_permission_dialog__abort">Относно</string>
+    <string name="request_installation_permission_dialog__abort">Отказ</string>
     <string name="request_installation_permission_dialog__grant_permission">Разрешаване</string>
     <string name="request_installation_permission_dialog__message">FFUpdater няма разрешение да инсталира и обновява приложения. Трябва да предоставите тези разрешения, иначе FFUpdater няма да работи.</string>
     <string name="request_installation_permission_dialog__title">Разрешение за инсталиране</string>
@@ -322,4 +322,19 @@
     <string name="thunderbird_beta__title">Thunderbird Beta</string>
     <string name="generic_beta__warning">- Приложението е бета, предназначено за разработчици и изпитатели. Може да има дефекти, които да влияят отрицателно върху изживяването.</string>
     <string name="thunderbird__description">Thunderbird е мощно приложение за електронна поща, насочено към защитата на личните данни. Управлявайте безпроблемно няколко профила от едно приложение с възможност за Обединена входяща поща за максимална продуктивност. Създаден на базата на технология с отворен код и поддържан от отдаден екип от разработчици заедно с глобална общност от доброволци, Thunderbird никога не борави с личните ви данни като с продукт. Поддържа се единствено чрез дарения от потребители, така че никога няма да ви се налага да виждате реклами, смесени с писмата.</string>
+    <string name="main_activity__update_all_apps_dialog__confirm">Обновяване</string>
+    <string name="main_activity__update_all_apps_dialog__abort">Отказ</string>
+    <string name="update_all_activity__label">Обновяване на всички приложения</string>
+    <string name="main_activity__update_all_apps_dialog__title">Обновяване на всички приложения</string>
+    <string name="main_activity_menu__update_all_apps__label">Обновяване на всички приложения</string>
+    <string name="main_activity_menu__install_app__label">Инсталиране на приложение</string>
+    <string name="update_all_activity__no_updates_available">Няма обновявания. Прекратяване.</string>
+    <string name="update_all_activity__these_apps_will_be_updated">Следните приложения предстои да бъдат обновени: %1$s</string>
+    <string name="update_all_activity__all_apps_updated">Готово. Всички приложения са обновени (при възможност). Можете да затворите приложението.</string>
+    <string name="update_all_activity__start_installation">Инсталиране на „%1$s“.</string>
+    <string name="update_all_activity__start_update">Обновяване на „%1$s“.</string>
+    <string name="update_all_activity__installation_failed">Грешка при нсталиране на „%1$s“. Продължаване със следващото приложение.</string>
+    <string name="update_all_activity__installation_successful">Приложението „%1$s“ е инсталирано. Отпечатък от сертификата: %2$s</string>
+    <string name="update_all_activity__downloaded_file_is_missing">Изтегленият файл с обновяването на „%1$s“ не съществува. Продължаване със следващото приложение.</string>
+    <string name="main_activity__update_all_apps_dialog__message">Трябва ли да бъдат обновени всички приложения? Обновяванията ще бъдат изтеглени във фонов режим. Ще бъде показано известие, когато изтеглянето приключи. Натиснете го, за да започне процеса на обновяване.</string>
 </resources>
