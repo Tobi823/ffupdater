@@ -76,7 +76,7 @@
     <string name="download_activity__external_storage_not_accessible">External storage is not available - can\'t start download. Current status is:</string>
     <string name="download_activity__fetch_url_for_download">Fetch metadata from %1$s</string>
     <string name="download_activity__fetched_url_for_download_successfully">Fetched metadata from %1$s</string>
-    <string name="download_activity__file_uri_exposed_toast">Can\'t expose file path to other apps. Please open the folder yourself with your preferred file manager."</string>
+    <string name="download_activity__file_uri_exposed_toast">Can\'t expose file path to other apps. Please open the folder yourself with your preferred file manager.</string>
     <string name="download_activity__github_rate_limit_exceeded">GitHub-API rate limit is exceeded. Please try the download again in the next hour.</string>
     <string name="download_activity__open_cache_explanation">You can open the cache folder to copy the APK file to a place with more free storage. Unfortunately, on Android 11+ only few file managers can access this folder within Android/data.</string>
     <string name="download_activity__open_cache_folder_button_text">open cache folder</string>
@@ -313,7 +313,7 @@
     <string name="foreground__hidden_apps__title">Hidden apps</string>
     <string name="cardview_dialog__hide">Hide</string>
     <string name="download_activity__retry_installation">Retry installation</string>
-    <string name="main_activity__update_all_apps_dialog__message">Should all outdated and not disabled apps be updated? The updates will be downloaded in the background. A notification will inform you when the the download is finished. You have to click it to start the update process.</string>
+    <string name="main_activity__update_all_apps_dialog__message">Should all outdated and not disabled apps be updated? The updates will be downloaded in the background. A notification will inform you when the download is finished. You have to click it to start the update process.</string>
     <string name="main_activity__update_all_apps_dialog__confirm">Update apps</string>
     <string name="main_activity__update_all_apps_dialog__abort">Abort</string>
     <string name="main_activity__update_all_apps_dialog__title">Update all apps</string>
