@@ -293,4 +293,12 @@
     <string name="thunderbird__description">Thunderbird é um aplicativo de e-mail poderoso focado em privacidade. Gerencie sem esforço múltiplas contas de e-mail a partir de um único aplicativo, com uma opção de Caixa de Entrada Unificada para produtividade máxima. Construído em tecnologia código aberto e apoiado por um time dedicado de desenvolvedores junto de uma comunidade global de voluntários, Thunderbird nunca trata seus dados privados como um produto. Apoiado apenas por contribuições financeiras de nossos usuários, para que você nunca precise mais ver anúncios misturados com seus e-mails.</string>
     <string name="thunderbird_beta__title">Thunderbird Beta</string>
     <string name="generic_beta__warning">- Este é um aplicativo beta, feito para desenvolvedores e testadores. Ele pode conter vários erros que podem afetar sua experiência.</string>
+    <string name="update_all_activity__all_apps_updated">Feito. Todos aplicativos foram atualizados (se possível). Agora você pode fechar o aplicativo.</string>
+    <string name="main_activity_menu__install_app__label">Instalar aplicativo</string>
+    <string name="main_activity__update_all_apps_dialog__abort">Abortar</string>
+    <string name="update_all_activity__start_installation">Iniciar instalação de \"%1$s\".</string>
+    <string name="update_all_activity__start_update">Iniciar instalação de atualização para \"%1$s\"</string>
+    <string name="update_all_activity__these_apps_will_be_updated">Estes aplicativos serão atualizados em breve: %1$s</string>
+    <string name="update_all_activity__no_updates_available">Sem atualizações disponíveis para instalação. Abortar.</string>
+    <string name="main_activity__update_all_apps_dialog__message">Todos aplicativos desatualizados e não-desativados devem ser atualizados? As atualizações serão baixadas em plano de fundo. Uma notificação irá o informar quando o baixamento for concluído. Você deve clicá-lo para iniciar o processo de atualização.</string>
 </resources>
