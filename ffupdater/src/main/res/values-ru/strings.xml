@@ -70,7 +70,7 @@
     <string name="download_activity__external_storage_not_accessible">Внешнее хранилище недоступно — невозможно начать загрузку. Текущее состояние:</string>
     <string name="download_activity__fetch_url_for_download">Получить ссылку с %1$s</string>
     <string name="download_activity__fetched_url_for_download_successfully">Получена ссылка для скачивания с %1$s</string>
-    <string name="download_activity__file_uri_exposed_toast">Не удалось определить путь к другим приложениям. Пожалуйста, откройте каталог с помощью предпочитаемого вами файлового менеджера.</string>
+    <string name="download_activity__file_uri_exposed_toast">Не удалось определить путь к другим приложениям. Пожалуйста, откройте каталог с помощью предпочитаемого вами файлового менеджера.\"</string>
     <string name="download_activity__github_rate_limit_exceeded">Превышен лимит скорости GitHub-API. Пожалуйста, повторите попытку загрузки в течение следующего часа.</string>
     <string name="download_activity__open_cache_explanation">Вы можете открыть папку кэша, чтобы скопировать APK-файл в место с большим объемом свободного пространства. К сожалению, на Android 11+ лишь немногие файловые менеджеры имеют доступ к этому каталогу в Android/data.</string>
     <string name="download_activity__open_cache_folder_button_text">открыть папку кэша</string>
@@ -318,4 +318,8 @@
     <string name="download_activity__retry_installation">Повторить установку</string>
     <string name="settings__network__use_cloudflare_mirrors__summary">Включите опцию, чтобы снизить нагрузку на основные серверы, когда это возможно.</string>
     <string name="settings__network__use_cloudflare_mirrors__title">Использовать зеркала Cloudflare</string>
+    <string name="thunderbird__description">Thunderbird — мощное почтовое приложение, ориентированное на конфиденциальность. Легко управляйте несколькими учетными записями электронной почты из одного приложения с помощью функции «Единый почтовый ящик» для максимальной производительности. Созданный на основе технологии с открытым исходным кодом и поддерживаемый специальной командой разработчиков и глобальным сообществом добровольцев, Thunderbird никогда не рассматривает ваши личные данные как продукт. Поддерживается исключительно за счет финансовых пожертвований наших пользователей, поэтому вам больше никогда не придется видеть рекламу в своих электронных письмах.</string>
+    <string name="generic_beta__warning">- Это бета-версия приложения, предназначенная для разработчиков и тестировщиков. Она может содержать ошибки, которые могут повлиять на вашу работу.</string>
+    <string name="thunderbird__title">Thunderbird</string>
+    <string name="thunderbird_beta__title">Thunderbird Beta</string>
 </resources>
