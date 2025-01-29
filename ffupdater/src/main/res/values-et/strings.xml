@@ -89,7 +89,7 @@
     <string name="add_app_activity__title_based_on_firefox">Firefoxil põhinevad brauserid</string>
     <string name="download_activity__fetched_url_for_download_successfully">Laadisime metainfo siit: %1$s</string>
     <string name="notification__download_running__title">Laadime alla rakenduste uuendusi</string>
-    <string name="download_activity__file_uri_exposed_toast">Turvakaalutlustel ei saa failide asukohti teistele rakendustele näidata. Palun ava kaust oma eelistatud failihalduriga.</string>
+    <string name="download_activity__file_uri_exposed_toast">Turvakaalutlustel ei saa failide asukohti teistele rakendustele näidata. Palun ava kaust oma eelistatud failihalduriga.\"</string>
     <string name="download_activity__github_rate_limit_exceeded">GitHub-API mahupiirang on ületatud. Palun proovi allalaadimist järgmisel täistunnil.</string>
     <string name="installed_application_is_verified">Paigaldatud rakendus on verifitseeritud</string>
     <string name="installed_version">Paigaldatud: %1$s</string>
@@ -326,4 +326,19 @@
     <string name="thunderbird__title">Thunderbird</string>
     <string name="generic_beta__warning">- See on rakenduse beetaversioon, mis on mõeldud arendajatele ja testijatele. Siin võib leiduda vigu, mis takistavad rakenduse kasutamist.</string>
     <string name="thunderbird__description">Thunderbird on võimas privaatsuskeskne e-postirakendus. Saad mugavalt kasutada ühes rakenduses mitut e-posti kontot ning ühise koondsisendkausta võimalus parandab sinu tõhusust. Rakendus põhineb avatud lähtekoodil, projekti veab pühendunud tiim arendajaid, kelle toeks on ülemaailmne vabatahtlike kogukond. Thunderbird mitte kunagi ei kasuta sinu privaatseid andmeid tootena - meie rahastamine põhineb vaid kasutajate toetustel ning sinu e-kirjade vahel me iialgi ei kuva reklaame.</string>
+    <string name="main_activity__update_all_apps_dialog__confirm">Uuenda rakendusi</string>
+    <string name="main_activity__update_all_apps_dialog__abort">Katkesta</string>
+    <string name="main_activity__update_all_apps_dialog__title">Uuenda kõik rakendused</string>
+    <string name="update_all_activity__label">Uuenda kõik rakendused</string>
+    <string name="main_activity_menu__update_all_apps__label">Uuenda kõik rakendused</string>
+    <string name="main_activity_menu__install_app__label">Paigalda rakendus</string>
+    <string name="update_all_activity__these_apps_will_be_updated">Need rakendused saavad õige pea uuendatud: %1$s</string>
+    <string name="update_all_activity__start_update">Alusta „%1$s“ uuenduse paigaldamist</string>
+    <string name="update_all_activity__downloaded_file_is_missing">„%1$s“ jaoks vajalikku allalaaditud faili pole olemas. Jätka järgmise rakendusega.</string>
+    <string name="update_all_activity__start_installation">Alusta „%1$s“ paigaldamist.</string>
+    <string name="update_all_activity__installation_failed">„%1$s“ paigaldamine ei õnnestunud. Jätka järgmise rakendusega.</string>
+    <string name="update_all_activity__installation_successful">„%1$s“ paigaldamine õnnestus. Sertifikaadi räsi on %2$s</string>
+    <string name="main_activity__update_all_apps_dialog__message">Kas peaksime uuendama kõik aegunud ja kasutusel rakendusi? Uuenduste allalaadimine toimuks taustal. Kui allalaadimine on valmis, siis saad asjakohase teavituse ning uuenduse käivitamiseks pole vaja teha muud, kui seda klõpsida.</string>
+    <string name="update_all_activity__all_apps_updated">Valmis. Kõik rakendused said uuendatud (kui võimalik). Võid selle rakenduse nüüd sulgeda.</string>
+    <string name="update_all_activity__no_updates_available">Paigaldamiseks ei leidu rakendusi. Katkesta.</string>
 </resources>
