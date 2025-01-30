@@ -324,7 +324,7 @@
     <string name="update_all_activity__these_apps_will_be_updated">These apps will be updated soon: %1$s</string>
     <string name="update_all_activity__all_apps_updated">Done. All apps were updated (if possible). You can leave now.</string>
     <string name="update_all_activity__start_update">Start update installation for \'%1$s\'</string>
-    <string name="update_all_activity__downloaded_file_is_missing">Downloaded file for \'%1$s\' does not exists, continue with the next app.</string>
+    <string name="update_all_activity__downloaded_file_is_missing">Downloaded file for \'%1$s\' does not exist, continue with the next app.</string>
     <string name="update_all_activity__start_installation">Start installation of \'%1$s\'.</string>
     <string name="update_all_activity__installation_failed">Installation of \'%1$s\' failed. Continue with the next app.</string>
     <string name="update_all_activity__installation_successful">Installation of \'%1$s\' successful. Certificate hash: %2$s</string>
