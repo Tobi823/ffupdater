@@ -63,7 +63,7 @@
     <string name="download_activity__external_storage_not_accessible">Armazenamento não está disponível - não é possível baixar. Status atual:</string>
     <string name="download_activity__fetch_url_for_download">Procurar metadados em %1$s</string>
     <string name="download_activity__fetched_url_for_download_successfully">Metadados extraídos de %1$s</string>
-    <string name="download_activity__file_uri_exposed_toast">Não é possível expor o caminho do arquivo para outros aplicativos. Abra a pasta você mesmo com seu gerenciador de arquivos preferido.</string>
+    <string name="download_activity__file_uri_exposed_toast">Não é possível expor o caminho do arquivo para outros aplicativos. Favor abrir a pasta você mesmo com seu gerenciador de arquivos preferido.\"</string>
     <string name="download_activity__github_rate_limit_exceeded">O limite de consultas do GitHub-API foi excedido. Por favor, tente baixar outra vez em uma hora.</string>
     <string name="download_activity__open_cache_explanation">Você pode abrir o local do cache e copiar o arquivo APK para um outro local com mais armazenamento. Infelizmente, a partir do Android 11 somente alguns gerenciadores de arquivos podem acessar essa pasta dentro do Android/data.</string>
     <string name="download_activity__open_cache_folder_button_text">abrir a localização do cache</string>
@@ -301,4 +301,7 @@
     <string name="update_all_activity__these_apps_will_be_updated">Estes aplicativos serão atualizados em breve: %1$s</string>
     <string name="update_all_activity__no_updates_available">Sem atualizações disponíveis para instalação. Abortar.</string>
     <string name="main_activity__update_all_apps_dialog__message">Todos aplicativos desatualizados e não-desativados devem ser atualizados? As atualizações serão baixadas em plano de fundo. Uma notificação irá o informar quando o baixamento for concluído. Você deve clicá-lo para iniciar o processo de atualização.</string>
+    <string name="update_all_activity__installation_failed">Instalação de \"%1$s\" falhou. Continue com o próximo aplicativo.</string>
+    <string name="update_all_activity__installation_successful">Instalação de \"%1$s\" bem-sucedida. Soma do certificado: %2$s</string>
+    <string name="update_all_activity__downloaded_file_is_missing">Arquivo baixado para \"%1$s\" não existe, continue com o próximo aplicativo.</string>
 </resources>
