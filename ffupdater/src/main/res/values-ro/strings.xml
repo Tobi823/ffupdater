@@ -298,4 +298,5 @@
     <string name="add_app_activity__add_new_application"></string>
     <string name="thorium__description"></string>
     <string name="update_all_activity__all_apps_updated"></string>
+    <string name="update_all_activity__downloaded_file_is_missing"></string>
 </resources>
