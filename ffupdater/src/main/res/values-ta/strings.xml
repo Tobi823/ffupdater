@@ -295,4 +295,5 @@
     <string name="update_all_activity__start_installation"></string>
     <string name="update_all_activity__installation_successful"></string>
     <string name="default_theme_preference" translatable="false"></string>
+    <string name="update_all_activity__downloaded_file_is_missing"></string>
 </resources>
