@@ -102,4 +102,5 @@
     <string name="foreground__hidden_apps__summary">Aplikasi tersembunyi akan disembunyikan di UI dan tidak akan diperbarui secara otomatis.</string>
     <string name="cardview_dialog__hide">Sembunyikan</string>
     <string name="download_activity__retry_installation">Ulangi instalasi</string>
+    <string name="update_all_activity__downloaded_file_is_missing"></string>
 </resources>
