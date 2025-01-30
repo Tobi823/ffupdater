@@ -295,4 +295,5 @@
     <string name="update_all_activity__installation_successful"></string>
     <string name="update_all_activity__start_update"></string>
     <string name="update_all_activity__all_apps_updated"></string>
+    <string name="update_all_activity__downloaded_file_is_missing"></string>
 </resources>
