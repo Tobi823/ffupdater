@@ -292,4 +292,5 @@
     <string name="vivaldi__description"></string>
     <string name="add_app_activity__title_other_applications"></string>
     <string name="notification__network_error__title"></string>
+    <string name="update_all_activity__downloaded_file_is_missing"></string>
 </resources>
