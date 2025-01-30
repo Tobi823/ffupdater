@@ -295,4 +295,5 @@
     <string name="update_all_activity__no_updates_available"></string>
     <string name="generic_beta__warning"></string>
     <string name="thunderbird__title"></string>
+    <string name="update_all_activity__downloaded_file_is_missing"></string>
 </resources>
