@@ -280,4 +280,5 @@
     <string name="thunderbird__title">Thunderbird</string>
     <string name="thunderbird_beta__title">Thunderbird Beta</string>
     <string name="thunderbird__description">Το Thunderbird είναι μια ισχυρή εφαρμογή ηλεκτρονικού ταχυδρομείου που εστιάζει στο απόρρητο. Διαχειριστείτε εύκολα πολλούς λογαριασμούς email από μία εφαρμογή, με την επιλογή Unified Inbox για μέγιστη παραγωγικότητα. Χτισμένο σε τεχνολογία ανοιχτού κώδικα και υποστηριζόμενο από μια αφοσιωμένη ομάδα προγραμματιστών μαζί με μια παγκόσμια κοινότητα εθελοντών, το Thunderbird δεν αντιμετωπίζει ποτέ τα προσωπικά σας δεδομένα ως προϊόν. Υποστηρίζεται αποκλειστικά από οικονομικές συνεισφορές των χρηστών μας, ώστε να μην χρειάζεται να ξαναδείτε διαφημίσεις αναμεμειγμένες με τα email σας.</string>
+    <string name="update_all_activity__downloaded_file_is_missing"></string>
 </resources>
