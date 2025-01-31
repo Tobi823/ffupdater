@@ -333,7 +333,7 @@
     <string name="update_all_activity__no_updates_available">没有更新可供安装。终止。</string>
     <string name="update_all_activity__these_apps_will_be_updated">这些应用即将被更新：%1$s</string>
     <string name="update_all_activity__start_update">开始安装 \'%1$s\' 的更新</string>
-    <string name="update_all_activity__downloaded_file_is_missing">\'%1$s\' 的一下载文件不存在，继续进行下一个应用。</string>
+    <string name="update_all_activity__downloaded_file_is_missing">\'%1$s\' 的下载文件不存在，继续进行下一个应用。</string>
     <string name="update_all_activity__start_installation">开始安装 \'%1$s\'。</string>
     <string name="update_all_activity__installation_failed">安装 \'%1$s\' 失败。继续下一个应用的操作。</string>
     <string name="main_activity_menu__update_all_apps__label">更新全部应用</string>
