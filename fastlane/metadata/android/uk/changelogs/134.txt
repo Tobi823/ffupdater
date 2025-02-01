@@ -1,0 +1,2 @@
+* Дякуємо за внески Weblate від: Juraj Motuz, Retrial, gallegonovato та Michael Bæk
+* Firefox Nightly тепер виправлено: використовуйте правильне правило Proguard і анотацію для класів Gson.

@@ -1,0 +1,2 @@
+* Дякуємо за внесок у Weblate від: Giovanni Donisi, Retrial, gallegonovato, Jacek, Oğuz Ersen, MkQtS
+* Виправлено збій, коли версія встановленого браузера Tor відрізняється від очікуваної

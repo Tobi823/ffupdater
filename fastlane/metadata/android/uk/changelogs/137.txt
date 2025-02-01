@@ -1,0 +1,2 @@
+* Дякуємо за внески Weblate від: Dan, nautilusx, Retrial, gallegonovato, MkQtS та Oğuz Ersen
+* Виправте помилку кореневого інсталятора Firefox Nightly

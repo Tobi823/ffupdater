@@ -1,0 +1,3 @@
+* Дякуємо за внески Weblate від: SiniKraft, Kazushi Hayama, 109247019824, Retrial, Alexthegib, 
+  Meiru, Juraj Motuz, atilluF, gallegonovato, nautilusx, MkQtS, Eryk Michalak, Ettore Atalan та Oğuz Ersen 
+* Виправлено несправне завантаження Firefox Nightly (Tobi823/ffupdater#428)

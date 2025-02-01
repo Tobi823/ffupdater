@@ -1,0 +1,2 @@
+* Дякуємо за внески Weblate від: nautilusx, gallegonovato, Juraj Motuz, MkQtS, Retrial та gnu-ewm
+* Виправити кореневий інсталятор

@@ -1,0 +1,7 @@
+* Дякуємо за внески Weblate від: 109247019824, Retrial, gallegonovato, Juraj Motuz, MkQtS, Snow, 
+  Огуз Ерсен і Джованні Донізі 
+* Спробуйте виправити "LifecycleOwners повинні викликати реєстр, перш ніж вони ПОЧАТКУЮТЬСЯ." у DownloadActivity.kt 
+  (Tobi823/ffupdater#327, Tobi823/ffupdater#328, Tobi823/ffupdater#319) 
+* Спробуйте виправити помилку «PackageManagerUtil.getPackageArchiveInfo не може проаналізувати файл APK» за допомогою flush(), buffered() 
+  і fsync() (Tobiwan/ffupdater#116) 
+* Виправлено помилку «Не виконана вимога» в ShizukuInstaller.kt (Tobi823/ffupdater#330)
