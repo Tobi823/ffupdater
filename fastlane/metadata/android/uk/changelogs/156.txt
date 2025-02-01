@@ -1,0 +1,2 @@
+* Дякуємо за внески Weblate від: Eryk Michalak, nautilusx, Juraj Motuz і gallegonovato
+* Виправлено кореневий інсталятор (Tobi823/ffupdater#462)

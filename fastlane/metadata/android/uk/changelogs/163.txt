@@ -1,0 +1,1 @@
+- перемістити MainActiviy RecylerView до іншого класу

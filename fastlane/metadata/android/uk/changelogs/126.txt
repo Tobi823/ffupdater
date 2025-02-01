@@ -1,0 +1,6 @@
+* Дякуємо за внесок у Weblate від: SiniKraft, kotyhoroshko, Juraj Motuz, bryce-lynch, 109247019824, 
+  Retrial, nautilusx,gallegonovato та MkQtS 
+* BackgroundJob має повторити кілька разів, перш ніж відобразити повідомлення про помилки 
+* Покращити кеш завантажених файлів APK 
+* Запитує дозвіл на сповіщення на Android 13 
+* Виправлено помилку інтерфейсу користувача в головному вікні

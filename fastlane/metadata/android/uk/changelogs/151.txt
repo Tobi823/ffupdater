@@ -1,0 +1,3 @@
+* Дякуємо за внески Weblate від: nautilusx, Giovanni Donisi, Alexthegib, Retrial, gallegonovato,
+  109247019824 і Казуші Хаяма
+* Гаряче виправлення: виправте несправну перевірку фонових оновлень

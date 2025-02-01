@@ -1,0 +1,2 @@
+* Дякуємо Джеррі Жан-Батисту за виправлення Firefox Beta та Firefox Nightly (Tobi823/ffupdater#353) 
+* Дякуємо за внески Weblate від: Michael Bæk, mondstern, 109247019824, Retrial, gallegonovato та MkQtS
