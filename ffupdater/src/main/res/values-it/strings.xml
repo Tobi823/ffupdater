@@ -340,4 +340,19 @@
     <string name="thunderbird__title">Thunderbird</string>
     <string name="thunderbird_beta__title">Thunderbird Beta</string>
     <string name="thunderbird__description">Thunderbird è una potente app di posta elettronica incentrata sulla privacy. Gestisci facilmente più account e-mail da un\'unica app, con un\'opzione di posta in arrivo unificata per la massima produttività. Basato su tecnologia open source e supportato da un team dedicato di sviluppatori insieme a una comunità globale di volontari, Thunderbird non tratta mai i tuoi dati privati come un prodotto. Supportato esclusivamente dai contributi finanziari dei nostri utenti, quindi non dovrai mai più vedere annunci pubblicitari mescolati alle tue e-mail.</string>
+    <string name="main_activity__update_all_apps_dialog__abort">Interrompi</string>
+    <string name="main_activity__update_all_apps_dialog__title">Aggiorna tutte le app</string>
+    <string name="update_all_activity__label">Aggiorna tutte le app</string>
+    <string name="main_activity_menu__update_all_apps__label">Aggiorna tutte le app</string>
+    <string name="main_activity_menu__install_app__label">Installa app</string>
+    <string name="update_all_activity__no_updates_available">Non ci sono aggiornamenti disponibili per l\'installazione. Interrotto.</string>
+    <string name="update_all_activity__these_apps_will_be_updated">Queste app saranno aggiornate a breve: %1$s</string>
+    <string name="update_all_activity__start_update">Avvia l\'installazione dell\'aggiornamento per \'%1$s\'</string>
+    <string name="update_all_activity__start_installation">Inizia l\'installazione di \'%1$s\'.</string>
+    <string name="update_all_activity__installation_failed">Instazzazione di \'%1$s\' fallita. Continuare con l\'applicazione successiva.</string>
+    <string name="update_all_activity__installation_successful">Installazione di \'%1$s\' riuscita. Hash certificato: %2$s</string>
+    <string name="main_activity__update_all_apps_dialog__message">Tutte le app obsolete e non disattivate devono essere aggiornate? Gli aggiornamenti vengono scaricati in background. Una notifica ti informerà quando il download sarà terminato. È necessario fare clic su di essa per avviare il processo di aggiornamento.</string>
+    <string name="main_activity__update_all_apps_dialog__confirm">Aggiorna app</string>
+    <string name="update_all_activity__all_apps_updated">Fatto. Tutte le app sono state aggiornate (se possibile). Ora è possibile chiudere l\'app.</string>
+    <string name="update_all_activity__downloaded_file_is_missing">Il file scaricato per \'%1$s\' non esiste, continuare con l\'applicazione successiva.</string>
 </resources>
