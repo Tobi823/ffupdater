@@ -330,7 +330,7 @@
     <string name="main_activity_menu__install_app__label">Инсталиране на приложение</string>
     <string name="update_all_activity__no_updates_available">Няма обновявания. Прекратяване.</string>
     <string name="update_all_activity__these_apps_will_be_updated">Следните приложения предстои да бъдат обновени: %1$s</string>
-    <string name="update_all_activity__all_apps_updated">Готово. Всички приложения са обновени (при възможност). Можете да затворите приложението.</string>
+    <string name="update_all_activity__all_apps_updated">Готово. Всички приложения са обновени (при възможност). Можете да затворите.</string>
     <string name="update_all_activity__start_installation">Инсталиране на „%1$s“.</string>
     <string name="update_all_activity__start_update">Обновяване на „%1$s“.</string>
     <string name="update_all_activity__installation_failed">Грешка при нсталиране на „%1$s“. Продължаване със следващото приложение.</string>
