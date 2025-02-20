@@ -322,7 +322,7 @@
     <string name="main_activity_menu__install_app__label">Install app</string>
     <string name="update_all_activity__no_updates_available">No updates available for installation. Abort.</string>
     <string name="update_all_activity__these_apps_will_be_updated">These apps will be updated soon: %1$s</string>
-    <string name="update_all_activity__all_apps_updated">Done. All apps were updated (if possible). You can close the app now.</string>
+    <string name="update_all_activity__all_apps_updated">Done. All apps were updated (if possible). You can leave now.</string>
     <string name="update_all_activity__start_update">Start update installation for \'%1$s\'</string>
     <string name="update_all_activity__downloaded_file_is_missing">Downloaded file for \'%1$s\' does not exists, continue with the next app.</string>
     <string name="update_all_activity__start_installation">Start installation of \'%1$s\'.</string>

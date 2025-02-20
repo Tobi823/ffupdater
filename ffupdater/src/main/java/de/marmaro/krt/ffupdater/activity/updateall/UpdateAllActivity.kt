@@ -33,6 +33,7 @@ class UpdateAllActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_updateall)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         setOnApplyWindowInsetsListener(findViewById(R.id.updateall_activity__main_layout)) { v: View, insets: WindowInsetsCompat ->
             val bars: Insets = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.updateLayoutParams<ViewGroup.MarginLayoutParams> {
@@ -49,11 +50,23 @@ class UpdateAllActivity : AppCompatActivity() {
         }
     }
 
+    // exit if user clicks on the back-button on the top left (action bar)
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
+    }
+
     private suspend fun startUpdate() {
         withContext(Dispatchers.IO) {
             val context = applicationContext
             val allApps = InstalledAppsCache.getAppsApplicableForBackgroundUpdate(context)
-            val appStatus = allApps.map { it.findImpl().findStatusOrUseOldCache(context) } //
+            val appStatus = allApps.map {
+                    try {
+                        it.findImpl().findStatusOrUseOldCache(context)
+                    } catch (e: Exception) {
+                        null // ignore app if it is not possible to find updates
+                    }
+                }.filterNotNull()
                 .filter { it.isUpdateAvailable }
             if (appStatus.isEmpty()) {
                 showText(getString(R.string.update_all_activity__no_updates_available))
@@ -79,7 +92,9 @@ class UpdateAllActivity : AppCompatActivity() {
         }
         showText(getString(R.string.update_all_activity__start_installation, title))
         val result = try {
-            installer.startInstallation(applicationContext, file, status.app.findImpl())
+            withContext(Dispatchers.Main) {
+                installer.startInstallation(this@UpdateAllActivity, file, status.app.findImpl())
+            }
         } catch (e: InstallationFailedException) {
             showText(getString(R.string.update_all_activity__installation_failed, title))
             return
