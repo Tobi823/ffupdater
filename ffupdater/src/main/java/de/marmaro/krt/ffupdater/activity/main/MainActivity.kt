@@ -85,6 +85,10 @@ class MainActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.main_view_toolbar__update_all_apps -> {
                     lifecycleScope.launch(Dispatchers.Main) {
+                        if (hasAppInstallPermission()) {
+                            RequestInstallationPermissionDialog().show(supportFragmentManager)
+                            return@launch
+                        }
                         AlertDialog.Builder(this@MainActivity)
                             .setTitle(R.string.main_activity__update_all_apps_dialog__title)
                             .setMessage(R.string.main_activity__update_all_apps_dialog__message)

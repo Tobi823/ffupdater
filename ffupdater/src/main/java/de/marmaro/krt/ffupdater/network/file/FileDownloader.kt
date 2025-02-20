@@ -60,12 +60,12 @@ object FileDownloader {
     @Throws(IllegalArgumentException::class)
     suspend fun isUrlAvailable(url: String): Boolean {
         require(url.startsWith("https://"))
-        try {
+        return try {
             val request = Request.Builder().url(url).cacheControl(CacheControl.FORCE_NETWORK).method("HEAD", null)
             client.newCall(request.build()).await()
-            return true
+            true
         } catch (e: Exception) {
-            return false
+            false
         }
     }
 
