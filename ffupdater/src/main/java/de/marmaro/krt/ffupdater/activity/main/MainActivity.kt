@@ -55,7 +55,11 @@ import de.marmaro.krt.ffupdater.settings.DataStoreHelper
 import de.marmaro.krt.ffupdater.settings.ForegroundSettings
 import de.marmaro.krt.ffupdater.settings.NoUnmeteredNetworkException
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 @Keep
 class MainActivity : AppCompatActivity() {
@@ -193,8 +197,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         showLoadAnimationDuringExecution {
-            apps.forEach {
-                updateMetadataOf(it)
+            coroutineScope {
+                apps.map {
+                    async { updateMetadataOf(it) }
+                }.awaitAll()
             }
         }
     }
@@ -210,8 +216,9 @@ class MainActivity : AppCompatActivity() {
     private suspend fun updateMetadataOf(app: App): InstalledAppStatus? {
         try {
             recyclerView.notifyAppChange(app, null)
-            val updateStatus = app.findImpl()
-                .findStatusOrUseRecentCache(applicationContext)
+            val updateStatus = withContext(Dispatchers.IO) {
+                app.findImpl().findStatusOrUseRecentCache(applicationContext)
+            }
             recyclerView.notifyAppChange(app, updateStatus)
             recyclerView.notifyClearedErrorForApp(app)
             return updateStatus
