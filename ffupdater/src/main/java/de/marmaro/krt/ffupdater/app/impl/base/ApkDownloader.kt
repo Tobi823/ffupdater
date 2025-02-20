@@ -92,7 +92,7 @@ interface ApkDownloader : AppAttributes {
         downloadFile: File,
         progress: Channel<DownloadStatus>,
     ) {
-        FileDownloader.downloadFileWithProgress(latestVersion.downloadUrl, downloadFile, progress)
+        FileDownloader.downloadFile(latestVersion.downloadUrl, downloadFile, progress)
         checkDownloadFile(downloadFile, latestVersion)
         processDownload(context.applicationContext, downloadFile, latestVersion)
     }

@@ -7,7 +7,6 @@ import com.google.gson.JsonObject
 import com.google.gson.JsonParseException
 import com.google.gson.JsonParser
 import de.marmaro.krt.ffupdater.FFUpdater
-import de.marmaro.krt.ffupdater.network.annotation.ReturnValueMustBeClosed
 import de.marmaro.krt.ffupdater.network.exceptions.ApiRateLimitExceededException
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.settings.NetworkSettings
@@ -22,7 +21,6 @@ import okio.*
 import ru.gildor.coroutines.okhttp.await
 import java.io.BufferedReader
 import java.io.File
-import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
 import java.net.InetAddress
@@ -31,6 +29,7 @@ import java.net.Proxy
 import java.security.KeyStore
 import java.security.SecureRandom
 import java.time.Duration
+import java.util.UUID
 import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicInteger
 import javax.net.ssl.*
@@ -70,20 +69,29 @@ object FileDownloader {
     }
 
     // https://www.cygonna.com/2024/02/use-okhttp-to-download-file-and-show.html
-    suspend fun downloadFileWithProgress(url: String, file: File, progress: Channel<DownloadStatus>) {
-        val request = Request.Builder().url(url).method("GET", null)
-        val response = client.newCall(request.build()).await()
-        val responseBody = validateAndReturnResponseBody(url, response)
-        val totalSize = responseBody.contentLength()
-        file.outputStream().use { fileStream ->
-            responseBody.byteStream().use { networkStream ->
-                copyStreamsWithProgressReport(networkStream, fileStream, totalSize, progress)
+    suspend fun downloadFile(url: String, file: File, progress: Channel<DownloadStatus>) {
+        val body = performHttpRequest(url, "GET", null)
+        val size = body.contentLength()
+        val temp = File(file.parentFile, "${UUID.randomUUID()}.apk")
+        temp.delete() // make sure that we always have a new, "clean" target for download
+        try {
+            body.byteStream().use { source ->
+                temp.outputStream().use { destination ->
+                    source.copyTo(destination, size, progress)
+                }
             }
+
+            file.delete() // make sure that renaming will be successful by trying to delete existing file
+            if (!temp.renameTo(file)) {
+                throw RuntimeException("failed to rename downloaded file $temp to $file")
+            }
+        } finally {
+            temp.delete() // If download successful, deleting won't do anything. If download failed, deleting is essential
         }
     }
 
-    private suspend fun copyStreamsWithProgressReport(
-        source: InputStream, destination: OutputStream, totalSize: Long, progress: Channel<DownloadStatus>
+    private suspend fun InputStream.copyTo(
+        destination: OutputStream, totalSize: Long, progress: Channel<DownloadStatus>
     ) {
         try {
             withContext(Dispatchers.IO) {
@@ -91,7 +99,7 @@ object FileDownloader {
                 var writtenBytes: Long = 0
                 var previousPercentValue = -1
                 while (true) {
-                    val byteRead = source.read(buffer)
+                    val byteRead = read(buffer)
 
                     val percent = (writtenBytes.toFloat() / totalSize.toFloat() * 100).toInt()
                     writtenBytes += max(byteRead, 0) // dont add -1 (signal for finish) to writtenBytes
@@ -114,7 +122,6 @@ object FileDownloader {
 
     @MainThread
     @Throws(NetworkException::class)
-    @ReturnValueMustBeClosed
     suspend fun <R> downloadAsBufferedReader(
         url: String,
         method: String = "GET",
@@ -124,10 +131,8 @@ object FileDownloader {
         return withContext(Dispatchers.IO) {
             getMutexForUrl(url).withLock {
                 try {
-                    val responseBody = callUrl(url, method, requestBody)
-                    responseBody.charStream().buffered().use { reader ->
-                        execute(reader)
-                    }
+                    val responseBody = performHttpRequest(url, method, requestBody)
+                    responseBody.charStream().buffered().use { execute(it) }
                 } catch (e: Exception) {
                     when (e) {
                         is IOException,
@@ -163,28 +168,26 @@ object FileDownloader {
         }
     }
 
-    private fun validateAndReturnResponseBody(url: String, response: Response): ResponseBody {
-        if (url.startsWith(GITHUB_URL) && response.code == 403) {
-            throw ApiRateLimitExceededException(
-                "API rate limit for GitHub is exceeded.", Exception("response code is ${response.code}")
-            )
-        }
-        if (!response.isSuccessful) {
-            throw NetworkException("Response is unsuccessful. HTTP code: '${response.code}'.")
-        }
-        return response.body ?: throw NetworkException("Response is unsuccessful. Body is null.")
-    }
-
     @Throws(IllegalArgumentException::class)
-    private suspend fun callUrl(
+    private suspend fun performHttpRequest(
         url: String,
         method: String,
         requestBody: RequestBody?,
     ): ResponseBody {
         require(url.startsWith("https://"))
-        val request = Request.Builder().url(url).method(method, requestBody)
+        val request = Request.Builder()
+        request.url(url)
+        request.method(method, requestBody)
         val response = client.newCall(request.build()).await()
-        return validateAndReturnResponseBody(url, response)
+
+        if (!response.isSuccessful) {
+            val error = NetworkException("Response is unsuccessful. HTTP code: '${response.code}'.")
+            if (url.startsWith(GITHUB_URL) && response.code == 403) {
+                throw ApiRateLimitExceededException("API rate limit for GitHub is exceeded", error)
+            }
+            throw error
+        }
+        return response.body ?: throw NetworkException("Response is unsuccessful. Body is null.")
     }
 
     private val mutexForUrls = mutableMapOf<String, Mutex>()
