@@ -8,6 +8,7 @@ import androidx.work.ExistingWorkPolicy
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
+import de.marmaro.krt.ffupdater.DisplayableException
 import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.InstalledAppStatus
@@ -114,8 +115,15 @@ class UpdateAllAppsWorker(context: Context, workerParams: WorkerParameters) : Co
             coroutineScope {
                 logInfo("Download update for ${installedAppStatus.app}.")
                 val progress = Channel<DownloadStatus>()
-                val download = async {
-                    appImpl.download(applicationContext, installedAppStatus.latestVersion, progress)
+                val download = async { // capture exception so that CrashListener will not caught it
+                    try {
+                        appImpl.download(applicationContext, installedAppStatus.latestVersion, progress)
+                        return@async success(true)
+                    } catch (e: Exception) {
+                        return@async failure(e)
+                    } finally {
+                        progress.close(DisplayableException("Progress channel was not yet closed. This should never happen"))
+                    }
                 }
 
                 var lastTime = System.currentTimeMillis()
@@ -125,7 +133,7 @@ class UpdateAllAppsWorker(context: Context, workerParams: WorkerParameters) : Co
                         onUpdate(update)
                     }
                 }
-                download.await()
+                download.await().getOrThrow()
             }
         } catch (e: Exception) {
             return failure(e)

@@ -6,6 +6,7 @@ import androidx.annotation.MainThread
 import com.google.gson.JsonObject
 import com.google.gson.JsonParseException
 import com.google.gson.JsonParser
+import de.marmaro.krt.ffupdater.DisplayableException
 import de.marmaro.krt.ffupdater.FFUpdater
 import de.marmaro.krt.ffupdater.network.exceptions.ApiRateLimitExceededException
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
@@ -72,7 +73,7 @@ object FileDownloader {
     suspend fun downloadFile(url: String, file: File, progress: Channel<DownloadStatus>) {
         val body = performHttpRequest(url, "GET", null)
         val size = body.contentLength()
-        val temp = File(file.parentFile, "${UUID.randomUUID()}.apk")
+        val temp = File(file.parentFile, UUID.randomUUID().toString() + file.extension) // temp file only for download
         temp.delete() // make sure that we always have a new, "clean" target for download
         try {
             body.byteStream().use { source ->
@@ -83,10 +84,19 @@ object FileDownloader {
 
             file.delete() // make sure that renaming will be successful by trying to delete existing file
             if (!temp.renameTo(file)) {
-                throw RuntimeException("failed to rename downloaded file $temp to $file")
+                throw DisplayableException("failed to rename downloaded file $temp to $file")
             }
+        } catch (e: Exception) {
+            when (e) {
+                is IOException,
+                is IllegalArgumentException,
+                is NetworkException,
+                    -> throw NetworkException("Download of $url failed.", e)
+            }
+            throw e
         } finally {
             temp.delete() // If download successful, deleting won't do anything. If download failed, deleting is essential
+            progress.close(DisplayableException("Progress channel was not yet closed. This should never happen"))
         }
     }
 

@@ -352,19 +352,26 @@ class DownloadActivity : AppCompatActivity() {
     private suspend fun downloadWithUiProgressIndication(status: InstalledAppStatus) {
         debug("start downloading (2/2)")
 
-
         val channel = Channel<DownloadStatus>()
-        val download = downloadViewModel.viewModelScope.async {
-            appImpl.download(applicationContext, status.latestVersion, channel)
+        val download =
+            downloadViewModel.viewModelScope.async { // capture exception so that CrashListener will not caught it
+                try {
+                    appImpl.download(applicationContext, status.latestVersion, channel)
+                    return@async Result.success(true)
+                } catch (e: Exception) {
+                    return@async Result.failure(e)
+                } finally {
+                    channel.close(DisplayableException("Progress channel was not yet closed. This should never happen"))
+                }
         }
         downloadViewModel.storeNewRunningDownload(status, download, channel)
 
-        for (update in downloadViewModel.progressChannel!!) {
+        for (update in downloadViewModel.progressChannel!!) { // FYI unlikely but channel can throw an exception
             withContext(Dispatchers.Main) {
                 gui.updateDownloadProgressIndication(update)
             }
         }
-        download.await()
+        download.await().getOrThrow()
     }
 
     @MainThread

@@ -16,6 +16,7 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.withContext
 import java.io.File
 import java.time.format.DateTimeFormatter
+import java.util.UUID
 import java.util.zip.ZipFile
 
 @Keep
@@ -26,12 +27,15 @@ interface ApkDownloader : AppAttributes {
         latestVersion: LatestVersion,
         progress: Channel<DownloadStatus>,
     ) {
-        val downloadFile = getDownloadFile(context.applicationContext)
-        downloadFile.delete()
+        val temp = generateTempApkFile(context.applicationContext) // temp file only for APK analysis
         try {
-            download(context, latestVersion, downloadFile, progress)
+            temp.delete()
+            FileDownloader.downloadFile(latestVersion.downloadUrl, temp, progress)
+            checkDownloadFile(temp, latestVersion)
+            processDownload(context.applicationContext, temp, latestVersion)
         } finally {
-            downloadFile.delete()
+            temp.delete()
+            progress.close(RuntimeException("Progress channel was not yet closed. This should never happen"))
         }
     }
 
@@ -70,9 +74,10 @@ interface ApkDownloader : AppAttributes {
         }
     }
 
-    private fun getDownloadFile(context: Context): File {
+    private fun generateTempApkFile(context: Context): File {
         val cacheFolder = getApkCacheFolder(context.applicationContext)
-        return File(cacheFolder, "${getSanitizedPackageName()}_download.download")
+        val suffix = if (isAppPublishedAsZipArchive()) ".zip" else ".apk"
+        return File(cacheFolder, UUID.randomUUID().toString() + suffix)
     }
 
     private fun getSanitizedPackageName(): String {
@@ -84,17 +89,6 @@ interface ApkDownloader : AppAttributes {
         val sanitizedVersionText = version.versionText.replace("""\W""".toRegex(), "_")
         val dateOrEmptyString = version.buildDate?.format(DateTimeFormatter.BASIC_ISO_DATE)?.let { "_$it" } ?: ""
         return sanitizedVersionText + dateOrEmptyString
-    }
-
-    private suspend fun download(
-        context: Context,
-        latestVersion: LatestVersion,
-        downloadFile: File,
-        progress: Channel<DownloadStatus>,
-    ) {
-        FileDownloader.downloadFile(latestVersion.downloadUrl, downloadFile, progress)
-        checkDownloadFile(downloadFile, latestVersion)
-        processDownload(context.applicationContext, downloadFile, latestVersion)
     }
 
     private suspend fun checkDownloadFile(file: File, latestVersion: LatestVersion) {
@@ -117,7 +111,7 @@ interface ApkDownloader : AppAttributes {
         if (isAppPublishedAsZipArchive()) {
             processZipDownload(downloadFile, apkFile)
         } else {
-            processApkDownload(downloadFile, apkFile)
+            downloadFile.renameTo(apkFile)
         }
         checkApkFile(apkFile)
     }
@@ -135,10 +129,6 @@ interface ApkDownloader : AppAttributes {
                 }
             }
         }
-    }
-
-    private fun processApkDownload(downloadFile: File, apkFile: File) {
-        downloadFile.renameTo(apkFile)
     }
 
     @Throws(IllegalArgumentException::class)
