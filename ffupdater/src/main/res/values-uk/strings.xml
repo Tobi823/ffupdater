@@ -356,7 +356,7 @@
     <string name="update_all_activity__installation_failed">Помилка встановлення «%1$s». Продовжте з наступною програмою.</string>
     <string name="update_all_activity__installation_successful">Встановлення \'%1$s\' успішне. Хеш сертифіката: %2$s</string>
     <string name="update_all_activity__start_update">Почати встановлення оновлення для \"%1$s\"</string>
-    <string name="update_all_activity__all_apps_updated">Готово. Усі додатки оновлено (якщо можливо). Ви можете закрити програму зараз.</string>
+    <string name="update_all_activity__all_apps_updated">Готово. Усі додатки оновлено (якщо можливо). Ви можете піти зараз.</string>
     <string name="update_all_activity__downloaded_file_is_missing">Завантажений файл для \"%1$s\" не існує, перейдіть до наступної програми.</string>
     <string name="settings__network__use_cloudflare_mirrors__title">Використовуйте дзеркала Cloudflare</string>
     <string name="settings__network__use_cloudflare_mirrors__summary">Увімкніть, щоб зменшити навантаження на ресурси основних серверів, якщо вони доступні.</string>
