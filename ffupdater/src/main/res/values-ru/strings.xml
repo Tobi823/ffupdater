@@ -357,10 +357,10 @@
     <string name="update_all_activity__no_updates_available">Отсутствуют обновления, доступные для установки. Отмена.</string>
     <string name="update_all_activity__these_apps_will_be_updated">Эти приложения будут обновлены: %1$s</string>
     <string name="update_all_activity__start_update">Начать установку обновления «%1$s»</string>
-    <string name="update_all_activity__downloaded_file_is_missing">Загруженный файл с обновлением «%1$s» не существует, обновляем следующее приложение.</string>
+    <string name="update_all_activity__downloaded_file_is_missing">Загруженный файл с обновлением «%1$s» не существует, перейдите к следующему приложению.</string>
     <string name="update_all_activity__start_installation">Начать установку «%1$s».</string>
     <string name="update_all_activity__installation_successful">Приложение «%1$s» обновлено. Отпечаток сертификата: %2$s</string>
-    <string name="update_all_activity__installation_failed">Не удалось установить «%1$s». Обновляем следующее приложение.</string>
-    <string name="update_all_activity__all_apps_updated">Готово. Все приложения были обновлены (где это возможно). Теперь можно закрыть приложение.</string>
+    <string name="update_all_activity__installation_failed">Не удалось установить «%1$s». Перейдите к следующему приложению.</string>
+    <string name="update_all_activity__all_apps_updated">Готово. Все приложения были обновлены (где это возможно). Теперь можно выйти.</string>
     <string name="main_activity__update_all_apps_dialog__message">Следует ли обновлять устаревшие и не отключенные приложения? Обновления будут загружаться в фоновом режиме. Когда загрузка будет завершена, Вы будете оповещены уведомлением. Вам необходимо нажать на него, чтобы запустить обновление.</string>
 </resources>
