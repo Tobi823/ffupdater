@@ -81,9 +81,6 @@
     <string name="app_installer__installed_app_has_invalid_signature">Установленное приложение НЕ проверено</string>
     <string name="installed_application_is_verified">Установленное приложение проверено</string>
     <string name="installed_version">Установлено: %1$s</string>
-    <string name="kiwi__description">Kiwi Browser сделан, чтобы обозревать интернет, читать новости, смотреть видео и слушать музыку без раздражающих элементов.</string>
-    <string name="kiwi__title">Kiwi Browser Next</string>
-    <string name="kiwi__warning">- Исходный код Kiwi является лишь частично открытым. \n- Kiwi использует техническую основу Google Chrome и тем самым косвенно поддерживает монопольное положение движка рендеринга Chromium. \n- Kiwi — не идеальный приватный браузер, но у него есть хорошая поддержка дополнений. \n- Браузер монетизируется поисковыми движками за каждый запрос, сделанный через Kiwi Browser. В зависимости от выбранного поискового движка, запросы могут идти через серверы Kiwibrowser / Kiwisearchservices. \n- Google Ads в Kiwi может использовать данные местоположения для показа таргетированной рекламы, но это можно отключить, выключив настройку \"Discovery feature\". Но правила игры скоро изменятся. Подробности на https://privacy.kiwibrowser.org.</string>
     <string name="main_activity__github_api_limit_exceeded"><u>Превышен лимит GitHub-API. Повторите попытку через час.</u></string>
     <string name="main_activity__no_unmetered_network">Отсутствуют сети без тарификации</string>
     <string name="main_activity__temporary_network_issue"><u>Временная проблема сети. Повторите попытку позже.</u></string>
@@ -245,7 +242,6 @@
     <string name="tor_browser_alpha__description">Tor Browser — единственный официальный мобильный браузер, поддерживаемый проектом Tor Project, разработчиком самого мощного в мире инструмента для обеспечения конфиденциальности и свободы в Интернете. \n \nTor Browser ВСЕГДА будет бесплатным, но это возможно благодаря пожертвованиям. Проект Tor — это некоммерческая организация 501©(3), базирующаяся в США. Пожалуйста, рассмотрите возможность внесения пожертвования сегодня. Каждый подарок имеет значение: https://donate.torproject.org. \n \nУзнайте, как сообщать об ошибках и оставлять отзывы на https://support.torproject.org/misc/bug-or-feedback/!</string>
     <string name="notification__uncaught_exception__text">Нажмите, чтобы просмотреть отчёт об ошибке.</string>
     <string name="generic_app_warning__beta_version">- Это приложение предназначено для разработчиков и тестировщиков. Оно может содержать различные ошибки, которые могут повлиять на вашу обычную работу с браузером.</string>
-    <string name="eol_reason__browser_no_longer_maintained">Браузер больше не поддерживается.</string>
     <string name="notification__install_error__generic_channel_descr">Канал уведомлений о неудачных обновлениях приложений.</string>
     <string name="background__installation__when_screen_off__title">Устанавливать только при выключенном экране</string>
     <string name="installer__method__title">Метод установки</string>

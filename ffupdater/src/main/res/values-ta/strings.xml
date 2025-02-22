@@ -39,7 +39,6 @@
     <string name="notification__install_success__channel_descr">வெற்றிகரமான %1$s புதுப்பிப்புகளுக்கான அறிவிப்பு சேனல்.</string>
     <string name="installed_application_is_verified">நிறுவப்பட்ட பயன்பாடு சரிபார்க்கப்பட்டது</string>
     <string name="installed_version">நிறுவப்பட்டது: %1$s</string>
-    <string name="kiwi__title">கிவி உலாவி அடுத்து</string>
     <string name="main_activity__no_unmetered_network">அளவிடப்படாத பிணையம் இல்லை</string>
     <string name="main_activity__temporary_network_issue"><u> தற்காலிக பிணைய சிக்கல். பின்னர் மீண்டும் முயற்சிக்கவும். </u></string>
     <string name="ok">சரி</string>
@@ -77,7 +76,6 @@
     <string name="privacy_browser__title">தனியுரிமை உலாவி</string>
     <string name="privacy_browser__warning">FFUPDATER கோப்புகளை F-DROID சேவையகங்களிலிருந்து பதிவிறக்குகிறது, எனவே இது வேகமாக இல்லை.</string>
     <string name="privacy_browser__description">தரவு தீய பயன்பாடு செய்யப்படுவதைத் தடுப்பதற்கான ஒரே வழி, முதலில் சேகரிக்கப்படுவதைத் தடுப்பதுதான். தனியுரிமை உலாவியில் இரண்டு முதன்மை குறிக்கோள்கள் உள்ளன: இணையத்திற்கு அனுப்பப்படும் தரவைக் குறைத்து, சாதனத்தில் சேமிக்கப்படும் தரவைக் குறைக்கவும்.</string>
-    <string name="eol_reason__browser_no_longer_maintained">உலாவி இனி பராமரிக்கப்படாது.</string>
     <string name="crash_report__report_is_copied_to_clipboard">செயலிழப்பு அறிக்கை உங்கள் இடைநிலைப்பலகைக்கு நகலெடுக்கப்படுகிறது</string>
     <string name="installer__android_too_old_for_shizuku">உங்கள் ஆண்ட்ராய்டு சிசுகுவுக்கு மிகவும் பழையது.</string>
     <string name="add_app_activity__title_based_on_firefox">பயர்பாக்சை அடிப்படையாகக் கொண்டது</string>
@@ -149,10 +147,8 @@
     <string name="download_activity__you_can_now_close_this_window">நீங்கள் இப்போது இந்த சாளரத்தை மூடலாம்</string>
     <string name="notification__install_success__channel_name">%1$s வெற்றிகரமான புதுப்பிப்பு அறிவிப்பு</string>
     <string name="notification__install_success__text">பயன்பாடு பின்னணியில் புதுப்பிக்கப்பட்டுள்ளது.</string>
-    <string name="kiwi__description">கிவி உலாவி இணையத்தை உலாவவும், செய்திகளைப் படிக்கவும், வீடியோக்களைப் பார்க்கவும், இசையைக் கேட்கவும், எரிச்சலின்றி செய்யப்படுகிறது.</string>
     <string name="notification__install_success__title">%1$s புதுப்பிக்கப்பட்டுள்ளன</string>
     <string name="app_installer__installed_app_has_invalid_signature">நிறுவப்பட்ட பயன்பாடு சரிபார்க்கப்படவில்லை</string>
-    <string name="kiwi__warning">- கிவி பகுதி திறந்த மூல மட்டுமே\n - கிவி கூகிள் குரோம் தொழில்நுட்ப அடித்தளத்தைப் பயன்படுத்துகிறது, இதனால் குரோமியம் வழங்குதல் எஞ்சினின் ஏகபோக நிலையை மறைமுகமாக ஆதரிக்கிறது.\n - கிவி ஒரு சிறந்த தனியுரிமை உலாவி அல்ல, ஆனால் ஒரு நல்ல துணை ஆதரவைக் கொண்டுள்ளது.\n - கிவி உலாவியைப் பயன்படுத்தி செய்யப்படும் ஒவ்வொரு தேடலுக்கும் தேடுபொறிகளால் உலாவி பணம் செலுத்துகிறது. தேடுபொறி தேர்வைப் பொறுத்து, கோரிக்கைகள் கிவிப்சர் / கிவிசெர்க் சர்வீசச் சேவையகங்கள் வழியாக செல்லலாம்.\n - பசலிப்பழம் இல் உள்ள கூகிள் விளம்பரங்கள் விளம்பரங்களுக்கான இருப்பிடத் தரவைப் பயன்படுத்தலாம் - ஆனால் கண்டுபிடிப்பு அம்சத்தை முடக்குவதன் மூலம் அதை முடக்கலாம். ஆனால் இது விரைவில் மாறும். மேலும் விவரங்களுக்கு https://privacy.kiwibrowser.org/ ஐப் பார்க்கவும்.</string>
     <string name="main_activity__github_api_limit_exceeded"><u> github-api வரம்பு மீறியது. அடுத்த மணிநேரத்தை மீண்டும் முயற்சிக்கவும். </u></string>
     <string name="main_activity__an_error_occurred"><u> பிழை ஏற்பட்டது. பின்னர் மீண்டும் முயற்சிக்கவும். </u></string>
     <string name="request_installation_permission_dialog__abort">கருக்கலைப்பு</string>

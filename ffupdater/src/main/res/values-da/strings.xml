@@ -39,14 +39,12 @@
     <string name="download_activity__too_low_memory_title">Lav Lagringsplads</string>
     <string name="download_activity__use_cached_downloaded_apk">Brug allerede downloadet fil fra:</string>
     <string name="notification__install_success__title">%1$s er blevet opdateret</string>
-    <string name="kiwi__warning">- Kiwi bruger det tekniske grundlag i Google Chrome og understøtter dermed indirekte Chromiums monopolposition. \n- Kiwi er ikke en ideel privatlivsbrowser, men har god understøttelse af tilføjelser. \n- Browseren betales af søgemaskiner for hver søgning, der udføres ved hjælp af Kiwi Browser. Afhængigt af valg af søgemaskine kan anmodninger gå via Kiwibrowser / Kiwisearchservices servere. \n- Google Ads i Kiwi kan bruge placeringsdata til annoncer - men det kan deaktiveres ved at deaktivere Discovery-funktionen. Men dette vil snart ændre sig. Se https://privacy.kiwibrowser.org/ for flere detaljer.</string>
     <string name="main_activity__github_api_limit_exceeded"><u>GitHub-API-grænse overskredet. Prøv igen om en time.</u></string>
     <string name="ok">OK</string>
     <string name="request_installation_permission_dialog__message">FFUpdater mangler tilladelse til at installere og opdatere apps. Du skal give disse tilladelser, ellers vil FFUpdater ikke fungere.</string>
     <string name="settings__b_f__delete_cache_if_install_successful">Slet den downloadede opdatering, hvis installationen lykkes.</string>
     <string name="session_installer__require_user_interaction">Kræver brugerinteraktion. Du skal først opdatere appen via FFUpdater-brugergrænsefladen. Derefter er automatiske baggrundsopdateringer for den respektive app tilladt.</string>
     <string name="installed_application_is_verified">Installeret app er verificeret</string>
-    <string name="kiwi__description">Kiwi Browser er lavet til at surfe på internettet, læse nyheder, se videoer og lytte til musik uden gener.</string>
     <string name="settings__background__download__metered__summary">Anbefales ikke til brugere med begrænset mobildata.</string>
     <string name="settings__background__installation__enabled__summary">Prøv at installere opdateringer uden brugerinteraktion.</string>
     <string name="settings__background__installation__enabled__title">Installer opdatering</string>
@@ -79,7 +77,6 @@
     <string name="notification__install_success__channel_name">%1$s notifikation om vellykket opdatering</string>
     <string name="notification__install_success__text">App er blevet opdateret i baggrunden.</string>
     <string name="installed_version">Installeret: %1$s</string>
-    <string name="kiwi__title">Kiwi Browser Next</string>
     <string name="main_activity__no_unmetered_network">Intet ikke-forbrugsbaseret netværk</string>
     <string name="main_activity__temporary_network_issue"><u>Midlertidigt netværksproblem. Prøv senere.</u></string>
     <string name="request_installation_permission_dialog__abort">Afbryd</string>

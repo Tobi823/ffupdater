@@ -30,7 +30,6 @@
     <string name="download_activity__fetched_url_for_download_successfully">Noudettu metadata kohteesta %1$s</string>
     <string name="download_activity__fetch_url_for_download">Nouda metadata kohteesta %1$s</string>
     <string name="download_activity__downloaded_application_from">Ladattu sovellus kohteesta:</string>
-    <string name="kiwi__title">Kiwi Browser Next</string>
     <string name="settings_activity__label">Asetukset</string>
     <string name="running_downloads_dialog__yes">Kyllä</string>
     <string name="running_downloads_dialog__title">Käynnissä olevat lataukset</string>

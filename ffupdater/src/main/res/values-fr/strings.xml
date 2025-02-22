@@ -149,8 +149,6 @@
     <string name="vivaldi__description">Vivaldi est un navigateur pratique et très respectueux de la vie privée. Il intègre des nombreuses fonctions dont un bloqueur de pubs et traqueurs (désactivé par défaut) et un traducteur de pages. Des outils judicieux de prise de notes et de capture de page vous feront gagner du temps. En option, vous pouvez afficher les onglets comme sur ordinateurs, des thèmes clair et sombre ou personnaliser l’interface. Téléchargez-le et profitez de ses performances.</string>
     <string name="vivaldi__title">Navigateur Vivaldi</string>
     <string name="vivaldi__warning">- Vivaldi n\'est que partiellement open source. \n- Il utilise également le fondement technique de Google Chrome et soutient donc indirectement la position monopolistique du moteur de rendu Chromium.</string>
-    <string name="kiwi__description">Le navigateur Kiwi est fait pour explorer Internet, lire les news, regarder des vidéos et écouter de la musique, sans ennuis.</string>
-    <string name="kiwi__title">Navigateur Kiwi Next</string>
     <string name="iceraven__warning">- Le développeur ne donne aucune garantie de mises à jour de sécurité ou même de stabilité. \n - Le projet prend du temps à fournir des mises à jour de sécurité.</string>
     <string name="settings__b_f__delete_cache_if_install_successful">Supprimer la mise à jour téléchargée si l\'installation réussit.</string>
     <string name="firefox_release__warning">- Une version améliorée de Firefox est aussi disponible sur F-Droid sous le nom de Fennec F-Droid.</string>
@@ -162,7 +160,6 @@
     <string name="install_activity__download_file_failed__crash_text">L\'erreur suivante est survenue pendant le téléchargement. Si cette erreur a lieu fréquemment, n\'hésitez pas à envoyer le rapport d\'erreur sur notabug.org, gitHub ou GitLab.</string>
     <string name="crash_report__explain_text__download_activity_install_file">L\'erreur suivante est survenue pendant l\'installation. Si cette erreur a lieu fréquemment, n\'hésitez pas à envoyer le rapport d\'erreur sur notabug.org, gitHub ou GitLab.</string>
     <string name="download_activity__different_installer_info__text">Si l\'installation échoue souvent, essayez de changer pour l\' \"installateur natif\" dans les paramètres.</string>
-    <string name="kiwi__warning">- Kiwi utilise la fondation technique de Google Chrome et supporte donc la position de monopole du moteur de rendu Chromium. \n- Kiwi n\'est pas un navigateur confidentiel idéal mais dispose d\'un bon support d\'extensions. \n- Le navigateur est payé par des moteurs de recherches pour chaque recherche effectuée avec le navigateur. En fonction du choix du moteur de recherche, vos requêtes peuvent aller vers les serveurs de Kiwibrowser / Kiwisearchservices. \n Les publicités Google Ads dans Kiwi peuvent utiliser la position - mais vous pouvez refuser en désactivant la Fonctionnalité Découverte. Mais cela va bientôt changer. Pour plus d\'informations, visitez https://privacy.kiwibrowser.org/.</string>
     <string name="download_activity__open_folder">Ouvrir le dossier</string>
     <string name="network__dns_provider__title">Paramètres DNS</string>
     <string name="network__custom_doh_server__title">Serveur DNS par HTTPS personnalisé</string>
@@ -246,7 +243,6 @@
     <string name="add_app_activity__title_good_security_browsers">Navigateur bon pour la sécurité</string>
     <string name="notification__uncaught_exception__text">Cliquer pour voir le rapport d\'erreur.</string>
     <string name="app_installer__failed_to_verify_signature_of_installed_app">Échec lors de la vérification des applis installées.</string>
-    <string name="eol_reason__browser_no_longer_maintained">Le navigateur n\'est plus maintenu.</string>
     <string name="background__installation__when_screen_off__summary">Essaie d\'installer les mises à jour uniquement lorsque que l\'écran est éteint.</string>
     <string name="background__installation__when_screen_off__title">Installation uniquement lorsque l\'écran est éteint</string>
     <string name="notification__bg_update_check__unreliable_execution__channel_name">La vérification des mises à jour en arrière-plan n\'a pas été exécuté</string>

@@ -85,9 +85,6 @@
     <string name="app_installer__installed_app_has_invalid_signature">Kurulan uygulama doğrulanmadı</string>
     <string name="installed_application_is_verified">Kurulan uygulama doğrulandı</string>
     <string name="installed_version">Kuruldu: %1$s</string>
-    <string name="kiwi__description">Kiwi Browser, rahatsız edilmeden internette gezinmek, haber okumak, video izlemek ve müzik dinlemek için yapılmıştır.</string>
-    <string name="kiwi__title">Kiwi Browser Next</string>
-    <string name="kiwi__warning">- Kiwi yalnızca kısmen açık kaynaklıdır \n- Kiwi, Google Chrome\'un teknik temelini kullanır ve dolayısıyla Chromium görselleştirme motorunun tekel konumunu dolaylı olarak destekler. \n- Kiwi, gizlilik için uygun bir tarayıcı değildir, ancak iyi bir eklenti desteğine sahiptir. \n- Tarayıcı, Kiwi Browser kullanılarak yapılan her arama için arama motorları tarafından ödeme almaktadır. Arama motoru seçimine bağlı olarak istekler Kiwibrowser / Kiwisearchservices sunucuları üzerinden gidebilir. \n- Kiwi\'deki Google Reklamları, reklamlar için konum verilerini kullanabilir - ancak Keşif özelliğini devre dışı bırakarak bunu devre dışı bırakabilirsiniz. Ancak bu yakında değişecek. Daha fazla ayrıntı için https://privacy.kiwibrowser.org/ adresine bakın.</string>
     <string name="main_activity__github_api_limit_exceeded"><u>GitHub-API sınırı aşıldı. Bir saat içinde tekrar deneyin.</u></string>
     <string name="main_activity__no_unmetered_network">Ölçülmeyen ağ yok</string>
     <string name="main_activity__temporary_network_issue"><u>Geçici ağ sorunu. Daha sonra tekrar deneyin.</u></string>
@@ -231,7 +228,6 @@
     <string name="duckduckgo_android__description">DuckDuckGo uygulaması, tek bir düğmeye basarak en kapsamlı çevrim içi gizlilik korumasını sağlar. Tek bir indirme ile, arama yaparken ve gezinirken sorunsuz koruma sunan yeni bir günlük tarayıcıya sahip olursunuz ve aldığınız e-postalar ve kullandığınız uygulamalar için izleme korumalarına erişirsiniz. Bu korumaların çoğu, birçok yaygın tarayıcıda öntanımlı olarak sunulmaz.</string>
     <string name="privacy_browser__description">Verilerin kötüye kullanılmasını önlemenin tek yolu, en başta toplanmasını önlemektir. Privacy Browser\'ın iki temel hedefi vardır: İnternete gönderilen ve aygıtta depolanan verileri en aza indirmek.</string>
     <string name="main_activity__an_error_occurred"><u>Bir hata oluştu. Daha sonra yeniden deneyin.</u></string>
-    <string name="eol_reason__browser_no_longer_maintained">Tarayıcı artık geliştirilmiyor.</string>
     <string name="background__installation__when_screen_off__summary">Güncellemeleri yalnızca aygıt ekranı kapalıyken kurmayı dene.</string>
     <string name="background__installation__when_screen_off__title">Yalnızca ekran kapalıyken kur</string>
     <string name="notification__bg_update_check__unreliable_execution__title">Arka plan güncelleme denetimi güvenilir bir şekilde gerçekleştirilmiyor</string>

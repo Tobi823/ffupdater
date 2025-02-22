@@ -67,7 +67,6 @@
     <string name="notification__install_success__channel_descr">Κανάλι ειδοποιήσεων για επιτυχημένες ενημερώσεις %1$s.</string>
     <string name="notification__install_success__channel_name">%1$s ειδοποίηση επιτυχούς ενημέρωσης</string>
     <string name="notification__install_success__text">Η εφαρμογή έχει ενημερωθεί στο παρασκήνιο.</string>
-    <string name="kiwi__warning">- Το Kiwi είναι μόνο μερικώς ανοιχτού κώδικα \n- Το Kiwi χρησιμοποιεί την τεχνική βάση του Google Chrome και έτσι υποστηρίζει έμμεσα τη μονοπωλιακή θέση της μηχανής απόδοσης Chromium. \n- Το Kiwi δεν είναι ένα ιδανικό πρόγραμμα περιήγησης απορρήτου, αλλά έχει καλή υποστήριξη πρόσθετων. \n- Το πρόγραμμα περιήγησης πληρώνεται από τις μηχανές αναζήτησης για κάθε αναζήτηση που γίνεται χρησιμοποιώντας το πρόγραμμα περιήγησης Kiwi. Ανάλογα με την επιλογή της μηχανής αναζήτησης, τα αιτήματα μπορεί να υποβάλλονται μέσω διακομιστών Kiwibrowser / Kiwisearchservices. \n- Το Google Ads στο Kiwi μπορεί να χρησιμοποιεί τα δεδομένα τοποθεσίας για διαφημίσεις - αλλά μπορείτε να τα απενεργοποιήσετε απενεργοποιώντας τη λειτουργία Discovery. Αυτό όμως θα αλλάξει σύντομα. Δείτε https://privacy.kiwibrowser.org/ για περισσότερες λεπτομέρειες.</string>
     <string name="request_installation_permission_dialog__grant_permission">Χορήγηση άδειας</string>
     <string name="request_installation_permission_dialog__message">Το FFUpdater δεν έχει το δικαίωμα εγκατάστασης και ενημέρωσης εφαρμογών. Πρέπει να παραχωρήσετε αυτά τα δικαιώματα διαφορετικά το FFUpdater δεν θα λειτουργήσει.</string>
     <string name="running_downloads_dialog__yes">Ναί</string>
@@ -113,8 +112,6 @@
     <string name="app_installer__installed_app_has_invalid_signature">Η εγκατεστημένη εφαρμογή ΔΕΝ έχει επαληθευτεί</string>
     <string name="installed_application_is_verified">Η εγκατεστημένη εφαρμογή έχει επαληθευτεί</string>
     <string name="installed_version">Εγκατεστημένο: %1$s</string>
-    <string name="kiwi__description">Το Kiwi Browser είναι φτιαγμένο για να περιηγείται στο διαδίκτυο, να διαβάζει ειδήσεις, να παρακολουθεί βίντεο και να ακούει μουσική, χωρίς ενοχλήσεις.</string>
-    <string name="kiwi__title">Kiwi Browser Next</string>
     <string name="main_activity__github_api_limit_exceeded"><u>Υπέρβαση του ορίου GitHub-API. Δοκιμάστε ξανά την επόμενη ώρα.</u></string>
     <string name="main_activity__temporary_network_issue"><u>Προσωρινό πρόβλημα δικτύου. Δοκιμάστε ξανά αργότερα.</u></string>
     <string name="ok">Εντάξει</string>
@@ -231,7 +228,6 @@
     <string name="privacy_browser__warning">Το FFUpdater κατεβάζει τα αρχεία από τους διακομιστές F-Droid και επομένως δεν είναι πιο γρήγορο.</string>
     <string name="privacy_browser__description">Ο μόνος τρόπος για να αποφευχθεί η κατάχρηση δεδομένων είναι να αποτραπεί εξαρχής η συλλογή τους. Το Privacy Browser έχει δύο πρωταρχικούς στόχους: Ελαχιστοποίηση των δεδομένων που αποστέλλονται στο διαδίκτυο και ελαχιστοποίηση των δεδομένων που είναι αποθηκευμένα στη συσκευή.</string>
     <string name="main_activity__an_error_occurred"><u>Παρουσιάστηκε σφάλμα. Δοκιμάστε ξανά αργότερα.</u></string>
-    <string name="eol_reason__browser_no_longer_maintained">Το πρόγραμμα περιήγησης δεν διατηρείται πλέον.</string>
     <string name="background__installation__when_screen_off__title">Εγκατάσταση μόνο όταν η οθόνη είναι απενεργοποιημένη</string>
     <string name="notification__bg_update_check__unreliable_execution__title">Ο έλεγχος ενημέρωσης παρασκηνίου δεν εκτελείται αξιόπιστα</string>
     <string name="notification__bg_update_check__unreliable_execution__channel_name">Ο έλεγχος ενημερώσεων παρασκηνίου δεν εκτελέστηκε</string>

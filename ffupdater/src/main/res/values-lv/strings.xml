@@ -58,8 +58,6 @@
     <string name="app_installer__installed_app_has_invalid_signature">Uzstādītā lietotne NAV pārbaudīta</string>
     <string name="installed_application_is_verified">Uzstādītā lietotne ir pārbaudīta</string>
     <string name="installed_version">Uzstādīta: %1$s</string>
-    <string name="kiwi__description">Kiwi pārlūks ir paredzēts interneta sērfošanai, ziņu lasīšanai, video skatīšanai un mūzikas klausīšanai bez kaitinošiem elementiem.</string>
-    <string name="kiwi__title">Kiwi Browser Next</string>
     <string name="main_activity__github_api_limit_exceeded"><u>Pārsniegts GitHub-API ierobežojums. Mēģiniet vēlreiz pēc stundas.</u></string>
     <string name="main_activity__no_unmetered_network">Nav bezmaksas tīkla</string>
     <string name="app_description">Konfidencialitātes orientēta pārlūku atjauninātājs</string>
@@ -147,7 +145,6 @@
     <string name="settings__theme_system_default">Izmantot sistēmas noklusējuma iestatījumus</string>
     <string name="background__separate_notification_channels__title">Dažādi paziņojumu kanāli</string>
     <string name="main_activity__app_was_signed_by_different_certificate">Šī lietotne ir parakstīta ar citu sertifikātu, un to nevar atjaunināt, izmantojot FFUpdater.</string>
-    <string name="eol_reason__browser_no_longer_maintained">Pārlūks vairs netiek uzturēts.</string>
     <string name="settings__foreground__download__metered__title">Lejupielādēt atjauninājumus maksas tīklos</string>
     <string name="settings__background_category__title">Fonā</string>
     <string name="settings__foreground__theme_preference__summary">Izvēlieties starp gaišo un tumšo motīvu</string>
@@ -255,7 +252,6 @@
     <string name="session_installer__status_failure">Darbība kopumā neizdevās. Sistēma vienmēr centīsies sniegt precīzu kļūmes iemeslu, taču tas notiek tikai dažos retos gadījumos.</string>
     <string name="session_installer__status_failure_aborted">Darbība neizdevās, jo tā tika aktīvi pārtraukta. Iemesls, lietotājs aktīvi noraidīja pieprasītās atļaujas vai sesija tika pārtraukta.</string>
     <string name="notification__uncaught_exception__channel_name">Avārijas paziņojumi</string>
-    <string name="kiwi__warning">- Kiwi ir tikai daļēji atvērtā koda lietotne.\n- Kiwi izmanto Google Chrome tehnisko bāzi un tādējādi netieši atbalsta Chromium renderēšanas dzinēja monopolstāvokli.\n- Kiwi nav ideāls konfidencialitātes pārlūks, taču tam ir labs papildinājumu atbalsts.\n- Pārlūks gūst peļņu no meklētājprogrammām par katru meklēšanas pieprasījumu, kas veikta Kiwi pārlūkā. Atkarībā no izvēlētās meklētājprogrammas meklēšanas pieprasījumi var tikt nosūtīti caur Kiwibrowser / Kiwisearchservices serveriem.\n- Google Ads Kiwi pārlūkā var izmantot atrašanās vietas datus, lai rādītu atlasītas reklāmas, taču to var novērst, atspējojot atklāšanas funkciju (Discovery feature) iestatījumos. Taču drīz tas var mainīties. Plašāka informācija pieejama https://privacy.kiwibrowser.org vietnē.</string>
     <string name="vivaldi__description">Atklājiet pārsteidzoši ātru interneta pārlūku! Vivaldi ir jauns, bezmaksas un privāts tīmekļa pārlūks, kas izstrādāts, paturot prātā tā elastīgo pielāgojamību. Tas ir aprīkots ar noderīgām funkcijām, tostarp iebūvētu AdBlocker (uznirstošo logu bloķētāju), izsekošanas aizsardzību un privātu vietņu tulkotāju. Pārlūka iespējas, piemēram, pilnvērtīgas darbvirsmas stila cilnes, tumši/gaiši motīvi un izkārtojuma pielāgojamība, palīdz konfigurēt pārlūku pēc jūsu patikas un vēlmēm.</string>
     <string name="duckduckgo_android__description">DuckDuckGo lietotne nodrošina visplašāko tiešsaistes konfidencialitātes aizsardzību vienas pogas nospiešanas attālumā. Tikai ar vienu lejupielādi jūs iegūstat jaunu ikdienas pārlūku, kas piedāvā nevainojamu aizsardzību meklēšanas un pārlūkošanas laikā, kā arī piekļuvi saņemto e-pasta ziņojumu un izmantoto lietotņu izsekošanas aizsardzībai. Daudzi no šiem aizsardzības līdzekļiem pēc noklusējuma netiek piedāvāti lielākajā daļā populārāko pārlūku.</string>
     <string name="infobox">Šis ir konfidencialitātes draudzīga pārlūku atjauninātājs. Lai uzstādītu jaunu pārluka lietotni, noklikšķiniet uz telefona lejupielādes ikonas. Velciet uz leju, lai veiktu atjauninājuma pārbaudi. Pēc noklusējuma lietotne periodiski fonā veiks atjauninājuma pārbaudi. Ja būs pieejami atjauninājumi tie tiks lejupielādēti un uzstādīti. Noklikšķiniet uz zobrata, lai pielāgotu lietotnes uzvedības iestatījumus.\n\nPēdējā veiksmīgā atjauninājumu fona pārbaude notika %1$s</string>

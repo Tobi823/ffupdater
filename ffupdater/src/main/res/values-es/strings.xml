@@ -81,9 +81,6 @@
     <string name="app_installer__installed_app_has_invalid_signature">La aplicación instalada NO está verificada</string>
     <string name="installed_application_is_verified">La aplicación instalada está verificada</string>
     <string name="installed_version">Instalado: %1$s</string>
-    <string name="kiwi__description">Kiwi Browser está hecho para navegar por internet, leer noticias, ver videos y escuchar música, sin molestias.</string>
-    <string name="kiwi__title">Navegador Kiwi Next</string>
-    <string name="kiwi__warning">- Kiwi es sólo parcialmente de código abierto \n- Kiwi utiliza la base técnica de Google Chrome y por lo tanto apoya indirectamente la posición de monopolio del motor de renderizado de cromo. \n- Kiwi no es un navegador de privacidad ideal pero tiene un buen soporte para complementos. \n- El navegador está recibiendo el pago de los motores de búsqueda por cada búsqueda realizada usando Kiwi Browser. Dependiendo de la elección del motor de búsqueda, las peticiones pueden ir a través de los servidores Kiwibrowser / Kiwisearchservices. \n- Google Ads en kiwi puede usar los datos de ubicación para los anuncios, pero puede desactivarlos desactivando la función Discovery. Pero esto pronto cambiará. Véase https://privacy.kiwibrowser.org/ para más detalles.</string>
     <string name="main_activity__github_api_limit_exceeded"><u>Límite del API de GitHub superado. Vuelva a intentar en la próxima hora.</u></string>
     <string name="main_activity__no_unmetered_network">No hay ninguna red sin límite en el uso de datos</string>
     <string name="main_activity__temporary_network_issue"><u>Problema temporal de red. Inténtelo más tarde.</u></string>
@@ -231,7 +228,6 @@
     <string name="duckduckgo_android__description">La aplicación DuckDuckGo proporciona la protección de privacidad en línea más completa con sólo pulsar un botón. Con una sola descarga, obtienes un nuevo navegador de uso diario que ofrece protección sin fisuras mientras buscas y navegas, y acceso a protecciones de rastreo para los correos electrónicos que recibes y las aplicaciones que utilizas. Muchas de estas protecciones no se ofrecen por defecto en los navegadores más populares.</string>
     <string name="privacy_browser__description">La única forma de evitar que se abuse de los datos es impedir que se recojan en primer lugar. Privacy Browser tiene dos objetivos principales: Minimizar los datos que se envían a Internet y minimizar los datos que se almacenan en el dispositivo.</string>
     <string name="main_activity__an_error_occurred"><u>Se ha producido un error. Vuelve a intentarlo más tarde.</u></string>
-    <string name="eol_reason__browser_no_longer_maintained">El navegador ya no se actualiza.</string>
     <string name="background__installation__when_screen_off__summary">Intenta instalar las actualizaciones solo cuando la pantalla del dispositivo esté apagada.</string>
     <string name="background__installation__when_screen_off__title">Instalar solo cuando la pantalla está apagada</string>
     <string name="notification__bg_update_check__unreliable_execution__channel_name">La comprobación de las actualizaciones en segundo plano no se ejecutó</string>

@@ -173,8 +173,6 @@
     <string name="fennecfdroid__title">Fennec F-Droid</string>
     <string name="fennecfdroid__warning">FFUpdater pobiera pliki z serwerów F-Droid i dlatego nie jest szybszy.</string>
     <string name="iceraven__warning">- Ten deweloper nie daje żadnych gwarancji bezpieczeństwa, aktualizacji, ani nawet stabilności. \n- Ten projekt wydaje aktualizacje zabezpieczeń wolniej niż zwykle.</string>
-    <string name="kiwi__title">Kiwi Next</string>
-    <string name="kiwi__description">Przeglądarka Kiwi jest stworzona do przeglądania internetu, czytania wiadomości, oglądania filmów i słuchania muzyki, bez zbędnych irytacji.</string>
     <string name="install_activity__download_file_failed__crash_text">Ten błąd wystąpił podczas pobierania aplikacji. Jeśli ten błąd występuje często, nie krępuj się zgłosić go na notabug.org, GitHub lub GitLab.</string>
     <string name="download_activity__file_uri_exposed_toast">Nie można udostępnić ścieżki pliku innym aplikacjom. Otwórz folder samodzielnie za pomocą preferowanego menedżera plików.</string>
     <string name="notification__eol_apps__title">Zainstalowane nieaktualne aplikacje</string>
@@ -186,7 +184,6 @@
     <string name="settings__background__update_check__when_device_idle__summary">Włącz to, jeśli nie chcesz, aby twoje aplikacje były ponownie uruchamiane przez aktualizację w tle. Wyłącz to, jeśli chcesz mieć bardziej przewidywalny harmonogram sprawdzania aktualizacji w tle.</string>
     <string name="fennecfdroid__description">Fennec F-Droid jest oparty na najnowszym wydaniu Firefoksa (o nazwie kodowej Fenix). Ma usunięte zastrzeżone bity i telemetrię, ale nadal łączy się z różnymi usługami Mozilli i Google, które mogą śledzić użytkowników.</string>
     <string name="orbot__description">Orbot to darmowa aplikacja proxy, która umożliwia innym aplikacjom bezpieczniejsze korzystanie z internetu. Orbot wykorzystuje Tor do szyfrowania ruchu internetowego, a następnie ukrywa go, odbijając się od szeregu komputerów na całym świecie. Tor to darmowe oprogramowanie i otwarta sieć, która pomaga bronić się przed formą nadzoru sieciowego, która zagraża wolności osobistej i prywatności, poufnym działaniom i relacjom biznesowym oraz bezpieczeństwu państwa, znaną jako analiza ruchu.</string>
-    <string name="kiwi__warning">- Kiwi jest tylko częściowo oprogramowaniem open-source \n- Kiwi korzysta z technicznych fundamentów Google Chrome, a więc pośrednio wspiera monopolistyczną pozycję silnika renderującego Chromium. \n- Kiwi nie jest idealną przeglądarką do ochrony prywatności, ale ma dobre wsparcie dla dodatków. \n- Przeglądarka otrzymuje pieniądze od wyszukiwarek za każde wyszukiwanie wykonane przy użyciu Kiwi. W zależności od wyboru wyszukiwarki, zapytania mogą przechodzić przez serwery Kiwibrowser / Kiwisearchservices. \n- Google Ads w Kiwi może używać danych o lokalizacji do reklam - ale można to wyłączyć, wyłączając funkcję Discovery. Ale to się wkrótce zmieni. Zobacz https://privacy.kiwibrowser.org/, aby uzyskać więcej szczegółów.</string>
     <string name="network__dns_provider__title">Ustawienia DNS</string>
     <string name="network__custom_doh_server__title">Własny DNS przez serwer HTTPS</string>
     <string name="settings__network_category__title">Sieć</string>
@@ -231,7 +228,6 @@
     <string name="firefox_focus_beta__description">Używaj Firefox Focus do wszystkiego, co chcesz mieć oddzielone od głównej przeglądarki - do wszystkich chwil, kiedy chcesz wejść, wyjść i zapomnieć o tym. Bez kart, bez zamieszania, bez kłopotów. Blokuje także internetowe trackery. Jedno stuknięcie i historia przeglądania zostanie całkowicie wyczyszczona. \n \nFirefox Focus to idealna przeglądarka internetowa, w której możesz wejść/wyjść, wyszukać i wyczyścić wszystko.</string>
     <string name="duckduckgo_android__description">Aplikacja DuckDuckGo zapewnia najbardziej wszechstronną ochronę prywatności online za naciśnięciem jednego przycisku. Za jednym pobraniem otrzymujesz nową codzienną przeglądarkę, która oferuje bezproblemową ochronę podczas wyszukiwania i przeglądania, a także dostęp do zabezpieczeń przed śledzeniem wiadomości e-mail, które otrzymujesz i aplikacji, z których korzystasz. Wiele z tych zabezpieczeń nie jest domyślnie oferowanych w większości popularnych przeglądarek.</string>
     <string name="main_activity__an_error_occurred"><u>Wystąpił błąd. Spróbuj ponownie później.</u></string>
-    <string name="eol_reason__browser_no_longer_maintained">Ta przeglądarka nie jest już rozwijana.</string>
     <string name="notification__uncaught_exception__channel_name">Powiadomienie o awarii</string>
     <string name="add_app_activity__title_based_on_firefox">Oparte na Firefoxie</string>
     <string name="notification__uncaught_exception__title">Awaria FFUpdater</string>

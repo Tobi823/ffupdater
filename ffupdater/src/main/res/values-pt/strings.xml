@@ -85,9 +85,6 @@
     <string name="app_installer__installed_app_has_invalid_signature">O aplicativo instalado NÃO é verificado</string>
     <string name="installed_application_is_verified">A aplicação instalada é verificada</string>
     <string name="installed_version">Instalado: %1$s</string>
-    <string name="kiwi__description">O Kiwi Browser é feito para navegar na Internet, ler notícias, ver vídeos e ouvir música, sem aborrecimentos.</string>
-    <string name="kiwi__title">Kiwi Browser Next</string>
-    <string name="kiwi__warning">- Kiwi utiliza os fundamentos técnicos do Google Chrome e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium. \n- Kiwi não é um navegador de privacidade ideal, mas tem um bom suporte adicional. \n- O navegador está a ser pago pelos motores de busca por cada pesquisa feita utilizando o Kiwi Browser. Dependendo da escolha do motor de busca, os pedidos podem ser feitos através dos servidores Kiwibrowser / Kiwisearchservices. \n- Os anúncios Google no Kiwi podem utilizar os dados de localização para anúncios - mas pode desativá-los desativando a funcionalidade de Descoberta. Mas isto irá mudar em breve. Ver https://privacy.kiwibrowser.org/ para mais detalhes.</string>
     <string name="main_activity__github_api_limit_exceeded"><u>Limite de GitHub-API excedido. Tentativa na próxima hora.</u></string>
     <string name="main_activity__no_unmetered_network">Sem rede ilimitada</string>
     <string name="main_activity__temporary_network_issue"><u>Entrada de rede temporária. Tenta mais tarde.</u></string>
@@ -240,7 +237,6 @@
     <string name="add_app_activity__title_good_security_browsers">Bom navegador de segurança</string>
     <string name="notification__uncaught_exception__title">O FFUpdater falhou</string>
     <string name="notification__uncaught_exception__text">Clique para ver o relatório de erro.</string>
-    <string name="eol_reason__browser_no_longer_maintained">O navegador já não é atualizado.</string>
     <string name="notification__bg_update_check__unreliable_execution__channel_name">Verificação de atualização em segundo plano não executada</string>
     <string name="notification__bg_update_check__unreliable_execution__channel_description">Aviso sobre a execução não fiável da verificação da atualização em segundo plano</string>
     <string name="notification__bg_update_check__unreliable_execution__title">A verificação da atualização em segundo plano não é executada de forma fiável</string>

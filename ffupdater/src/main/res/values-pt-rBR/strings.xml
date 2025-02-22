@@ -80,9 +80,6 @@
     <string name="app_installer__installed_app_has_invalid_signature">O navegador instalado NÃO foi verificado</string>
     <string name="installed_application_is_verified">O navegador instalado foi verificado</string>
     <string name="installed_version">Instalado: %1$s</string>
-    <string name="kiwi__description">O Navegador Kiwi é feito para navegar na internet, ler notícias, assistir vídeos e ouvir música, sem incômodos.</string>
-    <string name="kiwi__title">Navegador Kiwi Next</string>
-    <string name="kiwi__warning">- O Kiwi só é código aberto parcialmente\n- O Kiwi usa os fundamentos técnicos do Google Chrome e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium.\n- O Kiwi não é um navegador de privacidade ideal mas tem um bom suporte a extensões.\n- O navegador está sendo pago pelos motores de busca por cada pesquisa feita utilizando o Kiwi Browser. Dependendo da escolha do motor de busca, os pedidos podem ser feitos através dos servidores Kiwibrowser / Kiwisearchservices.\n- O Google Ads no Kiwi pode usar os dados de localização para anúncios - mas você pode desativá-los desativando a função Descoberta. Mas isso mudará em breve. Veja https://privacy.kiwibrowser.org/ para mais detalhes.</string>
     <string name="main_activity__github_api_limit_exceeded"><u>O limite de consultas do API do GitHub foi excedido. Tente outra vez mais tarde.</u></string>
     <string name="main_activity__no_unmetered_network">Nenhuma rede não contatada</string>
     <string name="main_activity__temporary_network_issue"><u>Problema temporário da rede. Tente outra vez mais tarde.</u></string>
@@ -233,7 +230,6 @@
     <string name="network__proxy__dialog_message">Se você quer usar um proxy SOCKS ou HTTP, insira os detalhes da conexão aqui. Use um desses formatos:\n\nSOCKS/HTTP;ip/domínio;porta\n\nSOCKS/HTTP;ip/domínio;porta;usuário;senha\n\nPor exemplo: SOCKS;1.2.3.4;22 ou HTTP;5.6.7.8;80;usuario1;pw123 ou HTTP;p.webshare.io;80;u;p. Deixe em branco se você quer usar a configuração de proxy do sistema.\n\nLimitação: Se você mudar \'Configurações de DNS\' nas configurações para um servidor DNS sobre HTTPS, você vai ter que entrar o domínio do servidor proxy. Os IPs não irão funcionar.</string>
     <string name="device__prefer_32bit_apks__summary">Habilite se o seu dispositivo costuma ser lento na memória. FFUpdater irá usar APKs de 32-bits, que geralmente precisa de pouca memória.</string>
     <string name="installer__method__root">Instalador Root: Atualize os aplicativos sem o diálogo de confirmação. Isso requer um smartphone rooteado.</string>
-    <string name="eol_reason__browser_no_longer_maintained">O navegador não é mais atualizado.</string>
     <string name="firefox_focus_beta__title">Firefox Focus Beta</string>
     <string name="foreground__hide_apps_signed_by_different_certificate__title">Ocultar aplicativos que foram assinados com um certificado diferente.</string>
     <string name="privacy_browser__title">Navegador Privado</string>

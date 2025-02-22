@@ -43,7 +43,6 @@
     <string name="notification__install_error__channel_name">%1$s अपडेट विफलता सूचना</string>
     <string name="notification__install_success__channel_name">%1$s सफल अपडेट सूचना</string>
     <string name="installed_application_is_verified">इंस्टॉल किया गया एप्लिकेशन सत्यापित है</string>
-    <string name="kiwi__title">Kiwi Browser Next</string>
     <string name="request_installation_permission_dialog__abort">निरस्त करें</string>
     <string name="ok">ठीक है</string>
     <string name="main_activity__an_error_occurred"><u>एक त्रुटि उत्पन्न हुई. बाद में पुनः प्रयास करें.</u></string>
@@ -110,7 +109,6 @@
     <string name="main_activity__app_was_signed_by_different_certificate">इस ऐप पर एक अलग प्रमाणपत्र के साथ हस्ताक्षर किया गया था और इसे FFUpdater के साथ अपडेट नहीं किया जा सकता।</string>
     <string name="firefox_focus_beta__title">Firefox Focus Beta</string>
     <string name="background__installation__when_screen_off__title">स्क्रीन बंद होने पर ही इंस्टॉल करें</string>
-    <string name="eol_reason__browser_no_longer_maintained">ब्राउज़र अब अनुरक्षित नहीं है।</string>
     <string name="privacy_browser__warning">FFUpdater F-Droid सर्वर से फ़ाइलें डाउनलोड करता है और इसलिए तेज़ नहीं है।</string>
     <string name="notification__bg_update_check__unreliable_execution__channel_name">पृष्ठभूमि अपडेट जाँच निष्पादित नहीं हुई</string>
     <string name="add_app_activity__title_good_security_browsers">अच्छा सुरक्षा ब्राउज़र</string>
@@ -208,7 +206,6 @@
     <string name="running_downloads_dialog__yes">हाँ</string>
     <string name="running_downloads_dialog__negative">नहीं, इसे डाउनलोड न करें</string>
     <string name="request_installation_permission_dialog__grant_permission">अनुमति प्रदान करें</string>
-    <string name="kiwi__description">Kiwi ब्राउज़र बिना किसी परेशानी के इंटरनेट ब्राउज़ करने, समाचार पढ़ने, वीडियो देखने और संगीत सुनने के लिए बनाया गया है।</string>
     <string name="installed_version">इंस्टॉल किया गया: %1$s</string>
     <string name="download_activity__you_can_now_close_this_window">अब आप इस विंडो को बंद कर सकते हैं</string>
     <string name="app_installer__installed_app_has_invalid_signature">इंस्टॉल किया गया ऐप सत्यापित नहीं है</string>
@@ -245,7 +242,6 @@
     <string name="download_activity__different_installer_info__text">यदि इंस्टॉलेशन बार-बार विफल हो जाता है, तो सेटिंग्स में \'नेटिव इंस्टॉलर\' पर स्विच करने का प्रयास करें।</string>
     <string name="download_activity__open_cache_explanation">आप APK फ़ाइल को अधिक निःशुल्क संग्रहण वाले स्थान पर कॉपी करने के लिए कैश फ़ोल्डर खोल सकते हैं। दुर्भाग्य से, Android 11+ पर केवल कुछ फ़ाइल प्रबंधक ही Android/डेटा के भीतर इस फ़ोल्डर तक पहुंच सकते हैं।</string>
     <string name="download_activity__too_low_memory_description">आपके डिवाइस में स्टोरेज कम है (केवल %1$d MB निःशुल्क)। इससे डाउनलोड या इंस्टॉलेशन विफल हो जाएगा।</string>
-    <string name="kiwi__warning">- Kiwi केवल आंशिक ओपन-सोर्स है \n- Kiwi Google Chrome की तकनीकी नींव का उपयोग करता है और इस प्रकार अप्रत्यक्ष रूप से Chromium रेंडर इंजन की एकाधिकार स्थिति का समर्थन करता है। \n- Kiwi एक आदर्श गोपनीयता ब्राउज़र नहीं है लेकिन इसमें एक अच्छा ऐडऑन समर्थन है। \n- Kiwi ब्राउज़र का उपयोग करके की गई प्रत्येक खोज के लिए ब्राउज़र को खोज इंजन द्वारा भुगतान किया जा रहा है। खोज इंजन की पसंद के आधार पर, अनुरोध Kiwibrowser/Kiwisearchservices सर्वर के माध्यम से जा सकते हैं। \n- Kiwi में Google विज्ञापन विज्ञापनों के लिए स्थान डेटा का उपयोग कर सकता है - लेकिन आप डिस्कवरी सुविधा को अक्षम करके इसे अक्षम कर सकते हैं। लेकिन यह जल्द ही बदल जाएगा. अधिक जानकारी के लिए https://privacy.kiwibrowser.org/ देखें।</string>
     <string name="request_installation_permission_dialog__message">FFUpdater में ऐप्स इंस्टॉल और अपडेट करने की अनुमति नहीं है। आपको ये अनुमतियाँ देनी होंगी अन्यथा FFUpdater काम नहीं करेगा।</string>
     <string name="session_installer__require_user_interaction">उपयोगकर्ता सहभागिता की आवश्यकता है. आपको सबसे पहले ऐप को FFUpdater यूजर इंटरफेस के जरिए अपडेट करना होगा। केवल तभी संबंधित ऐप के लिए साइलेंट बैकग्राउंड अपडेट की अनुमति दी जाती है।</string>
     <string name="session_installer__status_failure">ऑपरेशन सामान्य तरीके से विफल रहा. सिस्टम हमेशा अधिक विशिष्ट विफलता कारण प्रदान करने का प्रयास करेगा, लेकिन कुछ दुर्लभ मामलों में यह दिया जा सकता है।</string>

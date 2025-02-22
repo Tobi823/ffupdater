@@ -155,14 +155,11 @@
     <string name="vivaldi__warning">- Vivaldi je pouze částečně open source. \n- Používá také technický základ Google Chrome, a tak nepřímo podporuje monopolní renderovací jádro Chromium.</string>
     <string name="crash_report__explain_text__download_activity_install_file">K této chybě došlo při instalaci. Pokud k této chybě dochází často, neváhejte odeslat hlášení o chybě na notabug.org, GitHub nebo GitLab.</string>
     <string name="install_activity__download_file_failed__crash_text">Při stahování došlo k následující chybě. Pokud k této chybě dochází často, neváhejte odeslat hlášení o chybě na notabug.org, GitHub nebo GitLab.</string>
-    <string name="kiwi__description">Prohlížeč Kiwi je navržen tak, abyste mohli nerušeně surfovat po webu, číst zprávy, sledovat videa a poslouchat hudbu.</string>
-    <string name="kiwi__title">Prohlížeč Kiwi Next</string>
     <string name="notification__eol_apps__channel_name">Oznámení o zastaralých aplikacích</string>
     <string name="iceraven__warning">- Správce neposkytuje žádnou záruku bezpečnosti, aktualizací nebo dokonce stability. \n- Poskytování aktualizací zabezpečení projektu trvá déle než obvykle.</string>
     <string name="notification__eol_apps__channel_description">Kanál upozornění na zastaralé aplikace.</string>
     <string name="notification__eol_apps__text">Máte zastaralé aplikace, které by se již neměli dál používat: %1$s</string>
     <string name="notification__eol_apps__title">Jsou nainstalované zastaralé aplikace</string>
-    <string name="kiwi__warning">- Kiwi používá technický základ Google Chrome, a tak nepřímo podporuje monopolní renderovací jádro Chromium. \n- Kiwi není ideální prohlížeč pro ochranu soukromí, ale má dobrou podporu doplňků. \n- Prohlížeč dostává od vyhledávačů peníze za každé vyhledávání provedené pomocí prohlížeče Kiwi. V závislosti na výběru vyhledávače mohou požadavky procházet přes servery Kiwibrowser / Kiwisearchservices. \n- Reklamy Google v Kiwi mohou používat údaje o vaší poloze pro reklamy, ale můžete je však zakázat vypnutím funkce Discovery. To se však brzy změní. Další podrobnosti naleznete na adrese https://privacy.kiwibrowser.org/.</string>
     <string name="download_activity__different_installer_info__text">Pokud instalace často selhává, zkuste v nastavení zapnout \"nativní instalátor\".</string>
     <string name="tor_browser__title">Tor Browser</string>
     <string name="tor_browser__description">Tor Browser pro Android je jediný oficiální mobilní prohlížeč podporovaný organizací Tor Project, vývojáři nejsilnějšího nástroje pro ochranu soukromí a svobody internetu na světě.</string>
@@ -231,7 +228,6 @@
     <string name="privacy_browser__warning">FFUpdater stahuje soubory ze F-Droid serverů, a proto není rychlejší.</string>
     <string name="privacy_browser__description">Jediný způsob, jak zabránit únikům dat, je v první řadě zabránit jejich shromažďování. Privacy Browser má dva hlavní cíle: Minimalizovat množství dat odesílaných na internet a minimalizovat množství dat uložených v zařízení.</string>
     <string name="main_activity__an_error_occurred"><u>Došlo k neočekávané chybě. Zkuste to znovu později.</u></string>
-    <string name="eol_reason__browser_no_longer_maintained">Prohlížeč není nadále spravován.</string>
     <string name="crash_report__report_is_copied_to_clipboard">Chybové hlášeni bylo zkopírováno do schránky</string>
     <string name="notification__bg_update_check__unreliable_execution__channel_description">Upozornění na nespolehlivé fungování kontroly aktualizací na pozadí</string>
     <string name="notification__bg_update_check__unreliable_execution__channel_name">Kontrola aktualizací na pozadí nebyla provedena</string>

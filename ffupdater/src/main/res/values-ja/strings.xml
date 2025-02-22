@@ -180,17 +180,14 @@
     <string name="settings__network__trust_user_cas__title">ユーザーが追加した CA を信頼</string>
     <string name="chromium__description">Chromium は、すべてのユーザーがより安全かつ高速に、そして安定してウェブを体験できることを目的としたオープンソースのブラウザプロジェクトです。このサイトでは、設計ドキュメント、アーキテクチャの概要、テスト情報など、Chromium ソースコードのビルドと作業を学ぶのに役立つ情報を紹介しています。</string>
     <string name="settings__background__update_check__when_device_idle__unsupported">このオプションは、Android 6.0 Marshmallow 以降でのみ使用できます。</string>
-    <string name="kiwi__description">Kiwi Browser は、煩わしさを感じることなくインターネットを閲覧したり、ニュースを読んだり、ビデオを見たり、音楽を聴いたりできるように作られています。</string>
     <string name="settings__installer_category__title">インストーラー</string>
     <string name="settings__b_f__delete_cache_if_install_failed">インストールに失敗したとき、ダウンロードした更新を削除</string>
     <string name="crash_report_activity__label">クラッシュレポーター</string>
     <string name="add_app_activity__title_from_mozilla">Mozilla から</string>
     <string name="add_app_activity__label">新しいアプリの追加</string>
-    <string name="kiwi__warning">- Kiwi は部分的なオープンソースに過ぎません。 \n- Kiwi は Google Chrome と同じ技術的基盤を使用しているため、Chromium レンダリングエンジンの独占的地位を間接的に支えることになります。 \n- Kiwi は理想的なプライバシーブラウザではありませんが、拡張機能に対応しています。 \n- Kiwi Browser で検索を行うたびに、検索エンジンからの報酬を受け取ります。検索エンジンの選択によっては、リクエストが Kiwibrowser / Kiwisearchservices のサーバーを経由する場合があります。 \n- Kiwi の Google Ads は広告に位置情報を使用されることがありますが、検出機能を無効にできます。ただし、まもなく変更される予定です。詳細は https://privacy.kiwibrowser.org/ を参照してください。</string>
     <string name="orbot__description">Orbot は、他のアプリがより安全にインターネットを使用できるようにする無料のプロキシーアプリです。Orbot は Tor を使用してインターネットトラフィックを暗号化し、世界中のコンピュータを経由してこれを隠蔽します。Tor は、個人の自由とプライバシー、機密性の高いビジネス活動や対人関係、並びにトラフィック分析と呼ばれるセキュリティを脅かすネットワーク監視の形態から防御するのに役立つフリーソフトウェア及びオープンネットワークです。</string>
     <string name="settings__background__update_check__when_device_idle__summary">バックグラウンド更新によってアプリを再起動させたくない場合は、これを有効にしてください。バックグラウンドの更新確認のスケジュールをより予測可能にしたい場合は無効にしてください。</string>
     <string name="settings__background__update_check__when_device_idle__title">端末がアイドル中のみ更新を確認</string>
-    <string name="kiwi__title">Kiwi Browser Next</string>
     <string name="chromium__title">Chromium</string>
     <string name="fennecfdroid__title">Fennec F-Droid</string>
     <string name="fennecfdroid__description">Fennec F-Droid は最新の Firefox (コードネーム Fenix) を基にしたブラウザーです。独自の部分とテレメトリーが削除されていますが、ユーザーを追跡する複数の Mozilla と Google のサービスに接続されます。</string>
@@ -229,7 +226,6 @@
     <string name="orbot__title">Orbot: Tor for Android</string>
     <string name="firefox_focus_beta__description">メインブラウザーと分離したいことは Firefox Focus で — 閲覧履歴は、閲覧終了と同時に削除されます。タブさえない、シンプルなブラウザーです。オンライントラッカーをブロックします。1 回のタップで閲覧履歴が完全に削除されます。 \n \nFirefox Focus は、完璧な「検索と忘却」で、あなたに干渉しないウェブブラウザーです。</string>
     <string name="privacy_browser__description">データの悪用を防ぐ唯一の方法は、そもそもデータが収集されないようにすることです。Privacy Browser の 2 つの主な目標はインターネットに送信されるデータを最小限に抑えることと、デバイスに保存されるデータを最小限に抑えることです。</string>
-    <string name="eol_reason__browser_no_longer_maintained">長い間、メンテナンスされていないブラウザーです。</string>
     <string name="duckduckgo_android__title">DuckDuckGo Private Browser</string>
     <string name="privacy_browser__title">Privacy Browser</string>
     <string name="background__installation__when_screen_off__summary">端末の画面が消灯中のみインストールを試みます。</string>

@@ -85,9 +85,6 @@
     <string name="app_installer__installed_app_has_invalid_signature">L\'app installata NON è verificata</string>
     <string name="installed_application_is_verified">L\'applicazione installata è verificata</string>
     <string name="installed_version">Installata: %1$s</string>
-    <string name="kiwi__description">Kiwi Browser è fatto per navigare in internet, leggere notizie, guardare video e ascoltare musica, senza fastidi.</string>
-    <string name="kiwi__title">Kiwi Browser Next</string>
-    <string name="kiwi__warning">- Kiwi è solo parzialmente open-source \n- Kiwi usa la base tecnica di Google Chrome e quindi supporta indirettamente la posizione di monopolio del motore di rendering Chromium. \n- Kiwi non è un browser per la privacy ideale, ma ha un buon supporto per componenti aggiuntivi. \n- Il browser viene pagato dai motori di ricerca per ogni ricerca effettuata utilizzando Kiwi Browser. A seconda della scelta del motore di ricerca, le richieste possono passare tramite i server Kiwibrowser / Kiwisearchservices. \n- Google Ads in Kiwi può utilizzare i dati sulla posizione per gli annunci - ma puoi disabilitarlo disattivando la funzione Discovery. Ma questo cambierà presto. Vedi https://privacy.kiwibrowser.org/ per più dettagli.</string>
     <string name="main_activity__github_api_limit_exceeded"><u>Limite di GitHub-API superato. Si prega di provare di nuovo il download tra un\'ora.</u></string>
     <string name="main_activity__no_unmetered_network">Nessuna rete non misurata</string>
     <string name="main_activity__temporary_network_issue"><u>Problema di rete temporaneo. Riprovare più tardi.</u></string>
@@ -231,7 +228,6 @@
     <string name="tor_browser_alpha__description">Tor Browser è l\'unico browser mobile ufficiale supportato da Tor Project, sviluppatori del più potente strumento al mondo per la privacy e la libertà online. \n \nTor Browser sarà SEMPRE gratuito, ma le donazioni lo rendono possibile. Il Tor Project è un\'associazione 501©(3) senza scopo di lucro con sede negli Stati Uniti. Considera di dare un contributo oggi stesso. Ogni dono fa la differenza: https://donate.torproject.org. \n \nPer sapere come segnalare i bug e fornire feedback, visita il sito: https://support.torproject.org/misc/bug-or-feedback/</string>
     <string name="duckduckgo_android__description">L\'app DuckDuckGo offre la più completa protezione della privacy online con la semplice pressione di un pulsante. Con un solo download, si ottiene un nuovo browser quotidiano che offre una protezione continua durante la ricerca e la navigazione e l\'accesso alle protezioni per il tracciamento delle e-mail ricevute e delle app utilizzate. Molte di queste protezioni non sono disponibili di default nei browser più diffusi.</string>
     <string name="main_activity__an_error_occurred"><u>Si è verificato un errore. Riprovaìpiù tardi.</u></string>
-    <string name="eol_reason__browser_no_longer_maintained">Il browser non viene più mantenuto.</string>
     <string name="add_app_activity__title_based_on_firefox">Basato su Firefox</string>
     <string name="notification__bg_update_check__unreliable_execution__channel_name">Controllo aggiornamento in background non eseguito</string>
     <string name="notification__bg_update_check__unreliable_execution__text">Forse è causato dalle impostazioni della batteria o delle prestazioni del dispositivo. Clicca su questa notifica per disattivare l\'ottimizzazione della batteria per questa applicazione.</string>

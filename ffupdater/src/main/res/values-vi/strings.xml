@@ -11,7 +11,6 @@
     <string name="notification__eol_apps__title">Ứng dụng quá hạn đã cài đặt</string>
     <string name="notification__error__title">Kiểm tra cập nhật dưới nền không thành công</string>
     <string name="crash_report__go_to_github">Đi đến GitHub</string>
-    <string name="kiwi__title">Trình duyệt Kiwi Next</string>
     <string name="notification__error__channel_name">Lỗi dưới nền</string>
     <string name="notification__eol_apps__channel_name">Thông báo ứng dụng quá hạn</string>
     <string name="iceraven__title">Trình duyệt Iceraven</string>
@@ -24,7 +23,6 @@
     <string name="firefox_nightly__description">Vui lòng chú ý rằng ứng dụng này từng được có tiêu đề là Firefox Preview. Nó đã được chuyển tiếp thành Firefox Nightly. \n \nFirefox Nightly là một kênh phát triển cho các bản phát hành mới của Mozilla Firefox. \n \nFirefox Nightly được thiết kế để trưng bày những bản dựng mang tính thử nghiệm hơn của Firefox. Kênh Nightly cho phép người dùng trải nghiệm những sự đổi mới mới nhất của Firefox trong một môi trường không ổn định, và cho ra phản hồi về tính năng và hiệu năng để giúp xác định điều gì tạo nên bản phát hành cuối cùng.</string>
     <string name="download_activity__you_can_now_close_this_window">Bây giờ bạn có thể đóng cửa sổ này</string>
     <string name="action_about_title">Về FFUpdater</string>
-    <string name="kiwi__description">Trình duyệt Kiwi được làm ra để duyệt internet, đọc tin tức, xem video và nghe nhạc mà không bị quấy rầy.</string>
     <string name="download_activity__open_cache_explanation">Bạn có thể mở thư mục bộ nhớ đệm để sao chép APK đến một nơi có nhiều dung lượng có sẵn hơn. Không may thay, trên Android 11+ chỉ một số ít trình quản lí tập tin có thể truy cập tập tin này trong Android/data.</string>
     <string name="download_activity__fetched_url_for_download_successfully">Đã tìm nạp siêu dữ liệu từ %1$s</string>
     <string name="firefox_klar__title">Firefox Klar</string>
@@ -43,7 +41,6 @@
     <string name="download_activity__use_cached_downloaded_apk">Sử dụng tệp đã tải xuống từ:</string>
     <string name="notification__download_running__title">Đang tải xuống cập nhật ứng dụng</string>
     <string name="notification__install_success__text">Ứng dụng đã được cập nhật dưới nền.</string>
-    <string name="kiwi__warning">- Kiwi sử dụng nền tảng kỹ thuật của Google Chrome và do đó gián tiếp hỗ trợ cho vị thế độc quyền của công cụ kết xuất Chromium. \n- Kiwi không phải là một trình duyệt bảo mật lý tưởng nhưng có hỗ trợ addon tốt. \n- Trình duyệt đang được các công cụ tìm kiếm trả tiền cho mỗi tìm kiếm được thực hiện bằng Trình duyệt Kiwi. Tùy thuộc vào lựa chọn công cụ tìm kiếm, các yêu cầu có thể đi qua máy chủ Kiwisearchservices của Kiwibrowser. \n- Quảng cáo Google ở Kiwi có thể sử dụng dữ liệu vị trí cho quảng cáo - nhưng bạn có thể tắt dữ liệu này bằng cách tắt tính năng Khám phá. Nhưng điều này sẽ sớm thay đổi. Xem https://privacy.kiwibrowser.org/ để biết thêm chi tiết.</string>
     <string name="brave_beta__title">Trình duyệt Brave (Beta)</string>
     <string name="notification__install_success__title">%1$s đã được cập nhật</string>
     <string name="download_activity__file_uri_exposed_toast">Không thể hiển thị đường dẫn tệp tới các ứng dụng khác. Vui lòng tự mở thư mục bằng trình quản lý tệp ưa thích của bạn.</string>
@@ -266,7 +263,6 @@
     <string name="notification__uncaught_exception__text">Bấm vào để xem báo cáo lỗi.</string>
     <string name="cardview_dialog__different_signature">FFUpdater không thể cập nhật ứng dụng này vì chữ ký APK khác. Bạn có thể khắc phục bằng cách gỡ cài đặt ứng dụng và cài đặt lại bằng FFUpdater. Tuy nhiên, điều này sẽ xóa tất cả dữ liệu của bạn trong ứng dụng. Vì vậy hãy nhớ sao lưu dữ liệu của bạn trước.</string>
     <string name="ffupdater__different_signature_message">Phiên bản FFUpdater này đã được F-Droid ký nên chỉ F-Droid mới có thể phân phối các bản cập nhật. Để nhận được bản cập nhật nhanh hơn, hãy gỡ cài đặt FFUpdater và cài đặt phiên bản có chữ ký của nhà phát triển. Với phiên bản này FFUpdater có thể tự cập nhật mà không cần chờ F-Droid.</string>
-    <string name="eol_reason__browser_no_longer_maintained">Trình duyệt không còn được duy trì.</string>
     <string name="installer__android_too_old_for_shizuku">Android của bạn quá cũ đối với Shizuku.</string>
     <string name="cardview_dialog__hide">Ẩn</string>
     <string name="foreground__hidden_apps__title">Ứng dụng bị ẩn</string>

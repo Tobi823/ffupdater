@@ -81,9 +81,6 @@
     <string name="app_installer__installed_app_has_invalid_signature">Installierte App ist NICHT verifiziert</string>
     <string name="installed_application_is_verified">Installierte App ist verifiziert</string>
     <string name="installed_version">Installiert: %1$s</string>
-    <string name="kiwi__description">Kiwi Browser wurde entwickelt, um im Internet zu surfen, Nachrichten zu lesen, Videos anzuschauen und Musik zu hören, ohne dabei zu stören.</string>
-    <string name="kiwi__title">Kiwi Browser Next</string>
-    <string name="kiwi__warning">- Kiwi ist nur teilweise Open-Source\n- Kiwi nutzt die technische Grundlage von Google Chrome und unterstützt damit indirekt die Monopolstellung der Chromium-Rendering-Engine.\n- Kiwi ist kein idealer Datenschutz-Browser, hat aber eine gute Addon-Unterstützung.\n- Der Browser wird von Suchmaschinen für jede durchgeführte Suche bezahlt. Je nach Wahl der Suchmaschine können die Anfragen über die Kiwibrowser / Kiwisearchservices-Server laufen.\n- Google Ads in Kiwi kann die Standortdaten für Anzeigen verwenden - du kannst dies jedoch deaktivieren, indem du die Entdeckungsfunktion deaktivierst. Dies wird sich jedoch bald ändern. Siehe https://privacy.kiwibrowser.org/ für weitere Details.</string>
     <string name="main_activity__github_api_limit_exceeded"><u>GitHub-API-Limit überschritten. Nächste Stunde erneut versuchen.</u></string>
     <string name="main_activity__no_unmetered_network">Kein nicht getaktetes Netzwerk</string>
     <string name="main_activity__temporary_network_issue"><u>Vorübergehendes Netzwerkproblem. Versuche es später nochmal.</u></string>
@@ -231,7 +228,6 @@
     <string name="privacy_browser__description">Die einzige Möglichkeit, den Missbrauch von Daten zu verhindern, besteht darin, sie gar nicht erst zu sammeln. Privacy Browser hat zwei Hauptziele: Minimierung der Daten, die an das Internet gesendet werden und Minimierung der Daten, die auf dem Gerät gespeichert werden.</string>
     <string name="duckduckgo_android__description">Die DuckDuckGo-App bietet den umfassendsten Online-Datenschutz mit nur einem Tastendruck. Mit einem Download erhältst du einen neuen, alltäglichen Browser, der nahtlosen Schutz bietet, während du suchst und browst, und Zugriff auf Tracking-Schutz für E-Mails, die du erhältst, und Apps, die du nutzt. Viele dieser Schutzmaßnahmen werden in den meisten gängigen Browsern standardmäßig nicht angeboten.</string>
     <string name="main_activity__an_error_occurred"><u>Ein Fehler ist aufgetreten. Versuche es später erneut.</u></string>
-    <string name="eol_reason__browser_no_longer_maintained">Der Browser wird nicht mehr gewartet.</string>
     <string name="crash_report__report_is_copied_to_clipboard">Absturzbericht wird in die Zwischenablage kopiert</string>
     <string name="installer__android_too_old_for_shizuku">Dein Android ist zu alt für Shizuku.</string>
     <string name="notification__uncaught_exception__channel_name">Absturzbenachrichtigungen</string>

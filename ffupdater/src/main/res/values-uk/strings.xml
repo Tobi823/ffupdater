@@ -157,13 +157,10 @@
     <string name="download_activity__file_uri_exposed_toast">Неможливо надати шлях до файлу іншим програмам. Будь ласка, відкрийте папку самостійно за допомогою вибраного файлового менеджера.\"</string>
     <string name="install_activity__download_file_failed__crash_text">Під час завантаження виникла наступна помилка. Якщо ця помилка виникає часто, не соромтеся надіслати звіт про збій на notabug.org, GitHub або GitLab.</string>
     <string name="crash_report__explain_text__download_activity_install_file">Ця помилка виникла під час встановлення. Якщо ця помилка виникає часто, не соромтеся надіслати звіт про збій на notabug.org, GitHub або GitLab.</string>
-    <string name="kiwi__title">Kiwi Next</string>
     <string name="settings__b_f__delete_cache_if_install_successful">Видаляти завантажене оновлення, якщо встановлення пройшло успішно.</string>
     <string name="settings__b_f__delete_cache_if_install_failed">Видаляти завантажене оновлення, якщо встановлення завершилося невдало.</string>
     <string name="settings__installer_category__title">Інсталятор</string>
     <string name="download_activity__open_folder">Відкрити теку</string>
-    <string name="kiwi__description">Kiwi створений для перегляду веб-сторінок, читання новин, перегляду відео та прослуховування музики без зайвих роздратувань.</string>
-    <string name="kiwi__warning">- Kiwi є лише частково відкритим браузером \n- Kiwi використовує технічну основу Google Chrome і, таким чином, опосередковано підтримує монопольне положення рушія візуалізації Chromium. \n- Kiwi не є ідеальним браузером для забезпечення конфіденційності, але має хорошу підтримку аддонів. \n- Браузер отримує плату від пошукових систем за кожен пошук, здійснений за допомогою Kiwi Browser. Залежно від вибору пошукової системи, запити можуть йти через сервери Kiwibrowser / Kiwisearchservices. \n- Google Ads в Kiwi може використовувати дані про місцезнаходження для реклами - але ви можете відключити її, вимкнувши функцію Discovery. Але це скоро зміниться. Дивіться https://privacy.kiwibrowser.org/ для більш детальної інформації.</string>
     <string name="tor_browser__description">Tor Browser для Android - єдиний офіційний мобільний браузер, що підтримується проєктом Tor, розробником найсильнішого в світі інструменту для забезпечення конфіденційності та свободи в Інтернеті.</string>
     <string name="tor_browser__title">Tor Browser</string>
     <string name="crash_report_activity__label">Доповідач про збої</string>
@@ -227,7 +224,6 @@
     <string name="orbot__description">Orbot — це безкоштовний проксі-застосунок, який дозволяє іншим застосункам безпечніше користуватися Інтернетом. Orbot використовує Tor для шифрування вашого інтернет-трафіку, а потім приховує його, переходячи через ряд комп’ютерів по всьому світу. Tor — це безкоштовне програмне забезпечення та відкрита мережа, яка допомагає вам захиститися від форми мережевого стеження, яка загрожує особистій свободі та конфіденційності, конфіденційній діловій діяльності та стосункам, а також державній безпеці, відомій як аналіз трафіку.</string>
     <string name="installer__method__root_not_granted">Root-права не надані!</string>
     <string name="installer__method__title">Метод встановлення</string>
-    <string name="eol_reason__browser_no_longer_maintained">Браузер більше не підтримується.</string>
     <string name="app_installer__failed_to_verify_signature_of_installed_app">Не вдалося перевірити встановлений застосунок.</string>
     <string name="app_installer__failed_to_validate_signature_of_download">Не вдалося перевірити підпис завантаження.</string>
     <string name="installer__android_too_old_for_shizuku">Ваш Android занадто старий для Shizuku.</string>

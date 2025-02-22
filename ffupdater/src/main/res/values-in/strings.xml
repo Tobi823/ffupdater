@@ -64,7 +64,6 @@
     <string name="iceraven__warning">- Pengelola tidak memberikan jaminan atau garansi keamanan atau pembaruan atau bahkan stabilitas. \n - Proyek ini membutuhkan waktu lebih lama dari biasanya untuk menyediakan pembaruan keamanan.</string>
     <string name="infobox">Ini adalah pembaru untuk peramban yang ramah privasi. Klik tombol plus untuk menginstal aplikasi baru. Geser ke bawah untuk memaksa pemeriksaan pembaruan baru. Secara bawaan, aplikasi akan memeriksa pembaruan secara berkala di latar belakang, yang kemudian akan diunduh dan akhirnya diinstal. Klik roda gigi untuk menyesuaikan perilaku dalam pengaturan. \n \nPemeriksaan pembaruan latar belakang terakhir yang berhasil: %1$s</string>
     <string name="installed_version">Terinstal: %1$s</string>
-    <string name="kiwi__description">Kiwi Browser dibuat untuk menjelajahi internet, membaca berita, menonton video, dan mendengarkan musik, tanpa gangguan.</string>
     <string name="download_activity__github_rate_limit_exceeded">Batas kecepatan GitHub-API terlampaui. Silahkan coba mengunduh lagi dalam satu jam ke depan.</string>
     <string name="download_activity__open_cache_explanation">Anda bisa membuka berkas tembolok untuk menyalin bilah APK ke tempat yang memiliki lebih banyak ruang penyimpanan. Namun, di Android 11+ hanya beberapa pengelola file yang dapat mengakses folder ini di dalam Android/data.</string>
     <string name="download_activity__open_cache_folder_button_text">buka tembolok berkas</string>
@@ -86,7 +85,6 @@
     <string name="notification__install_success__title">%1$s telah diperbarui</string>
     <string name="app_installer__installed_app_has_invalid_signature">Aplikasi yang diinstal TIDAK diverifikasi</string>
     <string name="installed_application_is_verified">Aplikasi yang terinstal diverifikasi</string>
-    <string name="kiwi__title">Kiwi Browser Next</string>
     <string name="settings__foreground__update_check__metered__title">Pemeriksaan pembaruan pada jaringan terukur</string>
     <string name="settings__foreground__theme_preference__title">Pilih tema</string>
     <string name="settings__foreground__update_check__metered__summary">Izinkan pemeriksaan pembaruan pada jaringan terukur seperti data seluler.</string>
