@@ -56,7 +56,7 @@
     <string name="download_activity__download_failed">Не удалось загрузить</string>
     <string name="download_activity__downloaded_application_from">Приложение загружено с:</string>
     <string name="app_installer__signature_of_download_is_invalid">Загруженное приложение НЕ проверено</string>
-    <string name="download_activity__exception__show_button">"<u>Показать подробный отчет об ошибке.</u>"</string>
+    <string name="download_activity__exception__show_button"><u>Показать подробный отчет об ошибке.</u></string>
     <string name="download_activity__external_storage_not_accessible">Внешнее хранилище недоступно — невозможно начать загрузку. Текущее состояние:</string>
     <string name="download_activity__fetch_url_for_download">Получить ссылку с %1$s</string>
     <string name="download_activity__fetched_url_for_download_successfully">Получена ссылка для скачивания с %1$s</string>
@@ -90,9 +90,9 @@
 \n- Kiwi — не идеальный приватный браузер, но у него есть хорошая поддержка дополнений.
 \n- Браузер монетизируется поисковыми движками за каждый запрос, сделанный через Kiwi Browser. В зависимости от выбранного поискового движка, запросы могут идти через серверы Kiwibrowser / Kiwisearchservices.
 \n- Google Ads в Kiwi может использовать данные местоположения для показа таргетированной рекламы, но это можно отключить, выключив настройку \"Discovery feature\". Но правила игры скоро изменятся. Подробности на https://privacy.kiwibrowser.org.</string>
-    <string name="main_activity__github_api_limit_exceeded">"<u>Превышен лимит GitHub-API. Повторите попытку через час.</u>"</string>
+    <string name="main_activity__github_api_limit_exceeded"><u>Превышен лимит GitHub-API. Повторите попытку через час.</u></string>
     <string name="main_activity__no_unmetered_network">Отсутствуют сети без тарификации</string>
-    <string name="main_activity__temporary_network_issue">"<u>Временная проблема сети. Повторите попытку позже.</u>"</string>
+    <string name="main_activity__temporary_network_issue"><u>Временная проблема сети. Повторите попытку позже.</u></string>
     <string name="ok">ОК</string>
     <string name="request_installation_permission_dialog__abort">Прервать</string>
     <string name="request_installation_permission_dialog__grant_permission">Разрешение</string>
@@ -162,7 +162,7 @@
     <string name="notification__update_available__channel_descr">Канал уведомлений для доступных обновлений %1$s.</string>
     <string name="notification__update_available__channel_name">Уведомление об обновлении %1$s</string>
     <string name="update_notification__text">Нажмите, чтобы установить обновление</string>
-    <string name="update_notification__title">Доступно обновление для "%1$s"</string>
+    <string name="update_notification__title">Доступно обновление для %1$s</string>
     <string name="vivaldi__description">Vivaldi — защищенный браузер. Безопасно синхронизируйте пароли, закладки, заметки и многое другое между устройствами с использованием шифрования. Меняйте внешний вид. Меняйте интерфейс браузера для Android с помощью настроек. Используйте темы оформления и панель вкладок, а также удобные инструменты, доступные в боковой панели. Лёгкое управление вкладками. Используйте панель вкладок. Сдвигайте панель для поиска открытых и приватных вкладок, а также для доступа к недавно закрытым или размещённым на другом устройстве. Используйте несколько поисковых систем. Переключайтесь между ними в одно касание. Используйте префиксы в адресной строке для выбора нужной поисковой системы.</string>
     <string name="vivaldi__title">Браузер Vivaldi</string>
     <string name="vivaldi__warning">- Исходный код Vivaldi является лишь частично открытым. \n- Он также использует техническую основу Google Chrome и тем самым косвенно поддерживает монопольное положение движка рендеринга Chromium.</string>
@@ -311,4 +311,5 @@
     <string name="update_all_activity__installation_failed">Не удалось установить «%1$s». Перейдите к следующему приложению.</string>
     <string name="update_all_activity__all_apps_updated">Готово. Все приложения были обновлены (где это возможно). Теперь можно выйти.</string>
     <string name="main_activity__update_all_apps_dialog__message">Следует ли обновлять устаревшие и не отключенные приложения? Обновления будут загружаться в фоновом режиме. Когда загрузка будет завершена, Вы будете оповещены уведомлением. Вам необходимо нажать на него, чтобы запустить обновление.</string>
+    <string name="default_theme_preference" translatable="false"></string>
 </resources>
