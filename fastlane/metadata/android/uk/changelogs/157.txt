@@ -1,0 +1,5 @@
+- дякуємо за внески Weblate від: winver, Makar Razin, Daviteusz, Retrial, Alexthegib, Frau Gülle, Juraj Motuz, Eduardo Malaspina, 109247019824, Priit Jõerüüt, Kazushi Hayama та Trond Kjetil Bremnes 
+- додано підтримку Cromite (Tobi823/ffupdater#447) 
+- виправлено помилку Shizuku під час оновлення програми (Tobi823/ffupdater#456) 
+- якщо використовується версія F-Droid, буде відображено текст, який переконує користувача видалити FFUpdater і встановити підписаний розробником FFUpdater (Tobi823/ffupdater#320) 
+- виправлено кореневий інсталятор (Tobi823/ffupdater#462)

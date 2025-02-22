@@ -70,7 +70,7 @@
     <string name="download_activity__external_storage_not_accessible">Внешнее хранилище недоступно — невозможно начать загрузку. Текущее состояние:</string>
     <string name="download_activity__fetch_url_for_download">Получить ссылку с %1$s</string>
     <string name="download_activity__fetched_url_for_download_successfully">Получена ссылка для скачивания с %1$s</string>
-    <string name="download_activity__file_uri_exposed_toast">Не удалось определить путь к другим приложениям. Пожалуйста, откройте каталог с помощью предпочитаемого вами файлового менеджера.</string>
+    <string name="download_activity__file_uri_exposed_toast">Не удалось определить путь к другим приложениям. Пожалуйста, откройте каталог с помощью предпочитаемого вами файлового менеджера.\"</string>
     <string name="download_activity__github_rate_limit_exceeded">Превышен лимит скорости GitHub-API. Пожалуйста, повторите попытку загрузки в течение следующего часа.</string>
     <string name="download_activity__open_cache_explanation">Вы можете открыть папку кэша, чтобы скопировать APK-файл в место с большим объемом свободного пространства. К сожалению, на Android 11+ лишь немногие файловые менеджеры имеют доступ к этому каталогу в Android/data.</string>
     <string name="download_activity__open_cache_folder_button_text">открыть папку кэша</string>
@@ -136,7 +136,7 @@
     <string name="settings__background__update_check__interval__title">Интервал проверки обновлений</string>
     <string name="settings__background__update_check__metered__title">Проверка обновлений в сетях с тарификацией</string>
     <string name="settings__background_category__summary">Настройки, когда приложение работает в фоновом режиме и невидимо для пользователя.</string>
-    <string name="settings__background_category__title">Фон</string>
+    <string name="settings__background_category__title">В фоновом режиме</string>
     <string name="settings__foreground__download__metered__title">Загрузка обновлений в сетях с тарификацией</string>
     <string name="settings__foreground__theme_preference__summary">Выбор между светлой и тёмной темой</string>
     <string name="settings__foreground__theme_preference__title">Выбор темы</string>
@@ -318,4 +318,23 @@
     <string name="download_activity__retry_installation">Повторить установку</string>
     <string name="settings__network__use_cloudflare_mirrors__summary">Включите опцию, чтобы снизить нагрузку на основные серверы, когда это возможно.</string>
     <string name="settings__network__use_cloudflare_mirrors__title">Использовать зеркала Cloudflare</string>
+    <string name="thunderbird__description">Thunderbird — мощное почтовое приложение, ориентированное на конфиденциальность. Легко управляйте несколькими учетными записями электронной почты из одного приложения с помощью функции «Единый почтовый ящик» для максимальной производительности. Созданный на основе технологии с открытым исходным кодом и поддерживаемый специальной командой разработчиков и глобальным сообществом добровольцев, Thunderbird никогда не рассматривает ваши личные данные как продукт. Поддерживается исключительно за счет финансовых пожертвований наших пользователей, поэтому вам больше никогда не придется видеть рекламу в своих электронных письмах.</string>
+    <string name="generic_beta__warning">- Это бета-версия приложения, предназначенная для разработчиков и тестировщиков. Она может содержать ошибки, которые могут повлиять на вашу работу.</string>
+    <string name="thunderbird__title">Thunderbird</string>
+    <string name="thunderbird_beta__title">Thunderbird Beta</string>
+    <string name="main_activity__update_all_apps_dialog__confirm">Обновить приложения</string>
+    <string name="main_activity__update_all_apps_dialog__abort">Отмена</string>
+    <string name="main_activity__update_all_apps_dialog__title">Обновить все приложения</string>
+    <string name="update_all_activity__label">Обновить Все Приложения</string>
+    <string name="main_activity_menu__update_all_apps__label">Обновление всех приложений</string>
+    <string name="main_activity_menu__install_app__label">Установить приложение</string>
+    <string name="update_all_activity__no_updates_available">Отсутствуют обновления, доступные для установки. Отмена.</string>
+    <string name="update_all_activity__these_apps_will_be_updated">Эти приложения будут обновлены: %1$s</string>
+    <string name="update_all_activity__start_update">Начать установку обновления «%1$s»</string>
+    <string name="update_all_activity__downloaded_file_is_missing">Загруженный файл с обновлением «%1$s» не существует, перейдите к следующему приложению.</string>
+    <string name="update_all_activity__start_installation">Начать установку «%1$s».</string>
+    <string name="update_all_activity__installation_successful">Приложение «%1$s» обновлено. Отпечаток сертификата: %2$s</string>
+    <string name="update_all_activity__installation_failed">Не удалось установить «%1$s». Перейдите к следующему приложению.</string>
+    <string name="update_all_activity__all_apps_updated">Готово. Все приложения были обновлены (где это возможно). Теперь можно выйти.</string>
+    <string name="main_activity__update_all_apps_dialog__message">Следует ли обновлять устаревшие и не отключенные приложения? Обновления будут загружаться в фоновом режиме. Когда загрузка будет завершена, Вы будете оповещены уведомлением. Вам необходимо нажать на него, чтобы запустить обновление.</string>
 </resources>

@@ -1,0 +1,4 @@
+* Дякуємо за внески Weblate від: Kazushi Hayama, gallegonovato, Alexthegib та Oğuz Ersen 
+* Виправлено помилку «файл не завантажено» (використовуйте для кожного запиту OkHttp новий перехоплювач) 
+* Покращена перевірка оновлень від GitHub (використовуйте JsonReader замість Gson) 
+* Bromite і Bromite SystemWebView є EOL

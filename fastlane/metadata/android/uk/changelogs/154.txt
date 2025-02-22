@@ -1,0 +1,2 @@
+* Виправлення Brave, Brave Beta, Brave Nightly для нових телефонів (використовуйте Bravearm64Universal.apk замість BraveMonoarm64.ap) (Tobi823/ffupdater#475) 
+* Видаліть застарілу версію Android 6 Brave, Brave Beta, Brave Nightly

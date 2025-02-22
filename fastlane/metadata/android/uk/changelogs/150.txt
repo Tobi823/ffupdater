@@ -1,0 +1,2 @@
+* Дякуємо за внески Weblate від: gallegonovato, nautilusx, Juraj Motuz, Retrial та atilluF
+* Виправлено «Помилка перевірки фонового оновлення» (Tobi823/ffupdater#452)

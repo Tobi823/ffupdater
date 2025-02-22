@@ -250,7 +250,7 @@
     <string name="installer__method__shizuku">Shizuku インストーラー: 確認ダイアログを表示せずアプリを更新します。Shizuku アプリまたは Sui Magisk モジュールが必要です。</string>
     <string name="notification__network_error__title">バックグラウンドでのネットワークエラー</string>
     <string name="notification__network_error__text">このエラーはめったに発生しないはずです。頻繁に発生する場合は、報告してください。タップすると、エラーメッセージの詳細を確認できます。</string>
-    <string name="generic_app_warning__beta_version">- このアプリは開発者とテスターのために設計されています。一般的なブラウザーの使用に影響する、複数のバグが含まれている可能性があります。</string>
+    <string name="generic_app_warning__beta_version">- このアプリは開発者とテスターのために設計されています。通常使用に影響する、複数のバグが含まれている可能性があります。</string>
     <string name="firefox_focus_beta__title">Firefox Focus Beta</string>
     <string name="network__dns_provider__cloudflare">DNS over HTTPS: Cloudflare</string>
     <string name="notification__update_available__generic_channel_descr">利用できるアプリ更新の通知チャンネル。</string>
@@ -326,4 +326,16 @@
     <string name="thunderbird_beta__title">Thunderbird Beta</string>
     <string name="generic_beta__warning">- これは、開発者やテスターのためのベータ版アプリです。ユーザー体験に影響するさまざまなバグが含まれている可能性があります。</string>
     <string name="thunderbird__description">Thunderbird はプライバシー重視の強力なメールアプリです。効率を最大化する統合受信トレイオプションを使用すれば、複数のメールアカウントを一つのアプリから簡単に管理できます。オープンソースで構築され、ボランティアの国際コミュニティとともに専任の開発者チームがサポートする Thunderbird では、あなたのプライバシーに関わる情報が商品として扱われることは決してありません。ユーザーの寄付のみに支えられているため、メールに広告を混ぜ込んで表示したりしません。</string>
+    <string name="main_activity__update_all_apps_dialog__message">新しいバージョンが公開され、更新が無効になっていないアプリを更新しますか？ 更新はバックグラウンドでダウンロードし、完了後に通知します。更新プロセスの開始には確認が必要です。</string>
+    <string name="main_activity__update_all_apps_dialog__confirm">アプリを更新</string>
+    <string name="main_activity__update_all_apps_dialog__abort">中止</string>
+    <string name="main_activity__update_all_apps_dialog__title">アプリをすべて更新します</string>
+    <string name="update_all_activity__label">アプリをすべて更新</string>
+    <string name="main_activity_menu__update_all_apps__label">アプリをすべて更新</string>
+    <string name="main_activity_menu__install_app__label">アプリをインストール</string>
+    <string name="update_all_activity__these_apps_will_be_updated">次のアプリが更新されます: %1$s</string>
+    <string name="update_all_activity__all_apps_updated">完了。更新可能なアプリをすべて更新しました。アプリを閉じても問題ありません。</string>
+    <string name="update_all_activity__start_update">「%1$s」の更新をインストール開始</string>
+    <string name="update_all_activity__start_installation">「%1$s」のインストールを開始</string>
+    <string name="update_all_activity__downloaded_file_is_missing">ダウンロードした「%1$s」のファイルが確認できませんでした。次のアプリの更新を続行します。</string>
 </resources>

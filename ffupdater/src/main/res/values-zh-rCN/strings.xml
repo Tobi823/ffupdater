@@ -78,7 +78,7 @@
     <string name="download_activity__external_storage_not_accessible">外部存储不可用——无法开始下载。当前状态：</string>
     <string name="download_activity__fetch_url_for_download">从 %1$s 获取元数据</string>
     <string name="download_activity__fetched_url_for_download_successfully">已从 %1$s 获取元数据</string>
-    <string name="download_activity__file_uri_exposed_toast">无法将文件路径暴露给其他应用。请使用您喜欢的文件管理器自行打开该文件夹。</string>
+    <string name="download_activity__file_uri_exposed_toast">无法将文件路径暴露给其他应用。请使用您喜欢的文件管理器自行打开该文件夹。\"</string>
     <string name="download_activity__github_rate_limit_exceeded">已超出 GitHub API 访问率限制。 请在一个小时后尝试重新下载。</string>
     <string name="download_activity__open_cache_explanation">您可以打开缓存文件夹来将 APK 文件复制到有存储空间更大的位置。遗憾的是，在 Android 11+ 上，只有非常少的文件管理器可以访问 Android/data 中的这个文件夹。</string>
     <string name="download_activity__open_cache_folder_button_text">打开缓存文件夹</string>
@@ -263,7 +263,7 @@
 \nTor 浏览器将永远是免费的，但捐赠使其存在。Tor 项目是一个位于美国的 501 ©(3) 非营利组织。请考虑现在做出捐赠。每一份支持都能发挥作用：https://donate.torproject.org。
 \n
 \n在此处了解如何报告错误和提供反馈：https://support.torproject.org/misc/bug-or-feedback/ ！</string>
-    <string name="foreground__hide_apps_signed_by_different_certificate__title">隐藏使用不同证书签名的 App。</string>
+    <string name="foreground__hide_apps_signed_by_different_certificate__title">隐藏使用不同证书签名的应用。</string>
     <string name="firefox_focus_beta__title">Firefox Focus 公测版</string>
     <string name="duckduckgo_android__title">DuckDuckGo 私人浏览器</string>
     <string name="duckduckgo_android__description">DuckDuckGo 应用提供只需按一下按钮的最全面的在线隐私保护。只需一次下载，您就可以获得一款全新的在您搜索和浏览时提供无缝保护的日用浏览器，且提供对您收到的电子邮件和您使用的应用程序的跟踪保护。其中的许多保护在多数流行的浏览器中是默认不提供的。</string>
@@ -293,7 +293,7 @@
     <string name="notification__uncaught_exception__text">点击以查看错误报告。</string>
     <string name="app_installer__failed_to_validate_signature_of_download">验证此下载的签名失败。</string>
     <string name="background__installation__when_screen_off__summary">仅在设备屏幕关闭时尝试安装更新。</string>
-    <string name="notification__bg_update_check__unreliable_execution__text">这可能是由您设备的电池或性能设置造成的。点击此通知以禁用对此 App 的电池优化。</string>
+    <string name="notification__bg_update_check__unreliable_execution__text">这可能是由您设备的电池或性能设置造成的。点击此通知以禁用对此应用的电池优化。</string>
     <string name="thorium__warning">- Thorium 使用了 Google Chrome 的技术基础，因而间接支持了 Chromium 渲染引擎的垄断地位。</string>
     <string name="main_activity__unexpected_error">发生了意外错误。</string>
     <string name="cromite__description">Cromite 是基于 Bromite 的 Chromium 修改版，支持广告拦截和隐私保护。</string>
@@ -317,7 +317,7 @@
     <string name="cardview_dialog__install">安装最新版本</string>
     <string name="cardview_dialog__different_signature">由于 APK 签名不同，FFUpdater 无法更新该应用。您可以通过卸载该应用并用 FFUpdater 重新安装来解决此问题，但这会删除您在该应用中的所有数据，请提前备份您的数据。</string>
     <string name="cardview_dialog__hide">隐藏</string>
-    <string name="foreground__hidden_apps__title">已隐藏的 App</string>
+    <string name="foreground__hidden_apps__title">已隐藏的应用</string>
     <string name="foreground__hidden_apps__summary">已隐藏的 app 将不会在用户界面中显示，并且不会被自动升级。</string>
     <string name="download_activity__retry_installation">重新尝试安装</string>
     <string name="settings__network__use_cloudflare_mirrors__title">使用 Cloudflare 镜像</string>
@@ -326,4 +326,19 @@
     <string name="thunderbird__title">Thunderbird</string>
     <string name="thunderbird_beta__title">Thunderbird Beta</string>
     <string name="thunderbird__description">Thunderbird 是一款功能强大、关注隐私的电子邮件应用。轻而易举地从一个应用管理多个电子邮件账户，统一收件箱选项最大化生产力。基于开源技术构建，受专门的开发者团队和全球志愿者社区支持，Thunderbird 永远不会将您的私人数据当成产品。Thunderbird 完全由用户出钱资助，你永远不必再看到邮件和广告混在一起出现。</string>
+    <string name="main_activity__update_all_apps_dialog__abort">终止</string>
+    <string name="main_activity__update_all_apps_dialog__title">更新全部应用</string>
+    <string name="update_all_activity__label">更新全部应用</string>
+    <string name="main_activity_menu__install_app__label">安装应用</string>
+    <string name="update_all_activity__no_updates_available">没有更新可供安装。终止。</string>
+    <string name="update_all_activity__these_apps_will_be_updated">这些应用即将被更新：%1$s</string>
+    <string name="update_all_activity__start_update">开始安装 \'%1$s\' 的更新</string>
+    <string name="update_all_activity__downloaded_file_is_missing">\'%1$s\' 的下载文件不存在，继续进行下一个应用。</string>
+    <string name="update_all_activity__start_installation">开始安装 \'%1$s\'。</string>
+    <string name="update_all_activity__installation_failed">安装 \'%1$s\' 失败。继续下一个应用的操作。</string>
+    <string name="main_activity_menu__update_all_apps__label">更新全部应用</string>
+    <string name="main_activity__update_all_apps_dialog__message">应当更新所有已过期且未被停用的应用吗？将在后台下载这些更新。当下载完成你会收到通知提醒。你必须单击这条通知来开始更新过程。</string>
+    <string name="main_activity__update_all_apps_dialog__confirm">更新应用</string>
+    <string name="update_all_activity__installation_successful">成功安装了 \'%1$s\'。证书哈希值：%2$s</string>
+    <string name="update_all_activity__all_apps_updated">完毕。更新了所有应用（如果可能）。你现在可以关闭本应用了。</string>
 </resources>

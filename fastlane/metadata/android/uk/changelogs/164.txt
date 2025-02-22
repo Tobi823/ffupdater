@@ -1,0 +1,3 @@
+Версія випуску 78.3.0 
+- Дякуємо за внески Weblate від: P.O, Alexthegib, winver і gallegonovato 
+— Додана підтримка Thorium https://github.com/Alex313031/Thorium-Android (Tobi823/ffupdater#414)

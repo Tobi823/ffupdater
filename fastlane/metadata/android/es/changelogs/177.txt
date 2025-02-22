@@ -1,0 +1,5 @@
+Versión 79.3.1 (177)
+- Gracias por las colaboraciones en Weblate de: Retrial, motuzj y gallegonovato
+- Corregir versión errónea para K-9 Mail (gracias kazushi3 Tobi823/ffupdater#651)
+- Corregir versión errónea para el Navegador Tor (Tobi823/ffupdater#649)
+- Actualizar versiones

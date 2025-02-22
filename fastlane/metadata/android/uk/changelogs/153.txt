@@ -1,0 +1,2 @@
+* Дякуємо за внески Weblate від: gallegonovato, Alexthegib, 109247019824 та Giovanni Donisi
+* виправлено Tor Browser Alpha (Tobi823/ffupdater#485)
