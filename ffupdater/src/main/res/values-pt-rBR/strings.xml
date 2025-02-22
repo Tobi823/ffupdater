@@ -59,7 +59,7 @@
     <string name="download_activity__download_failed">Download falhou</string>
     <string name="download_activity__downloaded_application_from">Navegador baixado do:</string>
     <string name="app_installer__signature_of_download_is_invalid">O navegador baixado NÃO foi verificado</string>
-    <string name="download_activity__exception__show_button">"<u>Mostrar o relatório do erro detalhado.</u>"</string>
+    <string name="download_activity__exception__show_button"><u>Mostrar o relatório do erro detalhado.</u></string>
     <string name="download_activity__external_storage_not_accessible">Armazenamento não está disponível - não é possível baixar. Status atual:</string>
     <string name="download_activity__fetch_url_for_download">Procurar metadados em %1$s</string>
     <string name="download_activity__fetched_url_for_download_successfully">Metadados extraídos de %1$s</string>
@@ -89,9 +89,9 @@
     <string name="kiwi__description">O Navegador Kiwi é feito para navegar na internet, ler notícias, assistir vídeos e ouvir música, sem incômodos.</string>
     <string name="kiwi__title">Navegador Kiwi Next</string>
     <string name="kiwi__warning">- O Kiwi só é código aberto parcialmente\n- O Kiwi usa os fundamentos técnicos do Google Chrome e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium.\n- O Kiwi não é um navegador de privacidade ideal mas tem um bom suporte a extensões.\n- O navegador está sendo pago pelos motores de busca por cada pesquisa feita utilizando o Kiwi Browser. Dependendo da escolha do motor de busca, os pedidos podem ser feitos através dos servidores Kiwibrowser / Kiwisearchservices.\n- O Google Ads no Kiwi pode usar os dados de localização para anúncios - mas você pode desativá-los desativando a função Descoberta. Mas isso mudará em breve. Veja https://privacy.kiwibrowser.org/ para mais detalhes.</string>
-    <string name="main_activity__github_api_limit_exceeded">"<u>O limite de consultas do API do GitHub foi excedido. Tente outra vez mais tarde.</u>"</string>
+    <string name="main_activity__github_api_limit_exceeded"><u>O limite de consultas do API do GitHub foi excedido. Tente outra vez mais tarde.</u></string>
     <string name="main_activity__no_unmetered_network">Nenhuma rede não contatada</string>
-    <string name="main_activity__temporary_network_issue">"<u>Problema temporário da rede. Tente outra vez mais tarde.</u>"</string>
+    <string name="main_activity__temporary_network_issue"><u>Problema temporário da rede. Tente outra vez mais tarde.</u></string>
     <string name="ok">OK</string>
     <string name="request_installation_permission_dialog__abort">Abortar</string>
     <string name="request_installation_permission_dialog__grant_permission">Conceder permissão</string>
@@ -108,7 +108,7 @@
     <string name="session_installer__status_failure_conflict">O processo falhou porque entrou em conflito (ou é inconsistente) com outro pacote já instalado no dispositivo. Por exemplo, uma permissão existente, certificados incompatíveis, etc. Você pode desinstalar outro app para corrigir o problema.</string>
     <string name="session_installer__status_failure_incompatible">O processo falhou porque é fundamentalmente incompatível com este dispositivo. Por exemplo, o app pode requerer um recurso de hardware que não existe, pode estar faltando código nativo para as ABIs suportadas pelo dispositivo ou requerer uma versão mais recente do SDK, etc.</string>
     <string name="session_installer__status_failure_invalid">O processo falhou porque um ou mais dos APKs era inválido. Por exemplo, eles podem ser malformados, corruptos, assinados incorretamente, desajustados, etc.</string>
-    <string name="session_installer__status_failure_storage">O processo falhou por causa de problemas com armazenamento. Por exemplo, o dispositivo pode estar com pouco espaço ou a memória  externa pode não estar disponível. Você pode liberar espaço ou inserir outra mídia externa.</string>
+    <string name="session_installer__status_failure_storage">O processo falhou por causa de problemas com armazenamento. Por exemplo, o dispositivo pode estar com pouco espaço ou a memória externa pode não estar disponível. Você pode liberar espaço ou inserir outra mídia externa.</string>
     <string name="settings_activity__label">Configurações</string>
     <string name="settings__b_f__delete_cache_if_install_failed">Excluir a atualização baixada se a instalação falhar.</string>
     <string name="settings__b_f__delete_cache_if_install_successful">Excluir a atualização baixada se a instalação for bem sucedida.</string>
@@ -159,9 +159,9 @@
     <string name="update_interval__6h">6 horas</string>
     <string name="update_interval__8h">8 horas</string>
     <string name="notification__update_available__channel_descr">Canal de notificação para %1$s atualizações disponíveis.</string>
-    <string name="notification__update_available__channel_name">"%1$s" notificações de atualização</string>
+    <string name="notification__update_available__channel_name">%1$s notificações de atualização</string>
     <string name="update_notification__text">Clique para instalar a atualização</string>
-    <string name="update_notification__title">Atualização para "%1$s" disponível</string>
+    <string name="update_notification__title">Atualização para %1$s disponível</string>
     <string name="vivaldi__description">Descubra um navegador extremamente veloz! Vivaldi é um navegador novo, gratuito, privado e muito flexível. Ele vem repleto de recursos úteis incluindo um AdBlocker (bloqueador de pop-ups) integrado, proteção contra rastreamento e opção de tradução privada. Navegador vem com abas especiais no estilo desktop, temas escuros/claros e muitas opções de layout.</string>
     <string name="vivaldi__title">Vivaldi</string>
     <string name="vivaldi__warning">- O Vivaldi é parcialmente de código aberto.
@@ -298,4 +298,9 @@
     <string name="update_all_activity__installation_failed">Instalação de \"%1$s\" falhou. Continue com o próximo aplicativo.</string>
     <string name="update_all_activity__installation_successful">Instalação de \"%1$s\" bem-sucedida. Soma do certificado: %2$s</string>
     <string name="update_all_activity__downloaded_file_is_missing">Arquivo baixado para \"%1$s\" não existe, continue com o próximo aplicativo.</string>
+    <string name="default_theme_preference" translatable="false"></string>
+    <string name="main_activity__update_all_apps_dialog__confirm"></string>
+    <string name="update_all_activity__label"></string>
+    <string name="main_activity__update_all_apps_dialog__title"></string>
+    <string name="main_activity_menu__update_all_apps__label"></string>
 </resources>
