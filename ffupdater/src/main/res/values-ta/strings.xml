@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="available_version">கிடைக்கிறது: %1$s</string>
-    <string name="notification__download_error__channel_descr">பின்னணியில் புதுப்பிப்பு பதிவிறக்கங்கள் தோல்வியடையும் போது காண்பிக்கப்படுகிறது.</string>
-    <string name="notification__download_error__channel_name">பின்னணியில் பதிவிறக்க பிழைகள் பற்றிய அறிவிப்பு</string>
-    <string name="notification__download_error__descr">%1$s புதுப்பிப்பின் பின்னணி பதிவிறக்கம் தோல்வியடைந்தது. இந்த பிழை அடிக்கடி ஏற்பட்டால், அதை notabug.org, github அல்லது gitlab இல் புகாரளிக்க தயங்க.</string>
     <string name="notification__download_running__title">பயன்பாட்டு புதுப்பிப்புகளைப் பதிவிறக்குகிறது</string>
     <string name="app_card__download_the_app">பயன்பாட்டைப் பதிவிறக்கவும்</string>
     <string name="notification__eol_apps__channel_description">காலாவதியான பயன்பாடுகளைப் பற்றிய எச்சரிக்கைகளுக்கான அறிவிப்பு சேனல்.</string>
@@ -43,7 +40,6 @@
     <string name="installed_application_is_verified">நிறுவப்பட்ட பயன்பாடு சரிபார்க்கப்பட்டது</string>
     <string name="installed_version">நிறுவப்பட்டது: %1$s</string>
     <string name="kiwi__title">கிவி உலாவி அடுத்து</string>
-    <string name="lockwise__title">பயர்பாக்ச் பூட்டுப்பகுதி</string>
     <string name="main_activity__no_unmetered_network">அளவிடப்படாத பிணையம் இல்லை</string>
     <string name="main_activity__temporary_network_issue"><u> தற்காலிக பிணைய சிக்கல். பின்னர் மீண்டும் முயற்சிக்கவும். </u></string>
     <string name="ok">சரி</string>
@@ -60,7 +56,6 @@
     <string name="settings__theme_dark">இருண்ட</string>
     <string name="settings__theme_light">ஒளி</string>
     <string name="settings__theme_system_default">கணினி இயல்புநிலையைப் பயன்படுத்தவும்</string>
-    <string name="ungoogled_chromium__title">Ugoogal நீலிரும்பு, குருமம்</string>
     <string name="update_interval__3d">3 நாட்கள்</string>
     <string name="update_interval__4d">4 நாட்கள்</string>
     <string name="notification__update_available__channel_descr">கிடைக்கக்கூடிய %1$s புதுப்பிப்புகளுக்கான அறிவிப்பு சேனல்.</string>
@@ -68,11 +63,9 @@
     <string name="update_notification__text">புதுப்பிப்பை நிறுவ சொடுக்கு செய்க</string>
     <string name="update_notification__title">%1$s க்கான புதுப்பிப்பு கிடைக்கிறது</string>
     <string name="vivaldi__title">விவால்டி உலாவி</string>
-    <string name="mull__title">மல் உலாவி</string>
     <string name="tor_browser__title">டோர் உலாவி</string>
     <string name="orbot__title">ஆர்போட்: ஆண்ட்ராய்டு க்கான TOR</string>
     <string name="add_app_activity__label">புதிய பயன்பாட்டைச் சேர்க்கவும்</string>
-    <string name="mulch__title">தழைக்கூளம்</string>
     <string name="fennecfdroid__title">FENCC F-droid</string>
     <string name="network__dns_provider__quad9">Https: Quad9 க்கு மேல் dns</string>
     <string name="background__separate_notification_channels__title">வெவ்வேறு அறிவிப்பு சேனல்கள்</string>
@@ -92,7 +85,6 @@
     <string name="notification__uncaught_exception__channel_name">செயலிழப்பு அறிவிப்புகள்</string>
     <string name="notification__uncaught_exception__channel_description">Ffupdater ஐ செயலிழக்கச் செய்யும் எதிர்பாராத பிழைகள்.</string>
     <string name="notification__uncaught_exception__title">Ffupdater செயலிழந்தது</string>
-    <string name="mulch_wv__title">தழைக்கூளம் கணினி வெப்வியூ</string>
     <string name="app_installer__failed_to_validate_signature_of_download">பதிவிறக்கத்தின் கையொப்பத்தை சரிபார்க்கத் தவறிவிட்டது.</string>
     <string name="app_installer__failed_to_verify_signature_of_installed_app">நிறுவப்பட்ட பயன்பாட்டை சரிபார்க்கத் தவறிவிட்டது.</string>
     <string name="installer__method__title">நிறுவி முறை</string>
@@ -128,11 +120,6 @@
     <string name="brave__warning">- பிரேவ் கூகிள் குரோம் தொழில்நுட்ப அடித்தளத்தைப் பயன்படுத்துகிறார், இதனால் குரோமியம் வழங்குதல் எஞ்சினின் ஏகபோக நிலையை மறைமுகமாக ஆதரிக்கிறது.\n - அதன் அடிப்படை கவனம் Ethereum blockchain இல் கிள்ளாக்கு பேட் காரணமாக இந்த திட்டம் கிரிப்டோகரன்சியுடன் உறவுகளைக் கொண்டுள்ளது. பிளாக்செயின்களுக்கு பல சிக்கல்கள் உள்ளன, மேலும் எனது பார்வையில் தவிர்க்கப்பட வேண்டும்.</string>
     <string name="brave_nightly__description">ஆண்ட்ராய்டு க்கான பிரேவ் நைட்லி (டெவலப்பர்) க்கு வருக!\n புதிய அம்சங்களை முயற்சித்து ஆரம்பகால கருத்துக்களைக் கொடுங்கள்: https://brave.com/msupport\n ஆண்ட்ராய்டு க்கான பிரேவ் பதிப்பில் நீங்கள் துணிச்சலான இரவு நிறுவலாம்.</string>
     <string name="brave_nightly__title">துணிச்சலான உலாவி (இரவு)</string>
-    <string name="bromite__description">தனியுரிமை-ஆக்கிரமிப்பு நற்பொருத்தங்கள் இல்லாமல் மற்றும் வேகமான விளம்பரத் தடுக்கும் இயந்திரத்தை சேர்ப்பதன் மூலம் ஒழுங்கற்ற உலாவல் அனுபவத்தை வழங்குவதை ப்ரோமிட் நோக்கமாகக் கொண்டுள்ளது. ஒரு விளம்பர தளமாக உலாவி யோசனையை கட்டுப்படுத்த உதவும் வகையில் குறைந்தபட்ச இடைமுகம் மாற்றங்கள் பயன்படுத்தப்படுகின்றன.</string>
-    <string name="bromite__title">புரோமாச்</string>
-    <string name="bromite__warning">- புரோமிட் கூகிள் குரோம் தொழில்நுட்ப அடித்தளத்தைப் பயன்படுத்துகிறது, இதனால் குரோமியம் வழங்குதல் எஞ்சினின் ஏகபோக நிலையை மறைமுகமாக ஆதரிக்கிறது.</string>
-    <string name="bromite_systemwebview__description">SystemWebView தொகுப்பில் புரோமைட்டின் முக்கிய உலாவி/ரெண்டரிங் இயந்திரம் மற்றும் அதன் அதே நற்பொருத்தங்கள் உள்ளன. முழு ஆண்ட்ராய்டு அமைப்பிற்கும் இயல்புநிலை உலாவி கூறுகளை மாற்றுவதற்கான வாய்ப்பை இது வழங்குகிறது.</string>
-    <string name="bromite_systemwebview__title">புரோமிட் சிச்டம் வெப்வியூ</string>
     <string name="crash_report__copy_crash_report_to_clipboard">செயலிழப்பு அறிக்கையை இடைநிலைப்பலகைக்கு நகலெடுக்கவும்</string>
     <string name="install_activity__download_file_failed__crash_text">பதிவிறக்கத்தின் போது பின்வரும் பிழை ஏற்பட்டது. இந்த பிழை அடிக்கடி ஏற்பட்டால், விபத்து அறிக்கையை notabug.org, github அல்லது gitlab க்கு சமர்ப்பிக்க தயங்க.</string>
     <string name="crash_report__explain_text__download_activity_fetching_url">பதிவிறக்க மேனிலை தரவு பெறப்பட்டபோது இந்த பிழை ஏற்பட்டது. இந்த பிழை அடிக்கடி ஏற்பட்டால், விபத்து அறிக்கையை notabug.org, github அல்லது gitlab க்கு சமர்ப்பிக்க தயங்க.</string>
@@ -142,8 +129,6 @@
     <string name="crash_report__go_to_github">கிதுபுக்குச் செல்லுங்கள்</string>
     <string name="crash_report__go_to_gitlab">கிட்லாப்பிற்குச் செல்லுங்கள்</string>
     <string name="crash_report__got_to_notabug_org">Notabug.org க்குச் செல்லுங்கள்</string>
-    <string name="notification__download_error__text">%1$s புதுப்பிப்பின் பின்னணி பதிவிறக்கம் தோல்வியடைந்தது. இந்த பிழை அடிக்கடி ஏற்பட்டால், பிழை அறிக்கையைக் காண இங்கே சொடுக்கு செய்க.</string>
-    <string name="notification__download_error__title">புதுப்பிப்பின் பின்னணி பதிவிறக்கம் தோல்வியடைந்தது</string>
     <string name="notification__download_running__channel_descr">பயன்பாட்டு புதுப்பிப்புகள் பின்னணியில் பதிவிறக்கம் செய்யப்படும்போது காண்பிக்கப்படுகிறது.</string>
     <string name="notification__error__channel_descr">பின்னணி புதுப்பிப்பு சரிபார்ப்பின் பிழைகளைக் காட்டு</string>
     <string name="notification__download_running__channel_name">பின்னணியில் பதிவிறக்கங்களைப் பற்றிய அறிவிப்பு</string>
@@ -168,8 +153,6 @@
     <string name="notification__install_success__title">%1$s புதுப்பிக்கப்பட்டுள்ளன</string>
     <string name="app_installer__installed_app_has_invalid_signature">நிறுவப்பட்ட பயன்பாடு சரிபார்க்கப்படவில்லை</string>
     <string name="kiwi__warning">- கிவி பகுதி திறந்த மூல மட்டுமே\n - கிவி கூகிள் குரோம் தொழில்நுட்ப அடித்தளத்தைப் பயன்படுத்துகிறது, இதனால் குரோமியம் வழங்குதல் எஞ்சினின் ஏகபோக நிலையை மறைமுகமாக ஆதரிக்கிறது.\n - கிவி ஒரு சிறந்த தனியுரிமை உலாவி அல்ல, ஆனால் ஒரு நல்ல துணை ஆதரவைக் கொண்டுள்ளது.\n - கிவி உலாவியைப் பயன்படுத்தி செய்யப்படும் ஒவ்வொரு தேடலுக்கும் தேடுபொறிகளால் உலாவி பணம் செலுத்துகிறது. தேடுபொறி தேர்வைப் பொறுத்து, கோரிக்கைகள் கிவிப்சர் / கிவிசெர்க் சர்வீசச் சேவையகங்கள் வழியாக செல்லலாம்.\n - பசலிப்பழம் இல் உள்ள கூகிள் விளம்பரங்கள் விளம்பரங்களுக்கான இருப்பிடத் தரவைப் பயன்படுத்தலாம் - ஆனால் கண்டுபிடிப்பு அம்சத்தை முடக்குவதன் மூலம் அதை முடக்கலாம். ஆனால் இது விரைவில் மாறும். மேலும் விவரங்களுக்கு https://privacy.kiwibrowser.org/ ஐப் பார்க்கவும்.</string>
-    <string name="lockwise__description">உங்களுக்கான கடவுச்சொல் அணுகல், &amp; நீங்கள் மட்டுமே\n உங்கள் பயர்பாக்ச் கடவுச்சொற்களை ரகசியமாகக் கண்காணித்து அவற்றை எங்கும் அணுகவும். உங்கள் கணக்குகளில் சேர பயன்பாட்டிலிருந்து எந்த வலைத்தளத்தையும் விரைவாக திறக்கவும்.</string>
-    <string name="lockwise__eol_reason">மொசில்லா டிசம்பர் 2021 இல் ஆதரவை கைவிட்டார். தயவுசெய்து பாதுகாப்பான மற்றொரு கடவுச்சொல்லுக்கு மாறவும்.</string>
     <string name="main_activity__github_api_limit_exceeded"><u> github-api வரம்பு மீறியது. அடுத்த மணிநேரத்தை மீண்டும் முயற்சிக்கவும். </u></string>
     <string name="main_activity__an_error_occurred"><u> பிழை ஏற்பட்டது. பின்னர் மீண்டும் முயற்சிக்கவும். </u></string>
     <string name="request_installation_permission_dialog__abort">கருக்கலைப்பு</string>
@@ -204,8 +187,6 @@
     <string name="settings__foreground_category__title">முன்புறம்</string>
     <string name="settings__installer_category__title">நிறுவி</string>
     <string name="settings__theme_battery_saver">பேட்டரி சேமிப்பு செயலில் இருக்கும்போது இருண்டது</string>
-    <string name="ungoogled_chromium__description">கூகிள் குரோமியம், கூகிளுடன் சான்ச் ஒருங்கிணைப்பு.\n\n Google கணக்கில் உள்நுழையாமல், குரோமியம் பாதுகாப்பு மற்றும் தனியுரிமை அடிப்படையில் நன்றாகவே செய்கிறது. இருப்பினும், குரோமியம் இன்னும் கூகிள் வலை சேவைகள் மற்றும் பைனரிகளில் சில சார்புநிலைகளைக் கொண்டுள்ளது. கூடுதலாக, கூகிள் பயனர்களுக்கு எளிதாகவும் உள்ளுணர்வாகவும் இருக்க குரோமியத்தை வடிவமைத்தது, அதாவது அவை வெளிப்படைத்தன்மை மற்றும் உள் செயல்பாடுகளின் கட்டுப்பாட்டில் வேறுபாடின்மை செய்கின்றன.</string>
-    <string name="ungoogled_chromium__warning">- கூகிள் குரோம் தொழில்நுட்ப அடித்தளத்தைப் பயன்படுத்துகிறது, இதனால் குரோமியம் வழங்குதல் எஞ்சினின் ஏகபோக நிலையை மறைமுகமாக ஆதரிக்கிறது.</string>
     <string name="unsupported_abi_dialog__message">தேர்ந்தெடுக்கப்பட்ட உலாவி உங்கள் ச்மார்ட்போனின் செயலியுடன் பொருந்தாது. வேறு உலாவியைத் தேர்ந்தெடுக்கவும்.</string>
     <string name="unsupported_abi_dialog__title">ஆதரிக்கப்படாத சாதனம்</string>
     <string name="update_interval__12h">12 மணி நேரம்</string>
@@ -226,8 +207,6 @@
     <string name="update_interval__8h">8 மணி நேரம்</string>
     <string name="vivaldi__description">வேகமான இணைய உலாவியைக் கண்டறியவும்! விவால்டி ஒரு புதிய, இலவச மற்றும் தனியார் வலை உலாவி என்பது நெகிழ்வுத்தன்மையை மனதில் கொண்டு கட்டப்பட்டுள்ளது. இது ஒரு உள்ளமைக்கப்பட்ட ADBLOCKER (பாப்-அப் தடுப்பான்), கண்காணிப்பு பாதுகாப்பு மற்றும் தனியார் மொழிபெயர்ப்பு உள்ளிட்ட பயனுள்ள அம்சங்களால் நிரம்பியுள்ளது. சரியான டெச்க்டாப்-பாணி தாவல்கள், இருண்ட/ஒளி கருப்பொருள்கள் மற்றும் தளவமைப்பு தேர்வுகள் போன்ற உலாவி விருப்பங்கள் அதை உங்களுடையதாக மாற்ற உதவுகின்றன.</string>
     <string name="vivaldi__warning">- விவால்டி ஓரளவு திறந்த மூலமாகும்.\n - இது கூகிள் குரோம் தொழில்நுட்ப அடித்தளத்தையும் பயன்படுத்துகிறது, இதனால் குரோமியம் வழங்குதல் எஞ்சினின் ஏகபோக நிலையை மறைமுகமாக ஆதரிக்கிறது.</string>
-    <string name="mull__description">இது மொசில்லா தொழில்நுட்பத்தை அடிப்படையாகக் கொண்ட தனியுரிமை சார்ந்த மற்றும் பிரிக்கப்பட்ட வலை உலாவி. Argenfox-USer.js திட்டத்தின் விருப்பங்களைப் பயன்படுத்தி TOR மேம்பாட்டு திட்டத்தால் மேலோடை செய்யப்பட்ட பல அம்சங்களை இது செயல்படுத்துகிறது. \'Ublock origin\' ஐ நிறுவ பரிந்துரைக்கப்படுகிறது.</string>
-    <string name="ungoogled_chromium__eol_reason">உருவாக்குபவர் இடுகையிட்டார்: பதிப்புகளை சிறிது நேரம் புதுப்பிக்க முடியாது. முடிந்தால் தயவுசெய்து உலாவிகளில் ஒன்றைப் பயன்படுத்தவும் [Ffupdater ஆதரிக்கும்] இதற்கிடையில். https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
     <string name="tor_browser__description">ஆண்ட்ராய்டு க்கான TOR உலாவி என்பது TOR திட்டத்தால் ஆதரிக்கப்படும் ஒரே அதிகாரப்பூர்வ மொபைல் உலாவியாகும், இது தனியுரிமை மற்றும் சுதந்திரத்திற்கான உலகின் வலுவான கருவியின் உருவாக்குபவர்கள்.</string>
     <string name="orbot__description">ஆர்போட் என்பது ஒரு இலவச பதிலாள் பயன்பாடாகும், இது இணையத்தை மிகவும் பாதுகாப்பாக பயன்படுத்த மற்ற பயன்பாடுகளுக்கு அதிகாரம் அளிக்கிறது. ஆர்போட் உங்கள் இணைய போக்குவரத்தை குறியாக்க டோரைப் பயன்படுத்துகிறது, பின்னர் உலகெங்கிலும் உள்ள தொடர்ச்சியான கணினிகள் மூலம் துள்ளுவதன் மூலம் அதை மறைக்கிறது. டோர் இலவச மென்பொருள் மற்றும் ஒரு திறந்த பிணையம் ஆகும், இது தனிப்பட்ட விடுதலை மற்றும் தனியுரிமை, ரகசிய வணிக நடவடிக்கைகள் மற்றும் உறவுகள் மற்றும் போக்குவரத்து பகுப்பாய்வு என அழைக்கப்படும் மாநில பாதுகாப்பு ஆகியவற்றை அச்சுறுத்தும் பிணையம் கண்காணிப்புக்கு எதிராக பாதுகாக்க உதவுகிறது.</string>
     <string name="crash_report_activity__label">செயலிழப்பு நிருபர்</string>
@@ -248,8 +227,6 @@
     <string name="settings__background__update_check__when_device_idle__summary">பின்னணி புதுப்பிப்பால் உங்கள் பயன்பாடுகள் மறுதொடக்கம் செய்யப்படுவதை நீங்கள் விரும்பவில்லை என்றால் இதை இயக்கவும். பின்னணி புதுப்பிப்பு காசோலைகளுக்கு மேலும் கணிக்கக்கூடிய அட்டவணையை நீங்கள் விரும்பினால் இதை முடக்கு.</string>
     <string name="settings__background__update_check__when_device_idle__unsupported">இந்த விருப்பம் ஆண்ட்ராய்டு மார்ச்மெல்லோ அல்லது அதற்குப் பிறகு மட்டுமே கிடைக்கிறது.</string>
     <string name="fennecfdroid__warning">FFUPDATER கோப்புகளை F-DROID சேவையகங்களிலிருந்து பதிவிறக்குகிறது, எனவே இது வேகமாக இல்லை.</string>
-    <string name="mulch__description">இது குரோமியம் தொழில்நுட்பத்தின் அடிப்படையில் பாதுகாப்பு சார்ந்த மற்றும் கடினப்படுத்தப்பட்ட வலை உலாவி. பல நற்பொருத்தங்கள் முடக்கப்பட்டவை/அகற்றப்படுகின்றன மற்றும் ஒரு சில பாதுகாப்பு நற்பொருத்தங்கள் இயக்கப்பட்டுள்ளன/வெனடியம் திட்டத்தின் திட்டுகளுக்கு நன்றி. மூல ரெப்போவில் பிற இயக்க முறைமைகளை தழைக்கூளம் அவற்றின் கணினி வெப்வியூவாக சேர்க்க அனுமதிக்க ப்ரீபில்ட்ச் மற்றும் மேக்ஃபைல்கள் உள்ளன.</string>
-    <string name="mulch__warning">- கூகிள் குரோம் தொழில்நுட்ப அடித்தளத்தைப் பயன்படுத்துகிறது, இதனால் குரோமியம் வழங்குதல் எஞ்சினின் ஏகபோக நிலையை மறைமுகமாக ஆதரிக்கிறது.</string>
     <string name="fennecfdroid__description">ஃபென்னெக் எஃப்-டிராய்டு அண்மைக் கால பயர்பாக்ச் வெளியீட்டை அடிப்படையாகக் கொண்டது (ஃபெனிக்ச் குறியீட்டு முறை). இது தனியுரிம பிட்கள் மற்றும் டெலிமெட்ரி அகற்றப்பட்டுள்ளது, ஆனால் பயனர்களைக் கண்காணிக்கக்கூடிய பல்வேறு மொசில்லா மற்றும் கூகிள் சேவைகளுடன் இன்னும் இணைகிறது.</string>
     <string name="network__dns_provider__title">டி.என்.எச் அமைப்புகள்</string>
     <string name="network__custom_doh_server__dialog_message">தனிப்பயன் DOH சேவையகத்திற்கான இணைப்பு விவரங்களை இந்த வடிவங்களில் ஒன்றில் உள்ளிடவும்:\n\n URL; ஐபி 1\n\n URL; IP1; IP2\n\n URL; IP1; IP2; IP3\n\n URL; IP1; IP2; IP3; IP4\n\n எடுத்துக்காட்டாக: https://dns.google/dns-query ;8.8.8.8 அல்லது https://dns.quad9.ent/dns-query ;2620:fe::fe ;2620:9</string>
@@ -291,7 +268,6 @@
     <string name="notification__bg_update_check__unreliable_execution__title">பின்னணி புதுப்பிப்பு சோதனை நம்பகத்தன்மையுடன் செயல்படுத்தப்படவில்லை</string>
     <string name="notification__bg_update_check__unreliable_execution__text">உங்கள் சாதனத்திற்கான பேட்டரி அல்லது செயல்திறன் அமைப்புகளால் இது ஏற்படலாம். இந்த பயன்பாட்டிற்கான பேட்டரி தேர்வுமுறை முடக்க இந்த அறிவிப்பைக் சொடுக்கு செய்க.</string>
     <string name="notification__uncaught_exception__text">பிழை அறிக்கையைக் காண சொடுக்கு செய்க.</string>
-    <string name="mulch_wv__description">இது குரோமியம் தொழில்நுட்பத்தின் அடிப்படையில் பாதுகாப்பு சார்ந்த மற்றும் கடினப்படுத்தப்பட்ட கணினி வெப்வியூ ஆகும். பல நற்பொருத்தங்கள் முடக்கப்பட்டவை/அகற்றப்படுகின்றன மற்றும் ஒரு சில பாதுகாப்பு நற்பொருத்தங்கள் இயக்கப்பட்டுள்ளன/வெனடியம் திட்டத்தின் திட்டுகளுக்கு நன்றி.</string>
     <string name="ffupdater__different_signature_message">FFUPDater இன் இந்த பதிப்பு F-DROID ஆல் கையொப்பமிடப்பட்டுள்ளது, எனவே F-DROID மட்டுமே புதுப்பிப்புகளை விநியோகிக்க முடியும். புதுப்பிப்புகளை விரைவாகப் பெற, ffupdater ஐ நிறுவல் நீக்கிவிட்டு உருவாக்குபவர் கையொப்பமிடப்பட்ட பதிப்பை நிறுவவும். இந்த பதிப்பின் மூலம் FFUPDATER F-DROID க்காக காத்திருக்காமல் தன்னை புதுப்பிக்க முடியும்.</string>
     <string name="cromite__description">குரோமைட் என்பது விளம்பர தடுப்புக்கான உள்ளமைக்கப்பட்ட ஆதரவையும் தனியுரிமைக்கான ஒரு கண்ணும் கொண்ட புரோமைட்டை அடிப்படையாகக் கொண்ட ஒரு குரோமியம் ஃபோர்க் ஆகும்.</string>
     <string name="thorium__warning">- தோரியம் கூகிள் குரோம் தொழில்நுட்ப அடித்தளத்தைப் பயன்படுத்துகிறது, இதனால் குரோமியம் வழங்குதல் எஞ்சினின் ஏகபோக நிலையை மறைமுகமாக ஆதரிக்கிறது.</string>
