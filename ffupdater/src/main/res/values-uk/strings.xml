@@ -50,7 +50,7 @@
     <string name="download_activity__download_failed">Не вдалося завантажити</string>
     <string name="download_activity__downloaded_application_from">Завантажений застосунок від:</string>
     <string name="app_installer__signature_of_download_is_invalid">Завантажений застосунок НЕ перевірений</string>
-    <string name="download_activity__exception__show_button">"<u>Показати докладний звіт про помилку.</u>"</string>
+    <string name="download_activity__exception__show_button"><u>Показати докладний звіт про помилку.</u></string>
     <string name="download_activity__external_storage_not_accessible">Зовнішня пам’ять недоступна - не вдається почати завантаження. Поточний статус:</string>
     <string name="download_activity__fetch_url_for_download">Вилучити URL-адресу для завантаження з %1$s</string>
     <string name="download_activity__fetched_url_for_download_successfully">Вибрано URL-адресу завантаження від %1$s</string>
@@ -75,9 +75,9 @@
     <string name="app_installer__installed_app_has_invalid_signature">Встановлений застосунок НЕ підтверджений</string>
     <string name="installed_application_is_verified">Встановлений застосунок перевірений</string>
     <string name="installed_version">Встановлено: %1$s</string>
-    <string name="main_activity__github_api_limit_exceeded">"<u>Перевищено ліміт GitHub-API. Повторіть спробу наступної години.</u>"</string>
+    <string name="main_activity__github_api_limit_exceeded"><u>Перевищено ліміт GitHub-API. Повторіть спробу наступної години.</u></string>
     <string name="main_activity__no_unmetered_network">Немає мережі без тарифікації трафіку</string>
-    <string name="main_activity__temporary_network_issue">"<u>Тимчасова проблема з мережею. Повторіть спробу пізніше.</u>"</string>
+    <string name="main_activity__temporary_network_issue"><u>Тимчасова проблема з мережею. Повторіть спробу пізніше.</u></string>
     <string name="ok">Гаразд</string>
     <string name="request_installation_permission_dialog__abort">Перервати</string>
     <string name="request_installation_permission_dialog__grant_permission">Надати дозвіл</string>
@@ -295,4 +295,5 @@
     <string name="thunderbird__title">Thunderbird</string>
     <string name="thunderbird_beta__title">Thunderbird Beta</string>
     <string name="thunderbird__description">Thunderbird — потужна програма електронної пошти, орієнтована на конфіденційність. Легко керуйте кількома обліковими записами електронної пошти з однієї програми за допомогою опції єдиної папки вхідних для максимальної продуктивності. Thunderbird, створений на основі технології з відкритим кодом і підтримується спеціальною командою розробників разом із глобальною спільнотою волонтерів, ніколи не розглядає ваші особисті дані як продукт. Підтримується виключно за рахунок фінансових внесків наших користувачів, тому вам більше ніколи не доведеться бачити рекламу разом із вашими електронними листами.</string>
+    <string name="default_theme_preference" translatable="false"></string>
 </resources>
