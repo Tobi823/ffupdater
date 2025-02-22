@@ -21,11 +21,6 @@
 \n尝试最新功能并给予早期反馈：https://brave.com/msupport
 \n您可以在安装了当前版本的 Brave Android 正式版的同时，另外安装 Brave 每夜版。</string>
     <string name="brave_nightly__title">Brave 浏览器（每夜版）</string>
-    <string name="bromite__description">Bromite 致力于提供清爽的浏览体验，无侵害隐私功能，并带有快速的广告拦截引擎。微调用户界面，以助阻遏浏览器成为广告泛滥的平台的企图。</string>
-    <string name="bromite__title">Bromite</string>
-    <string name="bromite__warning">- Bromite 使用了 Google Chrome 的技术基础，因而间接支持了 Chromium 渲染引擎的垄断地位。</string>
-    <string name="bromite_systemwebview__description">SystemWebView 软件包包含了 Bromite 的核心浏览器/渲染引擎及其相同功能。这使其可代替成为 Android 系统默认浏览器。</string>
-    <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">复制崩溃报告到剪贴板</string>
     <string name="install_activity__download_file_failed__crash_text">下载过程中出现以下错误。如果这个错误频繁出现，请随时在 notabug.org、GitHub 或 GitLab 上提交崩溃报告。</string>
     <string name="crash_report__explain_text__download_activity_fetching_url">在拉取下载元数据时出现错误。如果这个错误频繁出现，请随时在 notabug.org、GitHub 或 GitLab 上提交崩溃报告。</string>
@@ -35,11 +30,6 @@
     <string name="crash_report__go_to_github">跳转到 GitHub</string>
     <string name="crash_report__go_to_gitlab">跳转到 GitLab</string>
     <string name="crash_report__got_to_notabug_org">跳转到 notabug.org</string>
-    <string name="notification__download_error__channel_descr">当在后台下载更新失败时显示。</string>
-    <string name="notification__download_error__channel_name">后台下载错误通知</string>
-    <string name="notification__download_error__descr">后台下载 %1$s 的更新失败。如果这个错误频繁出现，请随时在 notabug.org、GitHub 或 GitLab 上报告。</string>
-    <string name="notification__download_error__text">后台下载 %1$s 的更新失败。如果此错误频繁发生，请单击此处查看错误报告。</string>
-    <string name="notification__download_error__title">后台下载更新失败</string>
     <string name="notification__download_running__channel_descr">当后台下载了更新时显示。</string>
     <string name="notification__download_running__channel_name">后台下载通知</string>
     <string name="notification__download_running__title">正在下载应用程序更新</string>
@@ -118,11 +108,6 @@
 \n- Kiwi 不是理想的隐私浏览器，但其有良好的插件支持。
 \n- 搜索引擎会为使用 Kiwi 浏览器完成的每一次搜索而对其付费。根据选择的搜索引擎，请求可能会通过 Kiwibrowser / Kiwisearchservices 服务器。
 \n- Kiwi 中的 Google 广告可能会将位置数据用于广告业务——但您可以通过禁用发现功能来禁用它。但这一行为将很快发生变化。请参阅 https://privacy.kiwibrowser.org/ 了解更多详情。</string>
-    <string name="lockwise__description">访问密码，为且只为您
-\n
-\n安全地跟踪您的 Firefox 密码变化并在任何地方访问它们。快速从应用程序中打开任何网站并登入您的帐户。</string>
-    <string name="lockwise__eol_reason">Mozilla 于 2021 年 12 月结束支持。请切换到其他密码管理器。</string>
-    <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded"><u>超出 GitHub API 限制。请在下一小时重试。</u></string>
     <string name="main_activity__no_unmetered_network">无非流量计费网络</string>
     <string name="main_activity__temporary_network_issue"><u>临时网络问题。请稍后重试。</u></string>
@@ -172,11 +157,6 @@
     <string name="settings__theme_dark">深色</string>
     <string name="settings__theme_light">浅色</string>
     <string name="settings__theme_system_default">跟随系统</string>
-    <string name="ungoogled_chromium__description">Google Chromium，没有与 Google 整合。
-\n
-\n在不登录 Google 帐户的情况下，Chromium 在安全和隐私方面做得很好。但 Chromium 仍然部分依赖于 Google 网络服务和二进制文件。此外，Google 对用户将 Chromium 设计得非常简单直观，这意味着他们在内部操作的透明度和控制方面做出了妥协。</string>
-    <string name="ungoogled_chromium__title">去 Google 化（Ungoogled）Chromium</string>
-    <string name="ungoogled_chromium__warning">- Ungoogled Chromium 使用了 Google Chrome 的技术基础，因而间接支持了 Chromium 渲染引擎的垄断地位。</string>
     <string name="unsupported_abi_dialog__message">所选浏览器与您手机的处理器不兼容。请选择其他浏览器。</string>
     <string name="unsupported_abi_dialog__title">不支持的设备</string>
     <string name="update_interval__12h">12 小时</string>
@@ -205,9 +185,6 @@
     <string name="vivaldi__title">Vivaldi 浏览器</string>
     <string name="vivaldi__warning">- Vivaldi 只有部分开源。
 \n- 它还使用了 Google Chrome 的技术基础，因而间接支持了 Chromium 渲染引擎的垄断地位。</string>
-    <string name="mull__title">Mull 浏览器</string>
-    <string name="mull__description">这是一款基于 Mozilla 技术、以隐私为导向的完全开源的网页浏览器。其使用了 arkenfox-user.js 项目的偏好设置，开启了许多以 Tor Uplift 项目为上游实现的功能。推荐同时安装 \'uBlock Origin\' 扩展。</string>
-    <string name="ungoogled_chromium__eol_reason">开发者消息：“我将有一段时间无法更新版本。 如果可能，请同时使用 FFUpdater 支持的其他浏览器之一。” https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
     <string name="orbot__title">Orbot：Android 版 Tor</string>
     <string name="settings__background__update_check__when_device_idle__title">仅在设备空闲时检查更新</string>
     <string name="settings__background__update_check__when_device_idle__summary">如果不希望应用因后台更新而重启，请启用该选项。如果希望更好预测后台检查更新的时间，请禁用该选项。</string>
@@ -228,9 +205,6 @@
     <string name="settings__network__trust_user_cas__title">信任用户添加的证书</string>
     <string name="chromium__title">Chromium</string>
     <string name="chromium__warning">- Chromium 使用了 Google Chrome 的技术基础，因而间接支持了 Chromium 渲染引擎的垄断地位。</string>
-    <string name="mulch__title">Mulch</string>
-    <string name="mulch__description">这是一个安全导向的基于 Chromium 强化的网络浏览器。由于 Vanadium 项目的补丁，许多不被欢迎的特性被禁用/删除，少数安全功能被启用/添加。源代码库还包括预构建和生成文件，以便其他操作系统将 Mulch 作为系统 WebView。</string>
-    <string name="mulch__warning">- Mulch 使用了 Google Chrome 的技术基础，因而间接支持了 Chromium 渲染引擎的垄断地位。</string>
     <string name="fennecfdroid__title">Fennec F-Droid</string>
     <string name="fennecfdroid__warning">FFUpdater 从 F-Droid 服务器下载文件，因此速度不理想。</string>
     <string name="fennecfdroid__description">Fennec F-Droid 基于最新版本的 Firefox（代号 Fenix）。它删除了专有代码和遥测，但仍会连接到一些跟踪用户的 Mozilla 和 Google 服务。</string>
@@ -318,8 +292,6 @@
     <string name="notification__uncaught_exception__title">FFUpdater 崩溃了</string>
     <string name="notification__uncaught_exception__text">点击以查看错误报告。</string>
     <string name="app_installer__failed_to_validate_signature_of_download">验证此下载的签名失败。</string>
-    <string name="mulch_wv__title">覆盖系统 WebView</string>
-    <string name="mulch_wv__description">这是一个基于 Chromium 技术的面向安全的、加固的系统 WebView。由于 Vanadium 项目的补丁，许多不受欢迎的特性被禁用/删除，而一些安全功能被启用/添加。</string>
     <string name="background__installation__when_screen_off__summary">仅在设备屏幕关闭时尝试安装更新。</string>
     <string name="notification__bg_update_check__unreliable_execution__text">这可能是由您设备的电池或性能设置造成的。点击此通知以禁用对此 App 的电池优化。</string>
     <string name="thorium__warning">- Thorium 使用了 Google Chrome 的技术基础，因而间接支持了 Chromium 渲染引擎的垄断地位。</string>

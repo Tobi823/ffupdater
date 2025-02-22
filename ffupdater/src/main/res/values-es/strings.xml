@@ -21,11 +21,6 @@
 \nPrueba las nuevas características y da tus primeros comentarios: https://brave.com/msupport
 \nPuedes instalar Brave Nightly junto a tu versión actual de Brave para Android.</string>
     <string name="brave_nightly__title">Brave Browser (Nightly)</string>
-    <string name="bromite__description">El objetivo de Bromite es ofrecer una experiencia de navegación sin desorden, sin funciones que invadan la privacidad y con la incorporación de un rápido motor de bloqueo de anuncios. Se aplican cambios mínimos en la interfaz de usuario para ayudar a frenar la idea de que el navegador es una plataforma publicitaria.</string>
-    <string name="bromite__title">Bromite</string>
-    <string name="bromite__warning">- Bromite utiliza la base técnica de Google Chrome y, por tanto, apoya indirectamente la posición de monopolio del motor de renderizado Chromium.</string>
-    <string name="bromite_systemwebview__description">El paquete SystemWebView contiene el núcleo del motor de navegación/representación de Bromite y sus mismas características. Ofrece la posibilidad de sustituir el componente del navegador por defecto para todo el sistema Android.</string>
-    <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Copiar el informe de los errores en el portapapeles</string>
     <string name="install_activity__download_file_failed__crash_text">Se ha producido el siguiente error durante la descarga. Si este error se produce con frecuencia, no dude en enviar el informe del fallo a notabug.org, GitHub o GitLab.</string>
     <string name="crash_report__explain_text__download_activity_fetching_url">Este error se produjo cuando se obtuvieron los metadatos de la descarga. Si este error se produce con frecuencia, no dude en enviar el informe del fallo en notabug.org, GitHub o GitLab.</string>
@@ -109,10 +104,6 @@
 \n- Kiwi no es un navegador de privacidad ideal pero tiene un buen soporte para complementos.
 \n- El navegador está recibiendo el pago de los motores de búsqueda por cada búsqueda realizada usando Kiwi Browser. Dependiendo de la elección del motor de búsqueda, las peticiones pueden ir a través de los servidores Kiwibrowser / Kiwisearchservices.
 \n- Google Ads en kiwi puede usar los datos de ubicación para los anuncios, pero puede desactivarlos desactivando la función Discovery. Pero esto pronto cambiará. Véase https://privacy.kiwibrowser.org/ para más detalles.</string>
-    <string name="lockwise__description">ACCESO A LAS CONTRASEÑAS PARA TI, Y SÓLO PARA TI
-\n
-\nSigue de forma segura tus contraseñas de Firefox y accede a ellas en cualquier lugar. Abre rápidamente cualquier sitio web desde la aplicación para entrar en tus cuentas.</string>
-    <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded"><u>Límite del API de GitHub superado. Vuelva a intentar en la próxima hora.</u></string>
     <string name="main_activity__no_unmetered_network">No hay ninguna red sin límite en el uso de datos</string>
     <string name="main_activity__temporary_network_issue"><u>Problema temporal de red. Inténtelo más tarde.</u></string>
@@ -162,11 +153,6 @@
     <string name="settings__theme_dark">Oscuro</string>
     <string name="settings__theme_light">Claro</string>
     <string name="settings__theme_system_default">Usar predeterminado del sistema</string>
-    <string name="ungoogled_chromium__description">Google Chromium, sin integración con Google.
-\n
-\nSin necesidad de acceder a una cuenta de Google, Chromium lo hace bastante bien en términos de seguridad y privacidad. Sin embargo, Chromium sigue teniendo cierta dependencia de los servicios web y los binarios de Google. Además, Google diseñó Chromium para que fuera fácil e intuitivo para los usuarios, lo que significa que compromete la transparencia y el control de las operaciones internas.</string>
-    <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
-    <string name="ungoogled_chromium__warning">- Ungoogled Chromium utiliza la base técnica de Google Chrome y, por tanto, apoya indirectamente la posición de monopolio del motor de renderizado Chromium.</string>
     <string name="unsupported_abi_dialog__message">El navegador seleccionado es incompatible con el procesador de su smartphone. Por favor, seleccione un navegador diferente.</string>
     <string name="unsupported_abi_dialog__title">Dispositivo no soportado</string>
     <string name="update_interval__12h">12 horas</string>
@@ -197,15 +183,6 @@
 \n- También utiliza la base técnica de Google Chrome y, por tanto, apoya indirectamente la posición de monopolio del motor de renderizado Chromium.</string>
     <string name="notification__eol_apps__title">Aplicaciones obsoletas instaladas</string>
     <string name="orbot__description">Orbot es una aplicación de proxy gratuita que permite a otras aplicaciones utilizar Internet de forma más segura. Orbot usa Tor para encriptar su tráfico de Internet y luego lo oculta rebotando a través de una serie de computadoras en todo el mundo. Tor es un software gratuito y una red abierta que lo ayuda a defenderse contra una forma de vigilancia de la red que amenaza la libertad personal y la privacidad, las actividades y relaciones comerciales confidenciales y la seguridad del estado conocida como análisis de tráfico.</string>
-    <string name="ungoogled_chromium__eol_reason">El desarrollador publicó: \"No podré actualizar las versiones durante algún tiempo. Si es posible, utilice uno de los navegadores [compatibles con FFUpdater] mientras tanto\". https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
-    <string name="lockwise__eol_reason">Mozilla eliminó el soporte en diciembre de 2021. Cambie a otro gestor de contraseñas.</string>
-    <string name="mull__title">Mull Browser (Basado en Firefox Móvil con arkenfox-user.js)</string>
-    <string name="mull__description">Este es un navegador web depurado y orientado a la privacidad basado en la tecnología de Mozilla. Habilita muchas características mejoradas por el proyecto Tor Uplift utilizando las preferencias del proyecto arkenfox-user.js. Se recomienda instalar \'uBlock Origin\'.</string>
-    <string name="notification__download_error__channel_descr">Muestra cuando fallan las descargas de las actualizaciones en segundo plano.</string>
-    <string name="notification__download_error__channel_name">Notificacar los errores en la descarga en segundo plano</string>
-    <string name="notification__download_error__descr">La descarga en segundo plano de la actualización %1$s ha fallado. Si este error se produce con frecuencia, no dudes en informarlo en notabug.org, GitHub o GitLab.</string>
-    <string name="notification__download_error__text">La descarga en segundo plano de la actualización de %1$s ha fallado. Si este error se produce con frecuencia, haga clic aquí para ver el informe de errores.</string>
-    <string name="notification__download_error__title">La descarga en segundo plano de la actualización falló</string>
     <string name="notification__eol_apps__channel_description">Canal de notificaciones para avisar de aplicaciones obsoletas.</string>
     <string name="notification__eol_apps__channel_name">Notificación de aplicaciones obsoletas</string>
     <string name="notification__eol_apps__text">Tiene aplicaciones obsoletas que ya no deberían usarse: %1$s</string>
@@ -230,9 +207,6 @@
     <string name="add_app_activity__title_end_of_live_browser">Navegador al final de su vida</string>
     <string name="fennecfdroid__title">Fennec F-Droid (Basado Firefox Móvil)</string>
     <string name="fennecfdroid__warning">FFUpdater descarga los archivos de los servidores de F-Droid y por lo tanto no es muy rápido.</string>
-    <string name="mulch__title">Mulch browser</string>
-    <string name="mulch__warning">- Mulch utiliza la base de Google Chrome y, por tanto, apoya indirectamente la posición de monopolio del motor de renderizado Chromium.</string>
-    <string name="mulch__description">Se trata de un navegador web orientado a la seguridad, basado en la tecnología Chromium. Se han deshabilitado/eliminado muchas anti-funciones y se han habilitado/añadido un puñado de funciones de seguridad gracias a los parches del proyecto Vanadium. El repositorio de fuentes también incluye prebuilts y makefiles para permitir que otros sistemas operativos incluyan Mulch como su WebView de sistema.</string>
     <string name="fennecfdroid__description">Fennec F-Droid se basa en la última versión de Firefox (cuyo nombre en código es Fenix). Ha eliminado los bits propietarios y la telemetría, pero sigue conectándose a varios servicios de Mozilla y Google que pueden rastrear a los usuarios.</string>
     <string name="network__custom_doh_server__title">Servidor DNS personalizado sobre HTTPS</string>
     <string name="network__proxy__title">Proxy</string>
@@ -318,8 +292,6 @@
     <string name="notification__uncaught_exception__channel_description">Errores inesperados que bloquean FFUpdater.</string>
     <string name="notification__uncaught_exception__title">FFUpdater se ha bloqueado</string>
     <string name="notification__uncaught_exception__text">Haz clic para ver el informe de error.</string>
-    <string name="mulch_wv__title">Sistema Mulch WebView</string>
-    <string name="mulch_wv__description">Se trata deun sistema WebView reforzado y orientado a la seguridad basado en Chromium. Se han deshabilitado/eliminado muchas antifunciones y se han habilitado/agregado un puñado de funciones de seguridad gracias a los parches del Vanadium proyecto.</string>
     <string name="app_installer__failed_to_verify_signature_of_installed_app">Error al comprobar la aplicación instalada.</string>
     <string name="app_installer__failed_to_validate_signature_of_download">No se ha podido validar la firma de la descarga.</string>
     <string name="installer__method__title">Método de instalación</string>

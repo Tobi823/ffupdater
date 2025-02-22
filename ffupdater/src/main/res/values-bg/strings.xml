@@ -21,11 +21,6 @@
 \nИзпробвайте най-новите възможности и дайте обратна връзка: https://brave.com/msupport
 \nМожете да инсталирате Брейв нощно заедно с текущото издание на Брейв за Андроид.</string>
     <string name="brave_nightly__title">Четецът Брейв (нощно)</string>
-    <string name="bromite__description">Бромит има за цел да осигури безпроблемно разглеждане без да нарушава поверителността, а добавя бърз механизъм за спиране на реклами. Прилагат се минимални промени в потребителския интерфейс, за да се ограничи идеята „четецът като рекламна платформа“.</string>
-    <string name="bromite__title">Бромит</string>
-    <string name="bromite__warning">- Бромит използва техническата основа на Гугъл Хром и така косвено поддържа монопола на машината за изчертаване на Хромиум.</string>
-    <string name="bromite_systemwebview__description">Пакетът SystemWebView съдържа ядрото на четеца/машината за изчертаване на Бромит и същите възможности. Той предлага замяна на компонента на мрежовия четец по подразбиране за цялата система на Андроид.</string>
-    <string name="bromite_systemwebview__title">Бромит SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Копиране на доклада за срив в междинната памет</string>
     <string name="install_activity__download_file_failed__crash_text">При изтегляне възникна грешка. Ако тя се появява често, не се колебайте да съобщите за нея в notabug.org, Гитхъб или Гитлаб. Не забравяйте да добавите доклада за срив от междинната памет.</string>
     <string name="crash_report__explain_text__download_activity_fetching_url">Тази грешка възникна при извличане на описателните данни за изтеглянето. Ако тя се появява често, не се колебайте да съобщите за нея в notabug.org, Гитхъб или Гитлаб.</string>
@@ -35,11 +30,6 @@
     <string name="crash_report__go_to_github">Към Гитхъб</string>
     <string name="crash_report__go_to_gitlab">Към Гитлаб</string>
     <string name="crash_report__got_to_notabug_org">Към notabug.org</string>
-    <string name="notification__download_error__channel_descr">Категория известия за неуспешни изтегляния на обновяване във фонов режим.</string>
-    <string name="notification__download_error__channel_name">Известие при неуспешно изтегляне във фонов режим</string>
-    <string name="notification__download_error__descr">Неуспешно изтегляне на обновяване на %1$s във фонов режим. Ако грешката се появява често, не се колебайте да съобщите за нея в notabug.org, Гитхъб или Гитлаб.</string>
-    <string name="notification__download_error__text">Неуспешно изтегляне на обновяване на %1$s във фонов режим. Ако грешката се появява често, докоснете, за да видите доклада.</string>
-    <string name="notification__download_error__title">Неуспешно изтегляне на обновяване във фонов режим</string>
     <string name="notification__download_running__channel_descr">Категория известия за изтегляния на обновяване във фонов режим.</string>
     <string name="notification__download_running__channel_name">Известие при изтегляне във фонов режим</string>
     <string name="notification__download_running__title">Изтегляне на обновяване</string>
@@ -118,11 +108,6 @@
 \n- Не е поверителен мрежов четец, но има добра поддръжка на добавки.
 \n- Разработчиците на Четецът Киви получават заплащане от търсещите машини при всяко търсене, направено с мрежовия четец. В зависимост от избраната търсеща машина заявките се изпращат до сървърите на Kiwibrowser или Kiwisearchservices.
 \n- Рекламите на Гугъл в Киви могат да използват вашето за местоположението за реклами, но можете да ги забраните, като изключите функцията „Откриване“. Това скоро ще бъде променено. Вижте https://privacy.kiwibrowser.org/ за повече подробности.</string>
-    <string name="lockwise__description">ДОСТЪП ДО ПАРОЛИТЕ ЗА ВАС И САМО ВАС
-\n
-\nНадежден достъп и управление на паролите ви от Файърфокс. Бързо отваряйте страници от приложението и влизайте в профилите си.</string>
-    <string name="lockwise__eol_reason">Мозила е спряла поддръжката през декември 2021 г. Изберете друго приложение за пазене на пароли.</string>
-    <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>Превишено е ограничение на GitHub-API. Опитайте отново след час.</u>"</string>
     <string name="main_activity__no_unmetered_network">Няма мрежи без отчитане</string>
     <string name="main_activity__temporary_network_issue">"<u>Временен проблем в мрежата. Опитайте по-късно</u>"</string>
@@ -172,9 +157,6 @@
     <string name="settings__theme_dark">Тъмна</string>
     <string name="settings__theme_light">Светла</string>
     <string name="settings__theme_system_default">Стандартната за системата</string>
-    <string name="ungoogled_chromium__description">Google Chromium, без интеграция с Google.\n\nБез влизане в профил в Google Chromium се справя доста добре по отношение на сигурността и поверителността. Въпреки това Chromium все още има известна зависимост от уеб услуги и двоични файлове на Google. Освен това Google са проектирали Chromium така, че да бъде лесен и интуитивен за потребителите, което означава, че са направили компромис с прозрачността и контрола на вътрешните дейности.</string>
-    <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
-    <string name="ungoogled_chromium__warning">- Ungoogled Chromium използва техническата основа на Гугъл Хром и така косвено поддържа монопола на машината за изчертаване на Хромиум.</string>
     <string name="unsupported_abi_dialog__message">Избраното приложение е несъвместимо с процесора на устройството. Изберете друго.</string>
     <string name="unsupported_abi_dialog__title">Неподдържано устройство</string>
     <string name="update_interval__12h">12 часа</string>
@@ -203,9 +185,6 @@
     <string name="vivaldi__title">Четецът Вивалди</string>
     <string name="vivaldi__warning">- Vivaldi е само частично с отворен код.
 \n- Освен това използва техническата основа на Гугъл Хром и така косвено поддържа монопола на машината за изчертаване на Хромиум.</string>
-    <string name="mull__title">Четецът Мул</string>
-    <string name="mull__description">Това е мрежов четец, ориентиран към защита на личните данни и базиран на технологията на Мозила. Включва много от възможностите, разработени от проекта Tor Uplift, а също използва настройките от проекта arkenfox-user.js. Препоръчително е да инсталирате „uBlock Origin“.</string>
-    <string name="ungoogled_chromium__eol_reason">Разработчикът е написал: „За известно време няма да мога да правя нови издания. Ако е възможно междувременно ползвайте някой от другите [поддържани от FFUpdater] мрежови четци.“ https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
     <string name="tor_browser__title">Четецът Тор</string>
     <string name="tor_browser__description">Четецът Тор за Андроид е единственият официален мобилен четец, поддържан от проекта Тор, разработчик на най-добрия в света инструмент за защита на личния живот и свободата онлайн.</string>
     <string name="orbot__title">Орбот: Тор за Андроид</string>
@@ -228,10 +207,7 @@
     <string name="settings__background__update_check__when_device_idle__summary">Когато е отметнато приложението не се рестартира от обновяване във фонов режим. Когато липсва отметка обновяването във фонов режим следва определения график.</string>
     <string name="fennecfdroid__title">Фенек от F-Droid</string>
     <string name="fennecfdroid__warning">FFUpdater изтегля файловете от сървърите на F-Droid и затова не е по-бърз.</string>
-    <string name="mulch__title">Мулч</string>
-    <string name="mulch__warning">- Мулч използва техническата основа на Гугъл Хром и така косвено поддържа монопола на машината за изчертаване на Хромиум.</string>
     <string name="fennecfdroid__description">Фенек от F-Droid е на основата на последното издание на Файърфокс (с кодово име Феникс). В него са премахнати собственическия код и телеметрията, но все още се свързва с различни услуги на Мозила и Гугъл, които могат да проследяват потребителите.</string>
-    <string name="mulch__description">Това е ориентиран към сигурността и защитен мрежов четец, базиран на технологията на Хромиум. Много нежелани функции са изключени или премахнати, а няколко функции за сигурност са включени или добавени, благодарение на кръпки от проекта Ванадиум. Хранилището с изходния код включва също така предварителни настройки и makefiles, които позволяват на други операционни системи да включат Мулч като системен WebView.</string>
     <string name="network__dns_provider__title">Настройки на DNS</string>
     <string name="network__custom_doh_server__dialog_message">Въведете и формацията за потребителски сървър на DoH по един от следните начини:
 \n
@@ -312,10 +288,8 @@
     <string name="notification__bg_update_check__unreliable_execution__channel_description">Категория известия за ненадеждна проверка за обновяване във фонов режим.</string>
     <string name="notification__bg_update_check__unreliable_execution__channel_name">Известие при неизпълнено обновяване във фонов режим</string>
     <string name="notification__bg_update_check__unreliable_execution__title">Проверката за обновяване във фонов режим не се изпълнява надеждно</string>
-    <string name="mulch_wv__title">Системен WebView от Мулч</string>
     <string name="app_installer__failed_to_verify_signature_of_installed_app">Инсталираното приложение НЕ е проверено.</string>
     <string name="app_installer__failed_to_validate_signature_of_download">Неуспешна проверка на подписа на изтегления файл.</string>
-    <string name="mulch_wv__description">Това е ориентиран към сигурността и подсилен системен WebView, на технологичната основа на Хромиум. Много от нежеланите възможности са изключени/премахнати, а няколко възможности за сигурност са включени/добавени благодарение на кръпки от проекта Ванадий.</string>
     <string name="installer__method__title">Метод на инсталиране</string>
     <string name="ffupdater__different_signature_message">Това издание на FFUpdater е подписано от F-Droid и за това само F-Droid може да разпространява обновявания. За да получавате по-бързо обновяванията, премахнете FFUpdarer и инсталирайте изданието, подписано от автора. То се обновява само без да чака F-Droid.</string>
     <string name="cromite__title">Хромит</string>

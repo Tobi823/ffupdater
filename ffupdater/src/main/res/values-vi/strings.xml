@@ -30,7 +30,6 @@
 \n
 \nFirefox Nightly được thiết kế để trưng bày những bản dựng mang tính thử nghiệm hơn của Firefox. Kênh Nightly cho phép người dùng trải nghiệm những sự đổi mới mới nhất của Firefox trong một môi trường không ổn định, và cho ra phản hồi về tính năng và hiệu năng để giúp xác định điều gì tạo nên bản phát hành cuối cùng.</string>
     <string name="download_activity__you_can_now_close_this_window">Bây giờ bạn có thể đóng cửa sổ này</string>
-    <string name="bromite__warning">- Bromite sử dụng nền tảng kỹ thuật của Google Chrome và do đó gián tiếp hỗ trợ vị thế độc quyền của công cụ kết xuất Chromium.</string>
     <string name="action_about_title">Về FFUpdater</string>
     <string name="kiwi__description">Trình duyệt Kiwi được làm ra để duyệt internet, đọc tin tức, xem video và nghe nhạc mà không bị quấy rầy.</string>
     <string name="download_activity__open_cache_explanation">Bạn có thể mở thư mục bộ nhớ đệm để sao chép APK đến một nơi có nhiều dung lượng có sẵn hơn. Không may thay, trên Android 11+ chỉ một số ít trình quản lí tập tin có thể truy cập tập tin này trong Android/data.</string>
@@ -40,7 +39,6 @@
     <string name="download_activity__label">Tải xuống ứng dụng</string>
     <string name="download_activity__sha_256_certificate_fingerprint">Dấu vân tay chứng chỉ SHA-256:</string>
     <string name="firefox_release__warning">- Một phiên bản được cải thiện của Firefox cũng có sẵn trên F-Droid dưới tên Fennec F-Droid.</string>
-    <string name="bromite_systemwebview__description">Gói WebView của hệ thống chứa lõi trình duyệt/công cụ kết xuất của Bromite và các tính năng chung của nó. Nó cung cấp khả năng để thay thế thành phần trình duyệt mặc định cho cả hệ thống Android.</string>
     <string name="firefox_release__description">Trình duyệt Firefox cho Android là an toàn một cách tự động và nhanh đáng kinh ngạc. Hàng ngàn trình theo dõi trực tuyến đang theo dõi bạn hàng ngày, thu thập thông tin về những nơi bạn đến khi trực tuyến là làm bạn chậm đi. Firefox mặc định chặn hơn 2000 trong các trình theo dõi này và có sẵn những tiện ích chặn quảng cáo nếu bạn muốn tùy chỉnh trình duyệt của bạn thêm nữa. Với Firefox, bạn sẽ nhận được sự bảo mật mà bạn xứng đáng được có và tốc độ mà bạn cần trong một trình duyệt di động riêng tư.</string>
     <string name="notification__install_error__title">%1$s không thể được cập nhật</string>
     <string name="brave_nightly__description">Chào mừng đến với Brave Nightly (Nhà phát triển) cho Android!
@@ -51,9 +49,7 @@
     <string name="app_icon">biểu tượng ứng dụng</string>
     <string name="crash_report__explain_text__download_activity_update_check">Lỗi này xảy ra khi kiểm tra các bản cập nhật trong chế độ xem chính. Nếu lỗi này xảy ra thường xuyên, vui lòng gửi bản báo cáo sự cố qua notabug.org, GitHub hoặc GitLab.</string>
     <string name="download_activity__delete_cache_button_text">xóa bộ nhớ đệm</string>
-    <string name="notification__download_error__title">Tải xuống cập nhật dưới nền không thành công</string>
     <string name="download_activity__use_cached_downloaded_apk">Sử dụng tệp đã tải xuống từ:</string>
-    <string name="bromite__title">Bromite</string>
     <string name="notification__download_running__title">Đang tải xuống cập nhật ứng dụng</string>
     <string name="notification__install_success__text">Ứng dụng đã được cập nhật dưới nền.</string>
     <string name="kiwi__warning">- Kiwi sử dụng nền tảng kỹ thuật của Google Chrome và do đó gián tiếp hỗ trợ cho vị thế độc quyền của công cụ kết xuất Chromium.
@@ -66,9 +62,7 @@
     <string name="notification__download_running__channel_name">Thông báo về tải xuống dưới nền</string>
     <string name="firefox_focus__title">Firefox Focus</string>
     <string name="firefox_beta__title">Firefox cho Android Beta</string>
-    <string name="notification__download_error__text">Tải xuống cập nhật của %1$s dưới nền không thành công. Nếu lỗi này xảy ra thường xuyên, bấm vào đây để xem bản báo cáo lỗi.</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Sao chép bản báo cáo sự cố vào bảng ghi tạm</string>
-    <string name="bromite__description">Bromite hướng tới mang lại trải nghiệm duyệt web không lộn xộn mà không có những tính năng xâm phạm tới sự riêng tư, thêm vào đó là một công cụ chặn quảng cáo nhanh chóng. Một chút thay đổi trong giao diện người dùng để giúp ngăn ý tưởng dùng trình duyệt làm một nền tảng quảng cáo.</string>
     <string name="download_activity__fetch_url_for_download">Tìm nạp siêu dữ liệu từ %1$s</string>
     <string name="notification__install_error__channel_name">Thông báo %1$s cập nhật không thành công</string>
     <string name="notification__install_error__text">Lỗi (%1$d): %2$s</string>
@@ -76,7 +70,6 @@
     <string name="notification__install_error__channel_descr">Kênh thông báo cho %1$s cập nhật không thành công.</string>
     <string name="crash_report__explain_text__uncaught_throwable">Không may thay, FFUpdater đã gặp sự cố vào lần trước và đã ghi lại lỗi này. Vui lòng gửi bản báo cáo sự cố quá notabug.org, GitHub hoặc GitLab.</string>
     <string name="firefox_nightly__title">Firefox Nightly</string>
-    <string name="notification__download_error__channel_name">Thông báo về lỗi tải xuống dưới nền</string>
     <string name="brave__description">Duyệt internet một cách riêng tư, miễn phí! Trình duyệt riêng tư Brave là trình duyệt web nhanh, miễn phí và an toàn của bạn với trình chặn quảng cáo và cửa sổ nổi. Duyệt và tìm kiếm trên internet một cách riêng tư mà không bị theo dõi bởi các nhà quảng cáo, mã độc và cửa sổ nổi.</string>
     <string name="application_successfully_installed">Ứng dụng đã được cài đặt</string>
     <string name="notification__install_success__channel_descr">Kênh thông báo cho %1$s cập nhật thành công</string>
@@ -96,10 +89,8 @@
     <string name="download_activity__exception__show_button"><u>Hiện chi tiết bản báo cáo lỗi.</u></string>
     <string name="iceraven__warning">- Người bảo trì không đưa ra bảo hành hay cam kết về bảo mật hay cập nhật hay thậm chí độ ổn định.
 \n - Dự án tốn nhiều thời gian hơn thông thường để cung cấp các bản cập nhật về bảo mật.</string>
-    <string name="bromite_systemwebview__title">Bromite WebView của hệ thống</string>
     <string name="crash_report__explain_text__download_activity_install_file">Lỗi này xảy ra trong quá trình cài đặt. Nếu lỗi này xảy ra thường xuyên, vui lòng gửi bản báo cáo sự cố qua notabug.org, GitHub hoặc GitLab.</string>
     <string name="firefox_focus__description">Đây là một bản sửa đổi của trình duyệt Firefox hướng tới tăng cường sự riêng tư.</string>
-    <string name="notification__download_error__channel_descr">Hiện khi cập nhật tải xuống dưới nền không thành công.</string>
     <string name="notification__eol_apps__text">Bạn có ứng dụng quá hạn tức không nên được sử dụng nữa: %1$s</string>
     <string name="app_card__information_about_the_app">Thông tin về ứng dụng</string>
     <string name="download_activity__downloaded_application_from">Ứng dụng đã tải xuống từ:</string>
@@ -110,7 +101,6 @@
     <string name="notification__error__channel_descr">Hiện lỗi của trình cập nhật dưới nền</string>
     <string name="available_version">Có sẵn: %1$s</string>
     <string name="brave_nightly__title">Trình duyệt Brave (Nightly)</string>
-    <string name="notification__download_error__descr">Tải xuống cập nhật của %1$s dưới nền không thành công. Nếu lỗi này xảy ra thường xuyên, vui lòng báo cáo nó qua notabug.org, GitHub hoặc GitLab.</string>
     <string name="notification__eol_apps__channel_description">Kênh thông báo cho cảnh cáo về ứng dụng quá hạn.</string>
     <string name="download_activity__download_app_with_status">Đang tải xuống ứng dụng</string>
     <string name="notification__download_running__channel_descr">Hiện khi cập nhật của ứng dụng đã được tải xuống dưới nền.</string>
@@ -123,10 +113,8 @@
     <string name="background__separate_notification_channels__title">Các kênh thông báo khác nhau</string>
     <string name="update_interval__3d">3 ngày</string>
     <string name="settings__theme_light">Sáng</string>
-    <string name="ungoogled_chromium__warning">- Ungoogled Chrome sử dụng nền tảng kỹ thuật của Google Chrome nên gián tiếp hỗ trợ cho vị thế độc quyền của công cụ kết xuất Chromium.</string>
     <string name="update_interval__6h">6 tiếng</string>
     <string name="session_installer__status_failure_conflict">Thao tác không thành công do xung đột (hoặc không nhất quán với) với gói khác đã được cài đặt trên thiết bị. Ví dụ: quyền hiện có, chứng chỉ không tương thích, v.v. Người dùng có thể gỡ cài đặt ứng dụng khác để khắc phục sự cố.</string>
-    <string name="lockwise__eol_reason">Mozilla đã ngừng hỗ trợ vào tháng 12 năm 2021. Vui lòng chuyển sang két mật khẩu an toàn khác.</string>
     <string name="update_interval__1h">1 tiếng</string>
     <string name="settings__device_category__title">Thiết bị</string>
     <string name="network__dns_provider__custom">Máy chủ DNS qua HTTPS tùy chỉnh</string>
@@ -151,9 +139,6 @@
     <string name="add_app_activity__title_end_of_live_browser">Trình duyệt đã ngừng phát triển</string>
     <string name="installer__method__shizuku">Trình cài đặt Shizuku: Cập nhật ứng dụng mà không cần hộp thoại xác nhận. Điều này yêu cầu ứng dụng Shizuku hoặc mô-đun Sui Magisk.</string>
     <string name="add_app_activity__title_from_mozilla">Từ Mozilla</string>
-    <string name="lockwise__description">TRUY CẬP MẬT KHẨU DÀNH CHO BẠN VÀ CHỈ BẠN
-\n
-\nTheo dõi mật khẩu Firefox của bạn một cách an toàn và truy cập chúng ở mọi nơi. Nhanh chóng mở bất kỳ trang web nào từ ứng dụng để vào tài khoản của bạn.</string>
     <string name="settings__foreground__update_check__metered__summary">Cho phép kiểm tra cập nhật trên mạng đo lường như dữ liệu di động.</string>
     <string name="settings__background__update_check__when_device_idle__unsupported">Tùy chọn này chỉ khả dụng trên Android Marshmallow trở lên.</string>
     <string name="add_app_activity__label">Thêm ứng dụng mới</string>
@@ -164,13 +149,11 @@
     <string name="settings__foreground__update_check__metered__title">Kiểm tra cập nhật trên mạng đo lường</string>
     <string name="settings__foreground__theme_preference__summary">Chọn giữa giao diện sáng và tối</string>
     <string name="settings__network_category__title">Mạng</string>
-    <string name="lockwise__title">Firefox Lockwise</string>
     <string name="settings__background__update_check__when_device_idle__title">Chỉ kiểm tra cập nhật nếu thiết bị không hoạt động</string>
     <string name="main_activity__no_unmetered_network">Không có mạng không đo lường</string>
     <string name="settings__background__update_check__interval__title">Khoảng thời gian giữa các lần kiểm tra cập nhật</string>
     <string name="session_installer__status_failure_incompatible">Thao tác không thành công vì về cơ bản nó không tương thích với thiết bị này. Ví dụ: ứng dụng có thể yêu cầu một tính năng phần cứng không tồn tại, có thể thiếu mã gốc cho các ABI được thiết bị hỗ trợ hoặc yêu cầu phiên bản SDK mới hơn, v.v.</string>
     <string name="update_interval__2h">2 tiếng</string>
-    <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
     <string name="installer__method__session">Trình cài đặt phiên: Được khuyến nghị cho hầu hết các thiết bị. Trên Android 12 trở lên, ứng dụng có thể được cập nhật âm thầm sau khi được người dùng xác nhận một lần.</string>
     <string name="add_app_activity__add_new_application">Thêm ứng dụng mới</string>
     <string name="network__custom_doh_server__dialog_message">Nhập chi tiết kết nối cho máy chủ DoH tùy chỉnh ở một trong các định dạng sau:
@@ -211,19 +194,13 @@
     <string name="update_notification__text">Bấm để cài đặt bản cập nhật</string>
     <string name="session_installer__require_user_interaction">Yêu cầu sự tương tác của người dùng. Trước tiên, bạn phải cập nhật ứng dụng thông qua giao diện người dùng FFUpdater. Chỉ khi đó các cập nhật nền im lặng cho ứng dụng tương ứng mới được phép.</string>
     <string name="session_installer__status_failure_invalid">Thao tác không thành công do một hoặc nhiều APK không hợp lệ. Ví dụ: chúng có thể bị sai định dạng, bị hỏng, được ký không chính xác, không khớp, v.v.</string>
-    <string name="mulch__title">Mulch</string>
     <string name="settings__background__update_check__enabled__title">Kiểm tra cập nhật</string>
     <string name="tor_browser__description">Trình duyệt Tor cho Android là trình duyệt duy nhất được hỗ trợ chính thức bởi Dự án Tor, những nhà phá triển của công cụ mạnh nhất trên thế giới cho quyền riêng tư và quyền tự do trực tuyến.</string>
-    <string name="ungoogled_chromium__eol_reason">Nhà phát triển đã đăng: \"Tôi sẽ không thể cập nhật các phiên bản trong một thời gian. Nếu có thể, vui lòng sử dụng một trong các trình duyệt [mà FFUpdater hỗ trợ] trong thời gian chờ đợi.\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
     <string name="notification__install_error__generic_channel_name">Thông báo lỗi cập nhật ứng dụng</string>
-    <string name="mull__title">Trình duyệt Mull</string>
     <string name="chromium__title">Chromium</string>
     <string name="add_app_activity__title_better_than_google_chrome">Tốt hơn Google Chrome</string>
     <string name="tor_browser__title">Trình duyệt Tor</string>
     <string name="settings__background__update_check__when_device_idle__summary">Kích hoạt tính năng này nếu bạn không muốn ứng dụng của mình bị khởi động lại bởi bản cập nhật nền. Hãy tắt tính năng này nếu bạn muốn có lịch kiểm tra cập nhật nền dễ dự đoán hơn.</string>
-    <string name="ungoogled_chromium__description">Google Chromium, không tích hợp với Google.
-\n
-\nKhông cần đăng nhập vào Tài khoản Google, Chromium hoạt động khá tốt về mặt bảo mật và quyền riêng tư. Tuy nhiên, Chromium vẫn có một số phụ thuộc vào các dịch vụ web và mã nguồn của Google. Ngoài ra, Google đã thiết kế Chromium để dễ dàng và trực quan cho người dùng, điều đó có nghĩa là họ phải gây ảnh hưởng tới tính minh bạch và khả năng kiểm soát các hoạt động nội bộ.</string>
     <string name="request_installation_permission_dialog__abort">Hủy bỏ</string>
     <string name="update_interval__4h">4 tiếng</string>
     <string name="update_interval__18h">18 tiếng</string>
@@ -251,7 +228,6 @@
 \nTìm hiểu cách báo cáo lỗi và cung cấp phản hồi tại https://support.torproject.org/misc/bug-or-feedback/!</string>
     <string name="session_installer__status_failure_storage">Thao tác không thành công do vấn đề lưu trữ. Ví dụ: thiết bị có thể sắp hết dung lượng hoặc phương tiện bên ngoài có thể không khả dụng. Người dùng có thể giúp giải phóng dung lượng hoặc chèn các phương tiện bên ngoài khác nhau.</string>
     <string name="settings__foreground__theme_preference__title">Chọn giao diện</string>
-    <string name="mulch__warning">- Mulch sử dụng nền tảng kỹ thuật của Google Chrome nên gián tiếp hỗ trợ cho vị thế độc quyền của công cụ kết xuất Chromium.</string>
     <string name="settings__theme_battery_saver">Tối khi Trình tiết kiệm pin đang bật</string>
     <string name="settings__foreground__download__metered__title">Tài xuống bản cập nhật trên mạng đo lường</string>
     <string name="unsupported_abi_dialog__title">Thiết bị không được hỗ trợ</string>
@@ -260,8 +236,6 @@
     <string name="vivaldi__description">Khám phá trình duyệt Internet cực nhanh! Vivaldi là một trình duyệt web mới, miễn phí và riêng tư được xây dựng với tính linh hoạt. Nó đi kèm với các tính năng hữu ích bao gồm trình chặn quảng cáo (trình chặn cửa sổ bật lên) tích hợp sẵn, bảo vệ theo dõi và trình dịch thuật riêng tư. Các tùy chọn trình duyệt như tab kiểu máy tính để bàn thích hợp, chủ đề tối và các lựa chọn bố cục giúp bạn biến nó thành của riêng mình.</string>
     <string name="running_downloads_dialog__negative">Không, đừng tải nó xuống</string>
     <string name="unsupported_abi_dialog__message">Trình duyệt đã chọn không tương thích với bộ xử lý của điện thoại thông minh của bạn. Vui lòng chọn một trình duyệt khác.</string>
-    <string name="mulch__description">Đây là trình duyệt web được định hướng bảo mật và tăng cường dựa trên công nghệ Chromium. Nhiều tính năng không tốt đã bị vô hiệu hóa/bị loại bỏ và một số tính năng bảo mật được bật thêm nhờ các bản vá từ dự án Vanadium. Kho lưu trữ nguồn cũng bao gồm các bản dựng sẵn và tệp tạo tệp để cho phép các hệ điều hành khác đưa Mulch làm WebView hệ thống của họ.</string>
-    <string name="mull__description">Đây là một trình duyệt web hướng tới quyền riêng tư và không thừa thải dựa trên công nghệ Mozilla. Nó kích hoạt nhiều tính năng được dự án Tor Uplift nâng cấp bằng cách sử dụng các tùy chọn từ dự án arkenfox-user.js. Nên cài đặt \'uBlock Origin\'.</string>
     <string name="orbot__title">Orbot: Tor cho Android</string>
     <string name="settings__b_f__delete_cache_if_install_failed">Xóa bản cập nhật đã tải xuống nếu cài đặt không thành công.</string>
     <string name="session_installer__status_failure_aborted">Thao tác không thành công vì nó đã bị chủ động hủy bỏ. Ví dụ: người dùng chủ động từ chối các quyền được yêu cầu hoặc phiên bị hủy.</string>
@@ -292,7 +266,6 @@
     <string name="main_activity__temporary_network_issue"><u>Sự cố mạng tạm thời. Thử lại vào lúc khác.</u></string>
     <string name="add_app_activity__title_good_security_browsers">Trình duyệt bảo mật tốt</string>
     <string name="thorium__warning">- Thorium sử dụng nền tảng kỹ thuật của Google Chrome nên gián tiếp hỗ trợ cho vị thế độc quyền của công cụ kết xuất Chromium.</string>
-    <string name="mulch_wv__description">Đây là một WebView cho hệ thống được hướng đến bảo mật và tăng cường dựa trên công nghệ Chromium. Nhiều tính năng không tốt bị vô hiệu hóa/xóa và một số tính năng bảo mật được bật/thêm nhờ các bản vá từ dự án Vanadium.</string>
     <string name="notification__bg_update_check__unreliable_execution__text">Có thể nguyên nhân là do cài đặt pin hoặc hiệu suất cho thiết bị của bạn. Nhấp vào thông báo này để tắt tối ưu hóa pin cho ứng dụng này.</string>
     <string name="main_activity__unexpected_error">Đã xảy ra lỗi không mong muốn.</string>
     <string name="duckduckgo_android__warning">- DuckDuckGo sử dụng webview hệ thống để hiển thị các trang web.
@@ -343,7 +316,6 @@
     <string name="cardview_dialog__hide">Ẩn</string>
     <string name="foreground__hidden_apps__title">Ứng dụng bị ẩn</string>
     <string name="foreground__hidden_apps__summary">Các ứng dụng ẩn sẽ ẩn trong giao diện người dùng và không được cập nhật tự động.</string>
-    <string name="mulch_wv__title">Mulch WebView của hệ thống</string>
     <string name="thorium__description">Trình duyệt nhanh nhất trên trái đất. Bản rẽ nhánh của Chromium cho Linux được đặt tên theo nguyên tố phóng xạ số 90.</string>
     <string name="background__installation__when_screen_off__title">Chỉ cài đặt khi tắt màn hình</string>
 </resources>

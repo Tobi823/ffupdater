@@ -19,11 +19,6 @@
     <string name="brave_beta__title">Navegador Brave (Beta)</string>
     <string name="brave_nightly__description">Bem-vindo ao Brave Nightly (Desenvolvedor) para Android!\nTeste as mais novas funcionalidades e dê feedback antecipado: https://brave.com/msupport\nVocê pode instalar o Brave Nightly junto com sua versão atual do Brave for Android.</string>
     <string name="brave_nightly__title">Navegador Brave (Nightly)</string>
-    <string name="bromite__description">Bromite tem como o objetivo proporcionar uma experiência de navegação descomplicada, sem funcionalidades que invadem sua privacidade e com a adição de um mecanismo rápido de bloqueio de anúncios. As mínimas mudanças da interface são implementadas para ajudar a frear a idéia de \"navegador como plataforma publicitária\".</string>
-    <string name="bromite__title">Bromite</string>
-    <string name="bromite__warning">- Bromite usa os fundamentos técnicos do Google Chrome e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium.</string>
-    <string name="bromite_systemwebview__description">O pacote SystemWebView contém o principal navegador/ mecanismo de renderização do Bromite e suas mesmas características. Ele oferece a possibilidade de substituir o componente padrão do navegador para todo o sistema Android.</string>
-    <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Copiar o relatório do erro ao Clipboard</string>
     <string name="install_activity__download_file_failed__crash_text">O seguinte erro ocorreu durante o download. Se esse erro ocorrer com frequência, sinta-se à vontade para reportá-lo em notabug.org, GitHub ou GitLab. Adicione o relatório do erro da área de transferência ao relatório.</string>
     <string name="crash_report__explain_text__download_activity_fetching_url">Este erro ocorreu quando os metadados de download foram consultados. Se este erro ocorrer frequentemente, fique a vontade para enviar o relatório de falha via notabug.org, GitHub ou GitLab.</string>
@@ -94,8 +89,6 @@
     <string name="kiwi__description">O Navegador Kiwi é feito para navegar na internet, ler notícias, assistir vídeos e ouvir música, sem incômodos.</string>
     <string name="kiwi__title">Navegador Kiwi Next</string>
     <string name="kiwi__warning">- O Kiwi só é código aberto parcialmente\n- O Kiwi usa os fundamentos técnicos do Google Chrome e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium.\n- O Kiwi não é um navegador de privacidade ideal mas tem um bom suporte a extensões.\n- O navegador está sendo pago pelos motores de busca por cada pesquisa feita utilizando o Kiwi Browser. Dependendo da escolha do motor de busca, os pedidos podem ser feitos através dos servidores Kiwibrowser / Kiwisearchservices.\n- O Google Ads no Kiwi pode usar os dados de localização para anúncios - mas você pode desativá-los desativando a função Descoberta. Mas isso mudará em breve. Veja https://privacy.kiwibrowser.org/ para mais detalhes.</string>
-    <string name="lockwise__description">ACESSO VIA SENHA PARA VOCÊ, E APENAS VOCÊ \n \nGerencie com segurança suas senhas do Firefox e acesse-as em qualquer lugar. Abra rapidamente qualquer site pelo aplicativo para entrar em suas contas.</string>
-    <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>O limite de consultas do API do GitHub foi excedido. Tente outra vez mais tarde.</u>"</string>
     <string name="main_activity__no_unmetered_network">Nenhuma rede não contatada</string>
     <string name="main_activity__temporary_network_issue">"<u>Problema temporário da rede. Tente outra vez mais tarde.</u>"</string>
@@ -145,9 +138,6 @@
     <string name="settings__theme_dark">Escuro</string>
     <string name="settings__theme_light">Claro</string>
     <string name="settings__theme_system_default">Adaptar do sistema</string>
-    <string name="ungoogled_chromium__description">Google Chromium, sem integração com o Google.\n\nSem ter que acessar uma conta do Google, Chromium se sai muito bem em termos de segurança e privacidade. No entanto, o Chromium ainda tem algumas dependências de serviços web e binários do Google. Além disso, o Google criou o Chromium para ser fácil e intuitivo aos usuários, o que significa que eles comprometem a transparência e o controle das operações internas.</string>
-    <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
-    <string name="ungoogled_chromium__warning">- O Ungoogled Chromium implementa a base técnica do Google Chrome e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium.</string>
     <string name="unsupported_abi_dialog__message">O navegador selecionado é incompatível com o processador no seu aparelho. Por favor, selecione um navegador diferente.</string>
     <string name="unsupported_abi_dialog__title">Dispositivo incompatível</string>
     <string name="update_interval__12h">12 horas</string>
@@ -177,18 +167,10 @@
     <string name="vivaldi__warning">- O Vivaldi é parcialmente de código aberto.
 \n- Ele também utiliza a base técnica do Google Chrome e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium.</string>
     <string name="crash_report__explain_text__download_activity_install_file">Este erro ocorreu durante a instalação. Se este erro ocorrer frequentemente, fique a vontade para enviar o relatório de falha via notabug.org, GitHub ou GitLab.</string>
-    <string name="notification__download_error__channel_descr">Mostra quando os downloads de atualização em segundo plano falham.</string>
-    <string name="notification__download_error__channel_name">Notificação sobre erros de download em segundo plano</string>
-    <string name="notification__download_error__descr">O download em segundo plano da atualização do %1$s falhou. Se esse erro ocorrer com frequência, sinta-se à vontade para reportá-lo via notabug.org, GitHub ou GitLab.</string>
-    <string name="notification__download_error__title">Erro no download da atualização em segundo plano</string>
     <string name="notification__eol_apps__channel_description">Canal de notificação para avisos sobre aplicativos desatualizados.</string>
     <string name="notification__eol_apps__channel_name">Notificação de aplicativos desatualizados</string>
     <string name="notification__eol_apps__text">Você tem apps desatualizados que não devem mais ser usados: %1$s</string>
     <string name="notification__eol_apps__title">Aplicativos desatualizados instalados</string>
-    <string name="lockwise__eol_reason">A Mozilla abandonou o suporte em dezembro de 2021. Mude para outro cofre de senha.</string>
-    <string name="mull__title">Navegador Mull</string>
-    <string name="mull__description">Este é um navegador web orientado à privacidade e deblobbed baseado na tecnologia Mozilla. Ele habilita muitos recursos enviados pelo projeto Tor Uplift usando as preferências do projeto arkenfox-user.js. Recomenda-se instalar o \'uBlock Origin\'.</string>
-    <string name="notification__download_error__text">O download em segundo plano da atualização do %1$s falhou. Se este erro ocorre frequentemente, clique aqui para ver o relatório do erro.</string>
     <string name="main_activity__an_error_occurred"><u>Um erro aconteceu. Tente novamente mais tarde.</u></string>
     <string name="notification__network_error__title">Erro de rede no trabalho em segundo plano</string>
     <string name="background__separate_notification_channels__title">Canais de notificação diferentes</string>
@@ -231,17 +213,14 @@
 \nO Navegador Tor SEMPRE vai ser grátis, mas doações o fazem possível, O Projeto Tor é uma organização sem fins lucrativos 501©(3) baseada nos EUA. Por favor, considere fazer uma doação hoje. Cada presente faz diferença: https://donate.torproject.org.
 \n
 \nAprenda como relatar erros e prover opiniões em https://support.torproject.org/pt-BR/misc/bug-or-feedback/!</string>
-    <string name="ungoogled_chromium__eol_reason">O desenvolvedor postou: \"Eu não serei capaz de atualizar as versões por algum tempo. Se possível, use um dos navegadores [que o FFUpdater suporta] por enquanto.\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
     <string name="chromium__description">O Chromium é um projeto de navegador de código aberto que visa construir uma maneira mais segura, rápida e estável para todos os usuários experienciarem a web. Este site contém documentos de design, visões gerais de arquitetura, informações de teste e muito mais para ajudá-lo a aprender a criar e trabalhar com o código-fonte do Chromium.</string>
     <string name="chromium__warning">- O Chromium usa a base técnica do Google Chrome e, portanto, indiretamente apoia a posição de monopólio do mecanismo de renderização do Chromium.</string>
     <string name="firefox_focus_beta__description">Use o Firefox Focus para tudo que você quer manter separado do seu navegador principal — para todos aqueles momentos de entrar, sair e esquecer. Sem abas, sem confusão, sem bagunça. Bloqueie rastreadores online também. Um toque e seu histórico de navegação é completamente destruído.
 \n
 \nO Firefox Focus é o navegador perfeito de entrar/sair, pesquisar e destruir, estou em uma missão que não é da sua conta.</string>
     <string name="duckduckgo_android__description">O aplicativo DuckDuckGo fornece a proteção de privacidade online mais abrangente com o toque de um botão. Com um baixamento, você obtém um novo navegador diário que oferece proteção perfeita enquanto pesquisa e navega, e acesso a proteções contra rastreamento para emails que você recebe e aplicativos que você usa. Muitas dessas proteções não são oferecidas por padrão na maioria dos navegadores populares.</string>
-    <string name="mulch__description">Este é um navegador reforçado e focado em segurança baseado em tecnologia Chromium. Muitos anti-recursos são desativados/removidos e alguns recursos de segurança são ativados/adicionados graças a modificações do projeto Vanadium. O repositório de fonte também inclui pré-compilados e makefiles para permitir que outros sistemas operacionais incluam Mulch como seu WebView do sistema padrão.</string>
     <string name="cardview_dialog__different_signature">O FFUpdater não pode atualizar este aplicativo pois a assinatura do APK é diferente. Você pode corrigir isso desinstalando o aplicativo e instalando-o novamente com o FFUpdater. Porém, isso irá excluir todos os seus dados no aplicativo, então lembre-se de fazer uma cópia de segurança dos seus dados com antecedência.</string>
     <string name="privacy_browser__description">A única maneira de evitar que dados sejam abusados é impedir que eles sejam coletados em primeiro lugar Privacy Browser tem dois objetivos principais: Minimizar os dados enviados à internet e minimizar os dados armazenados no dispositivo.</string>
-    <string name="mulch__title">Mulch</string>
     <string name="fennecfdroid__title">Fennec F-Droid</string>
     <string name="settings__network__trust_user_cas__summary">Habilitar se o tráfego de dados deve ser inspecionado e alterado por outros aplicativos. Se não tiver certeza, mantenha esta opção desativada.</string>
     <string name="settings__network__trust_user_cas__title">Confiar em CAs adicionadas pelo usuário</string>
@@ -252,7 +231,6 @@
     <string name="fennecfdroid__description">Fennec F-Droid é baseado na última versão do Firefox (com o codinome Fenix). Ele tem os bits e a telemetria removidos, porem ainda se conecta com varios serviços da Mozilla e do Google que podem rastrear os usuários.</string>
     <string name="orbot__description">Orbot é um aplicativo proxy gratuito que capacita outros aplicativos a usar a internet com mais segurança. Orbot usa Tor para criptografar seu tráfego de internet e então o esconde saltando por uma série de computadores ao redor do mundo. Tor é um software livre e uma rede aberta que ajuda você a se defender contra uma forma de vigilância de rede que ameaça a liberdade pessoal e privacidade, atividades comerciais confidenciais e relacionamentos, e segurança do estado conhecida como análise de tráfego.</string>
     <string name="settings__background__update_check__when_device_idle__summary">Habilite se você não quer que os seus aplicativos sejam reiniciados por atualizações em segundo plano. Desative se você que um cronograma mais previsível para checagens em segundo plano.</string>
-    <string name="mulch__warning">- Mulch usa os fundamentos técnicos do Google Chrome e dessa forma apoia indiretamente a posição do monopólio do motor de renderização do Chromium.</string>
     <string name="fennecfdroid__warning">O FFUpdater baixa os arquivos dos servidores do F-Droid e, portanto, não é muito rapido.</string>
     <string name="network__custom_doh_server__dialog_message">Insira os detalhes da conexão do servidor customizado de DoH em um desses formatos:\n\nurl;ip1\n\nurl;ip1:ip2\n\nurl;ip1;ip2;ip3\n\nurl;ip1;ip2;ip3;ip4\n\nPor exemplo: https://dns.google/dns-query;8.8.8.8 ou https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
     <string name="network__proxy__title">Servidor Proxy</string>
@@ -276,7 +254,6 @@
     <string name="notification__bg_update_check__unreliable_execution__text">Talvez foi causado pela bateria ou pela configuração de desempenho no seu dispositivo. Clique nessa notificação para desativar a otimização de bateria para esse aplicativo.</string>
     <string name="notification__uncaught_exception__title">O FFUpdater crashou</string>
     <string name="notification__uncaught_exception__text">Clique para ver o relatório de erro.</string>
-    <string name="mulch_wv__title">Mulch WebView de Sistema</string>
     <string name="notification__install_error__generic_channel_descr">Canal de notificando para atualizações não sucedidas de aplicativos.</string>
     <string name="notification__install_error__generic_channel_name">Notificação de falha na atualização do aplicativo</string>
     <string name="main_activity__app_was_signed_by_different_certificate">Esse aplicativo foi assinado com um certificado diferente e não pode ser atualizado pelo FFUpdater.</string>
@@ -297,7 +274,6 @@
     <string name="thorium__description">O navegador mais rapido do planeta. Fork do Chromium nomeado depois do elemento radioativo número 90.</string>
     <string name="thorium__title">Thorium Browser para Android</string>
     <string name="cromite__warning">- Cromite usa os fundamentos técnicos do Google Chrome e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium.</string>
-    <string name="mulch_wv__description">Esse é um WebView de sistema reforçado e orientado para a segurança e privacidade baseado na tecnologia do Chromium. Muitos recursos anti-recursos são desabilitados/removidos e alguns recursos de segurança são ativados/adcionados graças as patches vindas do Vanadium project.</string>
     <string name="k9mail__description">Cliente de email completo</string>
     <string name="cardview_dialog__warnings_label">Avisos:</string>
     <string name="cardview_dialog__auto_bg_update">Atualização automatica em segundo plano</string>

@@ -17,11 +17,6 @@
     <string name="brave_beta__title">Brave Browser (Beta)</string>
     <string name="brave_nightly__description">Benvenuti su Brave Nightly (Developer) per Android!\nProva le nuove funzionalità e dai un feedback anticipato: https://brave.com/msupport\nPuoi installare Brave Nightly insieme alla tua attuale versione di Brave per Android.</string>
     <string name="brave_nightly__title">Brave Browser (Nightly)</string>
-    <string name="bromite__description">Bromite mira a fornire un\'esperienza di navigazione senza fronzoli, senza funzionalità invasive della privacy e con l\'aggiunta di un veloce motore di blocco delle pubblicità. I cambiamenti minimi dell\'interfaccia utente sono applicati per aiutare a frenare l\'idea di "browser come una piattaforma pubblicitaria".</string>
-    <string name="bromite__title">Bromite</string>
-    <string name="bromite__warning">- Bromite usa la base tecnica di Google Chrome e quindi supporta indirettamente la posizione di monopolio del motore di rendering Chromium.</string>
-    <string name="bromite_systemwebview__description">Il pacchetto SystemWebView contiene il browser principale/motore di rendering di Bromite e le sue stesse caratteristiche. Offre la possibilità di sostituire il componente browser predefinito per l\'intero sistema Android.</string>
-    <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Copia il rapporto di arresto anomalo negli appunti</string>
     <string name="install_activity__download_file_failed__crash_text">Durante il download si è verificato il seguente errore. Se questo errore si verifica frequentemente, sentiti libero di segnalarlo su notabug.org, GitHub o GitLab. Aggiungi il rapporto sull\'arresto anomalo dagli appunti alla segnalazione.</string>
     <string name="crash_report__explain_text__download_activity_fetching_url">Si è verificato un errore quando sono stati recuperati i metadati del download. Se questo errore si verifica frequentemente, sentiti libero di segnalare il rapporto di arresto anomalo su notabug.org, GitHub o GitLab.</string>
@@ -31,11 +26,6 @@
     <string name="crash_report__go_to_github">Vai su GitHub</string>
     <string name="crash_report__go_to_gitlab">Vai su GitLab</string>
     <string name="crash_report__got_to_notabug_org">Vai su notabug.org</string>
-    <string name="notification__download_error__channel_descr">Mostra quando gli aggiornamenti dei download in background falliscono.</string>
-    <string name="notification__download_error__channel_name">Notifica sugli errori di download in background</string>
-    <string name="notification__download_error__descr">Il download in background dell\'aggiornamento %1$s non è riuscito. Se questo errore si verifica frequentemente, sentiti libero di segnalarlo su notabug.org, GitHub o GitLab.</string>
-    <string name="notification__download_error__text">Il download in background dell\'aggiornamento %1$s non è riuscito. Se questo errore si verifica frequentemente, clicca qui per visualizzare il rapporto dell\'errore.</string>
-    <string name="notification__download_error__title">Download in background dell\'aggiornamento non riuscito</string>
     <string name="notification__download_running__channel_descr">Mostra quando gli aggiornamenti delle app vengono scaricati in sfondo.</string>
     <string name="notification__download_running__channel_name">Notifica di scaricamento in sfondo</string>
     <string name="notification__download_running__title">Scaricare gli aggiornamenti delle app</string>
@@ -106,11 +96,6 @@
 \n- Kiwi non è un browser per la privacy ideale, ma ha un buon supporto per componenti aggiuntivi.
 \n- Il browser viene pagato dai motori di ricerca per ogni ricerca effettuata utilizzando Kiwi Browser. A seconda della scelta del motore di ricerca, le richieste possono passare tramite i server Kiwibrowser / Kiwisearchservices.
 \n- Google Ads in Kiwi può utilizzare i dati sulla posizione per gli annunci - ma puoi disabilitarlo disattivando la funzione Discovery. Ma questo cambierà presto. Vedi https://privacy.kiwibrowser.org/ per più dettagli.</string>
-    <string name="lockwise__description">ACCESSO TRAMITE PASSWORD PER TE E SOLO TE
-\n
-\nTraccia in modo sicuro le tue password di Firefox e accedi a esse ovunque. Apri rapidamente qualsiasi sito web dall\'app per entrare nei tuoi account.</string>
-    <string name="lockwise__eol_reason">Mozilla ha abbandonato il supporto a dicembre 2021. Si prega di passare a un altro gestore di password.</string>
-    <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>Limite di GitHub-API superato. Si prega di provare di nuovo il download tra un\'ora.</u>"</string>
     <string name="main_activity__no_unmetered_network">Nessuna rete non misurata</string>
     <string name="main_activity__temporary_network_issue">"<u>Problema di rete temporaneo. Riprovare più tardi.</u>"</string>
@@ -160,9 +145,6 @@
     <string name="settings__theme_dark">Scuro</string>
     <string name="settings__theme_light">Chiaro</string>
     <string name="settings__theme_system_default">Usa predefinito di sistema</string>
-    <string name="ungoogled_chromium__description">Google Chromium, senza l\'integrazione con Google.\n\nSenza fare l\'accesso a un Account Google, Chromium fa abbastanza bene in termini di sicurezza e privacy. Tuttavia, Chromium ha ancora una certa dipendenza dai binari e dai servizi web di  Google. Inoltre, Google ha progettato Chromium in modo che fosse facile e intuitivo per gli utenti, il che significa che compromettono la trasparenza e il controllo delle operazioni interne.</string>
-    <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
-    <string name="ungoogled_chromium__warning">- Ungoogled Chromium usa la base tecnica di Google Chrome e quindi supporta indirettamente la posizione di monopolio del motore di rendering Chromium.</string>
     <string name="unsupported_abi_dialog__message">Il browser selezionato non è compatibile con il processore del tuo smartphone. Seleziona un browser diverso.</string>
     <string name="unsupported_abi_dialog__title">Dispositivo non supportato</string>
     <string name="update_interval__12h">12 ore</string>
@@ -191,9 +173,6 @@
     <string name="vivaldi__title">Vivaldi Browser</string>
     <string name="vivaldi__warning">- Vivaldi è open source solo parzialmente.
 \n- Inoltre usa la base tecnica di Google Chrome e quindi supporta indirettamente la posizione di monopolio del motore di rendering Chromium.</string>
-    <string name="mull__description">Questo è un browser web orientato alla privacy e deblobbed basato sulla tecnologia Mozilla. Abilita molte funzionalità a monte del progetto Tor Uplift usando le preferenze del progetto arkenfox-user.js. Si consiglia di installare \'uBlock Origin\'.</string>
-    <string name="mull__title">Mull Browser</string>
-    <string name="ungoogled_chromium__eol_reason">Lo sviluppatore ha scritto: \"Non sarò in grado di aggiornare le versioni per un po\' di tempo. Se possibile, utilizza uno dei browser [che FFUpdater supporta] nel frattempo.\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
     <string name="tor_browser__title">Tor Browser</string>
     <string name="tor_browser__description">Tor Browser per Android è l\'unico browser per dispositivi mobile supportato ufficialmente da Tor Project, sviluppatori del più potente strumento al mondo per la privacy e la libertà online.</string>
     <string name="orbot__description">Orbot è un\'app proxy gratuita che consente ad altre applicazioni di utilizzare Internet in modo più sicuro. Orbot utilizza Tor per crittografare il traffico Internet e poi lo nasconde rimbalzando attraverso una serie di computer in tutto il mondo. Tor è un software gratuito e una rete aperta che aiuta a difendersi da una forma di sorveglianza della rete che minaccia la libertà personale e la privacy, le attività e le relazioni commerciali riservate e la sicurezza dello stato, nota come analisi del traffico.</string>
@@ -214,11 +193,8 @@
     <string name="settings__background__update_check__when_device_idle__summary">Attiva questa opzione se non desideri che le applicazioni vengano riavviate da un aggiornamento in background. Disattiva questa opzione se desideri una pianificazione più prevedibile per le verifiche degli aggiornamenti in background.</string>
     <string name="crash_report_activity__label">Segnalatore di arresti anomali</string>
     <string name="add_app_activity__title_end_of_live_browser">Browser a fine vita</string>
-    <string name="mulch__title">Mulch</string>
     <string name="fennecfdroid__title">Fennec F-Droid</string>
     <string name="fennecfdroid__description">Fennec F-Droid è basato sull\'ultima versione di Firefox (nome in codice Fenix). Sono stati rimossi i bit proprietari e la telemetria, ma si connette comunque a vari servizi di Mozilla e Google che possono tracciare gli utenti.</string>
-    <string name="mulch__description">Si tratta di un browser web rafforzato e orientato alla sicurezza, basato sulla tecnologia Chromium. Molte anti-funzionalità sono state disabilitate o rimosse, e una manciata di funzionalità di sicurezza sono state abilitate o aggiunte grazie alle patch del progetto Vanadium. Il repository di origine include anche prebuilt e makefile per consentire ad altri sistemi operativi di includere Mulch come WebView di sistema.</string>
-    <string name="mulch__warning">- Mulch usa la base tecnica di Google Chrome e quindi supporta indirettamente la posizione di monopolio del motore di rendering Chromium.</string>
     <string name="fennecfdroid__warning">FFUpdater scarica i file dai server di F-Droid e quindi non è più veloce di quest\'ultimo.</string>
     <string name="network__dns_provider__title">Impostazioni DNS</string>
     <string name="network__custom_doh_server__title">Server DNS su HTTPS personalizzato</string>
@@ -298,12 +274,10 @@
     <string name="installer__android_too_old_for_shizuku">Il tuo Android è troppo vecchio per Shizuku.</string>
     <string name="add_app_activity__title_good_security_browsers">Buoni browser per la sicurezza</string>
     <string name="notification__uncaught_exception__text">Clicca per visualizzare il rapporto di errore.</string>
-    <string name="mulch_wv__title">Mulch System WebView</string>
     <string name="crash_report__report_is_copied_to_clipboard">Il rapporto di arresto anomalo è stato copiato negli appunti</string>
     <string name="notification__uncaught_exception__channel_name">Notifiche sugli arresti</string>
     <string name="notification__uncaught_exception__channel_description">Errori imprevisti che mandano in crash FFUpdater.</string>
     <string name="notification__uncaught_exception__title">FFUpdater si è arrestato in modo anomalo</string>
-    <string name="mulch_wv__description">Si tratta di un sistema WebView protetto e orientato alla sicurezza, basato sulla tecnologia Chromium. Molte anti-caratteristiche sono state disabilitate/rimosse e una manciata di funzioni di sicurezza sono state abilitate/aggiunte grazie alle patch del Progetto Vanadium.</string>
     <string name="app_installer__failed_to_validate_signature_of_download">Impossibile convalidare la firma del download.</string>
     <string name="app_installer__failed_to_verify_signature_of_installed_app">Impossibile verificare l\'app installata.</string>
     <string name="background__installation__when_screen_off__title">Installa solo quando lo schermo è spento</string>

@@ -21,10 +21,6 @@
 \nPrøv ut de nyeste funksjoner og gi tilbakemelding: https://brave.com/msupport
 \nDu kan installere det ved siden av din nåværende versjon av Brave for Android.</string>
     <string name="brave_nightly__title">Brave-nettleseren (nattlig)</string>
-    <string name="bromite__description">Prøver å tilby en ren surfeopplevelse uten personvernsskadende funksjoner. Har en rask reklameblokkeringsmotor. Minimale grensesnittsendringer brukes for å bekjempe idéen om nettleseren som en reklameplattform.</string>
-    <string name="bromite__title">Bromite</string>
-    <string name="bromite__warning">- Bromite bruker det tekniske fundamentet til Google Chrome og støtter dermed indirekte monopolposisjonen til krom gjengivelsesmotoren.</string>
-    <string name="bromite_systemwebview__description">SystemWebView-pakken inneholder kjernen for nettleser/opptegning i Bromite, og deres funksjoner. Den gjør det mulig å erstatte forvalgt nettleserkomponent for hele Android-systemet.</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Kopier krasjrapport til utklippstavlen</string>
     <string name="crash_report__go_to_github">Gå til GitHub</string>
     <string name="crash_report__go_to_gitlab">Gå til GitLab</string>
@@ -73,7 +69,6 @@
     <string name="app_installer__installed_app_has_invalid_signature">Det installerte programmet er IKKE bekreftet</string>
     <string name="installed_application_is_verified">Det installerte programmet er bekreftet</string>
     <string name="installed_version">Installert: %1$s</string>
-    <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded"><u>Grense for GitHub-API overskredet. Prøv igjen om en time.</u></string>
     <string name="main_activity__temporary_network_issue"><u>Midlertidig nettverksproblem. Prøv igjen senere.</u></string>
     <string name="ok">OK</string>
@@ -111,7 +106,6 @@
     <string name="settings__theme_dark">Mørk</string>
     <string name="settings__theme_light">Lys</string>
     <string name="settings__theme_system_default">Systemforvalg</string>
-    <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
     <string name="unsupported_abi_dialog__title">Ustøttet enhet</string>
     <string name="update_interval__12h">12 timer</string>
     <string name="update_interval__15min">15 minutter</string>

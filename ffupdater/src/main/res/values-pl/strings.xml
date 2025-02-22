@@ -21,11 +21,6 @@
 \nWypróbuj najnowsze funkcje i przekaż wczesną opinię: https://brave.com/msupport
 \nMożesz zainstalować Brave Nightly obok swojej obecnej wersji Brave dla Androida.</string>
     <string name="brave_nightly__title">Brave (Nightly)</string>
-    <string name="bromite__description">Bromite ma na celu zapewnienie komfortowego przeglądania stron bez ingerencji w prywatność dzięki szybkiemu silnikowi blokowania reklam. Minimalne zmiany interfejsu są stosowane, aby pomóc ograniczyć ideę "przeglądarki jako przestrzeni reklamowej".</string>
-    <string name="bromite__title">Bromite</string>
-    <string name="bromite__warning">- Bromite wykorzystuje techniczne podstawy przeglądarki Google Chrome i w ten sposób pośrednio wspiera monopolistyczną pozycję silnika renderującego Chromium.</string>
-    <string name="bromite_systemwebview__description">Pakiet SystemWebView zawiera podstawowy silnik przeglądarki/renderowania Bromite i jego funkcje. Oferuje możliwość zastąpienia domyślnego komponentu przeglądarki dla całego systemu Android.</string>
-    <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Skopiuj raport o błędzie do schowka</string>
     <string name="crash_report__explain_text__download_activity_fetching_url">Ten błąd wystąpił podczas pobierania adresu URL pobierania. Jeśli ten błąd pojawia się często, zapraszamy do zgłoszenia go na notabug.org, GitHub lub GitLab.</string>
     <string name="crash_report__explain_text__download_activity_update_check">Ten błąd wystąpił podczas sprawdzania dostępności aktualizacji w widoku głównym. Jeśli ten błąd występuje często, nie krępuj się zgłosić go na notabug.org, GitHub lub GitLab.</string>
@@ -91,10 +86,6 @@
     <string name="app_installer__installed_app_has_invalid_signature">Zainstalowana aplikacja NIE została zweryfikowana</string>
     <string name="installed_application_is_verified">Zainstalowana aplikacja została zweryfikowana</string>
     <string name="installed_version">Zainstalowane: %1$s</string>
-    <string name="lockwise__description">DOSTĘP DO HASEŁ DLA CIEBIE - TYLKO DLA CIEBIE
-\n
-\nBezpiecznie śledź swoje hasła do Firefoksa i uzyskuj do nich dostęp w dowolnym miejscu. Szybko otwórz dowolną stronę internetową z poziomu aplikacji, aby dostać się do swoich kont.</string>
-    <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>Przekroczono limit GitHub-API. Ponów próbę w ciągu następnej godziny.</u>"</string>
     <string name="main_activity__no_unmetered_network">Brak sieci bez limitu danych</string>
     <string name="main_activity__temporary_network_issue">"<u>Tymczasowy problem z siecią. Spróbuj ponownie później.</u>"</string>
@@ -142,9 +133,6 @@
     <string name="settings__theme_dark">Ciemny</string>
     <string name="settings__theme_light">Jasny</string>
     <string name="settings__theme_system_default">Użyj motywu systemowego</string>
-    <string name="ungoogled_chromium__description">Google Chromium, bez integracji z Google.\n\nBez logowania się na konto Google, Chromium radzi sobie całkiem dobrze pod względem bezpieczeństwa i prywatności. Jednakże, Chromium nadal jest w pewnym stopniu zależne od usług sieciowych i plików binarnych Google. Ponadto, Google zaprojektowało Chromium tak, aby było łatwe i intuicyjne dla użytkowników, co oznacza, że poszło na kompromis w kwestii przejrzystości i kontroli operacji wewnętrznych.</string>
-    <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
-    <string name="ungoogled_chromium__warning">- Ungoogled Chromium wykorzystuje techniczne podstawy Google Chrome, a więc pośrednio wspiera monopolistyczną pozycję silnika renderującego Chromium.</string>
     <string name="unsupported_abi_dialog__message">Wybrana przeglądarka jest niekompatybilna z procesorem twojego urządzenia. Proszę wybrać inną przeglądarkę.</string>
     <string name="unsupported_abi_dialog__title">Niewspierane urządzenie</string>
     <string name="update_interval__12h">12 godzin</string>
@@ -173,14 +161,10 @@
     <string name="vivaldi__title">Vivaldi</string>
     <string name="vivaldi__warning">- Vivaldi posiada tylko częściowo otwarty kod źródłowy.
 \n- Wykorzystuje również techniczne podstawy przeglądarki Google Chrome, przez co pośrednio wspiera monopolistyczną pozycję silnika renderującego Chromium.</string>
-    <string name="notification__download_error__channel_descr">Pokazuje, gdy pobieranie aktualizacji w tle nie powiodło się.</string>
-    <string name="notification__download_error__channel_name">Powiadomienie o błędach podczas pobierania w tle</string>
-    <string name="notification__download_error__title">Pobieranie aktualizacji w tle nie powiodło się</string>
     <string name="notification__eol_apps__channel_name">Powiadomienie o nieaktualnych aplikacjach</string>
     <string name="notification__eol_apps__text">Masz nieaktualne aplikacje, które nie powinny być już używane: %1$s</string>
     <string name="add_app_activity__title_good_privacy_browsers">Przeglądarki dobre dla prywatności</string>
     <string name="add_app_activity__title_other_applications">Inne aplikacje</string>
-    <string name="mull__title">Mull</string>
     <string name="add_app_activity__label">Dodaj nową aplikację</string>
     <string name="crash_report_activity__label">Zgłoś usterkę</string>
     <string name="add_app_activity__title_from_mozilla">Od Mozilli</string>
@@ -190,19 +174,14 @@
     <string name="add_app_activity__title_end_of_live_browser">Przeglądarki, które nie są już rozwijane</string>
     <string name="add_app_activity__add_new_application">Dodaj nową aplikację</string>
     <string name="chromium__title">Chromium</string>
-    <string name="mulch__title">Mulch</string>
-    <string name="mulch__description">Jest to zorientowana na bezpieczeństwo i wzmocniona przeglądarka internetowa oparta na technologii Chromium. Wiele anty-funkcji zostało wyłączonych/usuniętych, a garść funkcji bezpieczeństwa została włączona/dodana dzięki łatkom z projektu Vanadium. Źródło zawiera również (prebuilds i makefile), które pozwalają innym systemom operacyjnym na włączenie Mulch jako systemowego WebView.</string>
     <string name="settings__background__update_check__when_device_idle__title">Sprawdź aktualizacje tylko wtedy, gdy urządzenie jest bezczynne</string>
     <string name="download_activity__different_installer_info__text">Jeśli instalacja często się nie udaje, spróbuj przełączyć się na \"natywny instalator\" w ustawieniach.</string>
     <string name="download_activity__open_folder">Otwórz folder</string>
-    <string name="mull__description">Jest to zorientowana na prywatność i deblobowana (sprawdź \"Blob binarny\" na Wikipedii) przeglądarka internetowa oparta na technologii Mozilli. Umożliwia wiele funkcji wniesionych przez projekt Tor Uplift, używając preferencji z projektu arkenfox-user.js. Zalecane jest zainstalowanie \"uBlock Origin\".</string>
     <string name="orbot__title">Orbot: Tor dla Androida</string>
     <string name="settings__network__trust_user_cas__summary">Włącz, jeśli ruch danych powinien być sprawdzany i zmieniany przez inne aplikacje. Jeśli nie jesteś pewien, pozostaw tę opcję wyłączoną.</string>
     <string name="settings__network__trust_user_cas__title">Zaufaj certyfikatom dodanym przez użytkownika</string>
     <string name="chromium__warning">- Chromium wykorzystuje techniczne fundamenty Google Chrome, a więc pośrednio wspiera monopolistyczną pozycję silnika renderującego Chromium.</string>
     <string name="settings__background__update_check__when_device_idle__unsupported">Ta opcja jest dostępna tylko w systemie Android Marshmallow (6.0) lub nowszym.</string>
-    <string name="ungoogled_chromium__eol_reason">Deweloper napisał: \"Nie będę w stanie zaktualizować wersji przez jakiś czas. Jeśli to możliwe, proszę w międzyczasie użyć jednej z przeglądarek [dostępnych w FFUpdater].\" Źródło: https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
-    <string name="lockwise__eol_reason">Mozilla porzuciła wsparcie w grudniu 2021 roku. Prosimy o wybranie innego menadżera haseł.</string>
     <string name="fennecfdroid__title">Fennec F-Droid</string>
     <string name="fennecfdroid__warning">FFUpdater pobiera pliki z serwerów F-Droid i dlatego nie jest szybszy.</string>
     <string name="iceraven__warning">- Ten deweloper nie daje żadnych gwarancji bezpieczeństwa, aktualizacji, ani nawet stabilności.
@@ -215,12 +194,9 @@
     <string name="tor_browser__title">Tor</string>
     <string name="chromium__description">Chromium to projekt przeglądarki o otwartym kodzie źródłowym, którego celem jest stworzenie bezpieczniejszego, szybszego i bardziej stabilnego sposobu korzystania z sieci przez wszystkich użytkowników. Ta strona zawiera dokumenty projektowe, przegląd architektury, informacje o testach i wiele innych informacji, które pomogą Ci nauczyć się budować i pracować z kodem źródłowym Chromium.</string>
     <string name="crash_report__explain_text__download_activity_install_file">Ten błąd wystąpił podczas instalowania aplikacji. Jeśli ten błąd występuje często, nie krępuj się zgłosić go na notabug.org, GitHub lub GitLab.</string>
-    <string name="notification__download_error__descr">Pobieranie w tle aktualizacji %1$s nie powiodło się. Jeśli ten błąd występuje często, nie krępuj się zgłosić go na notabug.org, GitHub lub GitLab.</string>
-    <string name="notification__download_error__text">Pobieranie w tle aktualizacji %1$s nie powiodło się. Jeśli ten błąd występuje często, kliknij tutaj, aby wyświetlić raport o błędzie.</string>
     <string name="notification__eol_apps__channel_description">Kanał powiadomień dla ostrzeżeń o nieaktualnych aplikacjach.</string>
     <string name="tor_browser__description">Przeglądarka Tor dla Androida to jedyna oficjalna przeglądarka mobilna wspierana przez projekt Tor, twórców najsilniejszego na świecie narzędzia do ochrony prywatności i wolności online.</string>
     <string name="settings__background__update_check__when_device_idle__summary">Włącz to, jeśli nie chcesz, aby twoje aplikacje były ponownie uruchamiane przez aktualizację w tle. Wyłącz to, jeśli chcesz mieć bardziej przewidywalny harmonogram sprawdzania aktualizacji w tle.</string>
-    <string name="mulch__warning">- Mulch wykorzystuje techniczne fundamenty Google Chrome, a więc pośrednio wspiera monopolistyczną pozycję silnika renderującego Chromium.</string>
     <string name="fennecfdroid__description">Fennec F-Droid jest oparty na najnowszym wydaniu Firefoksa (o nazwie kodowej Fenix). Ma usunięte zastrzeżone bity i telemetrię, ale nadal łączy się z różnymi usługami Mozilli i Google, które mogą śledzić użytkowników.</string>
     <string name="orbot__description">Orbot to darmowa aplikacja proxy, która umożliwia innym aplikacjom bezpieczniejsze korzystanie z internetu. Orbot wykorzystuje Tor do szyfrowania ruchu internetowego, a następnie ukrywa go, odbijając się od szeregu komputerów na całym świecie. Tor to darmowe oprogramowanie i otwarta sieć, która pomaga bronić się przed formą nadzoru sieciowego, która zagraża wolności osobistej i prywatności, poufnym działaniom i relacjom biznesowym oraz bezpieczeństwu państwa, znaną jako analiza ruchu.</string>
     <string name="kiwi__warning">- Kiwi jest tylko częściowo oprogramowaniem open-source
@@ -304,12 +280,10 @@
     <string name="add_app_activity__title_good_security_browsers">Dobre bezpieczne przeglądarki</string>
     <string name="notification__uncaught_exception__channel_description">Niespodziewany błąd spowodował awarię FFUpdater.</string>
     <string name="notification__bg_update_check__unreliable_execution__channel_name">Sprawdzanie aktualizacji w tle nie powiodło się</string>
-    <string name="mulch_wv__title">Mulch System WebView</string>
     <string name="background__installation__when_screen_off__title">Instaluj tylko wtedy gdy ekran jest wyłączony</string>
     <string name="notification__bg_update_check__unreliable_execution__channel_description">Ostrzeżenie o niepowodzeniu sprawdzania aktualizacji w tle</string>
     <string name="background__installation__when_screen_off__summary">Próbować instalować aktualizacje tylko wtedy, gdy ekran urządzenia jest wyłączony.</string>
     <string name="notification__bg_update_check__unreliable_execution__title">Zawodzi sprawdzanie aktualizacji w tle</string>
-    <string name="mulch_wv__description">Jest to zorientowany na bezpieczeństwo i wzmocniony system WebView oparty na technologii Chromium. Wiele anty-funkcji zostało wyłączonych/usuniętych, oraz kilka funkcji bezpieczeństwa zostało włączonych/dodanych dzięki łatkom z projektu Vanadium.</string>
     <string name="notification__bg_update_check__unreliable_execution__text">Może być to spowodowane ustawieniami baterii lub wydajności. Kliknij, aby wyłączyć optymalizację baterii dla tej aplikacji.</string>
     <string name="app_installer__failed_to_verify_signature_of_installed_app">Nie udało się sprawdzić zainstalowanej aplikacji.</string>
     <string name="crash_report__report_is_copied_to_clipboard">Skopiowano raport awarii do schowka</string>

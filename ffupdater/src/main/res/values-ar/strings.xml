@@ -5,9 +5,6 @@
 \n- Kiwi ليس متصفحًا مثاليًا للخصوصية ولكنه يتمتع بدعم جيد للوظائف الإضافية.
 \n- يتم الدفع للمتصفح من خلال محركات البحث مقابل كل عملية بحث يتم إجراؤها باستخدام متصفح Kiwi. اعتمادًا على اختيار محرك البحث، قد يتم إرسال الطلبات عبر خوادم Kiwibrowser / Kiwisearchservices.
 \n- قد يستخدم إعلانات Google في Kiwi بيانات الموقع للإعلانات - ولكن يمكنك تعطيلها عن طريق تعطيل ميزة الاكتشاف. ولكن هذا سوف يتغير قريبا. راجع https://privacy.kiwibrowser.org/ لمزيد من التفاصيل.</string>
-    <string name="lockwise__description">الوصول إلى كلمة المرور لك، أنت فقط
-\n
-\nتتبع كلمات مرور Firefox بشكل آمن والوصول إليها في أي مكان. افتح أي موقع ويب بسرعة من التطبيق للوصول إلى حساباتك.</string>
     <string name="request_installation_permission_dialog__grant_permission">يعطي الأذن</string>
     <string name="request_installation_permission_dialog__message">يفتقد FFUpdater إذن تثبيت التطبيقات وتحديثها. يجب عليك منح هذه الأذونات وإلا فلن يعمل FFUpdater.</string>
     <string name="request_installation_permission_dialog__title">إذن المثبت</string>
@@ -25,10 +22,8 @@
     <string name="app_name">FFUpdater</string>
     <string name="application_installation_was_not_successful">فشل في تثبيت التطبيق</string>
     <string name="notification__error__text">يرجى إبلاغنا بهذا الخطأ. اضغط لقراءة التقرير.</string>
-    <string name="bromite__title">Bromite</string>
     <string name="crash_report__go_to_github">اذهب إلى GitHub</string>
     <string name="crash_report__go_to_gitlab">اذهب إلى GitLab</string>
-    <string name="notification__download_error__channel_descr">يظهر عند فشل تنزيلات التحديث في الخلفية.</string>
     <string name="notification__eol_apps__title">التطبيقات القديمة المثبتة</string>
     <string name="notification__error__channel_descr">إظهار أخطاء مدقق تحديث الخلفية</string>
     <string name="notification__error__channel_name">أخطاء الخلفية</string>
@@ -52,7 +47,6 @@
     <string name="notification__install_success__title">تم تحديث %1$s</string>
     <string name="installed_version">تم التثبيت: %1$s</string>
     <string name="kiwi__title">Kiwi Browser Next</string>
-    <string name="lockwise__eol_reason">أسقطت Mozilla الدعم في ديسمبر 2021. يرجى التبديل إلى خزنة أخرى لكلمات المرور.</string>
     <string name="main_activity__github_api_limit_exceeded"><u>تم تجاوز الحد الأقصى لواجهة برمجة تطبيقات GitHub. أعد المحاولة في الساعة القادمة.</u></string>
     <string name="main_activity__no_unmetered_network">لا توجد شبكة غير محدودة</string>
     <string name="main_activity__temporary_network_issue"><u>مشكلة مؤقتة في الشبكة. أعد المحاولة لاحقًا.</u></string>
@@ -62,10 +56,6 @@
     <string name="running_downloads_dialog__message">يقوم التطبيق بتنزيل التحديثات في الخلفية الآن. هل تريد بدء تنزيل جديد قد يستغرق وقتًا أطول؟</string>
     <string name="running_downloads_dialog__title">التنزيلات الحالية</string>
     <string name="running_downloads_dialog__yes">نعم</string>
-    <string name="bromite__description">يهدف Bromite إلى توفير تجربة تصفح خالية من الازدحام دون ميزات تنتهك الخصوصية ومع إضافة محرك سريع لحظر الإعلانات. يتم تطبيق الحد الأدنى من تغييرات واجهة المستخدم للمساعدة في الحد من فكرة المتصفح كمنصة إعلانية.</string>
-    <string name="bromite__warning">- يستخدم Bromite الأساس التقني لـ Google Chrome وبالتالي يدعم بشكل غير مباشر الوضع الاحتكاري لمحرك عرض Chromium.</string>
-    <string name="bromite_systemwebview__description">تحتوي حزمة SystemWebView على المتصفح الأساسي/محرك العرض الخاص بـ Bromite ونفس ميزاته. يوفر إمكانية استبدال مكون المتصفح الافتراضي لنظام Android بأكمله.</string>
-    <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">نسخ تقرير الأعطال إلى الحافظة</string>
     <string name="install_activity__download_file_failed__crash_text">حدث الخطأ التالي أثناء التنزيل. إذا حدث هذا الخطأ بشكل متكرر، فلا تتردد في إرسال تقرير الأعطال إلى notabug.org أو GitHub أو GitLab.</string>
     <string name="crash_report__explain_text__download_activity_fetching_url">حدث هذا الخطأ عندما تم جلب البيانات التعريفية للتنزيل. إذا حدث هذا الخطأ بشكل متكرر، فلا تتردد في إرسال تقرير الأعطال إلى notabug.org أو GitHub أو GitLab.</string>
@@ -73,10 +63,6 @@
     <string name="crash_report__explain_text__download_activity_update_check">حدث هذا الخطأ عند التحقق من وجود تحديثات في العرض الرئيسي. إذا حدث هذا الخطأ بشكل متكرر، فلا تتردد في إرسال تقرير الأعطال إلى notabug.org أو GitHub أو GitLab.</string>
     <string name="crash_report__explain_text__uncaught_throwable">لسوء الحظ، تعطل FFUpdater في المرة الأخيرة وسجل هذا الخطأ. يرجى إرسال تقرير الأعطال إلى notabug.org أو GitHub أو GitLab.</string>
     <string name="crash_report__got_to_notabug_org">انتقل إلى notabug.org</string>
-    <string name="notification__download_error__channel_name">إشعار حول أخطاء التنزيل في الخلفية</string>
-    <string name="notification__download_error__descr">فشل التنزيل في الخلفية لتحديث %1$s. إذا حدث هذا الخطأ بشكل متكرر، فلا تتردد في الإبلاغ عنه على notabug.org أو GitHub أو GitLab.</string>
-    <string name="notification__download_error__text">فشل التنزيل في الخلفية لتحديث %1$s. إذا حدث هذا الخطأ بشكل متكرر، فانقر هنا لعرض تقرير الخطأ.</string>
-    <string name="notification__download_error__title">فشل تنزيل التحديث في الخلفية</string>
     <string name="notification__download_running__channel_descr">يظهر عندما يتم تنزيل تحديثات التطبيق في الخلفية.</string>
     <string name="notification__download_running__channel_name">إشعار حول التنزيلات في الخلفية</string>
     <string name="notification__download_running__title">تنزيل تحديثات التطبيق</string>
@@ -167,12 +153,6 @@
     <string name="settings__background__update_check__metered__title">تحديث عمليات التحقق على الشبكات المقاسة</string>
     <string name="settings__foreground__download__metered__title">تنزيل التحديثات على الشبكات المقاسة</string>
     <string name="settings__foreground__update_check__metered__summary">السماح بالتحقق من التحديثات على الشبكات المقاسة مثل بيانات الجوال.</string>
-    <string name="ungoogled_chromium__description">جوجل كروم، بدون التكامل مع جوجل.
-\n
-\nبدون تسجيل الدخول إلى حساب Google، يعمل Chromium بشكل جيد من حيث الأمان والخصوصية. ومع ذلك، لا يزال لدى Chromium بعض الاعتماد على خدمات الويب والثنائيات من Google. بالإضافة إلى ذلك، صممت Google Chromium ليكون سهلًا وبديهيًا للمستخدمين، مما يعني أنهم يتنازلون عن الشفافية والتحكم في العمليات الداخلية.</string>
-    <string name="ungoogled_chromium__title">Chromium بدون جوجل</string>
-    <string name="ungoogled_chromium__warning">- يستخدم Ungoogled Chromium الأساس التقني لـ Google Chrome وبالتالي يدعم بشكل غير مباشر الوضع الاحتكاري لمحرك عرض Chromium.</string>
-    <string name="lockwise__title">خزنة كلمات السر من Firefox</string>
     <string name="session_installer__status_failure_storage">فشلت العملية بسبب مشاكل في التخزين. على سبيل المثال، قد تكون مساحة الجهاز منخفضة، أو قد تكون الوسائط الخارجية غير متوفرة. قد يكون المستخدم قادرًا على توفير مساحة أو إدخال وسائط خارجية مختلفة.</string>
     <string name="settings__b_f__delete_cache_if_install_successful">احذف التحديث الذي تم تنزيله إذا نجح التثبيت.</string>
     <string name="settings__background__download__enabled__title">تحميل تحديثات التطبيق</string>
@@ -200,12 +180,9 @@
     <string name="update_interval__4h">4 ساعات</string>
     <string name="update_interval__8h">8 ساعات</string>
     <string name="notification__update_available__channel_descr">قناة الإشعارات لتحديثات %1$s المتوفرة.</string>
-    <string name="mulch__description">هذا متصفح ويب موجه نحو الأمان ومُقوى يعتمد على تقنية Chromium. يتم تعطيل/إزالة العديد من الميزات المضادة ويتم تمكين/إضافة عدد قليل من ميزات الأمان بفضل التصحيحات من مشروع Vanadium. يتضمن الريبو المصدر أيضًا ملفات إنشاء مسبقة وملفات إنشاء للسماح لأنظمة التشغيل الأخرى بتضمين Mulch باعتباره WebView لنظامها.</string>
     <string name="update_notification__text">انقر لتثبيت التحديث</string>
     <string name="update_notification__title">التحديث متاح لـ %1$s</string>
-    <string name="ungoogled_chromium__eol_reason">نشر المطور: \"لن أتمكن من تحديث الإصدارات لبعض الوقت. إذا أمكن، يرجى استخدام أحد المتصفحات [التي يدعمها FFUpdater] في هذه الأثناء.\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
     <string name="vivaldi__description">اكتشف متصفح إنترنت سريع للغاية! Vivaldi هو متصفح ويب جديد ومجاني وخاص تم تصميمه مع مراعاة المرونة. يأتي مزودًا بميزات مفيدة بما في ذلك AdBlocker المدمج (حاجب النوافذ المنبثقة)، وحماية التتبع، والترجمة الخاصة. تساعدك خيارات المتصفح مثل علامات التبويب المناسبة على نمط سطح المكتب، والسمات الداكنة/الفاتحة، وخيارات التخطيط في جعله ملكًا لك.</string>
-    <string name="mull__description">هذا متصفح ويب موجه نحو الخصوصية ومُصمم على أساس تقنية Mozilla. إنه يمكّن العديد من الميزات التي تم رفعها بواسطة مشروع Tor Uplift باستخدام التفضيلات من مشروع arkenfox-user.js. يوصى بتثبيت \"uBlock Origin\".</string>
     <string name="tor_browser__description">متصفح Tor لنظام Android هو متصفح الهاتف المحمول الرسمي الوحيد الذي يدعمه مشروع Tor، مطوري أقوى أداة في العالم للخصوصية والحرية عبر الإنترنت.</string>
     <string name="add_app_activity__label">إضافة تطبيق جديد</string>
     <string name="add_app_activity__title_good_privacy_browsers">متصفحات خصوصية جيدة</string>
@@ -230,7 +207,6 @@
     <string name="add_app_activity__title_good_security_browsers">متصفحات الأمان الجيدة</string>
     <string name="notification__uncaught_exception__channel_name">إخطارات الأعطال</string>
     <string name="notification__uncaught_exception__title">تحطمت FFUpdater</string>
-    <string name="mulch_wv__description">هذا هو نظام WebView موجه نحو الأمان ومقوى يعتمد على تقنية Chromium. يتم تعطيل/إزالة العديد من الميزات المضادة ويتم تمكين/إضافة عدد قليل من ميزات الأمان بفضل التصحيحات من مشروع Vanadium.</string>
     <string name="app_installer__failed_to_verify_signature_of_installed_app">فشل في التحقق من التطبيق المثبت.</string>
     <string name="ffupdater__different_signature_message">تم توقيع هذا الإصدار من FFUpdater بواسطة F-Droid، لذلك يمكن لـ F-Droid فقط توزيع التحديثات. للحصول على التحديثات بشكل أسرع، قم بإلغاء تثبيت FFUpdater وتثبيت الإصدار الموقع من المطور. مع هذا الإصدار، يمكن لـ FFUpdater تحديث نفسه دون انتظار F-Droid.</string>
     <string name="cromite__description">Cromite عبارة عن شوكة Chromium تعتمد على Bromite مع دعم مدمج لحظر الإعلانات ومراقبة الخصوصية.</string>
@@ -274,7 +250,6 @@
     <string name="notification__network_error__title">خطأ في الشبكة في وظيفة الخلفية</string>
     <string name="notification__network_error__text">يمكن أن يحدث هذا الخطأ نادرًا فقط. ومع ذلك، إذا حدث ذلك بشكل متكرر، فيجب عليك الإبلاغ عنه. انقر هنا لعرض رسالة الخطأ التفصيلية.</string>
     <string name="generic_app_warning__beta_version">- تم تصميم هذا التطبيق للمطورين والمختبرين. قد يحتوي على أخطاء مختلفة يمكن أن تؤثر على عملك المعتاد مع المتصفح.</string>
-    <string name="mulch__warning">- يستخدم Mulch الأساس التقني لـ Google Chrome وبالتالي يدعم بشكل غير مباشر الوضع الاحتكاري لمحرك عرض Chromium.</string>
     <string name="fennecfdroid__description">يعتمد Fennec F-Droid على أحدث إصدار من Firefox (الذي يحمل الاسم الرمزي Fenix). تمت إزالة البتات الخاصة به والقياس عن بعد، لكنه لا يزال يتصل بالعديد من خدمات Mozilla وGoogle التي يمكنها تتبع المستخدمين.</string>
     <string name="main_activity__app_was_signed_by_different_certificate">تم توقيع هذا التطبيق بشهادة مختلفة ولا يمكن تحديثه باستخدام FFUpdater.</string>
     <string name="foreground__hide_apps_signed_by_different_certificate__title">إخفاء التطبيقات الموقعة بشهادة مختلفة.</string>
@@ -295,7 +270,6 @@
     <string name="vivaldi__title">متصفح Browser</string>
     <string name="vivaldi__warning">- Vivaldi مفتوح المصدر جزئيًا فقط.
 \n- كما أنه يستخدم الأساس التقني لـ Google Chrome وبالتالي يدعم بشكل غير مباشر الوضع الاحتكاري لمحرك عرض Chromium.</string>
-    <string name="mull__title">متصفح Mull</string>
     <string name="tor_browser__title">متصفح Tor</string>
     <string name="orbot__title">Orbot: تور لنظام أندرويد</string>
     <string name="crash_report_activity__label">مراسل الأعطال</string>
@@ -307,7 +281,6 @@
     <string name="chromium__title">Chromium</string>
     <string name="settings__background__update_check__when_device_idle__title">يتم تحديث عمليات التحقق فقط إذا كان الجهاز خاملاً</string>
     <string name="settings__background__update_check__when_device_idle__unsupported">هذا الخيار متاح فقط على نظام التشغيل Android Marshmallow (6) أو الإصدارات الأحدث.</string>
-    <string name="mulch__title">Mulch</string>
     <string name="network__dns_provider__title">إعدادات DNS</string>
     <string name="network__custom_doh_server__title">DNS المخصص عبر خادم HTTPS</string>
     <string name="settings__network_category__title">الشبكة</string>

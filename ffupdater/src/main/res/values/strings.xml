@@ -17,11 +17,6 @@
     <string name="brave_beta__title">Brave Browser (Beta)</string>
     <string name="brave_nightly__description">Welcome to Brave Nightly (Developer) for Android!\nTry out the newest features and give early feedback: https://brave.com/msupport\nYou can install Brave Nightly alongside your current version of Brave for Android.</string>
     <string name="brave_nightly__title">Brave Browser (Nightly)</string>
-    <string name="bromite__description">Bromite aims at providing a no-clutter browsing experience without privacy-invasive features and with the addition of a fast ad-blocking engine. Minimal UI changes are applied to help curbing the idea of "browser as an advertisement platform".</string>
-    <string name="bromite__title">Bromite</string>
-    <string name="bromite__warning">- Bromite uses the technical foundation of Google Chrome and thus indirectly supports the monopoly position of the Chromium render engine.</string>
-    <string name="bromite_systemwebview__description">The SystemWebView package contains the core browser/rendering engine of Bromite and its same features. It offers the possibility to replace the default browser component for the whole Android system.</string>
-    <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Copy crash report to clipboard</string>
     <string name="install_activity__download_file_failed__crash_text">The following error occurred during download. If this error occurs frequently, feel free to submit the crash report to notabug.org, GitHub or GitLab.</string>
     <string name="crash_report__explain_text__download_activity_fetching_url">This error occurred when the download metadata was fetched. If this error occurs frequently, feel free to submit the crash report to notabug.org, GitHub or GitLab.</string>
@@ -32,11 +27,6 @@
     <string name="crash_report__go_to_gitlab">Go to GitLab</string>
     <string name="crash_report__got_to_notabug_org">Go to notabug.org</string>
     <string name="default_theme_preference" translatable="false">3</string>
-    <string name="notification__download_error__channel_descr">Shows when update downloads in the background fail.</string>
-    <string name="notification__download_error__channel_name">Notification about download errors in the background</string>
-    <string name="notification__download_error__descr">The background download of the %1$s update failed. If this error occurs frequently, feel free to report it on notabug.org, GitHub or GitLab.</string>
-    <string name="notification__download_error__text">The background download of the %1$s update failed. If this error occurs frequently, click here to view the error report.</string>
-    <string name="notification__download_error__title">Background download of update failed</string>
     <string name="notification__download_running__channel_descr">Shows when app updates are downloaded in the background.</string>
     <string name="notification__download_running__channel_name">Notification about downloads in the background</string>
     <string name="notification__download_running__title">Downloading app updates</string>
@@ -106,11 +96,6 @@
 \n- Kiwi is not an ideal privacy browser but has a good addon support.
 \n- The browser is getting paid by search engines for every search done using Kiwi Browser. Depending on the search engine choice, requests may go via Kiwibrowser / Kiwisearchservices servers.
 \n- Google Ads in Kiwi may use the location data for ads - but you can disable it by disabling the Discovery feature. But this will soon change. See https://privacy.kiwibrowser.org/ for more details.</string>
-    <string name="lockwise__description">PASSWORD ACCESS FOR YOU, &amp; ONLY YOU
-\n
-\nSecurely track your Firefox passwords &amp; access them anywhere. Quickly open any website from the app to get into your accounts.</string>
-    <string name="lockwise__eol_reason">Mozilla dropped the support in December 2021. Please switch to another password safe.</string>
-    <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>GitHub-API limit exceeded. Retry next hour.</u>"</string>
     <string name="main_activity__no_unmetered_network">No unmetered network</string>
     <string name="main_activity__temporary_network_issue">"<u>Temporary network issue. Retry later.</u>"</string>
@@ -161,9 +146,6 @@
     <string name="settings__theme_dark">Dark</string>
     <string name="settings__theme_light">Light</string>
     <string name="settings__theme_system_default">Use system default</string>
-    <string name="ungoogled_chromium__description">Google Chromium, sans integration with Google.\n\nWithout signing in to a Google Account, Chromium does pretty well in terms of security and privacy. However, Chromium still has some dependency on Google web services and binaries. In addition, Google designed Chromium to be easy and intuitive for users, which means they compromise on transparency and control of internal operations.</string>
-    <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
-    <string name="ungoogled_chromium__warning">- Ungoogled Chromium uses the technical foundation of Google Chrome and thus indirectly supports the monopoly position of the Chromium render engine.</string>
     <string name="unsupported_abi_dialog__message">The selected browser is incompatible with your smartphone\'s processor. Please select a different browser.</string>
     <string name="unsupported_abi_dialog__title">Unsupported device</string>
     <string name="update_interval__12h">12 hours</string>
@@ -191,9 +173,6 @@
     <string name="vivaldi__description">Discover a blazingly fast Internet browser! Vivaldi is a new, free, and private web browser built with flexibility in mind. It comes packed with useful features including a built-in AdBlocker (pop-up blocker), tracking protection, and private translation. Browser options like proper desktop-style tabs, dark/light Themes, and layout choices help you make it yours.</string>
     <string name="vivaldi__title">Vivaldi Browser</string>
     <string name="vivaldi__warning">- Vivaldi is only partially open source.\n- It also uses the technical foundation of Google Chrome and thus indirectly supports the monopoly position of the Chromium render engine.</string>
-    <string name="mull__title">Mull Browser</string>
-    <string name="mull__description">This is a privacy oriented and deblobbed web browser based on Mozilla technology. It enables many features upstreamed by the Tor Uplift project using preferences from the arkenfox-user.js project. It is recommended to install \'uBlock Origin\'.</string>
-    <string name="ungoogled_chromium__eol_reason">"The developer posted: \"I won't be able to update the versions for some time. If possible please use one of the browsers [that FFUpdater supports] in the meantime.\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123"</string>
     <string name="tor_browser__title">Tor Browser</string>
     <string name="tor_browser__description">Tor Browser for Android is the only official mobile browser supported by the Tor Project, developers of the world’s strongest tool for privacy and freedom online.</string>
     <string name="orbot__description">Orbot is a free proxy app that empowers other apps to use the internet more securely. Orbot uses Tor to encrypt your Internet traffic and then hides it by bouncing through a series of computers around the world. Tor is free software and an open network that helps you defend against a form of network surveillance that threatens personal freedom and privacy, confidential business activities and relationships, and state security known as traffic analysis.</string>
@@ -216,9 +195,6 @@
     <string name="settings__background__update_check__when_device_idle__title">Update checks only if the device is idle</string>
     <string name="settings__background__update_check__when_device_idle__summary">Enable this if you do not want your applications being restarted by an background update. Disable this if you want a more predictable schedule for background update checks.</string>
     <string name="settings__background__update_check__when_device_idle__unsupported">This option is only available on Android Marshmallow or later.</string>
-    <string name="mulch__title">Mulch</string>
-    <string name="mulch__description">This is a security oriented and hardened web browser based on Chromium technology. Many anti-features are disabled/removed and a handful security features are enabled/added thanks to patches from the Vanadium project. The source repo also includes prebuilts and makefiles to allow other operating systems to include Mulch as their system WebView.</string>
-    <string name="mulch__warning">- Mulch uses the technical foundation of Google Chrome and thus indirectly supports the monopoly position of the Chromium render engine.</string>
     <string name="fennecfdroid__title">Fennec F-Droid</string>
     <string name="fennecfdroid__description">Fennec F-Droid is based on the latest Firefox release (codenamed Fenix). It has proprietary bits and telemetry removed, but still connects to various Mozilla and Google services that can track users.</string>
     <string name="fennecfdroid__warning">FFUpdater downloads the files from the F-Droid servers and is therefore not faster.</string>
@@ -280,8 +256,6 @@
     <string name="notification__uncaught_exception__channel_description">Unexpected errors which crash FFUpdater.</string>
     <string name="notification__uncaught_exception__title">FFUpdater crashed</string>
     <string name="notification__uncaught_exception__text">Click to view the error report.</string>
-    <string name="mulch_wv__title">Mulch System WebView</string>
-    <string name="mulch_wv__description">This is a security oriented and hardened system WebView based on Chromium technology. Many anti-features are disabled/removed and a handful security features are enabled/added thanks to patches from the Vanadium project.</string>
     <string name="app_installer__failed_to_validate_signature_of_download">Failed to validate the signature of the download.</string>
     <string name="app_installer__failed_to_verify_signature_of_installed_app">Failed to check installed app.</string>
     <string name="ffupdater__different_signature_message">This version of FFUpdater has been signed by F-Droid, so only F-Droid can distribute updates. To get updates faster, uninstall FFUpdater and install the developer signed version. With this version FFUpdater can update itself without waiting for F-Droid.</string>

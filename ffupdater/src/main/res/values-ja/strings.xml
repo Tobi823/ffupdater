@@ -21,11 +21,6 @@
 \n最新機能をお試しいただき、早い段階でフィードバックをお願いします: https://brave.com/msupport
 \nBrave Nightly は、現在お使いの Android 版 Brave と一緒にインストールできます。</string>
     <string name="brave_nightly__title">Brave ブラウザ (Nightly)</string>
-    <string name="bromite__description">Bromite は、プライバシーを侵害する機能を排除し、高速広告ブロックエンジンを追加して、快適なブラウジング体験を提供することを目的としています。ブラウザの広告プラットフォームとしての考え方を抑制するために、最小限の UI 変更が適用されています。</string>
-    <string name="bromite__title">Bromite</string>
-    <string name="bromite__warning">- Bromite は Google Chrome と同じ技術的基盤を使用しているため、Chromium レンダリングエンジンの独占的地位を間接的に支えることになります。</string>
-    <string name="bromite_systemwebview__description">SystemWebView パッケージは Bromite のコアブラウザ／レンダリングエンジンを含み、同じ機能を持ちます。Android システム全体のデフォルトブラウザコンポーネントを置き換える可能性を提供します。</string>
-    <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">クラッシュレポートをクリップボードにコピー</string>
     <string name="crash_report__explain_text__download_activity_fetching_url">ダウンロードメタデータ (URL) の取得中に以下のエラーが発生しました。同様のエラーが頻繁に発生する場合は、notabug.org、GitHub、または GitLab にクラッシュレポートを提出してください。</string>
     <string name="crash_report__explain_text__download_activity_update_check">メインビューでの更新の確認中に以下のエラーが発生しました。同様のエラーが頻繁に発生する場合は、notabug.org、GitHub、または GitLab にクラッシュレポートを提出してください。</string>
@@ -94,7 +89,6 @@
     <string name="app_installer__installed_app_has_invalid_signature">インストールされたアプリは検証されていません</string>
     <string name="installed_application_is_verified">インストールされたアプリは検証済みです</string>
     <string name="installed_version">インストール済み: %1$s</string>
-    <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded"><u>GitHub-API の制限を超過しました。次の時間に再試行します。</u></string>
     <string name="main_activity__no_unmetered_network">定額制ネットワークではありません</string>
     <string name="main_activity__temporary_network_issue"><u>一時的なネットワークの問題が発生しています。時間を置いて再試行してください。</u></string>
@@ -141,11 +135,6 @@
     <string name="settings__theme_dark">ダークテーマ</string>
     <string name="settings__theme_light">ライトテーマ</string>
     <string name="settings__theme_system_default">システム標準に従う</string>
-    <string name="ungoogled_chromium__description">Google との統合がない Google Chromium
-\n
-\nGoogle アカウントにサインインしなければ、セキュリティとプライバシーの面で非常に優れています。しかし、依然として、Chromiumは Google のウェブサービスやバイナリに依存しています。さらに、Google は Chromium をユーザーが簡単で直感的に使用できるよう設計しているため、ユーザーは透明性と内部操作のコントロールで妥協することになります。</string>
-    <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
-    <string name="ungoogled_chromium__warning">- Ungoogled Chromium は Google Chrome と同じ技術的基盤を使用しているため、Chromium レンダリングエンジンの独占的地位を間接的に支えることになります。</string>
     <string name="unsupported_abi_dialog__message">選択したブラウザーはこの端末のプロセッサーとの互換性がありません。別のブラウザーを選択してください。</string>
     <string name="unsupported_abi_dialog__title">非対応の端末</string>
     <string name="update_interval__12h">12 時間</string>
@@ -180,18 +169,12 @@
     <string name="iceraven__warning">- メンテナーはセキュリティやアップデート、安定性についてのいかなる保証も提供していません。
 \n - このプロジェクトはセキュリティアップデートの提供に一般より長い時間を要します。</string>
     <string name="notification__eol_apps__text">開発終了のため使用を継続すべきでないアプリがインストールされています。詳細はこちらからご確認ください。: %1$s</string>
-    <string name="notification__download_error__channel_name">バックグラウンドでのダウンロードエラーについての通知</string>
-    <string name="notification__download_error__channel_descr">バックグラウンドでの更新のダウンロードに失敗すると表示されます。</string>
-    <string name="notification__download_error__descr">%1$s のバックグラウンドでのダウンロードに失敗しました。同様のエラーが頻繁に発生する場合は、notabug.org、GitHub、または GitLab にクラッシュレポートを提出してください。</string>
-    <string name="notification__download_error__text">%1$s のバックグラウンドでのダウンロードに失敗しました。同様のエラーが頻繁に発生する場合は、ここをクリックしてエラーレポートを確認してください。</string>
-    <string name="notification__download_error__title">バックグラウンドでのダウンロードに失敗</string>
     <string name="notification__eol_apps__channel_description">開発が終了したアプリについての警告の通知チャンネル。</string>
     <string name="notification__eol_apps__channel_name">開発終了アプリの通知</string>
     <string name="notification__eol_apps__title">開発終了したアプリがあります</string>
     <string name="firefox_release__warning">- 改良版の Firefox は F-Droid でも Fennec F-Droid という名前で利用できます。</string>
     <string name="download_activity__different_installer_info__text">頻繁にインストールに失敗する場合は、設定で「ネイティブのインストーラー」に変更してお試しください。</string>
     <string name="download_activity__file_uri_exposed_toast">他のアプリのファイルパス (保存領域) にはアクセスできません。ファイルマネージャーで直接フォルダーを開いてください。</string>
-    <string name="ungoogled_chromium__eol_reason">開発者は「当分の間、バージョンを更新できません。その間は、可能な限り『FFUpdater が対応している』 ブラウザーのいずれかを使用してください」と投稿しています。https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
     <string name="chromium__warning">- Chromium は Google Chrome と同じ技術的基盤を使用しているため、Chromium レンダリングエンジンの独占的地位を間接的に支えることになります。</string>
     <string name="foreground__hide_apps_signed_by_different_certificate__title">異なる証明書で署名されたアプリを非表示にする</string>
     <string name="privacy_browser__warning">FFUpdater はファイルを F-Droid からダウンロードするため、時間がかかることがあります。</string>
@@ -199,20 +182,14 @@
     <string name="device__prefer_32bit_apks__title">32 ビット APK を優先</string>
     <string name="duckduckgo_android__warning">- DuckDuckGo は、システムの WebView を使用してウェブサイトを表示します。
 \n- Microsoft からのすべての Cookie をブロックしないことについて論争がありましたが、これは修正されました。</string>
-    <string name="mulch__warning">- Mulch は Google Chrome と同じ技術的基盤を使用しているため、Chromium レンダリングエンジンの独占的地位を間接的に支えることになります。</string>
     <string name="main_activity__app_was_signed_by_different_certificate">このアプリは異なる証明書で署名されており、FFUpdater で更新できません。</string>
     <string name="tor_browser__description">Tor Browser for Android は、プライバシーとオンラインの自由のための世界最強のツールの開発者である Tor プロジェクトによってサポートされている唯一の公式モバイル ブラウザです。</string>
     <string name="add_app_activity__title_better_than_google_chrome">Google Chrome より優秀</string>
-    <string name="lockwise__eol_reason">Mozilla は 2021 年 12 月にサポートを終了しました。他のパスワード管理アプリに移行してください。</string>
-    <string name="lockwise__description">あなただけのためのパスワードアクセス
-\n
-\nFirefox のパスワードを安全に追跡し、どこからでもアクセスできます。アプリからウェブサイトを素早く開き、アカウントにアクセスしましょう。</string>
     <string name="background__separate_notification_channels__title">通知チャンネルを分割</string>
     <string name="notification__update_available__generic_channel_name">アプリの更新通知</string>
     <string name="background__separate_notification_channels__summary">アプリごとに異なる通知チャンネルを使用します</string>
     <string name="main_activity__an_error_occurred"><u>エラーが発生しました。時間を置いて再試行してください。</u></string>
     <string name="settings__b_f__delete_cache_if_install_successful">インストールを正常に完了したとき、ダウンロードした更新を削除</string>
-    <string name="mull__description">Mozilla の技術をベースに、プライバシーを重視し、デブロブされたウェブブラウザーです。arkenfox-user.js プロジェクトの構成を使用する、Tor Uplift プロジェクトによりアップストリームされた多くの機能を有効にしています。uBlock Origin のインストールを推奨します。</string>
     <string name="add_app_activity__title_good_privacy_browsers">プライバシー保護に優れたブラウザー</string>
     <string name="add_app_activity__title_other_applications">その他のアプリ</string>
     <string name="add_app_activity__title_end_of_live_browser">サポートの終了したブラウザー</string>
@@ -236,13 +213,11 @@
     <string name="settings__background__update_check__when_device_idle__summary">バックグラウンド更新によってアプリを再起動させたくない場合は、これを有効にしてください。バックグラウンドの更新確認のスケジュールをより予測可能にしたい場合は無効にしてください。</string>
     <string name="settings__background__update_check__when_device_idle__title">端末がアイドル中のみ更新を確認</string>
     <string name="kiwi__title">Kiwi Browser Next</string>
-    <string name="mull__title">Mull ブラウザー</string>
     <string name="chromium__title">Chromium</string>
     <string name="fennecfdroid__title">Fennec F-Droid</string>
     <string name="fennecfdroid__description">Fennec F-Droid は最新の Firefox (コードネーム Fenix) を基にしたブラウザーです。独自の部分とテレメトリーが削除されていますが、ユーザーを追跡する複数の Mozilla と Google のサービスに接続されます。</string>
     <string name="fennecfdroid__warning">FFUpdater はファイルを F-Droid からダウンロードするため、時間がかかることがあります。</string>
     <string name="network__dns_provider__title">DNS 設定</string>
-    <string name="mulch__description">Chromium の技術に基づく、セキュリティ指向の強化されたウェブブラウザです。Vanadium プロジェクトからのパッチにより不要な機能が無効化/削除され、いくつかのセキュリティ機能が有効化/追加されています。ソースレポジトリには、プレビルドや他の OS で Mulch を WebView として使用するためのメイクファイルが含まれます。</string>
     <string name="network__custom_doh_server__dialog_message">カスタム DoH サーバーの接続の詳細を、以下のいずれかのフォーマットで入力してください:
 \n
 \nurl;ip1
@@ -292,7 +267,6 @@
 \nTor Browser が無料であり続けるためには、寄付が必要です。Tor プロジェクトは、アメリカ合衆国の 501©(3) 非営利プロジェクトです。今日、貢献することを考えてみてください。すべてのギフトが変化を産み出します。 https://donate.torproject.org
 \n
 \nバグ報告とフィードバックの方法は、https://support.torproject.org/misc/bug-or-feedback/ からご確認ください！</string>
-    <string name="mulch__title">Mulch</string>
     <string name="tor_browser__title">Tor Browser</string>
     <string name="tor_browser_alpha__title">Tor Browser Alpha</string>
     <string name="duckduckgo_android__description">DuckDuckGo アプリは、最も包括的なオンライン上のプライバシー保護をボタンひとつで提供します。1 回のダウンロードで、検索と閲覧中のシームレスな保護、受信したメールやアプリの追跡保護を提供するブラウザーを利用できます。このような保護はほとんどの有名ブラウザーではデフォルトでは提供されません。</string>
@@ -306,7 +280,6 @@
     <string name="privacy_browser__title">Privacy Browser</string>
     <string name="background__installation__when_screen_off__summary">端末の画面が消灯中のみインストールを試みます。</string>
     <string name="background__installation__when_screen_off__title">画面消灯中のみインストール</string>
-    <string name="mulch_wv__title">Mulch System WebView</string>
     <string name="notification__uncaught_exception__text">タップしてエラー報告を表示</string>
     <string name="notification__uncaught_exception__channel_description">予期せぬエラーにより FFUpdater がクラッシュしました。</string>
     <string name="notification__uncaught_exception__title">FFUpdater がクラッシュしました</string>
@@ -321,7 +294,6 @@
     <string name="notification__bg_update_check__unreliable_execution__channel_name">バックグラウンドでの更新確認が実行されなかった場合の通知</string>
     <string name="notification__bg_update_check__unreliable_execution__channel_description">信頼できないバックグラウンドでの更新確認の実行に関する警告</string>
     <string name="notification__bg_update_check__unreliable_execution__text">バッテリーやパフォーマンスに関する設定が原因の可能性があります。通知をタップして、このアプリのバッテリー最適化を無効にしてください。</string>
-    <string name="mulch_wv__description">これは Chromium の技術をベースとした、セキュリティ重視の強化されたシステム WebView です。Vanadium プロジェクト のパッチにより、多くの不要な機能が無効化/削除され、いくつかのセキュリティ機能が有効化/追加されています。</string>
     <string name="installer__method__title">インストーラーの選択</string>
     <string name="ffupdater__different_signature_message">この FFUpdater は F-Droid で署名されたバージョンのため、F-Droid からのみ更新できます。一度 FFUpdater をアンインストールして開発者が署名したバージョンをインストールすると、より早く更新できるようになります。開発者が署名したバージョンでは、F-Droid での配布を待たずに FFUpdater 自身で更新できます。</string>
     <string name="cromite__description">Cromite は 広告をブロックしプライバシーを重視する Bromite ベースの Chromium フォークです。</string>

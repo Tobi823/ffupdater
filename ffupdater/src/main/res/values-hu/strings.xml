@@ -19,18 +19,12 @@
     <string name="brave_nightly__description">Üdvözöljük a Brave Nightly (fejlesztői) androidos változatában!
 \nPróbálja ki a legújabb funkciókat és küldjön visszajelzést: https://brave.com/msupport
 \nA Brave Nightly-t a Brave jelenlegi verziója mellé telepítheti.</string>
-    <string name="bromite_systemwebview__description">A SystemWebView csomag tartalmazza a Bromite alapvető böngésző/megjelenítő motorját és ugyanazokat a funkciókat. Lehetőséget kínál az alapértelmezett böngésző komponens helyettesítésére az egész Android rendszerben.</string>
     <string name="app_card__download_the_app">az alkalmazás letöltése</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Összeomlási jelentés másolása a vágólapra</string>
     <string name="crash_report__go_to_github">GitHub megnyitása</string>
     <string name="crash_report__go_to_gitlab">GitLab megnyitása</string>
     <string name="crash_report__got_to_notabug_org">notabug.org megnyitása</string>
     <string name="crash_report__explain_text__uncaught_throwable">Sajnos az FFUpdater legutóbb összeomlott, és ezt a hibát naplózta. Kérjük, küldje el az összeomlásról szóló jelentést a notabug.org, a GitHub vagy a GitLab oldalra.</string>
-    <string name="notification__download_error__channel_descr">Megjelenik, ha a frissítés letöltése a háttérben sikertelen.</string>
-    <string name="notification__download_error__channel_name">Értesítés a letöltési hibákról a háttérben</string>
-    <string name="notification__download_error__descr">A %1$s frissítés háttérben történő letöltése sikertelen volt. Ha ez a hiba gyakran előfordul, nyugodtan jelentse a notabug.org, a GitHub vagy a GitLab oldalon.</string>
-    <string name="notification__download_error__text">A %1$s frissítés háttérben történő letöltése sikertelen volt. Ha ez a hiba gyakran előfordul, kattintson ide a hibajelentés megtekintéséhez.</string>
-    <string name="notification__download_error__title">A frissítés háttérben történő letöltése sikertelen</string>
     <string name="notification__download_running__channel_descr">Megjeleníti, amikor az alkalmazás frissítései a háttérben letöltődnek.</string>
     <string name="notification__download_running__channel_name">Értesítés a letöltésekről a háttérben</string>
     <string name="notification__download_running__title">Alkalmazás frissítések letöltése</string>
@@ -41,10 +35,6 @@
     <string name="notification__error__channel_descr">A háttérben futó frissítésellenőrző hibáinak megjelenítése</string>
     <string name="brave_beta__title">Brave Böngésző (Béta)</string>
     <string name="brave_nightly__title">Brave Böngésző (Nightly)</string>
-    <string name="bromite__description">A Bromite célja, hogy a böngészés élményét a magánéletet sértő funkciók nélkül, valamint egy gyors reklámblokkoló motorral kiegészítve biztosítsa. Minimális UI-változtatásokat alkalmaznak, hogy segítsenek megfékezni a böngésző reklámplatformként való elképzelését.</string>
-    <string name="bromite__title">Bromite</string>
-    <string name="bromite__warning">- A Bromite a Google Chrome technikai alapjait használja, és így közvetve támogatja a Chromium renderelőmotor monopolhelyzetét.</string>
-    <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="install_activity__download_file_failed__crash_text">A letöltés során a következő hiba lépett fel. Ha ez a hiba gyakran előfordul, küldje el a hibajelentést a notabug.org, a GitHub vagy a GitLab oldalra.</string>
     <string name="crash_report__explain_text__download_activity_fetching_url">Ez a hiba a letöltési metaadatok lekérdezésekor lépett fel. Ha ez a hiba gyakran fordul elő, küldje el a hibajelentést a notabug.org, a GitHub vagy a GitLab oldalra.</string>
     <string name="crash_report__explain_text__download_activity_install_file">Ez a hiba a telepítés során lépett fel. Ha ez a hiba gyakran előfordul, küldje el a hibajelentést a notabug.org, a GitHub vagy a GitLab oldalra.</string>

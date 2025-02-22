@@ -23,11 +23,6 @@
 \nTeste die neuesten Funktionen und gib frühzeitig Feedback: https://brave.com/msupport
 \nDu kannst Brave Nightly neben deiner aktuellen Version von Brave für Android installieren.</string>
     <string name="brave_nightly__title">Brave Browser (Nightly)</string>
-    <string name="bromite__description">Bromite zielt auf ein aufgeräumtes Browsing-Erlebnis ab, ohne Datenschutz-invasive Funktionen und mit einer schnellen Ad-Blocking-Engine. Minimale UI-Änderungen sollen helfen, die Idee des \"Browsers als Werbeplattform\" einzudämmen.</string>
-    <string name="bromite__title">Bromite</string>
-    <string name="bromite__warning">- Bromite nutzt die technische Grundlage von Google Chrome und unterstützt damit indirekt die Monopolstellung der Chromium Rendering Engine.</string>
-    <string name="bromite_systemwebview__description">Das SystemWebView-Paket enthält die Kern-Browser/Rendering-Engine von Bromite und die gleichen Funktionen. Es bietet die Möglichkeit, die Standard-Browser-Komponente für das gesamte Android-System zu ersetzen.</string>
-    <string name="bromite_systemwebview__title">Bromit SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Kopieren des Absturzberichts in die Zwischenablage</string>
     <string name="install_activity__download_file_failed__crash_text">Dieser Fehler ist während des Downloads aufgetreten. Wenn dieser Fehler häufig auftritt, lade den Absturzbericht auf notabug.org, GitHub oder GitLab hoch.</string>
     <string name="crash_report__explain_text__download_activity_fetching_url">Dieses Fehler trat auf, als die Metainformationen abgerufen wurde. Wenn dieser Fehler häufig auftritt, lade den Absturzbericht auf notabug.org, GitHub oder GitLab hoch.</string>
@@ -102,10 +97,6 @@
     <string name="kiwi__description">Kiwi Browser wurde entwickelt, um im Internet zu surfen, Nachrichten zu lesen, Videos anzuschauen und Musik zu hören, ohne dabei zu stören.</string>
     <string name="kiwi__title">Kiwi Browser Next</string>
     <string name="kiwi__warning">- Kiwi ist nur teilweise Open-Source\n- Kiwi nutzt die technische Grundlage von Google Chrome und unterstützt damit indirekt die Monopolstellung der Chromium-Rendering-Engine.\n- Kiwi ist kein idealer Datenschutz-Browser, hat aber eine gute Addon-Unterstützung.\n- Der Browser wird von Suchmaschinen für jede durchgeführte Suche bezahlt. Je nach Wahl der Suchmaschine können die Anfragen über die Kiwibrowser / Kiwisearchservices-Server laufen.\n- Google Ads in Kiwi kann die Standortdaten für Anzeigen verwenden - du kannst dies jedoch deaktivieren, indem du die Entdeckungsfunktion deaktivierst. Dies wird sich jedoch bald ändern. Siehe https://privacy.kiwibrowser.org/ für weitere Details.</string>
-    <string name="lockwise__description">PASSWORT-ZUGANG FÜR DICH, UND NUR DICH
-\n
-\nVerwahre deine Firefox-Passwörter sicher und greife überall darauf zu. Schnelles Öffnen einer beliebigen Website aus der App heraus, um in deine Konten zu gelangen.</string>
-    <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>GitHub-API-Limit überschritten. Nächste Stunde erneut versuchen.</u>"</string>
     <string name="main_activity__no_unmetered_network">Kein nicht getaktetes Netzwerk</string>
     <string name="main_activity__temporary_network_issue">"<u>Vorübergehendes Netzwerkproblem. Versuche es später nochmal.</u>"</string>
@@ -155,9 +146,6 @@
     <string name="settings__theme_dark">Dunkles Farbschema</string>
     <string name="settings__theme_light">Hell</string>
     <string name="settings__theme_system_default">Systemstandard verwenden</string>
-    <string name="ungoogled_chromium__description">Google Chromium, ohne die Integration mit Google.\n\nOhne Anmeldung bei einem Google-Konto schneidet Chromium in puncto Sicherheit und Datenschutz recht gut ab. Allerdings ist Chromium immer noch von Google-Webdiensten und -Binärdateien abhängig. Außerdem hat Google Chromium so konzipiert, dass es für die Benutzer einfach und intuitiv zu bedienen ist, was bedeutet, dass es bei der Transparenz und der Kontrolle der internen Vorgänge Kompromisse eingeht.</string>
-    <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
-    <string name="ungoogled_chromium__warning">- Ungoogled Chromium nutzt die technische Grundlage von Google Chrome und unterstützt damit indirekt die Monopolstellung der Chromium Rendering Engine.</string>
     <string name="unsupported_abi_dialog__message">Der ausgewählte Browser ist mit dem Prozessor deines Smartphones nicht kompatibel. Bitte wähle einen anderen Browser.</string>
     <string name="unsupported_abi_dialog__title">Nicht unterstütztes Gerät</string>
     <string name="update_interval__12h">12 Stunden</string>
@@ -186,19 +174,10 @@
     <string name="vivaldi__title">Vivaldi Browser</string>
     <string name="vivaldi__warning">- Vivaldi ist nur teilweise quelloffen.
 \n- Außerdem nutzt es die technische Grundlage von Google Chrome und unterstützt damit indirekt die Monopolstellung der Chromium-Rendering-Engine.</string>
-    <string name="lockwise__eol_reason">Mozilla unterstützt die App seit Dezember 2021 nicht mehr. Bitte wechsle zu einem anderen Passwortspeicher.</string>
-    <string name="notification__download_error__channel_descr">Zeigt an, wenn Downloads von Updates im Hintergrund fehlschlagen.</string>
-    <string name="notification__download_error__channel_name">Benachrichtigungen über Downloadfehler im Hintergrund</string>
-    <string name="notification__download_error__descr">Der Hintergrunddownload des Updates von %1$s ist fehlgeschlagen. Wenn dieser Fehler häufiger auftritt, kannst du auf notabug.org, GitHub oder GitLab melden.</string>
     <string name="notification__eol_apps__channel_description">Benachrichtigungskanal für Warnungen vor veralteten Apps.</string>
     <string name="notification__eol_apps__channel_name">Benachrichtigung bei veralteten Apps</string>
-    <string name="notification__download_error__title">Hintergrunddownload des Updates ist fehlgeschlagen</string>
     <string name="notification__eol_apps__title">Veraltete Apps installiert</string>
-    <string name="notification__download_error__text">Der Hintergrunddownload des Updates von %1$s ist fehlgeschlagen. Wenn dieser Fehler häufiger auftritt, klicke hier um den Fehlerbericht zu sehen.</string>
     <string name="notification__eol_apps__text">Du hast veraltete Apps, die nicht mehr verwendet werden sollten: %1$s</string>
-    <string name="mull__title">Mull Browser</string>
-    <string name="mull__description">Dies ist ein datenschutzorientierter und bereinigter Webbrowser, der auf Mozilla-Technologie basiert. Er ermöglicht viele Funktionen, die vom Tor-Uplift-Projekt entwickelt wurden, indem Einstellungen aus dem arkenfox-user.js-Projekt nutzt. Es wird empfohlen, \"uBlock Origin\" zu installieren.</string>
-    <string name="ungoogled_chromium__eol_reason">Der Entwickler schrieb: \"Ich werde für einige Zeit nicht in der Lage sein, die Versionen zu aktualisieren. Wenn möglich, verwenden Sie bitte in der Zwischenzeit einen der Browser [die FFUpdater unterstützt].\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
     <string name="tor_browser__title">Tor Browser</string>
     <string name="tor_browser__description">Tor Browser für Android ist der einzige offizielle mobile Browser, der vom Tor-Projekt unterstützt wird, den Entwicklern des weltweit stärksten Tools für Privatsphäre und Freiheit im Internet.</string>
     <string name="orbot__description">Orbot ist eine kostenlose Proxy-App, die es anderen Apps ermöglicht, das Internet sicherer zu nutzen. Orbot verwendet Tor, um deinen Internetverkehr zu verschlüsseln und versteckt ihn dann, indem er durch eine Reihe von Computern auf der ganzen Welt geschickt wird. Tor ist eine kostenlose Software und ein offenes Netzwerk, das dir hilft, dich gegen eine Form der Netzwerküberwachung zu wehren, die die persönliche Freiheit und Privatsphäre, vertrauliche Geschäftsaktivitäten und -beziehungen sowie die staatliche Sicherheit bedroht, bekannt als Verkehrsanalyse.</string>
@@ -212,12 +191,9 @@
     <string name="chromium__warning">- Chromium nutzt die technische Grundlage von Google Chrome und unterstützt damit indirekt die Monopolstellung der Chromium-Renderengine.</string>
     <string name="add_app_activity__add_new_application">Neue App hinzufügen</string>
     <string name="settings__background__update_check__when_device_idle__unsupported">Diese Option ist nur unter Android Marshmallow oder höher verfügbar.</string>
-    <string name="mulch__title">Mulch</string>
-    <string name="mulch__warning">- Mulch nutzt die technische Grundlage von Google Chrome und unterstützt damit indirekt die Monopolstellung der Chromium-Rendering-Engine.</string>
     <string name="fennecfdroid__title">Fennec F-Droid</string>
     <string name="fennecfdroid__description">Fennec F-Droid basiert auf der neuesten Firefox-Version (Codename Fenix). Es hat proprietäre Bits und Telemetrie entfernt, aber immer noch eine Verbindung zu verschiedenen Mozilla und Google-Dienste, die Benutzer verfolgen können.</string>
     <string name="fennecfdroid__warning">FFUpdater lädt die Dateien von den F-Droid-Servern herunter und ist daher nicht schneller.</string>
-    <string name="mulch__description">Dies ist ein sicherheitsorientierter und gehärteter Webbrowser, der auf der Chromium-Technologie basiert. Dank der Patches aus dem Vanadium-Projekt wurden viele Anti-Features deaktiviert/entfernt und eine Handvoll Sicherheitsfunktionen aktiviert/hinzugefügt. Das Quellcode-Repository enthält auch Prebuilts und Makefiles, die es anderen Betriebssystemen ermöglichen, Mulch als System-WebView einzubinden.</string>
     <string name="add_app_activity__title_good_privacy_browsers">Datenschutzfreundliche Browser</string>
     <string name="crash_report_activity__label">Crash Reporter</string>
     <string name="settings__network__trust_user_cas__summary">Aktivieren, wenn der Datenverkehr von anderen Apps inspiziert und verändert werden soll. Bist du dir unsicher, lass diese Option deaktiviert.</string>
@@ -309,8 +285,6 @@
     <string name="notification__bg_update_check__unreliable_execution__text">Möglicherweise liegt es an den Akku- oder Leistungseinstellungen deines Geräts. Klicke auf diese Benachrichtigung, um die Akkuoptimierung für diese App zu deaktivieren.</string>
     <string name="background__installation__when_screen_off__summary">Versuche Updates nur zu installieren, wenn der Gerätebildschirm ausgeschaltet ist.</string>
     <string name="background__installation__when_screen_off__title">Nur installieren, wenn der Bildschirm ausgeschaltet ist</string>
-    <string name="mulch_wv__title">Mulch System WebView</string>
-    <string name="mulch_wv__description">Dies ist ein sicherheitsorientiertes und gehärtetes System WebView, das auf Chromium-Technologie basiert. Viele Anti-Funktionen wurden deaktiviert/entfernt und eine handvoll Sicherheitsfunktionen wurden dank der Patches des Vanadium-Projekts aktiviert/hinzugefügt.</string>
     <string name="app_installer__failed_to_verify_signature_of_installed_app">Die installierte App konnte nicht überprüft werden.</string>
     <string name="app_installer__failed_to_validate_signature_of_download">Die Signatur des Downloads konnte nicht überprüft werden.</string>
     <string name="cromite__description">Cromite ist ein auf Bromite basierender Chromium-Fork mit eingebauter Unterstützung für Werbeblocker und einem Auge für den Datenschutz.</string>

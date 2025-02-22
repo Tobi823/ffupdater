@@ -23,11 +23,6 @@
     <string name="brave_nightly__title">Brave Browser (Nightly)</string>
     <string name="crash_report__explain_text__download_activity_fetching_url">Denne fejl opstod, da downloadmetadata blev hentet. Hvis denne fejl opstår ofte, er du velkommen til at indsende nedbrudsrapporten til notabug.org, GitHub eller GitLab.</string>
     <string name="crash_report__explain_text__uncaught_throwable">Desværre gik FFUpdater ned sidste gang og loggede denne fejl. Send venligst nedbrudsrapporten til notabug.org, GitHub eller GitLab.</string>
-    <string name="bromite__description">Bromite sigter mod at give en browsingoplevelse uden rod uden privatlivsindgribende funktioner og med tilføjelsen af en hurtig reklameblokerende motor. Minimale UI-ændringer anvendes for at hjælpe med at dæmme op for ideen om browser som en reklameplatform.</string>
-    <string name="bromite__title">Bromite</string>
-    <string name="bromite__warning">- Bromite bruger det tekniske grundlag for Google Chrome og understøtter dermed indirekte Chromium-gengivelsesmotorens monopolposition.</string>
-    <string name="bromite_systemwebview__description">SystemWebView-pakken indeholder Bromites browser/gengivelsesmotor og dens funktioner. Den giver mulighed for at erstatte standardbrowserkomponenten for hele Android-systemet.</string>
-    <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Kopiér nedbrudsrapport til udklipsholder</string>
     <string name="install_activity__download_file_failed__crash_text">Følgende fejl opstod under download. Hvis denne fejl opstår ofte, er du velkommen til at indsende nedbrudsrapporten til notabug.org, GitHub eller GitLab.</string>
     <string name="crash_report__explain_text__download_activity_install_file">Fejlen opstod under installation. Hvis fejlen opstår ofte, er du velkommen til at indsende nedbrudsrapporten til notabug.org, GitHub eller GitLab.</string>
@@ -35,7 +30,6 @@
     <string name="crash_report__go_to_github">Gå til GitHub</string>
     <string name="crash_report__go_to_gitlab">Gå til GitLab</string>
     <string name="crash_report__got_to_notabug_org">Gå til notabug.org</string>
-    <string name="notification__download_error__channel_descr">Viser, når download af opdateringer i baggrunden mislykkes.</string>
     <string name="notification__error__channel_descr">Vis fejl i baggrundsopdateringskontrollen</string>
     <string name="firefox_beta__description">Firefox Browser til Android er automatisk privat og utrolig hurtig. Tusindvis af online-trackere følger dig hver dag, indsamler information om, hvor du går online og sænker din hastighed. Firefox blokerer som standard over 2000 af disse trackere, og der er tilføjelsesprogrammer til reklameblokering, hvis du vil tilpasse din browser endnu mere. Med Firefox får du den sikkerhed, du fortjener, og den hastighed, du har brug for, i en privat, mobil browser.</string>
     <string name="firefox_klar__description">Firefox Klar er udviklet til Tyskland, Østrig og Schweiz, men kan bruges af brugere i alle lande. Den minder meget om Firefox Focus, men navnet blev ændret i tysktalende lande for at undgå forveksling med magasinet Focus af Hubert Burda Media group. I modsætning til Firefox Focus har Firefox Klar telemetri deaktiveret som standard på grund af strenge tyske privatlivslove.</string>
@@ -72,14 +66,9 @@
     <string name="settings__foreground__download__metered__title">Download opdateringer på forbrugsafregnede netværk</string>
     <string name="settings__foreground__theme_preference__summary">Vælg mellem lyst og mørkt tema</string>
     <string name="settings__foreground__update_check__metered__summary">Tillad opdateringstjek på forbrugsafregnede netværk såsom mobildata.</string>
-    <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
-    <string name="ungoogled_chromium__warning">- Ungoogled Chromium bruger Google Chromes tekniskegrundlag og understøtter dermed indirekte Chromium-gengivelsesmotorens monopolposition.</string>
     <string name="update_interval__5d">5 dage</string>
     <string name="notification__update_available__channel_descr">Notifikationskanal for tilgængelige %1$s-opdateringer.</string>
     <string name="settings__theme_battery_saver">Mørk når Strømbesparelse er aktiv</string>
-    <string name="ungoogled_chromium__description">Google Chromium, uden integration med Google.
-\n
-\nUden at logge ind på en Google-konto klarer Chromium sig ret godt med hensyn til sikkerhed og privatliv. Chromium har dog stadig en vis afhængighed af Googles webtjenester og binære filer. Derudover har Google designet Chromium til at være nemt og intuitivt for brugerne, hvilket betyder, at de går på kompromis med gennemsigtighed og kontrol over interne operationer.</string>
     <string name="download_activity__download_app_with_status">Downloader app</string>
     <string name="download_activity__download_failed">Download fejlede</string>
     <string name="download_activity__downloaded_application_from">Hentede app fra:</string>
@@ -103,11 +92,6 @@
     <string name="notification__install_success__text">App er blevet opdateret i baggrunden.</string>
     <string name="installed_version">Installeret: %1$s</string>
     <string name="kiwi__title">Kiwi Browser Next</string>
-    <string name="lockwise__description">PASSWORDADGANG FOR DIG OG KUN DIG
-\n
-\nSpor dine Firefox-passwords sikkert og få adgang til dem hvor som helst. Åbn hurtigt websteder fra appen for at komme ind på dine konti.</string>
-    <string name="lockwise__eol_reason">Mozilla droppede supporten i december 2021. Skift venligst til en anden adgangskodemanager.</string>
-    <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__no_unmetered_network">Intet ikke-forbrugsbaseret netværk</string>
     <string name="main_activity__temporary_network_issue"><u>Midlertidigt netværksproblem. Prøv senere.</u></string>
     <string name="request_installation_permission_dialog__abort">Afbryd</string>
@@ -167,15 +151,9 @@
     <string name="update_notification__text">Klik for at installere opdatering</string>
     <string name="update_notification__title">Opdatering til %1$s tilgængelig</string>
     <string name="vivaldi__title">Vivaldi Browser</string>
-    <string name="mull__title">Mull Browser</string>
-    <string name="mull__description">Dette er en privatlivsorienteret og deblobbet webbrowser baseret på Mozilla-teknologi. Den rummer mange funktioner upstreamet af Tor Uplift-projektet ved hjælp af præferencer fra arkenfox-user.js-projektet. Det anbefales at installere \'uBlock Origin\'.</string>
     <string name="tor_browser__title">Tor Browser</string>
     <string name="tor_browser__description">Tor Browser til Android er den eneste officielle mobilbrowser, der understøttes af Tor Project, udviklere af verdens stærkeste værktøj til privatliv og frihed online.</string>
     <string name="orbot__title">Orbot: Tor for Android</string>
-    <string name="notification__download_error__channel_name">Meddelelse om downloadfejl i baggrunden</string>
-    <string name="notification__download_error__text">Baggrundsdownload af %1$s-opdateringen mislykkedes. Hvisdenne fejl opstår ofte, skal du klikke her for at se fejlrapporten.</string>
-    <string name="notification__download_error__descr">Baggrundsdownload af %1$s-opdateringen mislykkedes. Hvis denne fejl opstår ofte, er du velkommen til at rapportere den på notabug.org, GitHub eller GitLab.</string>
-    <string name="notification__download_error__title">Baggrundsdownload af opdatering mislykkedes</string>
     <string name="notification__download_running__channel_descr">Vises, når appopdateringer downloades i baggrunden.</string>
     <string name="notification__download_running__channel_name">Notifikation om downloads i baggrunden</string>
     <string name="notification__download_running__title">Downloader appopdateringer</string>
@@ -205,7 +183,6 @@
 \nSidste vellykkede kontrol af baggrundsopdatering: %1$s</string>
     <string name="app_card__information_about_the_app">Information om appen</string>
     <string name="download_activity__delete_cache_button_text">ryd cache</string>
-    <string name="ungoogled_chromium__eol_reason">Udvikleren skrev: \"Jeg vil ikke være i stand til at opdatere versionerne i nogen tid. Hvis det er muligt, så brug en af de browsere [som FFUpdater understøtter] i mellemtiden.\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
     <string name="orbot__description">Orbot er en gratis proxy-app, der giver andre apps mulighed for at bruge internettet mere sikkert. Orbot bruger Tor til at kryptere din internettrafik og skjuler den derefter ved at hoppe gennem en række computere rundt om i verden. Tor er gratis software og et åbent netværk, der hjælper dig med at forsvare dig mod en form for netværksovervågning, der truer personlig frihed og privatliv, fortrolige forretningsaktiviteter og relationer og statsovervågning kendt som trafikanalyse.</string>
     <string name="vivaldi__description">Oplev en lynhurtig internetbrowser! Vivaldi er en ny, gratis og privat webbrowser bygget med fleksibilitet i tankerne. Den kommer spækket med nyttige funktioner, herunder en indbygget AdBlocker (pop-up-blokering), sporingsbeskyttelse og privat oversættelse. Browserindstillinger såsom rigtige faner i skrivebordsstil, mørke/lyse temaer og layoutvalg hjælper dig med at gøre den til din.</string>
     <string name="vivaldi__warning">- Vivaldi er kun delvist open source.
@@ -251,8 +228,6 @@
     <string name="chromium__warning">- Chromium bruger Google Chromes tekniske grundlag og understøtter dermed indirekte Chromium-gengivelsesmotorens monopolposition.</string>
     <string name="settings__background__update_check__when_device_idle__title">Mulige opdateringer tjekkes kun, hvis enheden er inaktiv</string>
     <string name="settings__background__update_check__when_device_idle__unsupported">Denne mulighed er kun tilgængelig på Android Marshmallow eller nyere.</string>
-    <string name="mulch__title">Mulch</string>
-    <string name="mulch__warning">- Mulch bruger Google Chromes tekniske grundlag og understøtter dermed indirekte Chromium-gengivelsesmotorens monopolposition.</string>
     <string name="fennecfdroid__title">Fennec F-Droid</string>
     <string name="fennecfdroid__description">Fennec F-Droid er baseret på den seneste Firefox-udgivelse (kodenavnet Fenix). Proprietære bits og telemetri er fjernet, men appen forbinder stadig til forskellige Mozilla- og Google-tjenester, der kan spore brugere.</string>
     <string name="fennecfdroid__warning">FFUpdater downloader filerne fra F-Droid-serverne og er derfor ikke hurtigere.</string>
@@ -298,7 +273,6 @@
     <string name="privacy_browser__title">Privacy Browser</string>
     <string name="privacy_browser__warning">FFUpdater downloader filerne fra F-Droid-serverne og er derfor ikke hurtigere.</string>
     <string name="privacy_browser__description">Den eneste måde at forhindre, at data bliver misbrugt på, er at forhindre, at de overhovedet bliver indsamlet. Privacy Browser har to primære mål: Minimere de data, der sendes til internettet, og minimere de data, der er gemt på enheden.</string>
-    <string name="mulch__description">Dette er en sikkerhedsorienteret og hærdet webbrowser baseret på Chromium-teknologi. Mange anti-funktioner er deaktiveret/fjernet, og en håndfuld sikkerhedsfunktioner er aktiveret/tilføjet takket være patches fra Vanadium-projektet. Kilde-depotet inkluderer også prebuilts og make-filer for at tillade andre operativsystemer at inkludere Mulch som deres system WebView.</string>
     <string name="crash_report_activity__label">Crash Reporter</string>
     <string name="add_app_activity__title_end_of_live_browser">End-of-life browser</string>
 </resources>

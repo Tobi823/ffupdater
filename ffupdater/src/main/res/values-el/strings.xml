@@ -23,16 +23,11 @@
 \nΔοκιμάστε τις τελευταίες δυνατότητες και δώστε έγκαιρα σχόλια: https://brave.com/msupport
 \nΜπορείτε να εγκαταστήσετε το Brave Nightly μαζί με την τρέχουσα έκδοση του Brave για Android.</string>
     <string name="brave_nightly__title">Brave Browser (Nightly)</string>
-    <string name="bromite__title">Bromite</string>
-    <string name="bromite_systemwebview__description">Το πακέτο SystemWebView περιέχει το βασικό πρόγραμμα περιήγησης/μηχανή απόδοσης του Bromite και τα ίδια χαρακτηριστικά του. Προσφέρει τη δυνατότητα αντικατάστασης του προεπιλεγμένου στοιχείου προγράμματος περιήγησης για ολόκληρο το σύστημα Android.</string>
-    <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__explain_text__download_activity_install_file">Αυτό το σφάλμα παρουσιάστηκε κατά την εγκατάσταση. Εάν αυτό το σφάλμα εμφανίζεται συχνά, μη διστάσετε να υποβάλετε την αναφορά σφαλμάτων στο notabug.org, στο GitHub ή στο GitLab.</string>
     <string name="crash_report__explain_text__download_activity_update_check">Αυτό το σφάλμα παρουσιάστηκε κατά τον έλεγχο για ενημερώσεις στην κύρια προβολή. Εάν αυτό το σφάλμα εμφανίζεται συχνά, μη διστάσετε να υποβάλετε την αναφορά σφαλμάτων στο notabug.org, στο GitHub ή στο GitLab.</string>
     <string name="crash_report__explain_text__uncaught_throwable">Δυστυχώς, το FFUpdater συνετρίβη την τελευταία φορά και κατέγραψε αυτό το σφάλμα. Υποβάλετε την αναφορά σφαλμάτων στο notabug.org, στο GitHub ή στο GitLab.</string>
     <string name="crash_report__go_to_github">Μεταβείτε στο GitHub</string>
     <string name="crash_report__go_to_gitlab">Μεταβείτε στο GitLab</string>
-    <string name="notification__download_error__channel_descr">Εμφανίζεται όταν αποτυγχάνουν οι λήψεις ενημέρωσης στο παρασκήνιο.</string>
-    <string name="notification__download_error__descr">Η λήψη στο παρασκήνιο της ενημέρωσης %1$s απέτυχε. Εάν αυτό το σφάλμα εμφανίζεται συχνά, μη διστάσετε να το αναφέρετε στο notabug.org, στο GitHub ή στο GitLab.</string>
     <string name="notification__download_running__channel_name">Ειδοποίηση για λήψεις στο παρασκήνιο</string>
     <string name="notification__download_running__title">Λήψη ενημερώσεων εφαρμογών</string>
     <string name="app_card__download_the_app">κατεβάστε την εφαρμογή</string>
@@ -51,23 +46,18 @@
     <string name="notification__error__text">Παρακαλώ αναφέρετε αυτό το σφάλμα. Κάντε κλικ για να δείτε την αναφορά σφάλματος.</string>
     <string name="notification__error__title">Ο έλεγχος ενημέρωσης παρασκηνίου απέτυχε</string>
     <string name="application_successfully_installed">Η εφαρμογή εγκαταστάθηκε με επιτυχία</string>
-    <string name="bromite__description">Το Bromite στοχεύει στην παροχή μιας εμπειρίας περιήγησης χωρίς ακαταστασία χωρίς λειτουργίες που επεμβαίνουν στο απόρρητο και με την προσθήκη ενός γρήγορου μηχανισμού αποκλεισμού διαφημίσεων. Εφαρμόζονται ελάχιστες αλλαγές διεπαφής χρήστη για να περιοριστεί η ιδέα του προγράμματος περιήγησης ως πλατφόρμας διαφήμισης.</string>
     <string name="brave_beta__description">Καλώς ήρθατε στο Brave Beta για Android!
 \nΔοκιμάστε τις τελευταίες δυνατότητες και δώστε έγκαιρα σχόλια: https://brave.com/msupport
 \nΜπορείτε να εγκαταστήσετε το Brave Beta μαζί με την τρέχουσα έκδοση του Brave για Android.</string>
-    <string name="bromite__warning">- Το Bromite χρησιμοποιεί την τεχνική βάση του Google Chrome και έτσι υποστηρίζει έμμεσα τη μονοπωλιακή θέση της μηχανής απόδοσης Chromium.</string>
     <string name="crash_report__got_to_notabug_org">Μεταβείτε στο notabug.org</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Αντιγράψτε την αναφορά σφαλμάτων στο πρόχειρο</string>
     <string name="install_activity__download_file_failed__crash_text">Παρουσιάστηκε το ακόλουθο σφάλμα κατά τη λήψη. Εάν αυτό το σφάλμα εμφανίζεται συχνά, μη διστάσετε να υποβάλετε την αναφορά σφαλμάτων στο notabug.org, στο GitHub ή στο GitLab.</string>
     <string name="firefox_focus__description">Αυτή είναι μια τροποποίηση του προγράμματος περιήγησης Firefox με στόχο την αύξηση του απορρήτου.</string>
     <string name="firefox_klar__description">Το Firefox Klar έχει αναπτυχθεί για τη Γερμανία, την Αυστρία και την Ελβετία, αλλά μπορεί να χρησιμοποιηθεί από χρήστες σε οποιαδήποτε χώρα. Μοιάζει πολύ με το Firefox Focus, αλλά το όνομα άλλαξε στις γερμανόφωνες χώρες για να αποφευχθεί η σύγχυση με το περιοδικό Focus από τον όμιλο Hubert Burda Media. Σε αντίθεση με το Firefox Focus, ο Firefox Klar έχει απενεργοποιημένη την τηλεμετρία από προεπιλογή λόγω αυστηρών γερμανικών νόμων περί απορρήτου.</string>
     <string name="crash_report__explain_text__download_activity_fetching_url">Αυτό το σφάλμα προέκυψε κατά την ανάκτηση των μεταδεδομένων λήψης. Εάν αυτό το σφάλμα εμφανίζεται συχνά, μη διστάσετε να υποβάλετε την αναφορά σφαλμάτων στο notabug.org, στο GitHub ή στο GitLab.</string>
-    <string name="notification__download_error__channel_name">Ειδοποίηση σχετικά με σφάλματα λήψης στο παρασκήνιο</string>
-    <string name="notification__download_error__text">Η λήψη στο παρασκήνιο της ενημέρωσης %1$s απέτυχε. Εάν αυτό το σφάλμα εμφανίζεται συχνά, κάντε κλικ εδώ για να δείτε την αναφορά σφάλματος.</string>
     <string name="notification__eol_apps__title">Εγκαταστάθηκαν παλιές εφαρμογές</string>
     <string name="notification__error__channel_descr">Εμφάνιση σφαλμάτων του ελεγκτή ενημέρωσης παρασκηνίου</string>
     <string name="notification__error__channel_name">Σφάλματα παρασκηνίου</string>
-    <string name="notification__download_error__title">Η λήψη της ενημέρωσης στο παρασκήνιο απέτυχε</string>
     <string name="notification__download_running__channel_descr">Εμφανίζεται όταν γίνεται λήψη ενημερώσεων εφαρμογών στο παρασκήνιο.</string>
     <string name="notification__eol_apps__text">Έχετε παλιές εφαρμογές που δεν πρέπει να χρησιμοποιούνται πλέον: %1$s</string>
     <string name="firefox_beta__description">Το πρόγραμμα περιήγησης Firefox για Android είναι αυτόματα ιδιωτικό και απίστευτα γρήγορο. Χιλιάδες διαδικτυακοί ιχνηλάτες σας ακολουθούν καθημερινά, συλλέγοντας πληροφορίες σχετικά με το πού πηγαίνετε στο διαδίκτυο και μειώνοντας την ταχύτητά σας. Ο Firefox αποκλείει πάνω από 2000 από αυτούς τους ιχνηλάτες από προεπιλογή και υπάρχουν διαθέσιμα πρόσθετα αποκλεισμού διαφημίσεων εάν θέλετε να προσαρμόσετε το πρόγραμμα περιήγησής σας ακόμη περισσότερο. Με τον Firefox, θα έχετε την ασφάλεια που σας αξίζει και την ταχύτητα που χρειάζεστε σε ένα ιδιωτικό πρόγραμμα περιήγησης για κινητά.</string>
@@ -112,23 +102,16 @@
     <string name="settings__background__update_check__metered__title">Έλεγχος ενημέρωσης σε μετρήσιμα δίκτυα</string>
     <string name="update_notification__text">Κάντε κλικ για να εγκαταστήσετε την ενημέρωση</string>
     <string name="settings__background__update_check__interval__title">Διάστημα ελέγχου ενημέρωσης</string>
-    <string name="ungoogled_chromium__description">Google Chromium, χωρίς ενσωμάτωση με την Google.
-\n
-\nΧωρίς σύνδεση σε Λογαριασμό Google, το Chromium τα πάει πολύ καλά όσον αφορά την ασφάλεια και το απόρρητο. Ωστόσο, το Chromium εξακολουθεί να εξαρτάται από τις υπηρεσίες ιστού και τα δυαδικά αρχεία της Google. Επιπλέον, η Google σχεδίασε το Chromium ώστε να είναι εύκολο και διαισθητικό για τους χρήστες, πράγμα που σημαίνει ότι συμβιβάζονται με τη διαφάνεια και τον έλεγχο των εσωτερικών λειτουργιών.</string>
     <string name="settings__background_category__summary">Ρυθμίσεις όταν η εφαρμογή λειτουργεί στο παρασκήνιο και είναι αόρατη στον χρήστη.</string>
     <string name="settings__background_category__title">Παρασκήνιο</string>
     <string name="settings__foreground__download__metered__title">Λήψη ενημερώσεων για μετρήσιμα δίκτυα</string>
     <string name="update_interval__6h">6 ώρες</string>
     <string name="update_notification__title">Διαθέσιμη ενημέρωση για %1$s</string>
     <string name="vivaldi__description">Ανακαλύψτε ένα απίστευτα γρήγορο πρόγραμμα περιήγησης στο Διαδίκτυο! Το Vivaldi είναι ένα νέο, δωρεάν και ιδιωτικό πρόγραμμα περιήγησης ιστού που δημιουργήθηκε με γνώμονα την ευελιξία. Έρχεται γεμάτο με χρήσιμες λειτουργίες, όπως ένα ενσωματωμένο AdBlocker (μπλοκάρισμα αναδυόμενων παραθύρων), προστασία παρακολούθησης και ιδιωτική μετάφραση. Οι επιλογές του προγράμματος περιήγησης, όπως οι κατάλληλες καρτέλες σε στυλ επιφάνειας εργασίας, τα σκούρα/ανοιχτόχρωμα θέματα και οι επιλογές διάταξης σάς βοηθούν να το κάνετε δικό σας.</string>
-    <string name="mull__description">Αυτό είναι ένα πρόγραμμα περιήγησης ιστού με γνώμονα το απόρρητο και αφαιρεθεί το blobbed που βασίζεται στην τεχνολογία Mozilla. Επιτρέπει πολλές δυνατότητες που προέρχονται από το έργο Tor Uplift χρησιμοποιώντας προτιμήσεις από το έργο arkenfox-user.js. Συνιστάται η εγκατάσταση του \'uBlock Origin\'.</string>
-    <string name="ungoogled_chromium__eol_reason">Ο προγραμματιστής δημοσίευσε: \"Δεν θα μπορώ να ενημερώσω τις εκδόσεις για κάποιο χρονικό διάστημα. Εάν είναι δυνατόν, χρησιμοποιήστε ένα από τα προγράμματα περιήγησης [που υποστηρίζει το FFUpdater] στο μεταξύ.\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
     <string name="tor_browser__title">Tor Browser</string>
     <string name="tor_browser__description">Το Tor Browser για Android είναι το μόνο επίσημο πρόγραμμα περιήγησης για κινητά που υποστηρίζεται από το Tor Project, τους προγραμματιστές του ισχυρότερου εργαλείου στον κόσμο για την ιδιωτικότητα και την ελευθερία στο διαδίκτυο.</string>
     <string name="orbot__description">Το Orbot είναι μια δωρεάν εφαρμογή διακομιστή μεσολάβησης που δίνει τη δυνατότητα σε άλλες εφαρμογές να χρησιμοποιούν το διαδίκτυο με μεγαλύτερη ασφάλεια. Το Orbot χρησιμοποιεί το Tor για να κρυπτογραφήσει την κυκλοφορία σας στο Διαδίκτυο και στη συνέχεια το κρύβει αναπηδώντας μέσα από μια σειρά υπολογιστών σε όλο τον κόσμο. Το Tor είναι δωρεάν λογισμικό και ένα ανοιχτό δίκτυο που σας βοηθά να αμυνθείτε ενάντια σε μια μορφή επιτήρησης δικτύου που απειλεί την προσωπική ελευθερία και ιδιωτικότητα, τις εμπιστευτικές επιχειρηματικές δραστηριότητες και σχέσεις και την κρατική ασφάλεια, γνωστή ως ανάλυση κυκλοφορίας.</string>
     <string name="chromium__description">Το Chromium είναι ένα έργο προγράμματος περιήγησης ανοιχτού κώδικα που στοχεύει να δημιουργήσει έναν ασφαλέστερο, ταχύτερο και πιο σταθερό τρόπο για όλους τους χρήστες να βιώσουν τον ιστό. Αυτός ο ιστότοπος περιέχει έγγραφα σχεδίασης, επισκοπήσεις αρχιτεκτονικής, πληροφορίες δοκιμών και πολλά άλλα για να σας βοηθήσει να μάθετε να δημιουργείτε και να εργάζεστε με τον πηγαίο κώδικα του Chromium.</string>
-    <string name="mulch__description">Αυτό είναι ένα πρόγραμμα περιήγησης ιστού προσανατολισμένο στην ασφάλεια και σκληρυμένο και βασίζεται στην τεχνολογία Chromium. Πολλά αντι-χαρακτηριστικά απενεργοποιούνται/καταργούνται και ορισμένες δυνατότητες ασφαλείας ενεργοποιούνται/προστίθενται χάρη σε ενημερώσεις κώδικα από το έργο Vanadium. Το αποθετήριο πηγής περιλαμβάνει επίσης προκατασκευασμένα αρχεία και makefiles που επιτρέπουν σε άλλα λειτουργικά συστήματα να περιλαμβάνουν το Mulch ως το σύστημά τους WebView.</string>
-    <string name="mulch__warning">- Το Mulch χρησιμοποιεί την τεχνική βάση του Google Chrome και έτσι υποστηρίζει έμμεσα τη μονοπωλιακή θέση της μηχανής απόδοσης Chromium.</string>
     <string name="fennecfdroid__title">Fennec F-Droid</string>
     <string name="fennecfdroid__description">Το Fennec F-Droid βασίζεται στην τελευταία έκδοση του Firefox (με την κωδική ονομασία Fenix). Έχει αφαιρεθεί τα ιδιόκτητα bit και η τηλεμετρία, αλλά εξακολουθεί να συνδέεται με διάφορες υπηρεσίες Mozilla και Google που μπορούν να παρακολουθούν τους χρήστες.</string>
     <string name="fennecfdroid__warning">Το FFUpdater κατεβάζει τα αρχεία από τους διακομιστές F-Droid και επομένως δεν είναι πιο γρήγορο.</string>
@@ -152,11 +135,6 @@
     <string name="installed_version">Εγκατεστημένο: %1$s</string>
     <string name="kiwi__description">Το Kiwi Browser είναι φτιαγμένο για να περιηγείται στο διαδίκτυο, να διαβάζει ειδήσεις, να παρακολουθεί βίντεο και να ακούει μουσική, χωρίς ενοχλήσεις.</string>
     <string name="kiwi__title">Kiwi Browser Next</string>
-    <string name="lockwise__description">ΠΡΟΣΒΑΣΗ ΚΩΔΙΚΟΣ ΓΙΑ ΕΣΑΣ, &amp; ΜΟΝΟ ΕΣΑΣ
-\n
-\nΠαρακολουθήστε με ασφάλεια τους κωδικούς πρόσβασης του Firefox και αποκτήστε πρόσβαση σε αυτούς οπουδήποτε. Ανοίξτε γρήγορα οποιονδήποτε ιστότοπο από την εφαρμογή για να μπείτε στους λογαριασμούς σας.</string>
-    <string name="lockwise__eol_reason">Η Mozilla διέκοψε την υποστήριξη τον Δεκέμβριο του 2021. Μεταβείτε σε άλλο χρηματοκιβώτιο κωδικού πρόσβασης.</string>
-    <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded"><u>Υπέρβαση του ορίου GitHub-API. Δοκιμάστε ξανά την επόμενη ώρα.</u></string>
     <string name="main_activity__temporary_network_issue"><u>Προσωρινό πρόβλημα δικτύου. Δοκιμάστε ξανά αργότερα.</u></string>
     <string name="ok">Εντάξει</string>
@@ -190,8 +168,6 @@
     <string name="settings__theme_dark">Σκοτεινό</string>
     <string name="settings__theme_light">Ανοιχτό</string>
     <string name="settings__theme_system_default">Χρήση προεπιλογής συστήματος</string>
-    <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
-    <string name="ungoogled_chromium__warning">- Το Ungoogled Chromium χρησιμοποιεί την τεχνική βάση του Google Chrome και έτσι υποστηρίζει έμμεσα τη μονοπωλιακή θέση της μηχανής απόδοσης Chromium.</string>
     <string name="unsupported_abi_dialog__message">Το επιλεγμένο πρόγραμμα περιήγησης δεν είναι συμβατό με τον επεξεργαστή του smartphone σας. Επιλέξτε διαφορετικό πρόγραμμα περιήγησης.</string>
     <string name="unsupported_abi_dialog__title">Μη υποστηριζόμενη συσκευή</string>
     <string name="update_interval__12h">12 ώρες</string>
@@ -216,7 +192,6 @@
     <string name="vivaldi__title">Vivaldi Browser</string>
     <string name="vivaldi__warning">- Το Vivaldi είναι μόνο εν μέρει ανοιχτού κώδικα.
 \n- Χρησιμοποιεί επίσης την τεχνική βάση του Google Chrome και έτσι υποστηρίζει έμμεσα τη μονοπωλιακή θέση της μηχανής απόδοσης Chromium.</string>
-    <string name="mull__title">Mull Browser</string>
     <string name="orbot__title">Orbot: Tor για Android</string>
     <string name="add_app_activity__label">Προσθήκη Νέας Εφαρμογής</string>
     <string name="crash_report_activity__label">Αναφορά Συντριβής</string>
@@ -233,7 +208,6 @@
     <string name="settings__background__update_check__when_device_idle__title">Η ενημέρωση ελέγχει μόνο εάν η συσκευή είναι σε αδράνεια</string>
     <string name="settings__background__update_check__when_device_idle__summary">Ενεργοποιήστε αυτό εάν δεν θέλετε να γίνει επανεκκίνηση των εφαρμογών σας με μια ενημέρωση παρασκηνίου. Απενεργοποιήστε το εάν θέλετε ένα πιο προβλέψιμο χρονοδιάγραμμα για ελέγχους ενημέρωσης παρασκηνίου.</string>
     <string name="settings__background__update_check__when_device_idle__unsupported">Αυτή η επιλογή είναι διαθέσιμη μόνο σε Android Marshmallow ή νεότερη έκδοση.</string>
-    <string name="mulch__title">Mulch</string>
     <string name="network__dns_provider__title">Ρυθμίσεις DNS</string>
     <string name="network__custom_doh_server__title">Προσαρμοσμένο DNS μέσω διακομιστή HTTPS</string>
     <string name="settings__network_category__title">Δίκτυο</string>
@@ -318,8 +292,6 @@
     <string name="add_app_activity__title_good_security_browsers">Προγράμματα περιήγησης με καλή Ασφάλεια</string>
     <string name="notification__uncaught_exception__channel_name">Ειδοποιήσεις σφαλμάτων</string>
     <string name="notification__uncaught_exception__text">Κάντε κλικ για να δείτε την αναφορά σφάλματος.</string>
-    <string name="mulch_wv__title">Mulch System WebView</string>
-    <string name="mulch_wv__description">Πρόκειται για ένα σύστημα WebView προσανατολισμένο στην ασφάλεια και βασίζεται στην τεχνολογία Chromium. Πολλά χαρακτηριστικά έχουν απενεργοποιηθεί/αφαιρεθεί και αρκετά λειτουργίες προστασίας έχουν ενεργοποιηθεί/προστεθεί χάρη σε ενημερώσεις κώδικα από το Vanadium έργο.</string>
     <string name="app_installer__failed_to_validate_signature_of_download">Αποτυχία επικύρωσης της υπογραφής της λήψης.</string>
     <string name="app_installer__failed_to_verify_signature_of_installed_app">Ο έλεγχος της εγκατεστημένης εφαρμογής απέτυχε.</string>
     <string name="thorium__warning">- Το Thorium χρησιμοποιεί την τεχνική βάση του Google Chrome και έτσι υποστηρίζει έμμεσα τη μονοπωλιακή θέση της μηχανής απόδοσης Chromium.</string>

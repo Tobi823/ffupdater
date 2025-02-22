@@ -9,8 +9,6 @@
     <string name="brave__title">Brave Private Browser</string>
     <string name="brave__warning">- Brave menggunakan fondasi teknis Google Chrome dan dengan demikian secara tidak langsung mendukung posisi monopoli mesin render Chromium.
 \n- Karena Basic Attention Token BAT pada sistem blockchain Ethereum, proyek ini memiliki hubungan dengan mata uang kriptografi. Blockchain memiliki banyak masalah dan sebaiknya dihindari.</string>
-    <string name="bromite_systemwebview__description">Paket SystemWebView berisi inti mesin peramban/renderisasi dari Bromite termasuk fitur-fitur yang sama. Paket ini menawarkan kemungkinan untuk mengganti komponen SystemWebView default kepada seluruh sistem Android.</string>
-    <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Menyalin laporan kerusakan ke papan klip</string>
     <string name="install_activity__download_file_failed__crash_text">Kesalahan berikut ini terjadi selama pengunduhan. Jika kesalahan ini sering terjadi, silahkan kirim laporan kerusakan ke notabug.org, GitHub, atau GitLab.</string>
     <string name="crash_report__explain_text__download_activity_fetching_url">Kesalahan ini terjadi ketika unduhan metadata diambil. Jika kesalahan ini sering terjadi, silahkan kirim laporan kerusakan ke notabug.org, GitHub, atau GitLab.</string>
@@ -20,10 +18,6 @@
     <string name="crash_report__go_to_github">Menuju GitHub</string>
     <string name="crash_report__go_to_gitlab">Menuju GitLab</string>
     <string name="crash_report__got_to_notabug_org">Menuju notabug.org</string>
-    <string name="notification__download_error__channel_descr">Menampilkan ketika unduhan pembaruan di latar belakang gagal.</string>
-    <string name="notification__download_error__channel_name">Pemberitahuan tentang kesalahan pengunduhan di latar belakang</string>
-    <string name="notification__download_error__text">Pengunduhan latar belakang pembaruan %1$s gagal. Jika kesalahan ini sering terjadi, klik di sini untuk melihat laporan kesalahan.</string>
-    <string name="notification__download_error__title">Pengunduhan pembaruan di latar belakang gagal</string>
     <string name="notification__download_running__channel_name">Pemberitahuan tentang unduhan di latar belakang</string>
     <string name="notification__download_running__title">Mengunduh pembaruan aplikasi</string>
     <string name="app_card__download_the_app">unduh aplikasi</string>
@@ -42,15 +36,11 @@
     <string name="brave_nightly__description">Welcome to Brave Nightly (Developer) for Android!
 \nMari mencoba fitur-fitur terbaru dan memberikan umpan balik lebih awal: https://brave.com/msupport
 \nAnda bisa menginstal Brave Nightly bersamaan dengan versi Brave untuk Android yang Anda miliki saat ini.</string>
-    <string name="bromite__description">Bromite bertujuan untuk memberikan pengalaman penjelajahan tanpa gangguan dan tanpa fitur yang mengganggu privasi beserta dengan tambahan mesin pemblokir iklan yang cepat. Perubahan User Interface UI minimal diterapkan untuk membantu mengekang gagasan peramban sebagai medium iklan.</string>
     <string name="brave_nightly__title">Brave Browser (Nightly)</string>
     <string name="brave_beta__title">Brave Browser (Beta)</string>
     <string name="notification__error__title">Pemeriksaan pembaruan di latar belakang gagal</string>
-    <string name="notification__download_error__descr">Pengunduhan latar belakang pembaruan %1$s gagal. Jika kesalahan ini sering terjadi, silahkan lapor ke notabug.org, GitHub atau Gitlab.</string>
     <string name="notification__download_running__channel_descr">Menunjukkan kapan pembaruan aplikasi diunduh di latar belakang.</string>
-    <string name="bromite__title">Bromite</string>
     <string name="notification__eol_apps__text">Anda memiliki aplikasi usang yang seharusnya tidak digunakan lagi: %1$s</string>
-    <string name="bromite__warning">- Bromite menggunakan fondasi teknis Google Chrome dan dengan demikian secara tidak langsung mendukung posisi monopoli mesin render Chromium.</string>
     <string name="firefox_beta__description">Peramban Firefox untuk Android secara otomatis bersifat pribadi dan sangat cepat. Ribuan pelacak online mengikuti Anda setiap hari, mengumpulkan informasi tentang ke mana saja Anda online dan memperlambat kecepatan Anda. Firefox memblokir lebih dari 2000 pelacak ini secara bawaan dan ada ekstensi pemblokir iklan yang tersedia jika Anda ingin menyesuaikan peramban Anda lebih jauh lagi. Dengan Firefox, Anda akan mendapatkan keamanan yang layak Anda dapatkan dan kecepatan yang Anda butuhkan dalam peramban seluler pribadi.</string>
     <string name="firefox_focus__title">Firefox Focus</string>
     <string name="firefox_focus__description">Ini adalah modifikasi dari peramban Firefox yang ditujukan untuk meningkatkan privasi.</string>

@@ -19,11 +19,6 @@
 \nСпробуйте новітні функції та надайте попередній відгук: https://brave.com/msupport
 \nВи можете встановити Brave Nightly разом із поточною версією Brave для Android.</string>
     <string name="brave_nightly__title">Brave (Nightly)</string>
-    <string name="bromite__description">Bromite націлений на те, щоб забезпечити безперешкодний перегляд веб-сторінок без функцій, що заважають конфіденційності, та з додаванням швидкого механізму блокування реклами. Мінімальні зміни користувальницького інтерфейсу застосовуються, щоб допомогти приборкати ідею \"браузер як рекламна платформа\".</string>
-    <string name="bromite__title">Bromite</string>
-    <string name="bromite__warning">- Bromite використовує технічну основу Google Chrome і, таким чином, опосередковано підтримує монопольне положення рушія візуалізації Chromium.</string>
-    <string name="bromite_systemwebview__description">Пакет SystemWebView містить основний браузер і механізм візуалізації Bromite та ті самі функції. Він пропонує можливість замінити компонент браузера за замовчуванням для всієї системи Android.</string>
-    <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Скопіюйте звіт про аварійне завершення роботи в буфер обміну</string>
     <string name="crash_report__explain_text__download_activity_fetching_url">Під час отримання URL-адреси завантаження сталася така помилка. Якщо ця помилка виникає часто, не соромтеся повідомляти про це на notabug.org, GitHub або GitLab. Не забудьте додати звіт про збій із буфера обміну та опис того, як ви відтворюєте цю помилку.</string>
     <string name="crash_report__explain_text__download_activity_update_check">Під час перевірки оновлень у головному вікні сталася така помилка. Якщо ця помилка виникає часто, не соромтеся повідомляти про це на notabug.org, GitHub або GitLab. Не забудьте додати звіт про збій із буфера обміну та опис того, як ви відтворюєте цю помилку.</string>
@@ -93,10 +88,6 @@
     <string name="app_installer__installed_app_has_invalid_signature">Встановлений застосунок НЕ підтверджений</string>
     <string name="installed_application_is_verified">Встановлений застосунок перевірений</string>
     <string name="installed_version">Встановлено: %1$s</string>
-    <string name="lockwise__description">ДОСТУП ПАРОЛЯ ДЛЯ ВАС, І ЛИШЕ ДЛЯ ВАС
-\n
-\nБезпечно відстежуйте ваші паролі Firefox та отримуйте доступ до них будь-де. Швидко відкривайте будь-який веб-сайт із застосунка, щоб увійти до своїх облікових записів.</string>
-    <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>Перевищено ліміт GitHub-API. Повторіть спробу наступної години.</u>"</string>
     <string name="main_activity__no_unmetered_network">Немає мережі без тарифікації трафіку</string>
     <string name="main_activity__temporary_network_issue">"<u>Тимчасова проблема з мережею. Повторіть спробу пізніше.</u>"</string>
@@ -143,9 +134,6 @@
     <string name="settings__theme_dark">Темна</string>
     <string name="settings__theme_light">Світла</string>
     <string name="settings__theme_system_default">Використовувати налаштування системи</string>
-    <string name="ungoogled_chromium__description">Google Chromium, без інтеграції з Google.\n\nБез входу в обліковий запис Google Chromium працює досить добре з точки зору безпеки та конфіденційності. Однак Chromium все ще певна залежність від веб-сервісів і бінарних файлів Google. Крім того, Google створив Chromium, щоб він був простим та інтуїтивно зрозумілим для користувачів, що означає, що вони йдуть на компроміс щодо прозорості та контролю внутрішніх операцій.</string>
-    <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
-    <string name="ungoogled_chromium__warning">- Ungoogled Chromium використовує технічну основу Google Chrome і, таким чином, опосередковано підтримує монопольне положення рушія візуалізації Chromium.</string>
     <string name="unsupported_abi_dialog__message">Вибраний браузер несумісний з процесором вашого смартфона. Виберіть інший веб-переглядач.</string>
     <string name="unsupported_abi_dialog__title">Непідтримуваний пристрій</string>
     <string name="update_interval__12h">12 годин</string>
@@ -176,22 +164,15 @@
 \n- Він також використовує технічну основу Google Chrome і, таким чином, опосередковано підтримує монопольне положення рушія візуалізації Chromium.</string>
     <string name="iceraven__warning">- Супроводжувач не дає жодних гарантій чи гарантій безпеки, оновлень чи навіть стабільності.
 \n- Проект потребує більше часу, ніж зазвичай, для надання оновлень безпеки.</string>
-    <string name="notification__download_error__channel_name">Сповіщення про помилки завантаження у фоновому режимі</string>
-    <string name="notification__download_error__title">Не вдалося завантажити оновлення у фоновому режимі</string>
     <string name="notification__eol_apps__channel_description">Канал сповіщень про застарілі програми.</string>
     <string name="notification__eol_apps__title">Встановлено застарілі застосунки</string>
-    <string name="notification__download_error__channel_descr">Відображається, коли завантаження оновлень у фоновому режимі не вдається.</string>
-    <string name="notification__download_error__descr">Не вдалося виконати фонове завантаження оновлення %1$s. Якщо ця помилка виникає часто, не соромтеся повідомити про неї на notabug.org, GitHub або GitLab.</string>
-    <string name="notification__download_error__text">Не вдалося виконати фонове завантаження оновлення %1$s. Якщо ця помилка виникає часто, натисніть тут, щоб переглянути звіт про помилку.</string>
     <string name="notification__eol_apps__text">У вас є застарілі застосунки, якими більше не слід користуватися: %1$s</string>
     <string name="notification__eol_apps__channel_name">Сповіщення про застарілі застосунки</string>
     <string name="download_activity__different_installer_info__text">Якщо встановлення часто зазнає помилок, спробуйте переключитися на \"нативний інсталятор\" у налаштуваннях.</string>
     <string name="download_activity__file_uri_exposed_toast">Неможливо відкрити шлях до файлу іншим застосункам. Будь ласка, відкрийте теку самостійно за допомогою вашого улюбленого файлового менеджера.</string>
     <string name="install_activity__download_file_failed__crash_text">Під час завантаження виникла наступна помилка. Якщо ця помилка виникає часто, не соромтеся надіслати звіт про збій на notabug.org, GitHub або GitLab.</string>
     <string name="crash_report__explain_text__download_activity_install_file">Ця помилка виникла під час встановлення. Якщо ця помилка виникає часто, не соромтеся надіслати звіт про збій на notabug.org, GitHub або GitLab.</string>
-    <string name="ungoogled_chromium__eol_reason">Розробник опублікував: \"Я не зможу оновлювати версії протягом деякого часу. Якщо це можливо, будь ласка, використовуйте один з браузерів [який підтримується FFUpdater] у цей час.\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
     <string name="kiwi__title">Kiwi Next</string>
-    <string name="lockwise__eol_reason">Mozilla припинила підтримку в грудні 2021 року. Будь ласка, перейдіть на інший сейф для зберігання паролів.</string>
     <string name="settings__b_f__delete_cache_if_install_successful">Видаляти завантажене оновлення, якщо встановлення пройшло успішно.</string>
     <string name="settings__b_f__delete_cache_if_install_failed">Видаляти завантажене оновлення, якщо встановлення завершилося невдало.</string>
     <string name="settings__installer_category__title">Інсталятор</string>
@@ -202,8 +183,6 @@
 \n- Kiwi не є ідеальним браузером для забезпечення конфіденційності, але має хорошу підтримку аддонів.
 \n- Браузер отримує плату від пошукових систем за кожен пошук, здійснений за допомогою Kiwi Browser. Залежно від вибору пошукової системи, запити можуть йти через сервери Kiwibrowser / Kiwisearchservices.
 \n- Google Ads в Kiwi може використовувати дані про місцезнаходження для реклами - але ви можете відключити її, вимкнувши функцію Discovery. Але це скоро зміниться. Дивіться https://privacy.kiwibrowser.org/ для більш детальної інформації.</string>
-    <string name="mull__title">Mull</string>
-    <string name="mull__description">Це орієнтований на конфіденційність і deblobbed веб-браузер, заснований на технології Mozilla. Він дозволяє використовувати багато функцій, що надаються проектом Tor Uplift, використовуючи налаштування з проекту arkenfox-user.js. Рекомендується встановити \"uBlock Origin\".</string>
     <string name="tor_browser__description">Tor Browser для Android - єдиний офіційний мобільний браузер, що підтримується проєктом Tor, розробником найсильнішого в світі інструменту для забезпечення конфіденційності та свободи в Інтернеті.</string>
     <string name="tor_browser__title">Tor Browser</string>
     <string name="crash_report_activity__label">Доповідач про збої</string>
@@ -269,7 +248,6 @@
 \n
 \nНаприклад: https://dns.google/dns-query;8.8.8.8 or https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
     <string name="installer__method__native">Нативний інсталятор: резервний варіант, якщо session інсталятор не працює на вашому смартфоні.</string>
-    <string name="mulch__title">Mulch</string>
     <string name="firefox_focus_beta__title">Firefox Focus Beta</string>
     <string name="installer__method__root">Root-інсталятор: оновлюйте застосунки без діалогового вікна підтвердження. Для цього потрібен рутований смартфон.</string>
     <string name="tor_browser_alpha__description">Tor Browser— це єдиний офіційний мобільний браузер, який підтримується компанією Tor Project, розробниками найпотужнішого в світі інструмента для забезпечення конфіденційності та свободи в Інтернеті.
@@ -277,9 +255,7 @@
 \nTor Browser ЗАВЖДИ буде безкоштовним, але пожертви роблять це можливим. Проект Tor є неприбутковою організацією 501©(3), що базується в США. Будь ласка, зробіть внесок сьогодні. Кожен подарунок має значення: https://donate.torproject.org.
 \n
 \nДізнайтеся, як повідомляти про помилки та залишати відгуки на https://support.torproject.org/misc/bug-or-feedback/!</string>
-    <string name="mulch__warning">- Mulch використовує технічну основу Google Chrome і, таким чином, опосередковано підтримує монопольне положення рушія візуалізації Chromium.</string>
     <string name="generic_app_warning__beta_version">- Цей застосунок призначений для розробників і тестувальників. Він може містити різні помилки, які можуть вплинути на вашу звичну роботу з браузером.</string>
-    <string name="mulch__description">Це надійний і орієнтований на безпеку браузер на основі технології Chromium. Багато антифункцій вимкнено/видалено, а декілька функцій безпеки ввімкнено/додано завдяки виправленням від проекту Vanadium. Репозиторій вихідного коду також включає попередньо зібрані та make-файли, щоб дозволити іншим операційним системам включати Mulch як свою систему WebView.</string>
     <string name="network__proxy__dialog_message">Якщо ви хочете використовувати проксі-сервер SOCKS або HTTP, введіть тут дані підключення. Використовуйте один із цих форматів:
 \n
 \nSOCKS/HTTP;ip/домен;порт
@@ -298,7 +274,6 @@
     <string name="installer__android_too_old_for_shizuku">Ваш Android занадто старий для Shizuku.</string>
     <string name="add_app_activity__title_good_security_browsers">Хороші безпечні браузери</string>
     <string name="thorium__warning">- Thorium використовує технічну основу Google Chrome і, таким чином, опосередковано підтримує монопольне положення рушія візуалізації Chromium.</string>
-    <string name="mulch_wv__description">Це орієнтована на безпеку та посилена система WebView на основі технології Chromium. Багато антифункцій вимкнено/видалено, а декілька функцій безпеки ввімкнено/додано завдяки виправленням від проекту Vanadium.</string>
     <string name="notification__bg_update_check__unreliable_execution__text">Можливо, це викликано налаштуваннями акумулятора або продуктивності вашого пристрою. Натисніть на це сповіщення, щоб вимкнути оптимізацію акумулятора для цього застосунка.</string>
     <string name="main_activity__unexpected_error">Сталася неочікувана помилка.</string>
     <string name="duckduckgo_android__warning">- DuckDuckGo використовує системний веб-перегляд для відображення веб-сайтів.
@@ -326,7 +301,6 @@
     <string name="thorium__description">Найшвидший браузер на Землі. Chromium fork для Linux названий на честь радіоактивного елемента під номером 90.</string>
     <string name="background__installation__when_screen_off__title">Встановлювати тільки при вимкненому екрані</string>
     <string name="cromite__title">Cromite</string>
-    <string name="mulch_wv__title">Mulch System WebView</string>
     <string name="k9mail__title">K-9 Mail</string>
     <string name="k9mail__description">Повнофункціональний клієнт електронної пошти</string>
     <string name="fairemail__title">FairEmail</string>

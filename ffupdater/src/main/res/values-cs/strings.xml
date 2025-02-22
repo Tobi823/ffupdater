@@ -19,11 +19,6 @@
     <string name="brave_beta__title">Brave Browser (Beta)</string>
     <string name="brave_nightly__description">Vítejte v Brave Nightly (vývojář) pro Android!\nVyzkoušejte nejnovější funkce a poskytněte včasnou zpětnou vazbu: https://brave.com/msupport\nBrave Nightly si můžete nainstalovat vedle své aktuální verze Brave pro Android.</string>
     <string name="brave_nightly__title">Brave Browser (Nightly)</string>
-    <string name="bromite__description">Bromite si klade za cíl poskytnout pohodlný zážitek bez narušení soukromí s rychlým blokováním reklam. Minimální změny rozhrání pomáhají omezit představu "prohlížeč jako reklamní plocha".</string>
-    <string name="bromite__title">Bromite</string>
-    <string name="bromite__warning">- Bromite používá technický základ Google Chrome, a tak nepřímo podporuje monopolní renderovací jádro Chromium.</string>
-    <string name="bromite_systemwebview__description">Balíček SystemWebView obsahuje základní prohlížeč/vykreslovací jádro Bromite a jeho stejné vlastnosti. Nabízí možnost nahradit výchozí komponent prohlížeče pro celý systém Android.</string>
-    <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Zkopírovat chybové hlášení do schránky</string>
     <string name="crash_report__explain_text__download_activity_fetching_url">K této chybě došlo při načítání metadat ke stažení. Pokud k této chybě dochází často, neváhejte odeslat hlášení o chybě na notabug.org, GitHub nebo GitLab.</string>
     <string name="crash_report__explain_text__download_activity_update_check">K této chybě došlo při kontrole aktualizací v hlavním zobrazení. Pokud k této chybě dochází často, neváhejte odeslat hlášení o chybě na notabug.org, GitHub nebo GitLab.</string>
@@ -87,10 +82,6 @@
     <string name="app_installer__installed_app_has_invalid_signature">Nainstalovaná aplikace NEBYLA ověřena</string>
     <string name="installed_application_is_verified">Nainstalovaná aplikace je ověřena</string>
     <string name="installed_version">Instalovaná: %1$s</string>
-    <string name="lockwise__description">PŘÍSTUP K HESLŮM POUZE PRO VÁS
-\n
-\nBezpečně ukládá hesla, ať jste kdekoli. V aplikaci rychle otevřete jakoukoli stránku a přistupte ke svým účtům.</string>
-    <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>Limit GitHub-API byl překročen. Zkuste to prosím znovu během následující hodiny.</u>"</string>
     <string name="main_activity__no_unmetered_network">Žádná neměřená síť</string>
     <string name="main_activity__temporary_network_issue">"<u>Dočasný problém se sítí. Zkuste to prosím později.</u>"</string>
@@ -140,9 +131,6 @@
     <string name="settings__theme_dark">Tmavý motiv</string>
     <string name="settings__theme_light">Světlý motiv</string>
     <string name="settings__theme_system_default">Výchozí nastavení systému</string>
-    <string name="ungoogled_chromium__description">Google Chromium, bez integrace s Googlem.\n\nBez přihlášení do Google Účtu si Chromium vede z hlediska bezpečnosti a soukromí docela dobře. Chromium je však stále do jisté míry závislý na webových službách a binárních souborech od Googlu. Navíc Google navrhl Chromium, aby byl pro uživatele snadný a intuitivní, což znamená, že slevil z požadavků na transparentnost a kontrolu interních operací.</string>
-    <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
-    <string name="ungoogled_chromium__warning">- Ungooged Chromium používá technický základ Google Chrome, a tak nepřímo podporuje monopolní renderovací jádro Chromium.</string>
     <string name="unsupported_abi_dialog__message">Vybraný prohlížeč není kompatibilní s procesorem vašeho zařízení. Vyberte jiný prohlížeč.</string>
     <string name="unsupported_abi_dialog__title">Nepodporované zařízení</string>
     <string name="update_interval__12h">12 hodin</string>
@@ -173,16 +161,11 @@
 \n- Používá také technický základ Google Chrome, a tak nepřímo podporuje monopolní renderovací jádro Chromium.</string>
     <string name="crash_report__explain_text__download_activity_install_file">K této chybě došlo při instalaci. Pokud k této chybě dochází často, neváhejte odeslat hlášení o chybě na notabug.org, GitHub nebo GitLab.</string>
     <string name="install_activity__download_file_failed__crash_text">Při stahování došlo k následující chybě. Pokud k této chybě dochází často, neváhejte odeslat hlášení o chybě na notabug.org, GitHub nebo GitLab.</string>
-    <string name="lockwise__eol_reason">Mozilla ukončila podporu v prosinci 2021. Přejděte prosím na jiného správce hesel.</string>
     <string name="kiwi__description">Prohlížeč Kiwi je navržen tak, abyste mohli nerušeně surfovat po webu, číst zprávy, sledovat videa a poslouchat hudbu.</string>
     <string name="kiwi__title">Prohlížeč Kiwi Next</string>
-    <string name="notification__download_error__channel_name">Upozornění na chyby při stahování na pozadí</string>
     <string name="notification__eol_apps__channel_name">Oznámení o zastaralých aplikacích</string>
     <string name="iceraven__warning">- Správce neposkytuje žádnou záruku bezpečnosti, aktualizací nebo dokonce stability.
 \n- Poskytování aktualizací zabezpečení projektu trvá déle než obvykle.</string>
-    <string name="notification__download_error__descr">Stažení aktualizace pro %1$s na pozadí se nezdařilo. Pokud se tato chyba vyskytuje často, neváhejte ji nahlásit na stránkách notabug.org, GitHub nebo GitLab.</string>
-    <string name="notification__download_error__text">Stažení aktualizace pro %1$s na pozadí se nezdařilo. Pokud se tato chyba vyskytuje často, klikněte pro zobrazení chybového hlášení.</string>
-    <string name="notification__download_error__title">Stažení aktualizace na pozadí se nezdařilo</string>
     <string name="notification__eol_apps__channel_description">Kanál upozornění na zastaralé aplikace.</string>
     <string name="notification__eol_apps__text">Máte zastaralé aplikace, které by se již neměli dál používat: %1$s</string>
     <string name="notification__eol_apps__title">Jsou nainstalované zastaralé aplikace</string>
@@ -190,11 +173,7 @@
 \n- Kiwi není ideální prohlížeč pro ochranu soukromí, ale má dobrou podporu doplňků.
 \n- Prohlížeč dostává od vyhledávačů peníze za každé vyhledávání provedené pomocí prohlížeče Kiwi. V závislosti na výběru vyhledávače mohou požadavky procházet přes servery Kiwibrowser / Kiwisearchservices.
 \n- Reklamy Google v Kiwi mohou používat údaje o vaší poloze pro reklamy, ale můžete je však zakázat vypnutím funkce Discovery. To se však brzy změní. Další podrobnosti naleznete na adrese https://privacy.kiwibrowser.org/.</string>
-    <string name="mull__title">Mull prohlížeč</string>
-    <string name="mull__description">Jedná se o webový prohlížeč zaměřený na ochranu soukromí založený na technologii Mozilla a očištěný od nesvobodného kódu. Umožňuje mnoho funkcí vyvinutých projektem Tor Uplift pomocí předvoleb z projektu arkenfox-user.js. Doporučuje se nainstalovat doplněk \"uBlock Origin\".</string>
     <string name="download_activity__different_installer_info__text">Pokud instalace často selhává, zkuste v nastavení zapnout \"nativní instalátor\".</string>
-    <string name="notification__download_error__channel_descr">Zobrazí se, když selže stahování aktualizace na pozadí.</string>
-    <string name="ungoogled_chromium__eol_reason">Vývojář napsal: \"Nějakou dobu nebudu moci aktualizovat verze. Pokud je to možné, používejte prosím do té doby některý z prohlížečů [které FFUpdater podporuje].\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
     <string name="tor_browser__title">Tor Browser</string>
     <string name="tor_browser__description">Tor Browser pro Android je jediný oficiální mobilní prohlížeč podporovaný organizací Tor Project, vývojáři nejsilnějšího nástroje pro ochranu soukromí a svobody internetu na světě.</string>
     <string name="orbot__description">Orbot je bezplatná proxy aplikace, která umožňuje ostatním aplikacím bezpečněji používat internet. Orbot používává Tor k šifrování vašeho internetového provozu a následně jej skrývá tím, že jej posílá přes řadu počítačů po celém světě. Tor je bezplatný software a otevřená síť, která vám pomůže bránit se proti formě síťového dohledu, která ohrožuje osobní svobodu a soukromí, důvěrné obchodní aktivity a vztahy a bezpečnost státu, tzv. analýza síťového provozu.</string>
@@ -217,10 +196,7 @@
     <string name="settings__background__update_check__when_device_idle__unsupported">Tato možnost je dostupná pouze pro Android Marshmallow nebo novější.</string>
     <string name="fennecfdroid__description">Fennec F-Droid je založen na nejnovější verzi prohlížeče Firefox (kódové označení Fenix). Má odstraněné proprietární bity a telemetrii, ale stále se připojuje k různým službám Mozilly a Googlu, které mohou sledovat uživatele.</string>
     <string name="fennecfdroid__warning">FFUpdater stahuje soubory ze F-Droid serverů, a proto není rychlejší.</string>
-    <string name="mulch__title">Mulch</string>
-    <string name="mulch__warning">- Mulch používá technický základ Google Chrome, a tak nepřímo podporuje monopolní renderovací jádro Chromium.</string>
     <string name="fennecfdroid__title">Fennec F-Droid</string>
-    <string name="mulch__description">Tohle je prohlížeč zaměřený na ochranu soukromí založený na technologii Chromium. Mnoho antifunkcí je zakázáno/odstraněno a několik bezpečnostních funkcí je povoleno/přidáno díky záplatam z projektu Vanadium. Zdrojové repozitáře obsahují také předem sestavené soubory a makefile soubory, které umožňují ostatním operačním systémům začlenit Mulch jako systémový WebView prohlížeč.</string>
     <string name="network__dns_provider__title">Nastavení DNS</string>
     <string name="network__custom_doh_server__title">Vlastní server DNS přes HTTPS</string>
     <string name="settings__network_category__title">Síť</string>
@@ -305,10 +281,8 @@
     <string name="notification__bg_update_check__unreliable_execution__title">Kontrola aktualizací na pozadí nefunguje spolehlivě</string>
     <string name="background__installation__when_screen_off__summary">Zkusit nainstalovat aktualizace pouze pokud je obrazovka vypnutá.</string>
     <string name="background__installation__when_screen_off__title">Instalace pouze při vypnuté obrazovce</string>
-    <string name="mulch_wv__title">Mulch System WebView</string>
     <string name="app_installer__failed_to_verify_signature_of_installed_app">Selhala kontrola instalované aplikace.</string>
     <string name="app_installer__failed_to_validate_signature_of_download">Selhala kontrola podpisu stahovaní.</string>
-    <string name="mulch_wv__description">Tohle je prohlížeč zaměřený na ochranu soukromí založený na technologii Chromium. Mnoho antifunkcí je zakázáno/odstraněno a několik bezpečnostních funkcí je povoleno/přidáno díky záplatam z Vanadium projektu.</string>
     <string name="installer__method__title">Instalační metoda</string>
     <string name="ffupdater__different_signature_message">Tato verze FFUpdateru byla podepsaná F-Droidem, takže aktualizace může dodávat pouze F-Droid. Aby jste mohli aktualizace dostávat rychleji, odinstalujte FFUpdater a nainstalujte si vývojáři podepsanou verzi. S tou verzí se FFUpdater může aktualizovat aniž by musel čekat na F-Droid.</string>
     <string name="cromite__description">Cromite je Chromium fork založený na Bromitu s vestavěnou podporou blokování reklam a ochranu soukromí.</string>

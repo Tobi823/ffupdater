@@ -30,7 +30,6 @@
     <string name="download_activity__fetched_url_for_download_successfully">Noudettu metadata kohteesta %1$s</string>
     <string name="download_activity__fetch_url_for_download">Nouda metadata kohteesta %1$s</string>
     <string name="download_activity__downloaded_application_from">Ladattu sovellus kohteesta:</string>
-    <string name="lockwise__title">Firefox Lockwise</string>
     <string name="kiwi__title">Kiwi Browser Next</string>
     <string name="settings_activity__label">Asetukset</string>
     <string name="running_downloads_dialog__yes">Kyllä</string>
@@ -39,7 +38,6 @@
     <string name="ok">OK</string>
     <string name="settings__background__installation__enabled__title">Asenna päivitys</string>
     <string name="settings__foreground__download__metered__title">Lataa päivitykset kulutukseen perustuvissa verkoissa</string>
-    <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
     <string name="settings__theme_system_default">Käytä järjestelmän oletusta</string>
     <string name="settings__theme_light">Vaalea</string>
     <string name="settings__theme_dark">Tumma</string>
@@ -54,7 +52,6 @@
     <string name="update_interval__12h">12 tuntia</string>
     <string name="unsupported_abi_dialog__title">Ei-tuettu laite</string>
     <string name="unsupported_abi_dialog__message">Valittu selain ei ole yhteensopiva puhelimesi suorittimen kanssa. Valitse toinen selain.</string>
-    <string name="ungoogled_chromium__warning">- Ungoogled Chromium käyttää pohjana Google Chromea ja siten epäsuorasti tukee Chromiumin monopoliasemaa.</string>
     <string name="update_interval__6h">6 tuntia</string>
     <string name="update_interval__6d">6 päivää</string>
     <string name="update_interval__5d">5 päivää</string>
@@ -70,7 +67,6 @@
     <string name="update_interval__1h">1 tunti</string>
     <string name="update_interval__1d">1 päivä</string>
     <string name="brave__description">Selaa internetiä yksityisesti, ilmaiseksi! Brave Browser on nopea, ilmainen ja turvallinen yksityisyyttä korostava selain, jossa on mainostenesto sekä ponnahdusikkunoiden esto. Selaa yksityisesti internetiä ilman mainostajien vakoilua, haittaohjelmia ja ponnahdusikkunoita.</string>
-    <string name="lockwise__eol_reason">Mozilla lopetti tuen joulukuussa 2021. Harkitse vaihtamista toiseen ratkaisuun.</string>
     <string name="settings__background__download__enabled__title">Lataa sovelluspäivitykset</string>
     <string name="settings__foreground_category__summary">Asetukset, kun käyttöliittymä on näkyvillä.</string>
     <string name="settings__background__update_check__interval__title">Päivitystarkastusten toistuvuus</string>
@@ -86,12 +82,10 @@
     <string name="request_installation_permission_dialog__grant_permission">Salli lupa</string>
     <string name="crash_report__go_to_github">Mene GitHubiin</string>
     <string name="crash_report__go_to_gitlab">Mene GitLabiin</string>
-    <string name="bromite__title">Bromite</string>
     <string name="brave_beta__title">Brave Selain (Beta)</string>
     <string name="running_downloads_dialog__message">Sovellus on lataamassa päivityksiä taustalla. Haluatko aloittaa uuden latauksen joka voi kestää pidempään\?</string>
     <string name="app_installer__signature_of_download_is_invalid">Ladattua sovellusta EI ole varmistettu</string>
     <string name="download_activity__delete_cache_button_text">tyhjennä välimuisti</string>
-    <string name="notification__download_error__title">Päivityksen lataus taustalla epäonnistui</string>
     <string name="notification__download_running__title">Ladataan sovelluksen päivityksiä</string>
     <string name="notification__download_running__channel_name">Ilmoitus latauksista taustalla</string>
     <string name="firefox_release__title">Firefox Selain</string>
@@ -104,7 +98,6 @@
     <string name="settings__b_f__delete_cache_if_install_successful">Poista ladattu päivitys, jos asennus onnistuu.</string>
     <string name="update_notification__title">%1$s päivitys on saatavilla</string>
     <string name="update_notification__text">Klikkaa asentaaksesi päivitys</string>
-    <string name="mull__title">Mull Selain</string>
     <string name="vivaldi__title">Vivaldi Selain</string>
     <string name="update_interval__8h">8 tuntia</string>
 </resources>

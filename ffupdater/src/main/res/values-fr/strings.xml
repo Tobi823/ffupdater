@@ -19,11 +19,6 @@
     <string name="brave_beta__title">Brave Browser (Beta)</string>
     <string name="brave_nightly__description">Bienvenue dans la version Nightly (Developer) de Brave pour Android !\NJugez des nouvelles fonctionnalités et donnez vos premières impressions : https://brave.com/msupport\nVous pouvez installer Brave Nightly en même temps que votre version actuelle de Brave pour Android.</string>
     <string name="brave_nightly__title">Navigateur Brave (Nightly)</string>
-    <string name="bromite__description">Bromite vise à offrir une expérience de navigation sans encombrement, sans fonctions envahissantes pour la vie privée et avec l\'ajout d\'un moteur rapide de blocage des publicités. Des changements minimes sont apportés à l\'interface utilisateur afin d\'enrayer l\'idée que le \"navigateur est une plate-forme publicitaire\".</string>
-    <string name="bromite__title">Bromite</string>
-    <string name="bromite__warning">- Bromite utilise la base technique de Google Chrome et soutient donc indirectement la position de monopole du moteur de rendu Chromium.</string>
-    <string name="bromite_systemwebview__description">Le paquet SystemWebView contient le noyau du navigateur/ moteur de rendu de Bromite et ses mêmes fonctionnalités. Il offre la possibilité de remplacer le composant de navigateur par défaut pour l\'ensemble du système Android.</string>
-    <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Copier le rapport d\'erreur dans le presse-papiers</string>
     <string name="crash_report__explain_text__download_activity_fetching_url">L\'erreur suivante s\'est produite lors de l\'extraction de l\'URL de téléchargement. Si cette erreur se produit fréquemment, n\'hésitez pas à la signaler sur notabug.org, GitHub ou GitLab. N\'oubliez pas d\'ajouter votre rapport d\'erreur du presse-papiers et la description de la façon dont vous reproduisez cette erreur.</string>
     <string name="crash_report__explain_text__download_activity_update_check">L\'erreur suivante s\'est produite lors de la vérification des mises à jour dans la vue principale. Si cette erreur se produit fréquemment, n\'hésitez pas à la signaler sur notabug.org, GitHub ou GitLab. N\'oubliez pas d\'ajouter votre rapport de crash du presse-papiers et la description de la façon dont vous reproduisez cette erreur.</string>
@@ -93,10 +88,6 @@
     <string name="app_installer__installed_app_has_invalid_signature">L\'application installée n\'est PAS vérifiée</string>
     <string name="installed_application_is_verified">La demande installée est vérifiée</string>
     <string name="installed_version">Installé : %1$s</string>
-    <string name="lockwise__description">ACCÈS AUX MOTS DE PASSE POUR VOUS, ET SEULEMENT POUR VOUS
-\n
-\nSuivez en toute sécurité vos mots de passe Firefox et accédez-y partout. Ouvrez rapidement n\'importe quel site Web depuis l\'application pour accéder à vos comptes.</string>
-    <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>La limite de GitHub-API est dépassée. Réessayez l\'heure suivante.</u>"</string>
     <string name="main_activity__no_unmetered_network">Pas de réseau non mesuré</string>
     <string name="main_activity__temporary_network_issue">"<u>Problème de réseau temporaire. Réessayez plus tard.</u>"</string>
@@ -144,9 +135,6 @@
     <string name="settings__theme_dark">Foncé</string>
     <string name="settings__theme_light">Lumière</string>
     <string name="settings__theme_system_default">Utiliser le système par défaut</string>
-    <string name="ungoogled_chromium__description">Google Chromium, sans intégration avec Google.\n\nSans connexion à un compte Google, Chromium s\'en sort plutôt bien en termes de sécurité et de confidentialité. Cependant, Chromium a toujours une certaine dépendance vis-à-vis des services Web et des binaires de Google. En outre, Google a conçu Chromium pour qu\'il soit facile et intuitif pour les utilisateurs, ce qui signifie qu\'ils font des compromis sur la transparence et le contrôle des opérations internes.</string>
-    <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
-    <string name="ungoogled_chromium__warning">- Ungoogled Chromium utilise la base technique de Google Chrome et soutient donc indirectement la position de monopole du moteur de rendu Chromium.</string>
     <string name="unsupported_abi_dialog__message">Le navigateur sélectionné est incompatible avec le processeur de votre smartphone. Veuillez sélectionner un autre navigateur.</string>
     <string name="unsupported_abi_dialog__title">Appareil non pris en charge</string>
     <string name="update_interval__12h">12 heures</string>
@@ -175,27 +163,19 @@
     <string name="vivaldi__title">Navigateur Vivaldi</string>
     <string name="vivaldi__warning">- Vivaldi n\'est que partiellement open source.
 \n- Il utilise également le fondement technique de Google Chrome et soutient donc indirectement la position monopolistique du moteur de rendu Chromium.</string>
-    <string name="lockwise__eol_reason">Mozilla a arrêté le support en Décembre 2021. Veuillez changer pour un autre gestionnaire de mots de passe.</string>
     <string name="kiwi__description">Le navigateur Kiwi est fait pour explorer Internet, lire les news, regarder des vidéos et écouter de la musique, sans ennuis.</string>
     <string name="kiwi__title">Navigateur Kiwi Next</string>
     <string name="iceraven__warning">- Le développeur ne donne aucune garantie de mises à jour de sécurité ou même de stabilité.
 \n - Le projet prend du temps à fournir des mises à jour de sécurité.</string>
     <string name="settings__b_f__delete_cache_if_install_successful">Supprimer la mise à jour téléchargée si l\'installation réussit.</string>
     <string name="firefox_release__warning">- Une version améliorée de Firefox est aussi disponible sur F-Droid sous le nom de Fennec F-Droid.</string>
-    <string name="mull__title">Navigateur Mull</string>
-    <string name="mull__description">C\'est un navigateur axé sur la confidentialité et l\'ouverture basé sur la technologie Mozilla. Il active plein de fonctionnalités du projet Tor Uplift en utilisant les parmètres depuis le projet arkenfox-user.js. Il est recommandé d\'installer \'uBlock Origin\'.</string>
     <string name="settings__b_f__delete_cache_if_install_failed">Supprimer la mise à jour téléchargée si l\'installation échoue.</string>
-    <string name="notification__download_error__channel_name">Notification sur les erreurs de téléchargement en arrière plan</string>
-    <string name="notification__download_error__descr">Le téléchargement en arrière plan de la mise à jour de %1$s a échoué. Si cette erreur a lieu fréquemment, n\'hésitez pas à l\'envoyer sur notabug.org, GitHub ou GitLab.</string>
-    <string name="notification__download_error__title">Le téléchargement de la mise à jour en arrière plan a échoué</string>
-    <string name="notification__download_error__channel_descr">S\'affiche quand le téléchargement des mises à jour en arrière plan échoue.</string>
     <string name="notification__eol_apps__channel_description">Chaîne de notification pour les avertissements sur les applications obsolètes.</string>
     <string name="notification__eol_apps__channel_name">Notifications d\'applis obsolètes</string>
     <string name="notification__eol_apps__text">Vous avez des applications obsolètes qui ne devraient plus être utilisées: %1$s</string>
     <string name="notification__eol_apps__title">Applis obsolètes installées</string>
     <string name="install_activity__download_file_failed__crash_text">L\'erreur suivante est survenue pendant le téléchargement. Si cette erreur a lieu fréquemment, n\'hésitez pas à envoyer le rapport d\'erreur sur notabug.org, gitHub ou GitLab.</string>
     <string name="crash_report__explain_text__download_activity_install_file">L\'erreur suivante est survenue pendant l\'installation. Si cette erreur a lieu fréquemment, n\'hésitez pas à envoyer le rapport d\'erreur sur notabug.org, gitHub ou GitLab.</string>
-    <string name="notification__download_error__text">Le téléchargement en arrière plan de la mise à jour de %1$s a échoué. Si cette erreur a lieu fréquemment, cliquez ici pour voir le rapport d\'erreur.</string>
     <string name="download_activity__different_installer_info__text">Si l\'installation échoue souvent, essayez de changer pour l\' \"installateur natif\" dans les paramètres.</string>
     <string name="kiwi__warning">- Kiwi utilise la fondation technique de Google Chrome et supporte donc la position de monopole du moteur de rendu Chromium.
 \n- Kiwi n\'est pas un navigateur confidentiel idéal mais dispose d\'un bon support d\'extensions.
@@ -224,8 +204,6 @@
     <string name="orbot__description">Orbot est une application gratuite de proxy qui renforce les autres applis pour utiliser Internet de manière plus sécurisée. Orbot utilise Tor pour encrypter votre trafic Internet et le cache ensuite en le faisant passer par une série d\'ordinateurs situés partout dans le monde. Tor est gratuit et est un réseau ouvert qui vous aide à vous défendre de surveillances qui menacent votre confidentialité et liberté personnelle, des activités commerciales et relations confidentielles, et la sécurité d\'états connue sous le nom d\'analyse du trafic.</string>
     <string name="add_app_activity__title_better_than_google_chrome">Mieux que Google Chrome</string>
     <string name="settings__background__update_check__when_device_idle__summary">Activez ceci si vous ne voulez pas que vos applications soient redémarrées par une mise à jour en arrière plan. Désactivez ceci si vous voulez une intervalle plus précise entre les mises à jour en arrière plan.</string>
-    <string name="mulch__title">Mulch</string>
-    <string name="mulch__description">Il s\'agit d\'un navigateur web renforcé axé sur la sécurité, basé sur la technologie Chromium. Plein de fonctionnalités indésirables sont désactivées/enlevées et beaucoup de fonctionnalités utiles de sécurité sont activées/ajoutées grâce aux correctifs du projet Vanadium. La repo source inclue aussi des fichiers pré-construits et des Makefile pour autoriser d\'autres systèmes d\'exploitations d\'inclure Mulch en tant que leur WebView système.</string>
     <string name="network__custom_doh_server__dialog_message">Entrez les détails de connexion pour les serveurs DoH dans l\'un de ces formats :
 \n
 \nurl;ip1
@@ -248,7 +226,6 @@
 \nLimitation : Si vous changez \'Paramètres DNS\' dans les paramètres en un serveur DNS sur HTTPS, vous devez entrer le nom de domaine du serveur proxy. Les IP ne fonctionneront pas.</string>
     <string name="notification__network_error__text">Cette erreur ne devrait avoir lieu que rarement. Cependant, si celle-ci est fréquente, vous devriez la reporter. Appuyez ici pour voir le message d\'erreur détaillé.</string>
     <string name="tor_browser_alpha__title">Navigateur Tor Alpha</string>
-    <string name="ungoogled_chromium__eol_reason">Le développeur a posté : \"Je ne pourrais pas mettre à jour les versions pendant un moment. Si possible, utilisez un autre navigateur [que FFUpdater prend en charge] en attendant.\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
     <string name="tor_browser__title">Navigateur Tor</string>
     <string name="tor_browser__description">Le navigateur Tor pour Android est le seul navigateur mobile officiellement supporté par le projet Tor, les développeurs des outils les plus forts pour la confidentialité et la liberté en ligne dans le monde.</string>
     <string name="add_app_activity__label">Ajouter une nouvelle application</string>
@@ -256,7 +233,6 @@
     <string name="add_app_activity__title_other_applications">Autres applications</string>
     <string name="add_app_activity__title_end_of_live_browser">Navigateurs en fin de vie</string>
     <string name="settings__background__update_check__when_device_idle__unsupported">Cette option n\'est disponible que sur Android Marshmallow ou plus récent.</string>
-    <string name="mulch__warning">- Mulch utilise la fondation technique de Google Chrome et supporte donc indirectement la position de monopole du moteur de rendu Chromium.</string>
     <string name="fennecfdroid__description">Fennec F-Droid est basé sur la dernière version de Firefox. Les données propriétaires et la télémétrie sont retirés, mais il se connecte quand même à des services divers de Mozilla et Google qui peuvent traquer les utilisateurs.</string>
     <string name="device__prefer_32bit_apks__summary">Activez si votre appareil a souvent peu de mémoire vive. FFUpdater va ensuite utiliser des APK 32-bit qui utilisent en général moins de mémoire vive.</string>
     <string name="installer__method__root_not_granted">Permission root non autorisée !</string>

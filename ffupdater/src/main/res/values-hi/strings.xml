@@ -12,15 +12,11 @@
     <string name="brave_nightly__description">Android के लिए Brave Nightly (डेवलपर) में आपका स्वागत है!
 \nनवीनतम सुविधाएँ आज़माएँ और शीघ्र प्रतिक्रिया दें: https://brave.com/msupport
 \nआप Android के लिए Brave के अपने वर्तमान संस्करण के साथ Brave Nightly इंस्टॉल कर सकते हैं।</string>
-    <string name="bromite__title">Bromite</string>
     <string name="crash_report__copy_crash_report_to_clipboard">क्रैश रिपोर्ट को क्लिपबोर्ड पर कॉपी करें</string>
     <string name="crash_report__go_to_github">GitHub पर जाएँ</string>
     <string name="crash_report__go_to_gitlab">GitLab पर जाएँ</string>
-    <string name="notification__download_error__channel_descr">जब पृष्ठभूमि में अपडेट डाउनलोड विफल हो जाता है तो दिखाता है।</string>
-    <string name="notification__download_error__channel_name">पृष्ठभूमि में डाउनलोड त्रुटियों के बारे में अधिसूचना</string>
     <string name="notification__download_running__channel_name">पृष्ठभूमि में डाउनलोड के बारे में अधिसूचना</string>
     <string name="crash_report__got_to_notabug_org">notabug.org पर जाएं</string>
-    <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__explain_text__download_activity_fetching_url">यह त्रुटि तब हुई जब डाउनलोड मेटाडेटा लाया गया था। यदि यह त्रुटि बार-बार होती है, तो बेझिझक क्रैश रिपोर्ट notabug.org, GitHub या GitLab पर सबमिट करें।</string>
     <string name="crash_report__explain_text__download_activity_install_file">यह त्रुटि स्थापना के दौरान उत्पन्न हुई. यदि यह त्रुटि बार-बार होती है, तो बेझिझक क्रैश रिपोर्ट notabug.org, GitHub या GitLab पर सबमिट करें।</string>
     <string name="crash_report__explain_text__uncaught_throwable">दुर्भाग्य से, FFUpdater पिछली बार क्रैश हो गया और यह त्रुटि लॉग हुई। कृपया क्रैश रिपोर्ट notabug.org, GitHub या GitLab पर सबमिट करें।</string>
@@ -58,8 +54,6 @@
     <string name="main_activity__temporary_network_issue"><u>अस्थायी नेटवर्क समस्या. बाद में पुनः प्रयास करें.</u></string>
     <string name="main_activity__no_unmetered_network">कोई अनमीटर्ड नेटवर्क नहीं</string>
     <string name="main_activity__github_api_limit_exceeded"><u>GitHub-API सीमा पार हो गई। अगले घंटे पुनः प्रयास करें।</u></string>
-    <string name="lockwise__eol_reason">Mozilla ने दिसंबर 2021 में समर्थन बंद कर दिया। कृपया किसी अन्य सुरक्षित पासवर्ड पर स्विच करें।</string>
-    <string name="lockwise__title">Firefox Lockwise</string>
     <string name="request_installation_permission_dialog__title">इंस्टॉलर अनुमति</string>
     <string name="running_downloads_dialog__message">ऐप अब बैकग्राउंड में अपडेट डाउनलोड कर रहा है। क्या आप एक नया डाउनलोड शुरू करना चाहते हैं जिसमें अधिक समय लग सकता है?</string>
     <string name="running_downloads_dialog__title">डाउनलोड चल रहे हैं</string>
@@ -79,7 +73,6 @@
     <string name="settings__foreground__theme_preference__summary">हल्की और गहरी रंग की थीम में से चुनें</string>
     <string name="settings__foreground__update_check__metered__title">मीटर्ड नेटवर्क पर अपडेट जांच</string>
     <string name="settings__theme_battery_saver">बैटरी सेवर सक्रिय होने पर गहरी</string>
-    <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
     <string name="update_interval__1w">1 सप्ताह</string>
     <string name="update_interval__1m">1 महीना</string>
     <string name="update_interval__1h">1 घंटा</string>
@@ -98,14 +91,12 @@
     <string name="vivaldi__title">Vivaldi Browser</string>
     <string name="vivaldi__warning">- Vivaldi केवल आंशिक रूप से खुला स्रोत है।
 \n- यह Google Chrome की तकनीकी नींव का भी उपयोग करता है और इस प्रकार अप्रत्यक्ष रूप से Chromium रेंडर इंजन की एकाधिकार स्थिति का समर्थन करता है।</string>
-    <string name="ungoogled_chromium__eol_reason">डेवलपर ने पोस्ट किया: \"मैं कुछ समय तक संस्करणों को अपडेट नहीं कर पाऊंगा। यदि संभव हो तो कृपया इस बीच किसी एक ब्राउज़र का उपयोग करें [जिसे FFUpdater समर्थन करता है]।\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
     <string name="orbot__title">Orbot: Android के लिए Tor</string>
     <string name="settings__background__update_check__when_device_idle__title">अपडेट केवल तभी जांचता है जब डिवाइस निष्क्रिय हो</string>
     <string name="add_app_activity__title_better_than_google_chrome">Google Chrome से बेहतर</string>
     <string name="add_app_activity__title_end_of_live_browser">ब्राउज़र अब समर्थित नहीं हैं</string>
     <string name="chromium__warning">- Chromium Google Chrome की तकनीकी नींव का उपयोग करता है और इस प्रकार अप्रत्यक्ष रूप से Chromium रेंडर इंजन की एकाधिकार स्थिति का समर्थन करता है।</string>
     <string name="settings__background__update_check__when_device_idle__unsupported">यह विकल्प केवल Android Marshmallow या इसके बाद के संस्करण पर उपलब्ध है।</string>
-    <string name="mulch__warning">- Mulch Google Chrome की तकनीकी नींव का उपयोग करता है और इस प्रकार अप्रत्यक्ष रूप से Chromium रेंडर इंजन की एकाधिकार स्थिति का समर्थन करता है।</string>
     <string name="fennecfdroid__description">Fennec F-Droid नवीनतम Firefox रिलीज़ (कोडनेम Fenix) पर आधारित है। इसमें मालिकाना बिट्स और टेलीमेट्री हटा दी गई है, लेकिन फिर भी यह विभिन्न Mozilla और Google सेवाओं से कनेक्ट है जो उपयोगकर्ताओं को ट्रैक कर सकती हैं।</string>
     <string name="network__dns_provider__title">DNS सेटिंग्स</string>
     <string name="settings__device_category__title">डिवाइस</string>
@@ -144,7 +135,6 @@
     <string name="cromite__title">Cromite</string>
     <string name="app_installer__failed_to_verify_signature_of_installed_app">इंस्टॉल किए गए ऐप की जांच करने में विफल।</string>
     <string name="app_installer__failed_to_validate_signature_of_download">डाउनलोड के हस्ताक्षर सत्यापित करने में विफल।</string>
-    <string name="mulch_wv__title">Mulch System WebView</string>
     <string name="cromite__description">Cromite Bromite पर आधारित एक Chromium फोर्क है जिसमें विज्ञापन अवरोधन के लिए अंतर्निहित समर्थन और गोपनीयता का ध्यान रखा गया है।</string>
     <string name="cromite__warning">- Cromite Google Chrome की तकनीकी नींव का उपयोग करता है और इस प्रकार अप्रत्यक्ष रूप से Chromium रेंडर इंजन की एकाधिकार स्थिति का समर्थन करता है।</string>
     <string name="thorium__title">Android के लिए Thorium Browser</string>
@@ -156,7 +146,6 @@
     <string name="privacy_browser__title">गोपनीयता ब्राउज़र</string>
     <string name="thorium__description">पृथ्वी पर सबसे तेज़ ब्राउज़र. Linux के लिए Chromium फ़ोर्क का नाम रेडियोधर्मी तत्व संख्या 90 के नाम पर रखा गया है।</string>
     <string name="application_successfully_installed">एप्लिकेशन सफलतापूर्वक इंस्टॉल हो गया</string>
-    <string name="notification__download_error__title">अपडेट का बैकग्राउंड डाउनलोड विफल रहा</string>
     <string name="cardview_dialog__different_signature">FFUpdater इस ऐप को अपडेट नहीं कर सकता क्योंकि APK हस्ताक्षर अलग है। आप ऐप को अनइंस्टॉल करके और FFUpdater के साथ पुनः इंस्टॉल करके इसे ठीक कर सकते हैं। हालाँकि, इससे ऐप में आपका सारा डेटा डिलीट हो जाएगा। इसलिए अपने डेटा का पहले से बैकअप लेना याद रखें।</string>
     <string name="brave_nightly__title">Brave Browser (Nightly)</string>
     <string name="notification__error__title">पृष्ठभूमि अपडेट जांच विफल</string>
@@ -186,7 +175,6 @@
     <string name="notification__bg_update_check__unreliable_execution__channel_description">पृष्ठभूमि अपडेट जाँच के अविश्वसनीय निष्पादन के बारे में चेतावनी</string>
     <string name="generic_app_warning__beta_version">- यह ऐप डेवलपर्स और परीक्षकों के लिए डिज़ाइन किया गया है। इसमें विभिन्न बग हो सकते हैं जो ब्राउज़र के साथ आपके सामान्य कार्य को प्रभावित कर सकते हैं।</string>
     <string name="notification__network_error__text">यह त्रुटि कभी-कभार ही घटित होनी चाहिए. हालाँकि, यदि ऐसा बार-बार होता है, तो आपको इसकी रिपोर्ट करनी चाहिए। विस्तृत त्रुटि संदेश देखने के लिए यहां क्लिक करें।</string>
-    <string name="mulch_wv__description">यह Chromium तकनीक पर आधारित एक सुरक्षा उन्मुख और कठोर सिस्टम वेबव्यू है। कई एंटी-सुविधाएँ अक्षम/हटा दी गई हैं और Vanadium प्रोजेक्ट के पैच की बदौलत कुछ सुरक्षा सुविधाएँ सक्षम/जोड़ी गई हैं।</string>
     <string name="notification__install_error__generic_channel_name">ऐप अपडेट विफलता अधिसूचना</string>
     <string name="notification__update_available__generic_channel_descr">उपलब्ध ऐप अपडेट के लिए अधिसूचना चैनल।</string>
     <string name="network__dns_provider__system">सिस्टम DNS का उपयोग करें</string>
@@ -194,7 +182,6 @@
     <string name="device__prefer_32bit_apks__title">32-बिट APKs को प्राथमिकता दें</string>
     <string name="network__custom_doh_server__title">HTTPS सर्वर पर कस्टम DNS</string>
     <string name="fennecfdroid__title">Fennec F-Droid</string>
-    <string name="mulch__title">Mulch</string>
     <string name="settings__network__trust_user_cas__title">उपयोगकर्ता द्वारा जोड़े गए CAs पर भरोसा करें</string>
     <string name="settings__background__update_check__when_device_idle__summary">यदि आप नहीं चाहते कि आपके एप्लिकेशन पृष्ठभूमि अपडेट द्वारा पुनः आरंभ हों तो इसे सक्षम करें। यदि आप पृष्ठभूमि अद्यतन जांच के लिए अधिक पूर्वानुमानित शेड्यूल चाहते हैं तो इसे अक्षम करें।</string>
     <string name="chromium__title">Chromium</string>
@@ -251,16 +238,11 @@
     <string name="app_card__download_the_app">ऐप डाउनलोड करें</string>
     <string name="notification__download_running__title">ऐप अपडेट डाउनलोड हो रहा है</string>
     <string name="notification__download_running__channel_descr">पृष्ठभूमि में ऐप अपडेट डाउनलोड होने पर दिखाता है।</string>
-    <string name="notification__download_error__text">%1$s अपडेट का बैकग्राउंड डाउनलोड विफल रहा। यदि यह त्रुटि बार-बार होती है, तो त्रुटि रिपोर्ट देखने के लिए यहां क्लिक करें।</string>
     <string name="brave__description">नि:शुल्क निजी तौर पर इंटरनेट ब्राउज़ करें! Brave प्राइवेट ब्राउज़र ऐप विज्ञापन अवरोधक और पॉप-अप अवरोधक के साथ आपका तेज़, मुफ़्त और सुरक्षित निजी वेब ब्राउज़र है। विज्ञापनदाताओं, मैलवेयर और पॉप-अप द्वारा ट्रैक किए बिना निजी तौर पर इंटरनेट ब्राउज़ करें और खोजें।</string>
     <string name="brave__warning">- Brave Google Chrome की तकनीकी नींव का उपयोग करता है और इस प्रकार अप्रत्यक्ष रूप से क्रोमियम रेंडर इंजन की एकाधिकार स्थिति का समर्थन करता है।
 \n- Ethereum ब्लॉकचेन पर अपने Basic Attention Token BAT के कारण प्रोजेक्ट का क्रिप्टोकरेंसी से संबंध है। ब्लॉकचेन में कई समस्याएं हैं और मेरे विचार से इससे बचा जाना चाहिए।</string>
-    <string name="bromite__description">Bromite का लक्ष्य गोपनीयता-आक्रामक सुविधाओं के बिना और तेज़ विज्ञापन-अवरोधक इंजन के साथ एक अव्यवस्था रहित ब्राउज़िंग अनुभव प्रदान करना है। एक विज्ञापन प्लेटफ़ॉर्म के रूप में ब्राउज़र के विचार पर अंकुश लगाने में मदद के लिए न्यूनतम UI परिवर्तन लागू किए जाते हैं।</string>
-    <string name="bromite__warning">- Bromite Google Chrome की तकनीकी नींव का उपयोग करता है और इस प्रकार अप्रत्यक्ष रूप से क्रोमियम रेंडर इंजन की एकाधिकार स्थिति का समर्थन करता है।</string>
-    <string name="bromite_systemwebview__description">SystemWebView पैकेज में Bromite का मुख्य ब्राउज़र/रेंडरिंग इंजन और इसकी समान विशेषताएं शामिल हैं। यह संपूर्ण Android सिस्टम के लिए डिफ़ॉल्ट ब्राउज़र घटक को बदलने की संभावना प्रदान करता है।</string>
     <string name="install_activity__download_file_failed__crash_text">डाउनलोड के दौरान निम्न त्रुटि उत्पन्न हुई. यदि यह त्रुटि बार-बार होती है, तो बेझिझक क्रैश रिपोर्ट notabug.org, GitHub या GitLab पर सबमिट करें।</string>
     <string name="crash_report__explain_text__download_activity_update_check">मुख्य दृश्य में अद्यतनों की जाँच करते समय यह त्रुटि उत्पन्न हुई। यदि यह त्रुटि बार-बार होती है, तो बेझिझक क्रैश रिपोर्ट notabug.org, GitHub या GitLab पर सबमिट करें।</string>
-    <string name="notification__download_error__descr">%1$s अपडेट का बैकग्राउंड डाउनलोड विफल रहा। यदि यह त्रुटि बार-बार होती है, तो बेझिझक इसे notabug.org, GitHub या GitLab पर रिपोर्ट करें।</string>
     <string name="firefox_beta__description">Android के लिए Firefox ब्राउज़र स्वचालित रूप से निजी और अविश्वसनीय रूप से तेज़ है। हर दिन हजारों ऑनलाइन ट्रैकर आपका पीछा कर रहे हैं, आप ऑनलाइन कहां जाते हैं, इसके बारे में जानकारी एकत्र कर रहे हैं और आपकी गति को धीमा कर रहे हैं। Firefox इनमें से 2000 से अधिक ट्रैकर्स को डिफ़ॉल्ट रूप से ब्लॉक कर देता है और यदि आप अपने ब्राउज़र को और भी अधिक कस्टमाइज़ करना चाहते हैं तो विज्ञापन अवरोधक ऐड-ऑन उपलब्ध हैं। Firefox के साथ, आपको वह सुरक्षा मिलेगी जिसके आप हकदार हैं और वह गति जो आपको एक निजी, मोबाइल ब्राउज़र में चाहिए।</string>
     <string name="firefox_beta__title">Android Beta के लिए Firefox</string>
     <string name="firefox_klar__description">Firefox Klar जर्मनी, ऑस्ट्रिया और स्विट्जरलैंड के लिए विकसित किया गया है, लेकिन इसका उपयोग किसी भी देश के उपयोगकर्ताओं द्वारा किया जा सकता है। यह Firefox Focus के समान है, लेकिन Hubert Burda Media group की पत्रिका फोकस के साथ भ्रम से बचने के लिए जर्मन भाषी देशों में इसका नाम बदल दिया गया था। Firefox Focus के विपरीत, Firefox Klar में सख्त जर्मन गोपनीयता कानूनों के कारण डिफ़ॉल्ट रूप से टेलीमेट्री अक्षम है।</string>
@@ -288,9 +270,6 @@
 \n- Kiwi एक आदर्श गोपनीयता ब्राउज़र नहीं है लेकिन इसमें एक अच्छा ऐडऑन समर्थन है।
 \n- Kiwi ब्राउज़र का उपयोग करके की गई प्रत्येक खोज के लिए ब्राउज़र को खोज इंजन द्वारा भुगतान किया जा रहा है। खोज इंजन की पसंद के आधार पर, अनुरोध Kiwibrowser/Kiwisearchservices सर्वर के माध्यम से जा सकते हैं।
 \n- Kiwi में Google विज्ञापन विज्ञापनों के लिए स्थान डेटा का उपयोग कर सकता है - लेकिन आप डिस्कवरी सुविधा को अक्षम करके इसे अक्षम कर सकते हैं। लेकिन यह जल्द ही बदल जाएगा. अधिक जानकारी के लिए https://privacy.kiwibrowser.org/ देखें।</string>
-    <string name="lockwise__description">आपके और केवल आपके लिए पासवर्ड एक्सेस
-\n
-\nअपने Firefox पासवर्ड को सुरक्षित रूप से ट्रैक करें और उन्हें कहीं भी एक्सेस करें। अपने खातों में जाने के लिए ऐप से किसी भी वेबसाइट को तुरंत खोलें।</string>
     <string name="request_installation_permission_dialog__message">FFUpdater में ऐप्स इंस्टॉल और अपडेट करने की अनुमति नहीं है। आपको ये अनुमतियाँ देनी होंगी अन्यथा FFUpdater काम नहीं करेगा।</string>
     <string name="session_installer__require_user_interaction">उपयोगकर्ता सहभागिता की आवश्यकता है. आपको सबसे पहले ऐप को FFUpdater यूजर इंटरफेस के जरिए अपडेट करना होगा। केवल तभी संबंधित ऐप के लिए साइलेंट बैकग्राउंड अपडेट की अनुमति दी जाती है।</string>
     <string name="session_installer__status_failure">ऑपरेशन सामान्य तरीके से विफल रहा. सिस्टम हमेशा अधिक विशिष्ट विफलता कारण प्रदान करने का प्रयास करेगा, लेकिन कुछ दुर्लभ मामलों में यह दिया जा सकता है।</string>
@@ -301,18 +280,11 @@
     <string name="settings__background__download__enabled__summary">जब किसी अपडेट का पता चले तो उसे डाउनलोड करें। इससे बाद में अपडेट प्रक्रिया में तेजी आएगी।</string>
     <string name="session_installer__status_failure_storage">भंडारण संबंधी समस्याओं के कारण कार्रवाई विफल रही. उदाहरण के लिए, डिवाइस में जगह कम हो सकती है, या बाहरी मीडिया अनुपलब्ध हो सकता है। उपयोगकर्ता स्थान खाली करने या विभिन्न बाहरी मीडिया डालने में मदद करने में सक्षम हो सकता है।</string>
     <string name="settings__background__update_check__metered__title">मीटर्ड नेटवर्क पर अपडेट जांच</string>
-    <string name="ungoogled_chromium__description">Google Chromium, Google के साथ एकीकरण के बिना।
-\n
-\nGoogle खाते में साइन इन किए बिना, क्रोमियम सुरक्षा और गोपनीयता के मामले में बहुत अच्छा प्रदर्शन करता है। हालाँकि, Chromium की अभी भी Google वेब सेवाओं और बायनेरिज़ पर कुछ निर्भरता है। इसके अलावा, Google ने Chromium को उपयोगकर्ताओं के लिए आसान और सहज बनाने के लिए डिज़ाइन किया है, जिसका अर्थ है कि वे आंतरिक संचालन की पारदर्शिता और नियंत्रण से समझौता करते हैं।</string>
-    <string name="ungoogled_chromium__warning">- Ungoogled Chromium Google Chrome की तकनीकी नींव का उपयोग करता है और इस प्रकार अप्रत्यक्ष रूप से Chromium रेंडर इंजन की एकाधिकार स्थिति का समर्थन करता है।</string>
     <string name="vivaldi__description">एक अत्यधिक तेज़ इंटरनेट ब्राउज़र खोजें! Vivaldi एक नया, मुफ़्त और निजी वेब ब्राउज़र है जिसे लचीलेपन को ध्यान में रखकर बनाया गया है। यह बिल्ट-इन एडब्लॉकर (पॉप-अप ब्लॉकर), ट्रैकिंग सुरक्षा और निजी अनुवाद सहित उपयोगी सुविधाओं से भरपूर है। उचित डेस्कटॉप-शैली टैब, गहरी/हल्की थीम और लेआउट विकल्प जैसे ब्राउज़र विकल्प आपको इसे अपना बनाने में मदद करते हैं।</string>
-    <string name="mull__title">Mull Browser</string>
-    <string name="mull__description">यह Mozilla तकनीक पर आधारित एक गोपनीयता उन्मुख और डीब्लॉब्ड वेब ब्राउज़र है। यह arkenfox-user.js प्रोजेक्ट की प्राथमिकताओं का उपयोग करके Tor Uplift प्रोजेक्ट द्वारा अपस्ट्रीम की गई कई सुविधाओं को सक्षम बनाता है। \'uBlock Origin\' स्थापित करने की अनुशंसा की जाती है।</string>
     <string name="tor_browser__title">Tor Browser</string>
     <string name="tor_browser__description">Android के लिए Tor ब्राउज़र एकमात्र आधिकारिक मोबाइल ब्राउज़र है जो Tor प्रोजेक्ट द्वारा समर्थित है, जो ऑनलाइन गोपनीयता और स्वतंत्रता के लिए दुनिया के सबसे मजबूत टूल के डेवलपर्स है।</string>
     <string name="orbot__description">Orbot एक मुफ़्त प्रॉक्सी ऐप है जो अन्य ऐप्स को अधिक सुरक्षित रूप से इंटरनेट का उपयोग करने में सक्षम बनाता है। Orbot आपके इंटरनेट ट्रैफ़िक को एन्क्रिप्ट करने के लिए Tor का उपयोग करता है और फिर इसे दुनिया भर के कंप्यूटरों की एक श्रृंखला के माध्यम से छिपा देता है। Tor मुफ़्त सॉफ़्टवेयर और एक खुला नेटवर्क है जो आपको नेटवर्क निगरानी के एक रूप से बचाव में मदद करता है जो व्यक्तिगत स्वतंत्रता और गोपनीयता, गोपनीय व्यावसायिक गतिविधियों और रिश्तों और राज्य सुरक्षा को ट्रैफ़िक विश्लेषण के रूप में जाना जाता है।</string>
     <string name="chromium__description">Chromium एक ओपन-सोर्स ब्राउज़र प्रोजेक्ट है जिसका उद्देश्य सभी उपयोगकर्ताओं के लिए वेब का अनुभव करने के लिए एक सुरक्षित, तेज़ और अधिक स्थिर तरीका बनाना है। इस साइट में डिज़ाइन दस्तावेज़, आर्किटेक्चर अवलोकन, परीक्षण जानकारी और Chromium स्रोत कोड के साथ काम करना सीखने में आपकी मदद करने के लिए और भी बहुत कुछ शामिल है।</string>
-    <string name="mulch__description">यह Chromium तकनीक पर आधारित एक सुरक्षा उन्मुख और कठोर वेब ब्राउज़र है। कई एंटी-सुविधाएँ अक्षम/हटा दी गई हैं और Vanadium प्रोजेक्ट के पैच की बदौलत कुछ सुरक्षा सुविधाएँ सक्षम/जोड़ी गई हैं। स्रोत रेपो में अन्य ऑपरेटिंग सिस्टम को Mulch को अपने सिस्टम वेबव्यू के रूप में शामिल करने की अनुमति देने के लिए प्रीबिल्ट और makefiles भी शामिल हैं।</string>
     <string name="fennecfdroid__warning">FFUpdater F-Droid सर्वर से फ़ाइलें डाउनलोड करता है और इसलिए तेज़ नहीं है।</string>
     <string name="network__custom_doh_server__dialog_message">इनमें से किसी एक प्रारूप में कस्टम DoH सर्वर के लिए कनेक्शन विवरण दर्ज करें:
 \n

@@ -21,11 +21,6 @@
 \nEn yeni özellikleri deneyin ve erken geri bildirimde bulunun: https://brave.com/msupport
 \nAndroid için Brave\'in geçerli sürümünün yanına Brave Nightly kurabilirsiniz.</string>
     <string name="brave_nightly__title">Brave Tarayıcı (Gecelik)</string>
-    <string name="bromite__description">Bromite, gizliliği ihlal eden özellikler olmadan ve hızlı bir reklam engelleme motorunun eklenmesiyle karışık olmayan bir göz atma deneyimi sağlamayı amaçlar. Bir reklam platformu olarak tarayıcı fikrini engellemeye yardımcı olmak için en az kullanıcı arayüzü değişiklikleri uygulanır.</string>
-    <string name="bromite__title">Bromite</string>
-    <string name="bromite__warning">- Bromite, Google Chrome\'un teknik temelini kullanır ve dolayısıyla Chromium görselleştirme motorunun tekel konumunu dolaylı olarak destekler.</string>
-    <string name="bromite_systemwebview__description">SystemWebView paketi, Bromite\'ın temel tarayıcı/görselleştirme motorunu ve onunla aynı özellikleri içerir. Tüm Android sistemi için öntanımlı tarayıcı bileşenini değiştirme imkanı sunar.</string>
-    <string name="bromite_systemwebview__title">Bromite SystemWebView</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Çökme raporunu panoya kopyala</string>
     <string name="install_activity__download_file_failed__crash_text">İndirme sırasında aşağıdaki hata oluştu. Bu hata sık sık meydana geliyorsa, çökme raporunu notabug.org, GitHub veya GitLab\'a göndermekten çekinmeyin.</string>
     <string name="crash_report__explain_text__download_activity_fetching_url">Bu hata, indirme üst verileri getirilirken oluştu. Bu hata sık sık meydana geliyorsa, çökme raporunu notabug.org, GitHub veya GitLab\'a göndermekten çekinmeyin.</string>
@@ -35,11 +30,6 @@
     <string name="crash_report__go_to_github">GitHub\'a git</string>
     <string name="crash_report__go_to_gitlab">GitLab\'a git</string>
     <string name="crash_report__got_to_notabug_org">notabug.org\'a git</string>
-    <string name="notification__download_error__channel_descr">Arka planda güncelleme indirmeleri başarısız olduğunda gösterilir.</string>
-    <string name="notification__download_error__channel_name">Arka planda indirme hataları hakkında bildirim</string>
-    <string name="notification__download_error__descr">%1$s güncellemesinin arka planda indirilmesi başarısız oldu. Bu hata sık sık meydana geliyorsa, notabug.org, GitHub veya GitLab üzerinden bildirmekten çekinmeyin.</string>
-    <string name="notification__download_error__text">%1$s güncellemesinin arka planda indirilmesi başarısız oldu. Bu hata sık sık meydana geliyorsa, hata raporunu görüntülemek için buraya tıklayın.</string>
-    <string name="notification__download_error__title">Güncellemenin arka planda indirilmesi başarısız oldu</string>
     <string name="notification__download_running__channel_descr">Arka planda uygulama güncellemelerinin ne zaman indirildiğini gösterir.</string>
     <string name="notification__download_running__channel_name">Arka planda indirmeler hakkında bildirim</string>
     <string name="notification__download_running__title">Uygulama güncellemeleri indiriliyor</string>
@@ -118,11 +108,6 @@
 \n- Kiwi, gizlilik için uygun bir tarayıcı değildir, ancak iyi bir eklenti desteğine sahiptir.
 \n- Tarayıcı, Kiwi Browser kullanılarak yapılan her arama için arama motorları tarafından ödeme almaktadır. Arama motoru seçimine bağlı olarak istekler Kiwibrowser / Kiwisearchservices sunucuları üzerinden gidebilir.
 \n- Kiwi\'deki Google Reklamları, reklamlar için konum verilerini kullanabilir - ancak Keşif özelliğini devre dışı bırakarak bunu devre dışı bırakabilirsiniz. Ancak bu yakında değişecek. Daha fazla ayrıntı için https://privacy.kiwibrowser.org/ adresine bakın.</string>
-    <string name="lockwise__description">SİZİN VE YALNIZCA SİZİN İÇİN PAROLA ERİŞİMİ
-\n
-\nFirefox parolalarınızı güvenle takip edin ve onlara her yerden erişin. Hesaplarınıza girmek için uygulamadan herhangi bir web sitesini hızla açın.</string>
-    <string name="lockwise__eol_reason">Mozilla, Aralık 2021\'de desteği bıraktı. Lütfen başka bir parola yöneticisine geçin.</string>
-    <string name="lockwise__title">Firefox Lockwise</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>GitHub-API sınırı aşıldı. Bir saat içinde tekrar deneyin.</u>"</string>
     <string name="main_activity__no_unmetered_network">Ölçülmeyen ağ yok</string>
     <string name="main_activity__temporary_network_issue">"<u>Geçici ağ sorunu. Daha sonra tekrar deneyin.</u>"</string>
@@ -172,11 +157,6 @@
     <string name="settings__theme_dark">Koyu</string>
     <string name="settings__theme_light">Açık</string>
     <string name="settings__theme_system_default">Sistem öntanımlı ayarını kullan</string>
-    <string name="ungoogled_chromium__description">Google Chromium, Google ile bütünleşmeye izin vermez.
-\n
-\nChromium, bir Google Hesabında oturum açmadan güvenlik ve gizlilik açısından oldukça başarılıdır. Ancak, Chromium\'un hala Google web hizmetlerine ve ikili dosyalara biraz bağımlılığı vardır. Ayrıca Google, Chromium\'u kullanıcılar için kolay ve sezgisel olacak şekilde tasarladı; bu, şeffaflık ve dahili işlemlerin denetiminden ödün verdikleri anlamına geliyor.</string>
-    <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
-    <string name="ungoogled_chromium__warning">- Ungoogled Chromium, Google Chrome\'un teknik temelini kullanır ve dolayısıyla Chromium görselleştirme motorunun tekel konumunu dolaylı olarak destekler.</string>
     <string name="unsupported_abi_dialog__message">Seçilen tarayıcı, akıllı telefonunuzun işlemcisiyle uyumlu değil. Lütfen farklı bir tarayıcı seçin.</string>
     <string name="unsupported_abi_dialog__title">Desteklenmeyen aygıt</string>
     <string name="update_interval__12h">12 saat</string>
@@ -205,9 +185,6 @@
     <string name="vivaldi__title">Vivaldi Tarayıcı</string>
     <string name="vivaldi__warning">- Vivaldi yalnızca kısmen açık kaynaklıdır.
 \n- Ayrıca Google Chrome\'un teknik temelini kullanır ve böylece Chromium görselleştirme motorunun tekel konumunu dolaylı olarak destekler.</string>
-    <string name="mull__title">Mull Tarayıcı</string>
-    <string name="mull__description">Bu, Mozilla teknolojisine dayanan gizlilik odaklı ve açık olmayan kısımları temizlenen bir web tarayıcısıdır. arkenfox-user.js projesindeki tercihleri kullanarak Tor Uplift projesi tarafından geliştirilen birçok özelliği etkinleştirir. \'uBlock Origin\' eklentisini kurmanız tavsiye edilir.</string>
-    <string name="ungoogled_chromium__eol_reason">Geliştirici şunları paylaştı: \"Sürümleri bir süre güncelleyemeyeceğim. Mümkünse lütfen bu arada [FFUpdater\'ın desteklediği] tarayıcılardan birini kullanın.\" https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123</string>
     <string name="tor_browser__title">Tor Browser</string>
     <string name="tor_browser__description">Android için Tor Browser, çevrim içi gizlilik ve özgürlük için dünyanın en güçlü aracının geliştiricileri olan Tor Projesi tarafından desteklenen tek resmi mobil tarayıcıdır.</string>
     <string name="orbot__description">Orbot, diğer uygulamaların interneti daha güvenli kullanmasını sağlayan ücretsiz bir vekil uygulamasıdır. Orbot, internet trafiğinizi şifrelemek için Tor kullanır ve daha sonra dünyanın dört bir yanındaki bir dizi bilgisayardan geçirerek onu gizler. Tor, kişisel özgürlüğü ve mahremiyeti, gizli iş faaliyetlerini ve ilişkilerini ve trafik analizi olarak bilinen devlet güvenliğini tehdit eden bir tür ağ gözetimine karşı savunmanıza yardımcı olan özgür bir yazılım ve açık bir ağdır.</string>
@@ -228,10 +205,7 @@
     <string name="settings__background__update_check__when_device_idle__summary">Uygulamalarınızın bir arka plan güncellemesi tarafından yeniden başlatılmasını istemiyorsanız bunu etkinleştirin. Arka plan güncelleme denetimleri için daha öngörülebilir bir zamanlama istiyorsanız bunu devre dışı bırakın.</string>
     <string name="settings__background__update_check__when_device_idle__title">Yalnızca aygıt boştaysa güncellemeleri denetle</string>
     <string name="settings__background__update_check__when_device_idle__unsupported">Bu seçenek yalnızca Android Marshmallow veya sonraki sürümlerde kullanılabilir.</string>
-    <string name="mulch__title">Mulch</string>
     <string name="fennecfdroid__title">Fennec F-Droid</string>
-    <string name="mulch__description">Bu, Chromium teknolojisine dayanan güvenlik odaklı ve güçlendirilmiş bir web tarayıcısıdır. Vanadium projesinden gelen yamalar sayesinde birçok anti özellik devre dışı bırakılmış/kaldırılmış ve birkaç güvenlik özelliği etkinleştirilmiş/eklenmiştir. Kaynak deposu ayrıca, diğer işletim sistemlerinin Mulch\'u sistem WebView\'leri olarak dahil etmelerine olanak sağlamak için hazır derlemeler ve make dosyaları içerir.</string>
-    <string name="mulch__warning">- Mulch, Google Chrome\'un teknik temelini kullanır ve dolayısıyla Chromium görselleştirme motorunun tekel konumunu dolaylı olarak destekler.</string>
     <string name="fennecfdroid__warning">FFUpdater dosyaları F-Droid sunucularından indirir ve bu nedenle daha hızlı değildir.</string>
     <string name="fennecfdroid__description">Fennec F-Droid en son Firefox sürümüne (kod adı Fenix) dayanmaktadır. Açık kaynaklı olmayan bitler ve telemetri kaldırılmıştır, ancak yine de kullanıcıları izleyebilen çeşitli Mozilla ve Google hizmetlerine bağlanır.</string>
     <string name="network__proxy__title">Vekil</string>
@@ -321,10 +295,8 @@
     <string name="add_app_activity__title_good_security_browsers">İyi Güvenlik Tarayıcıları</string>
     <string name="notification__uncaught_exception__title">FFUpdater çöktü</string>
     <string name="notification__uncaught_exception__text">Hata raporunu görmek için tıklayın.</string>
-    <string name="mulch_wv__title">Mulch System WebView</string>
     <string name="app_installer__failed_to_verify_signature_of_installed_app">Kurulan uygulama denetlenemedi.</string>
     <string name="app_installer__failed_to_validate_signature_of_download">İndirme işleminin imzası doğrulanamadı.</string>
-    <string name="mulch_wv__description">Bu, Chromium teknolojisine dayanan güvenlik odaklı ve güçlendirilmiş bir sistem WebView\'dir. Vanadium projesinden gelen yamalar sayesinde birçok anti özellik devre dışı bırakıldı/kaldırıldı ve bir avuç güvenlik özelliği etkinleştirildi/eklendi.</string>
     <string name="thorium__title">Android için Thorium Browser</string>
     <string name="cromite__title">Cromite</string>
     <string name="cromite__description">Cromite, reklam engelleme için yerleşik destek ve gizlilik için bir göz ile Bromite tabanlı bir Chromium çatalıdır.</string>
