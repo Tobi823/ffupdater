@@ -195,15 +195,7 @@
     <string name="network__custom_doh_server__dialog_message">Introduzca los detalles de conexión para el servidor DoH personalizado en uno de estos formatos: \n \nurl;ip1 \n \nurl;ip1;ip2 \n \nurl;ip1;ip2;ip3 \n \nurl;ip1;ip2;ip3;ip4 \n \nPor ejemplo: https://dns.google/dns-query;8.8.8.8 o https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
     <string name="network__dns_provider__title">Configurar las DNS</string>
     <string name="settings__network_category__title">Red</string>
-    <string name="network__proxy__dialog_message">Introduzca los detalles de la conexión en uno de estos formatos:
-\n
-\nSOCKS/HTTP;ip/dominio;puerto
-\n
-\nSOCKS/HTTP;ip/dominio;puerto;nombre de usuario;contraseña
-\n
-\nPor ejemplo SOCKS;1.2.3.4;22 o HTTP;5.6.7.8;80;user1;pw123 o HTTP;p.webshare.io;80;u;p. Déjelo vacío si desea utilizar la configuración de proxy del sistema.
-\n
-\nLimitación: Si cambias \'Configuración DNS\' en los ajustes a un servidor DNS sobre HTTPS, tienes que introducir el dominio del servidor proxy. Las IPs no funcionarán.</string>
+    <string name="network__proxy__dialog_message">Introduzca los detalles de la conexión en uno de estos formatos: \n \nSOCKS/HTTP;ip/dominio;puerto \n \nSOCKS/HTTP;ip/dominio;puerto;nombre de usuario;contraseña \n \nPor ejemplo SOCKS;1.2.3.4;22 o HTTP;5.6.7.8;80;user1;pw123 o HTTP;p.webshare.io;80;u;p. Déjelo vacío si desea utilizar la configuración de proxy del sistema. \n \nLimitación: Si cambias \'Configuración DNS\' en los ajustes a un servidor DNS sobre HTTPS, tienes que introducir el dominio del servidor proxy. Las IPs no funcionarán.</string>
     <string name="network__dns_provider__system">Utilizar las DNS del sistema</string>
     <string name="network__dns_provider__quad9">DNS a través de HTTPS: Quad9</string>
     <string name="network__dns_provider__cloudflare">DNS a través de HTTPS: Cloudflare</string>
@@ -288,4 +280,19 @@
     <string name="generic_beta__warning">- Esta es una aplicación beta, diseñada para desarrolladores y evaluadores. Puede contener varios errores que pueden afectar a tu experiencia.</string>
     <string name="thunderbird__title">Thunderbird</string>
     <string name="thunderbird__description">Thunderbird es una potente aplicación de correo electrónico centrada en la privacidad. Gestiona sin esfuerzo varias cuentas de correo electrónico desde una sola aplicación, con una opción de Bandeja de entrada unificada para obtener la máxima productividad. Creada con tecnología de código abierto y respaldada por un equipo dedicado de desarrolladores junto a una comunidad global de voluntarios, Thunderbird nunca trata tus datos privados como un producto. Se financia únicamente con las aportaciones económicas de nuestros usuarios, por lo que nunca más tendrás que ver anuncios mezclados con tus mensajes de correo electrónico.</string>
+    <string name="main_activity__update_all_apps_dialog__abort"></string>
+    <string name="main_activity__update_all_apps_dialog__confirm"></string>
+    <string name="update_all_activity__installation_successful"></string>
+    <string name="default_theme_preference" translatable="false"></string>
+    <string name="update_all_activity__installation_failed"></string>
+    <string name="update_all_activity__start_update"></string>
+    <string name="update_all_activity__no_updates_available"></string>
+    <string name="main_activity_menu__update_all_apps__label"></string>
+    <string name="main_activity__update_all_apps_dialog__title"></string>
+    <string name="update_all_activity__start_installation"></string>
+    <string name="update_all_activity__all_apps_updated"></string>
+    <string name="main_activity_menu__install_app__label"></string>
+    <string name="main_activity__update_all_apps_dialog__message"></string>
+    <string name="update_all_activity__these_apps_will_be_updated"></string>
+    <string name="update_all_activity__label"></string>
 </resources>
