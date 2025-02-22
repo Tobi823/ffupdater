@@ -50,7 +50,7 @@
     <string name="download_activity__download_failed">Stahování selhalo</string>
     <string name="download_activity__downloaded_application_from">Aplikace stažená z:</string>
     <string name="app_installer__signature_of_download_is_invalid">Stažená aplikace NEBYLA ověřena</string>
-    <string name="download_activity__exception__show_button">"<u>Zobrazit detailní chybové hlášení.</u>"</string>
+    <string name="download_activity__exception__show_button"><u>Zobrazit detailní chybové hlášení.</u></string>
     <string name="download_activity__external_storage_not_accessible">Externí úložiště není k dispozici - stahování nelze spustit. Součastný status je:</string>
     <string name="download_activity__fetch_url_for_download">Načítání metadat pro stahování z %1$s</string>
     <string name="download_activity__fetched_url_for_download_successfully">Metadata načtena z %1$s</string>
@@ -77,9 +77,9 @@
     <string name="app_installer__installed_app_has_invalid_signature">Nainstalovaná aplikace NEBYLA ověřena</string>
     <string name="installed_application_is_verified">Nainstalovaná aplikace je ověřena</string>
     <string name="installed_version">Instalovaná: %1$s</string>
-    <string name="main_activity__github_api_limit_exceeded">"<u>Limit GitHub-API byl překročen. Zkuste to prosím znovu během následující hodiny.</u>"</string>
+    <string name="main_activity__github_api_limit_exceeded"><u>Limit GitHub-API byl překročen. Zkuste to prosím znovu během následující hodiny.</u></string>
     <string name="main_activity__no_unmetered_network">Žádná neměřená síť</string>
-    <string name="main_activity__temporary_network_issue">"<u>Dočasný problém se sítí. Zkuste to prosím později.</u>"</string>
+    <string name="main_activity__temporary_network_issue"><u>Dočasný problém se sítí. Zkuste to prosím později.</u></string>
     <string name="ok">OK</string>
     <string name="request_installation_permission_dialog__abort">Přerušit</string>
     <string name="request_installation_permission_dialog__grant_permission">Udělení povolení</string>
@@ -147,9 +147,9 @@
     <string name="update_interval__6h">6 hodin</string>
     <string name="update_interval__8h">8 hodin</string>
     <string name="notification__update_available__channel_descr">Kanál upozornění na dostupné aktualizace %1$s.</string>
-    <string name="notification__update_available__channel_name">Oznámení o aktualizaci "%1$s"</string>
+    <string name="notification__update_available__channel_name">Oznámení o aktualizaci %1$s</string>
     <string name="update_notification__text">Klikněte pro instalaci aktualizací</string>
-    <string name="update_notification__title">Dostupné aktualizace pro "%1$s"</string>
+    <string name="update_notification__title">Dostupné aktualizace pro %1$s</string>
     <string name="vivaldi__description">Vivaldi je nový soukromý webový prohlížeč, postavený s ohledem na flexibilitu. Přináší řadu užitečných funkcí, včetně vestavěného blokování reklam (ve výchozím nastavení vypnuto), ochranou proti sledování a soukromým překladačem. Poznámky a zachycení stránky vám ušetří čas. Přizpůsobte si vše podle sebe s možnostmi typu listy jako na počítači, tmavý a světlý vzhled, či úpravy rozložení rozhraní. Stáhněte si zdarma Vivaldi a začněte prohlížejte rychleji.</string>
     <string name="vivaldi__title">Vivaldi Prohlížeč</string>
     <string name="vivaldi__warning">- Vivaldi je pouze částečně open source. \n- Používá také technický základ Google Chrome, a tak nepřímo podporuje monopolní renderovací jádro Chromium.</string>
@@ -162,10 +162,7 @@
     <string name="notification__eol_apps__channel_description">Kanál upozornění na zastaralé aplikace.</string>
     <string name="notification__eol_apps__text">Máte zastaralé aplikace, které by se již neměli dál používat: %1$s</string>
     <string name="notification__eol_apps__title">Jsou nainstalované zastaralé aplikace</string>
-    <string name="kiwi__warning">- Kiwi používá technický základ Google Chrome, a tak nepřímo podporuje monopolní renderovací jádro Chromium.
-\n- Kiwi není ideální prohlížeč pro ochranu soukromí, ale má dobrou podporu doplňků.
-\n- Prohlížeč dostává od vyhledávačů peníze za každé vyhledávání provedené pomocí prohlížeče Kiwi. V závislosti na výběru vyhledávače mohou požadavky procházet přes servery Kiwibrowser / Kiwisearchservices.
-\n- Reklamy Google v Kiwi mohou používat údaje o vaší poloze pro reklamy, ale můžete je však zakázat vypnutím funkce Discovery. To se však brzy změní. Další podrobnosti naleznete na adrese https://privacy.kiwibrowser.org/.</string>
+    <string name="kiwi__warning">- Kiwi používá technický základ Google Chrome, a tak nepřímo podporuje monopolní renderovací jádro Chromium. \n- Kiwi není ideální prohlížeč pro ochranu soukromí, ale má dobrou podporu doplňků. \n- Prohlížeč dostává od vyhledávačů peníze za každé vyhledávání provedené pomocí prohlížeče Kiwi. V závislosti na výběru vyhledávače mohou požadavky procházet přes servery Kiwibrowser / Kiwisearchservices. \n- Reklamy Google v Kiwi mohou používat údaje o vaší poloze pro reklamy, ale můžete je však zakázat vypnutím funkce Discovery. To se však brzy změní. Další podrobnosti naleznete na adrese https://privacy.kiwibrowser.org/.</string>
     <string name="download_activity__different_installer_info__text">Pokud instalace často selhává, zkuste v nastavení zapnout \"nativní instalátor\".</string>
     <string name="tor_browser__title">Tor Browser</string>
     <string name="tor_browser__description">Tor Browser pro Android je jediný oficiální mobilní prohlížeč podporovaný organizací Tor Project, vývojáři nejsilnějšího nástroje pro ochranu soukromí a svobody internetu na světě.</string>
@@ -283,4 +280,19 @@
     <string name="thunderbird__description">Thunderbird je výkonná e-mailová aplikace zaměřená na soukromí. Spravujte bez námahy více e-mailových účtů z jedné aplikace s možností sjednocené doručené pošty pro maximální produktivitu. Thunderbird, postavený na technologii open source a podporovaný specializovaným týmem vývojářů spolu s globální komunitou dobrovolníků, nikdy nepovažuje vaše soukromá data za produkt. Podporováno výhradně finančními příspěvky od našich uživatelů, takže už nikdy nebudete muset vidět reklamy smíchané s vašimi e-maily.</string>
     <string name="settings__network__use_cloudflare_mirrors__title">Používat Cloudflare servery</string>
     <string name="download_activity__retry_installation">Opakovat instalaci</string>
+    <string name="default_theme_preference" translatable="false"></string>
+    <string name="main_activity__update_all_apps_dialog__message"></string>
+    <string name="main_activity__update_all_apps_dialog__confirm"></string>
+    <string name="main_activity__update_all_apps_dialog__title"></string>
+    <string name="main_activity__update_all_apps_dialog__abort"></string>
+    <string name="update_all_activity__label"></string>
+    <string name="update_all_activity__start_installation"></string>
+    <string name="main_activity_menu__install_app__label"></string>
+    <string name="update_all_activity__no_updates_available"></string>
+    <string name="update_all_activity__these_apps_will_be_updated"></string>
+    <string name="update_all_activity__installation_failed"></string>
+    <string name="main_activity_menu__update_all_apps__label"></string>
+    <string name="update_all_activity__installation_successful"></string>
+    <string name="update_all_activity__start_update"></string>
+    <string name="update_all_activity__all_apps_updated"></string>
 </resources>
