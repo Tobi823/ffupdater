@@ -89,13 +89,6 @@
     <string name="app_installer__installed_app_has_invalid_signature">Installed app is NOT verified</string>
     <string name="installed_application_is_verified">Installed application is verified</string>
     <string name="installed_version">Installed: %1$s</string>
-    <string name="kiwi__description">Kiwi Browser is made to browse the internet, read news, watch videos and listen to music, without annoyances.</string>
-    <string name="kiwi__title">Kiwi Browser Next</string>
-    <string name="kiwi__warning">- Kiwi is only partial open-source
-\n- Kiwi uses the technical foundation of Google Chrome and thus indirectly supports the monopoly position of the Chromium render engine.
-\n- Kiwi is not an ideal privacy browser but has a good addon support.
-\n- The browser is getting paid by search engines for every search done using Kiwi Browser. Depending on the search engine choice, requests may go via Kiwibrowser / Kiwisearchservices servers.
-\n- Google Ads in Kiwi may use the location data for ads - but you can disable it by disabling the Discovery feature. But this will soon change. See https://privacy.kiwibrowser.org/ for more details.</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>GitHub-API limit exceeded. Retry next hour.</u>"</string>
     <string name="main_activity__no_unmetered_network">No unmetered network</string>
     <string name="main_activity__temporary_network_issue">"<u>Temporary network issue. Retry later.</u>"</string>
@@ -241,7 +234,6 @@
     <string name="privacy_browser__title">Privacy Browser</string>
     <string name="privacy_browser__warning">FFUpdater downloads the files from the F-Droid servers and is therefore not faster.</string>
     <string name="privacy_browser__description">The only way to prevent data from being abused is to prevent it from being collected in the first place. Privacy Browser has two primary goals: Minimize the data that is sent to the internet and minimize the data that is stored on the device.</string>
-    <string name="eol_reason__browser_no_longer_maintained">The browser is no longer maintained.</string>
     <string name="background__installation__when_screen_off__summary">Try to install updates only when the device screen is off.</string>
     <string name="background__installation__when_screen_off__title">Install only when screen off</string>
     <string name="notification__bg_update_check__unreliable_execution__channel_name">Background update check not executed</string>

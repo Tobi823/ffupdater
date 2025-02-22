@@ -19,7 +19,6 @@ import de.marmaro.krt.ffupdater.app.impl.FirefoxNightly
 import de.marmaro.krt.ffupdater.app.impl.FirefoxRelease
 import de.marmaro.krt.ffupdater.app.impl.Iceraven
 import de.marmaro.krt.ffupdater.app.impl.K9Mail
-import de.marmaro.krt.ffupdater.app.impl.Kiwi
 import de.marmaro.krt.ffupdater.app.impl.Orbot
 import de.marmaro.krt.ffupdater.app.impl.PrivacyBrowser
 import de.marmaro.krt.ffupdater.app.impl.Thorium
@@ -48,7 +47,6 @@ enum class App {
     FIREFOX_RELEASE,
     ICERAVEN,
     K9MAIL,
-    KIWI,
     ORBOT,
     PRIVACY_BROWSER,
     THORIUM,
@@ -79,7 +77,6 @@ enum class App {
             FIREFOX_RELEASE -> FirefoxRelease
             ICERAVEN -> Iceraven
             K9MAIL -> K9Mail
-            KIWI -> Kiwi
             ORBOT -> Orbot
             PRIVACY_BROWSER -> PrivacyBrowser
             THORIUM -> Thorium

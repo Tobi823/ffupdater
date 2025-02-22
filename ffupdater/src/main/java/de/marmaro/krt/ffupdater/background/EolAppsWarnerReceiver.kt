@@ -52,7 +52,8 @@ class EolAppsWarnerReceiver : BroadcastReceiver() {
             "UngoogledChromium" to "org.ungoogled.chromium.stable",
             "Mulch" to "us.spotco.mulch",
             "Mulch (SystemWebView)" to "us.spotco.mulch_wv",
-            "Mull" to "us.spotco.fennec_dos"
+            "Mull" to "us.spotco.fennec_dos",
+            "Kiwi" to "com.kiwibrowser.browser"
         )
     }
 }
