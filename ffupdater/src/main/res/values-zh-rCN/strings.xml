@@ -295,5 +295,4 @@
     <string name="main_activity__update_all_apps_dialog__confirm">更新应用</string>
     <string name="update_all_activity__installation_successful">成功安装了 \'%1$s\'。证书哈希值：%2$s</string>
     <string name="update_all_activity__all_apps_updated">完毕。更新了所有应用（如果可能）。你现在可以关闭本应用了。</string>
-    <string name="default_theme_preference" translatable="false"></string>
 </resources>

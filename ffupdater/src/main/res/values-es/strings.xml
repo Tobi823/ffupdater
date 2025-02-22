@@ -280,20 +280,4 @@
     <string name="generic_beta__warning">- Esta es una aplicación beta, diseñada para desarrolladores y evaluadores. Puede contener varios errores que pueden afectar a tu experiencia.</string>
     <string name="thunderbird__title">Thunderbird</string>
     <string name="thunderbird__description">Thunderbird es una potente aplicación de correo electrónico centrada en la privacidad. Gestiona sin esfuerzo varias cuentas de correo electrónico desde una sola aplicación, con una opción de Bandeja de entrada unificada para obtener la máxima productividad. Creada con tecnología de código abierto y respaldada por un equipo dedicado de desarrolladores junto a una comunidad global de voluntarios, Thunderbird nunca trata tus datos privados como un producto. Se financia únicamente con las aportaciones económicas de nuestros usuarios, por lo que nunca más tendrás que ver anuncios mezclados con tus mensajes de correo electrónico.</string>
-    <string name="main_activity__update_all_apps_dialog__abort"></string>
-    <string name="main_activity__update_all_apps_dialog__confirm"></string>
-    <string name="update_all_activity__installation_successful"></string>
-    <string name="default_theme_preference" translatable="false"></string>
-    <string name="update_all_activity__installation_failed"></string>
-    <string name="update_all_activity__start_update"></string>
-    <string name="update_all_activity__no_updates_available"></string>
-    <string name="main_activity_menu__update_all_apps__label"></string>
-    <string name="main_activity__update_all_apps_dialog__title"></string>
-    <string name="update_all_activity__start_installation"></string>
-    <string name="update_all_activity__all_apps_updated"></string>
-    <string name="main_activity_menu__install_app__label"></string>
-    <string name="main_activity__update_all_apps_dialog__message"></string>
-    <string name="update_all_activity__these_apps_will_be_updated"></string>
-    <string name="update_all_activity__label"></string>
-    <string name="update_all_activity__downloaded_file_is_missing"></string>
 </resources>

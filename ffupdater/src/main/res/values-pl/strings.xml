@@ -276,24 +276,4 @@
     <string name="download_activity__retry_installation">Ponów instalację</string>
     <string name="settings__network__use_cloudflare_mirrors__title">Użyj serwerów Cloudflare</string>
     <string name="settings__network__use_cloudflare_mirrors__summary">Włącz, aby zmiejszyć użycie zasobów głównego serwera kiedy jest dostępna aktualizacja.</string>
-    <string name="default_theme_preference" translatable="false"></string>
-    <string name="main_activity__update_all_apps_dialog__message"></string>
-    <string name="main_activity__update_all_apps_dialog__title"></string>
-    <string name="main_activity__update_all_apps_dialog__confirm"></string>
-    <string name="update_all_activity__label"></string>
-    <string name="main_activity__update_all_apps_dialog__abort"></string>
-    <string name="update_all_activity__installation_successful"></string>
-    <string name="update_all_activity__all_apps_updated"></string>
-    <string name="update_all_activity__these_apps_will_be_updated"></string>
-    <string name="main_activity_menu__update_all_apps__label"></string>
-    <string name="thunderbird_beta__title"></string>
-    <string name="thunderbird__description"></string>
-    <string name="main_activity_menu__install_app__label"></string>
-    <string name="update_all_activity__start_installation"></string>
-    <string name="update_all_activity__start_update"></string>
-    <string name="update_all_activity__installation_failed"></string>
-    <string name="update_all_activity__no_updates_available"></string>
-    <string name="generic_beta__warning"></string>
-    <string name="thunderbird__title"></string>
-    <string name="update_all_activity__downloaded_file_is_missing"></string>
 </resources>

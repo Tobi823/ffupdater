@@ -280,20 +280,4 @@
     <string name="foreground__hidden_apps__title">மறைக்கப்பட்ட பயன்பாடுகள்</string>
     <string name="cardview_dialog__hide">மறை</string>
     <string name="download_activity__retry_installation">நிறுவலை மீண்டும் முயற்சிக்கவும்</string>
-    <string name="main_activity__update_all_apps_dialog__abort"></string>
-    <string name="main_activity__update_all_apps_dialog__confirm"></string>
-    <string name="main_activity__update_all_apps_dialog__message"></string>
-    <string name="main_activity__update_all_apps_dialog__title"></string>
-    <string name="update_all_activity__label"></string>
-    <string name="update_all_activity__all_apps_updated"></string>
-    <string name="update_all_activity__start_update"></string>
-    <string name="update_all_activity__no_updates_available"></string>
-    <string name="update_all_activity__these_apps_will_be_updated"></string>
-    <string name="main_activity_menu__install_app__label"></string>
-    <string name="main_activity_menu__update_all_apps__label"></string>
-    <string name="update_all_activity__installation_failed"></string>
-    <string name="update_all_activity__start_installation"></string>
-    <string name="update_all_activity__installation_successful"></string>
-    <string name="default_theme_preference" translatable="false"></string>
-    <string name="update_all_activity__downloaded_file_is_missing"></string>
 </resources>

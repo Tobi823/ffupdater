@@ -291,9 +291,4 @@
     <string name="update_all_activity__installation_failed">Instalação de \"%1$s\" falhou. Continue com o próximo aplicativo.</string>
     <string name="update_all_activity__installation_successful">Instalação de \"%1$s\" bem-sucedida. Soma do certificado: %2$s</string>
     <string name="update_all_activity__downloaded_file_is_missing">Arquivo baixado para \"%1$s\" não existe, continue com o próximo aplicativo.</string>
-    <string name="default_theme_preference" translatable="false"></string>
-    <string name="main_activity__update_all_apps_dialog__confirm"></string>
-    <string name="update_all_activity__label"></string>
-    <string name="main_activity__update_all_apps_dialog__title"></string>
-    <string name="main_activity_menu__update_all_apps__label"></string>
 </resources>

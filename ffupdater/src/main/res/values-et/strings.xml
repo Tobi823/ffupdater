@@ -295,5 +295,4 @@
     <string name="main_activity__update_all_apps_dialog__message">Kas peaksime uuendama kõik aegunud ja kasutusel rakendusi? Uuenduste allalaadimine toimuks taustal. Kui allalaadimine on valmis, siis saad asjakohase teavituse ning uuenduse käivitamiseks pole vaja teha muud, kui seda klõpsida.</string>
     <string name="update_all_activity__all_apps_updated">Valmis. Kõik rakendused said uuendatud (kui võimalik). Võid nüüd lahkuda.</string>
     <string name="update_all_activity__no_updates_available">Paigaldamiseks ei leidu rakendusi. Katkesta.</string>
-    <string name="default_theme_preference" translatable="false"></string>
 </resources>

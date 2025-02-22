@@ -295,5 +295,4 @@
     <string name="main_activity__update_all_apps_dialog__confirm">Aggiorna app</string>
     <string name="update_all_activity__all_apps_updated">Fatto. Tutte le app sono state aggiornate (se possibile). Ora è possibile chiudere l\'app.</string>
     <string name="update_all_activity__downloaded_file_is_missing">Il file scaricato per \'%1$s\' non esiste, continuare con l\'applicazione successiva.</string>
-    <string name="default_theme_preference" translatable="false"></string>
 </resources>

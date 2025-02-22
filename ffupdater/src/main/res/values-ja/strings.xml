@@ -292,8 +292,4 @@
     <string name="update_all_activity__start_update">「%1$s」の更新をインストール開始</string>
     <string name="update_all_activity__start_installation">「%1$s」のインストールを開始</string>
     <string name="update_all_activity__downloaded_file_is_missing">ダウンロードした「%1$s」のファイルが確認できませんでした。次のアプリの更新を続行します。</string>
-    <string name="default_theme_preference" translatable="false"></string>
-    <string name="update_all_activity__installation_failed"></string>
-    <string name="update_all_activity__no_updates_available"></string>
-    <string name="update_all_activity__installation_successful"></string>
 </resources>

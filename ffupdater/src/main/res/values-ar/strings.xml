@@ -267,33 +267,4 @@
     <string name="orbot__description">Orbot هو تطبيق وكيل مجاني يمكّن التطبيقات الأخرى من استخدام الإنترنت بشكل أكثر أمانًا. يستخدم Orbot Tor لتشفير حركة المرور الخاصة بك على الإنترنت ثم يقوم بإخفائها من خلال الارتداد عبر سلسلة من أجهزة الكمبيوتر حول العالم. Tor هو برنامج مجاني وشبكة مفتوحة تساعدك على الدفاع ضد أحد أشكال مراقبة الشبكة التي تهدد الحرية الشخصية والخصوصية، والأنشطة والعلاقات التجارية السرية، وأمن الدولة المعروف باسم تحليل حركة المرور.</string>
     <string name="network__proxy__dialog_message">إذا كنت تريد استخدام وكيل SOCKS أو HTTP، فأدخل تفاصيل الاتصال هنا. استخدم أحد هذه التنسيقات: \n \nSOCKS/HTTP;ip/domain;port \n \nSOCKS/HTTP;ip/domain;port;اسم المستخدم;كلمة المرور \n \nعلى سبيل المثال: SOCKS;1.2.3.4;22 أو HTTP;5.6.7.8;80;user1;pw123 أو HTTP;p.webshare.io;80;u;p. اتركه فارغًا إذا كنت تريد استخدام تكوين وكيل النظام. \n \nالحد: إذا قمت بتغيير \"إعدادات DNS\" في الإعدادات إلى DNS عبر خادم HTTPS، فيجب عليك إدخال مجال الخادم الوكيل. لن تعمل عناوين IP.</string>
     <string name="tor_browser_alpha__description">متصفح Tor هو متصفح الهاتف المحمول الرسمي الوحيد الذي يدعمه مشروع Tor، مطوري أقوى أداة في العالم للخصوصية والحرية عبر الإنترنت. \n \nسيكون متصفح Tor مجانيًا دائمًا، ولكن التبرعات تجعل ذلك ممكنًا. مشروع Tor هو منظمة غير ربحية بموجب 501©(3) ومقرها في الولايات المتحدة. يرجى النظر في تقديم مساهمة اليوم. كل هدية تصنع فرقًا: https://donate.torproject.org. \n \nتعرف على كيفية الإبلاغ عن الأخطاء وتقديم التعليقات على https://support.torproject.org/misc/bug-or-feedback/!</string>
-    <string name="main_activity__update_all_apps_dialog__confirm"></string>
-    <string name="update_all_activity__installation_successful"></string>
-    <string name="update_all_activity__installation_failed"></string>
-    <string name="cromite__title"></string>
-    <string name="fairemail__title"></string>
-    <string name="default_theme_preference" translatable="false"></string>
-    <string name="fennecfdroid__title"></string>
-    <string name="network__proxy__title"></string>
-    <string name="network__dns_provider__cloudflare"></string>
-    <string name="thunderbird__description"></string>
-    <string name="update_all_activity__these_apps_will_be_updated"></string>
-    <string name="main_activity_menu__install_app__label"></string>
-    <string name="download_activity__retry_installation"></string>
-    <string name="update_all_activity__start_installation"></string>
-    <string name="update_all_activity__no_updates_available"></string>
-    <string name="update_all_activity__start_update"></string>
-    <string name="main_activity__update_all_apps_dialog__title"></string>
-    <string name="update_all_activity__label"></string>
-    <string name="main_activity__update_all_apps_dialog__abort"></string>
-    <string name="update_all_activity__all_apps_updated"></string>
-    <string name="main_activity_menu__update_all_apps__label"></string>
-    <string name="main_activity__update_all_apps_dialog__message"></string>
-    <string name="generic_beta__warning"></string>
-    <string name="thunderbird_beta__title"></string>
-    <string name="thunderbird__title"></string>
-    <string name="settings__network__use_cloudflare_mirrors__title"></string>
-    <string name="settings__network__use_cloudflare_mirrors__summary"></string>
-    <string name="network__dns_provider__google"></string>
-    <string name="update_all_activity__downloaded_file_is_missing"></string>
 </resources>

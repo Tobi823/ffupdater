@@ -295,5 +295,4 @@
     <string name="update_all_activity__installation_failed">Не удалось установить «%1$s». Перейдите к следующему приложению.</string>
     <string name="update_all_activity__all_apps_updated">Готово. Все приложения были обновлены (где это возможно). Теперь можно выйти.</string>
     <string name="main_activity__update_all_apps_dialog__message">Следует ли обновлять устаревшие и не отключенные приложения? Обновления будут загружаться в фоновом режиме. Когда загрузка будет завершена, Вы будете оповещены уведомлением. Вам необходимо нажать на него, чтобы запустить обновление.</string>
-    <string name="default_theme_preference" translatable="false"></string>
 </resources>
