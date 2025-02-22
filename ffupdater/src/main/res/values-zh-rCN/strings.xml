@@ -223,11 +223,7 @@
     <string name="device__prefer_32bit_apks__title">32 位安装包优先</string>
     <string name="main_activity__app_was_signed_by_different_certificate">此应用使用了不同的证书签名，无法使用 FFUpdater 更新。</string>
     <string name="tor_browser_alpha__title">Tor 浏览器 Alpha 版本</string>
-    <string name="tor_browser_alpha__description">Tor 浏览器是 Tor 项目官方支持的唯一移动浏览器，此项目开发者维护着世界上最强大的在线隐私和自由工具。
-\n
-\nTor 浏览器将永远是免费的，但捐赠使其存在。Tor 项目是一个位于美国的 501 ©(3) 非营利组织。请考虑现在做出捐赠。每一份支持都能发挥作用：https://donate.torproject.org。
-\n
-\n在此处了解如何报告错误和提供反馈：https://support.torproject.org/misc/bug-or-feedback/ ！</string>
+    <string name="tor_browser_alpha__description">Tor 浏览器是 Tor 项目官方支持的唯一移动浏览器，此项目开发者维护着世界上最强大的在线隐私和自由工具。 \n \nTor 浏览器将永远是免费的，但捐赠使其存在。Tor 项目是一个位于美国的 501 ©(3) 非营利组织。请考虑现在做出捐赠。每一份支持都能发挥作用：https://donate.torproject.org。 \n \n在此处了解如何报告错误和提供反馈：https://support.torproject.org/misc/bug-or-feedback/ ！</string>
     <string name="foreground__hide_apps_signed_by_different_certificate__title">隐藏使用不同证书签名的应用。</string>
     <string name="firefox_focus_beta__title">Firefox Focus 公测版</string>
     <string name="duckduckgo_android__title">DuckDuckGo 私人浏览器</string>
@@ -303,4 +299,5 @@
     <string name="main_activity__update_all_apps_dialog__confirm">更新应用</string>
     <string name="update_all_activity__installation_successful">成功安装了 \'%1$s\'。证书哈希值：%2$s</string>
     <string name="update_all_activity__all_apps_updated">完毕。更新了所有应用（如果可能）。你现在可以关闭本应用了。</string>
+    <string name="default_theme_preference" translatable="false"></string>
 </resources>
