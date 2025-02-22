@@ -17,7 +17,7 @@
 \nJoignez-vous aux nouvelles fonctionnalités et donnez vos premiers commentaires : https ://brave.com/msupport
 \nVous pouvez installer Brave Beta en même temps que votre version actuelle de Brave pour Android.</string>
     <string name="brave_beta__title">Brave Browser (Beta)</string>
-    <string name="brave_nightly__description">Bienvenue dans la version Nightly (Developer) de Brave pour Android !\NJugez des nouvelles fonctionnalités et donnez vos premières impressions : https://brave.com/msupport\nVous pouvez installer Brave Nightly en même temps que votre version actuelle de Brave pour Android.</string>
+    <string name="brave_nightly__description">Bienvenue dans la version Nightly (Developer) de Brave pour Android !\nJugez des nouvelles fonctionnalités et donnez vos premières impressions : https://brave.com/msupport\nVous pouvez installer Brave Nightly en même temps que votre version actuelle de Brave pour Android.</string>
     <string name="brave_nightly__title">Navigateur Brave (Nightly)</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Copier le rapport d\'erreur dans le presse-papiers</string>
     <string name="crash_report__explain_text__download_activity_fetching_url">L\'erreur suivante s\'est produite lors de l\'extraction de l\'URL de téléchargement. Si cette erreur se produit fréquemment, n\'hésitez pas à la signaler sur notabug.org, GitHub ou GitLab. N\'oubliez pas d\'ajouter votre rapport d\'erreur du presse-papiers et la description de la façon dont vous reproduisez cette erreur.</string>
@@ -60,9 +60,9 @@
     <string name="download_activity__delete_cache_explanation">Si vous pensez que FFUpdater a mis en cache une mise à jour d\'application défectueuse, cliquez sur le bouton \"Effacer le cache\" pour supprimer le cache de cette application.</string>
     <string name="download_activity__download_app_with_status">Téléchargement de l\'application</string>
     <string name="download_activity__download_failed">Echec du téléchargement</string>
-    <string name="download_activity__downloaded_application_from">Application téléchargée à partir de :</string>
+    <string name="download_activity__downloaded_application_from">Application téléchargée à partir de :</string>
     <string name="app_installer__signature_of_download_is_invalid">La demande téléchargée n\'est PAS vérifiée</string>
-    <string name="download_activity__exception__show_button">"<u>Afficher le rapport d\'erreur détaillé.</u>"</string>
+    <string name="download_activity__exception__show_button"><u>Afficher le rapport d\'erreur détaillé.</u></string>
     <string name="download_activity__external_storage_not_accessible">Le stockage externe n\'est pas disponible - ne peut pas commencer le téléchargement. L\'état actuel est :</string>
     <string name="download_activity__fetch_url_for_download">Récupérer l\'url de téléchargement de %1$s</string>
     <string name="download_activity__fetched_url_for_download_successfully">URL de téléchargement récupéré de %1$s</string>
@@ -70,11 +70,11 @@
     <string name="download_activity__github_rate_limit_exceeded">La limite de débit de GitHub-API est dépassée. Veuillez réessayer le téléchargement dans l\'heure qui suit.</string>
     <string name="download_activity__open_cache_explanation">Vous pouvez ouvrir le dossier cache pour copier le fichier APK à un endroit où il y a plus de stockage libre. Attention, sur Android 11+, seuls certains gestionnaires de fichiers sont capables d\'ouvrir les fichiers dans le dossier Android/data.</string>
     <string name="download_activity__open_cache_folder_button_text">ouvrir le dossier du cache</string>
-    <string name="download_activity__sha_256_certificate_fingerprint">Empreinte numérique du certificat SHA-256 :</string>
+    <string name="download_activity__sha_256_certificate_fingerprint">Empreinte numérique du certificat SHA-256 :</string>
     <string name="download_activity__temporary_network_issue">Un problème de réseau temporaire s\'est produit. Veuillez réessayer plus tard.</string>
     <string name="download_activity__too_low_memory_description">Sur votre appareil, il n\'y a que %1$d MB d\'espace disponible. Cela peut entraîner un échec du téléchargement ou de l\'installation.</string>
     <string name="download_activity__too_low_memory_title">Espace disque faible</string>
-    <string name="download_activity__use_cached_downloaded_apk">Utiliser le fichier déjà téléchargé de :</string>
+    <string name="download_activity__use_cached_downloaded_apk">Utiliser le fichier déjà téléchargé de :</string>
     <string name="download_activity__you_can_now_close_this_window">Vous pouvez maintenant fermer cette fenêtre</string>
     <string name="download_activity__label">Installer l\'application</string>
     <string name="notification__install_error__channel_descr">Canal de notification des échecs de mise à jour de %1$s.</string>
@@ -88,9 +88,9 @@
     <string name="app_installer__installed_app_has_invalid_signature">L\'application installée n\'est PAS vérifiée</string>
     <string name="installed_application_is_verified">La demande installée est vérifiée</string>
     <string name="installed_version">Installé : %1$s</string>
-    <string name="main_activity__github_api_limit_exceeded">"<u>La limite de GitHub-API est dépassée. Réessayez l\'heure suivante.</u>"</string>
+    <string name="main_activity__github_api_limit_exceeded"><u>La limite de GitHub-API est dépassée. Réessayez l\'heure suivante.</u></string>
     <string name="main_activity__no_unmetered_network">Pas de réseau non mesuré</string>
-    <string name="main_activity__temporary_network_issue">"<u>Problème de réseau temporaire. Réessayez plus tard.</u>"</string>
+    <string name="main_activity__temporary_network_issue"><u>Problème de réseau temporaire. Réessayez plus tard.</u></string>
     <string name="ok">D\'accord</string>
     <string name="request_installation_permission_dialog__abort">Abandonner</string>
     <string name="request_installation_permission_dialog__grant_permission">Accorder la permission</string>
@@ -158,7 +158,7 @@
     <string name="notification__update_available__channel_descr">Canal de notification des mises à jour disponibles pour %1$s.</string>
     <string name="notification__update_available__channel_name">Notification de mise à jour de %1$s</string>
     <string name="update_notification__text">Cliquez pour installer la mise à jour</string>
-    <string name="update_notification__title">Mise à jour pour "%1$s" disponible</string>
+    <string name="update_notification__title">Mise à jour pour %1$s disponible</string>
     <string name="vivaldi__description">Vivaldi est un navigateur pratique et très respectueux de la vie privée. Il intègre des nombreuses fonctions dont un bloqueur de pubs et traqueurs (désactivé par défaut) et un traducteur de pages. Des outils judicieux de prise de notes et de capture de page vous feront gagner du temps. En option, vous pouvez afficher les onglets comme sur ordinateurs, des thèmes clair et sombre ou personnaliser l’interface. Téléchargez-le et profitez de ses performances.</string>
     <string name="vivaldi__title">Navigateur Vivaldi</string>
     <string name="vivaldi__warning">- Vivaldi n\'est que partiellement open source.
@@ -177,10 +177,7 @@
     <string name="install_activity__download_file_failed__crash_text">L\'erreur suivante est survenue pendant le téléchargement. Si cette erreur a lieu fréquemment, n\'hésitez pas à envoyer le rapport d\'erreur sur notabug.org, gitHub ou GitLab.</string>
     <string name="crash_report__explain_text__download_activity_install_file">L\'erreur suivante est survenue pendant l\'installation. Si cette erreur a lieu fréquemment, n\'hésitez pas à envoyer le rapport d\'erreur sur notabug.org, gitHub ou GitLab.</string>
     <string name="download_activity__different_installer_info__text">Si l\'installation échoue souvent, essayez de changer pour l\' \"installateur natif\" dans les paramètres.</string>
-    <string name="kiwi__warning">- Kiwi utilise la fondation technique de Google Chrome et supporte donc la position de monopole du moteur de rendu Chromium.
-\n- Kiwi n\'est pas un navigateur confidentiel idéal mais dispose d\'un bon support d\'extensions.
-\n- Le navigateur est payé par des moteurs de recherches pour chaque recherche effectuée avec le navigateur. En fonction du choix du moteur de recherche, vos requêtes peuvent aller vers les serveurs de Kiwibrowser / Kiwisearchservices.
-\n Les publicités Google Ads dans Kiwi peuvent utiliser la position - mais vous pouvez refuser en désactivant la Fonctionnalité Découverte. Mais cela va bientôt changer. Pour plus d\'informations, visitez https://privacy.kiwibrowser.org/.</string>
+    <string name="kiwi__warning">- Kiwi utilise la fondation technique de Google Chrome et supporte donc la position de monopole du moteur de rendu Chromium. \n- Kiwi n\'est pas un navigateur confidentiel idéal mais dispose d\'un bon support d\'extensions. \n- Le navigateur est payé par des moteurs de recherches pour chaque recherche effectuée avec le navigateur. En fonction du choix du moteur de recherche, vos requêtes peuvent aller vers les serveurs de Kiwibrowser / Kiwisearchservices. \n Les publicités Google Ads dans Kiwi peuvent utiliser la position - mais vous pouvez refuser en désactivant la Fonctionnalité Découverte. Mais cela va bientôt changer. Pour plus d\'informations, visitez https://privacy.kiwibrowser.org/.</string>
     <string name="download_activity__open_folder">Ouvrir le dossier</string>
     <string name="network__dns_provider__title">Paramètres DNS</string>
     <string name="network__custom_doh_server__title">Serveur DNS par HTTPS personnalisé</string>
@@ -301,4 +298,39 @@
     <string name="cardview_dialog__eol">Cette appli ne devrait plus être utilisée :</string>
     <string name="foreground__hidden_apps__title">Applis cachées</string>
     <string name="cardview_dialog__hide">Cacher</string>
+    <string name="default_theme_preference" translatable="false"></string>
+    <string name="cardview_dialog__different_signature"></string>
+    <string name="main_activity__update_all_apps_dialog__message"></string>
+    <string name="main_activity_menu__install_app__label"></string>
+    <string name="cromite__title"></string>
+    <string name="update_all_activity__installation_failed"></string>
+    <string name="notification__bg_update_check__unreliable_execution__text"></string>
+    <string name="thunderbird__description"></string>
+    <string name="cardview_dialog__not_installed_by_ffupdater"></string>
+    <string name="update_all_activity__start_update"></string>
+    <string name="ffupdater__different_signature_message"></string>
+    <string name="thorium__warning"></string>
+    <string name="main_activity__update_all_apps_dialog__abort"></string>
+    <string name="main_activity__update_all_apps_dialog__confirm"></string>
+    <string name="k9mail__description"></string>
+    <string name="fairemail__warning"></string>
+    <string name="fairemail__description"></string>
+    <string name="update_all_activity__installation_successful"></string>
+    <string name="update_all_activity__start_installation"></string>
+    <string name="cromite__description"></string>
+    <string name="main_activity_menu__update_all_apps__label"></string>
+    <string name="update_all_activity__all_apps_updated"></string>
+    <string name="main_activity__update_all_apps_dialog__title"></string>
+    <string name="fairemail__title"></string>
+    <string name="cardview_dialog__self_description_label"></string>
+    <string name="update_all_activity__no_updates_available"></string>
+    <string name="update_all_activity__these_apps_will_be_updated"></string>
+    <string name="update_all_activity__label"></string>
+    <string name="generic_beta__warning"></string>
+    <string name="thunderbird__title"></string>
+    <string name="thunderbird_beta__title"></string>
+    <string name="settings__network__use_cloudflare_mirrors__summary"></string>
+    <string name="settings__network__use_cloudflare_mirrors__title"></string>
+    <string name="thorium__title"></string>
+    <string name="k9mail__title"></string>
 </resources>
