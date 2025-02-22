@@ -255,7 +255,7 @@
     <string name="session_installer__status_failure">Darbība kopumā neizdevās. Sistēma vienmēr centīsies sniegt precīzu kļūmes iemeslu, taču tas notiek tikai dažos retos gadījumos.</string>
     <string name="session_installer__status_failure_aborted">Darbība neizdevās, jo tā tika aktīvi pārtraukta. Iemesls, lietotājs aktīvi noraidīja pieprasītās atļaujas vai sesija tika pārtraukta.</string>
     <string name="notification__uncaught_exception__channel_name">Avārijas paziņojumi</string>
-    <string name="kiwi__warning">- Kiwi ir tikai daļēji atvērtā koda lietotne.\n- Kiwi izmanto Google Chrome tehnisko bāzi un tādējādi netieši atbalsta Chromium renderēšanas dzinēja monopolstāvokli.\n- Kiwi nav ideāls konfidencialitātes pārlūks, taču tam ir labs papildinājumu atbalsts.\n- Pārlūks gūst peļņu no meklētājprogrammām par katru meklēšanas pieprasījumu, kas veikta Kiwi pārlūkā. Atkarībā no izvēlētās meklētājprogrammas meklēšanas pieprasījumi var tikt nosūtīti caur Kiwibrowser / Kiwisearchservices serveriem.\n- Google Ads Kiwi pārlūkā var izmantot atrašanās vietas datus, lai rādītu atlasītas reklāmas, taču to var novērst, atspējojot atklāšanas funkciju (Discovery feature) iestatījumos. Taču drīz tas var mainīties. Plašāka informācija pieejama https://privacy.kiwibrowser.org vietnē.</string>
+    <string name="kiwi__warning">- Kiwi ir tikai daļēji atvērtā koda lietotne.\n- Kiwi izmanto Google Chrome tehnisko bāzi un tādējādi netieši atbalsta Chromium renderēšanas dzinēja monopolstāvokli.\n- Kiwi nav ideāls konfidencialitātes pārlūks, taču tam ir labs papildinājumu atbalsts.\n- Pārlūks gūst peļņu no meklētājprogrammām par katru meklēšanas pieprasījumu, kas veikta Kiwi pārlūkā. Atkarībā no izvēlētās meklētājprogrammas meklēšanas pieprasījumi var tikt nosūtīti caur Kiwibrowser / Kiwisearchservices serveriem.\n- Google Ads Kiwi pārlūkā var izmantot atrašanās vietas datus, lai rādītu atlasītas reklāmas, taču to var novērst, atspējojot atklāšanas funkciju (Discovery feature) iestatījumos. Taču drīz tas var mainīties. Plašāka informācija pieejama https://privacy.kiwibrowser.org vietnē.</string>
     <string name="vivaldi__description">Atklājiet pārsteidzoši ātru interneta pārlūku! Vivaldi ir jauns, bezmaksas un privāts tīmekļa pārlūks, kas izstrādāts, paturot prātā tā elastīgo pielāgojamību. Tas ir aprīkots ar noderīgām funkcijām, tostarp iebūvētu AdBlocker (uznirstošo logu bloķētāju), izsekošanas aizsardzību un privātu vietņu tulkotāju. Pārlūka iespējas, piemēram, pilnvērtīgas darbvirsmas stila cilnes, tumši/gaiši motīvi un izkārtojuma pielāgojamība, palīdz konfigurēt pārlūku pēc jūsu patikas un vēlmēm.</string>
     <string name="duckduckgo_android__description">DuckDuckGo lietotne nodrošina visplašāko tiešsaistes konfidencialitātes aizsardzību vienas pogas nospiešanas attālumā. Tikai ar vienu lejupielādi jūs iegūstat jaunu ikdienas pārlūku, kas piedāvā nevainojamu aizsardzību meklēšanas un pārlūkošanas laikā, kā arī piekļuvi saņemto e-pasta ziņojumu un izmantoto lietotņu izsekošanas aizsardzībai. Daudzi no šiem aizsardzības līdzekļiem pēc noklusējuma netiek piedāvāti lielākajā daļā populārāko pārlūku.</string>
     <string name="infobox">Šis ir konfidencialitātes draudzīga pārlūku atjauninātājs. Lai uzstādītu jaunu pārluka lietotni, noklikšķiniet uz telefona lejupielādes ikonas. Velciet uz leju, lai veiktu atjauninājuma pārbaudi. Pēc noklusējuma lietotne periodiski fonā veiks atjauninājuma pārbaudi. Ja būs pieejami atjauninājumi tie tiks lejupielādēti un uzstādīti. Noklikšķiniet uz zobrata, lai pielāgotu lietotnes uzvedības iestatījumus.\n\nPēdējā veiksmīgā atjauninājumu fona pārbaude notika %1$s</string>
@@ -276,4 +276,23 @@
     <string name="notification__install_error__generic_channel_descr">Paziņojumu kanāls par neveiksmīgiem lietotņu atjauninājumiem.</string>
     <string name="session_installer__status_failure_incompatible">Darbība neizdevās, jo tā būtībā nav saderīga ar šo ierīci. Iemesls, lietotnei trūkst nepieciešamā aparatūras funkcija, trūkt vietējā koda ABI, ko atbalsta ierīce, vai tai nepieciešama jaunāka SDK versija utt.</string>
     <string name="firefox_focus_beta__description">Izmantojiet Firefox Focus visam, kur nevēlaties izmantot galveno pārlūku — lai izmantotu tajos, ātri apskatīt, aizvērt un aizmirst par to, momentos. Bez cilnēm, bez satraukuma, bez muļķībām. Bloķē arī tiešsaistes izsekotājus. Viens pieskāriens, un jūsu pārlūkošanas vēsture ir pilnībā iznīcināta.\n\nFirefox Focus ir ideāls rīks, lai iekļūt/pamest, meklēt un iznīcināt. Tīmekļa pārlūks - esmu misijā, kuram nav darīšana kādā, ko, kur un kāpēc.</string>
+    <string name="main_activity__update_all_apps_dialog__message"></string>
+    <string name="update_all_activity__start_installation"></string>
+    <string name="update_all_activity__start_update"></string>
+    <string name="update_all_activity__all_apps_updated"></string>
+    <string name="update_all_activity__these_apps_will_be_updated"></string>
+    <string name="default_theme_preference" translatable="false"></string>
+    <string name="update_all_activity__no_updates_available"></string>
+    <string name="update_all_activity__installation_successful"></string>
+    <string name="main_activity_menu__install_app__label"></string>
+    <string name="main_activity__update_all_apps_dialog__abort"></string>
+    <string name="main_activity__update_all_apps_dialog__confirm"></string>
+    <string name="main_activity__update_all_apps_dialog__title"></string>
+    <string name="main_activity_menu__update_all_apps__label"></string>
+    <string name="update_all_activity__label"></string>
+    <string name="update_all_activity__installation_failed"></string>
+    <string name="generic_beta__warning"></string>
+    <string name="thunderbird__title"></string>
+    <string name="thunderbird__description"></string>
+    <string name="thunderbird_beta__title"></string>
 </resources>
