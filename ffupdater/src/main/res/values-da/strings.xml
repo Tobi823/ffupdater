@@ -9,17 +9,12 @@
     <string name="notification__error__text">Rapportér venligst denne fejl. Klik for at se fejlrapporten.</string>
     <string name="notification__error__title">Kontrol af baggrundsopdatering mislykkedes</string>
     <string name="brave__title">Brave Private Browser</string>
-    <string name="brave_beta__description">Velkommen til Brave Beta til Android!
-\nPrøv de nyeste funktioner og giv tidlig feedback: https://brave.com/msupport
-\nDu kan installere Brave Beta sammen med din nuværende version af Brave til Android.</string>
+    <string name="brave_beta__description">Velkommen til Brave Beta til Android! \nPrøv de nyeste funktioner og giv tidlig feedback: https://brave.com/msupport \nDu kan installere Brave Beta sammen med din nuværende version af Brave til Android.</string>
     <string name="brave_beta__title">Brave Browser (Beta)</string>
     <string name="application_successfully_installed">App installeret</string>
-    <string name="brave__warning">- Brave bruger det tekniske grundlag i Google Chrome og understøtter dermed indirekte Chromium-gengivelsesmotorens monopolposition.
-\n- På grund af dets Basic Attention Token BAT på Ethereum blockchain har projektet bånd til kryptovaluta. Blockchains har mange problemer og bør efter min mening undgås.</string>
+    <string name="brave__warning">- Brave bruger det tekniske grundlag i Google Chrome og understøtter dermed indirekte Chromium-gengivelsesmotorens monopolposition. \n- På grund af dets Basic Attention Token BAT på Ethereum blockchain har projektet bånd til kryptovaluta. Blockchains har mange problemer og bør efter min mening undgås.</string>
     <string name="brave__description">Bevar dit privatliv på internettet, gratis! Brave Private Browser er din hurtige, gratis og sikre private webbrowser med annonceblokering og pop op-blokering. Bevar dit privatliv og søg på internettet uden at blive sporet af annoncører, malware og pop-ups.</string>
-    <string name="brave_nightly__description">Velkommen til Brave Nightly (Developer) til Android!
-\nPrøv de nyeste funktioner og giv tidlig feedback: https://brave.com/msupport
-\nDu kan installere Brave Nightly sammen med din nuværende version af Brave til Android.</string>
+    <string name="brave_nightly__description">Velkommen til Brave Nightly (Developer) til Android! \nPrøv de nyeste funktioner og giv tidlig feedback: https://brave.com/msupport \nDu kan installere Brave Nightly sammen med din nuværende version af Brave til Android.</string>
     <string name="brave_nightly__title">Brave Browser (Nightly)</string>
     <string name="crash_report__explain_text__download_activity_fetching_url">Denne fejl opstod, da downloadmetadata blev hentet. Hvis denne fejl opstår ofte, er du velkommen til at indsende nedbrudsrapporten til notabug.org, GitHub eller GitLab.</string>
     <string name="crash_report__explain_text__uncaught_throwable">Desværre gik FFUpdater ned sidste gang og loggede denne fejl. Send venligst nedbrudsrapporten til notabug.org, GitHub eller GitLab.</string>
@@ -33,11 +28,7 @@
     <string name="notification__error__channel_descr">Vis fejl i baggrundsopdateringskontrollen</string>
     <string name="firefox_beta__description">Firefox Browser til Android er automatisk privat og utrolig hurtig. Tusindvis af online-trackere følger dig hver dag, indsamler information om, hvor du går online og sænker din hastighed. Firefox blokerer som standard over 2000 af disse trackere, og der er tilføjelsesprogrammer til reklameblokering, hvis du vil tilpasse din browser endnu mere. Med Firefox får du den sikkerhed, du fortjener, og den hastighed, du har brug for, i en privat, mobil browser.</string>
     <string name="firefox_klar__description">Firefox Klar er udviklet til Tyskland, Østrig og Schweiz, men kan bruges af brugere i alle lande. Den minder meget om Firefox Focus, men navnet blev ændret i tysktalende lande for at undgå forveksling med magasinet Focus af Hubert Burda Media group. I modsætning til Firefox Focus har Firefox Klar telemetri deaktiveret som standard på grund af strenge tyske privatlivslove.</string>
-    <string name="firefox_nightly__description">Bemærk venligst, at denne app før hed Firefox Preview. Den er nu blevet overført til Firefox Nightly.
-\n
-\nFirefox Nightly er en udviklingskanal for nye Mozilla Firefox-udgivelser.
-\n
-\nFirefox Nightly er designet til at vise de mere eksperimentelle builds af Firefox. Nightly-kanalen giver brugere mulighed for at opleve de nyeste Firefox-innovationer i et ustabilt miljø og give feedback om funktioner og ydeevne for at hjælpe med at bestemme, hvad der ender i den endelige udgivelse.</string>
+    <string name="firefox_nightly__description">Bemærk venligst, at denne app før hed Firefox Preview. Den er nu blevet overført til Firefox Nightly. \n \nFirefox Nightly er en udviklingskanal for nye Mozilla Firefox-udgivelser. \n \nFirefox Nightly er designet til at vise de mere eksperimentelle builds af Firefox. Nightly-kanalen giver brugere mulighed for at opleve de nyeste Firefox-innovationer i et ustabilt miljø og give feedback om funktioner og ydeevne for at hjælpe med at bestemme, hvad der ender i den endelige udgivelse.</string>
     <string name="firefox_release__description">Firefox Browser til Android er automatisk privat og utrolig hurtig. Tusindvis af online-trackere følger dig hver dag, indsamler information om, hvor du går online og sænker din hastighed. Firefox blokerer som standard over 2000 af disse trackere, og der er tilføjelsesprogrammer til reklameblokering, hvis du vil tilpasse din browser endnu mere. Med Firefox får du den sikkerhed, du fortjener, og den hastighed, du har brug for, i en privat, mobil browser.</string>
     <string name="download_activity__too_low_memory_description">Din enhed mangler lagerplads. (Kun %1$d MB ledig.) Dette vil føre til download- eller installationsfejl.</string>
     <string name="download_activity__delete_cache_explanation">Hvis du tror, at FFUpdater har cachelagret en defekt appopdatering, eller hvis du vil spare plads: Klik på knappen for at slette den downloadede fil.</string>
@@ -48,10 +39,7 @@
     <string name="download_activity__too_low_memory_title">Lav Lagringsplads</string>
     <string name="download_activity__use_cached_downloaded_apk">Brug allerede downloadet fil fra:</string>
     <string name="notification__install_success__title">%1$s er blevet opdateret</string>
-    <string name="kiwi__warning">- Kiwi bruger det tekniske grundlag i Google Chrome og understøtter dermed indirekte Chromiums monopolposition.
-\n- Kiwi er ikke en ideel privatlivsbrowser, men har god understøttelse af tilføjelser.
-\n- Browseren betales af søgemaskiner for hver søgning, der udføres ved hjælp af Kiwi Browser. Afhængigt af valg af søgemaskine kan anmodninger gå via Kiwibrowser / Kiwisearchservices servere.
-\n- Google Ads i Kiwi kan bruge placeringsdata til annoncer - men det kan deaktiveres ved at deaktivere Discovery-funktionen. Men dette vil snart ændre sig. Se https://privacy.kiwibrowser.org/ for flere detaljer.</string>
+    <string name="kiwi__warning">- Kiwi bruger det tekniske grundlag i Google Chrome og understøtter dermed indirekte Chromiums monopolposition. \n- Kiwi er ikke en ideel privatlivsbrowser, men har god understøttelse af tilføjelser. \n- Browseren betales af søgemaskiner for hver søgning, der udføres ved hjælp af Kiwi Browser. Afhængigt af valg af søgemaskine kan anmodninger gå via Kiwibrowser / Kiwisearchservices servere. \n- Google Ads i Kiwi kan bruge placeringsdata til annoncer - men det kan deaktiveres ved at deaktivere Discovery-funktionen. Men dette vil snart ændre sig. Se https://privacy.kiwibrowser.org/ for flere detaljer.</string>
     <string name="main_activity__github_api_limit_exceeded"><u>GitHub-API-grænse overskredet. Prøv igen om en time.</u></string>
     <string name="ok">OK</string>
     <string name="request_installation_permission_dialog__message">FFUpdater mangler tilladelse til at installere og opdatere apps. Du skal give disse tilladelser, ellers vil FFUpdater ikke fungere.</string>
@@ -97,7 +85,7 @@
     <string name="request_installation_permission_dialog__abort">Afbryd</string>
     <string name="request_installation_permission_dialog__grant_permission">Giv tilladelse</string>
     <string name="request_installation_permission_dialog__title">Tilladelse til at installere</string>
-    <string name="running_downloads_dialog__message">Appen downloader opdateringer i baggrunden nu. Vil du starte en ny download, der kan tage længere tid\?</string>
+    <string name="running_downloads_dialog__message">Appen downloader opdateringer i baggrunden nu. Vil du starte en ny download, der kan tage længere tid?</string>
     <string name="running_downloads_dialog__negative">Nej, download den ikke</string>
     <string name="running_downloads_dialog__title">Kører downloads</string>
     <string name="running_downloads_dialog__yes">Ja</string>
@@ -170,51 +158,23 @@
     <string name="firefox_nightly__title">Firefox Nightly</string>
     <string name="firefox_release__title">Firefox Browser</string>
     <string name="firefox_release__warning">- En forbedret version af Firefox er også tilgængelig på F-Droid under navnet Fennec F-Droid.</string>
-    <string name="iceraven__description">Absolut ikke bragt til dig af Mozilla!
-\n
-\nIceraven Browser er en browser til Android, baseret på Mozillas Fenix-version af Firefox, GeckoView og Mozilla Android-komponenter.
-\n
-\nVores mål er at være en fork af den nye Firefox til Android, der giver brugerne flere indstilliner, flere muligheder for at tilpasse (herunder et bredt udvidelsesbibliotek) og mere information om de sider, de besøger, og hvordan deres browsere interagerer med de sider.</string>
+    <string name="iceraven__description">Absolut ikke bragt til dig af Mozilla! \n \nIceraven Browser er en browser til Android, baseret på Mozillas Fenix-version af Firefox, GeckoView og Mozilla Android-komponenter. \n \nVores mål er at være en fork af den nye Firefox til Android, der giver brugerne flere indstilliner, flere muligheder for at tilpasse (herunder et bredt udvidelsesbibliotek) og mere information om de sider, de besøger, og hvordan deres browsere interagerer med de sider.</string>
     <string name="iceraven__title">Iceraven Browser</string>
-    <string name="iceraven__warning">- Vedligeholderen giver ingen garantier for sikkerhed eller opdateringer eller endda stabilitet.
-\n - Projektet er længere tid end normalt om at levere sikkerhedsopdateringer.</string>
-    <string name="infobox">Dette er et opdateringsværktøj til privatlivsvenlige browsere. Klik på plusknappen for at installere nye apps. Stryg ned for at søge efter nye opdateringer. Som standard søger appen jævnligt efter opdateringer i baggrunden, som så bliver downloadet og installeret. Klik på tandhjulet for at tilpasse adfærden i indstillingerne.
-\n
-\nSidste vellykkede kontrol af baggrundsopdatering: %1$s</string>
+    <string name="iceraven__warning">- Vedligeholderen giver ingen garantier for sikkerhed eller opdateringer eller endda stabilitet. \n - Projektet er længere tid end normalt om at levere sikkerhedsopdateringer.</string>
+    <string name="infobox">Dette er et opdateringsværktøj til privatlivsvenlige browsere. Klik på plusknappen for at installere nye apps. Stryg ned for at søge efter nye opdateringer. Som standard søger appen jævnligt efter opdateringer i baggrunden, som så bliver downloadet og installeret. Klik på tandhjulet for at tilpasse adfærden i indstillingerne. \n \nSidste vellykkede kontrol af baggrundsopdatering: %1$s</string>
     <string name="app_card__information_about_the_app">Information om appen</string>
     <string name="download_activity__delete_cache_button_text">ryd cache</string>
     <string name="orbot__description">Orbot er en gratis proxy-app, der giver andre apps mulighed for at bruge internettet mere sikkert. Orbot bruger Tor til at kryptere din internettrafik og skjuler den derefter ved at hoppe gennem en række computere rundt om i verden. Tor er gratis software og et åbent netværk, der hjælper dig med at forsvare dig mod en form for netværksovervågning, der truer personlig frihed og privatliv, fortrolige forretningsaktiviteter og relationer og statsovervågning kendt som trafikanalyse.</string>
     <string name="vivaldi__description">Oplev en lynhurtig internetbrowser! Vivaldi er en ny, gratis og privat webbrowser bygget med fleksibilitet i tankerne. Den kommer spækket med nyttige funktioner, herunder en indbygget AdBlocker (pop-up-blokering), sporingsbeskyttelse og privat oversættelse. Browserindstillinger såsom rigtige faner i skrivebordsstil, mørke/lyse temaer og layoutvalg hjælper dig med at gøre den til din.</string>
-    <string name="vivaldi__warning">- Vivaldi er kun delvist open source.
-\n- Den bruger også Google Chromes tekniske fundament og understøtter dermed indirekte Chromium-gengivelsesmotorens monopolposition.</string>
+    <string name="vivaldi__warning">- Vivaldi er kun delvist open source. \n- Den bruger også Google Chromes tekniske fundament og understøtter dermed indirekte Chromium-gengivelsesmotorens monopolposition.</string>
     <string name="app_installer__installed_app_has_invalid_signature">Installeret app er IKKE verificeret</string>
-    <string name="firefox_focus_beta__description">Brug Firefox Focus til alt, hvad du vil holde adskilt fra din hovedbrowser - for alle \'ind, ud, glem det\'-øjeblikke. Ingen faner, ingen ballade. Bloker også online trackere. Et tryk, og din browserhistorik er fuldstændig ødelagt.
-\n
-\nFirefox Focus er den perfekte \'ind/ud, search and destroy, jeg er på en mission, der ikke vedkommer dig\'-webbrowser.</string>
+    <string name="firefox_focus_beta__description">Brug Firefox Focus til alt, hvad du vil holde adskilt fra din hovedbrowser - for alle \'ind, ud, glem det\'-øjeblikke. Ingen faner, ingen ballade. Bloker også online trackere. Et tryk, og din browserhistorik er fuldstændig ødelagt. \n \nFirefox Focus er den perfekte \'ind/ud, search and destroy, jeg er på en mission, der ikke vedkommer dig\'-webbrowser.</string>
     <string name="settings__network__trust_user_cas__title">Hav tillid til brugertilføjede CA\'er</string>
     <string name="chromium__title">Chromium</string>
     <string name="chromium__description">Chromium er et open source-browserprojekt, der har til formål at bygge en sikrere, hurtigere og mere stabil måde for alle brugere at opleve nettet på. Dette websted indeholder designdokumenter, arkitekturoversigter, testoplysninger og mere for at hjælpe dig med at lære at bygge og arbejde med Chromium-kildekoden.</string>
     <string name="settings__background__update_check__when_device_idle__summary">Aktiver dette, hvis du ikke ønsker, at dine apps genstartes af en baggrundsopdatering. Deaktiver dette, hvis du ønsker en mere forudsigelig tidsplan for baggrundsopdateringstjek.</string>
-    <string name="network__custom_doh_server__dialog_message">Indtast forbindelsesdetaljerne for den brugerdefinerede DoH-server i et af disse formater:
-\n
-\nurl;ip1
-\n
-\nurl;ip1;ip2
-\n
-\nurl;ip1;ip2;ip3
-\n
-\nurl;ip1;ip2;ip3;ip4
-\n
-\nFor eksempel: https://dns.google/dns-query;8.8.8.8 eller https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
-    <string name="network__proxy__dialog_message">Hvis du vil bruge en SOCKS- eller HTTP-proxy, skal du indtaste forbindelsesdetaljerne her. Brug et af disse formater:
-\n
-\nSOCKS/HTTP;ip/domain;port
-\n
-\nSOCKS/HTTP;ip/domain;port;username;password
-\n
-\nF.eks: SOCKS;1.2.3.4;22 eller HTTP;5.6.7.8;80;user1;pw123 eller HTTP;p.webshare.io;80;u;p. Lad den stå tom, hvis du vil bruge systemproxy-konfigurationen.
-\n
-\nBegrænsning: Hvis du ændrer \'DNS-indstillinger\' i indstillingerne til en DNS over HTTPS-server, skal du indtaste domænet for proxyserveren. IP\'er vil ikke virke.</string>
+    <string name="network__custom_doh_server__dialog_message">Indtast forbindelsesdetaljerne for den brugerdefinerede DoH-server i et af disse formater: \n \nurl;ip1 \n \nurl;ip1;ip2 \n \nurl;ip1;ip2;ip3 \n \nurl;ip1;ip2;ip3;ip4 \n \nFor eksempel: https://dns.google/dns-query;8.8.8.8 eller https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
+    <string name="network__proxy__dialog_message">Hvis du vil bruge en SOCKS- eller HTTP-proxy, skal du indtaste forbindelsesdetaljerne her. Brug et af disse formater: \n \nSOCKS/HTTP;ip/domain;port \n \nSOCKS/HTTP;ip/domain;port;username;password \n \nF.eks: SOCKS;1.2.3.4;22 eller HTTP;5.6.7.8;80;user1;pw123 eller HTTP;p.webshare.io;80;u;p. Lad den stå tom, hvis du vil bruge systemproxy-konfigurationen. \n \nBegrænsning: Hvis du ændrer \'DNS-indstillinger\' i indstillingerne til en DNS over HTTPS-server, skal du indtaste domænet for proxyserveren. IP\'er vil ikke virke.</string>
     <string name="notification__network_error__text">Denne fejl bør kun forekomme sjældent. Men hvis det sker ofte, bør du rapportere det. Klik her for at se den detaljerede fejlmeddelelse.</string>
     <string name="notification__update_available__generic_channel_descr">Notifikationskanal for tilgængelige appopdateringer.</string>
     <string name="notification__network_error__title">Netværksfejl i baggrundsjob</string>
@@ -257,19 +217,14 @@
     <string name="notification__install_error__generic_channel_descr">Underretningskanal for mislykkede appopdateringer.</string>
     <string name="notification__install_error__generic_channel_name">Meddelelse om fejl i appopdatering</string>
     <string name="tor_browser_alpha__title">Tor Browser Alpha</string>
-    <string name="tor_browser_alpha__description">Tor Browser er den eneste officielle mobilbrowser, der understøttes af Tor Project, udviklere af verdens stærkeste værktøj til privatliv og frihed online.
-\n
-\nTor Browser vil ALTID være gratis, men donationer gør det muligt. Tor-projektet er en 501©(3) nonprofit med base i USA. Overvej venligst at give et bidrag i dag. Hver gave gør en forskel: https://donate.torproject.org.
-\n
-\nLær, hvordan du rapporterer fejl og giver feedback på https://support.torproject.org/misc/bug-or-feedback/!</string>
+    <string name="tor_browser_alpha__description">Tor Browser er den eneste officielle mobilbrowser, der understøttes af Tor Project, udviklere af verdens stærkeste værktøj til privatliv og frihed online. \n \nTor Browser vil ALTID være gratis, men donationer gør det muligt. Tor-projektet er en 501©(3) nonprofit med base i USA. Overvej venligst at give et bidrag i dag. Hver gave gør en forskel: https://donate.torproject.org. \n \nLær, hvordan du rapporterer fejl og giver feedback på https://support.torproject.org/misc/bug-or-feedback/!</string>
     <string name="generic_app_warning__beta_version">- Denne app er designet til udviklere og testere. Den kan indeholde forskellige fejl, der kan påvirke dit sædvanlige arbejde med browseren.</string>
     <string name="main_activity__app_was_signed_by_different_certificate">Denne app blev signeret med et andet certifikat og kan ikke opdateres med FFUpdater.</string>
     <string name="foreground__hide_apps_signed_by_different_certificate__title">Skjul apps, der er signeret med et andet certifikat.</string>
     <string name="firefox_focus_beta__title">Firefox Focus Beta</string>
     <string name="duckduckgo_android__title">DuckDuckGo Private Browser</string>
     <string name="duckduckgo_android__description">DuckDuckGo-appen giver den mest omfattende online privatlivsbeskyttelse med et tryk på en knap. Med én download får du en ny hverdagsbrowser, der tilbyder problemfri beskyttelse mens du søger og browser, samt adgang til sporingsbeskyttelse for e-mails du modtager og apps du bruger. Mange af disse beskyttelser tilbydes ikke i de fleste populære browsere som standard.</string>
-    <string name="duckduckgo_android__warning">- DuckDuckGo bruger systemets webview til at vise websider.
-\n- Der var en kontrovers om, at ikke alle cookies fra Microsoft blev blokeret - men det er blevet rettet.</string>
+    <string name="duckduckgo_android__warning">- DuckDuckGo bruger systemets webview til at vise websider. \n- Der var en kontrovers om, at ikke alle cookies fra Microsoft blev blokeret - men det er blevet rettet.</string>
     <string name="privacy_browser__title">Privacy Browser</string>
     <string name="privacy_browser__warning">FFUpdater downloader filerne fra F-Droid-serverne og er derfor ikke hurtigere.</string>
     <string name="privacy_browser__description">Den eneste måde at forhindre, at data bliver misbrugt på, er at forhindre, at de overhovedet bliver indsamlet. Privacy Browser har to primære mål: Minimere de data, der sendes til internettet, og minimere de data, der er gemt på enheden.</string>

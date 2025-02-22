@@ -9,19 +9,12 @@
     <string name="available_version">Verfügbar: %1$s</string>
     <string name="notification__error__text">Bitte melden Sie diesen Fehler. Klicken Sie auf diese Benachrichtigung, um den Fehlerbericht anzuzeigen.</string>
     <string name="notification__error__title">Updateprüfung ist fehlgeschlagen</string>
-    <string name="brave__description">Der Brave Web Browser ist dein privater, sicherer mobiler Web Browser, der Drittanbieteranzeigen kostenlos blockiert!
-\n
-\nDie Brave Web Browser App ist eine schnelle, sichere mobile Web-browser-App für Android mit integriertem Pop Up Blocker und Werbeblocker für Drittanbieteranzeigen. Brave ist blitzschnell, sicher und privat und verhindert, dass du mit Anzeigen überladen oder mit Malware und Popups verseucht wirst.</string>
+    <string name="brave__description">Der Brave Web Browser ist dein privater, sicherer mobiler Web Browser, der Drittanbieteranzeigen kostenlos blockiert! \n \nDie Brave Web Browser App ist eine schnelle, sichere mobile Web-browser-App für Android mit integriertem Pop Up Blocker und Werbeblocker für Drittanbieteranzeigen. Brave ist blitzschnell, sicher und privat und verhindert, dass du mit Anzeigen überladen oder mit Malware und Popups verseucht wirst.</string>
     <string name="brave__title">Brave Browser</string>
-    <string name="brave__warning">- Brave nutzt die technische Grundlage von Google Chrome und unterstützt damit indirekt die Monopolstellung der Chromium-Render-Engine.
-\n- Durch seinen Basic Attention Token BAT auf der Ethereum-Blockchain hat das Projekt Verbindungen zur Kryptowährung. Blockchains haben viele Probleme und sollten meiner Meinung nach vermieden werden.</string>
-    <string name="brave_beta__description">Willkommen bei Brave Beta für Android!
-\nTeste die neuesten Funktionen und gib frühzeitig Feedback: https://brave.com/msupport
-\nDu kannst Brave Beta neben deiner aktuellen Version von Brave für Android installieren.</string>
+    <string name="brave__warning">- Brave nutzt die technische Grundlage von Google Chrome und unterstützt damit indirekt die Monopolstellung der Chromium-Render-Engine. \n- Durch seinen Basic Attention Token BAT auf der Ethereum-Blockchain hat das Projekt Verbindungen zur Kryptowährung. Blockchains haben viele Probleme und sollten meiner Meinung nach vermieden werden.</string>
+    <string name="brave_beta__description">Willkommen bei Brave Beta für Android! \nTeste die neuesten Funktionen und gib frühzeitig Feedback: https://brave.com/msupport \nDu kannst Brave Beta neben deiner aktuellen Version von Brave für Android installieren.</string>
     <string name="brave_beta__title">Brave Browser (Beta)</string>
-    <string name="brave_nightly__description">Willkommen bei Brave Nightly (Developer) für Android!
-\nTeste die neuesten Funktionen und gib frühzeitig Feedback: https://brave.com/msupport
-\nDu kannst Brave Nightly neben deiner aktuellen Version von Brave für Android installieren.</string>
+    <string name="brave_nightly__description">Willkommen bei Brave Nightly (Developer) für Android! \nTeste die neuesten Funktionen und gib frühzeitig Feedback: https://brave.com/msupport \nDu kannst Brave Nightly neben deiner aktuellen Version von Brave für Android installieren.</string>
     <string name="brave_nightly__title">Brave Browser (Nightly)</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Kopieren des Absturzberichts in die Zwischenablage</string>
     <string name="install_activity__download_file_failed__crash_text">Dieser Fehler ist während des Downloads aufgetreten. Wenn dieser Fehler häufig auftritt, lade den Absturzbericht auf notabug.org, GitHub oder GitLab hoch.</string>
@@ -49,16 +42,10 @@
     <string name="firefox_release__description">Der Firefox Browser für Android blockt standardmäßig über 2000 Online-Tracker, die dir jeden Tag durchs Web folgen wollen – automatisch und mit dem verbesserten Tracking-Schutz. Warum? Um deine Privatsphäre zu schützen und Unternehmen davon abzuhalten, deine persönlichen Daten ohne deine Zustimmung zu sammeln und daraus Profit zu schlagen. Außerdem kannst du so noch schneller durchs Web surfen und bekommst nicht nur die Privatsphäre, die du verdienst, sondern auch den schnellen mobilen Browser, den du brauchst. Mit Adblocker Add-ons kannst du deinen Browser zusätzlich auf deine Bedürfnisse anpassen.</string>
     <string name="firefox_release__title">Firefox Browser</string>
     <string name="firefox_release__warning">- Eine verbesserte Version von Firefox ist auch auf F-Droid unter dem Namen Fennec F-Droid verfügbar.</string>
-    <string name="iceraven__description">Definitiv nicht von Mozilla für dich entwickelt!
-\n
-\nIceraven Browser ist ein Webbrowser für Android, der auf Mozillas Fenix-Version von Firefox, GeckoView und Mozilla Android Components basiert.
-\n
-\nUnser Ziel ist es, ein enger Fork des neuen Firefox für Android zu sein, der den Nutzern mehr Optionen, mehr Möglichkeiten zur Anpassung (einschließlich einer breiten Erweiterungsbibliothek) und mehr Informationen über die besuchten Seiten und deren Interaktion mit dem Browser bieten soll.</string>
+    <string name="iceraven__description">Definitiv nicht von Mozilla für dich entwickelt! \n \nIceraven Browser ist ein Webbrowser für Android, der auf Mozillas Fenix-Version von Firefox, GeckoView und Mozilla Android Components basiert. \n \nUnser Ziel ist es, ein enger Fork des neuen Firefox für Android zu sein, der den Nutzern mehr Optionen, mehr Möglichkeiten zur Anpassung (einschließlich einer breiten Erweiterungsbibliothek) und mehr Informationen über die besuchten Seiten und deren Interaktion mit dem Browser bieten soll.</string>
     <string name="iceraven__title">Iceraven Browser</string>
     <string name="iceraven__warning">- Der Maintainer gibt keine Garantien oder Gewährleistungen für Sicherheit oder Updates oder gar Stabilität.\n - Das Projekt braucht länger als üblich, um Sicherheitsaktualisierungen bereitzustellen.</string>
-    <string name="infobox">Dies ist ein Aktualisierungsprogramm für datenschutzfreundliche Browser. Klicke auf den Plus-Button, um neue Apps zu installieren. Wische nach unten, um eine Prüfung auf neue Updates zu erzwingen. Standardmäßig sucht die App im Hintergrund regelmäßig nach Updates, die dann heruntergeladen und eventuell auch installiert werden. Klicke auf das Zahnrad, um das Verhalten in den Einstellungen anzupassen.
-\n
-\nLetzte erfolgreiche Überprüfung auf Updates im Hintergrund: %1$s</string>
+    <string name="infobox">Dies ist ein Aktualisierungsprogramm für datenschutzfreundliche Browser. Klicke auf den Plus-Button, um neue Apps zu installieren. Wische nach unten, um eine Prüfung auf neue Updates zu erzwingen. Standardmäßig sucht die App im Hintergrund regelmäßig nach Updates, die dann heruntergeladen und eventuell auch installiert werden. Klicke auf das Zahnrad, um das Verhalten in den Einstellungen anzupassen. \n \nLetzte erfolgreiche Überprüfung auf Updates im Hintergrund: %1$s</string>
     <string name="app_card__information_about_the_app">Information über die Applikation</string>
     <string name="download_activity__delete_cache_button_text">Cache leeren</string>
     <string name="download_activity__delete_cache_explanation">Wenn du glaubst, dass FFUpdater ein fehlerhaftes App-Update heruntergeladen hat, oder wenn du Speicherplatz sparen möchtest, dann klicke auf den Button, um die Datei zu löschen.</string>
@@ -67,7 +54,7 @@
     <string name="download_activity__download_failed">Download schlug fehl</string>
     <string name="download_activity__downloaded_application_from">App wurde heruntergeladen von:</string>
     <string name="app_installer__signature_of_download_is_invalid">Heruntergeladene App ist NICHT verifiziert</string>
-    <string name="download_activity__exception__show_button">"<u>Zeige den detaillierten Fehlerbericht an.</u>"</string>
+    <string name="download_activity__exception__show_button"><u>Zeige den detaillierten Fehlerbericht an.</u></string>
     <string name="download_activity__external_storage_not_accessible">Externer Speicher ist nicht verfügbar - kann den Download nicht starten. Aktueller Status ist:</string>
     <string name="download_activity__fetch_url_for_download">Abruf der Metainformation von %1$s</string>
     <string name="download_activity__fetched_url_for_download_successfully">Metainformationen von %1$s wurde abgerufen</string>
@@ -97,15 +84,15 @@
     <string name="kiwi__description">Kiwi Browser wurde entwickelt, um im Internet zu surfen, Nachrichten zu lesen, Videos anzuschauen und Musik zu hören, ohne dabei zu stören.</string>
     <string name="kiwi__title">Kiwi Browser Next</string>
     <string name="kiwi__warning">- Kiwi ist nur teilweise Open-Source\n- Kiwi nutzt die technische Grundlage von Google Chrome und unterstützt damit indirekt die Monopolstellung der Chromium-Rendering-Engine.\n- Kiwi ist kein idealer Datenschutz-Browser, hat aber eine gute Addon-Unterstützung.\n- Der Browser wird von Suchmaschinen für jede durchgeführte Suche bezahlt. Je nach Wahl der Suchmaschine können die Anfragen über die Kiwibrowser / Kiwisearchservices-Server laufen.\n- Google Ads in Kiwi kann die Standortdaten für Anzeigen verwenden - du kannst dies jedoch deaktivieren, indem du die Entdeckungsfunktion deaktivierst. Dies wird sich jedoch bald ändern. Siehe https://privacy.kiwibrowser.org/ für weitere Details.</string>
-    <string name="main_activity__github_api_limit_exceeded">"<u>GitHub-API-Limit überschritten. Nächste Stunde erneut versuchen.</u>"</string>
+    <string name="main_activity__github_api_limit_exceeded"><u>GitHub-API-Limit überschritten. Nächste Stunde erneut versuchen.</u></string>
     <string name="main_activity__no_unmetered_network">Kein nicht getaktetes Netzwerk</string>
-    <string name="main_activity__temporary_network_issue">"<u>Vorübergehendes Netzwerkproblem. Versuche es später nochmal.</u>"</string>
+    <string name="main_activity__temporary_network_issue"><u>Vorübergehendes Netzwerkproblem. Versuche es später nochmal.</u></string>
     <string name="ok">OK</string>
     <string name="request_installation_permission_dialog__abort">Abbrechen</string>
     <string name="request_installation_permission_dialog__grant_permission">Erlaubnis erteilen</string>
     <string name="request_installation_permission_dialog__message">FFUpdater fehlt die Berechtigung, Apps zu installieren und zu aktualisieren. Du musst diese Berechtigungen erteilen, sonst funktioniert FFUpdater nicht.</string>
     <string name="request_installation_permission_dialog__title">Installationsberechtigung</string>
-    <string name="running_downloads_dialog__message">Die App lädt jetzt Updates im Hintergrund herunter. Möchtest du einen neuen Download starten, der länger dauern kann\?</string>
+    <string name="running_downloads_dialog__message">Die App lädt jetzt Updates im Hintergrund herunter. Möchtest du einen neuen Download starten, der länger dauern kann?</string>
     <string name="running_downloads_dialog__negative">Nein, nicht herunterladen</string>
     <string name="running_downloads_dialog__title">Laufende Downloads</string>
     <string name="running_downloads_dialog__yes">Ja</string>
@@ -172,8 +159,7 @@
     <string name="update_notification__title">Update für %1$s verfügbar</string>
     <string name="vivaldi__description">Vivaldi ist ein privater Browser mit einzigartigen Anpassungsmöglichkeiten. Es bietet viele Funktionen, wie z. B. Werbe- und Trackerblocker (standardmäßig deaktiviert), Webseitenübersetzung. Notizen und Screenshots helfen, deine Arbeit zu beschleunigen. Die Anpassung der Tabs, dunkle/helle Designs und Layoutoptionen helfen dir, den Browser nach deinen Wünschen zu gestalten.</string>
     <string name="vivaldi__title">Vivaldi Browser</string>
-    <string name="vivaldi__warning">- Vivaldi ist nur teilweise quelloffen.
-\n- Außerdem nutzt es die technische Grundlage von Google Chrome und unterstützt damit indirekt die Monopolstellung der Chromium-Rendering-Engine.</string>
+    <string name="vivaldi__warning">- Vivaldi ist nur teilweise quelloffen. \n- Außerdem nutzt es die technische Grundlage von Google Chrome und unterstützt damit indirekt die Monopolstellung der Chromium-Rendering-Engine.</string>
     <string name="notification__eol_apps__channel_description">Benachrichtigungskanal für Warnungen vor veralteten Apps.</string>
     <string name="notification__eol_apps__channel_name">Benachrichtigung bei veralteten Apps</string>
     <string name="notification__eol_apps__title">Veraltete Apps installiert</string>
@@ -220,26 +206,8 @@
     <string name="installer__method__root_not_granted">Root-Berechtigung nicht erteilt!</string>
     <string name="installer__method__session">Session-Installer: Für die meisten Geräte empfohlen. Unter Android 12 oder höher können Apps nach einer Benutzerbestätigung im Hintergrund aktualisiert werden.</string>
     <string name="installer__method__root">Root-Installer: Apps ohne Bestätigungsdialog aktualisieren. Voraussetzung dafür ist ein gerootetes Smartphone.</string>
-    <string name="network__custom_doh_server__dialog_message">Gib die Verbindungsdetails für den benutzerdefinierten DoH-Server in einem der folgenden Formate ein:
-\n
-\nurl;ip1
-\n
-\nurl;ip1;ip2
-\n
-\nurl;ip1;ip2;ip3
-\n
-\nurl;ip1;ip2;ip3;ip4
-\n
-\nZum Beispiel: https://dns.google/dns-query;8.8.8.8 oder https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
-    <string name="network__proxy__dialog_message">Wenn du einen SOCKS- oder HTTP-Proxy verwenden möchtest, gib hier die Verbindungsdaten ein. Verwende eines der folgenden Formate:
-\n
-\nSOCKS/HTTP;IP/Domäne;Port
-\n
-\nSOCKS/HTTP;IP/Domäne;Port;Benutzername;Passwort
-\n
-\nZum Beispiel: SOCKS;1.2.3.4;22 oder HTTP;5.6.7.8;80;user1;pw123 oder HTTP;p.webshare.io;80;u;p. Lass das Feld leer, wenn du die Proxy-Konfiguration des Systems verwenden möchtest.
-\n
-\nEinschränkung: Wenn du in den Einstellungen \"DNS-Einstellungen\" auf einen DNS-über-HTTPS-Server umstellst, musst du die Domäne des Proxy-Servers angeben. IPs werden nicht funktionieren.</string>
+    <string name="network__custom_doh_server__dialog_message">Gib die Verbindungsdetails für den benutzerdefinierten DoH-Server in einem der folgenden Formate ein: \n \nurl;ip1 \n \nurl;ip1;ip2 \n \nurl;ip1;ip2;ip3 \n \nurl;ip1;ip2;ip3;ip4 \n \nZum Beispiel: https://dns.google/dns-query;8.8.8.8 oder https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
+    <string name="network__proxy__dialog_message">Wenn du einen SOCKS- oder HTTP-Proxy verwenden möchtest, gib hier die Verbindungsdaten ein. Verwende eines der folgenden Formate: \n \nSOCKS/HTTP;IP/Domäne;Port \n \nSOCKS/HTTP;IP/Domäne;Port;Benutzername;Passwort \n \nZum Beispiel: SOCKS;1.2.3.4;22 oder HTTP;5.6.7.8;80;user1;pw123 oder HTTP;p.webshare.io;80;u;p. Lass das Feld leer, wenn du die Proxy-Konfiguration des Systems verwenden möchtest. \n \nEinschränkung: Wenn du in den Einstellungen \"DNS-Einstellungen\" auf einen DNS-über-HTTPS-Server umstellst, musst du die Domäne des Proxy-Servers angeben. IPs werden nicht funktionieren.</string>
     <string name="network__dns_provider__no">Kein DNS (nur zu Testzwecken)</string>
     <string name="background__separate_notification_channels__summary">Verschiedene Benachrichtigungskanäle für jede einzelne App benutzen</string>
     <string name="background__separate_notification_channels__title">Verschiedene Benachrichtigungskanäle</string>
@@ -250,23 +218,16 @@
     <string name="notification__network_error__title">Netzwerkfehler in Hintergrundaufgabe</string>
     <string name="notification__network_error__text">Dieser Fehler sollte nur selten auftreten. Wenn er jedoch häufig auftritt, melde ihn bitte. Tippe hier, um eine detaillierte Fehlermeldung anzuzeigen.</string>
     <string name="tor_browser_alpha__title">Tor Browser Alpha</string>
-    <string name="tor_browser_alpha__description">Tor Browser ist der einzig offiziell unterstützte Browser des Tor Projekts, den Entwicklern des weltweit sichersten Tool für Privatsphäre und Freiheit online.
-\n
-\nTor Browser wird immer KOSTENLOS sein, wobei Spenden dies ermöglichen. Das Tor Projekt ist eine 501©(3) nonprofit in den USA. Bitte spende, wenn du kannst. Jede Spende macht einen Unterschied: https://donate.torproject.org.
-\n
-\nErfahre, wie du Fehler melden und Feedback geben kannst unter https://support.torproject.org/misc/bug-or-feedback/!</string>
+    <string name="tor_browser_alpha__description">Tor Browser ist der einzig offiziell unterstützte Browser des Tor Projekts, den Entwicklern des weltweit sichersten Tool für Privatsphäre und Freiheit online. \n \nTor Browser wird immer KOSTENLOS sein, wobei Spenden dies ermöglichen. Das Tor Projekt ist eine 501©(3) nonprofit in den USA. Bitte spende, wenn du kannst. Jede Spende macht einen Unterschied: https://donate.torproject.org. \n \nErfahre, wie du Fehler melden und Feedback geben kannst unter https://support.torproject.org/misc/bug-or-feedback/!</string>
     <string name="firefox_focus_beta__title">Firefox Focus Beta</string>
     <string name="foreground__hide_apps_signed_by_different_certificate__title">Apps ausblenden, die mit einem anderen Zertifikat signiert sind.</string>
-    <string name="firefox_focus_beta__description">Nutze Firefox Focus für alles, was du getrennt von deinem Hauptbrowser aufbewahren willst - für all die Momente, in denen du einsteigen und wieder aussteigen willst und es vergessen willst. Keine Tabs, kein Aufheben, kein Durcheinander. Blockiere auch Online-Tracker. Ein Fingertipp, und dein Browserverlauf ist komplett gelöscht.
-\n
-\nFirefox Focus ist der perfekte Webbrowser zum Rein- und Rausgehen, zum Suchen und Löschen, zum \"Ich bin auf einer Mission, die dich nichts angeht\".</string>
+    <string name="firefox_focus_beta__description">Nutze Firefox Focus für alles, was du getrennt von deinem Hauptbrowser aufbewahren willst - für all die Momente, in denen du einsteigen und wieder aussteigen willst und es vergessen willst. Keine Tabs, kein Aufheben, kein Durcheinander. Blockiere auch Online-Tracker. Ein Fingertipp, und dein Browserverlauf ist komplett gelöscht. \n \nFirefox Focus ist der perfekte Webbrowser zum Rein- und Rausgehen, zum Suchen und Löschen, zum \"Ich bin auf einer Mission, die dich nichts angeht\".</string>
     <string name="main_activity__app_was_signed_by_different_certificate">Diese App wurde mit einem anderen Zertifikat signiert und kann nicht mit FFUpdater aktualisiert werden.</string>
     <string name="duckduckgo_android__title">DuckDuckGo Private Browser</string>
     <string name="privacy_browser__warning">FFUpdater lädt die Dateien von den F-Droid-Servern herunter und ist daher nicht schneller.</string>
     <string name="privacy_browser__title">Privacy Browser</string>
     <string name="generic_app_warning__beta_version">- Diese App ist für Entwickler und Tester gedacht. Sie kann verschiedene Fehler enthalten, die deine normale Arbeit mit dem Browser beeinträchtigen können.</string>
-    <string name="duckduckgo_android__warning">- DuckDuckGo verwendet die System-Webansicht zur Anzeige von Webseiten.
-\n- Es gab eine Kontroverse darüber, dass nicht alle Cookies von Microsoft blockiert werden - dies wurde jedoch behoben.</string>
+    <string name="duckduckgo_android__warning">- DuckDuckGo verwendet die System-Webansicht zur Anzeige von Webseiten. \n- Es gab eine Kontroverse darüber, dass nicht alle Cookies von Microsoft blockiert werden - dies wurde jedoch behoben.</string>
     <string name="privacy_browser__description">Die einzige Möglichkeit, den Missbrauch von Daten zu verhindern, besteht darin, sie gar nicht erst zu sammeln. Privacy Browser hat zwei Hauptziele: Minimierung der Daten, die an das Internet gesendet werden und Minimierung der Daten, die auf dem Gerät gespeichert werden.</string>
     <string name="duckduckgo_android__description">Die DuckDuckGo-App bietet den umfassendsten Online-Datenschutz mit nur einem Tastendruck. Mit einem Download erhältst du einen neuen, alltäglichen Browser, der nahtlosen Schutz bietet, während du suchst und browst, und Zugriff auf Tracking-Schutz für E-Mails, die du erhältst, und Apps, die du nutzt. Viele dieser Schutzmaßnahmen werden in den meisten gängigen Browsern standardmäßig nicht angeboten.</string>
     <string name="main_activity__an_error_occurred"><u>Ein Fehler ist aufgetreten. Versuche es später erneut.</u></string>

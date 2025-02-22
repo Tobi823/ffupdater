@@ -4,22 +4,17 @@
     <string name="available_version">Disponível: %1$s</string>
     <string name="notification__error__title">Verificação de atualização de antecedentes falhou</string>
     <string name="brave__title">Brave Navegador Privado</string>
-    <string name="brave__warning">- A Brave utiliza os fundamentos técnicos do Google Chrome e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium.
-\n- Devido ao seu Token de Atenção Básica BAT na cadeia de bloqueio Ethereum, o projeto tem ligações com a moeda criptográfica. As correntes de bloqueio têm muitos problemas e devem ser evitadas, a meu ver.</string>
+    <string name="brave__warning">- A Brave utiliza os fundamentos técnicos do Google Chrome e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium. \n- Devido ao seu Token de Atenção Básica BAT na cadeia de bloqueio Ethereum, o projeto tem ligações com a moeda criptográfica. As correntes de bloqueio têm muitos problemas e devem ser evitadas, a meu ver.</string>
     <string name="brave_beta__title">Navegador Brave (Beta)</string>
     <string name="brave_nightly__title">Navegador Brave (Nocturno)</string>
-    <string name="brave_nightly__description">Bem-vindo ao Brave Nightly (Developer) para Android!
-\nExperimente as mais recentes características e dê o seu feedback antecipado: https://brave.com/msupport
-\nPode instalar o Brave Nightly juntamente com a sua versão atual do Brave for Android.</string>
+    <string name="brave_nightly__description">Bem-vindo ao Brave Nightly (Developer) para Android! \nExperimente as mais recentes características e dê o seu feedback antecipado: https://brave.com/msupport \nPode instalar o Brave Nightly juntamente com a sua versão atual do Brave for Android.</string>
     <string name="app_description">Atualizador para navegadores amigos da privacidade</string>
     <string name="action_about_title">Sobre FFUpdater</string>
     <string name="application_installation_was_not_successful">A instalação da aplicação não foi bem sucedida</string>
     <string name="notification__error__text">Queira comunicar este erro. Clique para ver o relatório de erro.</string>
     <string name="app_icon">ícone da aplicação</string>
     <string name="application_successfully_installed">Aplicação instalada com sucesso</string>
-    <string name="brave_beta__description">Bem-vindo à Brave Beta para Android!
-\nExperimente as mais recentes características e dê o seu feedback antecipado: https://brave.com/msupport
-\nPode instalar o Brave Beta juntamente com a sua versão atual do Brave for Android.</string>
+    <string name="brave_beta__description">Bem-vindo à Brave Beta para Android! \nExperimente as mais recentes características e dê o seu feedback antecipado: https://brave.com/msupport \nPode instalar o Brave Beta juntamente com a sua versão atual do Brave for Android.</string>
     <string name="brave__description">Navegue em privado na Internet, de graça! O Brave Private Browser App é o seu browser privado rápido, gratuito e seguro com bloqueador de anúncios e bloqueador de pop-ups. Navegue e pesquise privadamente na Internet sem ser rastreado por anunciantes, malware e pop-ups.</string>
     <string name="crash_report__go_to_github">Ir para GitHub</string>
     <string name="crash_report__go_to_gitlab">Ir para GitLab</string>
@@ -59,25 +54,14 @@
     <string name="firefox_focus__title">Firefox Focus</string>
     <string name="firefox_klar__description">Firefox Klar é desenvolvido para a Alemanha, Áustria e Suíça, mas pode ser utilizado por utilizadores em qualquer país. É muito semelhante ao Firefox Focus, mas o nome foi alterado nos países de língua alemã para evitar confusão com a revista Focus do grupo Hubert Burda Media. Ao contrário do Firefox Focus, o Firefox Klar tem a telemetria desativada por defeito devido às rígidas leis de privacidade alemãs.</string>
     <string name="firefox_klar__title">Firefox Klar</string>
-    <string name="firefox_nightly__description">Por favor, note que este aplicativo costumava ser intitulado Firefox Preview. Agora foi transferido para o Firefox Nightly.
-\n
-\nO Firefox Nightly é um canal de desenvolvimento para novas versões do Mozilla Firefox.
-\n
-\nO Firefox Nightly foi concebido para mostrar as versões mais experimentais do Firefox. O canal Nightly permite que os usuários experimentem as mais recentes inovações do Firefox em um ambiente instável e forneçam feedback sobre recursos e desempenho para ajudar a determinar o que faz a versão final.</string>
+    <string name="firefox_nightly__description">Por favor, note que este aplicativo costumava ser intitulado Firefox Preview. Agora foi transferido para o Firefox Nightly. \n \nO Firefox Nightly é um canal de desenvolvimento para novas versões do Mozilla Firefox. \n \nO Firefox Nightly foi concebido para mostrar as versões mais experimentais do Firefox. O canal Nightly permite que os usuários experimentem as mais recentes inovações do Firefox em um ambiente instável e forneçam feedback sobre recursos e desempenho para ajudar a determinar o que faz a versão final.</string>
     <string name="firefox_nightly__title">Firefox Nightly</string>
     <string name="firefox_release__description">O Firefox Browser para Android é automaticamente privado e incrivelmente rápido. Milhares de rastreadores online seguem-no todos os dias, recolhendo informação sobre onde vai online e diminuindo a sua velocidade. O Firefox bloqueia por defeito mais de 2000 destes localizadores e existem suplementos de bloqueadores de anúncios disponíveis se quiser personalizar ainda mais o seu navegador. Com o Firefox, terá a segurança que merece e a velocidade que necessita num navegador privado e móvel.</string>
     <string name="firefox_release__title">Firefox Browser</string>
     <string name="firefox_release__warning">- Uma versão melhorada do Firefox também está disponível no F-Droid com o nome Fennec F-Droid.</string>
-    <string name="iceraven__description">Definitivamente não trazido até si por Mozilla!
-\n
-\nIceraven Browser é um navegador web para Android, baseado na versão Fenix da Mozilla do Firefox, GeckoView e Mozilla Android Components.
-\n
-\nO nosso objetivo é ser um garfo próximo do novo Firefox para Android que procura fornecer aos utilizadores mais opções, mais oportunidades de personalização (incluindo uma ampla biblioteca de extensão), e mais informação sobre as páginas que visitam e como os seus navegadores estão a interagir com essas páginas.</string>
-    <string name="iceraven__warning">- O responsável não dá qualquer garantia ou garantia de segurança ou de atualizações ou mesmo de estabilidade.
-\n- O projeto leva mais tempo do que o habitual para fornecer atualizações de segurança.</string>
-    <string name="infobox">Este é um atualizador para navegadores amigos da privacidade. Clique no botão \"mais\" para instalar novas aplicações. Deslize para baixo para forçar a verificação de novas atualizações. Por defeito, a aplicação verificará periodicamente se há atualizações em segundo plano, que serão depois descarregadas e eventualmente instaladas. Clique no equipamento para personalizar o comportamento nas definições.
-\n
-\nÚltima verificação bem sucedida das atualizações em segundo plano: %1$s</string>
+    <string name="iceraven__description">Definitivamente não trazido até si por Mozilla! \n \nIceraven Browser é um navegador web para Android, baseado na versão Fenix da Mozilla do Firefox, GeckoView e Mozilla Android Components. \n \nO nosso objetivo é ser um garfo próximo do novo Firefox para Android que procura fornecer aos utilizadores mais opções, mais oportunidades de personalização (incluindo uma ampla biblioteca de extensão), e mais informação sobre as páginas que visitam e como os seus navegadores estão a interagir com essas páginas.</string>
+    <string name="iceraven__warning">- O responsável não dá qualquer garantia ou garantia de segurança ou de atualizações ou mesmo de estabilidade. \n- O projeto leva mais tempo do que o habitual para fornecer atualizações de segurança.</string>
+    <string name="infobox">Este é um atualizador para navegadores amigos da privacidade. Clique no botão \"mais\" para instalar novas aplicações. Deslize para baixo para forçar a verificação de novas atualizações. Por defeito, a aplicação verificará periodicamente se há atualizações em segundo plano, que serão depois descarregadas e eventualmente instaladas. Clique no equipamento para personalizar o comportamento nas definições. \n \nÚltima verificação bem sucedida das atualizações em segundo plano: %1$s</string>
     <string name="iceraven__title">Iceraven Browser</string>
     <string name="app_card__information_about_the_app">Informação sobre a aplicação</string>
     <string name="download_activity__delete_cache_button_text">Limpar cache</string>
@@ -103,10 +87,7 @@
     <string name="installed_version">Instalado: %1$s</string>
     <string name="kiwi__description">O Kiwi Browser é feito para navegar na Internet, ler notícias, ver vídeos e ouvir música, sem aborrecimentos.</string>
     <string name="kiwi__title">Kiwi Browser Next</string>
-    <string name="kiwi__warning">- Kiwi utiliza os fundamentos técnicos do Google Chrome e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium.
-\n- Kiwi não é um navegador de privacidade ideal, mas tem um bom suporte adicional.
-\n- O navegador está a ser pago pelos motores de busca por cada pesquisa feita utilizando o Kiwi Browser. Dependendo da escolha do motor de busca, os pedidos podem ser feitos através dos servidores Kiwibrowser / Kiwisearchservices.
-\n- Os anúncios Google no Kiwi podem utilizar os dados de localização para anúncios - mas pode desativá-los desativando a funcionalidade de Descoberta. Mas isto irá mudar em breve. Ver https://privacy.kiwibrowser.org/ para mais detalhes.</string>
+    <string name="kiwi__warning">- Kiwi utiliza os fundamentos técnicos do Google Chrome e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium. \n- Kiwi não é um navegador de privacidade ideal, mas tem um bom suporte adicional. \n- O navegador está a ser pago pelos motores de busca por cada pesquisa feita utilizando o Kiwi Browser. Dependendo da escolha do motor de busca, os pedidos podem ser feitos através dos servidores Kiwibrowser / Kiwisearchservices. \n- Os anúncios Google no Kiwi podem utilizar os dados de localização para anúncios - mas pode desativá-los desativando a funcionalidade de Descoberta. Mas isto irá mudar em breve. Ver https://privacy.kiwibrowser.org/ para mais detalhes.</string>
     <string name="main_activity__github_api_limit_exceeded"><u>Limite de GitHub-API excedido. Tentativa na próxima hora.</u></string>
     <string name="main_activity__no_unmetered_network">Sem rede ilimitada</string>
     <string name="main_activity__temporary_network_issue"><u>Entrada de rede temporária. Tenta mais tarde.</u></string>
@@ -170,8 +151,7 @@
     <string name="update_notification__text">Clique para instalar atualização</string>
     <string name="update_notification__title">Atualização para %1$s disponíveis</string>
     <string name="vivaldi__title">Vivaldi Browser</string>
-    <string name="vivaldi__warning">- Vivaldi é apenas parcialmente código aberto.
-\n- Utiliza também a base técnica do Google Chrome e, assim, apoia indiretamente a posição de monopólio do motor de renderização Chromium.</string>
+    <string name="vivaldi__warning">- Vivaldi é apenas parcialmente código aberto. \n- Utiliza também a base técnica do Google Chrome e, assim, apoia indiretamente a posição de monopólio do motor de renderização Chromium.</string>
     <string name="tor_browser__title">Tor Browser</string>
     <string name="tor_browser__description">O Tor Browser para Android é o único navegador móvel oficial suportado pelo Projecto Tor, o qual desenvolve a ferramenta mais forte do mundo para a privacidade e liberdade online.</string>
     <string name="orbot__title">Orbot: Tor para Android</string>
@@ -188,7 +168,7 @@
     <string name="settings__background__update_check__when_device_idle__summary">Habilite isto se não quiser que as suas candidaturas sejam reiniciadas por uma atualização de fundo. Desativar isto se quiser um calendário mais previsível de verificações de atualizações de antecedentes.</string>
     <string name="fennecfdroid__title">Fennec F-Droid</string>
     <string name="session_installer__status_failure_aborted">A operação falhou porque foi ativamente abortada. Por exemplo, o utilizador recusou ativamente pedir permissões, ou a sessão foi abandonada.</string>
-    <string name="running_downloads_dialog__message">A aplicação está agora a descarregar atualizações em segundo plano. Quer iniciar um novo descarregamento que pode demorar mais tempo\?</string>
+    <string name="running_downloads_dialog__message">A aplicação está agora a descarregar atualizações em segundo plano. Quer iniciar um novo descarregamento que pode demorar mais tempo?</string>
     <string name="settings__background__installation__enabled__summary">Tentar instalar atualizações sem interação do utilizador.</string>
     <string name="session_installer__status_failure_incompatible">A operação falhou porque é fundamentalmente incompatível com este dispositivo. Por exemplo, o aplicativo pode requerer uma característica de hardware que não existe, pode faltar código nativo para as ABIs suportadas pelo dispositivo, ou requerer uma versão mais recente do SDK, etc.</string>
     <string name="session_installer__status_failure_storage">A operação falhou devido a problemas de armazenamento. Por exemplo, o dispositivo pode estar a funcionar com pouco espaço, ou os meios externos podem não estar disponíveis. O utilizador pode ser capaz de ajudar a libertar espaço ou a inserir diferentes suportes externos.</string>
@@ -208,17 +188,7 @@
     <string name="fennecfdroid__warning">O FFUpdater transfere os ficheiros dos servidores F-Droid e, por conseguinte, não é mais rápido.</string>
     <string name="fennecfdroid__description">Fennec F-Droid é baseado na última versão do Firefox (nome de código Fenix). Tem bits proprietários e telemetria removidos, mas ainda se liga a vários serviços Mozilla e Google que podem seguir os utilizadores.</string>
     <string name="network__dns_provider__title">Definições de DNS</string>
-    <string name="network__custom_doh_server__dialog_message">Introduza os detalhes da ligação para o servidor DoH personalizado num destes formatos:
-\n
-\nurl;ip1
-\n
-\nurl;ip1;ip2
-\n
-\nurl;ip1;ip2;ip3
-\n
-\nurl;ip1;ip2;ip3;ip4
-\n
-\nPor exemplo: https://dns.google/dns-query;8.8.8.8 ou https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
+    <string name="network__custom_doh_server__dialog_message">Introduza os detalhes da ligação para o servidor DoH personalizado num destes formatos: \n \nurl;ip1 \n \nurl;ip1;ip2 \n \nurl;ip1;ip2;ip3 \n \nurl;ip1;ip2;ip3;ip4 \n \nPor exemplo: https://dns.google/dns-query;8.8.8.8 ou https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
     <string name="network__custom_doh_server__title">DNS personalizado sobre servidor HTTPS</string>
     <string name="network__proxy__title">Proxy</string>
     <string name="settings__network_category__title">Rede</string>
@@ -244,25 +214,12 @@
     <string name="firefox_focus_beta__title">Firefox Focus Beta</string>
     <string name="duckduckgo_android__title">DuckDuckGo Private Browser</string>
     <string name="duckduckgo_android__description">A aplicação DuckDuckGo fornece a mais completa proteção de privacidade online com o premir de um botão. Com um download, obtém um novo browser diário que oferece uma proteção sem falhas enquanto procura e navega, e acesso a proteções de rastreio para e-mails que recebe e aplicações que utiliza. Muitas destas proteções não são oferecidas na maioria dos browsers populares por defeito.</string>
-    <string name="duckduckgo_android__warning">- DuckDuckGo utiliza a visualização do sistema na web para exibir sítios web.
-\n- Houve uma controvérsia sobre não bloquear todos os cookies da Microsoft - mas isto foi corrigido.</string>
+    <string name="duckduckgo_android__warning">- DuckDuckGo utiliza a visualização do sistema na web para exibir sítios web. \n- Houve uma controvérsia sobre não bloquear todos os cookies da Microsoft - mas isto foi corrigido.</string>
     <string name="privacy_browser__title">Privacy Browser</string>
     <string name="privacy_browser__warning">FFUpdater transfere os ficheiros a partir dos servidores F-Droid e não é, portanto, mais rápido.</string>
     <string name="privacy_browser__description">A única forma de evitar que os dados sejam abusados é evitar, em primeiro lugar, que sejam recolhidos. O Privacy Browser tem dois objetivos principais: Minimizar os dados que são enviados para a Internet e minimizar os dados que são armazenados no dispositivo.</string>
-    <string name="tor_browser_alpha__description">O Tor Browser é o único navegador móvel oficial apoiado pelo Projecto Tor, o que desenvolve a ferramenta mais forte do mundo para a privacidade e liberdade online.
-\n
-\nO Tor Browser será SEMPRE gratuito, mas as doações tornam-no possível. O Projecto Tor é um 501©(3) sem fins lucrativos baseado nos EUA. Por favor, considere fazer uma contribuição hoje. Cada donativo faz a diferença: https://donate.torproject.org.
-\n
-\nSaiba como reportar bugs e dar feedback em https://support.torproject.org/misc/bug-or-feedback/!</string>
-    <string name="network__proxy__dialog_message">Se quiser utilizar um proxy SOCKS ou HTTP, introduza aqui os detalhes da ligação. Use um destes formatos:
-\n
-\nSOCKS/HTTP;ip/domínio;porto
-\n
-\nSOCKS/HTTP;ip/domínio;porto;nome de utilizador;palavra-passe
-\n
-\nPor exemplo: SOCKS;1.2.3.4;22 ou HTTP;5.6.7.8;80;user1;pw123 ou HTTP;p.webshare.io;80;u;p. Deixe-o vazio se quiser utilizar a configuração de proxy do sistema.
-\n
-\nLimitação: Se alterar \'DNS settings\' nas definições para um DNS sobre servidor HTTPS, tem de introduzir o domínio do servidor proxy. Os IPs não funcionarão.</string>
+    <string name="tor_browser_alpha__description">O Tor Browser é o único navegador móvel oficial apoiado pelo Projecto Tor, o que desenvolve a ferramenta mais forte do mundo para a privacidade e liberdade online. \n \nO Tor Browser será SEMPRE gratuito, mas as doações tornam-no possível. O Projecto Tor é um 501©(3) sem fins lucrativos baseado nos EUA. Por favor, considere fazer uma contribuição hoje. Cada donativo faz a diferença: https://donate.torproject.org. \n \nSaiba como reportar bugs e dar feedback em https://support.torproject.org/misc/bug-or-feedback/!</string>
+    <string name="network__proxy__dialog_message">Se quiser utilizar um proxy SOCKS ou HTTP, introduza aqui os detalhes da ligação. Use um destes formatos: \n \nSOCKS/HTTP;ip/domínio;porto \n \nSOCKS/HTTP;ip/domínio;porto;nome de utilizador;palavra-passe \n \nPor exemplo: SOCKS;1.2.3.4;22 ou HTTP;5.6.7.8;80;user1;pw123 ou HTTP;p.webshare.io;80;u;p. Deixe-o vazio se quiser utilizar a configuração de proxy do sistema. \n \nLimitação: Se alterar \'DNS settings\' nas definições para um DNS sobre servidor HTTPS, tem de introduzir o domínio do servidor proxy. Os IPs não funcionarão.</string>
     <string name="network__dns_provider__system">Utilizar DNS do sistema</string>
     <string name="network__dns_provider__digital_society_ch">DNS sobre HTTPS: Sociedade Digital Suíça</string>
     <string name="network__dns_provider__cloudflare">DNS sobre HTTPS: Cloudflare</string>
@@ -272,9 +229,7 @@
     <string name="generic_app_warning__beta_version">- Esta aplicação foi concebida para programadores e testadores. Pode conter vários bugs que podem afetar o seu trabalho habitual com o browser.</string>
     <string name="main_activity__app_was_signed_by_different_certificate">Esta aplicação foi assinada com um certificado diferente e não pode ser atualizada com o FFUpdater.</string>
     <string name="foreground__hide_apps_signed_by_different_certificate__title">Ocultar aplicações que são assinadas por um certificado diferente.</string>
-    <string name="firefox_focus_beta__description">Use Firefox Focus para tudo o que quiser manter separado do seu navegador principal - para todos os que entram, saiam e esqueçam-no nos momentos em que o quiserem. Sem abas, sem alarido, sem confusão. Bloqueie também os localizadores online. Um toque, e o seu histórico de navegação é completamente destruído.
-\n
-\nFirefox Focus é o perfeito para entrar/sair, procurar e destruir, estou numa missão que não é do seu negócio - web browser.</string>
+    <string name="firefox_focus_beta__description">Use Firefox Focus para tudo o que quiser manter separado do seu navegador principal - para todos os que entram, saiam e esqueçam-no nos momentos em que o quiserem. Sem abas, sem alarido, sem confusão. Bloqueie também os localizadores online. Um toque, e o seu histórico de navegação é completamente destruído. \n \nFirefox Focus é o perfeito para entrar/sair, procurar e destruir, estou numa missão que não é do seu negócio - web browser.</string>
     <string name="main_activity__an_error_occurred"><u>Ocorreu um erro. Volte a tentar mais tarde.</u></string>
     <string name="notification__bg_update_check__unreliable_execution__text">Talvez seja causado pelas definições de bateria ou de desempenho do seu dispositivo. Clique nesta notificação para desativar a otimização da bateria para esta aplicação.</string>
     <string name="installer__android_too_old_for_shizuku">O teu Android é demasiado velho para a Shizuku.</string>

@@ -83,7 +83,7 @@
     <string name="crash_report__go_to_github">Mene GitHubiin</string>
     <string name="crash_report__go_to_gitlab">Mene GitLabiin</string>
     <string name="brave_beta__title">Brave Selain (Beta)</string>
-    <string name="running_downloads_dialog__message">Sovellus on lataamassa päivityksiä taustalla. Haluatko aloittaa uuden latauksen joka voi kestää pidempään\?</string>
+    <string name="running_downloads_dialog__message">Sovellus on lataamassa päivityksiä taustalla. Haluatko aloittaa uuden latauksen joka voi kestää pidempään?</string>
     <string name="app_installer__signature_of_download_is_invalid">Ladattua sovellusta EI ole varmistettu</string>
     <string name="download_activity__delete_cache_button_text">tyhjennä välimuisti</string>
     <string name="notification__download_running__title">Ladataan sovelluksen päivityksiä</string>
@@ -93,8 +93,7 @@
     <string name="settings__b_f__delete_cache_if_install_failed">Poista ladattu päivitys, jos asennus epäonnistuu.</string>
     <string name="download_activity__download_app_with_status">Ladataan sovellusta</string>
     <string name="app_card__download_the_app">lataa sovellus</string>
-    <string name="vivaldi__warning">- Vivaldi on osittain avointa lähdekoodia.
-\n- Se käyttää myös Google Chromen teknistä perustaa ja tukee täten epäsuorasti Chromium-renderöintimoottorin monopoliasemaa.</string>
+    <string name="vivaldi__warning">- Vivaldi on osittain avointa lähdekoodia. \n- Se käyttää myös Google Chromen teknistä perustaa ja tukee täten epäsuorasti Chromium-renderöintimoottorin monopoliasemaa.</string>
     <string name="settings__b_f__delete_cache_if_install_successful">Poista ladattu päivitys, jos asennus onnistuu.</string>
     <string name="update_notification__title">%1$s päivitys on saatavilla</string>
     <string name="update_notification__text">Klikkaa asentaaksesi päivitys</string>

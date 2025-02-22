@@ -11,15 +11,10 @@
     <string name="notification__error__title">Sprawdzanie aktualizacji w tle nie powiodło się</string>
     <string name="brave__description">Przeglądaj internet prywatnie, za darmo! Brave to Twoja szybka, darmowa i bezpieczna przeglądarka internetowa z blokadą reklam i wyskakujących okienek. Prywatne przeglądanie i wyszukiwanie w Internecie bez śledzenia przez reklamodawców, złośliwego oprogramowania i wyskakujących okienek.</string>
     <string name="brave__title">Brave</string>
-    <string name="brave__warning">- Brave wykorzystuje techniczne fundamenty Google Chrome, a więc pośrednio wspiera monopolistyczną pozycję silnika renderującego Chromium.
-\n- Ze względu na Basic Attention Token BAT na blockchainie Ethereum projekt ten ma powiązania z kryptowalutami. Blockchainy mają wiele problemów i moim zdaniem należy ich unikać.</string>
-    <string name="brave_beta__description">Witamy w programie Brave Beta dla systemu Android!
-\nWypróbuj najnowsze funkcje i przekaż wczesne opinie: https://brave.com/msupport
-\nMożesz zainstalować Brave Beta równolegle z obecną wersją Brave na Androida.</string>
+    <string name="brave__warning">- Brave wykorzystuje techniczne fundamenty Google Chrome, a więc pośrednio wspiera monopolistyczną pozycję silnika renderującego Chromium. \n- Ze względu na Basic Attention Token BAT na blockchainie Ethereum projekt ten ma powiązania z kryptowalutami. Blockchainy mają wiele problemów i moim zdaniem należy ich unikać.</string>
+    <string name="brave_beta__description">Witamy w programie Brave Beta dla systemu Android! \nWypróbuj najnowsze funkcje i przekaż wczesne opinie: https://brave.com/msupport \nMożesz zainstalować Brave Beta równolegle z obecną wersją Brave na Androida.</string>
     <string name="brave_beta__title">Brave (Beta)</string>
-    <string name="brave_nightly__description">Witamy w Brave Nightly (Developer) dla systemu Android!
-\nWypróbuj najnowsze funkcje i przekaż wczesną opinię: https://brave.com/msupport
-\nMożesz zainstalować Brave Nightly obok swojej obecnej wersji Brave dla Androida.</string>
+    <string name="brave_nightly__description">Witamy w Brave Nightly (Developer) dla systemu Android! \nWypróbuj najnowsze funkcje i przekaż wczesną opinię: https://brave.com/msupport \nMożesz zainstalować Brave Nightly obok swojej obecnej wersji Brave dla Androida.</string>
     <string name="brave_nightly__title">Brave (Nightly)</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Skopiuj raport o błędzie do schowka</string>
     <string name="crash_report__explain_text__download_activity_fetching_url">Ten błąd wystąpił podczas pobierania adresu URL pobierania. Jeśli ten błąd pojawia się często, zapraszamy do zgłoszenia go na notabug.org, GitHub lub GitLab.</string>
@@ -45,15 +40,9 @@
     <string name="firefox_release__description">Przeglądarka Firefox dla Androida zapewnia prywatność i niewiarygodną szybkość. Tysiące skryptów śledzących śledzi Cię każdego dnia, zbierając informacje o tym, gdzie jesteś w sieci, spowalniając Twoją przeglądarkę. Firefox domyślnie blokuje ponad 2000 takich skryptów, a jeśli chcesz jeszcze bardziej dostosować przeglądarkę do swoich potrzeb, dostępne są dodatki blokujące reklamy. Dzięki Firefoxowi uzyskasz bezpieczeństwo, na które zasługujesz, i szybkość, jakiej potrzebujesz, w prywatnej, mobilnej przeglądarce.</string>
     <string name="firefox_release__title">Firefox</string>
     <string name="firefox_release__warning">- Ulepszona wersja Firefox jest również dostępna w systemie F-Droid pod nazwą Fennec F-Droid.</string>
-    <string name="iceraven__description">To nie jest usługa Mozilli!
-\n
-\nIceraven to przeglądarka internetowa dla systemu Android, oparta na wersji Fenix przeglądarki Firefox, GeckoView i Mozilla Android Components.
-\n
-\nNaszym celem jest być bliskim forkiem nowego Firefoksa, który stara się zapewnić użytkownikom więcej opcji, więcej możliwości personalizacji (w tym szeroką bibliotekę rozszerzeń) oraz dostarczać więcej informacji o stronach, które odwiedzają użytkownicy i o tym, jak ich przeglądarki wchodzą w interakcję z tymi stronami.</string>
+    <string name="iceraven__description">To nie jest usługa Mozilli! \n \nIceraven to przeglądarka internetowa dla systemu Android, oparta na wersji Fenix przeglądarki Firefox, GeckoView i Mozilla Android Components. \n \nNaszym celem jest być bliskim forkiem nowego Firefoksa, który stara się zapewnić użytkownikom więcej opcji, więcej możliwości personalizacji (w tym szeroką bibliotekę rozszerzeń) oraz dostarczać więcej informacji o stronach, które odwiedzają użytkownicy i o tym, jak ich przeglądarki wchodzą w interakcję z tymi stronami.</string>
     <string name="iceraven__title">Iceraven</string>
-    <string name="infobox">Ta aplikacja to aktualizator dla przeglądarek chroniących prywatność. Kliknij przycisk plusa, aby zainstalować nowe aplikacje. Przeciągnij palcem w dół, aby wymusić sprawdzenie nowych aktualizacji. Domyślnie aplikacja będzie okresowo sprawdzać aktualizacje w tle, które następnie zostaną pobrane i ostatecznie zainstalowane. Kliknij koło zębate, aby dostosować zachowanie w ustawieniach.
-\n
-\nOstatnie udane sprawdzenie aktualizacji w tle: %1$s</string>
+    <string name="infobox">Ta aplikacja to aktualizator dla przeglądarek chroniących prywatność. Kliknij przycisk plusa, aby zainstalować nowe aplikacje. Przeciągnij palcem w dół, aby wymusić sprawdzenie nowych aktualizacji. Domyślnie aplikacja będzie okresowo sprawdzać aktualizacje w tle, które następnie zostaną pobrane i ostatecznie zainstalowane. Kliknij koło zębate, aby dostosować zachowanie w ustawieniach. \n \nOstatnie udane sprawdzenie aktualizacji w tle: %1$s</string>
     <string name="app_card__information_about_the_app">Informacje o aplikacji</string>
     <string name="download_activity__delete_cache_button_text">Wyczyść pamięć podręczną</string>
     <string name="download_activity__delete_cache_explanation">Jeśli uważasz, że program FFUpdater zbuforował wadliwą aktualizację aplikacji lub chcesz zaoszczędzić miejsce, kliknij przycisk, aby usunąć pobrany plik.</string>
@@ -61,7 +50,7 @@
     <string name="download_activity__download_failed">Pobieranie nie powiodło się</string>
     <string name="download_activity__downloaded_application_from">Pobrano aplikację z:</string>
     <string name="app_installer__signature_of_download_is_invalid">Pobrana aplikacja NIE została zweryfikowana</string>
-    <string name="download_activity__exception__show_button">"<u>Pokaż szczegółowy raport o błędach.</u>"</string>
+    <string name="download_activity__exception__show_button"><u>Pokaż szczegółowy raport o błędach.</u></string>
     <string name="download_activity__external_storage_not_accessible">Zewnętrzna pamięć masowa nie jest dostępna - nie można rozpocząć pobierania. Aktualny status:</string>
     <string name="download_activity__fetch_url_for_download">Pobierz adres URL pobierania z %1$s</string>
     <string name="download_activity__fetched_url_for_download_successfully">Pobrano adres URL pobierania z %1$s</string>
@@ -86,9 +75,9 @@
     <string name="app_installer__installed_app_has_invalid_signature">Zainstalowana aplikacja NIE została zweryfikowana</string>
     <string name="installed_application_is_verified">Zainstalowana aplikacja została zweryfikowana</string>
     <string name="installed_version">Zainstalowane: %1$s</string>
-    <string name="main_activity__github_api_limit_exceeded">"<u>Przekroczono limit GitHub-API. Ponów próbę w ciągu następnej godziny.</u>"</string>
+    <string name="main_activity__github_api_limit_exceeded"><u>Przekroczono limit GitHub-API. Ponów próbę w ciągu następnej godziny.</u></string>
     <string name="main_activity__no_unmetered_network">Brak sieci bez limitu danych</string>
-    <string name="main_activity__temporary_network_issue">"<u>Tymczasowy problem z siecią. Spróbuj ponownie później.</u>"</string>
+    <string name="main_activity__temporary_network_issue"><u>Tymczasowy problem z siecią. Spróbuj ponownie później.</u></string>
     <string name="ok">OK</string>
     <string name="request_installation_permission_dialog__abort">Przerwij</string>
     <string name="request_installation_permission_dialog__grant_permission">Udzielenie pozwolenia</string>
@@ -154,13 +143,12 @@
     <string name="update_interval__6h">6 godzin</string>
     <string name="update_interval__8h">8 godzin</string>
     <string name="notification__update_available__channel_descr">Kanał powiadomień o dostępnych aktualizacjach %1$s.</string>
-    <string name="notification__update_available__channel_name">Powiadomienie o aktualizacji "%1$s"</string>
+    <string name="notification__update_available__channel_name">Powiadomienie o aktualizacji %1$s</string>
     <string name="update_notification__text">Kliknij aby zainstalować aktualizację</string>
-    <string name="update_notification__title">Dostępna jest aktualizacja dla "%1$s"</string>
+    <string name="update_notification__title">Dostępna jest aktualizacja dla %1$s</string>
     <string name="vivaldi__description">Vivaldi to nowa, prywatna przeglądarka zbudowana z myślą o elastyczności. Posiada użyteczne funkcje, takie jak blokowanie reklam, ochronę przed śledzeniem czy prywatny tłumacz. Narzedzia, w tym notatki czy przechwytywanie ekranu, oszczędzają dużo czasu. Wreszcie opcje, jak klasyczny pasek kart czy motywy, pozwalają Ci urządzić się po swojemu. Pobierz za darmo i przeglądaj sieć szybciej.</string>
     <string name="vivaldi__title">Vivaldi</string>
-    <string name="vivaldi__warning">- Vivaldi posiada tylko częściowo otwarty kod źródłowy.
-\n- Wykorzystuje również techniczne podstawy przeglądarki Google Chrome, przez co pośrednio wspiera monopolistyczną pozycję silnika renderującego Chromium.</string>
+    <string name="vivaldi__warning">- Vivaldi posiada tylko częściowo otwarty kod źródłowy. \n- Wykorzystuje również techniczne podstawy przeglądarki Google Chrome, przez co pośrednio wspiera monopolistyczną pozycję silnika renderującego Chromium.</string>
     <string name="notification__eol_apps__channel_name">Powiadomienie o nieaktualnych aplikacjach</string>
     <string name="notification__eol_apps__text">Masz nieaktualne aplikacje, które nie powinny być już używane: %1$s</string>
     <string name="add_app_activity__title_good_privacy_browsers">Przeglądarki dobre dla prywatności</string>
@@ -184,8 +172,7 @@
     <string name="settings__background__update_check__when_device_idle__unsupported">Ta opcja jest dostępna tylko w systemie Android Marshmallow (6.0) lub nowszym.</string>
     <string name="fennecfdroid__title">Fennec F-Droid</string>
     <string name="fennecfdroid__warning">FFUpdater pobiera pliki z serwerów F-Droid i dlatego nie jest szybszy.</string>
-    <string name="iceraven__warning">- Ten deweloper nie daje żadnych gwarancji bezpieczeństwa, aktualizacji, ani nawet stabilności.
-\n- Ten projekt wydaje aktualizacje zabezpieczeń wolniej niż zwykle.</string>
+    <string name="iceraven__warning">- Ten deweloper nie daje żadnych gwarancji bezpieczeństwa, aktualizacji, ani nawet stabilności. \n- Ten projekt wydaje aktualizacje zabezpieczeń wolniej niż zwykle.</string>
     <string name="kiwi__title">Kiwi Next</string>
     <string name="kiwi__description">Przeglądarka Kiwi jest stworzona do przeglądania internetu, czytania wiadomości, oglądania filmów i słuchania muzyki, bez zbędnych irytacji.</string>
     <string name="install_activity__download_file_failed__crash_text">Ten błąd wystąpił podczas pobierania aplikacji. Jeśli ten błąd występuje często, nie krępuj się zgłosić go na notabug.org, GitHub lub GitLab.</string>
@@ -199,11 +186,7 @@
     <string name="settings__background__update_check__when_device_idle__summary">Włącz to, jeśli nie chcesz, aby twoje aplikacje były ponownie uruchamiane przez aktualizację w tle. Wyłącz to, jeśli chcesz mieć bardziej przewidywalny harmonogram sprawdzania aktualizacji w tle.</string>
     <string name="fennecfdroid__description">Fennec F-Droid jest oparty na najnowszym wydaniu Firefoksa (o nazwie kodowej Fenix). Ma usunięte zastrzeżone bity i telemetrię, ale nadal łączy się z różnymi usługami Mozilli i Google, które mogą śledzić użytkowników.</string>
     <string name="orbot__description">Orbot to darmowa aplikacja proxy, która umożliwia innym aplikacjom bezpieczniejsze korzystanie z internetu. Orbot wykorzystuje Tor do szyfrowania ruchu internetowego, a następnie ukrywa go, odbijając się od szeregu komputerów na całym świecie. Tor to darmowe oprogramowanie i otwarta sieć, która pomaga bronić się przed formą nadzoru sieciowego, która zagraża wolności osobistej i prywatności, poufnym działaniom i relacjom biznesowym oraz bezpieczeństwu państwa, znaną jako analiza ruchu.</string>
-    <string name="kiwi__warning">- Kiwi jest tylko częściowo oprogramowaniem open-source
-\n- Kiwi korzysta z technicznych fundamentów Google Chrome, a więc pośrednio wspiera monopolistyczną pozycję silnika renderującego Chromium.
-\n- Kiwi nie jest idealną przeglądarką do ochrony prywatności, ale ma dobre wsparcie dla dodatków.
-\n- Przeglądarka otrzymuje pieniądze od wyszukiwarek za każde wyszukiwanie wykonane przy użyciu Kiwi. W zależności od wyboru wyszukiwarki, zapytania mogą przechodzić przez serwery Kiwibrowser / Kiwisearchservices.
-\n- Google Ads w Kiwi może używać danych o lokalizacji do reklam - ale można to wyłączyć, wyłączając funkcję Discovery. Ale to się wkrótce zmieni. Zobacz https://privacy.kiwibrowser.org/, aby uzyskać więcej szczegółów.</string>
+    <string name="kiwi__warning">- Kiwi jest tylko częściowo oprogramowaniem open-source \n- Kiwi korzysta z technicznych fundamentów Google Chrome, a więc pośrednio wspiera monopolistyczną pozycję silnika renderującego Chromium. \n- Kiwi nie jest idealną przeglądarką do ochrony prywatności, ale ma dobre wsparcie dla dodatków. \n- Przeglądarka otrzymuje pieniądze od wyszukiwarek za każde wyszukiwanie wykonane przy użyciu Kiwi. W zależności od wyboru wyszukiwarki, zapytania mogą przechodzić przez serwery Kiwibrowser / Kiwisearchservices. \n- Google Ads w Kiwi może używać danych o lokalizacji do reklam - ale można to wyłączyć, wyłączając funkcję Discovery. Ale to się wkrótce zmieni. Zobacz https://privacy.kiwibrowser.org/, aby uzyskać więcej szczegółów.</string>
     <string name="network__dns_provider__title">Ustawienia DNS</string>
     <string name="network__custom_doh_server__title">Własny DNS przez serwer HTTPS</string>
     <string name="settings__network_category__title">Sieć</string>
@@ -226,40 +209,17 @@
     <string name="notification__install_error__generic_channel_name">Powiadomienie o niepowodzeniu aktualizacji aplikacji</string>
     <string name="notification__network_error__title">Błąd sieci podczas zadania w tle</string>
     <string name="notification__network_error__text">Ten błąd powinien występować rzadko. Jeśli jednak występuje często, powinieneś go zgłosić. Kliknij tutaj, aby zobaczyć szczegółowy komunikat o błędzie.</string>
-    <string name="network__custom_doh_server__dialog_message">Wprowadź szczegóły połączenia dla niestandardowego serwera DoH w jednym z tych formatów:
-\n
-\nurl;ip1
-\n
-\nurl;ip1;ip2
-\n
-\nurl;ip1;ip2;ip3
-\n
-\nurl;ip1;ip2;ip3;ip4
-\n
-\nNa przykład: https://dns.google/dns-query;8.8.8.8 lub https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
+    <string name="network__custom_doh_server__dialog_message">Wprowadź szczegóły połączenia dla niestandardowego serwera DoH w jednym z tych formatów: \n \nurl;ip1 \n \nurl;ip1;ip2 \n \nurl;ip1;ip2;ip3 \n \nurl;ip1;ip2;ip3;ip4 \n \nNa przykład: https://dns.google/dns-query;8.8.8.8 lub https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
     <string name="network__proxy__title">Proxy</string>
     <string name="installer__method__root_not_granted">Nie przyznano uprawnień roota!</string>
     <string name="network__dns_provider__cloudflare">DNS przez HTTPS: Cloudflare</string>
     <string name="network__dns_provider__custom">Własny DNS przez serwer HTTPS</string>
     <string name="installer__method__shizuku">Shizuku: Aktualizuje aplikacje bez potwierdzania. Wymagany Shizuku lub moduł Sui dla Magiska.</string>
     <string name="installer__method__session">Session: Zalecana. Od Androida 12 aplikacje są aktualizowane w tle po cichu, po jednym zatwierdzeniu.</string>
-    <string name="network__proxy__dialog_message">Jeśli chcesz użyć proxy SOCKS lub HTTP, wprowadź tutaj szczegóły połączenia. Użyj jednego z tych formatów:
-\n
-\nSOCKS/HTTP;ip/domena;port
-\n
-\nSOCKS/HTTP;ip/domena;port;użytkownik;hasło
-\n
-\nNa przykład: SOCKS;1.2.3.4;22 or HTTP;5.6.7.8;80;użytkownik123;hasło123 or HTTP;p.webshare.io;80;u;h. Pozostaw to puste, jeśli chcesz użyć systemowej konfiguracji proxy.
-\n
-\nOgraniczenie: Jeśli zmienisz \"Ustawienia DNS\" w ustawieniach na serwer DNS over HTTPS, musisz podać domenę serwera proxy. IP nie będzie działać.</string>
+    <string name="network__proxy__dialog_message">Jeśli chcesz użyć proxy SOCKS lub HTTP, wprowadź tutaj szczegóły połączenia. Użyj jednego z tych formatów: \n \nSOCKS/HTTP;ip/domena;port \n \nSOCKS/HTTP;ip/domena;port;użytkownik;hasło \n \nNa przykład: SOCKS;1.2.3.4;22 or HTTP;5.6.7.8;80;użytkownik123;hasło123 or HTTP;p.webshare.io;80;u;h. Pozostaw to puste, jeśli chcesz użyć systemowej konfiguracji proxy. \n \nOgraniczenie: Jeśli zmienisz \"Ustawienia DNS\" w ustawieniach na serwer DNS over HTTPS, musisz podać domenę serwera proxy. IP nie będzie działać.</string>
     <string name="tor_browser_alpha__title">Tor Alpha</string>
-    <string name="tor_browser_alpha__description">Przeglądarka Tor dla Androida to jedyna oficjalna przeglądarka mobilna wspierana przez projekt Tor, twórców najsilniejszego na świecie narzędzia do ochrony prywatności i wolności online.
-\n
-\nDobrowolne darowizny sprawiają, że Przeglądarka Tor ZAWSZE będzie darmowa. Projekt Tor jest 501©(3) organizacją non-profit z siedzibą w USA. Proszę rozważyć wsparcie projektu dobrowolną wpłatą: https://donate.torproject.org.
-\n
-\nMożesz dowiedzieć się jak zgłaszać błędy i opinie na stronie https://support.torproject.org/misc/bug-or-feedback/!</string>
-    <string name="duckduckgo_android__warning">- DuckDuckGo wykorzystuje systemowy silnik webview do wyświetlania stron internetowych.
-\n- Były kontrowersje związane z nie blokowaniem wszystkich ciasteczek od Microsoftu - ale zostało to naprawione.</string>
+    <string name="tor_browser_alpha__description">Przeglądarka Tor dla Androida to jedyna oficjalna przeglądarka mobilna wspierana przez projekt Tor, twórców najsilniejszego na świecie narzędzia do ochrony prywatności i wolności online. \n \nDobrowolne darowizny sprawiają, że Przeglądarka Tor ZAWSZE będzie darmowa. Projekt Tor jest 501©(3) organizacją non-profit z siedzibą w USA. Proszę rozważyć wsparcie projektu dobrowolną wpłatą: https://donate.torproject.org. \n \nMożesz dowiedzieć się jak zgłaszać błędy i opinie na stronie https://support.torproject.org/misc/bug-or-feedback/!</string>
+    <string name="duckduckgo_android__warning">- DuckDuckGo wykorzystuje systemowy silnik webview do wyświetlania stron internetowych. \n- Były kontrowersje związane z nie blokowaniem wszystkich ciasteczek od Microsoftu - ale zostało to naprawione.</string>
     <string name="privacy_browser__title">Privacy Browser</string>
     <string name="main_activity__app_was_signed_by_different_certificate">Ta aplikacja została podpisana innym certyfikatem i nie może być aktualizowana za pomocą FFUpdater.</string>
     <string name="foreground__hide_apps_signed_by_different_certificate__title">Ukryj aplikacje, które są podpisane innym certyfikatem.</string>
@@ -268,9 +228,7 @@
     <string name="privacy_browser__description">Jedynym sposobem, aby zapobiec wyciekom danych jest zapobieganie ich gromadzenia w pierwszej kolejności. Privacy Browser ma dwa podstawowe cele: Minimalizacja danych, które są wysyłane do Internetu i minimalizacja danych, które są przechowywane na urządzeniu.</string>
     <string name="privacy_browser__warning">FFUpdater pobiera pliki z serwerów F-Droid i dlatego nie jest szybszy.</string>
     <string name="generic_app_warning__beta_version">- Ta aplikacja jest przeznaczona dla programistów i testerów. Może ona zawierać różne błędy, które mogą wpływać na zwykłą pracę z przeglądarką.</string>
-    <string name="firefox_focus_beta__description">Używaj Firefox Focus do wszystkiego, co chcesz mieć oddzielone od głównej przeglądarki - do wszystkich chwil, kiedy chcesz wejść, wyjść i zapomnieć o tym. Bez kart, bez zamieszania, bez kłopotów. Blokuje także internetowe trackery. Jedno stuknięcie i historia przeglądania zostanie całkowicie wyczyszczona.
-\n
-\nFirefox Focus to idealna przeglądarka internetowa, w której możesz wejść/wyjść, wyszukać i wyczyścić wszystko.</string>
+    <string name="firefox_focus_beta__description">Używaj Firefox Focus do wszystkiego, co chcesz mieć oddzielone od głównej przeglądarki - do wszystkich chwil, kiedy chcesz wejść, wyjść i zapomnieć o tym. Bez kart, bez zamieszania, bez kłopotów. Blokuje także internetowe trackery. Jedno stuknięcie i historia przeglądania zostanie całkowicie wyczyszczona. \n \nFirefox Focus to idealna przeglądarka internetowa, w której możesz wejść/wyjść, wyszukać i wyczyścić wszystko.</string>
     <string name="duckduckgo_android__description">Aplikacja DuckDuckGo zapewnia najbardziej wszechstronną ochronę prywatności online za naciśnięciem jednego przycisku. Za jednym pobraniem otrzymujesz nową codzienną przeglądarkę, która oferuje bezproblemową ochronę podczas wyszukiwania i przeglądania, a także dostęp do zabezpieczeń przed śledzeniem wiadomości e-mail, które otrzymujesz i aplikacji, z których korzystasz. Wiele z tych zabezpieczeń nie jest domyślnie oferowanych w większości popularnych przeglądarek.</string>
     <string name="main_activity__an_error_occurred"><u>Wystąpił błąd. Spróbuj ponownie później.</u></string>
     <string name="eol_reason__browser_no_longer_maintained">Ta przeglądarka nie jest już rozwijana.</string>

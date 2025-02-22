@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="kiwi__warning">- Kiwi مفتوح المصدر جزئيًا فقط
-\n- يستخدم Kiwi الأساس التقني لـ Google Chrome وبالتالي يدعم بشكل غير مباشر الوضع الاحتكاري لمحرك عرض Chromium.
-\n- Kiwi ليس متصفحًا مثاليًا للخصوصية ولكنه يتمتع بدعم جيد للوظائف الإضافية.
-\n- يتم الدفع للمتصفح من خلال محركات البحث مقابل كل عملية بحث يتم إجراؤها باستخدام متصفح Kiwi. اعتمادًا على اختيار محرك البحث، قد يتم إرسال الطلبات عبر خوادم Kiwibrowser / Kiwisearchservices.
-\n- قد يستخدم إعلانات Google في Kiwi بيانات الموقع للإعلانات - ولكن يمكنك تعطيلها عن طريق تعطيل ميزة الاكتشاف. ولكن هذا سوف يتغير قريبا. راجع https://privacy.kiwibrowser.org/ لمزيد من التفاصيل.</string>
+    <string name="kiwi__warning">- Kiwi مفتوح المصدر جزئيًا فقط \n- يستخدم Kiwi الأساس التقني لـ Google Chrome وبالتالي يدعم بشكل غير مباشر الوضع الاحتكاري لمحرك عرض Chromium. \n- Kiwi ليس متصفحًا مثاليًا للخصوصية ولكنه يتمتع بدعم جيد للوظائف الإضافية. \n- يتم الدفع للمتصفح من خلال محركات البحث مقابل كل عملية بحث يتم إجراؤها باستخدام متصفح Kiwi. اعتمادًا على اختيار محرك البحث، قد يتم إرسال الطلبات عبر خوادم Kiwibrowser / Kiwisearchservices. \n- قد يستخدم إعلانات Google في Kiwi بيانات الموقع للإعلانات - ولكن يمكنك تعطيلها عن طريق تعطيل ميزة الاكتشاف. ولكن هذا سوف يتغير قريبا. راجع https://privacy.kiwibrowser.org/ لمزيد من التفاصيل.</string>
     <string name="request_installation_permission_dialog__grant_permission">يعطي الأذن</string>
     <string name="request_installation_permission_dialog__message">يفتقد FFUpdater إذن تثبيت التطبيقات وتحديثها. يجب عليك منح هذه الأذونات وإلا فلن يعمل FFUpdater.</string>
     <string name="request_installation_permission_dialog__title">إذن المثبت</string>
@@ -74,28 +70,17 @@
     <string name="firefox_beta__description">يتميز متصفح Firefox لنظام Android بأنه خاص تلقائيًا وسريع بشكل لا يصدق. يتابعك الآلاف من المتتبعين عبر الإنترنت يوميًا، ويجمعون معلومات حول مكان اتصالك بالإنترنت ويبطئون سرعتك. يحظر Firefox ما يزيد عن 2000 من أدوات التتبع هذه افتراضيًا، وتتوفر وظائف إضافية لحظر الإعلانات إذا كنت تريد تخصيص متصفحك بشكل أكبر. مع Firefox، ستحصل على الأمان الذي تستحقه والسرعة التي تحتاجها في متصفح خاص على الهاتف المحمول.</string>
     <string name="firefox_beta__title">Firefox النسخة التجريبية</string>
     <string name="firefox_klar__description">تم تطوير Firefox Klar لألمانيا والنمسا وسويسرا، ولكن يمكن استخدامه من قبل المستخدمين في أي بلد. إنه مشابه جدًا لمتصفح Firefox Focus، ولكن تم تغيير الاسم في البلدان الناطقة بالألمانية لتجنب الخلط مع مجلة Focus بواسطة مجموعة Hubert Burda Media. على عكس Firefox Focus، تم تعطيل القياس عن بعد في Firefox Klar افتراضيًا بسبب قوانين الخصوصية الألمانية الصارمة.</string>
-    <string name="firefox_nightly__description">يرجى ملاحظة أن هذا التطبيق كان يحمل عنوان Firefox Preview. لقد تم الآن نقله إلى Firefox Nightly.
-\n
-\nFirefox Nightly هي قناة تطويرية لإصدارات Mozilla Firefox الجديدة.
-\n
-\nتم تصميم Firefox Nightly لعرض الإصدارات الأكثر تجريبية من Firefox. تتيح قناة Nightly للمستخدمين تجربة أحدث ابتكارات Firefox في بيئة غير مستقرة وتقديم تعليقات حول الميزات والأداء للمساعدة في تحديد الإصدار النهائي.</string>
+    <string name="firefox_nightly__description">يرجى ملاحظة أن هذا التطبيق كان يحمل عنوان Firefox Preview. لقد تم الآن نقله إلى Firefox Nightly. \n \nFirefox Nightly هي قناة تطويرية لإصدارات Mozilla Firefox الجديدة. \n \nتم تصميم Firefox Nightly لعرض الإصدارات الأكثر تجريبية من Firefox. تتيح قناة Nightly للمستخدمين تجربة أحدث ابتكارات Firefox في بيئة غير مستقرة وتقديم تعليقات حول الميزات والأداء للمساعدة في تحديد الإصدار النهائي.</string>
     <string name="firefox_release__description">يتميز متصفح Firefox لنظام Android بأنه خاص تلقائيًا وسريع بشكل لا يصدق. يتابعك الآلاف من المتتبعين عبر الإنترنت يوميًا، ويجمعون معلومات حول مكان اتصالك بالإنترنت ويبطئون سرعتك. يحظر Firefox ما يزيد عن 2000 من أدوات التتبع هذه افتراضيًا، وتتوفر وظائف إضافية لحظر الإعلانات إذا كنت تريد تخصيص متصفحك بشكل أكبر. مع Firefox، ستحصل على الأمان الذي تستحقه والسرعة التي تحتاجها في متصفح خاص على الهاتف المحمول.</string>
     <string name="firefox_release__warning">- تتوفر أيضًا نسخة محسنة من Firefox على F-Droid تحت اسم Fennec F-Droid.</string>
-    <string name="iceraven__description">بالتأكيد لم تقدمه لك موزيلا!
-\n
-\nمتصفح Iceraven هو متصفح ويب لنظام Android، يعتمد على إصدار Mozilla\'s Fenix من Firefox وGeckoView وMozilla Android Components.
-\n
-\nهدفنا هو أن نكون شوكة وثيقة لمتصفح Firefox الجديد لنظام Android الذي يسعى إلى تزويد المستخدمين بالمزيد من الخيارات، والمزيد من فرص التخصيص (بما في ذلك مكتبة الملحقات الواسعة)، ومزيد من المعلومات حول الصفحات التي يزورونها وكيفية تفاعل متصفحاتهم معها. تلك الصفحات.</string>
+    <string name="iceraven__description">بالتأكيد لم تقدمه لك موزيلا! \n \nمتصفح Iceraven هو متصفح ويب لنظام Android، يعتمد على إصدار Mozilla\'s Fenix من Firefox وGeckoView وMozilla Android Components. \n \nهدفنا هو أن نكون شوكة وثيقة لمتصفح Firefox الجديد لنظام Android الذي يسعى إلى تزويد المستخدمين بالمزيد من الخيارات، والمزيد من فرص التخصيص (بما في ذلك مكتبة الملحقات الواسعة)، ومزيد من المعلومات حول الصفحات التي يزورونها وكيفية تفاعل متصفحاتهم معها. تلك الصفحات.</string>
     <string name="download_activity__download_app_with_status">جارٍ تنزيل التطبيق</string>
     <string name="download_activity__download_failed">التحميل فشل</string>
     <string name="download_activity__exception__show_button"><u>عرض تقرير الأخطاء التفصيلي.</u></string>
     <string name="download_activity__fetched_url_for_download_successfully">تم جلب البيانات الوصفية من %1$s</string>
     <string name="download_activity__github_rate_limit_exceeded">تم تجاوز حد معدل GitHub-API. يرجى محاولة التنزيل مرة أخرى خلال الساعة القادمة.</string>
-    <string name="iceraven__warning">- لا يقدم المطور أي ضمانات للأمن أو التحديثات أو حتى الاستقرار.
-\n- يستغرق المشروع وقتًا أطول من المعتاد لتوفير التحديثات الأمنية.</string>
-    <string name="infobox">وظيفة التطبيق هي تحديث المتصفحات الصديقة للخصوصية. انقر فوق زر علامة الزائد لتثبيت التطبيقات الجديدة. اسحب لأسفل لفرض التحقق من وجود تحديثات جديدة. افتراضيًا، سيبحث التطبيق بشكل دوري عن التحديثات في الخلفية، والتي سيتم بعد ذلك تنزيلها وتثبيتها في النهاية. انقر فوق الترس لتخصيص السلوك في الإعدادات.
-\n
-\nآخر فحص ناجح للتحديث في الخلفية: %1$s</string>
+    <string name="iceraven__warning">- لا يقدم المطور أي ضمانات للأمن أو التحديثات أو حتى الاستقرار. \n- يستغرق المشروع وقتًا أطول من المعتاد لتوفير التحديثات الأمنية.</string>
+    <string name="infobox">وظيفة التطبيق هي تحديث المتصفحات الصديقة للخصوصية. انقر فوق زر علامة الزائد لتثبيت التطبيقات الجديدة. اسحب لأسفل لفرض التحقق من وجود تحديثات جديدة. افتراضيًا، سيبحث التطبيق بشكل دوري عن التحديثات في الخلفية، والتي سيتم بعد ذلك تنزيلها وتثبيتها في النهاية. انقر فوق الترس لتخصيص السلوك في الإعدادات. \n \nآخر فحص ناجح للتحديث في الخلفية: %1$s</string>
     <string name="download_activity__delete_cache_explanation">إذا كنت تعتقد أن FFUpdater قام بتخزين تحديث التطبيق الخاطئ مؤقتًا أو إذا كنت تريد توفير المساحة، فانقر فوق الزر لحذف الملف الذي تم تنزيله.</string>
     <string name="download_activity__open_cache_explanation">يمكنك فتح مجلد ذاكرة التخزين المؤقت لنسخ ملف APK إلى مكان به مساحة تخزين متوفرة أكبر. لسوء الحظ، في نظام التشغيل Android 11+، لا يتمكن سوى عدد قليل من مديري الملفات من الوصول إلى هذا المجلد داخل Android/data.</string>
     <string name="download_activity__open_cache_folder_button_text">فتح مجلد ذاكرة التخزين المؤقت</string>
@@ -118,15 +103,10 @@
     <string name="notification__error__title">تحديث البرنامج في الخلفية فشل</string>
     <string name="brave__description">تصفح الإنترنت بخصوصية، مجانًا! تطبيق Brave هو متصفح ويب خاص سريع ومجاني وآمن مع أداة حظر الإعلانات ومانع النوافذ المنبثقة. تصفح الإنترنت وابحث فيه بشكل خاص دون أن يتتبعك المعلنون والبرامج الضارة والنوافذ المنبثقة.</string>
     <string name="brave__title">متصفح الخصوصية Brave</string>
-    <string name="brave__warning">- يستخدم Brave الأساس التقني لـ Google Chrome وبالتالي يدعم بشكل غير مباشر الوضع الاحتكاري لمحرك عرض Chromium.
-\n- نظرًا لرمز الاهتمام الأساسي BAT الخاص به على سلسلة Ethereum blockchain، فإن المشروع له علاقات بالعملات المشفرة. تواجه تقنية Blockchain العديد من المشكلات ويجب تجنبها من وجهة نظر المطور.</string>
-    <string name="brave_beta__description">مرحبًا بك في Brave Beta لنظام Android!
-\nجرب أحدث الميزات وقدم تعليقات مبكرة: https://brave.com/msupport
-\nيمكنك تثبيت Brave Beta إلى جانب الإصدار الحالي من Brave لنظام Android.</string>
+    <string name="brave__warning">- يستخدم Brave الأساس التقني لـ Google Chrome وبالتالي يدعم بشكل غير مباشر الوضع الاحتكاري لمحرك عرض Chromium. \n- نظرًا لرمز الاهتمام الأساسي BAT الخاص به على سلسلة Ethereum blockchain، فإن المشروع له علاقات بالعملات المشفرة. تواجه تقنية Blockchain العديد من المشكلات ويجب تجنبها من وجهة نظر المطور.</string>
+    <string name="brave_beta__description">مرحبًا بك في Brave Beta لنظام Android! \nجرب أحدث الميزات وقدم تعليقات مبكرة: https://brave.com/msupport \nيمكنك تثبيت Brave Beta إلى جانب الإصدار الحالي من Brave لنظام Android.</string>
     <string name="brave_beta__title">متصفح Brave (النسخة التجريبية)</string>
-    <string name="brave_nightly__description">مرحبًا بك في Brave Nightly (نسخة المطورين) لنظام Android!
-\nجرب أحدث الميزات وقدم تعليقات مبكرة: https://brave.com/msupport
-\nيمكنك تثبيت Brave Nightly إلى جانب الإصدار الحالي من Brave لنظام Android.</string>
+    <string name="brave_nightly__description">مرحبًا بك في Brave Nightly (نسخة المطورين) لنظام Android! \nجرب أحدث الميزات وقدم تعليقات مبكرة: https://brave.com/msupport \nيمكنك تثبيت Brave Nightly إلى جانب الإصدار الحالي من Brave لنظام Android.</string>
     <string name="brave_nightly__title">متصفح Brave (نسخة المطورين)</string>
     <string name="unsupported_abi_dialog__title">جهاز غير مدعوم</string>
     <string name="update_interval__12h">12 ساعة</string>
@@ -225,17 +205,7 @@
     <string name="foreground__hidden_apps__summary">سيتم إخفاء التطبيقات المخفية في واجهة المستخدم ولن يتم تحديثها تلقائيًا.</string>
     <string name="foreground__hidden_apps__title">تطبيقات مخفية</string>
     <string name="fennecfdroid__warning">يقوم FFUpdater بتنزيل الملفات من خوادم F-Droid وبالتالي فهو ليس أسرع.</string>
-    <string name="network__custom_doh_server__dialog_message">أدخل تفاصيل الاتصال لخادم DoH المخصص بأحد التنسيقات التالية:
-\n
-\nURL;IP1
-\n
-\nURL;IP1;IP2
-\n
-\nURL;IP1;IP2;IP3
-\n
-\nURL;ip1;ip2;ip3;ip4
-\n
-\nعلى سبيل المثال: https://dns.google/dns-query;8.8.8.8 أو https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
+    <string name="network__custom_doh_server__dialog_message">أدخل تفاصيل الاتصال لخادم DoH المخصص بأحد التنسيقات التالية: \n \nURL;IP1 \n \nURL;IP1;IP2 \n \nURL;IP1;IP2;IP3 \n \nURL;ip1;ip2;ip3;ip4 \n \nعلى سبيل المثال: https://dns.google/dns-query;8.8.8.8 أو https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
     <string name="device__prefer_32bit_apks__summary">قم بالتفعيل إذا كانت ذاكرة جهازك منخفضة عادة. سيستخدم FFUpdater بعد ذلك ملفات APK ذات 32 بت والتي تتطلب عادةً ذاكرة أقل.</string>
     <string name="device__prefer_32bit_apks__title">تفضل ملفات APK 32 بت</string>
     <string name="installer__method__root_not_granted">لم يتم منح إذن الجذر!</string>
@@ -254,12 +224,9 @@
     <string name="main_activity__app_was_signed_by_different_certificate">تم توقيع هذا التطبيق بشهادة مختلفة ولا يمكن تحديثه باستخدام FFUpdater.</string>
     <string name="foreground__hide_apps_signed_by_different_certificate__title">إخفاء التطبيقات الموقعة بشهادة مختلفة.</string>
     <string name="firefox_focus_beta__title">Firefox Focus (النسخة التجريبية)</string>
-    <string name="firefox_focus_beta__description">استخدم Firefox Focus لكل ما تريد أن تظل منفصلاً عن متصفحك الرئيسي - لجميع من يدخلون ويخرجون وينسون الأمر في لحظات. لا علامات التبويب، لا ضجة، لا فوضى. قم بحظر أجهزة التتبع عبر الإنترنت أيضًا. بنقرة واحدة، سيتم تدمير سجل التصفح الخاص بك بالكامل.
-\n
-\nيعد Firefox Focus وسيلة الدخول والخروج المثالية والبحث والتدمير، فأنا في مهمة ليست من شأنك - متصفح الويب.</string>
+    <string name="firefox_focus_beta__description">استخدم Firefox Focus لكل ما تريد أن تظل منفصلاً عن متصفحك الرئيسي - لجميع من يدخلون ويخرجون وينسون الأمر في لحظات. لا علامات التبويب، لا ضجة، لا فوضى. قم بحظر أجهزة التتبع عبر الإنترنت أيضًا. بنقرة واحدة، سيتم تدمير سجل التصفح الخاص بك بالكامل. \n \nيعد Firefox Focus وسيلة الدخول والخروج المثالية والبحث والتدمير، فأنا في مهمة ليست من شأنك - متصفح الويب.</string>
     <string name="duckduckgo_android__title">متصفح DuckDuckGo</string>
-    <string name="duckduckgo_android__warning">- يستخدم DuckDuckGo عرض ويب النظام لعرض مواقع الويب.
-\n- كان هناك جدل حول عدم حظر جميع ملفات تعريف الارتباط من Microsoft - ولكن تم إصلاح ذلك.</string>
+    <string name="duckduckgo_android__warning">- يستخدم DuckDuckGo عرض ويب النظام لعرض مواقع الويب. \n- كان هناك جدل حول عدم حظر جميع ملفات تعريف الارتباط من Microsoft - ولكن تم إصلاح ذلك.</string>
     <string name="installer__method__title">طريقة المثبت</string>
     <string name="thorium__title">متصفح Thorium</string>
     <string name="k9mail__title">بريد K-9</string>
@@ -268,8 +235,7 @@
     <string name="cardview_dialog__eol">لا ينبغي استخدام هذا التطبيق بعد الآن:</string>
     <string name="cardview_dialog__hide">إخفاء</string>
     <string name="vivaldi__title">متصفح Browser</string>
-    <string name="vivaldi__warning">- Vivaldi مفتوح المصدر جزئيًا فقط.
-\n- كما أنه يستخدم الأساس التقني لـ Google Chrome وبالتالي يدعم بشكل غير مباشر الوضع الاحتكاري لمحرك عرض Chromium.</string>
+    <string name="vivaldi__warning">- Vivaldi مفتوح المصدر جزئيًا فقط. \n- كما أنه يستخدم الأساس التقني لـ Google Chrome وبالتالي يدعم بشكل غير مباشر الوضع الاحتكاري لمحرك عرض Chromium.</string>
     <string name="tor_browser__title">متصفح Tor</string>
     <string name="orbot__title">Orbot: تور لنظام أندرويد</string>
     <string name="crash_report_activity__label">مراسل الأعطال</string>
@@ -299,18 +265,6 @@
     <string name="notification__uncaught_exception__text">انقر لعرض تقرير الخطأ.</string>
     <string name="app_installer__failed_to_validate_signature_of_download">فشل في التحقق من صحة توقيع التنزيل.</string>
     <string name="orbot__description">Orbot هو تطبيق وكيل مجاني يمكّن التطبيقات الأخرى من استخدام الإنترنت بشكل أكثر أمانًا. يستخدم Orbot Tor لتشفير حركة المرور الخاصة بك على الإنترنت ثم يقوم بإخفائها من خلال الارتداد عبر سلسلة من أجهزة الكمبيوتر حول العالم. Tor هو برنامج مجاني وشبكة مفتوحة تساعدك على الدفاع ضد أحد أشكال مراقبة الشبكة التي تهدد الحرية الشخصية والخصوصية، والأنشطة والعلاقات التجارية السرية، وأمن الدولة المعروف باسم تحليل حركة المرور.</string>
-    <string name="network__proxy__dialog_message">إذا كنت تريد استخدام وكيل SOCKS أو HTTP، فأدخل تفاصيل الاتصال هنا. استخدم أحد هذه التنسيقات:
-\n
-\nSOCKS/HTTP;ip/domain;port
-\n
-\nSOCKS/HTTP;ip/domain;port;اسم المستخدم;كلمة المرور
-\n
-\nعلى سبيل المثال: SOCKS;1.2.3.4;22 أو HTTP;5.6.7.8;80;user1;pw123 أو HTTP;p.webshare.io;80;u;p. اتركه فارغًا إذا كنت تريد استخدام تكوين وكيل النظام.
-\n
-\nالحد: إذا قمت بتغيير \"إعدادات DNS\" في الإعدادات إلى DNS عبر خادم HTTPS، فيجب عليك إدخال مجال الخادم الوكيل. لن تعمل عناوين IP.</string>
-    <string name="tor_browser_alpha__description">متصفح Tor هو متصفح الهاتف المحمول الرسمي الوحيد الذي يدعمه مشروع Tor، مطوري أقوى أداة في العالم للخصوصية والحرية عبر الإنترنت.
-\n
-\nسيكون متصفح Tor مجانيًا دائمًا، ولكن التبرعات تجعل ذلك ممكنًا. مشروع Tor هو منظمة غير ربحية بموجب 501©(3) ومقرها في الولايات المتحدة. يرجى النظر في تقديم مساهمة اليوم. كل هدية تصنع فرقًا: https://donate.torproject.org.
-\n
-\nتعرف على كيفية الإبلاغ عن الأخطاء وتقديم التعليقات على https://support.torproject.org/misc/bug-or-feedback/!</string>
+    <string name="network__proxy__dialog_message">إذا كنت تريد استخدام وكيل SOCKS أو HTTP، فأدخل تفاصيل الاتصال هنا. استخدم أحد هذه التنسيقات: \n \nSOCKS/HTTP;ip/domain;port \n \nSOCKS/HTTP;ip/domain;port;اسم المستخدم;كلمة المرور \n \nعلى سبيل المثال: SOCKS;1.2.3.4;22 أو HTTP;5.6.7.8;80;user1;pw123 أو HTTP;p.webshare.io;80;u;p. اتركه فارغًا إذا كنت تريد استخدام تكوين وكيل النظام. \n \nالحد: إذا قمت بتغيير \"إعدادات DNS\" في الإعدادات إلى DNS عبر خادم HTTPS، فيجب عليك إدخال مجال الخادم الوكيل. لن تعمل عناوين IP.</string>
+    <string name="tor_browser_alpha__description">متصفح Tor هو متصفح الهاتف المحمول الرسمي الوحيد الذي يدعمه مشروع Tor، مطوري أقوى أداة في العالم للخصوصية والحرية عبر الإنترنت. \n \nسيكون متصفح Tor مجانيًا دائمًا، ولكن التبرعات تجعل ذلك ممكنًا. مشروع Tor هو منظمة غير ربحية بموجب 501©(3) ومقرها في الولايات المتحدة. يرجى النظر في تقديم مساهمة اليوم. كل هدية تصنع فرقًا: https://donate.torproject.org. \n \nتعرف على كيفية الإبلاغ عن الأخطاء وتقديم التعليقات على https://support.torproject.org/misc/bug-or-feedback/!</string>
 </resources>

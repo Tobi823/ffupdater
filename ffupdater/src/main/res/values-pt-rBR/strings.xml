@@ -11,11 +11,8 @@
     <string name="notification__error__title">Verificação em segundo plano falhou</string>
     <string name="brave__description">Navegue livremente e com privacidade na Internet! O Brave Private Browser é o seu navegador privado rápido, livre, seguro e com bloqueador de anúncios e pop-up. Navegue e pesquise na Internet com privacidade, sem ser rastreado por anunciantes, malware e pop-ups.</string>
     <string name="brave__title">Navegador Privado Brave</string>
-    <string name="brave__warning">- O Brave implementa os fundamentos técnicos do Google Chrome (Chromium) e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium.
-\n- Devido ao seu Basic Attention Token BAT na blockchain Ethereum, o projeto tem ligações com criptomoedas. Blockchains têm muitos problemas e devem ser evitadas, na minha opinião.</string>
-    <string name="brave_beta__description">Bem-vindo ao Brave Beta para o Android!
-\nTeste os mais novos recursos e dê um feedback antecipado: https://brave.com/msupport
-\nVocê pode instalar o Brave Beta junto com sua versão estável atual do Brave para o Android.</string>
+    <string name="brave__warning">- O Brave implementa os fundamentos técnicos do Google Chrome (Chromium) e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium. \n- Devido ao seu Basic Attention Token BAT na blockchain Ethereum, o projeto tem ligações com criptomoedas. Blockchains têm muitos problemas e devem ser evitadas, na minha opinião.</string>
+    <string name="brave_beta__description">Bem-vindo ao Brave Beta para o Android! \nTeste os mais novos recursos e dê um feedback antecipado: https://brave.com/msupport \nVocê pode instalar o Brave Beta junto com sua versão estável atual do Brave para o Android.</string>
     <string name="brave_beta__title">Navegador Brave (Beta)</string>
     <string name="brave_nightly__description">Bem-vindo ao Brave Nightly (Desenvolvedor) para Android!\nTeste as mais novas funcionalidades e dê feedback antecipado: https://brave.com/msupport\nVocê pode instalar o Brave Nightly junto com sua versão atual do Brave for Android.</string>
     <string name="brave_nightly__title">Navegador Brave (Nightly)</string>
@@ -46,11 +43,8 @@
     <string name="firefox_release__warning">- Uma versão melhorada do Firefox também está disponível no F-Droid com o nome Fennec F-Droid.</string>
     <string name="iceraven__description">Definitivamente não criado pela Mozilla! \n\nIceraven é um navegador baseado na versão Fenix da Mozilla, GeckoView e Componentes da Mozilla. \n\nSeu objetivo é ser uma modificação bem próxima ao novo Firefox que tenta oferecer aos usuários mais opções, mais possibilidades de customização (incluindo uma ampla biblioteca de extensões) e mais informações sobre os sites visitados e como o navegador está interagindo com eles.</string>
     <string name="iceraven__title">Iceraven</string>
-    <string name="iceraven__warning">- O mantenedor não dá qualquer garantia ou garantias de segurança ou de atualizações ou mesmo de estabilidade.
-\n - O projeto demora mais do que o normal para fornecer atualizações de segurança.</string>
-    <string name="infobox">Este app instala e atualiza navegadores para privacidade. Clique no botão \"+\" para instalar novos apps. Deslize para baixo para forçar a verificação de novas atualizações. Por padrão, o app regularmente verificará atualizações em segundo plano, que então serão baixadas e eventualmente instaladas. Clique na engrenagem para customizar o comportamento nas configurações.
-\n
-\nÚltima verificação em segundo plano: %1$s</string>
+    <string name="iceraven__warning">- O mantenedor não dá qualquer garantia ou garantias de segurança ou de atualizações ou mesmo de estabilidade. \n - O projeto demora mais do que o normal para fornecer atualizações de segurança.</string>
+    <string name="infobox">Este app instala e atualiza navegadores para privacidade. Clique no botão \"+\" para instalar novos apps. Deslize para baixo para forçar a verificação de novas atualizações. Por padrão, o app regularmente verificará atualizações em segundo plano, que então serão baixadas e eventualmente instaladas. Clique na engrenagem para customizar o comportamento nas configurações. \n \nÚltima verificação em segundo plano: %1$s</string>
     <string name="app_card__information_about_the_app">detalhes sobre o app</string>
     <string name="download_activity__delete_cache_button_text">limpar cache</string>
     <string name="download_activity__delete_cache_explanation">Se você acha que o FFUpdater colocou em cache uma atualização do navegador defeituosa ou deseja economizar espaço, clique no botão para apagar o arquivo baixado.</string>
@@ -59,7 +53,7 @@
     <string name="download_activity__download_failed">Download falhou</string>
     <string name="download_activity__downloaded_application_from">Navegador baixado do:</string>
     <string name="app_installer__signature_of_download_is_invalid">O navegador baixado NÃO foi verificado</string>
-    <string name="download_activity__exception__show_button">"<u>Mostrar o relatório do erro detalhado.</u>"</string>
+    <string name="download_activity__exception__show_button"><u>Mostrar o relatório do erro detalhado.</u></string>
     <string name="download_activity__external_storage_not_accessible">Armazenamento não está disponível - não é possível baixar. Status atual:</string>
     <string name="download_activity__fetch_url_for_download">Procurar metadados em %1$s</string>
     <string name="download_activity__fetched_url_for_download_successfully">Metadados extraídos de %1$s</string>
@@ -89,9 +83,9 @@
     <string name="kiwi__description">O Navegador Kiwi é feito para navegar na internet, ler notícias, assistir vídeos e ouvir música, sem incômodos.</string>
     <string name="kiwi__title">Navegador Kiwi Next</string>
     <string name="kiwi__warning">- O Kiwi só é código aberto parcialmente\n- O Kiwi usa os fundamentos técnicos do Google Chrome e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium.\n- O Kiwi não é um navegador de privacidade ideal mas tem um bom suporte a extensões.\n- O navegador está sendo pago pelos motores de busca por cada pesquisa feita utilizando o Kiwi Browser. Dependendo da escolha do motor de busca, os pedidos podem ser feitos através dos servidores Kiwibrowser / Kiwisearchservices.\n- O Google Ads no Kiwi pode usar os dados de localização para anúncios - mas você pode desativá-los desativando a função Descoberta. Mas isso mudará em breve. Veja https://privacy.kiwibrowser.org/ para mais detalhes.</string>
-    <string name="main_activity__github_api_limit_exceeded">"<u>O limite de consultas do API do GitHub foi excedido. Tente outra vez mais tarde.</u>"</string>
+    <string name="main_activity__github_api_limit_exceeded"><u>O limite de consultas do API do GitHub foi excedido. Tente outra vez mais tarde.</u></string>
     <string name="main_activity__no_unmetered_network">Nenhuma rede não contatada</string>
-    <string name="main_activity__temporary_network_issue">"<u>Problema temporário da rede. Tente outra vez mais tarde.</u>"</string>
+    <string name="main_activity__temporary_network_issue"><u>Problema temporário da rede. Tente outra vez mais tarde.</u></string>
     <string name="ok">OK</string>
     <string name="request_installation_permission_dialog__abort">Abortar</string>
     <string name="request_installation_permission_dialog__grant_permission">Conceder permissão</string>
@@ -108,7 +102,7 @@
     <string name="session_installer__status_failure_conflict">O processo falhou porque entrou em conflito (ou é inconsistente) com outro pacote já instalado no dispositivo. Por exemplo, uma permissão existente, certificados incompatíveis, etc. Você pode desinstalar outro app para corrigir o problema.</string>
     <string name="session_installer__status_failure_incompatible">O processo falhou porque é fundamentalmente incompatível com este dispositivo. Por exemplo, o app pode requerer um recurso de hardware que não existe, pode estar faltando código nativo para as ABIs suportadas pelo dispositivo ou requerer uma versão mais recente do SDK, etc.</string>
     <string name="session_installer__status_failure_invalid">O processo falhou porque um ou mais dos APKs era inválido. Por exemplo, eles podem ser malformados, corruptos, assinados incorretamente, desajustados, etc.</string>
-    <string name="session_installer__status_failure_storage">O processo falhou por causa de problemas com armazenamento. Por exemplo, o dispositivo pode estar com pouco espaço ou a memória  externa pode não estar disponível. Você pode liberar espaço ou inserir outra mídia externa.</string>
+    <string name="session_installer__status_failure_storage">O processo falhou por causa de problemas com armazenamento. Por exemplo, o dispositivo pode estar com pouco espaço ou a memória externa pode não estar disponível. Você pode liberar espaço ou inserir outra mídia externa.</string>
     <string name="settings_activity__label">Configurações</string>
     <string name="settings__b_f__delete_cache_if_install_failed">Excluir a atualização baixada se a instalação falhar.</string>
     <string name="settings__b_f__delete_cache_if_install_successful">Excluir a atualização baixada se a instalação for bem sucedida.</string>
@@ -159,13 +153,12 @@
     <string name="update_interval__6h">6 horas</string>
     <string name="update_interval__8h">8 horas</string>
     <string name="notification__update_available__channel_descr">Canal de notificação para %1$s atualizações disponíveis.</string>
-    <string name="notification__update_available__channel_name">"%1$s" notificações de atualização</string>
+    <string name="notification__update_available__channel_name">%1$s notificações de atualização</string>
     <string name="update_notification__text">Clique para instalar a atualização</string>
-    <string name="update_notification__title">Atualização para "%1$s" disponível</string>
+    <string name="update_notification__title">Atualização para %1$s disponível</string>
     <string name="vivaldi__description">Descubra um navegador extremamente veloz! Vivaldi é um navegador novo, gratuito, privado e muito flexível. Ele vem repleto de recursos úteis incluindo um AdBlocker (bloqueador de pop-ups) integrado, proteção contra rastreamento e opção de tradução privada. Navegador vem com abas especiais no estilo desktop, temas escuros/claros e muitas opções de layout.</string>
     <string name="vivaldi__title">Vivaldi</string>
-    <string name="vivaldi__warning">- O Vivaldi é parcialmente de código aberto.
-\n- Ele também utiliza a base técnica do Google Chrome e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium.</string>
+    <string name="vivaldi__warning">- O Vivaldi é parcialmente de código aberto. \n- Ele também utiliza a base técnica do Google Chrome e assim apoia indiretamente a posição de monopólio do motor de renderização Chromium.</string>
     <string name="crash_report__explain_text__download_activity_install_file">Este erro ocorreu durante a instalação. Se este erro ocorrer frequentemente, fique a vontade para enviar o relatório de falha via notabug.org, GitHub ou GitLab.</string>
     <string name="notification__eol_apps__channel_description">Canal de notificação para avisos sobre aplicativos desatualizados.</string>
     <string name="notification__eol_apps__channel_name">Notificação de aplicativos desatualizados</string>
@@ -208,16 +201,10 @@
     <string name="cromite__title">Cromite</string>
     <string name="background__separate_notification_channels__summary">Usar canais de notificação diferentes para cada aplicativo individual</string>
     <string name="app_installer__failed_to_validate_signature_of_download">Falha ao validar a assinatura do download.</string>
-    <string name="tor_browser_alpha__description">O Navegador Tor é o único navegador móvel suportado pelo Projeto Tor, desenvolvedores da ferramenta de privacidade e liberdade online mais forte do mundo.
-\n
-\nO Navegador Tor SEMPRE vai ser grátis, mas doações o fazem possível, O Projeto Tor é uma organização sem fins lucrativos 501©(3) baseada nos EUA. Por favor, considere fazer uma doação hoje. Cada presente faz diferença: https://donate.torproject.org.
-\n
-\nAprenda como relatar erros e prover opiniões em https://support.torproject.org/pt-BR/misc/bug-or-feedback/!</string>
+    <string name="tor_browser_alpha__description">O Navegador Tor é o único navegador móvel suportado pelo Projeto Tor, desenvolvedores da ferramenta de privacidade e liberdade online mais forte do mundo. \n \nO Navegador Tor SEMPRE vai ser grátis, mas doações o fazem possível, O Projeto Tor é uma organização sem fins lucrativos 501©(3) baseada nos EUA. Por favor, considere fazer uma doação hoje. Cada presente faz diferença: https://donate.torproject.org. \n \nAprenda como relatar erros e prover opiniões em https://support.torproject.org/pt-BR/misc/bug-or-feedback/!</string>
     <string name="chromium__description">O Chromium é um projeto de navegador de código aberto que visa construir uma maneira mais segura, rápida e estável para todos os usuários experienciarem a web. Este site contém documentos de design, visões gerais de arquitetura, informações de teste e muito mais para ajudá-lo a aprender a criar e trabalhar com o código-fonte do Chromium.</string>
     <string name="chromium__warning">- O Chromium usa a base técnica do Google Chrome e, portanto, indiretamente apoia a posição de monopólio do mecanismo de renderização do Chromium.</string>
-    <string name="firefox_focus_beta__description">Use o Firefox Focus para tudo que você quer manter separado do seu navegador principal — para todos aqueles momentos de entrar, sair e esquecer. Sem abas, sem confusão, sem bagunça. Bloqueie rastreadores online também. Um toque e seu histórico de navegação é completamente destruído.
-\n
-\nO Firefox Focus é o navegador perfeito de entrar/sair, pesquisar e destruir, estou em uma missão que não é da sua conta.</string>
+    <string name="firefox_focus_beta__description">Use o Firefox Focus para tudo que você quer manter separado do seu navegador principal — para todos aqueles momentos de entrar, sair e esquecer. Sem abas, sem confusão, sem bagunça. Bloqueie rastreadores online também. Um toque e seu histórico de navegação é completamente destruído. \n \nO Firefox Focus é o navegador perfeito de entrar/sair, pesquisar e destruir, estou em uma missão que não é da sua conta.</string>
     <string name="duckduckgo_android__description">O aplicativo DuckDuckGo fornece a proteção de privacidade online mais abrangente com o toque de um botão. Com um baixamento, você obtém um novo navegador diário que oferece proteção perfeita enquanto pesquisa e navega, e acesso a proteções contra rastreamento para emails que você recebe e aplicativos que você usa. Muitas dessas proteções não são oferecidas por padrão na maioria dos navegadores populares.</string>
     <string name="cardview_dialog__different_signature">O FFUpdater não pode atualizar este aplicativo pois a assinatura do APK é diferente. Você pode corrigir isso desinstalando o aplicativo e instalando-o novamente com o FFUpdater. Porém, isso irá excluir todos os seus dados no aplicativo, então lembre-se de fazer uma cópia de segurança dos seus dados com antecedência.</string>
     <string name="privacy_browser__description">A única maneira de evitar que dados sejam abusados é impedir que eles sejam coletados em primeiro lugar Privacy Browser tem dois objetivos principais: Minimizar os dados enviados à internet e minimizar os dados armazenados no dispositivo.</string>

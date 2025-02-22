@@ -11,15 +11,10 @@
     <string name="notification__error__title">Kunne ikke se etter nye oppgraderinger i bakgrunnen</string>
     <string name="brave__description">Mer privat surfing, gratis. Har blokkering av reklame og oppsprett. Søk på Internett uten at reklameselskap, skadevare og oppsprett sporer deg.</string>
     <string name="brave__title">Brave-nettleseren</string>
-    <string name="brave__warning">- Bruker Google Chrome (Chromium) som teknisk fundament. Noen liker ikke dette. Vil du installere Brave\?
-\n- På grunn av sin grunnleggende oppmerksomhetstoken flaggermus på Ethereum blockchain har prosjektet bånd med cryptocurrency. Blockchains har mange problemer og bør unngås etter mitt syn.</string>
-    <string name="brave_beta__description">Velkommen til Brave-beta for Android.
-\nPrøv de nyeste funksjonene og gi tilbakemelding: https://brave.com/msupport
-\nDu kan installere det sammen med din nåværende versjon av Brave for Android.</string>
+    <string name="brave__warning">- Bruker Google Chrome (Chromium) som teknisk fundament. Noen liker ikke dette. Vil du installere Brave? \n- På grunn av sin grunnleggende oppmerksomhetstoken flaggermus på Ethereum blockchain har prosjektet bånd med cryptocurrency. Blockchains har mange problemer og bør unngås etter mitt syn.</string>
+    <string name="brave_beta__description">Velkommen til Brave-beta for Android. \nPrøv de nyeste funksjonene og gi tilbakemelding: https://brave.com/msupport \nDu kan installere det sammen med din nåværende versjon av Brave for Android.</string>
     <string name="brave_beta__title">Brave-nettleseren (beta)</string>
-    <string name="brave_nightly__description">Velkommen til Brave nattlig (utviklerversjon) for Android.
-\nPrøv ut de nyeste funksjoner og gi tilbakemelding: https://brave.com/msupport
-\nDu kan installere det ved siden av din nåværende versjon av Brave for Android.</string>
+    <string name="brave_nightly__description">Velkommen til Brave nattlig (utviklerversjon) for Android. \nPrøv ut de nyeste funksjoner og gi tilbakemelding: https://brave.com/msupport \nDu kan installere det ved siden av din nåværende versjon av Brave for Android.</string>
     <string name="brave_nightly__title">Brave-nettleseren (nattlig)</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Kopier krasjrapport til utklippstavlen</string>
     <string name="crash_report__go_to_github">Gå til GitHub</string>
@@ -76,7 +71,7 @@
     <string name="request_installation_permission_dialog__grant_permission">Innvilg tilgang</string>
     <string name="request_installation_permission_dialog__message">FFUpdater mangler tilgang til å installere og oppgradere programmer. Du må innvilge disse tilgangene for at FFUpdater skal virke.</string>
     <string name="request_installation_permission_dialog__title">Tilgang for installasjonsprogram</string>
-    <string name="running_downloads_dialog__message">Programmet laster ned oppgraderinger i bakgrunnen … Vil du starte en ny nedlasting som kan ta lengre tid\?</string>
+    <string name="running_downloads_dialog__message">Programmet laster ned oppgraderinger i bakgrunnen … Vil du starte en ny nedlasting som kan ta lengre tid?</string>
     <string name="running_downloads_dialog__negative">Nei, ikke last ned</string>
     <string name="running_downloads_dialog__title">Kjørende nedlastinger</string>
     <string name="running_downloads_dialog__yes">Ja</string>

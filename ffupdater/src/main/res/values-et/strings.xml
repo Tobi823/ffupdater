@@ -73,9 +73,7 @@
     <string name="add_app_activity__title_better_than_google_chrome">Paremad, kui Google Chrome</string>
     <string name="fennecfdroid__warning">FFUpdater laadib failid F-Droidi serveritest ja seega pole kiirem.</string>
     <string name="add_app_activity__title_good_security_browsers">Hea turvalisusega brauserid</string>
-    <string name="infobox">See rakendus on privaatsussõbralike brauserite paigaldaja. Uute rakenduste lisamiseks klõpsi plussiga ikooni. Uuenduste kontrolli käivitamiseks viipa alla. Vaikimisi seadistuste alusel FFUpdater kontrollib uuendusi taustal ning nende olemasolul laadib uuendused alla ja paigaldab. Kui soovid seda muuta, siis klõpsi hammasrattaga ikooni ja muuda eelistusi vastavalt.
-\n
-\nViimane taustal toimunud uuenduste kontroll: %1$s</string>
+    <string name="infobox">See rakendus on privaatsussõbralike brauserite paigaldaja. Uute rakenduste lisamiseks klõpsi plussiga ikooni. Uuenduste kontrolli käivitamiseks viipa alla. Vaikimisi seadistuste alusel FFUpdater kontrollib uuendusi taustal ning nende olemasolul laadib uuendused alla ja paigaldab. Kui soovid seda muuta, siis klõpsi hammasrattaga ikooni ja muuda eelistusi vastavalt. \n \nViimane taustal toimunud uuenduste kontroll: %1$s</string>
     <string name="installer__method__shizuku_not_installed">Shizuku pole paigaldatud!</string>
     <string name="cardview_dialog__not_installed_by_ffupdater">FFUpdater ei paigaldanud või uuendanud seda rakendust. Vältimaks konflikte teiste rakendustega oleme automaatse uuendamise välja lülitanud.</string>
     <string name="notification__download_running__channel_descr">Kuvatakse, kui rakenduse uuendus on taustal allalaadimisel.</string>
@@ -177,14 +175,9 @@
     <string name="installer__android_too_old_for_shizuku">Sinu nutiseadme Androidi versioon on Shizuku jaoks liiga vana.</string>
     <string name="background__installation__when_screen_off__summary">Proovi paigaldada uuendusi vaid siis, kui nutiseadme ekraan on välja lülitatud.</string>
     <string name="background__installation__when_screen_off__title">Paigalda vaid siis, kui ekraan on välja lülitatud</string>
-    <string name="brave_beta__description">Tere tulemast kasutama Androidi Brave Betat!
-\nProovi uusimaid funktsionaalsusi ja jaga tagasisidet siin lehel: https://brave.com/msupport
-\nSa võid Brave Beta paigaldada kõrvuti tavalise Brave\'i versiooniga.</string>
-    <string name="brave_nightly__description">Tere tulemast kasutama Androidi Brave Nightlyt (arendajatele)!
-\nProovi uusimaid funktsionaalsusi ja jaga tagasisidet siin lehel: https://brave.com/msupport
-\nSa võid Brave Nightly paigaldada kõrvuti tavalise Brave\'i versiooniga.</string>
-    <string name="brave__warning">- Brave\'i tehniline lahendus põhineb Google Chrome\'il ja seega toetab ta kaudselt Chromiumi renderdusmootori monopoli.
-\n- Brave\'is on kasutusel Ethereumi plokiahelal põhinev Basic Attention Token BAT ning seega on ta seotud krüptoraha tööstusega. Lisaks on plokiahela kasutamisel antud kontekstis mitmeid probleeme ning seda peaks FFUpdateri arendajate arvates vältima.</string>
+    <string name="brave_beta__description">Tere tulemast kasutama Androidi Brave Betat! \nProovi uusimaid funktsionaalsusi ja jaga tagasisidet siin lehel: https://brave.com/msupport \nSa võid Brave Beta paigaldada kõrvuti tavalise Brave\'i versiooniga.</string>
+    <string name="brave_nightly__description">Tere tulemast kasutama Androidi Brave Nightlyt (arendajatele)! \nProovi uusimaid funktsionaalsusi ja jaga tagasisidet siin lehel: https://brave.com/msupport \nSa võid Brave Nightly paigaldada kõrvuti tavalise Brave\'i versiooniga.</string>
+    <string name="brave__warning">- Brave\'i tehniline lahendus põhineb Google Chrome\'il ja seega toetab ta kaudselt Chromiumi renderdusmootori monopoli. \n- Brave\'is on kasutusel Ethereumi plokiahelal põhinev Basic Attention Token BAT ning seega on ta seotud krüptoraha tööstusega. Lisaks on plokiahela kasutamisel antud kontekstis mitmeid probleeme ning seda peaks FFUpdateri arendajate arvates vältima.</string>
     <string name="installer__method__title">Paigaldaja meetod</string>
     <string name="firefox_nightly__title">Firefox Nightly</string>
     <string name="firefox_release__title">Firefoxi brauser</string>
@@ -197,13 +190,8 @@
     <string name="tor_browser__description">Tor brauser Androidi jaoks on ainus Tor projekti poolt toetatud ametlik brauser. Projekt Tor arendab tugevamaid ja parimaid võrguprivaatsusega ja -vabadusega seotud tarvikuid maailmas.</string>
     <string name="crash_report_activity__label">Krahhiteavitus</string>
     <string name="fennecfdroid__title">Fennec F-Droid</string>
-    <string name="kiwi__warning">- Kiwi lähtekood on vaid osaliselt vaba ja avatud tarkvara.
-\n- Kiwi tehniline lahendus põhineb Google Chrome\'il ja seega toetab ta kaudselt Chromiumi renderdusmootori monopoli.
-\n- Kiwi privaatsus pole ideaalne, kuid tal on hea lisamoodulite tugi.
-\n- Otsingumootorid maksavad Kiwi brauseri arendajatele igalt brauserist tehtud otsingu alusel tasu. Olenevalt kasutatavast otsingust võivad päringud liikuda läbi Kiwibrowser või Kiwisearchservices serverite.
-\n- Kiwi brauserist kuvatakse reklaame teenusest Google Ads ning sel juhul on Google\'il ligipääs ka sinu asukohale, kui sa seda otseselt seadistustest ei keela Discovery-valiku alt. See olukord lähiajal muutub. Lisateavet leiad https://privacy.kiwibrowser.org saidist.</string>
-    <string name="vivaldi__warning">- Vivaldi lähtekood põhineb vaid osaliselt vabal ja avatud tarkvaral.
-\n- Vivaldi tehniline lahendus põhineb Google Chrome\'il ja seega toetab ta kaudselt Chromiumi renderdusmootori monopoli.</string>
+    <string name="kiwi__warning">- Kiwi lähtekood on vaid osaliselt vaba ja avatud tarkvara. \n- Kiwi tehniline lahendus põhineb Google Chrome\'il ja seega toetab ta kaudselt Chromiumi renderdusmootori monopoli. \n- Kiwi privaatsus pole ideaalne, kuid tal on hea lisamoodulite tugi. \n- Otsingumootorid maksavad Kiwi brauseri arendajatele igalt brauserist tehtud otsingu alusel tasu. Olenevalt kasutatavast otsingust võivad päringud liikuda läbi Kiwibrowser või Kiwisearchservices serverite. \n- Kiwi brauserist kuvatakse reklaame teenusest Google Ads ning sel juhul on Google\'il ligipääs ka sinu asukohale, kui sa seda otseselt seadistustest ei keela Discovery-valiku alt. See olukord lähiajal muutub. Lisateavet leiad https://privacy.kiwibrowser.org saidist.</string>
+    <string name="vivaldi__warning">- Vivaldi lähtekood põhineb vaid osaliselt vabal ja avatud tarkvaral. \n- Vivaldi tehniline lahendus põhineb Google Chrome\'il ja seega toetab ta kaudselt Chromiumi renderdusmootori monopoli.</string>
     <string name="chromium__warning">- Chromiumi tehniline lahendus põhineb Google Chrome\'il ja seega toetab ta kaudselt Chromiumi renderdusmootori monopoli.</string>
     <string name="firefox_beta__description">Firefoxi brauser Androidi jaoks on automaatselt privaatne ja väga kiire. Kogudes teavet sinu tegemiste kohta internetis ja aeglustades sinu brauserikasutuse kiirust jälgivad tuhanded seadmejälituslahendused igapäevaselt sinu tegemisi. Vaikimisi blokeerib Firefox 2000 sellist jälitajat ning kasutades reklaamiblokeerijaid saad sa sellist jälgimist veelgi vähendada. Firefoxiga on veebisirvimisel tagatud sinu elementaarne privaatsus ja toimingud on kiired.</string>
     <string name="firefox_release__description">Firefoxi brauser Androidi jaoks on automaatselt privaatne ja väga kiire. Kogudes teavet sinu tegemiste kohta internetis ja aeglustades sinu brauserikasutuse kiirust jälgivad tuhanded seadmejälituslahendused igapäevaselt sinu tegemisi. Vaikimisi blokeerib Firefox 2000 sellist jälitajat ning kasutades reklaamiblokeerijaid saad sa sellist jälgimist veelgi vähendada. Firefoxiga on veebisirvimisel tagatud sinu elementaarne privaatsus ja toimingud on kiired.</string>
@@ -218,23 +206,14 @@
     <string name="tor_browser__title">Tor brauser</string>
     <string name="settings__network__trust_user_cas__summary">Lülita sisse, kui sa eeldad, et muud rakendused võiksid näha ja muuta sinu võrguliiklust. Kui sa pole päris kindel, siis hoia see eelistus väljalülitatuna.</string>
     <string name="fennecfdroid__description">Fennec F-Droid põhineb viimasel Firefoxi versioonil (koodnimega Fenix). Rakendusest on eemaldatud mõned suletud lähtekoodiga komponendid ja telemeetria, aga brauser jätkuvalt kasutab tööks mitmeid Mozilla ja Google\'i teenuseid mis võimaldavad jälgida ja profileerida kasutajaid.</string>
-    <string name="iceraven__description">Kindlasti pole seda brauserit teinud Mozilla!
-\n
-\nIceraven brauser on Androidile mõeldud veebibrauser, mis põhineb Mozilla Firefoxi Fenixi versioonil ja kasutab GeckoView ja Mozilla Android Components teeke.
-\n
-\nMeie eesmärgiks on teha Firefoxi Androidi versioonile võimalikult lähedane variant, mis võimaldab kasutajatel pruukida täiendavaid seadistusi, kohandada brauserit (sealhulgas laienduste abil) ja saada lisateavet külastatavate veebisaitide kohta ning selle kohta kuidas brauser nende saitidega suhtleb.</string>
+    <string name="iceraven__description">Kindlasti pole seda brauserit teinud Mozilla! \n \nIceraven brauser on Androidile mõeldud veebibrauser, mis põhineb Mozilla Firefoxi Fenixi versioonil ja kasutab GeckoView ja Mozilla Android Components teeke. \n \nMeie eesmärgiks on teha Firefoxi Androidi versioonile võimalikult lähedane variant, mis võimaldab kasutajatel pruukida täiendavaid seadistusi, kohandada brauserit (sealhulgas laienduste abil) ja saada lisateavet külastatavate veebisaitide kohta ning selle kohta kuidas brauser nende saitidega suhtleb.</string>
     <string name="installer__method__session">Sessioonipõhine paigaldaja: sobib enamustele nutiseadmetele ning kui Androidi versioon on 12 või suurem, siis peale kasutaja poolt tehtud ühte uuendust tehakse järgmised uuendused taustal automaatselt.</string>
     <string name="cromite__warning">- Cromite\'i tehniline lahendus põhineb Google Chrome\'il ja seega toetab ta kaudselt Chromiumi renderdusmootori monopoli.</string>
     <string name="thorium__warning">- Thoriumi tehniline lahendus põhineb Google Chrome\'il ja seega toetab ta kaudselt Chromiumi renderdusmootori monopoli.</string>
     <string name="firefox_beta__title">Firefoxi Beetaversioon Androidile</string>
     <string name="firefox_focus__description">See on Firefoxi brauseri versioon, mille eesmärgiks on kasutajate privaatsust veelgi parandada.</string>
-    <string name="firefox_nightly__description">Varem oli selle rakenduse nimi Firefox Preview ning nüüd Firefox Nightly.
-\n
-\nFirefox Nightly on kõikide Mozilla Firefoxi versioonide arendusvariant.
-\n
-\nFirefox Nightly on eelkõige mõeldud katseliste Firefoxi arenduste tesimiseks. Selle brauserivariandi kasutamisel on sul võimalik varakult proovida selliseid funktsionaalsusi, mis võivad tulevikus tavakasutusse jõuda, aga seejuures puudub rakenduse tavapärane stabiilsus. Lisaks on sul võimalik arendajatele jagada tagasisidet leitud vigade ja probleemide kohta ning sellega mõjutada seda kuidas tulevane Firefoxi versioon saab välja nägema.</string>
-    <string name="iceraven__warning">- Selle projekti arendajad ei anna ühtegi garantiid turvalisuse, uuenduste ega ka stabiilsuse osas.
-\n- Antud brauseri puhul palun arvesta, et turvaparandused on saadaval aeglasemalt, kui tavapärane on.</string>
+    <string name="firefox_nightly__description">Varem oli selle rakenduse nimi Firefox Preview ning nüüd Firefox Nightly. \n \nFirefox Nightly on kõikide Mozilla Firefoxi versioonide arendusvariant. \n \nFirefox Nightly on eelkõige mõeldud katseliste Firefoxi arenduste tesimiseks. Selle brauserivariandi kasutamisel on sul võimalik varakult proovida selliseid funktsionaalsusi, mis võivad tulevikus tavakasutusse jõuda, aga seejuures puudub rakenduse tavapärane stabiilsus. Lisaks on sul võimalik arendajatele jagada tagasisidet leitud vigade ja probleemide kohta ning sellega mõjutada seda kuidas tulevane Firefoxi versioon saab välja nägema.</string>
+    <string name="iceraven__warning">- Selle projekti arendajad ei anna ühtegi garantiid turvalisuse, uuenduste ega ka stabiilsuse osas. \n- Antud brauseri puhul palun arvesta, et turvaparandused on saadaval aeglasemalt, kui tavapärane on.</string>
     <string name="download_activity__different_installer_info__text">Kui rakenduse paigaldamine järjepidevalt ei toimi, siis proovi seadistustest võtta kasutusele süsteemse paigaldaja.</string>
     <string name="download_activity__external_storage_not_accessible">Väline andmeruum pole saadaval ja allalaadimist pole võimalik alustada. Olekuteade on:</string>
     <string name="session_installer__status_failure_incompatible">Toiming ei õnnestunud, sest see võimalus olemuselt ei ühildu antud nutiseadme tarkvaraga. Näiteks võib rakendus eeldada raudvara funktsionaalsust, mida tegelikult olemas pole või lähtekoodis pole liidestust selle nutiseadme ABIga või on vajalik uuema SDK kasutamine, jne.</string>
@@ -269,41 +248,16 @@
     <string name="thorium__description">Kõige kiirem brauser maakeral. Thorium on variatsioon Linuxile mõeldud Chromiumist, mis on saanud nime radioaktiivse elemendi nr 90 järgi.</string>
     <string name="vivaldi__description">Tutvu ülikiire veebibrauseriga! Vivaldi on uus, tasuta ja privaatne veebibrauser, mille loomisel on arvestatud paindlikkusega. Palju olulist on juba sisseehitatud: reklaamiblokeerija, hüpikakende blokeerija, jälitajate blokeerija ning privaatne tõlkelahendus. Mitmete lisavalikutega saad kohendada brauserit oma käe järgi: töölauarakenduse-laadsed kaardid, tumedad ja heledad teemad ning küljenduse valikud.</string>
     <string name="chromium__description">Chromium on avatud lähtekoodiga brauseriarendus, mille eesmärgiks on luua turvalisem, kiirem ja stabiilsem brauser kõikidele veebihuvilistele. Siin veebisaidis leiduvad projekteerimisdokumendid, ülevaade arhitektuurist, testimisteave ning palju muud olulist, mis aitavad sul töötada Chromiumi lähtekoodiga.</string>
-    <string name="network__custom_doh_server__dialog_message">Sisesta ühel näidatud viisil ühenduse andmed kohandatud DoH (DNS over HTTPS) serveri jaoks:
-\n
-\nurl;ip1
-\n
-\nurl;ip1;ip2
-\n
-\nurl;ip1;ip2;ip3
-\n
-\nurl;ip1;ip2;ip3;ip4
-\n
-\nNäiteks: https://dns.google/dns-query;8.8.8.8 või https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
+    <string name="network__custom_doh_server__dialog_message">Sisesta ühel näidatud viisil ühenduse andmed kohandatud DoH (DNS over HTTPS) serveri jaoks: \n \nurl;ip1 \n \nurl;ip1;ip2 \n \nurl;ip1;ip2;ip3 \n \nurl;ip1;ip2;ip3;ip4 \n \nNäiteks: https://dns.google/dns-query;8.8.8.8 või https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
     <string name="privacy_browser__title">Privacy brauser</string>
-    <string name="firefox_focus_beta__description">Firefox Focus sobib kõige jaoks, mida sa tahad oma põhibrauserist eraldi hoida, sealhulgas kõik need „avasin, vaatasin ja unustasin“ juhtumid. Ei ole kaarte, ei ole jahu ega liigset vahtu. Kõik võrgupõhised jälitusteenused saavad ka blokeeritud. Üks klõps ja sinu veebisirvimisajalugu on kustutatud.
-\n
-\nFirefox Focus on ideaalne privaatseks veebisirvimiseks - minu missiooniks on olla „see pole võõraste asi“ veebibrauser.</string>
+    <string name="firefox_focus_beta__description">Firefox Focus sobib kõige jaoks, mida sa tahad oma põhibrauserist eraldi hoida, sealhulgas kõik need „avasin, vaatasin ja unustasin“ juhtumid. Ei ole kaarte, ei ole jahu ega liigset vahtu. Kõik võrgupõhised jälitusteenused saavad ka blokeeritud. Üks klõps ja sinu veebisirvimisajalugu on kustutatud. \n \nFirefox Focus on ideaalne privaatseks veebisirvimiseks - minu missiooniks on olla „see pole võõraste asi“ veebibrauser.</string>
     <string name="duckduckgo_android__description">DuckDuckGo rakendus tagab ühe nupuvajutusega kõige laiaulatuslikuma võrguprivaatsuse kaitse. Laasi meie brauser alla ja sa saad igapäevasesse kasutusse brauseri, mis kaitseb sinu veebiotsingu ja -sirvimise andmeid, annab võimaluse blokeerida sinu e-kirjadest jälitamisteenused ning varjab ka kasutatavaid rakendusi. Vaikimisi ei paku sellist kaitset ja võimalusi palju populaarsed veebibrauserid.</string>
-    <string name="duckduckgo_android__warning">- DuckDuckGo kasutab SystemWebView teeke veebisaitide kuvamiseks.
-\n- Korras on ka üks varasem juhtum, kus kõiki Microsofti teenuste küpsiseid ei blokeeritud.</string>
+    <string name="duckduckgo_android__warning">- DuckDuckGo kasutab SystemWebView teeke veebisaitide kuvamiseks. \n- Korras on ka üks varasem juhtum, kus kõiki Microsofti teenuste küpsiseid ei blokeeritud.</string>
     <string name="eol_reason__browser_no_longer_maintained">Seda brauserit enam ei arendata.</string>
     <string name="notification__bg_update_check__unreliable_execution__title">Taustal tehtav uuenduste kontroll polnud tehtud korralikult</string>
     <string name="privacy_browser__description">Ainus mõistlik viis vältida sinu andmete kuritarvitamist on neid üldse mitte koguda. Privacy brauseril on kaks põhieesmärki: saata üle interneti võimalikult vähe andmeid ja koguda neid võimalikult vähe sinu nutiseadmes.</string>
-    <string name="tor_browser_alpha__description">Tor brauser on ainus Tor projekti poolt toetatud ametlik brauser. Projekt Tor arendab tugevamaid ja parimaid võrguprivaatsusega ja -vabadusega seotud tarvikuid maailmas.
-\n
-\nTor brauser on alati vaba ja tasuta, kuid meie toetajate annetused teevad arendustöö lihtsamaks. Projekt Tor on Ameerika Ühendriikides registreeritud MTÜ, mis vastab 501©(3) reeglitele. Palun kaalu annetamist juba täna. Iga pisike toetus on oluline: https://donate.torproject.org.
-\n
-\nLisateavet vigadest teatamiseks ning tagasiside edastamiseks leiad siit: https://support.torproject.org/misc/bug-or-feedback/!</string>
-    <string name="network__proxy__dialog_message">Kui soovid kasutada SOCKS või HTTP proksiserverit, siis palun sisesta siin ühenduse andmed. Kasuta ühte neist vormingutest:
-\n
-\nSOCKS/HTTP;ip-aadress/domeen;port
-\n
-\nSOCKS/HTTP;ip-aadress/domeen;port;kasutajanimi;salasõna
-\n
-\nNäiteks: SOCKS;1.2.3.4;22 või HTTP;5.6.7.8;80;kasutaja1;suursaladus123 või HTTP;p.webshare.io;80;u;p. Kui soovid kasutada operatsioonisüsteemis seadistatud proksiserverit, siis jäta väli tühjaks.
-\n
-\nPalun arvesta piiranguga: kui sa nimelahenduse seadistustes sätid valikuks „DNS over HTTPS“, siis pead siin ka sisestama proksiserveri puhul domeeni, mitte ip-aadressi. Viimane lihtsalt ei toimi.</string>
+    <string name="tor_browser_alpha__description">Tor brauser on ainus Tor projekti poolt toetatud ametlik brauser. Projekt Tor arendab tugevamaid ja parimaid võrguprivaatsusega ja -vabadusega seotud tarvikuid maailmas. \n \nTor brauser on alati vaba ja tasuta, kuid meie toetajate annetused teevad arendustöö lihtsamaks. Projekt Tor on Ameerika Ühendriikides registreeritud MTÜ, mis vastab 501©(3) reeglitele. Palun kaalu annetamist juba täna. Iga pisike toetus on oluline: https://donate.torproject.org. \n \nLisateavet vigadest teatamiseks ning tagasiside edastamiseks leiad siit: https://support.torproject.org/misc/bug-or-feedback/!</string>
+    <string name="network__proxy__dialog_message">Kui soovid kasutada SOCKS või HTTP proksiserverit, siis palun sisesta siin ühenduse andmed. Kasuta ühte neist vormingutest: \n \nSOCKS/HTTP;ip-aadress/domeen;port \n \nSOCKS/HTTP;ip-aadress/domeen;port;kasutajanimi;salasõna \n \nNäiteks: SOCKS;1.2.3.4;22 või HTTP;5.6.7.8;80;kasutaja1;suursaladus123 või HTTP;p.webshare.io;80;u;p. Kui soovid kasutada operatsioonisüsteemis seadistatud proksiserverit, siis jäta väli tühjaks. \n \nPalun arvesta piiranguga: kui sa nimelahenduse seadistustes sätid valikuks „DNS over HTTPS“, siis pead siin ka sisestama proksiserveri puhul domeeni, mitte ip-aadressi. Viimane lihtsalt ei toimi.</string>
     <string name="orbot__description">Orbot on vaba ja tasuta proksirakendus, mis võimaldab teistel rakendustel kasutada internetiühendust turvalisemalt. Orbot krüptib sinu võrguliikluse ja peidab seda kasutades mitmeid Tori võrgusõlmi üle maailma. Tor on avatud lähtekoodil põhinev tasuta tarkvara ning vaba ja avatud võrk, mis aitab võidelda kolmandate osapoolte võrgupõhise jälgimise vastu. Selline jälgimine ohustab sinu vabadust ja privaatsust, kahjustab sinu äri konfidentsiaalsust ja suhteid ning sageli põhineb riikide julgeolekuteenuste korraldataval võrguliikluse analüüsil.</string>
     <string name="cardview_dialog__different_signature">Kuna APK-faili allkiri on erinev, siis FFUpdater ei saa seda rakendust uuendada. Üks võimalus on see, et eemaldad rakenduse ja paigaldad ta uuesti FFUpdaterist. Aga palun arvesta, et kõik selle rakenduse andmed sinu kasutajaprofiilist sel juhul kustutatakse - seega palun tee temast enne varukoopia.</string>
     <string name="network__dns_provider__digital_society_ch">DNS over HTTPS: Digital Society Switzerland</string>

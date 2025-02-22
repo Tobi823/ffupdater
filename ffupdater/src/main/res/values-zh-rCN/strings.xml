@@ -11,15 +11,10 @@
     <string name="notification__error__title">后台检查更新失败</string>
     <string name="brave__description">无痕浏览互联网，不收一文！Brave 隐私浏览器是一款快速、免费和安全的隐私网页浏览器，附带了广告拦截器和弹窗拦截器。可以在不受广告商、恶意软件和弹窗跟踪侵扰下无痕浏览和搜索互联网。</string>
     <string name="brave__title">Brave 私密浏览器</string>
-    <string name="brave__warning">- Brave 使用了 Google Chrome 的技术基础，因而间接支持了 Chromium 渲染引擎的垄断地位。
-\n- 由于其以太坊区块链上的 Basic Attention Token（BAT）技术，该项目与加密货币有联系。 区块链有很多问题，在我看来应该避免。</string>
-    <string name="brave_beta__description">欢迎使用 Brave 浏览器 Android 公测版！
-\n尝试最新功能并给予早期反馈：https://brave.com/msupport
-\n您可以在安装了当前版本的 Brave Android 正式版的同时，另外安装 Brave 公测版。</string>
+    <string name="brave__warning">- Brave 使用了 Google Chrome 的技术基础，因而间接支持了 Chromium 渲染引擎的垄断地位。 \n- 由于其以太坊区块链上的 Basic Attention Token（BAT）技术，该项目与加密货币有联系。 区块链有很多问题，在我看来应该避免。</string>
+    <string name="brave_beta__description">欢迎使用 Brave 浏览器 Android 公测版！ \n尝试最新功能并给予早期反馈：https://brave.com/msupport \n您可以在安装了当前版本的 Brave Android 正式版的同时，另外安装 Brave 公测版。</string>
     <string name="brave_beta__title">Brave 浏览器（公测版）</string>
-    <string name="brave_nightly__description">欢迎使用 Brave 浏览器 Android 每夜版（开发者版）！
-\n尝试最新功能并给予早期反馈：https://brave.com/msupport
-\n您可以在安装了当前版本的 Brave Android 正式版的同时，另外安装 Brave 每夜版。</string>
+    <string name="brave_nightly__description">欢迎使用 Brave 浏览器 Android 每夜版（开发者版）！ \n尝试最新功能并给予早期反馈：https://brave.com/msupport \n您可以在安装了当前版本的 Brave Android 正式版的同时，另外安装 Brave 每夜版。</string>
     <string name="brave_nightly__title">Brave 浏览器（每夜版）</string>
     <string name="crash_report__copy_crash_report_to_clipboard">复制崩溃报告到剪贴板</string>
     <string name="install_activity__download_file_failed__crash_text">下载过程中出现以下错误。如果这个错误频繁出现，请随时在 notabug.org、GitHub 或 GitLab 上提交崩溃报告。</string>
@@ -46,26 +41,15 @@
     <string name="firefox_focus__title">Firefox Focus</string>
     <string name="firefox_klar__description">Firefox Klar 是为德国、奥地利和瑞士开发的浏览器，但任何国家的用户都可以使用。它与 Firefox Focus 非常相似，但在德语国家改了名字，以避免与布尔达传媒集团（Hubert Burda Media group）出版的《焦点周刊（Focus）》杂志相混淆。与 Firefox Focus 不同，Firefox Klar 由于德国严格的隐私法律而默认禁用了遥测功能。</string>
     <string name="firefox_klar__title">Firefox Klar</string>
-    <string name="firefox_nightly__description">请注意，这个应用曾用名为 Firefox 预览版（Preview）。 它现在已过渡到 Firefox 每夜版（Nightly）。
-\n
-\nFirefox 每夜版是 Mozilla 新版本 Firefox 的开发者通道。
-\n
-\nFirefox 每夜版旨在展示 Firefox 的更多实验特性。 每夜版通道允许用户在不稳定的环境中体验最新的 Firefox 创新内容，并提供功能和性能方面的反馈，以帮助确定最终版本的内容。</string>
+    <string name="firefox_nightly__description">请注意，这个应用曾用名为 Firefox 预览版（Preview）。 它现在已过渡到 Firefox 每夜版（Nightly）。 \n \nFirefox 每夜版是 Mozilla 新版本 Firefox 的开发者通道。 \n \nFirefox 每夜版旨在展示 Firefox 的更多实验特性。 每夜版通道允许用户在不稳定的环境中体验最新的 Firefox 创新内容，并提供功能和性能方面的反馈，以帮助确定最终版本的内容。</string>
     <string name="firefox_nightly__title">Firefox 每夜版</string>
     <string name="firefox_release__description">Firefox 浏览器 Android 版天生私密，并且难以置信得快。成千上万的在线追踪器每天都在跟踪你，收集你的上网信息还减慢浏览速度。Firefox 默认拦截了超 2000 个追踪器，并且支持广告屏蔽插件，能让你进一步定制您的浏览器。使用 Firefox，您能在这一私密的移动浏览器中兼顾您需要的安全与速度。</string>
     <string name="firefox_release__title">Firefox 浏览器</string>
     <string name="firefox_release__warning">- F-Droid 上还提供了一款名为 Fennec F-Droid 的改进版 Firefox。</string>
-    <string name="iceraven__description">此应用程序并非由 Mozilla 提供！
-\n
-\nIceraven 浏览器是一款适用于 Android 的网络浏览器，基于 Mozilla 的 Fenix 版 Firefox、GeckoView 和 Mozilla Android 组件。
-\n
-\n我们的目标是成为新版 Firefox Android 的亲密分支，追求为用户提供更多选项和更多自定义能力（包括广泛的扩展库），提供更多访问网页的信息，并让用户决定浏览器如何与这些网页交互。</string>
+    <string name="iceraven__description">此应用程序并非由 Mozilla 提供！ \n \nIceraven 浏览器是一款适用于 Android 的网络浏览器，基于 Mozilla 的 Fenix 版 Firefox、GeckoView 和 Mozilla Android 组件。 \n \n我们的目标是成为新版 Firefox Android 的亲密分支，追求为用户提供更多选项和更多自定义能力（包括广泛的扩展库），提供更多访问网页的信息，并让用户决定浏览器如何与这些网页交互。</string>
     <string name="iceraven__title">Iceraven 浏览器</string>
-    <string name="iceraven__warning">- 维护者不保证或担保此应用的安全性、更新或稳定性。
-\n- 该项目需要更长的时间来提供安全更新。</string>
-    <string name="infobox">这是一款为隐私友好型浏览器打造的更新器。点击加号按钮安装新应用。向下滑动以立刻检查新的更新。 默认情况下，该应用程序会定期在后台检查更新、下载并最终安装更新。点击小齿轮以在设置中自定义行为。
-\n
-\n上次成功后台检查更新时间：%1$s</string>
+    <string name="iceraven__warning">- 维护者不保证或担保此应用的安全性、更新或稳定性。 \n- 该项目需要更长的时间来提供安全更新。</string>
+    <string name="infobox">这是一款为隐私友好型浏览器打造的更新器。点击加号按钮安装新应用。向下滑动以立刻检查新的更新。 默认情况下，该应用程序会定期在后台检查更新、下载并最终安装更新。点击小齿轮以在设置中自定义行为。 \n \n上次成功后台检查更新时间：%1$s</string>
     <string name="app_card__information_about_the_app">应用程序信息</string>
     <string name="download_activity__delete_cache_button_text">清除缓存</string>
     <string name="download_activity__delete_cache_explanation">如果您认为 FFUpdater 缓存了缺损的应用更新，或者您想节省存储空间，请单击按钮删除已下载的文件。</string>
@@ -103,11 +87,7 @@
     <string name="installed_version">已安装：%1$s</string>
     <string name="kiwi__description">Kiwi 浏览器可以无扰浏览互联网、阅读新闻、观看视频和听音乐。</string>
     <string name="kiwi__title">Kiwi Next 浏览器</string>
-    <string name="kiwi__warning">- Kiwi 仅部分开放源代码
-\n- Kiwi 使用了 Google Chrome 的技术基础，因而间接支持了 Chromium 渲染引擎的垄断地位。
-\n- Kiwi 不是理想的隐私浏览器，但其有良好的插件支持。
-\n- 搜索引擎会为使用 Kiwi 浏览器完成的每一次搜索而对其付费。根据选择的搜索引擎，请求可能会通过 Kiwibrowser / Kiwisearchservices 服务器。
-\n- Kiwi 中的 Google 广告可能会将位置数据用于广告业务——但您可以通过禁用发现功能来禁用它。但这一行为将很快发生变化。请参阅 https://privacy.kiwibrowser.org/ 了解更多详情。</string>
+    <string name="kiwi__warning">- Kiwi 仅部分开放源代码 \n- Kiwi 使用了 Google Chrome 的技术基础，因而间接支持了 Chromium 渲染引擎的垄断地位。 \n- Kiwi 不是理想的隐私浏览器，但其有良好的插件支持。 \n- 搜索引擎会为使用 Kiwi 浏览器完成的每一次搜索而对其付费。根据选择的搜索引擎，请求可能会通过 Kiwibrowser / Kiwisearchservices 服务器。 \n- Kiwi 中的 Google 广告可能会将位置数据用于广告业务——但您可以通过禁用发现功能来禁用它。但这一行为将很快发生变化。请参阅 https://privacy.kiwibrowser.org/ 了解更多详情。</string>
     <string name="main_activity__github_api_limit_exceeded"><u>超出 GitHub API 限制。请在下一小时重试。</u></string>
     <string name="main_activity__no_unmetered_network">无非流量计费网络</string>
     <string name="main_activity__temporary_network_issue"><u>临时网络问题。请稍后重试。</u></string>
@@ -183,8 +163,7 @@
     <string name="update_notification__title">%1$s 有更新可用</string>
     <string name="vivaldi__description">来了解速度极快的网络浏览器！Vivaldi 是一款时时注重灵活性的新型、免费和隐私的网络浏览器。它包含了内置的广告拦截器（弹出窗口拦截器）、跟踪保护和隐私翻译等有用的功能。合适的桌面样式选项卡、深色/浅色主题和布局选择等浏览器选项可帮助您将其打造为您的专属浏览器。</string>
     <string name="vivaldi__title">Vivaldi 浏览器</string>
-    <string name="vivaldi__warning">- Vivaldi 只有部分开源。
-\n- 它还使用了 Google Chrome 的技术基础，因而间接支持了 Chromium 渲染引擎的垄断地位。</string>
+    <string name="vivaldi__warning">- Vivaldi 只有部分开源。 \n- 它还使用了 Google Chrome 的技术基础，因而间接支持了 Chromium 渲染引擎的垄断地位。</string>
     <string name="orbot__title">Orbot：Android 版 Tor</string>
     <string name="settings__background__update_check__when_device_idle__title">仅在设备空闲时检查更新</string>
     <string name="settings__background__update_check__when_device_idle__summary">如果不希望应用因后台更新而重启，请启用该选项。如果希望更好预测后台检查更新的时间，请禁用该选项。</string>
@@ -208,31 +187,13 @@
     <string name="fennecfdroid__title">Fennec F-Droid</string>
     <string name="fennecfdroid__warning">FFUpdater 从 F-Droid 服务器下载文件，因此速度不理想。</string>
     <string name="fennecfdroid__description">Fennec F-Droid 基于最新版本的 Firefox（代号 Fenix）。它删除了专有代码和遥测，但仍会连接到一些跟踪用户的 Mozilla 和 Google 服务。</string>
-    <string name="network__custom_doh_server__dialog_message">输入自定义 DoH 服务器的配置信息，在以下格式中选择一种：
-\n
-\nurl;ip1
-\n
-\nurl;ip1;ip2
-\n
-\nurl;ip1;ip2;ip3
-\n
-\nurl;ip1;ip2;ip3;ip4
-\n
-\n例如：https://dns.google/dns-query;8.8.8.8 或 https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
+    <string name="network__custom_doh_server__dialog_message">输入自定义 DoH 服务器的配置信息，在以下格式中选择一种： \n \nurl;ip1 \n \nurl;ip1;ip2 \n \nurl;ip1;ip2;ip3 \n \nurl;ip1;ip2;ip3;ip4 \n \n例如：https://dns.google/dns-query;8.8.8.8 或 https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
     <string name="network__dns_provider__title">DNS 设置</string>
     <string name="network__custom_doh_server__title">自定义 DNS over HTTPS 服务器</string>
     <string name="network__proxy__title">代理</string>
     <string name="settings__device_category__title">设备</string>
     <string name="device__prefer_32bit_apks__summary">若您的设备总是缺少运行内存则可启用此项。启用后 FFUpdater 将使用通常消耗内存更少的 32 位安装包。</string>
-    <string name="network__proxy__dialog_message">若您希望使用 SOCKS 或 HTTP 代理，请在这里输入配置信息。在以下格式中选择一种：
-\n
-\nSOCKS/HTTP;ip/domain;port
-\n
-\nSOCKS/HTTP;ip/domain;port;username;password
-\n
-\n例如：SOCKS;1.2.3.4;22 或 HTTP;5.6.7.8;80;user1;pw123 或 HTTP;p.webshare.io;80;u;p。如果要使用系统代理配置，请留空。
-\n
-\n限制：如果您在设置中将“DNS 设置”修改为 DNS over HTTPS 服务器，您需要输入代理服务器的域名，IP 将不起作用。</string>
+    <string name="network__proxy__dialog_message">若您希望使用 SOCKS 或 HTTP 代理，请在这里输入配置信息。在以下格式中选择一种： \n \nSOCKS/HTTP;ip/domain;port \n \nSOCKS/HTTP;ip/domain;port;username;password \n \n例如：SOCKS;1.2.3.4;22 或 HTTP;5.6.7.8;80;user1;pw123 或 HTTP;p.webshare.io;80;u;p。如果要使用系统代理配置，请留空。 \n \n限制：如果您在设置中将“DNS 设置”修改为 DNS over HTTPS 服务器，您需要输入代理服务器的域名，IP 将不起作用。</string>
     <string name="settings__network_category__title">网络</string>
     <string name="installer__method__root_not_granted">未授予 Root 权限！</string>
     <string name="installer__method__shizuku_not_installed">未安装 Shizuku！</string>
@@ -258,24 +219,17 @@
     <string name="device__prefer_32bit_apks__title">32 位安装包优先</string>
     <string name="main_activity__app_was_signed_by_different_certificate">此应用使用了不同的证书签名，无法使用 FFUpdater 更新。</string>
     <string name="tor_browser_alpha__title">Tor 浏览器 Alpha 版本</string>
-    <string name="tor_browser_alpha__description">Tor 浏览器是 Tor 项目官方支持的唯一移动浏览器，此项目开发者维护着世界上最强大的在线隐私和自由工具。
-\n
-\nTor 浏览器将永远是免费的，但捐赠使其存在。Tor 项目是一个位于美国的 501 ©(3) 非营利组织。请考虑现在做出捐赠。每一份支持都能发挥作用：https://donate.torproject.org。
-\n
-\n在此处了解如何报告错误和提供反馈：https://support.torproject.org/misc/bug-or-feedback/ ！</string>
+    <string name="tor_browser_alpha__description">Tor 浏览器是 Tor 项目官方支持的唯一移动浏览器，此项目开发者维护着世界上最强大的在线隐私和自由工具。 \n \nTor 浏览器将永远是免费的，但捐赠使其存在。Tor 项目是一个位于美国的 501 ©(3) 非营利组织。请考虑现在做出捐赠。每一份支持都能发挥作用：https://donate.torproject.org。 \n \n在此处了解如何报告错误和提供反馈：https://support.torproject.org/misc/bug-or-feedback/ ！</string>
     <string name="foreground__hide_apps_signed_by_different_certificate__title">隐藏使用不同证书签名的应用。</string>
     <string name="firefox_focus_beta__title">Firefox Focus 公测版</string>
     <string name="duckduckgo_android__title">DuckDuckGo 私人浏览器</string>
     <string name="duckduckgo_android__description">DuckDuckGo 应用提供只需按一下按钮的最全面的在线隐私保护。只需一次下载，您就可以获得一款全新的在您搜索和浏览时提供无缝保护的日用浏览器，且提供对您收到的电子邮件和您使用的应用程序的跟踪保护。其中的许多保护在多数流行的浏览器中是默认不提供的。</string>
-    <string name="duckduckgo_android__warning">- DuckDuckGo 使用系统 Webview 来显示网站。
-\n- 存在关于不阻止来自微软的所有 cookie 的争议 - 但这已被修复。</string>
+    <string name="duckduckgo_android__warning">- DuckDuckGo 使用系统 Webview 来显示网站。 \n- 存在关于不阻止来自微软的所有 cookie 的争议 - 但这已被修复。</string>
     <string name="privacy_browser__title">隐私浏览器</string>
     <string name="privacy_browser__warning">FFUpdater 从 F-Droid 服务器下载文件，因此速度不理想。</string>
     <string name="privacy_browser__description">防止数据被滥用的唯一方法是首先防止数据被收集。隐私浏览器有两个主要目标：最小化发送到互联网的数据和最小化存储在设备上的数据。</string>
     <string name="generic_app_warning__beta_version">- 此应用是为开发和测试人员设计的。它可能包含各种能影响您正常使用浏览器的缺陷。</string>
-    <string name="firefox_focus_beta__description">将 Firefox Focus 用于您希望与主浏览器分开的所有内容——所有那些进入退出的忘我时刻。没有标签页，没有打扰，没有混乱。同时阻止在线跟踪器。轻轻一按，您的浏览历史就会被彻底删除。
-\n
-\nFirefox Focus 是打开、退出、搜索和销毁的完美工具，我正在执行一项与您无关的任务——网络浏览器。</string>
+    <string name="firefox_focus_beta__description">将 Firefox Focus 用于您希望与主浏览器分开的所有内容——所有那些进入退出的忘我时刻。没有标签页，没有打扰，没有混乱。同时阻止在线跟踪器。轻轻一按，您的浏览历史就会被彻底删除。 \n \nFirefox Focus 是打开、退出、搜索和销毁的完美工具，我正在执行一项与您无关的任务——网络浏览器。</string>
     <string name="main_activity__an_error_occurred"><u>发生错误。请稍后重试。</u></string>
     <string name="crash_report__report_is_copied_to_clipboard">崩溃报告已复制到剪贴板</string>
     <string name="eol_reason__browser_no_longer_maintained">此浏览器已停止维护。</string>

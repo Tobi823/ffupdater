@@ -51,8 +51,7 @@
     <string name="download_activity__too_low_memory_description">Jūsu ierīcē ir tikai %1$d MB brīvas vietas. Tas novedīs pie lietotnes lejupielādes vai uzstādīšanas problēmas.</string>
     <string name="notification__install_error__text">Kļūda (%1$d): %2$s</string>
     <string name="iceraven__title">Iceraven</string>
-    <string name="iceraven__warning">- Lietotnes uzturētājs (izstrādātājs) nesniedz garantiju par tās drošību, atjauninājumu regularitāti vai pat stabilitāti.
-\n - Projektam ir nepieciešams nedaudz vairāk laika, lai realizētu drošības atjauninājumus.</string>
+    <string name="iceraven__warning">- Lietotnes uzturētājs (izstrādātājs) nesniedz garantiju par tās drošību, atjauninājumu regularitāti vai pat stabilitāti. \n - Projektam ir nepieciešams nedaudz vairāk laika, lai realizētu drošības atjauninājumus.</string>
     <string name="app_card__information_about_the_app">Informācija par lietotni</string>
     <string name="notification__install_error__title">%1$s nevarēja atjaunināt</string>
     <string name="notification__install_success__title">%1$s ir atjaunināts</string>
@@ -72,8 +71,7 @@
     <string name="fairemail__warning">- Atjauninot FairEmail uzstādītu izmantojot Google Play veikalu ar FFUpdater, var rasties problēmas, piemēram, nedarboties OAuth/Google Mail autorizācija. Nelūdziet FairEmail autoram (izstrādātājam) palīdzību saistībā ar problēmām, ko izraisa FFUpdater.</string>
     <string name="running_downloads_dialog__yes">Jā</string>
     <string name="running_downloads_dialog__negative">Nē, nelejupielādēt</string>
-    <string name="duckduckgo_android__warning">- DuckDuckGo izmanto sistēmas tīmekļa skatu (WebView), kas balstās uz Chrome, lai renderētu tīmekļa vietnes.
-\n- Bija strīds, ka ne visi Microsoft sīkfaili tika bloķēti, taču tas ir novērsts.</string>
+    <string name="duckduckgo_android__warning">- DuckDuckGo izmanto sistēmas tīmekļa skatu (WebView), kas balstās uz Chrome, lai renderētu tīmekļa vietnes. \n- Bija strīds, ka ne visi Microsoft sīkfaili tika bloķēti, taču tas ir novērsts.</string>
     <string name="cardview_dialog__exit">Aizvērt</string>
     <string name="cardview_dialog__install">Uzstādīt jaunāko versiju</string>
     <string name="fairemail__title">FairEmail</string>
@@ -99,9 +97,7 @@
     <string name="firefox_nightly__title">Firefox (Nakts izlaidums)</string>
     <string name="main_activity__temporary_network_issue"><u>Īslaicīga tīkla problēma. Lūdzu, mēģiniet vēlreiz vēlāk.</u></string>
     <string name="cromite__title">Cromite</string>
-    <string name="brave_beta__description">Laipni lūdzam Brave Beta Android ierīcēm!
-\nIzmēģiniet jaunākās funkcijas un sniedziet jūsu agrīnās atsauksmes: https://brave.com/msupport
-\nVarat uzstādīt Brave Beta līdzās ikdienas stabilajai Brave Android versijai.</string>
+    <string name="brave_beta__description">Laipni lūdzam Brave Beta Android ierīcēm! \nIzmēģiniet jaunākās funkcijas un sniedziet jūsu agrīnās atsauksmes: https://brave.com/msupport \nVarat uzstādīt Brave Beta līdzās ikdienas stabilajai Brave Android versijai.</string>
     <string name="notification__error__channel_descr">Rādīt fona atjauninājumu pārbaudītāja kļūdas</string>
     <string name="notification__error__title">Atjauninājumu fona pārbaude neizdevās</string>
     <string name="brave__description">Sērfojiet internetu konfidenciāli bez maksas! Brave ir ātra, droša un privāta bezmaksas pārlūkprogramma ar iebūvētu trešās puses reklāmu un uznirstošo logu bloķētāju. Tas pasargā jūs no reklāmu izsekošanas, ļaunprātīgas programmatūras infekcijām un uznirstošajiem logiem.</string>
@@ -199,8 +195,7 @@
     <string name="unsupported_abi_dialog__title">Neatbalstīta ierīce</string>
     <string name="update_interval__30min">ik pēc 30 minūtēm</string>
     <string name="update_interval__3d">ik pēc 3 dienām</string>
-    <string name="vivaldi__warning">- Vivaldi ir tikai daļēji atvērta izejkoda lietotne.
-\n- Tā arī izmanto Google Chrome tehnisko bāzi un tādējādi netieši atbalsta Chromium renderēšanas dzinēja monopolstāvokli.</string>
+    <string name="vivaldi__warning">- Vivaldi ir tikai daļēji atvērta izejkoda lietotne. \n- Tā arī izmanto Google Chrome tehnisko bāzi un tādējādi netieši atbalsta Chromium renderēšanas dzinēja monopolstāvokli.</string>
     <string name="tor_browser__title">Tor</string>
     <string name="add_app_activity__label">Pievienot Jaunu Lietotni</string>
     <string name="add_app_activity__title_end_of_live_browser">Izstrādātāju pārtrauktie (bez atbalsta) pārlūki</string>
@@ -211,8 +206,7 @@
     <string name="generic_app_warning__beta_version">- Šī lietotne ir paredzēta izstrādātājiem un testētājiem. Tā var saturēt dažādas kļūdas, kas var ietekmēt jūsu ikdienas sērfošanas pieredzi internetā.</string>
     <string name="notification__network_error__title">Tīkla kļūda fona darbā</string>
     <string name="notification__install_error__generic_channel_name">Lietotnes atjaunināšanas kļūmes paziņojums</string>
-    <string name="brave__warning">- Brave izmanto Google Chrome tehnisko bāzi un tādējādi netieši atbalsta Chromium renderēšanas dzinēja monopolstāvokli.
-\n- Sakarā ar to, ka Basic Attention Token BAT atrodas Ethereum blokķēdē, projekts ir saistīts ar kriptovalūtu. Blokķēdēm ir daudz problēmu, un, manuprāt, vajadzētu izvairīties no projektiem saistītiem ar tām.</string>
+    <string name="brave__warning">- Brave izmanto Google Chrome tehnisko bāzi un tādējādi netieši atbalsta Chromium renderēšanas dzinēja monopolstāvokli. \n- Sakarā ar to, ka Basic Attention Token BAT atrodas Ethereum blokķēdē, projekts ir saistīts ar kriptovalūtu. Blokķēdēm ir daudz problēmu, un, manuprāt, vajadzētu izvairīties no projektiem saistītiem ar tām.</string>
     <string name="session_installer__require_user_interaction">Nepieciešama lietotāja iejaukšanās. Vispirms ir jāatjaunina lietotne, izmantojot FFUpdater saskarni. Tikai pēc tam būs pieejami fona atjauninājumi atlasītajai lietotnei.</string>
     <string name="notification__install_error__channel_name">%1$s atjaunināšanas kļūmes paziņojums</string>
     <string name="unsupported_abi_dialog__message">Atlasītais pārlūks nav saderīgs ar telefona procesoru. Lūdzu, izvēlieties citu pārlūku.</string>
@@ -257,38 +251,22 @@
     <string name="network__custom_doh_server__title">Pielāgots DNS serveris, izmantojot HTTPS</string>
     <string name="network__dns_provider__quad9">DNS, izmantojot HTTPS: Quad9</string>
     <string name="notification__install_success__channel_name">%1$s veiksmīgi atjaunināts paziņojums</string>
-    <string name="download_activity__open_cache_explanation">Varat atvērt kešatmiņas mapi, lai pārkopētu APK failu krātuvē, kurā ir vairāk brīvas vietas. Diemžēl Android 11 un jaunākās versijās (bez root piekļuves) tikai dažiem failu pārvaldniekiem ir piekļuve šai (Android/data) mapei.
-\nP.S.
-\nLai piešķirt piekļuves tiesības šai mapei, uzstādiet Shizuku (https://github.com/RikkaApps/Shizuku), veiciet nepieciešamās darbības Shizuku lietotnē, lai pēc tam varētu priviliģēt papildus piekļuves tiesības jūsu izmantotajam faila pārvaldniekam. Protams, faila pārvaldnieka lietotnei jāatbalsta Shizuku, citādāk lietotne nebūs pieejama zem Shizuku autorizēto lietotņu saraksta.</string>
+    <string name="download_activity__open_cache_explanation">Varat atvērt kešatmiņas mapi, lai pārkopētu APK failu krātuvē, kurā ir vairāk brīvas vietas. Diemžēl Android 11 un jaunākās versijās (bez root piekļuves) tikai dažiem failu pārvaldniekiem ir piekļuve šai (Android/data) mapei. \nP.S. \nLai piešķirt piekļuves tiesības šai mapei, uzstādiet Shizuku (https://github.com/RikkaApps/Shizuku), veiciet nepieciešamās darbības Shizuku lietotnē, lai pēc tam varētu priviliģēt papildus piekļuves tiesības jūsu izmantotajam faila pārvaldniekam. Protams, faila pārvaldnieka lietotnei jāatbalsta Shizuku, citādāk lietotne nebūs pieejama zem Shizuku autorizēto lietotņu saraksta.</string>
     <string name="session_installer__status_failure">Darbība kopumā neizdevās. Sistēma vienmēr centīsies sniegt precīzu kļūmes iemeslu, taču tas notiek tikai dažos retos gadījumos.</string>
     <string name="session_installer__status_failure_aborted">Darbība neizdevās, jo tā tika aktīvi pārtraukta. Iemesls, lietotājs aktīvi noraidīja pieprasītās atļaujas vai sesija tika pārtraukta.</string>
     <string name="notification__uncaught_exception__channel_name">Avārijas paziņojumi</string>
-    <string name="kiwi__warning">- Kiwi ir tikai daļēji atvērtā koda lietotne.\n- Kiwi izmanto Google Chrome tehnisko bāzi un tādējādi netieši atbalsta Chromium renderēšanas dzinēja monopolstāvokli.\n- Kiwi nav ideāls konfidencialitātes pārlūks, taču tam ir labs papildinājumu atbalsts.\n- Pārlūks gūst peļņu no meklētājprogrammām par katru meklēšanas pieprasījumu, kas veikta Kiwi pārlūkā. Atkarībā no izvēlētās meklētājprogrammas meklēšanas pieprasījumi var tikt nosūtīti caur Kiwibrowser / Kiwisearchservices serveriem.\n- Google Ads Kiwi pārlūkā var izmantot atrašanās vietas datus, lai rādītu atlasītas reklāmas, taču to var novērst, atspējojot atklāšanas funkciju (Discovery feature) iestatījumos. Taču drīz tas var mainīties. Plašāka informācija pieejama https://privacy.kiwibrowser.org vietnē.</string>
+    <string name="kiwi__warning">- Kiwi ir tikai daļēji atvērtā koda lietotne.\n- Kiwi izmanto Google Chrome tehnisko bāzi un tādējādi netieši atbalsta Chromium renderēšanas dzinēja monopolstāvokli.\n- Kiwi nav ideāls konfidencialitātes pārlūks, taču tam ir labs papildinājumu atbalsts.\n- Pārlūks gūst peļņu no meklētājprogrammām par katru meklēšanas pieprasījumu, kas veikta Kiwi pārlūkā. Atkarībā no izvēlētās meklētājprogrammas meklēšanas pieprasījumi var tikt nosūtīti caur Kiwibrowser / Kiwisearchservices serveriem.\n- Google Ads Kiwi pārlūkā var izmantot atrašanās vietas datus, lai rādītu atlasītas reklāmas, taču to var novērst, atspējojot atklāšanas funkciju (Discovery feature) iestatījumos. Taču drīz tas var mainīties. Plašāka informācija pieejama https://privacy.kiwibrowser.org vietnē.</string>
     <string name="vivaldi__description">Atklājiet pārsteidzoši ātru interneta pārlūku! Vivaldi ir jauns, bezmaksas un privāts tīmekļa pārlūks, kas izstrādāts, paturot prātā tā elastīgo pielāgojamību. Tas ir aprīkots ar noderīgām funkcijām, tostarp iebūvētu AdBlocker (uznirstošo logu bloķētāju), izsekošanas aizsardzību un privātu vietņu tulkotāju. Pārlūka iespējas, piemēram, pilnvērtīgas darbvirsmas stila cilnes, tumši/gaiši motīvi un izkārtojuma pielāgojamība, palīdz konfigurēt pārlūku pēc jūsu patikas un vēlmēm.</string>
     <string name="duckduckgo_android__description">DuckDuckGo lietotne nodrošina visplašāko tiešsaistes konfidencialitātes aizsardzību vienas pogas nospiešanas attālumā. Tikai ar vienu lejupielādi jūs iegūstat jaunu ikdienas pārlūku, kas piedāvā nevainojamu aizsardzību meklēšanas un pārlūkošanas laikā, kā arī piekļuvi saņemto e-pasta ziņojumu un izmantoto lietotņu izsekošanas aizsardzībai. Daudzi no šiem aizsardzības līdzekļiem pēc noklusējuma netiek piedāvāti lielākajā daļā populārāko pārlūku.</string>
     <string name="infobox">Šis ir konfidencialitātes draudzīga pārlūku atjauninātājs. Lai uzstādītu jaunu pārluka lietotni, noklikšķiniet uz telefona lejupielādes ikonas. Velciet uz leju, lai veiktu atjauninājuma pārbaudi. Pēc noklusējuma lietotne periodiski fonā veiks atjauninājuma pārbaudi. Ja būs pieejami atjauninājumi tie tiks lejupielādēti un uzstādīti. Noklikšķiniet uz zobrata, lai pielāgotu lietotnes uzvedības iestatījumus.\n\nPēdējā veiksmīgā atjauninājumu fona pārbaude notika %1$s</string>
     <string name="session_installer__status_failure_storage">Darbība neizdevās krātuves problēmu dēļ. Iemesls, ierīcē var pietrūkt vietas vai ārējais datu nesējs var būt nepieejams. Lietotājs var palīdzēt atbrīvojot vietu vai ievietojot citu ārējo datu nesēju.</string>
-    <string name="iceraven__description">Noteikti ne no Mozillas!
-\n
-\nIceraven Browser ir Android tīmekļa pārlūks, kura pamatā ir Mozillas Fenix Firefox versija, GeckoView un Mozilla Android Components.
-\n
-\nMūsu mērķis ir izveidot pēc iespējas tuvu (maz koda modifikācijam) Firefox Android kopiju, sniedzot lietotājiem vairāk pielāgošanas iespēju (tostarp plašu paplašinājumu bibliotēku), vairāk informācijas par viņu apmeklētajām lapām un to, kā viņu pārlūks mijiedarbojas ar šīm lapām.</string>
+    <string name="iceraven__description">Noteikti ne no Mozillas! \n \nIceraven Browser ir Android tīmekļa pārlūks, kura pamatā ir Mozillas Fenix Firefox versija, GeckoView un Mozilla Android Components. \n \nMūsu mērķis ir izveidot pēc iespējas tuvu (maz koda modifikācijam) Firefox Android kopiju, sniedzot lietotājiem vairāk pielāgošanas iespēju (tostarp plašu paplašinājumu bibliotēku), vairāk informācijas par viņu apmeklētajām lapām un to, kā viņu pārlūks mijiedarbojas ar šīm lapām.</string>
     <string name="settings__network__use_cloudflare_mirrors__summary">Iespējojiet, lai samazinātu primāro serveru resursu slodzi, kad vien iespējams.</string>
     <string name="settings__network__trust_user_cas__summary">Iespējot, ja datu plūsma jāpārbauda un jāmaina citām lietotnēm. Ja neesat pārliecināts, atstājiet šo opciju atspējotu.</string>
     <string name="network__proxy__dialog_message">Ja vēlaties izmantot SOCKS vai HTTP starpniekserveri, ievadiet šeit savienojuma informāciju. Izmantojiet kādu no zemāk redzamajiem formātiem:\n\nSOCKS/HTTP;ip/domēns;ports\n\nSOCKS/HTTP;ip/domēns;ports;lietotājvārds;parole\n\nPiemēram: SOCKS;1.2.3.4;22 vai HTTP;5.6.7.8;80;lietotājs1;parole123 vai HTTP;p.webshare.io;80;u;p. Ja vēlaties izmantot sistēmas starpniekservera konfigurāciju, atstājiet to tukšu.\n\nIerobežojums: Ja maināt \'DNS iestatījumi\' uz DNS, izmantojot HTTPS serveri, jāievada starpniekservera domēns. IP adreses nedarbosies.</string>
     <string name="installer__method__session">Sesijas uzstādītājs: Ieteicams lielākajai daļai ierīču. Android 12 un jaunākās versijās lietotnes var klusi un netraucēti atjaunināt pēc viena lietotāja apstiprinājuma.</string>
     <string name="chromium__description">Chromium ir atvērtā pirmkoda pārlūka projekts, kura mērķis ir radīt drošāku, ātrāku un stabilāku tīmekļa pieredzi visiem lietotājiem. Viņu vietnē jūs atradīsiet dizaina dokumentus, arhitektūras pārskatus, testēšanas informāciju un daudz ko citu, kas palīdzēs jums uzzināt, kā izveidot un strādāt ar Chromium pirmkodu.</string>
-    <string name="network__custom_doh_server__dialog_message">Ievadiet pielāgotā DoH servera savienojuma informāciju kādā no zemāk redzamajiem formātiem:
-\n
-\nurl;ip1
-\n
-\nurl;ip1;ip2
-\n
-\nurl;ip1;ip2;ip3
-\n
-\nurl;ip1;ip2;ip3;ip4
-\n
-\nPiemēram: https://dns.google/dns-query;8.8.8.8 vai https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
+    <string name="network__custom_doh_server__dialog_message">Ievadiet pielāgotā DoH servera savienojuma informāciju kādā no zemāk redzamajiem formātiem: \n \nurl;ip1 \n \nurl;ip1;ip2 \n \nurl;ip1;ip2;ip3 \n \nurl;ip1;ip2;ip3;ip4 \n \nPiemēram: https://dns.google/dns-query;8.8.8.8 vai https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
     <string name="orbot__description">Orbot ir bezmaksas starpniekservera lietotne, kas ļauj citām lietotnēm drošāk izmantot internetu. Orbot izmanto Tor, lai šifrētu interneta trafiku un pēc tam to slēpj, izmantojot virkni datorus visā pasaulē. Tor ir bezmaksas programmatūra un atvērts tīkls, kas palīdz aizsargāties no tīkla uzraudzības, kas apdraud personas brīvību un konfidencialitāti, sensitīvus biznesa darījumus un attiecības, kā arī valsts drošību, kas pazīstama kā trafika analīze.</string>
     <string name="session_installer__status_failure_blocked">Darbība neizdevās, jo tā tika bloķēta. Iemesls, ierīces politikas dēļ, pakotnes pārbaudītāja dēļ vai var būt nepieciešama lietotne, lai varētu veikt sistēmas pamatdarbības.</string>
     <string name="session_installer__status_failure_conflict">Darbība neizdevās, jo tā ir pretrunā (vai nav saderīga) ar citu lietotni, kas jau ir uzstādīta ierīcē. Iemesls, esošā atļauja, nesaderīgi sertifikāti utt. Lai atrisinātu konflikta problēmu, lietotājs var atinstalēt uzstādīto lietotni.</string>
