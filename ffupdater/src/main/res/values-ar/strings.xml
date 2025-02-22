@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="kiwi__warning">- Kiwi مفتوح المصدر جزئيًا فقط \n- يستخدم Kiwi الأساس التقني لـ Google Chrome وبالتالي يدعم بشكل غير مباشر الوضع الاحتكاري لمحرك عرض Chromium. \n- Kiwi ليس متصفحًا مثاليًا للخصوصية ولكنه يتمتع بدعم جيد للوظائف الإضافية. \n- يتم الدفع للمتصفح من خلال محركات البحث مقابل كل عملية بحث يتم إجراؤها باستخدام متصفح Kiwi. اعتمادًا على اختيار محرك البحث، قد يتم إرسال الطلبات عبر خوادم Kiwibrowser / Kiwisearchservices. \n- قد يستخدم إعلانات Google في Kiwi بيانات الموقع للإعلانات - ولكن يمكنك تعطيلها عن طريق تعطيل ميزة الاكتشاف. ولكن هذا سوف يتغير قريبا. راجع https://privacy.kiwibrowser.org/ لمزيد من التفاصيل.</string>
     <string name="request_installation_permission_dialog__grant_permission">يعطي الأذن</string>
     <string name="request_installation_permission_dialog__message">يفتقد FFUpdater إذن تثبيت التطبيقات وتحديثها. يجب عليك منح هذه الأذونات وإلا فلن يعمل FFUpdater.</string>
     <string name="request_installation_permission_dialog__title">إذن المثبت</string>
@@ -42,7 +41,6 @@
     <string name="notification__install_error__channel_name">إشعار فشل التحديث %1$s</string>
     <string name="notification__install_success__title">تم تحديث %1$s</string>
     <string name="installed_version">تم التثبيت: %1$s</string>
-    <string name="kiwi__title">Kiwi Browser Next</string>
     <string name="main_activity__github_api_limit_exceeded"><u>تم تجاوز الحد الأقصى لواجهة برمجة تطبيقات GitHub. أعد المحاولة في الساعة القادمة.</u></string>
     <string name="main_activity__no_unmetered_network">لا توجد شبكة غير محدودة</string>
     <string name="main_activity__temporary_network_issue"><u>مشكلة مؤقتة في الشبكة. أعد المحاولة لاحقًا.</u></string>
@@ -66,7 +64,6 @@
     <string name="notification__eol_apps__channel_description">قناة إشعارات للتحذيرات حول التطبيقات القديمة.</string>
     <string name="notification__eol_apps__channel_name">إشعار التطبيقات القديمة</string>
     <string name="notification__eol_apps__text">لديك تطبيقات قديمة لا ينبغي استخدامها بعد الآن. : %1$s</string>
-    <string name="kiwi__description">تم تصميم متصفح Kiwi لتصفح الإنترنت وقراءة الأخبار ومشاهدة مقاطع الفيديو والاستماع إلى الموسيقى دون أي إزعاجات.</string>
     <string name="firefox_beta__description">يتميز متصفح Firefox لنظام Android بأنه خاص تلقائيًا وسريع بشكل لا يصدق. يتابعك الآلاف من المتتبعين عبر الإنترنت يوميًا، ويجمعون معلومات حول مكان اتصالك بالإنترنت ويبطئون سرعتك. يحظر Firefox ما يزيد عن 2000 من أدوات التتبع هذه افتراضيًا، وتتوفر وظائف إضافية لحظر الإعلانات إذا كنت تريد تخصيص متصفحك بشكل أكبر. مع Firefox، ستحصل على الأمان الذي تستحقه والسرعة التي تحتاجها في متصفح خاص على الهاتف المحمول.</string>
     <string name="firefox_beta__title">Firefox النسخة التجريبية</string>
     <string name="firefox_klar__description">تم تطوير Firefox Klar لألمانيا والنمسا وسويسرا، ولكن يمكن استخدامه من قبل المستخدمين في أي بلد. إنه مشابه جدًا لمتصفح Firefox Focus، ولكن تم تغيير الاسم في البلدان الناطقة بالألمانية لتجنب الخلط مع مجلة Focus بواسطة مجموعة Hubert Burda Media. على عكس Firefox Focus، تم تعطيل القياس عن بعد في Firefox Klar افتراضيًا بسبب قوانين الخصوصية الألمانية الصارمة.</string>
@@ -260,7 +257,6 @@
     <string name="notification__update_available__generic_channel_name">إشعار تحديث التطبيق</string>
     <string name="notification__install_error__generic_channel_descr">قناة الإشعارات لتحديثات التطبيق الفاشلة.</string>
     <string name="tor_browser_alpha__title">متصفح Tor (النسخة ألفا)</string>
-    <string name="eol_reason__browser_no_longer_maintained">المتصفح لا يتعرض للتطوير أو الصيانة.</string>
     <string name="notification__uncaught_exception__channel_description">أخطاء غير متوقعة تؤدي إلى تعطل FFUpdater.</string>
     <string name="notification__uncaught_exception__text">انقر لعرض تقرير الخطأ.</string>
     <string name="app_installer__failed_to_validate_signature_of_download">فشل في التحقق من صحة توقيع التنزيل.</string>
