@@ -40,16 +40,19 @@ class EolAppsWarnerReceiver : BroadcastReceiver() {
     }
 
     private suspend fun findInstalledUnsupportedEolApps(context: Context): List<String> {
-        return noLongerSupportedEolApps.filter { PackageManagerUtil.isAppInstalled(context.packageManager, it.value) }
+        return noLongerSupportedApps.filter { PackageManagerUtil.isAppInstalled(context.packageManager, it.value) }
             .map { it.key }
     }
 
     companion object {
-        val noLongerSupportedEolApps = mapOf(
+        val noLongerSupportedApps = mapOf(
             "Bromite" to "org.bromite.bromite",
             "Bromite SystemWebView" to "org.bromite.webview",
             "Lockwise" to "mozilla.lockbox",
-            "UngoogledChromium" to "org.ungoogled.chromium.stable"
+            "UngoogledChromium" to "org.ungoogled.chromium.stable",
+            "Mulch" to "us.spotco.mulch",
+            "Mulch (SystemWebView)" to "us.spotco.mulch_wv",
+            "Mull" to "us.spotco.fennec_dos"
         )
     }
 }

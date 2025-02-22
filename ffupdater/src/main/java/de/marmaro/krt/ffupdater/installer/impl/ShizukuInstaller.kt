@@ -18,7 +18,6 @@ import android.graphics.BitmapFactory
 import android.os.Bundle
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
-import de.marmaro.krt.ffupdater.BuildConfig
 import de.marmaro.krt.ffupdater.BuildConfig.APPLICATION_ID
 import de.marmaro.krt.ffupdater.app.impl.AppBase
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
@@ -37,7 +36,7 @@ import rikka.shizuku.SystemServiceHelper
 import java.io.File
 
 @Keep
-class ShizukuInstaller() : AppInstaller {
+class ShizukuInstaller : AppInstaller {
     private val intentName = "de.marmaro.krt.ffupdater.installer.impl.ShizukuNewInstaller"
 
     override suspend fun startInstallation(context: Context, file: File, appImpl: AppBase): InstallResult {
@@ -143,7 +142,7 @@ class ShizukuInstaller() : AppInstaller {
 
     private fun createSessionChangeReceiver(context: Context, sessionId: Int): IntentSender {
         val intent = Intent(intentName)
-        intent.`package` = BuildConfig.APPLICATION_ID
+        intent.`package` = APPLICATION_ID
         val flags = if (DeviceSdkTester.supportsAndroid12S31()) {
             PendingIntent.FLAG_UPDATE_CURRENT + PendingIntent.FLAG_MUTABLE
         } else {

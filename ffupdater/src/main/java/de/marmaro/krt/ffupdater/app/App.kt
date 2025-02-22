@@ -20,14 +20,11 @@ import de.marmaro.krt.ffupdater.app.impl.FirefoxRelease
 import de.marmaro.krt.ffupdater.app.impl.Iceraven
 import de.marmaro.krt.ffupdater.app.impl.K9Mail
 import de.marmaro.krt.ffupdater.app.impl.Kiwi
-import de.marmaro.krt.ffupdater.app.impl.Mulch
-import de.marmaro.krt.ffupdater.app.impl.MulchSystemWebView
-import de.marmaro.krt.ffupdater.app.impl.MullFromRepo
 import de.marmaro.krt.ffupdater.app.impl.Orbot
 import de.marmaro.krt.ffupdater.app.impl.PrivacyBrowser
 import de.marmaro.krt.ffupdater.app.impl.Thorium
-import de.marmaro.krt.ffupdater.app.impl.ThunderbirdRelease
 import de.marmaro.krt.ffupdater.app.impl.ThunderbirdBeta
+import de.marmaro.krt.ffupdater.app.impl.ThunderbirdRelease
 import de.marmaro.krt.ffupdater.app.impl.TorBrowser
 import de.marmaro.krt.ffupdater.app.impl.TorBrowserAlpha
 import de.marmaro.krt.ffupdater.app.impl.Vivaldi
@@ -52,9 +49,6 @@ enum class App {
     ICERAVEN,
     K9MAIL,
     KIWI,
-    MULCH,
-    MULCH_SYSTEMWEBVIEW,
-    MULL_FROM_REPO,
     ORBOT,
     PRIVACY_BROWSER,
     THORIUM,
@@ -86,9 +80,6 @@ enum class App {
             ICERAVEN -> Iceraven
             K9MAIL -> K9Mail
             KIWI -> Kiwi
-            MULCH -> Mulch
-            MULCH_SYSTEMWEBVIEW -> MulchSystemWebView
-            MULL_FROM_REPO -> MullFromRepo
             ORBOT -> Orbot
             PRIVACY_BROWSER -> PrivacyBrowser
             THORIUM -> Thorium
