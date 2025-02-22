@@ -58,7 +58,7 @@
     <string name="download_activity__download_failed">İndirme başarısız</string>
     <string name="download_activity__downloaded_application_from">Şuradan indirilen uygulama:</string>
     <string name="app_installer__signature_of_download_is_invalid">İndirilen uygulama doğrulanmadı</string>
-    <string name="download_activity__exception__show_button">"<u>Ayrıntılı hata raporunu göster.</u>"</string>
+    <string name="download_activity__exception__show_button"><u>Ayrıntılı hata raporunu göster.</u></string>
     <string name="download_activity__external_storage_not_accessible">Harici depolama kullanılamıyor - indirme başlatılamıyor. Geçerli durum:</string>
     <string name="download_activity__fetch_url_for_download">Üst verileri %1$s değerinden getir</string>
     <string name="download_activity__fetched_url_for_download_successfully">Üst veriler %1$s değerinden getirildi</string>
@@ -88,9 +88,9 @@
     <string name="kiwi__description">Kiwi Browser, rahatsız edilmeden internette gezinmek, haber okumak, video izlemek ve müzik dinlemek için yapılmıştır.</string>
     <string name="kiwi__title">Kiwi Browser Next</string>
     <string name="kiwi__warning">- Kiwi yalnızca kısmen açık kaynaklıdır \n- Kiwi, Google Chrome\'un teknik temelini kullanır ve dolayısıyla Chromium görselleştirme motorunun tekel konumunu dolaylı olarak destekler. \n- Kiwi, gizlilik için uygun bir tarayıcı değildir, ancak iyi bir eklenti desteğine sahiptir. \n- Tarayıcı, Kiwi Browser kullanılarak yapılan her arama için arama motorları tarafından ödeme almaktadır. Arama motoru seçimine bağlı olarak istekler Kiwibrowser / Kiwisearchservices sunucuları üzerinden gidebilir. \n- Kiwi\'deki Google Reklamları, reklamlar için konum verilerini kullanabilir - ancak Keşif özelliğini devre dışı bırakarak bunu devre dışı bırakabilirsiniz. Ancak bu yakında değişecek. Daha fazla ayrıntı için https://privacy.kiwibrowser.org/ adresine bakın.</string>
-    <string name="main_activity__github_api_limit_exceeded">"<u>GitHub-API sınırı aşıldı. Bir saat içinde tekrar deneyin.</u>"</string>
+    <string name="main_activity__github_api_limit_exceeded"><u>GitHub-API sınırı aşıldı. Bir saat içinde tekrar deneyin.</u></string>
     <string name="main_activity__no_unmetered_network">Ölçülmeyen ağ yok</string>
-    <string name="main_activity__temporary_network_issue">"<u>Geçici ağ sorunu. Daha sonra tekrar deneyin.</u>"</string>
+    <string name="main_activity__temporary_network_issue"><u>Geçici ağ sorunu. Daha sonra tekrar deneyin.</u></string>
     <string name="ok">Tamam</string>
     <string name="request_installation_permission_dialog__abort">İptal</string>
     <string name="request_installation_permission_dialog__grant_permission">İzin ver</string>
@@ -158,7 +158,7 @@
     <string name="update_interval__6h">6 saat</string>
     <string name="update_interval__8h">8 saat</string>
     <string name="notification__update_available__channel_descr">Kullanılabilir %1$s güncellemeleri için bildirim kanalı.</string>
-    <string name="notification__update_available__channel_name">"%1$s" güncelleme bildirimi</string>
+    <string name="notification__update_available__channel_name">%1$s güncelleme bildirimi</string>
     <string name="update_notification__text">Güncellemeyi kurmak için tıklayın</string>
     <string name="update_notification__title">%1$s için güncelleme var</string>
     <string name="vivaldi__description">Son derece hızlı bir İnternet tarayıcısını keşfedin! Vivaldi, esneklik göz önünde bulundurularak oluşturulmuş yeni, ücretsiz ve özel bir web tarayıcısıdır. İçinde var olan bir reklam engelleyici (açılır pencere engelleyici), izleme koruması ve özel çeviri gibi kullanışlı özelliklerle birlikte gelir. Uygun masaüstü tarzı sekmeler, Koyu/Açık temalar ve düzen seçenekleri gibi tarayıcı seçenekleri, onu size özel yapmanıza yardımcı olur.</string>
@@ -191,15 +191,7 @@
     <string name="network__dns_provider__title">DNS ayarları</string>
     <string name="network__custom_doh_server__title">Özel HTTPS üzerinden DNS sunucusu</string>
     <string name="network__custom_doh_server__dialog_message">Özel DoH sunucusu için bağlantı ayrıntılarını aşağıdaki biçimlerden birinde girin: \n \nURL;IP1 \n \nURL;IP1;IP2 \n \nURL;IP1;IP2;IP3 \n \nURL;IP1;IP2;IP3;IP4 \n \nÖrneğin: https://dns.google/dns-query;8.8.8.8 veya https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
-    <string name="network__proxy__dialog_message">Bağlantı ayrıntılarını aşağıdaki biçimlerden birinde girin:
-\n
-\nSOCKS/HTTP;IP/etkialanı;bağlantınoktası
-\n
-\nSOCKS/HTTP;IP/etkialanı;bağlantınoktası;kullanıcıadı;parola
-\n
-\nÖrneğin: SOCKS;1.2.3.4;22 veya HTTP;5.6.7.8;80;user1;pw123 veya HTTP;p.webshare.io;80;u;p. Sistem vekil yapılandırmasını kullanmak istiyorsanız boş bırakın.
-\n
-\nSınırlama: Ayarlarda \'DNS ayarlarını\' bir HTTPS üzerinden DNS sunucusu olarak değiştirirseniz, vekil sunucusunun etki alanını girmeniz gerekir. IP adresleri çalışmayacaktır.</string>
+    <string name="network__proxy__dialog_message">Bağlantı ayrıntılarını aşağıdaki biçimlerden birinde girin: \n \nSOCKS/HTTP;IP/etkialanı;bağlantınoktası \n \nSOCKS/HTTP;IP/etkialanı;bağlantınoktası;kullanıcıadı;parola \n \nÖrneğin: SOCKS;1.2.3.4;22 veya HTTP;5.6.7.8;80;user1;pw123 veya HTTP;p.webshare.io;80;u;p. Sistem vekil yapılandırmasını kullanmak istiyorsanız boş bırakın. \n \nSınırlama: Ayarlarda \'DNS ayarlarını\' bir HTTPS üzerinden DNS sunucusu olarak değiştirirseniz, vekil sunucusunun etki alanını girmeniz gerekir. IP adresleri çalışmayacaktır.</string>
     <string name="settings__network_category__title">Ağ</string>
     <string name="device__prefer_32bit_apks__title">32-Bit APK\'ları tercih et</string>
     <string name="settings__device_category__title">Aygıt</string>
@@ -284,4 +276,23 @@
     <string name="download_activity__retry_installation">Kurulumu yeniden dene</string>
     <string name="settings__network__use_cloudflare_mirrors__summary">Kullanılabilir olduğunda birincil sunucuların kaynak yükünü azaltmayı etkinleştirin.</string>
     <string name="settings__network__use_cloudflare_mirrors__title">Cloudflare yansılarını kullan</string>
+    <string name="update_all_activity__installation_failed"></string>
+    <string name="update_all_activity__start_update"></string>
+    <string name="update_all_activity__start_installation"></string>
+    <string name="update_all_activity__installation_successful"></string>
+    <string name="default_theme_preference" translatable="false"></string>
+    <string name="main_activity__update_all_apps_dialog__abort"></string>
+    <string name="main_activity_menu__install_app__label"></string>
+    <string name="update_all_activity__these_apps_will_be_updated"></string>
+    <string name="main_activity__update_all_apps_dialog__confirm"></string>
+    <string name="main_activity__update_all_apps_dialog__title"></string>
+    <string name="update_all_activity__no_updates_available"></string>
+    <string name="main_activity_menu__update_all_apps__label"></string>
+    <string name="main_activity__update_all_apps_dialog__message"></string>
+    <string name="update_all_activity__label"></string>
+    <string name="generic_beta__warning"></string>
+    <string name="thunderbird__title"></string>
+    <string name="thunderbird_beta__title"></string>
+    <string name="thunderbird__description"></string>
+    <string name="update_all_activity__all_apps_updated"></string>
 </resources>
