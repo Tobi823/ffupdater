@@ -54,7 +54,7 @@
     <string name="download_activity__download_failed">Pobieranie nie powiodło się</string>
     <string name="download_activity__downloaded_application_from">Pobrano aplikację z:</string>
     <string name="app_installer__signature_of_download_is_invalid">Pobrana aplikacja NIE została zweryfikowana</string>
-    <string name="download_activity__exception__show_button">"<u>Pokaż szczegółowy raport o błędach.</u>"</string>
+    <string name="download_activity__exception__show_button"><u>Pokaż szczegółowy raport o błędach.</u></string>
     <string name="download_activity__external_storage_not_accessible">Zewnętrzna pamięć masowa nie jest dostępna - nie można rozpocząć pobierania. Aktualny status:</string>
     <string name="download_activity__fetch_url_for_download">Pobierz adres URL pobierania z %1$s</string>
     <string name="download_activity__fetched_url_for_download_successfully">Pobrano adres URL pobierania z %1$s</string>
@@ -79,9 +79,9 @@
     <string name="app_installer__installed_app_has_invalid_signature">Zainstalowana aplikacja NIE została zweryfikowana</string>
     <string name="installed_application_is_verified">Zainstalowana aplikacja została zweryfikowana</string>
     <string name="installed_version">Zainstalowane: %1$s</string>
-    <string name="main_activity__github_api_limit_exceeded">"<u>Przekroczono limit GitHub-API. Ponów próbę w ciągu następnej godziny.</u>"</string>
+    <string name="main_activity__github_api_limit_exceeded"><u>Przekroczono limit GitHub-API. Ponów próbę w ciągu następnej godziny.</u></string>
     <string name="main_activity__no_unmetered_network">Brak sieci bez limitu danych</string>
-    <string name="main_activity__temporary_network_issue">"<u>Tymczasowy problem z siecią. Spróbuj ponownie później.</u>"</string>
+    <string name="main_activity__temporary_network_issue"><u>Tymczasowy problem z siecią. Spróbuj ponownie później.</u></string>
     <string name="ok">OK</string>
     <string name="request_installation_permission_dialog__abort">Przerwij</string>
     <string name="request_installation_permission_dialog__grant_permission">Udzielenie pozwolenia</string>
@@ -147,9 +147,9 @@
     <string name="update_interval__6h">6 godzin</string>
     <string name="update_interval__8h">8 godzin</string>
     <string name="notification__update_available__channel_descr">Kanał powiadomień o dostępnych aktualizacjach %1$s.</string>
-    <string name="notification__update_available__channel_name">Powiadomienie o aktualizacji "%1$s"</string>
+    <string name="notification__update_available__channel_name">Powiadomienie o aktualizacji %1$s</string>
     <string name="update_notification__text">Kliknij aby zainstalować aktualizację</string>
-    <string name="update_notification__title">Dostępna jest aktualizacja dla "%1$s"</string>
+    <string name="update_notification__title">Dostępna jest aktualizacja dla %1$s</string>
     <string name="vivaldi__description">Vivaldi to nowa, prywatna przeglądarka zbudowana z myślą o elastyczności. Posiada użyteczne funkcje, takie jak blokowanie reklam, ochronę przed śledzeniem czy prywatny tłumacz. Narzedzia, w tym notatki czy przechwytywanie ekranu, oszczędzają dużo czasu. Wreszcie opcje, jak klasyczny pasek kart czy motywy, pozwalają Ci urządzić się po swojemu. Pobierz za darmo i przeglądaj sieć szybciej.</string>
     <string name="vivaldi__title">Vivaldi</string>
     <string name="vivaldi__warning">- Vivaldi posiada tylko częściowo otwarty kod źródłowy. \n- Wykorzystuje również techniczne podstawy przeglądarki Google Chrome, przez co pośrednio wspiera monopolistyczną pozycję silnika renderującego Chromium.</string>
@@ -226,11 +226,7 @@
     <string name="installer__method__session">Session: Zalecana. Od Androida 12 aplikacje są aktualizowane w tle po cichu, po jednym zatwierdzeniu.</string>
     <string name="network__proxy__dialog_message">Jeśli chcesz użyć proxy SOCKS lub HTTP, wprowadź tutaj szczegóły połączenia. Użyj jednego z tych formatów: \n \nSOCKS/HTTP;ip/domena;port \n \nSOCKS/HTTP;ip/domena;port;użytkownik;hasło \n \nNa przykład: SOCKS;1.2.3.4;22 or HTTP;5.6.7.8;80;użytkownik123;hasło123 or HTTP;p.webshare.io;80;u;h. Pozostaw to puste, jeśli chcesz użyć systemowej konfiguracji proxy. \n \nOgraniczenie: Jeśli zmienisz \"Ustawienia DNS\" w ustawieniach na serwer DNS over HTTPS, musisz podać domenę serwera proxy. IP nie będzie działać.</string>
     <string name="tor_browser_alpha__title">Tor Alpha</string>
-    <string name="tor_browser_alpha__description">Przeglądarka Tor dla Androida to jedyna oficjalna przeglądarka mobilna wspierana przez projekt Tor, twórców najsilniejszego na świecie narzędzia do ochrony prywatności i wolności online.
-\n
-\nDobrowolne darowizny sprawiają, że Przeglądarka Tor ZAWSZE będzie darmowa. Projekt Tor jest 501©(3) organizacją non-profit z siedzibą w USA. Proszę rozważyć wsparcie projektu dobrowolną wpłatą: https://donate.torproject.org.
-\n
-\nMożesz dowiedzieć się jak zgłaszać błędy i opinie na stronie https://support.torproject.org/misc/bug-or-feedback/!</string>
+    <string name="tor_browser_alpha__description">Przeglądarka Tor dla Androida to jedyna oficjalna przeglądarka mobilna wspierana przez projekt Tor, twórców najsilniejszego na świecie narzędzia do ochrony prywatności i wolności online. \n \nDobrowolne darowizny sprawiają, że Przeglądarka Tor ZAWSZE będzie darmowa. Projekt Tor jest 501©(3) organizacją non-profit z siedzibą w USA. Proszę rozważyć wsparcie projektu dobrowolną wpłatą: https://donate.torproject.org. \n \nMożesz dowiedzieć się jak zgłaszać błędy i opinie na stronie https://support.torproject.org/misc/bug-or-feedback/!</string>
     <string name="duckduckgo_android__warning">- DuckDuckGo wykorzystuje systemowy silnik webview do wyświetlania stron internetowych. \n- Były kontrowersje związane z nie blokowaniem wszystkich ciasteczek od Microsoftu - ale zostało to naprawione.</string>
     <string name="privacy_browser__title">Privacy Browser</string>
     <string name="main_activity__app_was_signed_by_different_certificate">Ta aplikacja została podpisana innym certyfikatem i nie może być aktualizowana za pomocą FFUpdater.</string>
@@ -288,4 +284,23 @@
     <string name="download_activity__retry_installation">Ponów instalację</string>
     <string name="settings__network__use_cloudflare_mirrors__title">Użyj serwerów Cloudflare</string>
     <string name="settings__network__use_cloudflare_mirrors__summary">Włącz, aby zmiejszyć użycie zasobów głównego serwera kiedy jest dostępna aktualizacja.</string>
+    <string name="default_theme_preference" translatable="false"></string>
+    <string name="main_activity__update_all_apps_dialog__message"></string>
+    <string name="main_activity__update_all_apps_dialog__title"></string>
+    <string name="main_activity__update_all_apps_dialog__confirm"></string>
+    <string name="update_all_activity__label"></string>
+    <string name="main_activity__update_all_apps_dialog__abort"></string>
+    <string name="update_all_activity__installation_successful"></string>
+    <string name="update_all_activity__all_apps_updated"></string>
+    <string name="update_all_activity__these_apps_will_be_updated"></string>
+    <string name="main_activity_menu__update_all_apps__label"></string>
+    <string name="thunderbird_beta__title"></string>
+    <string name="thunderbird__description"></string>
+    <string name="main_activity_menu__install_app__label"></string>
+    <string name="update_all_activity__start_installation"></string>
+    <string name="update_all_activity__start_update"></string>
+    <string name="update_all_activity__installation_failed"></string>
+    <string name="update_all_activity__no_updates_available"></string>
+    <string name="generic_beta__warning"></string>
+    <string name="thunderbird__title"></string>
 </resources>
