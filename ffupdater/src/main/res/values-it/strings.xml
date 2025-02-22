@@ -60,7 +60,7 @@
     <string name="download_activity__download_failed">Download fallito</string>
     <string name="download_activity__downloaded_application_from">Applicazione scaricata da:</string>
     <string name="app_installer__signature_of_download_is_invalid">L\'applicazione scaricata NON è verificata</string>
-    <string name="download_activity__exception__show_button">"<u>Mostra il rapporto di errore dettagliato.</u>"</string>
+    <string name="download_activity__exception__show_button"><u>Mostra il rapporto di errore dettagliato.</u></string>
     <string name="download_activity__external_storage_not_accessible">La memoria esterna non è disponibile - impossibile iniziare il download. Lo stato attuale è:</string>
     <string name="download_activity__fetch_url_for_download">Recupera metadati da %1$s</string>
     <string name="download_activity__fetched_url_for_download_successfully">Recuperati metadati da %1$s</string>
@@ -90,9 +90,9 @@
     <string name="kiwi__description">Kiwi Browser è fatto per navigare in internet, leggere notizie, guardare video e ascoltare musica, senza fastidi.</string>
     <string name="kiwi__title">Kiwi Browser Next</string>
     <string name="kiwi__warning">- Kiwi è solo parzialmente open-source \n- Kiwi usa la base tecnica di Google Chrome e quindi supporta indirettamente la posizione di monopolio del motore di rendering Chromium. \n- Kiwi non è un browser per la privacy ideale, ma ha un buon supporto per componenti aggiuntivi. \n- Il browser viene pagato dai motori di ricerca per ogni ricerca effettuata utilizzando Kiwi Browser. A seconda della scelta del motore di ricerca, le richieste possono passare tramite i server Kiwibrowser / Kiwisearchservices. \n- Google Ads in Kiwi può utilizzare i dati sulla posizione per gli annunci - ma puoi disabilitarlo disattivando la funzione Discovery. Ma questo cambierà presto. Vedi https://privacy.kiwibrowser.org/ per più dettagli.</string>
-    <string name="main_activity__github_api_limit_exceeded">"<u>Limite di GitHub-API superato. Si prega di provare di nuovo il download tra un\'ora.</u>"</string>
+    <string name="main_activity__github_api_limit_exceeded"><u>Limite di GitHub-API superato. Si prega di provare di nuovo il download tra un\'ora.</u></string>
     <string name="main_activity__no_unmetered_network">Nessuna rete non misurata</string>
-    <string name="main_activity__temporary_network_issue">"<u>Problema di rete temporaneo. Riprovare più tardi.</u>"</string>
+    <string name="main_activity__temporary_network_issue"><u>Problema di rete temporaneo. Riprovare più tardi.</u></string>
     <string name="ok">OK</string>
     <string name="request_installation_permission_dialog__abort">Annulla</string>
     <string name="request_installation_permission_dialog__grant_permission">Concedi l\'autorizzazione</string>
@@ -160,9 +160,9 @@
     <string name="update_interval__6h">6 ore</string>
     <string name="update_interval__8h">8 ore</string>
     <string name="notification__update_available__channel_descr">Canale di notifica per %1$s aggiornamenti disponibili.</string>
-    <string name="notification__update_available__channel_name">"%1$s" notifica di aggiornamento</string>
+    <string name="notification__update_available__channel_name">%1$s notifica di aggiornamento</string>
     <string name="update_notification__text">Clicca per installare l\'aggiornamento</string>
-    <string name="update_notification__title">Aggiornamento disponibile per "%1$s"</string>
+    <string name="update_notification__title">Aggiornamento disponibile per %1$s</string>
     <string name="vivaldi__description">Scopri un browser Internet incredibilmente veloce! Vivaldi è un browser web nuovo, gratuito, e privato costruito pensando alla flessibilità. Viene fornito con funzioni utili tra cui un blocco delle pubblicità incorporato (blocco dei pop-up), protezione dal tracciamento e traduzione privata. Opzioni del browser come schede appropriate in stile desktop, temi chiaro/scuro, e le scelte di layout ti aiutano a renderlo tuo.</string>
     <string name="vivaldi__title">Vivaldi Browser</string>
     <string name="vivaldi__warning">- Vivaldi è open source solo parzialmente. \n- Inoltre usa la base tecnica di Google Chrome e quindi supporta indirettamente la posizione di monopolio del motore di rendering Chromium.</string>
@@ -297,4 +297,5 @@
     <string name="main_activity__update_all_apps_dialog__confirm">Aggiorna app</string>
     <string name="update_all_activity__all_apps_updated">Fatto. Tutte le app sono state aggiornate (se possibile). Ora è possibile chiudere l\'app.</string>
     <string name="update_all_activity__downloaded_file_is_missing">Il file scaricato per \'%1$s\' non esiste, continuare con l\'applicazione successiva.</string>
+    <string name="default_theme_preference" translatable="false"></string>
 </resources>
