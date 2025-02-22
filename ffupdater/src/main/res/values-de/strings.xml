@@ -57,7 +57,7 @@
     <string name="download_activity__download_failed">Download schlug fehl</string>
     <string name="download_activity__downloaded_application_from">App wurde heruntergeladen von:</string>
     <string name="app_installer__signature_of_download_is_invalid">Heruntergeladene App ist NICHT verifiziert</string>
-    <string name="download_activity__exception__show_button">"<u>Zeige den detaillierten Fehlerbericht an.</u>"</string>
+    <string name="download_activity__exception__show_button"><u>Zeige den detaillierten Fehlerbericht an.</u></string>
     <string name="download_activity__external_storage_not_accessible">Externer Speicher ist nicht verfügbar - kann den Download nicht starten. Aktueller Status ist:</string>
     <string name="download_activity__fetch_url_for_download">Abruf der Metainformation von %1$s</string>
     <string name="download_activity__fetched_url_for_download_successfully">Metainformationen von %1$s wurde abgerufen</string>
@@ -87,9 +87,9 @@
     <string name="kiwi__description">Kiwi Browser wurde entwickelt, um im Internet zu surfen, Nachrichten zu lesen, Videos anzuschauen und Musik zu hören, ohne dabei zu stören.</string>
     <string name="kiwi__title">Kiwi Browser Next</string>
     <string name="kiwi__warning">- Kiwi ist nur teilweise Open-Source\n- Kiwi nutzt die technische Grundlage von Google Chrome und unterstützt damit indirekt die Monopolstellung der Chromium-Rendering-Engine.\n- Kiwi ist kein idealer Datenschutz-Browser, hat aber eine gute Addon-Unterstützung.\n- Der Browser wird von Suchmaschinen für jede durchgeführte Suche bezahlt. Je nach Wahl der Suchmaschine können die Anfragen über die Kiwibrowser / Kiwisearchservices-Server laufen.\n- Google Ads in Kiwi kann die Standortdaten für Anzeigen verwenden - du kannst dies jedoch deaktivieren, indem du die Entdeckungsfunktion deaktivierst. Dies wird sich jedoch bald ändern. Siehe https://privacy.kiwibrowser.org/ für weitere Details.</string>
-    <string name="main_activity__github_api_limit_exceeded">"<u>GitHub-API-Limit überschritten. Nächste Stunde erneut versuchen.</u>"</string>
+    <string name="main_activity__github_api_limit_exceeded"><u>GitHub-API-Limit überschritten. Nächste Stunde erneut versuchen.</u></string>
     <string name="main_activity__no_unmetered_network">Kein nicht getaktetes Netzwerk</string>
-    <string name="main_activity__temporary_network_issue">"<u>Vorübergehendes Netzwerkproblem. Versuche es später nochmal.</u>"</string>
+    <string name="main_activity__temporary_network_issue"><u>Vorübergehendes Netzwerkproblem. Versuche es später nochmal.</u></string>
     <string name="ok">OK</string>
     <string name="request_installation_permission_dialog__abort">Abbrechen</string>
     <string name="request_installation_permission_dialog__grant_permission">Erlaubnis erteilen</string>
@@ -222,11 +222,7 @@
     <string name="notification__network_error__title">Netzwerkfehler in Hintergrundaufgabe</string>
     <string name="notification__network_error__text">Dieser Fehler sollte nur selten auftreten. Wenn er jedoch häufig auftritt, melde ihn bitte. Tippe hier, um eine detaillierte Fehlermeldung anzuzeigen.</string>
     <string name="tor_browser_alpha__title">Tor Browser Alpha</string>
-    <string name="tor_browser_alpha__description">Tor Browser ist der einzig offiziell unterstützte Browser des Tor Projekts, den Entwicklern des weltweit sichersten Tool für Privatsphäre und Freiheit online.
-\n
-\nTor Browser wird immer KOSTENLOS sein, wobei Spenden dies ermöglichen. Das Tor Projekt ist eine 501©(3) nonprofit in den USA. Bitte spende, wenn du kannst. Jede Spende macht einen Unterschied: https://donate.torproject.org.
-\n
-\nErfahre, wie du Fehler melden und Feedback geben kannst unter https://support.torproject.org/misc/bug-or-feedback/!</string>
+    <string name="tor_browser_alpha__description">Tor Browser ist der einzig offiziell unterstützte Browser des Tor Projekts, den Entwicklern des weltweit sichersten Tool für Privatsphäre und Freiheit online. \n \nTor Browser wird immer KOSTENLOS sein, wobei Spenden dies ermöglichen. Das Tor Projekt ist eine 501©(3) nonprofit in den USA. Bitte spende, wenn du kannst. Jede Spende macht einen Unterschied: https://donate.torproject.org. \n \nErfahre, wie du Fehler melden und Feedback geben kannst unter https://support.torproject.org/misc/bug-or-feedback/!</string>
     <string name="firefox_focus_beta__title">Firefox Focus Beta</string>
     <string name="foreground__hide_apps_signed_by_different_certificate__title">Apps ausblenden, die mit einem anderen Zertifikat signiert sind.</string>
     <string name="firefox_focus_beta__description">Nutze Firefox Focus für alles, was du getrennt von deinem Hauptbrowser aufbewahren willst - für all die Momente, in denen du einsteigen und wieder aussteigen willst und es vergessen willst. Keine Tabs, kein Aufheben, kein Durcheinander. Blockiere auch Online-Tracker. Ein Fingertipp, und dein Browserverlauf ist komplett gelöscht. \n \nFirefox Focus ist der perfekte Webbrowser zum Rein- und Rausgehen, zum Suchen und Löschen, zum \"Ich bin auf einer Mission, die dich nichts angeht\".</string>
@@ -286,4 +282,21 @@
     <string name="download_activity__retry_installation">Installation erneut versuchen</string>
     <string name="thunderbird__title">Thunderbird</string>
     <string name="thunderbird_beta__title">Thunderbird Beta</string>
+    <string name="default_theme_preference" translatable="false"></string>
+    <string name="main_activity__update_all_apps_dialog__confirm"></string>
+    <string name="main_activity__update_all_apps_dialog__message"></string>
+    <string name="main_activity__update_all_apps_dialog__title"></string>
+    <string name="main_activity__update_all_apps_dialog__abort"></string>
+    <string name="update_all_activity__label"></string>
+    <string name="main_activity_menu__update_all_apps__label"></string>
+    <string name="main_activity_menu__install_app__label"></string>
+    <string name="update_all_activity__all_apps_updated"></string>
+    <string name="update_all_activity__installation_failed"></string>
+    <string name="update_all_activity__start_installation"></string>
+    <string name="update_all_activity__start_update"></string>
+    <string name="thunderbird__description"></string>
+    <string name="update_all_activity__these_apps_will_be_updated"></string>
+    <string name="update_all_activity__installation_successful"></string>
+    <string name="update_all_activity__no_updates_available"></string>
+    <string name="generic_beta__warning"></string>
 </resources>
