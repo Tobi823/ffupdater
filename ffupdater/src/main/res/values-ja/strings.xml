@@ -284,8 +284,11 @@
     <string name="main_activity_menu__update_all_apps__label">アプリをすべて更新</string>
     <string name="main_activity_menu__install_app__label">アプリをインストール</string>
     <string name="update_all_activity__these_apps_will_be_updated">次のアプリが更新されます: %1$s</string>
-    <string name="update_all_activity__all_apps_updated">完了。更新可能なアプリをすべて更新しました。アプリを閉じても問題ありません。</string>
+    <string name="update_all_activity__all_apps_updated">完了。更新可能なアプリをすべて更新しました。移動しても問題ありません。</string>
     <string name="update_all_activity__start_update">「%1$s」の更新をインストール開始</string>
     <string name="update_all_activity__start_installation">「%1$s」のインストールを開始</string>
     <string name="update_all_activity__downloaded_file_is_missing">ダウンロードした「%1$s」のファイルが確認できませんでした。次のアプリの更新を続行します。</string>
+    <string name="update_all_activity__no_updates_available">インストールできる更新がありません。終了します。</string>
+    <string name="update_all_activity__installation_successful">「%1$s」をインストールしました。証明書のハッシュ: %2$s</string>
+    <string name="update_all_activity__installation_failed">「%1$s」をインストールできませんでした。次のアプリに続きます。</string>
 </resources>
