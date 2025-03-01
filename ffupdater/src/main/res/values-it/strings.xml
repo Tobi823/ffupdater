@@ -289,6 +289,6 @@
     <string name="update_all_activity__installation_successful">Installazione di \'%1$s\' riuscita. Hash certificato: %2$s</string>
     <string name="main_activity__update_all_apps_dialog__message">Tutte le app obsolete e non disattivate devono essere aggiornate? Gli aggiornamenti vengono scaricati in background. Una notifica ti informerà quando il download sarà terminato. È necessario fare clic su di essa per avviare il processo di aggiornamento.</string>
     <string name="main_activity__update_all_apps_dialog__confirm">Aggiorna app</string>
-    <string name="update_all_activity__all_apps_updated">Fatto. Tutte le app sono state aggiornate (se possibile). Ora è possibile chiudere l\'app.</string>
+    <string name="update_all_activity__all_apps_updated">Fatto. Tutte le app sono state aggiornate (se possibile). Ora è possibile uscire.</string>
     <string name="update_all_activity__downloaded_file_is_missing">Il file scaricato per \'%1$s\' non esiste, continuare con l\'applicazione successiva.</string>
 </resources>
