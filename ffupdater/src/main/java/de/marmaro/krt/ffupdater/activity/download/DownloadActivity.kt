@@ -106,7 +106,6 @@ class DownloadActivity : AppCompatActivity() {
         setContentView(R.layout.activity_download)
         AppCompatDelegate.setDefaultNightMode(ForegroundSettings.themePreference)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON) // prevent network timeouts
         // I did not understand Android edge-to-edge completely,
         // but this should prevent elements hidden behind the system bars.
         setOnApplyWindowInsetsListener(findViewById(R.id.download_activity__main_layout)) { v: View, insets: WindowInsetsCompat ->
@@ -187,7 +186,6 @@ class DownloadActivity : AppCompatActivity() {
             deleteCachedApkFileIfSuitable(downloadViewModel.installationSuccess)
         }
         lifecycle.removeObserver(installer)
-        window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -302,7 +300,6 @@ class DownloadActivity : AppCompatActivity() {
                     reuseCurrentDownloadWithoutErrorChecking(status)
                 }
             }
-
             true
         } catch (e: Exception) {
             debug("reusing the existing download of $[app.name} failed", e)
@@ -355,6 +352,7 @@ class DownloadActivity : AppCompatActivity() {
         val channel = Channel<DownloadStatus>()
         val download =
             downloadViewModel.viewModelScope.async { // capture exception so that CrashListener will not caught it
+                window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON) // prevent network timeouts
                 try {
                     appImpl.download(applicationContext, status.latestVersion, channel)
                     return@async Result.success(true)
@@ -362,6 +360,7 @@ class DownloadActivity : AppCompatActivity() {
                     return@async Result.failure(e)
                 } finally {
                     channel.close(DisplayableException("Progress channel was not yet closed. This should never happen"))
+                    window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
                 }
         }
         downloadViewModel.storeNewRunningDownload(status, download, channel)
@@ -431,6 +430,11 @@ class DownloadActivity : AppCompatActivity() {
         } else {
             Log.d(LOG_TAG, "$LOG_PREFIX ${app.name}: $message", throwable)
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON) // prevent network timeouts
     }
 
     companion object {
