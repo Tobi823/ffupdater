@@ -40,7 +40,7 @@
     <string name="firefox_release__description">Firefox для Android — це за замовчуванням конфіденційний і неймовірно швидкий браузер. Щодня тисячі онлайн-трекерів стежать за тобою, збираючи інформацію про твоє життя в Інтернеті і уповільнюючи швидкість твоєї роботи. Firefox за замовчуванням блокує більше 2000 таких трекерів і дозволяє встановити доповнення, що блокують рекламу, якщо ти захочеш настроювати свій браузер ще більше. З Firefox ти отримаєш безпеку, на яку заслуговуєш, а також високу швидкість роботи, — і все це в конфіденційному мобільному браузері.</string>
     <string name="firefox_release__title">Firefox</string>
     <string name="firefox_release__warning">- Покращена версія Firefox під назвою Fennec F-Droid також доступна на F-Droid.</string>
-    <string name="iceraven__description">Безумовно, вас не привезла Mozilla! \n \nIceraven - це веб-браузер для Android, заснований на версії Firefox, GeckoView та Mozilla Android Components від Mozilla Fenix. \n \nНаша мета - стати близьким розвитком нового Firefox для Android, який прагне надати користувачам більше можливостей, більше можливостей для налаштування (включаючи широку бібліотеку розширень) і більше інформації про сторінки, які вони відвідують, і про взаємодію їх браузерів ці сторінки.</string>
+    <string name="iceraven__description">Точно не від Mozilla!\n\nIceraven - це веб-браузер для Android, заснований на версії Firefox, GeckoView та Mozilla Android Components від Mozilla Fenix. \n \nНаша мета - стати близьким форком нового Firefox для Android, який прагне надати користувачам більше можливостей, більше можливостей для налаштування (включаючи широку бібліотеку розширень) і більше інформації про сторінки, які вони відвідують, і про взаємодію їх браузерів із цими сторінками.</string>
     <string name="iceraven__title">Iceraven</string>
     <string name="infobox">Це оновлювач для браузерів, дружніх до конфіденційності. Натисніть кнопку з плюсом, щоб встановити нові застосунки. Проведіть вниз, щоб примусово перевірити наявність нових оновлень. За замовчуванням застосунок періодично перевірятиме наявність оновлень у фоновому режимі, які потім будуть завантажені та зрештою встановлені. Натисніть на шестерню, щоб налаштувати поведінку. \n \nОстання успішна перевірка оновлень у фоновому режимі: %1$s</string>
     <string name="app_card__information_about_the_app">інформація про застосунок</string>
@@ -154,7 +154,7 @@
     <string name="notification__eol_apps__text">У вас є застарілі застосунки, якими більше не слід користуватися: %1$s</string>
     <string name="notification__eol_apps__channel_name">Сповіщення про застарілі застосунки</string>
     <string name="download_activity__different_installer_info__text">Якщо встановлення часто зазнає помилок, спробуйте переключитися на \"нативний інсталятор\" у налаштуваннях.</string>
-    <string name="download_activity__file_uri_exposed_toast">Неможливо надати шлях до файлу іншим програмам. Будь ласка, відкрийте папку самостійно за допомогою вибраного файлового менеджера.\"</string>
+    <string name="download_activity__file_uri_exposed_toast">Неможливо надати шлях до файлу іншим застосункам. Будь ласка, відкрийте папку самостійно за допомогою вибраного файлового менеджера.\"</string>
     <string name="install_activity__download_file_failed__crash_text">Під час завантаження виникла наступна помилка. Якщо ця помилка виникає часто, не соромтеся надіслати звіт про збій на notabug.org, GitHub або GitLab.</string>
     <string name="crash_report__explain_text__download_activity_install_file">Ця помилка виникла під час встановлення. Якщо ця помилка виникає часто, не соромтеся надіслати звіт про збій на notabug.org, GitHub або GitLab.</string>
     <string name="settings__b_f__delete_cache_if_install_successful">Видаляти завантажене оновлення, якщо встановлення пройшло успішно.</string>
@@ -272,9 +272,9 @@
     <string name="download_activity__retry_installation">Повторити встановлення</string>
     <string name="main_activity__update_all_apps_dialog__confirm">Оновлення програм</string>
     <string name="main_activity__update_all_apps_dialog__abort">Перервати</string>
-    <string name="main_activity__update_all_apps_dialog__title">Оновити всі програми</string>
+    <string name="main_activity__update_all_apps_dialog__title">Оновити всі застосунки</string>
     <string name="update_all_activity__label">Оновити всі програми</string>
-    <string name="main_activity_menu__update_all_apps__label">Оновити всі програми</string>
+    <string name="main_activity_menu__update_all_apps__label">Оновити всі застосунки</string>
     <string name="main_activity_menu__install_app__label">Встановити додаток</string>
     <string name="update_all_activity__no_updates_available">Немає доступних оновлень для встановлення. Припинення.</string>
     <string name="update_all_activity__these_apps_will_be_updated">Ці програми будуть оновлені незабаром: %1$s</string>
@@ -287,8 +287,8 @@
     <string name="settings__network__use_cloudflare_mirrors__title">Використовуйте дзеркала Cloudflare</string>
     <string name="settings__network__use_cloudflare_mirrors__summary">Увімкніть, щоб зменшити навантаження на ресурси основних серверів, якщо вони доступні.</string>
     <string name="main_activity__update_all_apps_dialog__message">Чи слід оновлювати всі застарілі та невимкнені програми? Оновлення завантажуватимуться у фоновому режимі. Коли завантаження завершиться, ви отримаєте сповіщення. Ви повинні натиснути його, щоб почати.</string>
-    <string name="generic_beta__warning">- Це бета-версія програми, розроблена для розробників і тестувальників. Він може містити різні помилки, які можуть вплинути на ваш досвід.</string>
+    <string name="generic_beta__warning">- Це бета-версія застосунку, розроблена для розробників і тестувальників. Він може містити різні помилки, які можуть вплинути на ваш досвід.</string>
     <string name="thunderbird__title">Thunderbird</string>
     <string name="thunderbird_beta__title">Thunderbird Beta</string>
-    <string name="thunderbird__description">Thunderbird — потужна програма електронної пошти, орієнтована на конфіденційність. Легко керуйте кількома обліковими записами електронної пошти з однієї програми за допомогою опції єдиної папки вхідних для максимальної продуктивності. Thunderbird, створений на основі технології з відкритим кодом і підтримується спеціальною командою розробників разом із глобальною спільнотою волонтерів, ніколи не розглядає ваші особисті дані як продукт. Підтримується виключно за рахунок фінансових внесків наших користувачів, тому вам більше ніколи не доведеться бачити рекламу разом із вашими електронними листами.</string>
+    <string name="thunderbird__description">Thunderbird — потужний поштовий клієнт, орієнтований на конфіденційність. Легко керуйте кількома обліковими записами електронної пошти з одного застосунку за допомогою опції єдиної папки вхідних для максимальної продуктивності. Thunderbird, створений на основі технології з відкритим кодом і підтримується спеціальною командою розробників разом із глобальною спільнотою волонтерів, ніколи не розглядає ваші особисті дані як продукт. Підтримується виключно за рахунок фінансових внесків наших користувачів, тому вам більше ніколи не доведеться бачити рекламу разом із вашими електронними листами.</string>
 </resources>
