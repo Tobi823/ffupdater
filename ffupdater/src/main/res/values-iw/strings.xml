@@ -1,2 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_description">עדכון עבור דפדפנים ידידותיים לפרטיות</string>
+    <string name="app_icon">סמל אפליקציה</string>
+    <string name="application_installation_was_not_successful">התקנת היישום נכשלה</string>
+    <string name="application_successfully_installed">היישום הותקן בהצלחה</string>
+    <string name="available_version">זמין: %1$s</string>
+    <string name="notification__error__text">אנא דווח על שגיאה זו. לחץ כדי להציג את דוח השגיאות.</string>
+    <string name="brave__title">Brave Private דפדפן</string>
+    <string name="brave_beta__title">דפדפן brave (בטא)</string>
+    <string name="brave_nightly__description">ברוכים הבאים ל-Brave Nightly (מפתח) לאנדרואיד!\nנסה את התכונות החדשות ביותר ותן משוב מוקדם: https://brave.com/msupport\nאתה יכול להתקין את Brave Nightly לצד הגרסה הנוכחית שלך של Brave לאנדרואיד.</string>
+    <string name="brave_nightly__title">Brave Browser (Nightly)</string>
+    <string name="crash_report__copy_crash_report_to_clipboard">העתק דוח קריסה ללוח</string>
+    <string name="crash_report__explain_text__uncaught_throwable">לצערנו, FFUpdater קרס בפעם האחרונה ונרשמה שגיאה זו. נא לשלוח את דוח הקריסה אל notabug.org, GitHub או GitLab.</string>
+    <string name="crash_report__go_to_github">עבור אל GitHub</string>
+    <string name="crash_report__go_to_gitlab">עבור אל GitLab</string>
+    <string name="crash_report__got_to_notabug_org">עבור אל notabug.org</string>
+    <string name="notification__download_running__channel_descr">מציג כאשר מורידים עדכוני אפליקציה ברקע.</string>
+    <string name="notification__download_running__channel_name">הודעה על הורדות ברקע</string>
+    <string name="notification__download_running__title">הורדת עדכוני אפליקציה</string>
+    <string name="app_card__download_the_app">הורד אפליקציה</string>
+    <string name="notification__eol_apps__channel_description">ערוץ הודעות לאזהרות על אפליקציות מיושנות.</string>
+    <string name="notification__eol_apps__text">יש לך אפליקציות מיושנות שאין להשתמש בהן יותר: %1$s</string>
+    <string name="action_about_title">אודות FFUpdater</string>
+    <string name="app_name">FFUpdater</string>
+    <string name="notification__eol_apps__channel_name">התראה על אפליקציות מיושנות</string>
+    <string name="notification__error__title">בדיקת עידכונים ברקע נכשלה</string>
+    <string name="generic_beta__warning">- זוהי אפליקציית בטא, המיועדת למפתחים ולבודקים. עשוי להכיל באגים שונים שיכולים להשפיע על החוויה שלך.</string>
+    <string name="brave__description">גלישה פרטית באינטרנט, בחינם! אפליקציית Brave Private Browser היא דפדפן האינטרנט הפרטי המהיר, החינמי והבטוח שלך עם חוסם פרסומות וחוסם חלונות קופצים. גלוש וחפש באופן פרטי באינטרנט מבלי להיות במעקב על ידי מפרסמים, תוכנות זדוניות וחלונות קופצים.</string>
+    <string name="brave__warning">- Brave משתמש בבסיס הטכני של Google Chrome ובכך תומך בעקיפין בעמדת המונופול של מנוע הרינדור Chromium.\n- בשל BAT Basic Attention Token שלו ב-Ethereum blockchain לפרויקט יש קשרים עם מטבעות קריפטוגרפיים. לבלוקצ\'יין יש הרבה בעיות ויש להימנע מהן לדעתי.</string>
+    <string name="brave_beta__description">ברוכים הבאים ל-Brave Beta לאנדרואיד!\nנסה את התכונות החדשות ביותר ותן משוב מוקדם: https://brave.com/msupport\nאתה יכול להתקין את Brave Beta לצד הגרסה הנוכחית שלך של Brave לאנדרואיד.</string>
+    <string name="crash_report__explain_text__download_activity_fetching_url">שגיאה זו התרחשה כאשר המטא נתונים של ההורדה התקבלו. אם שגיאה זו מתרחשת לעתים קרובות, אל תהסס לשלוח את דוח הקריסה אל notabug.org, GitHub או GitLab.</string>
+    <string name="install_activity__download_file_failed__crash_text">השגיאה הבאה אירעה במהלך ההורדה. אם שגיאה זו מתרחשת לעתים קרובות, אל תהסס לשלוח את דוח הקריסה אל notabug.org, GitHub או GitLab.</string>
+    <string name="crash_report__explain_text__download_activity_install_file">שגיאה זו אירעה במהלך ההתקנה. אם שגיאה זו מתרחשת לעתים קרובות, אל תהסס לשלוח את דוח הקריסה אל notabug.org, GitHub או GitLab.</string>
+    <string name="crash_report__explain_text__download_activity_update_check">שגיאה זו התרחשה בעת חיפוש עדכונים בתצוגה הראשית. אם שגיאה זו מתרחשת לעתים קרובות, אל תהסס לשלוח את דוח הקריסה אל notabug.org, GitHub או GitLab.</string>
+</resources>
