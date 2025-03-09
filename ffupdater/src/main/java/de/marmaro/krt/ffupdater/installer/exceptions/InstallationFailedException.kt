@@ -7,28 +7,18 @@ import de.marmaro.krt.ffupdater.DisplayableException
 open class InstallationFailedException(
     message: String,
     cause: Throwable?,
-    val errorCode: Int,
     val translatedMessage: String,
 ) : DisplayableException(message, cause) {
 
-    constructor(message: String, errorCode: Int) : this(
+    constructor(message: String) : this(
         message,
         null,
-        errorCode,
         message,
     )
 
-    constructor(message: String, errorCode: Int, cause: Throwable) : this(
-        message,
-        cause,
-        errorCode,
-        message,
-    )
-
-    constructor(message: String, errorCode: Int, translatedMessage: String) : this(
+    constructor(message: String, translatedMessage: String) : this(
         message,
         null,
-        errorCode,
         translatedMessage,
     )
 }

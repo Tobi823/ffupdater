@@ -74,10 +74,6 @@
     <string name="download_activity__use_cached_downloaded_apk">Използва се изтегления файл:</string>
     <string name="download_activity__you_can_now_close_this_window">Можете да затворите прозореца</string>
     <string name="download_activity__label">Изтегляне на приложение</string>
-    <string name="notification__install_error__channel_descr">Категория известия за неуспешни обновявания на %1$s.</string>
-    <string name="notification__install_error__channel_name">Известие при неуспешно обновяване на %1$s</string>
-    <string name="notification__install_error__text">Грешка (%1$d): %2$s</string>
-    <string name="notification__install_error__title">Приложението %1$s не е обновено</string>
     <string name="notification__install_success__channel_descr">Категория известия за успешни обновявания на %1$s.</string>
     <string name="notification__install_success__channel_name">Известие при успешно обновяване на %1$s</string>
     <string name="notification__install_success__text">Приложение е обновено във фонов режим.</string>
@@ -207,7 +203,6 @@
     <string name="notification__update_available__generic_channel_name">Известие при обновяване на приложение</string>
     <string name="background__separate_notification_channels__title">Отделни канали за известия</string>
     <string name="notification__update_available__generic_channel_descr">Категория известия за налични обновявания на приложения.</string>
-    <string name="notification__install_error__generic_channel_descr">Категория известия за неуспешни обновявания на приложения.</string>
     <string name="privacy_browser__warning">FFUpdater изтегля файловете от сървърите на F-Droid и затова не е по-бърз.</string>
     <string name="privacy_browser__description">Единственият начин да бъде предотвратена злоупотребата с данни е да бъде предотвратено събирането ѝ. Четецът има две основни цели: ограничаване на предаваните през интернет данни, и ограничаване на съхраняваните на устройството данни.</string>
     <string name="network__dns_provider__system">Използване на системния DNS</string>
@@ -216,11 +211,8 @@
     <string name="tor_browser_alpha__title">Четецът Тор алфа</string>
     <string name="generic_app_warning__beta_version">- Приложението е предназначено за разработчици и изпитатели. Може да съдържа дефекти, които да повлияят на нормалната работа с него.</string>
     <string name="firefox_focus_beta__title">Файърфокс Фокус бета</string>
-    <string name="notification__install_error__generic_channel_name">Известие при неуспешно обновяване на приложение</string>
-    <string name="notification__network_error__title">Грешка в мрежата при работа във фонов режим</string>
     <string name="main_activity__app_was_signed_by_different_certificate">Приложение е подписано с различен сертификат и не може да бъде обновено с FFUpdater.</string>
     <string name="privacy_browser__title">Поверителни четци</string>
-    <string name="notification__network_error__text">Тази грешка трябва да се появява рядко. Ако въпреки това се появява често, трябва да я докладвате. Щракнете тук, за да видите пълния текст на грешката.</string>
     <string name="main_activity__an_error_occurred"><u>Грешка. Опитайте по-късно.</u></string>
     <string name="network__proxy__dialog_message">Ако искате да използвате прокси сървър на SOCKS или HTTP, въведете данните за връзката тук. Използвайте един от тези формати: \n \nSOCKS/HTTP;ip/домейн;порт \n \nSOCKS/HTTP;ip/домейн;порт;потребителско име;парола \n \nНапример: SOCKS;1.2.3.4;22 или HTTP;5.6.7.8;80;user1;pw123 или HTTP;p.webshare.io;80;u;p. Оставете празно, ако искате да използвате системните настройки за прокси. \n \nОграничение: Ако промените „Настройки на DNS“ в настройките на „DNS през HTTPS“, трябва да въведете домейна на сървъра на прокси. Адресите по IP няма да работят.</string>
     <string name="tor_browser_alpha__description">Четецът Тор е единственият официален мобилен мрежов четец, поддържан от проекта Тор, разработчик на най-добрия в света инструмент за защита на личните данни и свободата онлайн. \n \nЧетецът Тор винаги ще бъде безплатен, но това е възможно благодарение на дарения. Проектът Тор е организация с нестопанска цел със седалище в САЩ. Помислете дали да не направите своя принос днес. Всяко дарение е от значение: https://donate.torproject.org. \n \nНаучете как да съобщавате за грешки и да предоставяте обратна връзка на адрес https://support.torproject.org/misc/bug-or-feedback/!</string>

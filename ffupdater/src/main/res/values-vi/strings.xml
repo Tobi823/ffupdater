@@ -31,7 +31,6 @@
     <string name="download_activity__sha_256_certificate_fingerprint">Dấu vân tay chứng chỉ SHA-256:</string>
     <string name="firefox_release__warning">- Một phiên bản được cải thiện của Firefox cũng có sẵn trên F-Droid dưới tên Fennec F-Droid.</string>
     <string name="firefox_release__description">Trình duyệt Firefox cho Android là an toàn một cách tự động và nhanh đáng kinh ngạc. Hàng ngàn trình theo dõi trực tuyến đang theo dõi bạn hàng ngày, thu thập thông tin về những nơi bạn đến khi trực tuyến là làm bạn chậm đi. Firefox mặc định chặn hơn 2000 trong các trình theo dõi này và có sẵn những tiện ích chặn quảng cáo nếu bạn muốn tùy chỉnh trình duyệt của bạn thêm nữa. Với Firefox, bạn sẽ nhận được sự bảo mật mà bạn xứng đáng được có và tốc độ mà bạn cần trong một trình duyệt di động riêng tư.</string>
-    <string name="notification__install_error__title">%1$s không thể được cập nhật</string>
     <string name="brave_nightly__description">Chào mừng đến với Brave Nightly (Nhà phát triển) cho Android! \nThử qua những tính năng mới nhất và đưa ra phản hồi sớm: https://brave.com/msupport \nBạn có thể cài đặt Brave Nightly cùng với phiên bản Brave for Android hiện tại của bạn.</string>
     <string name="download_activity__temporary_network_issue">Đã xảy ra sự cố mạng tạm thời. Vui lòng thử lại sau.</string>
     <string name="installed_version">Đã cài đặt: %1$s</string>
@@ -49,10 +48,7 @@
     <string name="firefox_beta__title">Firefox cho Android Beta</string>
     <string name="crash_report__copy_crash_report_to_clipboard">Sao chép bản báo cáo sự cố vào bảng ghi tạm</string>
     <string name="download_activity__fetch_url_for_download">Tìm nạp siêu dữ liệu từ %1$s</string>
-    <string name="notification__install_error__channel_name">Thông báo %1$s cập nhật không thành công</string>
-    <string name="notification__install_error__text">Lỗi (%1$d): %2$s</string>
     <string name="download_activity__external_storage_not_accessible">Bộ nhớ ngoài không sẵn có - không thể bắt đầu tải xuống. Trạng thái hiện tại là:</string>
-    <string name="notification__install_error__channel_descr">Kênh thông báo cho %1$s cập nhật không thành công.</string>
     <string name="crash_report__explain_text__uncaught_throwable">Không may thay, FFUpdater đã gặp sự cố vào lần trước và đã ghi lại lỗi này. Vui lòng gửi bản báo cáo sự cố quá notabug.org, GitHub hoặc GitLab.</string>
     <string name="firefox_nightly__title">Firefox Nightly</string>
     <string name="brave__description">Duyệt internet một cách riêng tư, miễn phí! Trình duyệt riêng tư Brave là trình duyệt web nhanh, miễn phí và an toàn của bạn với trình chặn quảng cáo và cửa sổ nổi. Duyệt và tìm kiếm trên internet một cách riêng tư mà không bị theo dõi bởi các nhà quảng cáo, mã độc và cửa sổ nổi.</string>
@@ -86,7 +82,6 @@
     <string name="download_activity__different_installer_info__text">Nếu quá trình cài đặt thường xuyên không thành công, hãy thử chuyển sang \'trình cài đặt gốc\' trong cài đặt.</string>
     <string name="download_activity__delete_cache_explanation">Nếu bạn nghĩ rằng FFUpdater đã lưu vào bộ nhớ đệm một bản cập nhật ứng dụng bị lỗi hoặc nếu bạn muốn tiết kiệm không gian, bấm nút để xóa tệp đã tải.</string>
     <string name="vivaldi__warning">- Vivaldi chỉ là mã nguồn mở một phần. \n- Nó cũng sử dụng nền tảng kỹ thuật của Google Chrome và do đó gián tiếp hỗ trợ cho vị thế độc quyền của công cụ kết xuất Chromium.</string>
-    <string name="notification__network_error__title">Lỗi mạng trong quá trình nền</string>
     <string name="background__separate_notification_channels__title">Các kênh thông báo khác nhau</string>
     <string name="update_interval__3d">3 ngày</string>
     <string name="settings__theme_light">Sáng</string>
@@ -96,7 +91,6 @@
     <string name="settings__device_category__title">Thiết bị</string>
     <string name="network__dns_provider__custom">Máy chủ DNS qua HTTPS tùy chỉnh</string>
     <string name="running_downloads_dialog__message">Ứng dụng đang tải xuống cập nhật dưới nền ngay bây giờ. Bạn có muốn bắt đầu một đợi tải xuống mà có thể sẽ lâu hơn?</string>
-    <string name="notification__network_error__text">Lỗi này hiếm khi xảy ra. Tuy nhiên, nếu nó xảy ra thường xuyên, bạn nên báo cáo. Bấm vào đây để xem thông báo lỗi chi tiết.</string>
     <string name="chromium__description">Chrome là một dự án trình duyệt nguồn mở nhằm mục đích xây dựng một cách an toàn hơn, nhanh hơn và ổn định hơn để tất cả người dùng trải nghiệm web. Trang này chứa các tài liệu thiết kế, tổng quan về kiến trúc, thông tin thử nghiệm, v.v. nhằm giúp bạn tìm hiểu cách xây dựng và làm việc với mã nguồn Chromium.</string>
     <string name="settings__network__trust_user_cas__summary">Bật nếu lưu lượng dữ liệu cần được kiểm tra và thay đổi bởi các ứng dụng khác. Nếu bạn không chắc chắn, hãy tắt tùy chọn này.</string>
     <string name="network__dns_provider__system">Sử dụng DNS hệ thống</string>
@@ -163,7 +157,6 @@
     <string name="session_installer__status_failure_invalid">Thao tác không thành công do một hoặc nhiều APK không hợp lệ. Ví dụ: chúng có thể bị sai định dạng, bị hỏng, được ký không chính xác, không khớp, v.v.</string>
     <string name="settings__background__update_check__enabled__title">Kiểm tra cập nhật</string>
     <string name="tor_browser__description">Trình duyệt Tor cho Android là trình duyệt duy nhất được hỗ trợ chính thức bởi Dự án Tor, những nhà phá triển của công cụ mạnh nhất trên thế giới cho quyền riêng tư và quyền tự do trực tuyến.</string>
-    <string name="notification__install_error__generic_channel_name">Thông báo lỗi cập nhật ứng dụng</string>
     <string name="chromium__title">Chromium</string>
     <string name="add_app_activity__title_better_than_google_chrome">Tốt hơn Google Chrome</string>
     <string name="tor_browser__title">Trình duyệt Tor</string>
@@ -205,7 +198,6 @@
     <string name="settings__background__update_check__enabled__summary">Kiểm tra các bản cập nhật mới theo định kỳ.</string>
     <string name="settings__theme_system_default">Theo mặc định hệ thống</string>
     <string name="network__proxy__dialog_message">Nếu bạn muốn sử dụng proxy SOCKS hoặc HTTPS, nhập thông tin kết nối tại đây. Sử dụng một trong các định dạng sau: \n \nSOCKS/HTTP;ip/domain;port \n \nSOCKS/HTTP;ip/domain;port;username;password \n \nVí dụ: SOCKS;1.2.3.4;22 hoặc HTTP;5.6.7.8;80;user1;pw123 hoặc HTTP;p.webshare.io;80;u;p. Để nó trống nếu bạn muốn dùng cấu hình proxy hệ thống. \n \nGiới hạn: Nếu bạn thay đổi \'cài đặt DNS\' trong cài đặt thành DNS qua máy chủ HTTPS, bạn sẽ phải nhập tên miền của máy chủ proxy. Các IP sẽ không hoạt động.</string>
-    <string name="notification__install_error__generic_channel_descr">Kênh thông báo về các bản cập nhật ứng dụng không thành công.</string>
     <string name="orbot__description">Orbot là một ứng dụng proxy miễn phí cho phép các ứng dụng khác sử dụng Internet an toàn hơn. Orbot sử dụng Tor để mã hóa lưu lượng truy cập Internet của bạn và sau đó ẩn nó bằng cách chuyển qua hàng loạt máy tính trên khắp thế giới. Tor là phần mềm miễn phí và là mạng mở giúp bạn chống lại hình thức giám sát mạng đe dọa quyền tự do và quyền riêng tư cá nhân, các hoạt động và mối quan hệ kinh doanh bí mật cũng như an ninh nhà nước được gọi là phân tích lưu lượng truy cập.</string>
     <string name="main_activity__github_api_limit_exceeded"><u>Đã vượt quá giới hạn API GitHub. Hãy thử lại vào giờ tiếp theo.</u></string>
     <string name="network__dns_provider__digital_society_ch">DNS qua HTTPS: Xã hội kỹ thuật số Thụy Sĩ</string>

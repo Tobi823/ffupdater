@@ -64,10 +64,6 @@
     <string name="download_activity__use_cached_downloaded_apk">Utiliser le fichier déjà téléchargé de :</string>
     <string name="download_activity__you_can_now_close_this_window">Vous pouvez maintenant fermer cette fenêtre</string>
     <string name="download_activity__label">Installer l\'application</string>
-    <string name="notification__install_error__channel_descr">Canal de notification des échecs de mise à jour de %1$s.</string>
-    <string name="notification__install_error__channel_name">notification d\'échec de la mise à jour de %1$s</string>
-    <string name="notification__install_error__text">Erreur (%1$d) : %2$s</string>
-    <string name="notification__install_error__title">%1$s n\'a pas pu être mis à jour</string>
     <string name="notification__install_success__channel_descr">Canal de notification pour les mises à jour réussies de %1$s.</string>
     <string name="notification__install_success__channel_name">Notification de mise à jour réussie de %1$s</string>
     <string name="notification__install_success__text">L\'application a été mise à jour avec succès en arrière-plan.</string>
@@ -185,7 +181,6 @@
     <string name="settings__background__update_check__when_device_idle__summary">Activez ceci si vous ne voulez pas que vos applications soient redémarrées par une mise à jour en arrière plan. Désactivez ceci si vous voulez une intervalle plus précise entre les mises à jour en arrière plan.</string>
     <string name="network__custom_doh_server__dialog_message">Entrez les détails de connexion pour les serveurs DoH dans l\'un de ces formats : \n \nurl;ip1 \n \nurl;ip1;ip2 \n \nurl;ip1;ip2;ip3 \n \nurl;ip1;ip2;ip3;ip4 \n \nPar exemple : https://dns.google/dns-query;8.8.8.8 or https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
     <string name="network__proxy__dialog_message">Si vous voulez utiliser un proxy SOCKS ou HTTP, entrez les détails de connexion ici. Utilisez un de ces formats : \n \nSOCKS/HTTP;ip/domain;port \n \nSOCKS/HTTP;ip/domain;port;username;password \n \nPar exemple : SOCKS;1.2.3.4;22 or HTTP;5.6.7.8;80;user1;pw123 ou HTTP;p.webshare.io;80;u;p. Laissez vide si vous voulez utiliser la configuration système du proxy. \n \nLimitation : Si vous changez \'Paramètres DNS\' dans les paramètres en un serveur DNS sur HTTPS, vous devez entrer le nom de domaine du serveur proxy. Les IP ne fonctionneront pas.</string>
-    <string name="notification__network_error__text">Cette erreur ne devrait avoir lieu que rarement. Cependant, si celle-ci est fréquente, vous devriez la reporter. Appuyez ici pour voir le message d\'erreur détaillé.</string>
     <string name="tor_browser_alpha__title">Navigateur Tor Alpha</string>
     <string name="tor_browser__title">Navigateur Tor</string>
     <string name="tor_browser__description">Le navigateur Tor pour Android est le seul navigateur mobile officiellement supporté par le projet Tor, les développeurs des outils les plus forts pour la confidentialité et la liberté en ligne dans le monde.</string>
@@ -212,9 +207,6 @@
     <string name="background__separate_notification_channels__title">Canaux de notifications différents</string>
     <string name="notification__update_available__generic_channel_name">Notification de mise à jour d\'une app</string>
     <string name="notification__update_available__generic_channel_descr">Canal de notification pour les mises à jour disponibles.</string>
-    <string name="notification__install_error__generic_channel_descr">Canal de notification pour les mises à jour qui ont échouées.</string>
-    <string name="notification__install_error__generic_channel_name">Notification d\'échec de mise à jour</string>
-    <string name="notification__network_error__title">Erreur de réseau en arrière plan</string>
     <string name="main_activity__app_was_signed_by_different_certificate">Cette application est signée avec un certificat différent et ne peut pas être mise à jour avec FFUpdater.</string>
     <string name="foreground__hide_apps_signed_by_different_certificate__title">Cacher les applications signées avec un certificat différent.</string>
     <string name="firefox_focus_beta__description">Utilisez Firefox Focus pour tout ce que vous voulez garder séparé de votre navigateur principal - pour tous ceux qui entrent et sortent et oublient des moments. Pas d\'onglets, pas de chichi, pas de soucis. Bloquez également les traqueurs en ligne. Une touche, et votre historique de navigation est complètement détruit. \n \nFirefox Focus est le parfait entrer / sortir, rechercher puis détruire, je suis sur une mission qui ne vous regarde pas - le navigateur Web.</string>

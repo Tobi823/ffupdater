@@ -17,9 +17,6 @@
     <string name="notification__install_success__text">Sovellus on päivitetty taustalla.</string>
     <string name="notification__install_success__channel_name">%1$s onnistunut päivitysilmoitus</string>
     <string name="notification__install_success__channel_descr">Ilmoituskanava onnistuneille %1$s päivityksille.</string>
-    <string name="notification__install_error__title">%1$s ei voi päivittää</string>
-    <string name="notification__install_error__channel_name">%1$s päivitysvirheen ilmoitus</string>
-    <string name="notification__install_error__channel_descr">Ilmoituskanava epäonnistuneille %1$s päivityksille.</string>
     <string name="download_activity__label">Asenna sovellus</string>
     <string name="download_activity__use_cached_downloaded_apk">Käytä jo ladattua tiedostoa kohteesta:</string>
     <string name="download_activity__too_low_memory_title">Vähäinen tallennustila</string>
@@ -70,7 +67,6 @@
     <string name="settings__foreground_category__summary">Asetukset, kun käyttöliittymä on näkyvillä.</string>
     <string name="settings__background__update_check__interval__title">Päivitystarkastusten toistuvuus</string>
     <string name="running_downloads_dialog__negative">Ei, älä lataa sitä</string>
-    <string name="notification__install_error__text">Virhe (%1$d): %2$s</string>
     <string name="settings__foreground__update_check__metered__summary">Salli päivitystarkistukset kulutukseen perustuvissa verkoissa kuten mobiilidatalla.</string>
     <string name="settings__background__update_check__enabled__title">Päivitysten tarkistus</string>
     <string name="download_activity__download_failed">Lataus epäonnistui</string>

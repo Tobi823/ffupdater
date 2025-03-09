@@ -9,11 +9,11 @@ plugins {
 
 dependencies {
     implementation "androidx.core:core-ktx:1.15.0"
-    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:2.1.4"
+    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:2.1.5"
 
     implementation "androidx.appcompat:appcompat:1.7.0"
     implementation "androidx.work:work-runtime-ktx:2.10.0"
-    implementation("androidx.activity:activity-ktx:1.10.0")
+    implementation "androidx.activity:activity-ktx:1.10.1"
 
     // solve dependency conflict https://stackoverflow.com/a/69832319
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7"
@@ -121,9 +121,6 @@ android {
 
     lint {
         abortOnError false
-    }
-    androidResources {
-        additionalParameters "--warn-manifest-validation"
     }
 
     // remove the Dependency Info Block

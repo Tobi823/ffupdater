@@ -74,10 +74,6 @@
     <string name="download_activity__exception__show_button"><u>Mostrar o relatório de erro detalhado.</u></string>
     <string name="download_activity__external_storage_not_accessible">O armazenamento externo não está disponível - não pode começar a descarregar. O estado atual é:</string>
     <string name="download_activity__fetch_url_for_download">Obter metadados a partir de %1$s</string>
-    <string name="notification__install_error__channel_descr">Canal de notificação para atualizações falhadas %1$s.</string>
-    <string name="notification__install_error__channel_name">%1$s notificação de falha de atualização</string>
-    <string name="notification__install_error__text">Erro (%1$d): %2$s</string>
-    <string name="notification__install_error__title">%1$s não pôde ser atualizado</string>
     <string name="notification__install_success__channel_descr">Canal de Notificação para atualizações bem sucedidas de %1$s.</string>
     <string name="notification__install_success__channel_name">Notificação de atualização com sucesso de %1$s</string>
     <string name="notification__install_success__text">A aplicação foi atualizada em segundo plano.</string>
@@ -204,10 +200,6 @@
     <string name="background__separate_notification_channels__title">Diferentes canais de notificação</string>
     <string name="notification__update_available__generic_channel_name">Notificação de atualização do aplicativo</string>
     <string name="notification__update_available__generic_channel_descr">Canal de notificação para atualizações de aplicações disponíveis.</string>
-    <string name="notification__install_error__generic_channel_descr">Canal de notificação para atualizações de aplicações falhadas.</string>
-    <string name="notification__install_error__generic_channel_name">Notificação de falha de atualização do aplicativo</string>
-    <string name="notification__network_error__title">Erro de rede em trabalho de fundo</string>
-    <string name="notification__network_error__text">Este erro só deve ocorrer raramente. No entanto, se ocorrer com frequência, deve reportar o erro. Clique aqui para ver a mensagem de erro detalhada.</string>
     <string name="firefox_focus_beta__title">Firefox Focus Beta</string>
     <string name="duckduckgo_android__title">DuckDuckGo Private Browser</string>
     <string name="duckduckgo_android__description">A aplicação DuckDuckGo fornece a mais completa proteção de privacidade online com o premir de um botão. Com um download, obtém um novo browser diário que oferece uma proteção sem falhas enquanto procura e navega, e acesso a proteções de rastreio para e-mails que recebe e aplicações que utiliza. Muitas destas proteções não são oferecidas na maioria dos browsers populares por defeito.</string>

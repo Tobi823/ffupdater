@@ -173,10 +173,5 @@ class UpdateAllAppsWorker(context: Context, workerParams: WorkerParameters) : Co
         private fun logInfo(message: String) {
             Log.i(LOG_TAG, "$CLASS_LOGTAG: $message")
         }
-
-        private fun logError(message: String, exception: Exception) {
-            Log.e(LOG_TAG, "$CLASS_LOGTAG: $message", exception)
-        }
     }
-
 }

@@ -8,13 +8,13 @@ import de.marmaro.krt.ffupdater.R
 // https://dev.to/devwithzachary/what-do-mobile-app-installation-result-codes-on-huawei-devices-mean-and-how-to-resolve-them-2a3g
 @Keep
 object HuaweiInstallResultDecoder {
-    const val manufacturer = "HUAWEI"
+    private const val MANUFACTURER = "HUAWEI"
 
     /**
      * https://dev.to/devwithzachary/what-do-mobile-app-installation-result-codes-on-huawei-devices-mean-and-how-to-resolve-them-2a3g
      */
     fun getShortErrorMessage(installResult: Int?): String? {
-        if (!Build.MANUFACTURER.equals(manufacturer, ignoreCase = true)) {
+        if (!Build.MANUFACTURER.equals(MANUFACTURER, ignoreCase = true)) {
             return null
         }
         return when (installResult) {
@@ -39,7 +39,7 @@ object HuaweiInstallResultDecoder {
      * https://dev.to/devwithzachary/what-do-mobile-app-installation-result-codes-on-huawei-devices-mean-and-how-to-resolve-them-2a3g
      */
     fun getTranslatedErrorMessage(context: Context, installResult: Int?): String? {
-        if (!Build.MANUFACTURER.equals(manufacturer, ignoreCase = true)) {
+        if (!Build.MANUFACTURER.equals(MANUFACTURER, ignoreCase = true)) {
             return null
         }
         return when (installResult) {

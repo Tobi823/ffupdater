@@ -69,10 +69,6 @@
     <string name="download_activity__temporary_network_issue">Midlertidigt netværksproblem. Prøv venligst igen senere.</string>
     <string name="download_activity__you_can_now_close_this_window">Du kan nu lukke dette vindue</string>
     <string name="download_activity__label">Download App</string>
-    <string name="notification__install_error__channel_descr">Underretningskanal for mislykkede %1$s opdateringer.</string>
-    <string name="notification__install_error__channel_name">Meddelelse om %1$s opdateringsfejl</string>
-    <string name="notification__install_error__text">Fejl (%1$d): %2$s</string>
-    <string name="notification__install_error__title">%1$s kunne ikke opdateres</string>
     <string name="notification__install_success__channel_descr">Notifikationskanal for vellykkede %1$s opdateringer.</string>
     <string name="notification__install_success__channel_name">%1$s notifikation om vellykket opdatering</string>
     <string name="notification__install_success__text">App er blevet opdateret i baggrunden.</string>
@@ -172,9 +168,7 @@
     <string name="settings__background__update_check__when_device_idle__summary">Aktiver dette, hvis du ikke ønsker, at dine apps genstartes af en baggrundsopdatering. Deaktiver dette, hvis du ønsker en mere forudsigelig tidsplan for baggrundsopdateringstjek.</string>
     <string name="network__custom_doh_server__dialog_message">Indtast forbindelsesdetaljerne for den brugerdefinerede DoH-server i et af disse formater: \n \nurl;ip1 \n \nurl;ip1;ip2 \n \nurl;ip1;ip2;ip3 \n \nurl;ip1;ip2;ip3;ip4 \n \nFor eksempel: https://dns.google/dns-query;8.8.8.8 eller https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
     <string name="network__proxy__dialog_message">Hvis du vil bruge en SOCKS- eller HTTP-proxy, skal du indtaste forbindelsesdetaljerne her. Brug et af disse formater: \n \nSOCKS/HTTP;ip/domain;port \n \nSOCKS/HTTP;ip/domain;port;username;password \n \nF.eks: SOCKS;1.2.3.4;22 eller HTTP;5.6.7.8;80;user1;pw123 eller HTTP;p.webshare.io;80;u;p. Lad den stå tom, hvis du vil bruge systemproxy-konfigurationen. \n \nBegrænsning: Hvis du ændrer \'DNS-indstillinger\' i indstillingerne til en DNS over HTTPS-server, skal du indtaste domænet for proxyserveren. IP\'er vil ikke virke.</string>
-    <string name="notification__network_error__text">Denne fejl bør kun forekomme sjældent. Men hvis det sker ofte, bør du rapportere det. Klik her for at se den detaljerede fejlmeddelelse.</string>
     <string name="notification__update_available__generic_channel_descr">Notifikationskanal for tilgængelige appopdateringer.</string>
-    <string name="notification__network_error__title">Netværksfejl i baggrundsjob</string>
     <string name="settings__network__trust_user_cas__summary">Aktiver, hvis datatrafik bliver inspiceret og ændret af andre apps. Hvis du er i tvivl, skal du holde denne indstilling deaktiveret.</string>
     <string name="add_app_activity__label">Tilføj Ny App</string>
     <string name="add_app_activity__title_from_mozilla">Fra Mozilla</string>
@@ -211,8 +205,6 @@
     <string name="background__separate_notification_channels__summary">Brug forskellige notifikationskanaler for hver enkelt app</string>
     <string name="background__separate_notification_channels__title">Forskellige notifikationskanaler</string>
     <string name="notification__update_available__generic_channel_name">Meddelelse om appopdatering</string>
-    <string name="notification__install_error__generic_channel_descr">Underretningskanal for mislykkede appopdateringer.</string>
-    <string name="notification__install_error__generic_channel_name">Meddelelse om fejl i appopdatering</string>
     <string name="tor_browser_alpha__title">Tor Browser Alpha</string>
     <string name="tor_browser_alpha__description">Tor Browser er den eneste officielle mobilbrowser, der understøttes af Tor Project, udviklere af verdens stærkeste værktøj til privatliv og frihed online. \n \nTor Browser vil ALTID være gratis, men donationer gør det muligt. Tor-projektet er en 501©(3) nonprofit med base i USA. Overvej venligst at give et bidrag i dag. Hver gave gør en forskel: https://donate.torproject.org. \n \nLær, hvordan du rapporterer fejl og giver feedback på https://support.torproject.org/misc/bug-or-feedback/!</string>
     <string name="generic_app_warning__beta_version">- Denne app er designet til udviklere og testere. Den kan indeholde forskellige fejl, der kan påvirke dit sædvanlige arbejde med browseren.</string>

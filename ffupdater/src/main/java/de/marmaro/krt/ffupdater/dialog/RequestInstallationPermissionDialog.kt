@@ -7,8 +7,6 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
-import android.text.method.LinkMovementMethod
-import android.widget.TextView
 import androidx.annotation.Keep
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.DialogFragment

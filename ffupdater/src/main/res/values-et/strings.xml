@@ -145,8 +145,6 @@
     <string name="cardview_dialog__self_description_label">Rakenduse kirjeldus arendajalt:</string>
     <string name="k9mail__description">Täisfunktsionaalne e-postiklient</string>
     <string name="fairemail__title">FairEmail</string>
-    <string name="notification__install_error__text">Viga (%1$d): %2$s</string>
-    <string name="notification__install_error__title">%1$s rakenduse uuendamine ei õnnestunud</string>
     <string name="notification__install_success__channel_descr">Teavituskanal õnnestunud %1$s uuenduste jaoks.</string>
     <string name="notification__install_success__channel_name">Teavitus õnnestunud uuenduse kohta: %1$s</string>
     <string name="notification__install_success__text">Rakendus on taustal uuendatud.</string>
@@ -182,7 +180,6 @@
     <string name="firefox_nightly__title">Firefox Nightly</string>
     <string name="firefox_release__title">Firefoxi brauser</string>
     <string name="firefox_release__warning">- Avatud lähtekoodiga tarkvara jaoks mõeldud F-Droidi rakendustepoest leiad Fennec F-Droidi nime alt parandatud versiooni Firefoxist.</string>
-    <string name="notification__install_error__channel_descr">Teavituskanal ebaõnnestunud uuendustele: %1$s.</string>
     <string name="settings__foreground__update_check__metered__summary">Luba kontrollida uuenduste olemasolu mobiilse andmeside või muu mahupõhise andmesideühenduse kasutamisel.</string>
     <string name="settings__theme_battery_saver">Tume teema, kui kasutusel on energiasäästurežiim</string>
     <string name="settings__foreground__update_check__metered__title">Kontrolli uuendusi mahupõhistes andmesidevõrkudes</string>
@@ -215,7 +212,6 @@
     <string name="download_activity__different_installer_info__text">Kui rakenduse paigaldamine järjepidevalt ei toimi, siis proovi seadistustest võtta kasutusele süsteemse paigaldaja.</string>
     <string name="download_activity__external_storage_not_accessible">Väline andmeruum pole saadaval ja allalaadimist pole võimalik alustada. Olekuteade on:</string>
     <string name="session_installer__status_failure_incompatible">Toiming ei õnnestunud, sest see võimalus olemuselt ei ühildu antud nutiseadme tarkvaraga. Näiteks võib rakendus eeldada raudvara funktsionaalsust, mida tegelikult olemas pole või lähtekoodis pole liidestust selle nutiseadme ABIga või on vajalik uuema SDK kasutamine, jne.</string>
-    <string name="notification__install_error__channel_name">Teavitus uuenduse ebaõnnestumisest: %1$s</string>
     <string name="main_activity__temporary_network_issue"><u>Võrguühenduse ajutine viga. Palun proovi hiljem uuesti.</u></string>
     <string name="main_activity__an_error_occurred"><u>Tekkis viga. Palun proovi hiljem uuesti.</u></string>
     <string name="session_installer__status_failure_blocked">Blokeerimise tõttu see tegevus ei õnnestunud. Näiteks võib nutiseadme reeglistik selle tegevuse blokeerida, samuti võib seda teha pakettide verifitseerija või on antud pakett vajalik süsteemi tuumikfunktsionaalsuse toimimiseks.</string>
@@ -232,7 +228,6 @@
     <string name="network__dns_provider__cloudflare">DNS over HTTPS: Cloudflare</string>
     <string name="network__dns_provider__google">DNS over HTTPS: Google</string>
     <string name="notification__update_available__generic_channel_name">Rakenduse uuenduse teavitus</string>
-    <string name="notification__network_error__text">See viga peaks tekkima väga harva. Aga kui seda juhtub sagedasti, siis palun anna meile veast teada. Üksikasjaliku veateate nägemiseks klõpsi siin.</string>
     <string name="tor_browser_alpha__title">Tor brauseri alfaversioon</string>
     <string name="generic_app_warning__beta_version">- See rakendus on mõeldud arendajatele ja testijatele. Siin võib olla vigu, mis võivad takistada sinu tavapärast brauserikasutust.</string>
     <string name="duckduckgo_android__title">DuckDuckGo privaatne brauser</string>
@@ -262,13 +257,10 @@
     <string name="background__separate_notification_channels__summary">Kasuta iga rakenduse jaoks eraldi teavituskanaleid</string>
     <string name="background__separate_notification_channels__title">Eraldi teavituskanalid</string>
     <string name="notification__update_available__generic_channel_descr">Teavituskanal saadavalolevate rakenduse uuenduste kohta.</string>
-    <string name="notification__network_error__title">Taustateenuse võrguühenduse viga</string>
     <string name="main_activity__app_was_signed_by_different_certificate">See rakendus on allkirjastatud erineva sertifikaadiga ja FFUpdater ei saa seda uuendada.</string>
     <string name="firefox_focus_beta__title">Firefox Focuse beetaversioon</string>
     <string name="notification__bg_update_check__unreliable_execution__channel_name">Taustal tehtav uuenduste kontroll jäi tegemata</string>
     <string name="notification__bg_update_check__unreliable_execution__channel_description">Hoiatus taustal tehtava ebausaldusväärse uuenduste kontrolli kohta</string>
-    <string name="notification__install_error__generic_channel_descr">Teavituskanal ebaõnnestunud rakenduste uuenduste jaoks.</string>
-    <string name="notification__install_error__generic_channel_name">Teavitus rakenduse uuendamise ebaõnnestumisest</string>
     <string name="cromite__title">Cromite</string>
     <string name="cromite__description">Cromite on Bromite\'il põhinev Chromiumi variatsioon, millele on lisatud reklaamiblokeerija ning on arvestatud parema privaatsusega.</string>
     <string name="fairemail__warning">- Kui uuendad Google Play Store\'ist paigaldatud FairEmaili FFUpdateriga, siis võib tekkida probleeme, nagu näiteks ei pruugi toimida OAuthi ja/või Google Maili tugi. Sel juhul palun ära saada FairEmaili arendajatele veateadet (sest tegid ju uuenduse FFUpdateriga).</string>

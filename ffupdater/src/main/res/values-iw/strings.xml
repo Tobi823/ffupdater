@@ -56,9 +56,6 @@
     <string name="download_activity__sha_256_certificate_fingerprint">טביעת אצבע של אישור SHA-256:</string>
     <string name="download_activity__too_low_memory_description">שטח האחסון במכשיר שלך נמוך (רק %1$d MB פנויים). זה יוביל לכישלון הורדה או התקנה.</string>
     <string name="download_activity__too_low_memory_title">שטח דיסק נמוך</string>
-    <string name="notification__install_error__channel_descr">‪ערוץ הודעות על עדכונים של %1$s שנכשלו.</string>
-    <string name="notification__install_error__channel_name">הודעת כשל בעדכון %1$s</string>
-    <string name="notification__install_error__text">שגיאה (%1$d): %2$s</string>
     <string name="notification__install_success__channel_descr">ערוץ הודעות על עדכונים מוצלחים של %1$s.</string>
     <string name="notification__install_success__channel_name">התראת עדכון מוצלחת של %1$s</string>
     <string name="notification__install_success__text">האפליקציה עודכנה ברקע.</string>

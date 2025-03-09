@@ -183,7 +183,7 @@ class MainRecyclerView(private val activity: MainActivity) : RecyclerView.Adapte
     private fun showDialog(app: App, fragmentManager: FragmentManager) {
         activity.lifecycleScope.launch(Dispatchers.Main) {
             val dialog = CardviewOptionsDialog.create(app)
-            dialog.show(fragmentManager, activity.applicationContext)
+            dialog.show(fragmentManager)
             dialog.setFragmentResultListener(AUTO_UPDATE_CHANGED) { _, _ ->
                 notifyItemChanged(elements.indexOf(app))
             }

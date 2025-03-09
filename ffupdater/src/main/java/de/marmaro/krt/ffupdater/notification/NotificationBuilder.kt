@@ -19,7 +19,6 @@ import androidx.annotation.Keep
 import androidx.annotation.RequiresApi
 import de.marmaro.krt.ffupdater.BuildConfig
 import de.marmaro.krt.ffupdater.R
-import de.marmaro.krt.ffupdater.R.string.crash_report__explain_text__download_activity_install_file
 import de.marmaro.krt.ffupdater.R.string.notification__bg_update_check__unreliable_execution__channel_description
 import de.marmaro.krt.ffupdater.R.string.notification__bg_update_check__unreliable_execution__channel_name
 import de.marmaro.krt.ffupdater.R.string.notification__bg_update_check__unreliable_execution__text
@@ -35,18 +34,10 @@ import de.marmaro.krt.ffupdater.R.string.notification__error__channel_descr
 import de.marmaro.krt.ffupdater.R.string.notification__error__channel_name
 import de.marmaro.krt.ffupdater.R.string.notification__error__text
 import de.marmaro.krt.ffupdater.R.string.notification__error__title
-import de.marmaro.krt.ffupdater.R.string.notification__install_error__channel_descr
-import de.marmaro.krt.ffupdater.R.string.notification__install_error__channel_name
-import de.marmaro.krt.ffupdater.R.string.notification__install_error__generic_channel_descr
-import de.marmaro.krt.ffupdater.R.string.notification__install_error__generic_channel_name
-import de.marmaro.krt.ffupdater.R.string.notification__install_error__text
-import de.marmaro.krt.ffupdater.R.string.notification__install_error__title
 import de.marmaro.krt.ffupdater.R.string.notification__install_success__channel_descr
 import de.marmaro.krt.ffupdater.R.string.notification__install_success__channel_name
 import de.marmaro.krt.ffupdater.R.string.notification__install_success__text
 import de.marmaro.krt.ffupdater.R.string.notification__install_success__title
-import de.marmaro.krt.ffupdater.R.string.notification__network_error__text
-import de.marmaro.krt.ffupdater.R.string.notification__network_error__title
 import de.marmaro.krt.ffupdater.R.string.notification__uncaught_exception__channel_description
 import de.marmaro.krt.ffupdater.R.string.notification__uncaught_exception__channel_name
 import de.marmaro.krt.ffupdater.R.string.notification__uncaught_exception__text
@@ -87,23 +78,6 @@ object NotificationBuilder {
             id = ERROR_CODE,
             title = appContext.getString(notification__error__title),
             text = appContext.getString(notification__error__text),
-        )
-        val throwableAndLogs = ThrowableAndLogs(exception, LogReader.readLogs())
-        val intent = CrashReportActivity.createIntent(appContext, throwableAndLogs, notification.text)
-        showNotification(appContext, channel, notification, intent)
-    }
-
-    fun showNetworkErrorNotification(context: Context, exception: Exception) {
-        val appContext = context.applicationContext
-        val channel = ChannelData(
-            id = "background_notification",
-            name = appContext.getString(notification__error__channel_name),
-            description = appContext.getString(notification__error__channel_descr)
-        )
-        val notification = NotificationData(
-            id = ERROR_CODE + 1,
-            title = appContext.getString(notification__network_error__title),
-            text = appContext.getString(notification__network_error__text),
         )
         val throwableAndLogs = ThrowableAndLogs(exception, LogReader.readLogs())
         val intent = CrashReportActivity.createIntent(appContext, throwableAndLogs, notification.text)
@@ -171,42 +145,6 @@ object NotificationBuilder {
         showNotification(context, channel, notification, null)
     }
 
-    fun showInstallFailureNotification(
-        context: Context,
-        app: App,
-        code: Int,
-        message: String,
-        exception: Exception,
-    ) {
-        val appContext = context.applicationContext
-        val useDifferentChannels = BackgroundSettings.useDifferentNotificationChannels
-        val appTitle: String = appContext.getString(app.findImpl().title)
-        val channel = ChannelData(
-            id = if (useDifferentChannels) {
-                "installation_error_notification__${app.name.lowercase()}"
-            } else {
-                "installation_error_notification__general"
-            }, name = if (useDifferentChannels) {
-                appContext.getString(notification__install_error__channel_name, appTitle)
-            } else {
-                appContext.getString(notification__install_error__generic_channel_name)
-            }, description = if (useDifferentChannels) {
-                appContext.getString(notification__install_error__channel_descr, appTitle)
-            } else {
-                appContext.getString(notification__install_error__generic_channel_descr)
-            }
-        )
-        val notification = NotificationData(
-            id = INSTALL_FAILURE_ERROR + app.ordinal,
-            title = appContext.getString(notification__install_error__title, appTitle),
-            text = appContext.getString(notification__install_error__text, code, message),
-        )
-        val throwableAndLogs = ThrowableAndLogs(exception, LogReader.readLogs())
-        val description = appContext.getString(crash_report__explain_text__download_activity_install_file)
-        val intent = CrashReportActivity.createIntent(appContext, throwableAndLogs, description)
-        showNotification(appContext, channel, notification, intent)
-    }
-
     fun showEolAppsNotification(context: Context, apps: List<String>) {
         val channel = ChannelData(
             id = "eol_apps_notification",
@@ -251,10 +189,6 @@ object NotificationBuilder {
                 showNotification(context, channel, notification, UpdateAllActivity.createIntent(context))
             }
 
-            fun hideFinishNotification(context: Context) {
-                getNotificationManager(context).cancel(DOWNLOAD_ALL_UPDATES_FINISHED)
-            }
-
             fun showErrorNotification(context: Context, exception: Exception) {
                 val notification = NotificationData(
                     id = DOWNLOAD_ALL_UPDATES_FAILED,
@@ -267,9 +201,6 @@ object NotificationBuilder {
                 showNotification(context.applicationContext, channel, notification, intent)
             }
 
-            fun hideErrorNotification(context: Context) {
-                getNotificationManager(context).cancel(DOWNLOAD_ALL_UPDATES_FAILED)
-            }
         }
     }
 
@@ -341,10 +272,6 @@ object NotificationBuilder {
         return androidNotification
     }
 
-    fun removeDownloadAllUpdatesNotification(context: Context) {
-        getNotificationManager(context).cancel(DOWNLOAD_ALL_UPDATES)
-    }
-
     private fun getNotificationManager(context: Context): NotificationManager {
         return context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
     }
@@ -354,12 +281,9 @@ object NotificationBuilder {
     const val DOWNLOAD_IS_RUNNING_CODE = 400
     const val INSTALL_SUCCESS_CODE = 500
     const val INSTALL_FAILURE_ERROR = 600
-    const val DOWNLOAD_ERROR_CODE = 700
     private const val EOL_APPS_CODE = 800
-    private const val BACKGROUND_UPDATE_CHECK_CODE = 900
     const val DOWNLOAD_ALL_UPDATES = 1000
     const val DOWNLOAD_ALL_UPDATES_FINISHED = 1001
     const val DOWNLOAD_ALL_UPDATES_FAILED = 1002
-    private const val START_UPDATE_ALL_APPS = 1001
 
 }

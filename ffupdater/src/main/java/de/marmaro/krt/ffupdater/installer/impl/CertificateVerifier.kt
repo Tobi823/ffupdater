@@ -24,14 +24,14 @@ class CertificateVerifier(contextParam: Context, private val appImpl: AppBase, p
         } catch (e: Exception) {
             val message = "Can't validate the signature of the APK file."
             val translatedMessage = context.getString(R.string.app_installer__failed_to_validate_signature_of_download)
-            throw InstallationFailedException(message, e, -103, translatedMessage)
+            throw InstallationFailedException(message, e, translatedMessage)
         }
         val fileCertHash = fileResult.hexString
         if (!fileResult.isValid) {
             val expected = appImpl.signatureHash
             val message = "Signature of downloaded APK is invalid. Expected $expected but was $fileCertHash."
             val errorMessage = context.getString(R.string.app_installer__signature_of_download_is_invalid)
-            throw InstallationFailedException(message, -100, errorMessage)
+            throw InstallationFailedException(message, errorMessage)
         }
         return fileCertHash
     }
@@ -42,12 +42,12 @@ class CertificateVerifier(contextParam: Context, private val appImpl: AppBase, p
         } catch (e: Exception) {
             val message = "Failed to check installed app."
             val translated = context.getString(R.string.app_installer__failed_to_verify_signature_of_installed_app)
-            throw InstallationFailedException(message, e, -102, translated)
+            throw InstallationFailedException(message, e, translated)
         }
         if (!appResult.isValid || fileCertHash != appResult.hexString) {
             val message = "Installed app is NOT verified"
             val translated = context.getString(R.string.app_installer__installed_app_has_invalid_signature)
-            throw InstallationFailedException(message, -101, translated)
+            throw InstallationFailedException(message, translated)
         }
     }
 }

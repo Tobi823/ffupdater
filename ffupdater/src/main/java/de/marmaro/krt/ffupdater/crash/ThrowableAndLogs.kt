@@ -4,9 +4,5 @@ import androidx.annotation.Keep
 
 @Keep
 class ThrowableAndLogs(throwable: Throwable, val logs: String) {
-    val stacktrace: String
-
-    init {
-        stacktrace = throwable.stackTraceToString()
-    }
+    val stacktrace: String = throwable.stackTraceToString()
 }

@@ -33,14 +33,10 @@
     <string name="download_activity__download_app_with_status">एप्लिकेशन डाउनलोड हो रहा है</string>
     <string name="download_activity__external_storage_not_accessible">बाह्य स्टोरेज उपलब्ध नहीं है - डाउनलोड प्रारंभ नहीं हो सकता. वर्तमान स्थिति यह है:</string>
     <string name="notification__install_success__channel_descr">सफल %1$s अपडेट के लिए अधिसूचना चैनल।</string>
-    <string name="notification__install_error__title">%1$s को अपडेट नहीं किया जा सका</string>
-    <string name="notification__install_error__text">त्रुटि (%1$d): %2$s</string>
-    <string name="notification__install_error__channel_descr">विफल %1$s अपडेट के लिए अधिसूचना चैनल।</string>
     <string name="download_activity__label">एप्लिकेशन डाउनलोड करें</string>
     <string name="download_activity__use_cached_downloaded_apk">पहले से ही डाउनलोड की गई फ़ाइल का उपयोग करें:</string>
     <string name="download_activity__too_low_memory_title">डिस्क में कम जगह है</string>
     <string name="download_activity__sha_256_certificate_fingerprint">SHA-256 प्रमाणपत्र फ़िंगरप्रिंट:</string>
-    <string name="notification__install_error__channel_name">%1$s अपडेट विफलता सूचना</string>
     <string name="notification__install_success__channel_name">%1$s सफल अपडेट सूचना</string>
     <string name="installed_application_is_verified">इंस्टॉल किया गया एप्लिकेशन सत्यापित है</string>
     <string name="request_installation_permission_dialog__abort">निरस्त करें</string>
@@ -95,8 +91,6 @@
     <string name="network__dns_provider__title">DNS सेटिंग्स</string>
     <string name="settings__device_category__title">डिवाइस</string>
     <string name="network__proxy__title">प्रॉक्सी</string>
-    <string name="notification__network_error__title">पृष्ठभूमि कार्य में नेटवर्क त्रुटि</string>
-    <string name="notification__install_error__generic_channel_descr">विफल ऐप अपडेट के लिए अधिसूचना चैनल।</string>
     <string name="notification__update_available__generic_channel_name">ऐप अपडेट अधिसूचना</string>
     <string name="background__separate_notification_channels__title">विभिन्न अधिसूचना चैनल</string>
     <string name="background__separate_notification_channels__summary">प्रत्येक व्यक्तिगत ऐप के लिए अलग-अलग अधिसूचना चैनलों का उपयोग करें</string>
@@ -164,8 +158,6 @@
     <string name="privacy_browser__description">डेटा के दुरुपयोग को रोकने का एकमात्र तरीका इसे पहले स्थान पर एकत्र होने से रोकना है। गोपनीयता ब्राउज़र के दो प्राथमिक लक्ष्य हैं: इंटरनेट पर भेजे जाने वाले डेटा को कम करना और डिवाइस पर संग्रहीत डेटा को कम करना।</string>
     <string name="notification__bg_update_check__unreliable_execution__channel_description">पृष्ठभूमि अपडेट जाँच के अविश्वसनीय निष्पादन के बारे में चेतावनी</string>
     <string name="generic_app_warning__beta_version">- यह ऐप डेवलपर्स और परीक्षकों के लिए डिज़ाइन किया गया है। इसमें विभिन्न बग हो सकते हैं जो ब्राउज़र के साथ आपके सामान्य कार्य को प्रभावित कर सकते हैं।</string>
-    <string name="notification__network_error__text">यह त्रुटि कभी-कभार ही घटित होनी चाहिए. हालाँकि, यदि ऐसा बार-बार होता है, तो आपको इसकी रिपोर्ट करनी चाहिए। विस्तृत त्रुटि संदेश देखने के लिए यहां क्लिक करें।</string>
-    <string name="notification__install_error__generic_channel_name">ऐप अपडेट विफलता अधिसूचना</string>
     <string name="notification__update_available__generic_channel_descr">उपलब्ध ऐप अपडेट के लिए अधिसूचना चैनल।</string>
     <string name="network__dns_provider__system">सिस्टम DNS का उपयोग करें</string>
     <string name="settings__network_category__title">नेटवर्क</string>

@@ -25,7 +25,7 @@ class GuiHelper(val activity: DownloadActivity) {
         viewIds.forEach { activity.findViewById<View>(it).visibility = View.VISIBLE }
     }
 
-    fun hide(vararg viewIds: Int) {
+    private fun hide(vararg viewIds: Int) {
         viewIds.forEach { activity.findViewById<View>(it).visibility = View.GONE }
     }
 

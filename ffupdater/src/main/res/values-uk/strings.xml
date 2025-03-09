@@ -64,10 +64,6 @@
     <string name="download_activity__use_cached_downloaded_apk">Використайте вже завантажений файл із:</string>
     <string name="download_activity__you_can_now_close_this_window">Тепер ви можете закрити це вікно</string>
     <string name="download_activity__label">Встановити застосунок</string>
-    <string name="notification__install_error__channel_descr">Канал сповіщень про невдалі оновлення %1$s.</string>
-    <string name="notification__install_error__channel_name">Повідомлення про помилку оновлення %1$s</string>
-    <string name="notification__install_error__text">Помилка (%1$d): %2$s</string>
-    <string name="notification__install_error__title">Не вдалося оновити %1$s</string>
     <string name="notification__install_success__channel_descr">Канал сповіщень про успішні оновлення %1$s.</string>
     <string name="notification__install_success__channel_name">%1$s сповіщення про успішне оновлення</string>
     <string name="notification__install_success__text">Застосунок успішно оновлено у фоновому режимі.</string>
@@ -168,8 +164,6 @@
     <string name="fennecfdroid__title">Fennec F-Droid</string>
     <string name="add_app_activity__title_good_privacy_browsers">Хороші конфіденційні браузери</string>
     <string name="installer__method__shizuku_not_installed">Shizuku не встановлено!</string>
-    <string name="notification__install_error__generic_channel_name">Сповіщення про помилку оновлення застосунку</string>
-    <string name="notification__install_error__generic_channel_descr">Канал сповіщень про невдалі оновлення застосунків.</string>
     <string name="settings__background__update_check__when_device_idle__title">Перевірки оновлень тільки якщо пристрій простоює</string>
     <string name="settings__background__update_check__when_device_idle__unsupported">Ця опція доступна лише на Android Marshmallow або новішої версії.</string>
     <string name="privacy_browser__warning">FFUpdater завантажує файли з серверів F-Droid і тому не швидше.</string>
@@ -202,13 +196,11 @@
     <string name="notification__update_available__generic_channel_name">Сповіщення про оновлення застосунку</string>
     <string name="network__dns_provider__google">DNS через HTTPS: Google</string>
     <string name="network__dns_provider__custom">Користувацький сервер DNS через HTTPS</string>
-    <string name="notification__network_error__title">Помилка мережі у фоновому завданні</string>
     <string name="notification__update_available__generic_channel_descr">Канал сповіщень про доступні оновлення застосунків.</string>
     <string name="background__separate_notification_channels__summary">Використовувати окремі канали сповіщень для кожного застосунку</string>
     <string name="fennecfdroid__warning">FFUpdater завантажує файли з серверів F-Droid і тому не швидше.</string>
     <string name="main_activity__app_was_signed_by_different_certificate">Цей застосунок було підписано іншим сертифікатом і не може бути оновлено за допомогою FFUpdater.</string>
     <string name="settings__background__update_check__when_device_idle__summary">Увімкніть це, якщо ви не хочете, щоб ваші застосунки перезапускалися через фонове оновлення. Вимкніть це, якщо хочете мати більш передбачуваний графік фонових перевірок оновлень.</string>
-    <string name="notification__network_error__text">Ця помилка має виникати лише рідко. Однак, якщо це трапляється часто, ви повинні повідомити про це. Натисніть тут, щоб переглянути детальне повідомлення про помилку.</string>
     <string name="chromium__description">Chromium — це проект браузера з відкритим вихідним кодом, метою якого є створення безпечнішого, швидшого та стабільнішого способу роботи в Інтернеті для всіх користувачів. Цей сайт містить проектні документи, огляди архітектури, інформацію про тестування та багато іншого, щоб допомогти вам навчитися створювати вихідний код Chromium і працювати з ним.</string>
     <string name="chromium__warning">- Chromium використовує технічну основу Google Chrome і, таким чином, опосередковано підтримує монопольне положення рушія візуалізації Chromium.</string>
     <string name="main_activity__an_error_occurred"><u>Сталася помилка. Спробуйте пізніше.</u></string>

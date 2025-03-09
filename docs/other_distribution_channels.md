@@ -6,7 +6,7 @@ files or the F-Droid repository to quickly install fixed versions.
 You need to uninstall FFUpdater every time you switch between F-Droid version and my version. F-Droid will not
 show you new updates if you still uses the version from GitHub/GitLab.
 
-My versions will be signed with this [certificate](dev/signatures/apk_signature.txt).
+My versions will be signed with this [certificate](../dev/signatures/apk_signature.txt).
 
 The official F-Droid Android client sometimes has problems accessing the APK file from my F-Droid repository.
 But other clients like "Foxy Droid" work fine.

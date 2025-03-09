@@ -46,10 +46,10 @@ object PowerSaveModeReceiver : BroadcastReceiver() {
             return PowerSaveModeDuration.POWER_SAVE_MODE_NOT_ENABLED
         }
         val duration = Duration.ofNanos(System.nanoTime() - enableTimestamp)
-        if (duration <= thresholdBetweenShortAndLongTime) {
-            return PowerSaveModeDuration.ENABLED_RECENTLY
+        return if (duration <= thresholdBetweenShortAndLongTime) {
+            PowerSaveModeDuration.ENABLED_RECENTLY
         } else {
-            return PowerSaveModeDuration.ENABLED_FOR_LONG_TIME
+            PowerSaveModeDuration.ENABLED_FOR_LONG_TIME
         }
     }
 
@@ -93,14 +93,6 @@ object PowerSaveModeReceiver : BroadcastReceiver() {
         preferences
                 .edit()
                 .putLong(ATTRIBUTE_NAME, System.nanoTime())
-                .apply()
-    }
-
-    private fun storeThatPowerSaveModeIsDisabled() {
-        Log.i(LOG_TAG, "PowerSaveModeReceiver: Store that power save mode was disabled")
-        preferences
-                .edit()
-                .putLong(ATTRIBUTE_NAME, 0)
                 .apply()
     }
 

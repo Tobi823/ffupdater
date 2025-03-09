@@ -69,10 +69,6 @@
     <string name="download_activity__use_cached_downloaded_apk">Use o navegador baixado do:</string>
     <string name="download_activity__you_can_now_close_this_window">Pode fechar este aviso</string>
     <string name="download_activity__label">Instalar o navegador</string>
-    <string name="notification__install_error__channel_descr">Canal de notificação para atualizações de %1$s falhadas.</string>
-    <string name="notification__install_error__channel_name">%1$s notificação de falha de atualização</string>
-    <string name="notification__install_error__text">Erro (%1$d): %2$s</string>
-    <string name="notification__install_error__title">%1$s não puderam ser atualizados</string>
     <string name="notification__install_success__channel_descr">Canal de notificação para atualizações bem sucedidas de %1$s.</string>
     <string name="notification__install_success__channel_name">%1$s notificação de atualização bem sucedida</string>
     <string name="notification__install_success__text">O aplicativo foi atualizado com sucesso em segundo plano.</string>
@@ -162,7 +158,6 @@
     <string name="notification__eol_apps__text">Você tem apps desatualizados que não devem mais ser usados: %1$s</string>
     <string name="notification__eol_apps__title">Aplicativos desatualizados instalados</string>
     <string name="main_activity__an_error_occurred"><u>Um erro aconteceu. Tente novamente mais tarde.</u></string>
-    <string name="notification__network_error__title">Erro de rede no trabalho em segundo plano</string>
     <string name="background__separate_notification_channels__title">Canais de notificação diferentes</string>
     <string name="add_app_activity__title_good_security_browsers">Navegadores de Segurança Bons</string>
     <string name="main_activity__unexpected_error">Erro inesperado ocorrido.</string>
@@ -237,8 +232,6 @@
     <string name="notification__bg_update_check__unreliable_execution__text">Talvez foi causado pela bateria ou pela configuração de desempenho no seu dispositivo. Clique nessa notificação para desativar a otimização de bateria para esse aplicativo.</string>
     <string name="notification__uncaught_exception__title">O FFUpdater crashou</string>
     <string name="notification__uncaught_exception__text">Clique para ver o relatório de erro.</string>
-    <string name="notification__install_error__generic_channel_descr">Canal de notificando para atualizações não sucedidas de aplicativos.</string>
-    <string name="notification__install_error__generic_channel_name">Notificação de falha na atualização do aplicativo</string>
     <string name="main_activity__app_was_signed_by_different_certificate">Esse aplicativo foi assinado com um certificado diferente e não pode ser atualizado pelo FFUpdater.</string>
     <string name="privacy_browser__warning">O FFUpdater baixa os arquivos pelos servidores do F-Droid, e, portanto, não é muito rápido.</string>
     <string name="background__installation__when_screen_off__title">Instalar apenas quando a tela estiver desligada</string>
@@ -246,7 +239,6 @@
     <string name="crash_report__report_is_copied_to_clipboard">Relatório de erro foi copiado para a área de transferência</string>
     <string name="notification__uncaught_exception__channel_description">Erros inesperados que bloquearam o FFUpdater.</string>
     <string name="generic_app_warning__beta_version">- Esse aplicativo foi criado para desenvolvedores e testadores. Isso pode ter vários bugs que podem afetar o seu trabalho habitual com o navegador.</string>
-    <string name="notification__network_error__text">Esse erro só deve acontecer raramente. Porem, se occorer com freqüência, você deve reportar isso. Clique aqui para ver a mensagem detalhada de erro.</string>
     <string name="duckduckgo_android__warning">- DuckDuckGo usa o webview do sistema para exibir sites.\n- tinha uma controvérsia sobre o navegador não bloquear todos os cookies da Microsoft - mais esse problema for concertado.</string>
     <string name="notification__bg_update_check__unreliable_execution__channel_name">A checagem de atualizações em segundo plano não foi executada</string>
     <string name="installer__android_too_old_for_shizuku">O seu Android é muito antigo para o Shizuku.</string>

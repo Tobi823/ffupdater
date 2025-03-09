@@ -74,10 +74,6 @@
     <string name="download_activity__use_cached_downloaded_apk">Şuradan indirilmiş dosyayı kullanın:</string>
     <string name="download_activity__you_can_now_close_this_window">Artık bu pencereyi kapatabilirsiniz</string>
     <string name="download_activity__label">Uygulamayı İndir</string>
-    <string name="notification__install_error__channel_descr">Başarısız %1$s güncellemeleri için bildirim kanalı.</string>
-    <string name="notification__install_error__channel_name">%1$s güncelleme hatası bildirimi</string>
-    <string name="notification__install_error__text">Hata (%1$d): %2$s</string>
-    <string name="notification__install_error__title">%1$s güncellenemedi</string>
     <string name="notification__install_success__channel_descr">Başarılı %1$s güncellemeleri için bildirim kanalı.</string>
     <string name="notification__install_success__channel_name">%1$s başarılı güncelleme bildirimi</string>
     <string name="notification__install_success__text">Uygulama arka planda güncellendi.</string>
@@ -208,12 +204,8 @@
     <string name="installer__method__session">Oturum kurucusu: Çoğu aygıt için tavsiye edilir. Android 12 veya üzerinde, uygulamalar bir kullanıcı onayından sonra sessizce güncellenebilir.</string>
     <string name="notification__update_available__generic_channel_name">Uygulama güncelleme bildirimi</string>
     <string name="notification__update_available__generic_channel_descr">Kullanılabilir uygulama güncellemeleri için bildirim kanalı.</string>
-    <string name="notification__install_error__generic_channel_descr">Başarısız uygulama güncellemeleri için bildirim kanalı.</string>
-    <string name="notification__install_error__generic_channel_name">Uygulama güncelleme hatası bildirimi</string>
     <string name="background__separate_notification_channels__summary">Her bir uygulama için farklı bildirim kanalları kullanın</string>
     <string name="background__separate_notification_channels__title">Farklı bildirim kanalları</string>
-    <string name="notification__network_error__title">Arka plan işinde ağ hatası</string>
-    <string name="notification__network_error__text">Bu hata nadiren meydana gelmelidir. Ancak, sık sık meydana geliyorsa bunu bildirmelisiniz. Ayrıntılı hata mesajını görüntülemek için buraya tıklayın.</string>
     <string name="tor_browser_alpha__title">Tor Browser Alfa</string>
     <string name="tor_browser_alpha__description">Tor Browser, çevrim içi gizlilik ve özgürlük için dünyanın en güçlü aracını geliştiren Tor Projesi tarafından desteklenen tek resmi mobil tarayıcıdır. \n \nTor Browser HER ZAMAN ücretsiz olacaktır, ancak bağışlar bunu mümkün kılmaktadır. Tor Projesi ABD merkezli 501©(3) kar amacı gütmeyen bir kuruluştur. Lütfen bugün bir katkıda bulunmayı düşünün. Her hediye bir fark yaratır: https://donate.torproject.org. \n \nHataları nasıl bildireceğinizi ve geri bildirimde bulunacağınızı https://support.torproject.org/misc/bug-or-feedback/ adresinden öğrenin!</string>
     <string name="main_activity__app_was_signed_by_different_certificate">Bu uygulama farklı bir sertifika ile imzalandı ve FFUpdater ile güncellenemez.</string>

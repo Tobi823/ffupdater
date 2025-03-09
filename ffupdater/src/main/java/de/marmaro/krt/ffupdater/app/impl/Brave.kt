@@ -32,7 +32,6 @@ object Brave : AppBase() {
     override val minApiLevel = Build.VERSION_CODES.N
     override val supportedAbis = ARM32_ARM64_X86_X64
 
-    @Suppress("SpellCheckingInspection")
     override val signatureHash = "9c2db70513515fdbfbbc585b3edf3d7123d4dc67c94ffd306361c1d79bbf18ac"
     override val projectPage = "https://github.com/brave/brave-browser"
     override val displayCategory = listOf(BETTER_THAN_GOOGLE_CHROME)

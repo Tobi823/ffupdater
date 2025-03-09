@@ -330,7 +330,7 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) : CoroutineWo
             Log.i(LOG_TAG, "${CLASS_LOGTAG}: $message")
         }
 
-        private fun logError(message: String, exception: Throwable) {
+        private fun logError(@Suppress("SameParameterValue") message: String, exception: Throwable) {
             Log.e(LOG_TAG, "${CLASS_LOGTAG}: $message", exception)
         }
     }

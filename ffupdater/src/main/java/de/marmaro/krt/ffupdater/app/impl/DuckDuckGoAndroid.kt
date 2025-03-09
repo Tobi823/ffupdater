@@ -29,7 +29,6 @@ object DuckDuckGoAndroid : AppBase() {
     override val minApiLevel = Build.VERSION_CODES.M
     override val supportedAbis = ALL_ABIS
 
-    @Suppress("SpellCheckingInspection")
     override val signatureHash = "bb7bb31c573c46a1da7fc5c528a6acf432108456feec50810c7f33694eb3d2d4"
     override val projectPage = "https://github.com/duckduckgo/Android"
     override val displayCategory = listOf(BETTER_THAN_GOOGLE_CHROME)

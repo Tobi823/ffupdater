@@ -140,7 +140,7 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) : Corouti
             Log.i(LOG_TAG, "$CLASS_LOGTAG: $message")
         }
 
-        private fun logError(message: String, exception: Exception) {
+        private fun logError(@Suppress("SameParameterValue") message: String, exception: Exception) {
             Log.e(LOG_TAG, "$CLASS_LOGTAG: $message", exception)
         }
     }

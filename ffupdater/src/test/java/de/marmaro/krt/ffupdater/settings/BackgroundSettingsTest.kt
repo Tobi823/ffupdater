@@ -41,7 +41,6 @@ class BackgroundSettingsTest : BaseTest() {
             Arguments.of(App.FIREFOX_KLAR, "FIREFOX_KLAR"),
             Arguments.of(App.FIREFOX_NIGHTLY, "FIREFOX_NIGHTLY"),
             Arguments.of(App.FIREFOX_RELEASE, "FIREFOX_RELEASE"),
-            Arguments.of(App.KIWI, "KIWI"),
             Arguments.of(App.VIVALDI, "VIVALDI"),
         )
     }

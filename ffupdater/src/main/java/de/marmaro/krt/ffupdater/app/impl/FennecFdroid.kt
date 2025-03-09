@@ -31,7 +31,6 @@ object FennecFdroid : AppBase() {
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = ARM32_ARM64
 
-    @Suppress("SpellCheckingInspection")
     override val signatureHash = "06665358efd8ba05be236a47a12cb0958d7d75dd939d77c2b31f5398537ebdc5"
     override val projectPage = "https://f-droid.org/packages/org.mozilla.fennec_fdroid/"
     override val displayCategory = listOf(BASED_ON_FIREFOX, GOOD_PRIVACY_BROWSER)

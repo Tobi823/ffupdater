@@ -100,7 +100,7 @@ open class SessionInstaller(private val foreground: Boolean) : AppInstaller {
     ): InstallationFailedException {
         val shortMessage = getShortErrorMessage(status, bundle)
         val translatedMessage = getTranslatedErrorMessage(context, status, bundle)
-        return InstallationFailedException(shortMessage, status, translatedMessage)
+        return InstallationFailedException(shortMessage, translatedMessage)
     }
 
     @MainThread
@@ -131,7 +131,7 @@ open class SessionInstaller(private val foreground: Boolean) : AppInstaller {
         return sessionId
     }
 
-    protected fun createSessionParams(context: Context, file: File, appImpl: AppBase): SessionParams {
+    private fun createSessionParams(context: Context, file: File, appImpl: AppBase): SessionParams {
         // https://gitlab.com/AuroraOSS/AuroraStore/-/blob/master/app/src/main/java/com/aurora/store/data/installer/SessionInstaller.kt
         val params = SessionParams(MODE_FULL_INSTALL)
         val displayIcon = appImpl.icon // store display icon id in variable to prevent crash
@@ -199,7 +199,7 @@ open class SessionInstaller(private val foreground: Boolean) : AppInstaller {
             context.startActivity(newIntent)
         } catch (e: ActivityNotFoundException) {
             val message = "Installation failed because Activity is not available."
-            installStatus.completeExceptionally(InstallationFailedException(message, e, -110, e.message ?: "/"))
+            installStatus.completeExceptionally(InstallationFailedException(message, e, e.message ?: "/"))
         }
     }
 

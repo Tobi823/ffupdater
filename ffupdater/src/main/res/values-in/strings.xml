@@ -75,10 +75,6 @@
     <string name="download_activity__use_cached_downloaded_apk">Gunakan bilah yang sudah diunduh dari:</string>
     <string name="download_activity__you_can_now_close_this_window">Anda sekarang dapat menutup jendela ini</string>
     <string name="download_activity__label">Unduh Aplikasi</string>
-    <string name="notification__install_error__channel_descr">Saluran pemberitahuan untuk pembaruan %1$s yang gagal.</string>
-    <string name="notification__install_error__channel_name">Pemberitahuan kegagalan pembaruan %1$s</string>
-    <string name="notification__install_error__text">Kesalahan (%1$d): %2$s</string>
-    <string name="notification__install_error__title">%1$s tidak dapat diperbarui</string>
     <string name="notification__install_success__channel_descr">Saluran pemberitahuan untuk pembaruan %1$s yang berhasil.</string>
     <string name="notification__install_success__channel_name">%1$s pemberitahuan pembaruan berhasil</string>
     <string name="notification__install_success__text">Aplikasi telah diperbarui di latar belakang.</string>

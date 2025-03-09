@@ -93,7 +93,7 @@ class IntentInstaller(
         val resultCodeString = "ResultCode: $resultCode, INSTALL_RESULT: $installResult"
         val shortErrorMessage = "${getShortErrorMessage(installResult)} $resultCodeString"
         val translatedErrorMessage = "${getTranslatedErrorMessage(context, installResult)} $resultCodeString"
-        return InstallationFailedException(shortErrorMessage, resultCode, translatedErrorMessage)
+        return InstallationFailedException(shortErrorMessage, translatedErrorMessage)
     }
 
     /**

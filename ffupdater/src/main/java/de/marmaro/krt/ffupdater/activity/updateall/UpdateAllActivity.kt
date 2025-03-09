@@ -60,14 +60,13 @@ class UpdateAllActivity : AppCompatActivity() {
         withContext(Dispatchers.IO) {
             val context = applicationContext
             val allApps = InstalledAppsCache.getAppsApplicableForBackgroundUpdate(context)
-            val appStatus = allApps.map {
-                    try {
-                        it.findImpl().findStatusOrUseOldCache(context)
-                    } catch (e: Exception) {
-                        null // ignore app if it is not possible to find updates
-                    }
-                }.filterNotNull()
-                .filter { it.isUpdateAvailable }
+            val appStatus = allApps.mapNotNull {
+                try {
+                    it.findImpl().findStatusOrUseOldCache(context)
+                } catch (e: Exception) {
+                    null // ignore app if it is not possible to find updates
+                }
+            }.filter { it.isUpdateAvailable }
             if (appStatus.isEmpty()) {
                 showText(getString(R.string.update_all_activity__no_updates_available))
                 return@withContext

@@ -154,12 +154,12 @@ object Chromium : AppBase() {
         val timestamp: String,
     )
 
-    const val INSTALLED_VERSION_REVISION = "chromium__installed_version_revision"
-    const val INSTALLED_VERSION_TIMESTAMP = "chromium__installed_version_timestamp"
+    private const val INSTALLED_VERSION_REVISION = "chromium__installed_version_revision"
+    private const val INSTALLED_VERSION_TIMESTAMP = "chromium__installed_version_timestamp"
 
-    const val BASE_API_URL = "https://www.googleapis.com/storage/v1/b/chromium-browser-snapshots/o"
-    const val BASE_DOWNLOAD_URL =
+    private const val BASE_API_URL = "https://www.googleapis.com/storage/v1/b/chromium-browser-snapshots/o"
+    private const val BASE_DOWNLOAD_URL =
         "https://www.googleapis.com/download/storage/v1/b/chromium-browser-snapshots/o"
-    const val ALL_FIELDS =
+    private const val ALL_FIELDS =
         "fields=items(kind,mediaLink,metadata,name,size,updated),kind,prefixes,nextPageToken"
 }

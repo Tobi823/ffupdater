@@ -55,9 +55,6 @@
     <string name="download_activity__use_cached_downloaded_apk">Bruk allerede nedlastet fil fra:</string>
     <string name="download_activity__you_can_now_close_this_window">Du kan lukke vinduet</string>
     <string name="download_activity__label">Installer program</string>
-    <string name="notification__install_error__channel_descr">Merknadskanal for mislykkede %1$s-oppgraderinger.</string>
-    <string name="notification__install_error__text">Feil (%1$d): %2$s</string>
-    <string name="notification__install_error__title">%1$s kunne ikke oppgraderes.</string>
     <string name="notification__install_success__channel_descr">Merknadskanal for %1$s-oppgraderinger.</string>
     <string name="notification__install_success__text">Programmet ble oppgradert i bakgrunnen.</string>
     <string name="notification__install_success__title">%1$s har blitt oppgradert.</string>

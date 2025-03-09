@@ -64,20 +64,19 @@ class ShizukuInstaller : AppInstaller {
 
     private fun failIfShizukuPermissionIsMissing() {
         if (!DeviceSdkTester.supportsAndroid6M23()) {
-            throw InstallationFailedException("Shizuku is not supported on this device", -433)
+            throw InstallationFailedException("Shizuku is not supported on this device")
         }
 
         val permission = try {
             Shizuku.checkSelfPermission()
         } catch (e: IllegalStateException) {
             throw InstallationFailedException(
-                "Shizuku is not running. Please start the Shizuku service.",
-                -432
+                "Shizuku is not running. Please start the Shizuku service."
             )
         }
         if (permission != PackageManager.PERMISSION_GRANTED) {
             Shizuku.requestPermission(42)
-            throw InstallationFailedException("Missing Shizuku permission. Retry again.", -431)
+            throw InstallationFailedException("Missing Shizuku permission. Retry again.")
         }
     }
 
@@ -150,27 +149,6 @@ class ShizukuInstaller : AppInstaller {
         }
         val pendingIntent = PendingIntent.getBroadcast(context, sessionId, intent, flags)
         return pendingIntent.intentSender
-    }
-
-    @Throws(IllegalArgumentException::class)
-    private fun createConfirmInstallationIntent(bundle: Bundle): Intent {
-        val originalIntent = if (DeviceSdkTester.supportsAndroid13T33()) {
-            bundle.getParcelable(Intent.EXTRA_INTENT, Intent::class.java)
-        } else {
-            bundle.getParcelable(Intent.EXTRA_INTENT) as Intent?
-        }
-        requireNotNull(originalIntent)
-
-        // create new Intent to hide the "UnsafeIntentLaunchViolation"
-        return if (originalIntent.action == ACTION_CONFIRM_INSTALL && originalIntent.hasExtra(EXTRA_SESSION_ID)) {
-            val newIntent = Intent(ACTION_CONFIRM_INSTALL)
-            val sessionId = originalIntent.extras?.getInt(EXTRA_SESSION_ID)
-                ?: originalIntent.extras?.getLong(EXTRA_SESSION_ID)
-            newIntent.putExtra(EXTRA_SESSION_ID, sessionId)
-            newIntent
-        } else {
-            originalIntent
-        }
     }
 
     private suspend fun openSession(
@@ -249,11 +227,6 @@ class ShizukuInstaller : AppInstaller {
     ): InstallationFailedException {
         val shortMessage = GenericSessionResultDecoder.getShortErrorMessage(status, bundle)
         val translatedMessage = GenericSessionResultDecoder.getTranslatedErrorMessage(context, status, bundle)
-        return InstallationFailedException(shortMessage, status, translatedMessage)
-    }
-
-    companion object {
-        private const val ACTION_CONFIRM_INSTALL = "android.content.pm.action.CONFIRM_INSTALL"
-        private const val EXTRA_SESSION_ID = "android.content.pm.extra.SESSION_ID"
+        return InstallationFailedException(shortMessage, translatedMessage)
     }
 }

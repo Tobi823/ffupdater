@@ -58,7 +58,6 @@ enum class App {
     ;
 
     fun findImpl(): AppBase {
-        @Suppress("DEPRECATION")
         return when (this) {
             BRAVE -> Brave
             BRAVE_BETA -> BraveBeta

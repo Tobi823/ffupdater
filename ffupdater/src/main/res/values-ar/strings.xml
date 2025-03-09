@@ -38,7 +38,6 @@
     <string name="download_activity__file_uri_exposed_toast">لا يمكن كشف مسار الملف إلى تطبيقات أخرى. يرجى فتح المجلد بنفسك باستخدام مدير الملفات المفضل لديك.</string>
     <string name="download_activity__temporary_network_issue">حدثت مشكلة مؤقتة في الشبكة. يرجى إعادة المحاولة لاحقًا.</string>
     <string name="download_activity__too_low_memory_title">مساحة تخزين قليلة</string>
-    <string name="notification__install_error__channel_name">إشعار فشل التحديث %1$s</string>
     <string name="notification__install_success__title">تم تحديث %1$s</string>
     <string name="installed_version">تم التثبيت: %1$s</string>
     <string name="main_activity__github_api_limit_exceeded"><u>تم تجاوز الحد الأقصى لواجهة برمجة تطبيقات GitHub. أعد المحاولة في الساعة القادمة.</u></string>
@@ -87,9 +86,6 @@
     <string name="download_activity__use_cached_downloaded_apk">استخدم الملف الذي تم تنزيله بالفعل من:</string>
     <string name="download_activity__you_can_now_close_this_window">يمكنك الآن إغلاق هذه النافذة</string>
     <string name="download_activity__label">تحميل التطبيق</string>
-    <string name="notification__install_error__channel_descr">قناة الإشعارات لتحديثات %1$s الفاشلة.</string>
-    <string name="notification__install_error__text">الخطأ (%1$d): %2$s</string>
-    <string name="notification__install_error__title">تعذر تحديث %1$s</string>
     <string name="notification__install_success__channel_descr">قناة الإشعارات لتحديثات %1$s الناجحة.</string>
     <string name="notification__install_success__channel_name">%1$s إشعار تحديث ناجح</string>
     <string name="notification__install_success__text">تم تحديث التطبيق في الخلفية.</string>
@@ -213,9 +209,6 @@
     <string name="installer__method__shizuku">مثبت Shizuku: تحديث التطبيقات بدون مربع حوار التأكيد. يتطلب هذا تطبيق Shizuku أو وحدة Sui Magisk.</string>
     <string name="background__separate_notification_channels__summary">استخدم قنوات إشعارات مختلفة لكل تطبيق على حدة</string>
     <string name="notification__update_available__generic_channel_descr">قناة إشعارات بتحديثات التطبيق المتوفرة.</string>
-    <string name="notification__install_error__generic_channel_name">إشعار فشل تحديث التطبيق</string>
-    <string name="notification__network_error__title">خطأ في الشبكة في وظيفة الخلفية</string>
-    <string name="notification__network_error__text">يمكن أن يحدث هذا الخطأ نادرًا فقط. ومع ذلك، إذا حدث ذلك بشكل متكرر، فيجب عليك الإبلاغ عنه. انقر هنا لعرض رسالة الخطأ التفصيلية.</string>
     <string name="generic_app_warning__beta_version">- تم تصميم هذا التطبيق للمطورين والمختبرين. قد يحتوي على أخطاء مختلفة يمكن أن تؤثر على عملك المعتاد مع المتصفح.</string>
     <string name="fennecfdroid__description">يعتمد Fennec F-Droid على أحدث إصدار من Firefox (الذي يحمل الاسم الرمزي Fenix). تمت إزالة البتات الخاصة به والقياس عن بعد، لكنه لا يزال يتصل بالعديد من خدمات Mozilla وGoogle التي يمكنها تتبع المستخدمين.</string>
     <string name="main_activity__app_was_signed_by_different_certificate">تم توقيع هذا التطبيق بشهادة مختلفة ولا يمكن تحديثه باستخدام FFUpdater.</string>
@@ -255,7 +248,6 @@
     <string name="network__dns_provider__custom">DNS المخصص عبر خادم HTTPS</string>
     <string name="background__separate_notification_channels__title">قنوات اشعارات مختلفة</string>
     <string name="notification__update_available__generic_channel_name">إشعار تحديث التطبيق</string>
-    <string name="notification__install_error__generic_channel_descr">قناة الإشعارات لتحديثات التطبيق الفاشلة.</string>
     <string name="tor_browser_alpha__title">متصفح Tor (النسخة ألفا)</string>
     <string name="notification__uncaught_exception__channel_description">أخطاء غير متوقعة تؤدي إلى تعطل FFUpdater.</string>
     <string name="notification__uncaught_exception__text">انقر لعرض تقرير الخطأ.</string>

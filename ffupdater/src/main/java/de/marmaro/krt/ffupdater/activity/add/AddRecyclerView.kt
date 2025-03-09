@@ -6,12 +6,10 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.annotation.UiThread
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.snackbar.Snackbar
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.dialog.CardviewOptionsDialog
@@ -95,7 +93,7 @@ class AddRecyclerView(
             val dialog = CardviewOptionsDialog.create(app)
             dialog.hideAutomaticUpdateSwitch()
             dialog.hideTheHideButton()
-            dialog.show(activity.supportFragmentManager, activity.applicationContext)
+            dialog.show(activity.supportFragmentManager)
             dialog.setFragmentResultListener(CardviewOptionsDialog.DOWNLOAD_ACTIVITY_WAS_STARTED) { _, _ ->
                 activity.finish()
             }
@@ -105,11 +103,5 @@ class AddRecyclerView(
     private fun onBindViewHolderTitle(viewHolder: HeadingHolder, position: Int) {
         val heading = elements[position] as WrappedTitle
         viewHolder.text.text = heading.text
-    }
-
-    @UiThread
-    private fun showToast(message: Int) {
-        val layout = activity.findViewById<View>(R.id.coordinatorLayout)
-        Snackbar.make(layout, message, Snackbar.LENGTH_LONG).show()
     }
 }

@@ -33,7 +33,6 @@ object TorBrowserAlpha : AppBase() {
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = ARM32_ARM64_X86_X64
 
-    @Suppress("SpellCheckingInspection")
     override val signatureHash = "15f760b41acbe4783e667102c9f67119be2af62fab07763f9d57f01e5e1074e1"
     override val projectPage = "https://www.torproject.org/download/alpha/"
     override val displayCategory = listOf(BASED_ON_FIREFOX, GOOD_PRIVACY_BROWSER, GOOD_SECURITY_BROWSER)

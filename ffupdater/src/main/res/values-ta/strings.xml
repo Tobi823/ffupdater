@@ -33,9 +33,6 @@
     <string name="download_activity__too_low_memory_description">உங்கள் சாதனம் சேமிப்பிடத்தில் குறைவாக உள்ளது ( %1$d MB இலவசம்). இது பதிவிறக்கம் அல்லது நிறுவல் தோல்விக்கு வழிவகுக்கும்.</string>
     <string name="download_activity__too_low_memory_title">குறைந்த வட்டு இடம்</string>
     <string name="download_activity__label">பயன்பாட்டைப் பதிவிறக்கவும்</string>
-    <string name="notification__install_error__channel_name">%1$s புதுப்பிப்பு தோல்வி அறிவிப்பு</string>
-    <string name="notification__install_error__text">பிழை ( %1$d): %2$s</string>
-    <string name="notification__install_error__title">%1$s ஐ புதுப்பிக்க முடியவில்லை</string>
     <string name="notification__install_success__channel_descr">வெற்றிகரமான %1$s புதுப்பிப்புகளுக்கான அறிவிப்பு சேனல்.</string>
     <string name="installed_application_is_verified">நிறுவப்பட்ட பயன்பாடு சரிபார்க்கப்பட்டது</string>
     <string name="installed_version">நிறுவப்பட்டது: %1$s</string>
@@ -70,7 +67,6 @@
     <string name="background__separate_notification_channels__title">வெவ்வேறு அறிவிப்பு சேனல்கள்</string>
     <string name="notification__update_available__generic_channel_name">பயன்பாட்டு புதுப்பிப்பு அறிவிப்பு</string>
     <string name="notification__update_available__generic_channel_descr">கிடைக்கக்கூடிய பயன்பாட்டு புதுப்பிப்புகளுக்கான அறிவிப்பு சேனல்.</string>
-    <string name="notification__network_error__text">இந்த பிழை அரிதாகவே நிகழ வேண்டும். இருப்பினும், இது அடிக்கடி ஏற்பட்டால், நீங்கள் அதைப் புகாரளிக்க வேண்டும். விரிவான பிழை செய்தியைக் காண இங்கே சொடுக்கு செய்க.</string>
     <string name="firefox_focus_beta__title">பயர்பாக்ச் கவனம் பீட்டா</string>
     <string name="duckduckgo_android__title">டக்டகோ தனியார் உலாவி</string>
     <string name="privacy_browser__title">தனியுரிமை உலாவி</string>
@@ -142,7 +138,6 @@
     <string name="iceraven__description">நிச்சயமாக மொசில்லாவால் உங்களிடம் கொண்டு வரப்படவில்லை!\n\n ஃபயர்பாக்ச், கெக்கோவியூ மற்றும் மொசில்லா ஆண்ட்ராய்டு கூறுகளின் மொசில்லாவின் ஃபெனிக்ச் பதிப்பை அடிப்படையாகக் கொண்ட ஆண்ட்ராய்டுக்கான வலை உலாவி ஐசெரோவன் உலாவி.\n\n ஆண்ட்ராய்டுக்கான புதிய பயர்பாக்சின் நெருக்கமான முட்கரண்டியாக இருக்க வேண்டும், இது பயனர்களுக்கு கூடுதல் விருப்பங்கள், தனிப்பயனாக்க அதிக வாய்ப்புகள் (பரந்த நீட்டிப்பு நூலகம் உட்பட) மற்றும் அவர்கள் பார்வையிடும் பக்கங்கள் மற்றும் அவர்களின் உலாவிகள் எவ்வாறு தொடர்பு கொள்கின்றன என்பது பற்றிய கூடுதல் தகவல்கள் அந்த பக்கங்கள்.</string>
     <string name="iceraven__warning">- பராமரிப்பாளர் பாதுகாப்பு அல்லது புதுப்பிப்புகள் அல்லது ச்திரத்தன்மையின் உத்தரவாதங்கள் அல்லது உத்தரவாதங்களை வழங்கவில்லை.\n - பாதுகாப்பு புதுப்பிப்புகளை வழங்க திட்டத்தை வழக்கத்தை விட அதிக நேரம் எடுக்கும்.</string>
     <string name="download_activity__external_storage_not_accessible">வெளிப்புற சேமிப்பு கிடைக்கவில்லை - பதிவிறக்கத்தைத் தொடங்க முடியாது. தற்போதைய நிலை:</string>
-    <string name="notification__install_error__channel_descr">தோல்வியுற்ற %1$s புதுப்பிப்புகளுக்கான அறிவிப்பு சேனல்.</string>
     <string name="download_activity__use_cached_downloaded_apk">இதிலிருந்து ஏற்கனவே பதிவிறக்கம் செய்யப்பட்ட கோப்பைப் பயன்படுத்தவும்:</string>
     <string name="download_activity__you_can_now_close_this_window">நீங்கள் இப்போது இந்த சாளரத்தை மூடலாம்</string>
     <string name="notification__install_success__channel_name">%1$s வெற்றிகரமான புதுப்பிப்பு அறிவிப்பு</string>
@@ -246,9 +241,6 @@
     <string name="installer__method__native">சொந்த நிறுவி: அமர்வு நிறுவி உங்கள் ச்மார்ட்போனில் வேலை செய்யவில்லை என்றால் குறைவானது.</string>
     <string name="installer__method__shizuku">சிசுகு நிறுவி: உறுதிப்படுத்தல் உரையாடல் இல்லாமல் பயன்பாடுகளைப் புதுப்பிக்கவும். இதற்கு சிசுகு பயன்பாடு அல்லது சுய் மேகிச்க் தொகுதி தேவை.</string>
     <string name="background__separate_notification_channels__summary">ஒவ்வொரு தனிப்பட்ட பயன்பாட்டிற்கும் வெவ்வேறு அறிவிப்பு சேனல்களைப் பயன்படுத்தவும்</string>
-    <string name="notification__install_error__generic_channel_descr">தோல்வியுற்ற பயன்பாட்டு புதுப்பிப்புகளுக்கான அறிவிப்பு சேனல்.</string>
-    <string name="notification__install_error__generic_channel_name">பயன்பாட்டு புதுப்பிப்பு தோல்வி அறிவிப்பு</string>
-    <string name="notification__network_error__title">பின்னணி வேலையில் பிணைய பிழை</string>
     <string name="tor_browser_alpha__title">டோர் உலாவி ஆல்பா</string>
     <string name="tor_browser_alpha__description">டோர் உலாவி என்பது டோர் திட்டத்தால் ஆதரிக்கப்படும் ஒரே அதிகாரப்பூர்வ மொபைல் உலாவி, தனியுரிமை மற்றும் சுதந்திரத்திற்கான உலகின் வலுவான கருவியின் டெவலப்பர்கள்.\n\n டோர் உலாவி எப்போதும் இலவசமாக இருக்கும், ஆனால் நன்கொடைகள் அதை சாத்தியமாக்குகின்றன. டோர் திட்டம் அமெரிக்காவை தளமாகக் கொண்ட 501 © (3) இலாப நோக்கற்றது. தயவுசெய்து இன்று பங்களிப்பைக் கவனியுங்கள். ஒவ்வொரு பரிசும் ஒரு வித்தியாசத்தை ஏற்படுத்துகிறது: https://donate.torproject.org.\n\n பிழைகள் புகாரளிப்பது மற்றும் கருத்துக்களை https://support.torproject.org/misc/bug-or-feedback/ இல் எவ்வாறு வழங்குவது என்பதை அறிக!</string>
     <string name="generic_app_warning__beta_version">- இந்த பயன்பாடு உருவாக்குபவர்கள் மற்றும் சோதனையாளர்களுக்காக வடிவமைக்கப்பட்டுள்ளது. உலாவியுடன் உங்கள் வழக்கமான வேலையை பாதிக்கக்கூடிய பல்வேறு பிழைகள் இதில் இருக்கலாம்.</string>

@@ -64,7 +64,7 @@ class RootInstaller : AppInstaller {
     private fun failIfRootPermissionIsMissing() {
         val rootGranted = Shell.isAppGrantedRoot()
         if (rootGranted != true) {
-            throw InstallationFailedException("Missing root permission. Permission is $rootGranted", -302)
+            throw InstallationFailedException("Missing root permission. Permission is $rootGranted")
         }
     }
 
@@ -93,7 +93,7 @@ class RootInstaller : AppInstaller {
             if (result.code != 0) {
                 val resultString = "Result code: ${result.code}. Stdout: '${result.out}'. Stderr: '${result.err}'."
                 val message = "Root command '$command' failed. $resultString"
-                throw InstallationFailedException(message, -403)
+                throw InstallationFailedException(message)
             }
             result.out
         }

@@ -30,6 +30,5 @@ abstract class AppBase : AppAttributes, ApkDownloader, LatestVersionFetcher, Ins
         val ALL_ABIS = listOf(ARM64_V8A, ARMEABI_V7A, ARMEABI, X86_64, X86, MIPS, MIPS64)
         val ARM32_ARM64_X86_X64 = listOf(ARM64_V8A, ARMEABI_V7A, X86_64, X86)
         val ARM32_ARM64 = listOf(ARM64_V8A, ARMEABI_V7A)
-        val ARM32_X86 = listOf(ARMEABI_V7A, X86)
     }
 }

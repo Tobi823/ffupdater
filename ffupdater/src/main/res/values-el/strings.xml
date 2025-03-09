@@ -60,10 +60,6 @@
     <string name="download_activity__temporary_network_issue">Παρουσιάστηκε ένα προσωρινό πρόβλημα δικτύου. Δοκιμάστε ξανά αργότερα.</string>
     <string name="download_activity__too_low_memory_description">Ο αποθηκευτικός χώρος της συσκευής σας είναι χαμηλός (μόνο %1$d MB ελεύθερα). Αυτό θα οδηγήσει σε αποτυχία λήψης ή εγκατάστασης.</string>
     <string name="download_activity__you_can_now_close_this_window">Μπορείτε να κλείσετε αυτό το παράθυρο τώρα</string>
-    <string name="notification__install_error__title">Δεν ήταν δυνατή η ενημέρωση του %1$s</string>
-    <string name="notification__install_error__channel_descr">Κανάλι ειδοποιήσεων για αποτυχημένες ενημερώσεις %1$s.</string>
-    <string name="notification__install_error__channel_name">%1$s ειδοποίηση αποτυχίας ενημέρωσης</string>
-    <string name="notification__install_error__text">Σφάλμα (%1$d): %2$s</string>
     <string name="notification__install_success__channel_descr">Κανάλι ειδοποιήσεων για επιτυχημένες ενημερώσεις %1$s.</string>
     <string name="notification__install_success__channel_name">%1$s ειδοποίηση επιτυχούς ενημέρωσης</string>
     <string name="notification__install_success__text">Η εφαρμογή έχει ενημερωθεί στο παρασκήνιο.</string>
@@ -202,10 +198,6 @@
     <string name="background__separate_notification_channels__title">Διαφορετικά κανάλια ειδοποιήσεων</string>
     <string name="notification__update_available__generic_channel_name">Ειδοποίηση ενημέρωσης εφαρμογής</string>
     <string name="notification__update_available__generic_channel_descr">Κανάλι ειδοποιήσεων για διαθέσιμες ενημερώσεις εφαρμογών.</string>
-    <string name="notification__install_error__generic_channel_descr">Κανάλι ειδοποιήσεων για αποτυχημένες ενημερώσεις εφαρμογών.</string>
-    <string name="notification__install_error__generic_channel_name">Ειδοποίηση αποτυχίας ενημέρωσης εφαρμογής</string>
-    <string name="notification__network_error__title">Σφάλμα δικτύου στην εργασία παρασκηνίου</string>
-    <string name="notification__network_error__text">Αυτό το σφάλμα θα πρέπει να εμφανίζεται μόνο σπάνια. Ωστόσο, εάν εμφανίζεται συχνά, θα πρέπει να το αναφέρετε. Κάντε κλικ εδώ για να δείτε το αναλυτικό μήνυμα σφάλματος.</string>
     <string name="network__custom_doh_server__dialog_message">Εισαγάγετε τις λεπτομέρειες σύνδεσης για τον προσαρμοσμένο διακομιστή DoH σε μία από αυτές τις μορφές: \n \nurl;ip1 \n \nurl;ip1;ip2 \n \nurl;ip1;ip2;ip3 \n \nurl;ip1;ip2;ip3;ip4 \n \nΓια παράδειγμα: https://dns.google/dns-query;8.8.8.8 ή https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
     <string name="network__proxy__dialog_message">Εάν θέλετε να χρησιμοποιήσετε διακομιστή μεσολάβησης SOCKS ή HTTP, εισαγάγετε τα στοιχεία σύνδεσης εδώ. Χρησιμοποιήστε μία από αυτές τις μορφές: \n \nSOCKS/HTTP;ip/domain;port \n \nSOCKS/HTTP;ip/domain;port;όνομα χρήστη;κωδικός πρόσβασης \n \nΓια παράδειγμα: SOCKS;1.2.3.4;22 ή HTTP;5.6.7.8;80;user1;pw123 ή HTTP;p.webshare.io;80;u;p. Αφήστε το κενό εάν θέλετε να χρησιμοποιήσετε τη διαμόρφωση διακομιστή μεσολάβησης συστήματος. \n \nΠεριορισμός: Εάν αλλάξετε τις «Ρυθμίσεις DNS» στις ρυθμίσεις σε διακομιστή DNS μέσω HTTPS, πρέπει να εισαγάγετε τον τομέα του διακομιστή μεσολάβησης. Οι IP δεν θα λειτουργήσουν.</string>
     <string name="device__prefer_32bit_apks__summary">Ενεργοποιήστε εάν η μνήμη της συσκευής σας είναι συνήθως χαμηλή. Στη συνέχεια, το FFUpdater θα χρησιμοποιήσει APK 32-bit που συνήθως απαιτούν λιγότερη μνήμη.</string>

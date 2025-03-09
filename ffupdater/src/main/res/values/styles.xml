@@ -12,9 +12,6 @@
         <item name="colorAccent">@color/crash_report__color_accent</item>
     </style>
 
-    <style name="add_app__theme" parent="Theme.Material3.DayNight">
-    </style>
-
     <style name="main_activity__main_title">
         <item name="titleTextColor">@android:color/white</item>
     </style>

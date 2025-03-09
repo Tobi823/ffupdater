@@ -74,10 +74,6 @@
     <string name="download_activity__use_cached_downloaded_apk">Usa il file già scaricato da:</string>
     <string name="download_activity__you_can_now_close_this_window">Ora puoi chiudere questa finestra</string>
     <string name="download_activity__label">Installa Applicazione</string>
-    <string name="notification__install_error__channel_descr">Canale di notifica per aggiornamenti falliti %1$s.</string>
-    <string name="notification__install_error__channel_name">%1$s notifica di fallimento dell\'aggiornamento</string>
-    <string name="notification__install_error__text">Errore (%1$d): %2$s</string>
-    <string name="notification__install_error__title">%1$s non può essere aggiornato</string>
     <string name="notification__install_success__channel_descr">Canale di notifica per aggiornamenti di successo %1$s.</string>
     <string name="notification__install_success__channel_name">%1$s notifica di aggiornamento riuscito</string>
     <string name="notification__install_success__text">L\'app è stata aggiornata in background.</string>
@@ -189,8 +185,6 @@
     <string name="network__proxy__title">Proxy</string>
     <string name="installer__method__native">Installatore nativo: Un ripiego se l\'installatore di sessione non funziona sul vostro smartphone.</string>
     <string name="notification__update_available__generic_channel_name">Notifica aggiornamento dell\'app</string>
-    <string name="notification__install_error__generic_channel_descr">Canale di notifica per gli aggiornamenti dell\'app non riusciti.</string>
-    <string name="notification__network_error__title">Errore di rete nel lavoro in background</string>
     <string name="generic_app_warning__beta_version">- Questa app è stata progettata per sviluppatori e tester. Può contenere vari bug che possono influenzare il tuo lavoro abituale con il browser.</string>
     <string name="main_activity__app_was_signed_by_different_certificate">Questa app è stata firmata con un certificato diverso e non può essere aggiornata con FFUpdater.</string>
     <string name="foreground__hide_apps_signed_by_different_certificate__title">Nascondi le app firmate da un certificato diverso.</string>
@@ -220,11 +214,9 @@
     <string name="network__proxy__dialog_message">Se vuoi usare un proxy SOCKS o HTTP, inserisci qui i dettagli della connessione. Usa uno dei seguenti formati: \n \nSOCKS/HTTP;ip/domain;port \n \nSOCKS/HTTP;ip/domain;port;username;password \n \nPer esempio: For example: SOCKS;1.2.3.4;22 o HTTP;5.6.7.8;80;user1;pw123 or HTTP;p.webshare.io;80;u;p. Lascia vuoto se vuoi usare la configurazione proxy di sistema. \n \nLimitazione: Se si modificano le \"impostazioni DNS\" nelle impostazioni in un server DNS su HTTPS, è necessario inserire il dominio del server proxy. Gli IP non funzionano.</string>
     <string name="network__custom_doh_server__dialog_message">Immetti i dettagli di connessione per il server DoH personalizzato in uno dei seguenti formati \n \nurl;ip1 \n \nurl;ip1;ip2 \n \nurl;ip1;ip2;ip3 \n \nurl;ip1;ip2;ip3;ip4 \n \nPer esempio: https://dns.google/dns-query;8.8.8.8 o https://dns.quad9.net/dns-query;2620:fe::fe;2620:fe::9</string>
     <string name="installer__method__session">Installatore di sessione: Consigliato per la maggior parte dei dispositivi. Su Android 12 o superiore, le app possono essere aggiornate silenziosamente dopo una conferma dell\'utente.</string>
-    <string name="notification__install_error__generic_channel_name">Notifica di mancato aggiornamento dell\'app</string>
     <string name="background__separate_notification_channels__summary">Usa canali di notifica diversi per ogni singola app</string>
     <string name="background__separate_notification_channels__title">Canali di notifica diversi</string>
     <string name="notification__update_available__generic_channel_descr">Canale di notifica per gli aggiornamenti dell\'app disponibili.</string>
-    <string name="notification__network_error__text">Questo errore dovrebbe verificarsi solo raramente. Tuttavia, se si verifica frequentemente, è necessario segnalarlo. Clicca qui per visualizzare il messaggio di errore dettagliato.</string>
     <string name="tor_browser_alpha__description">Tor Browser è l\'unico browser mobile ufficiale supportato da Tor Project, sviluppatori del più potente strumento al mondo per la privacy e la libertà online. \n \nTor Browser sarà SEMPRE gratuito, ma le donazioni lo rendono possibile. Il Tor Project è un\'associazione 501©(3) senza scopo di lucro con sede negli Stati Uniti. Considera di dare un contributo oggi stesso. Ogni dono fa la differenza: https://donate.torproject.org. \n \nPer sapere come segnalare i bug e fornire feedback, visita il sito: https://support.torproject.org/misc/bug-or-feedback/</string>
     <string name="duckduckgo_android__description">L\'app DuckDuckGo offre la più completa protezione della privacy online con la semplice pressione di un pulsante. Con un solo download, si ottiene un nuovo browser quotidiano che offre una protezione continua durante la ricerca e la navigazione e l\'accesso alle protezioni per il tracciamento delle e-mail ricevute e delle app utilizzate. Molte di queste protezioni non sono disponibili di default nei browser più diffusi.</string>
     <string name="main_activity__an_error_occurred"><u>Si è verificato un errore. Riprovaìpiù tardi.</u></string>

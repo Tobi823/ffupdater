@@ -4,6 +4,4 @@ import androidx.annotation.Keep
 import de.marmaro.krt.ffupdater.DisplayableException
 
 @Keep
-class NoUnmeteredNetworkException : DisplayableException {
-    constructor(message: String) : super(message)
-}
+class NoUnmeteredNetworkException(message: String) : DisplayableException(message)
