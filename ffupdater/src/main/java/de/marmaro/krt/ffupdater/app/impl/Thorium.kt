@@ -6,7 +6,7 @@ import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
-import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.BETTER_THAN_GOOGLE_CHROME
+import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
 import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.app.entity.Version
 import de.marmaro.krt.ffupdater.device.ABI
@@ -32,7 +32,7 @@ object Thorium : AppBase() {
     override val supportedAbis = ARM32_ARM64
     override val signatureHash = "32a2fc74d731105859e5a85df16d95f102d85b22099b8064c5d8915c61dad1e0"
     override val projectPage = "https://github.com/Alex313031/Thorium-Android"
-    override val displayCategory = listOf(BETTER_THAN_GOOGLE_CHROME)
+    override val displayCategory = listOf(DisplayCategory.EOL)
     override val hostnameForInternetCheck = "https://api.github.com"
 
     @MainThread
