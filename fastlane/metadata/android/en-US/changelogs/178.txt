@@ -1,0 +1,11 @@
+Release version 80.0.0 (178)
+- Thanks for the Weblate contributions from: TamilNeram, shop_israel, Cirnos, hamburger2048, crowbar, 109247019824, maksimgorpinic2005a, gdonisi, kazushi3, jrthwlate and kirillstuzhuk
+- remove Kiwi, Mulch, Mulch SystemWebView and Mull
+- allow installation of all updates in one go ("Update all apps")
+- make Thorium EOL because the latest release is over 200 days old
+- only keep screen on in DownloadActivity during the network download and not during the hole Android activity (Tobi823/ffupdater#620)
+- MainActivity: parallel update checks (Tobi823/ffupdater#664)
+- dont crash on network problems (Tobi823/ffupdater#681)
+- improve downloading (should reduce download conflicts)
+- update to Android 15
+- cleanup, refactor, remove unused translation strings
