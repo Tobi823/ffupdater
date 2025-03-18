@@ -10,6 +10,7 @@ Mozilla のブラウザー及び Firefox ベースのブラウザー:
 
 Google Chrome より優れたブラウザー:
 - Brave プライベートブラウザ、Brave ブラウザ (ベータ版)、Brave ブラウザ (Nightly)
+- Cromite
 - Chromium
 - DuckDuckGo Browser
 - Kiwi Browser Next

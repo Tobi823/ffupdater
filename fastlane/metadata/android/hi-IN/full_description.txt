@@ -10,6 +10,7 @@ Mozilla से या Firefox पर आधारित ब्राउज़र
 
 Google Chrome से बेहतर कौन से ब्राउज़र हैं:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
+- Cromite
 - Chromium
 - DuckDuckGo Browser
 - Kiwi Browser Next

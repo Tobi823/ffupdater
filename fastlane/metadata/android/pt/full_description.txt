@@ -10,6 +10,7 @@ Navegadores da Mozilla ou baseados no Firefox:
 
 Navegadores que são melhores do que o Google Chrome:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
+- Cromite
 - Chromium
 - Navegador DuckDuckGo
 - Kiwi Browser Next

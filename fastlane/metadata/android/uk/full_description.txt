@@ -10,6 +10,7 @@
 
 Браузери, що кращі, ніж Google Chrome:
 - Brave, Brave (Beta), Brave (Nightly)
+- Cromite
 - Chromium
 - DuckDuckGo Browser
 - Kiwi Next

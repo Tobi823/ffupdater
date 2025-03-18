@@ -10,6 +10,7 @@
 
 Браузеры, которые лучше, чем Google Chrome:
 - Brave Browser, Brave Browser Бета, Brave Browser (Nightly)
+- Cromite
 - Chromium
 - DuckDuckGo Browser
 - Kiwi Browser Next

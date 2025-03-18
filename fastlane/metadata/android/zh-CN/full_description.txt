@@ -10,6 +10,7 @@ Mozilla 出品或基于 Firefox 的浏览器：
 
 比 Google Chrome 更好的浏览器：
 - Brave 隐私浏览器、Brave 浏览器（公测版）、Brave 浏览器（每夜版）
+- Cromite
 - Chromium
 - DuckDuckGo 浏览器
 - Kiwi Next 浏览器
