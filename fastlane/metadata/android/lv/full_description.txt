@@ -6,6 +6,7 @@ Pārlūki no Mozilla vai balstīti uz Firefox:
 - Firefox Focus, Firefox Focus Beta, Firefox Klar
 - Iceraven
 - Tor, Tor Alpha
+- Thunderbird for Android, Thunderbird for Android Beta
 
 Pārlūki labāki par Google Chrome:
 - Brave, Brave Beta, Brave (Nakts izlaidums)

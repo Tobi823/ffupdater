@@ -6,6 +6,7 @@ Navegadores da Mozilla ou baseados no Firefox:
 - Firefox Focus, Firefox Focus Beta, Firefox Klar
 - Iceraven
 - Navegador Tor, Navegador Tor Alpha
+- Thunderbird for Android, Thunderbird for Android Beta
 
 Navegadores que são melhores do que o Google Chrome:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)

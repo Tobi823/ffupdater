@@ -6,6 +6,7 @@ Mozilla のブラウザー及び Firefox ベースのブラウザー:
 - Firefox Focus, Firefox Focus Beta, Firefox Klar
 - Iceraven
 - Tor Browser, Tor Browser Alpha
+- Thunderbird for Android, Thunderbird for Android Beta
 
 Google Chrome より優れたブラウザー:
 - Brave プライベートブラウザ、Brave ブラウザ (ベータ版)、Brave ブラウザ (Nightly)

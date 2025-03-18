@@ -6,6 +6,7 @@ Mozilla 出品或基于 Firefox 的浏览器：
 - Firefox Focus、Firefox Focus 公测版、Firefox Klar
 - Iceraven
 - Tor 浏览器、Tor 浏览器内测版
+- Thunderbird for Android, Thunderbird for Android Beta
 
 比 Google Chrome 更好的浏览器：
 - Brave 隐私浏览器、Brave 浏览器（公测版）、Brave 浏览器（每夜版）

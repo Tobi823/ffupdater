@@ -6,6 +6,7 @@ Prohlížeče od společnosti Mozilla nebo založené na Firefoxu:
 - Firefox Focus, Firefox Focus Beta, Firefox Klar
 - Iceraven
 - Tor Browser, Tor Browser Alpha
+- Thunderbird for Android, Thunderbird for Android Beta
 
 Prohlížeče, které jsou lepší než Google Chrome:
 - Brave Soukromý prohlížeč, Brave Browser (Beta), Brave Browser (Nightly)

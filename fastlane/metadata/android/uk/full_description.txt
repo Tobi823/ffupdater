@@ -6,6 +6,7 @@
 - Firefox Focus, Firefox Focus Beta, Firefox Klar
 - Iceraven
 - Tor Browser, Tor Browser Alpha
+- Thunderbird for Android, Thunderbird for Android Beta
 
 Браузери, що кращі, ніж Google Chrome:
 - Brave, Brave (Beta), Brave (Nightly)

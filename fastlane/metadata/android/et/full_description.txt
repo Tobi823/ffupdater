@@ -6,6 +6,7 @@ Mozilla poolt loodud või Firefoxil põhinevad brauserid:
 - Firefox Focus, Firefox Focus Beta, Firefox Klar
 - Iceraven
 - Tor Browser, Tor Browser Alpha
+- Thunderbird for Android, Thunderbird for Android Beta
 
 Brauserid, mis on paremad, kui Google Chrome:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)

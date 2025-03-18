@@ -6,6 +6,7 @@ Przeglądarki Mozilli lub oparte na Firefoksie:
 - Firefox Focus, Firefox Focus Beta, Firefox Klar
 - Iceraven
 - Tor Browser, Tor Browser Alpha
+- Thunderbird for Android, Thunderbird for Android Beta
 
 Przeglądarki, które są lepsze niż Google Chrome:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)

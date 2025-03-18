@@ -6,6 +6,7 @@
 - Firefox Focus, Firefox Focus Бета, Firefox Klar
 - Iceraven
 - Tor Browser, Tor Browser Альфа
+- Thunderbird for Android, Thunderbird for Android Beta
 
 Браузеры, которые лучше, чем Google Chrome:
 - Brave Browser, Brave Browser Бета, Brave Browser (Nightly)

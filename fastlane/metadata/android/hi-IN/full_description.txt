@@ -6,6 +6,7 @@ Mozilla से या Firefox पर आधारित ब्राउज़र
 - Firefox Focus, Firefox Focus Beta, Firefox Klar
 - Iceraven
 - Tor Browser, Tor Browser Alpha
+- Thunderbird for Android, Thunderbird for Android Beta
 
 Google Chrome से बेहतर कौन से ब्राउज़र हैं:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
