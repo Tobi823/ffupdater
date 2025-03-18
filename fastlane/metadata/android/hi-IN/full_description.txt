@@ -14,8 +14,8 @@ Google Chrome से बेहतर कौन से ब्राउज़र �
 - Chromium
 - DuckDuckGo Browser
 - Privacy Browser (F-Droid)
-- Thorium
 - Vivaldi
+- Thorium
 
 अन्य अनुप्रयोगों:
 - FairEmail

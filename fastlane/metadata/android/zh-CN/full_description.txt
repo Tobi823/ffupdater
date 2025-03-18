@@ -14,8 +14,8 @@ Mozilla 出品或基于 Firefox 的浏览器：
 - Chromium
 - DuckDuckGo 浏览器
 - 隐私浏览器（F-Droid）
-- Thorium
 - Vivaldi
+- Thorium
 
 其他应用：
 - FairEmail

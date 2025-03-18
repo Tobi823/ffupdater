@@ -14,8 +14,8 @@ Brauserid, mis on paremad, kui Google Chrome:
 - Chromium
 - DuckDuckGo Browser
 - Privacy Browser (F-Droid)
-- Thorium
 - Vivaldi
+- Thorium
 
 Muud rakendused:
 - FairEmail

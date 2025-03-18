@@ -14,8 +14,8 @@ Przeglądarki, które są lepsze niż Google Chrome:
 - Chromium
 - DuckDuckGo Browser
 - Privacy Browser (F-Droid)
-- Thorium
 - Vivaldi
+- Thorium
 
 Inne zastosowania:
 - FairEmail

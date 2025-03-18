@@ -14,8 +14,8 @@ Google Chrome より優れたブラウザー:
 - Chromium
 - DuckDuckGo Browser
 - Privacy Browser (F-Droid)
-- Thorium
 - Vivaldi
+- Thorium
 
 その他のアプリ:
 - FairEmail

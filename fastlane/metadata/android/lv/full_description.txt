@@ -14,8 +14,8 @@ Pārlūki labāki par Google Chrome:
 - Chromium
 - DuckDuckGo
 - Privacy pārlūks (F-Droid)
-- Thorium
 - Vivaldi
+- Thorium
 
 Citas lietotnes:
 - FairEmail

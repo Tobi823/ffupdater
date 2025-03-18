@@ -14,8 +14,8 @@
 - Chromium
 - DuckDuckGo Browser
 - Πρόγραμμα περιήγησης απορρήτου (F-Droid)
-- Θόριο
 - Βιβάλντι
+- Θόριο
 
 Άλλες εφαρμογές:
 - FairEmail

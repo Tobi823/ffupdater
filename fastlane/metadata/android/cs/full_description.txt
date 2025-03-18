@@ -14,8 +14,8 @@ Prohlížeče, které jsou lepší než Google Chrome:
 - Chromium
 - DuckDuckGo Browser
 - Privacy Browser (F-Droid)
-- Thorium
 - Vivaldi
+- Thorium
 
 Ostatní aplikace:
 - FairEmail

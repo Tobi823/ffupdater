@@ -14,8 +14,8 @@ Navegadores que são melhores do que o Google Chrome:
 - Chromium
 - Navegador DuckDuckGo
 - Navegador de privacidade (F-Droid)
-- Thorium
 - Vivaldi
+- Thorium
 
 Outras aplicações:
 - FairEmail

@@ -14,8 +14,8 @@
 - Chromium
 - DuckDuckGo Browser
 - Privacy Browser (F-Droid)
-- Thorium
 - Vivaldi
+- Thorium
 
 Прочие приложения:
 - FairEmail

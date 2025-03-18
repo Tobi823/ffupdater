@@ -15,6 +15,7 @@ Navigateurs plus performants que Google Chrome :
 - Navigateur DuckDuckGo
 - Privacy Browser (F-Droid)
 - Vivaldi
+- Thorium
 
 Autres applications :
 - FairEmail

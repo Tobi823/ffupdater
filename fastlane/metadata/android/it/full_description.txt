@@ -14,8 +14,8 @@ Browser migliori di Google Chrome:
 - Chromium
 - DuckDuckGo Browser
 - Browser Privacy (F-Droid)
-- Thorium
 - Vivaldi
+- Thorium
 
 Altre applicazioni:
 - FairEmail
