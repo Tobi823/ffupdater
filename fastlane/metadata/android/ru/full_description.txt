@@ -5,7 +5,6 @@
 - Firefox Browser, Firefox для Android Бета, Firefox Nightly
 - Firefox Focus, Firefox Focus Бета, Firefox Klar
 - Iceraven
-- Mull Browser
 - Tor Browser, Tor Browser Альфа
 
 Хорошие браузеры для обеспечения конфиденциальности:

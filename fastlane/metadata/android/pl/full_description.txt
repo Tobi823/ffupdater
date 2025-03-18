@@ -5,7 +5,6 @@ Przeglądarki Mozilli lub oparte na Firefoksie:
 - Firefox Browser, Firefox for Android Beta, Firefox Nightly
 - Firefox Focus, Firefox Focus Beta, Firefox Klar
 - Iceraven
-- Mull Browser
 - Tor Browser, Tor Browser Alpha
 
 Przeglądarki dla ochrony Twojej prywatności:

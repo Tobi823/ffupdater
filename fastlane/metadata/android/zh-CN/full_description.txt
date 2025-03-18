@@ -5,7 +5,6 @@ Mozilla 出品或基于 Firefox 的浏览器：
 - Firefox 浏览器、Firefox Android 公测版、Firefox 每夜版
 - Firefox Focus、Firefox Focus 公测版、Firefox Klar
 - Iceraven
-- Mull 浏览器
 - Tor 浏览器、Tor 浏览器内测版
 
 优秀的隐私浏览器：

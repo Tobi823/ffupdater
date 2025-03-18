@@ -13,23 +13,16 @@ Software from Mozilla or based on Firefox:
 - [Firefox Browser](https://play.google.com/store/apps/details?id=org.mozilla.firefox),
   [Firefox for Android Beta](https://play.google.com/store/apps/details?id=org.mozilla.firefox_beta),
   [Firefox Nightly](https://play.google.com/store/apps/details?id=org.mozilla.firefox)
-  ([GitHub Repository](https://github.com/mozilla-mobile/fenix))
+  ([GitHub Repository](https://github.com/mozilla-mobile/firefox-android))
 - [Firefox Focus](https://play.google.com/store/apps/details?id=org.mozilla.focus), Firefox Focus Beta,
   [Firefox Klar](https://play.google.com/store/apps/details?id=org.mozilla.klar)
-  ([GitHub Repository](https://github.com/mozilla-mobile/focus-android))
-- [Mull Browser](https://divestos.org/index.php?page=our_apps)
-  ([GitLab Repository](https://gitlab.com/divested-mobile/mull-fenix))
+  ([GitHub Repository](https://github.com/mozilla-mobile/firefox-android))
 - [Iceraven](https://github.com/fork-maintainers/iceraven-browser)
 - [Tor Browser](https://www.torproject.org/download),
   [Tor Browser Alpha](https://www.torproject.org/download/alpha/)
 - [Thunderbird for Android](https://play.google.com/store/apps/details?id=net.thunderbird.android),
   [Thunderbird for Android Beta](https://play.google.com/store/apps/details?id=net.thunderbird.android.beta)
   ([GitHub Repository](https://github.com/thunderbird/thunderbird-android/))
-
-Good privacy browsers:
-
-- [Mulch](https://divestos.org/pages/our_apps#mull)
-  , [Mulch System WebView](https://divestos.org/pages/our_apps#mull)
 
 Browser which are better than Google Chrome:
 
@@ -40,7 +33,6 @@ Browser which are better than Google Chrome:
 - [Cromite](https://github.com/uazo/cromite)
 - [Chromium](https://www.chromium.org/chromium-projects/)
 - [DuckDuckGo Browser](https://github.com/duckduckgo/Android)
-- [Kiwi Browser Next](https://github.com/kiwibrowser/src.next) ([Incomplete Source Code](https://github.com/kiwibrowser/src.next/issues/1028))
 - [Vivaldi](https://vivaldi.com/download/) ([Incomplete Source Code](https://vivaldi.com/source/))
 - [Thorium](https://github.com/Alex313031/Thorium-Android)
 

@@ -5,7 +5,6 @@ Browser di Mozilla o basati su Firefox:
 - Firefox Browser, Firefox per Android Beta, Firefox Nightly
 - Firefox Focus, Firefox Focus Beta, Firefox Klar
 - Iceraven
-- Mull Browser
 - Tor Browser, Tor Browser Alpha
 
 Browser buoni per la privacy:

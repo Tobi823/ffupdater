@@ -5,7 +5,6 @@ Pārlūki no Mozilla vai balstīti uz Firefox:
 - Firefox, Firefox Beta, Firefox (Nakts izlaidums)
 - Firefox Focus, Firefox Focus Beta, Firefox Klar
 - Iceraven
-- Mull
 - Tor, Tor Alpha
 
 Labi konfidencialitātes pārlūki:

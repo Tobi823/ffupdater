@@ -5,7 +5,6 @@ Navegadores da Mozilla ou baseados no Firefox:
 - Navegador Firefox, Firefox para Android Beta, Firefox Nightly
 - Firefox Focus, Firefox Focus Beta, Firefox Klar
 - Iceraven
-- Navegador Mull
 - Navegador Tor, Navegador Tor Alpha
 
 Bons navegadores de privacidade:

@@ -5,7 +5,6 @@ Mozilla से या Firefox पर आधारित ब्राउज़र
 - Firefox Browser, Firefox for Android Beta, Firefox Nightly
 - Firefox Focus, Firefox Focus Beta, Firefox Klar
 - Iceraven
-- Mull Browser
 - Tor Browser, Tor Browser Alpha
 
 अच्छे गोपनीयता ब्राउज़र:

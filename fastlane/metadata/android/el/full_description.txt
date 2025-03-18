@@ -5,7 +5,6 @@
 - Firefox Browser, Firefox για Android Beta, Firefox Nightly
 - Firefox Focus, Firefox Focus Beta, Firefox Klar
 - Iceraven
-- Mull Browser
 - Tor Browser, Tor Browser Alpha
 
 Καλά προγράμματα περιήγησης απορρήτου:

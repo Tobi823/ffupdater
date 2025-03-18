@@ -5,7 +5,6 @@ Mozilla のブラウザー及び Firefox ベースのブラウザー:
 - Firefox ブラウザー、Firefox Beta、Firefox Nightly
 - Firefox Focus, Firefox Focus Beta, Firefox Klar
 - Iceraven
-- Mull Browser
 - Tor Browser, Tor Browser Alpha
 
 プライバシー保護に優れたブラウザー:

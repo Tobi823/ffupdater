@@ -5,8 +5,8 @@ Browsers from Mozilla or based on Firefox:
 - Firefox Browser, Firefox for Android Beta, Firefox Nightly
 - Firefox Focus, Firefox Focus Beta, Firefox Klar
 - Iceraven
-- Mull Browser
 - Tor Browser, Tor Browser Alpha
+- Thunderbird for Android, Thunderbird for Android Beta
 
 Good privacy browsers:
 - Bromite, Bromite SystemWebView

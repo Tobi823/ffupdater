@@ -5,7 +5,6 @@ Prohlížeče od společnosti Mozilla nebo založené na Firefoxu:
 - Firefox prohlížeč, Firefox Beta pro Android, Firefox Nightly
 - Firefox Focus, Firefox Focus Beta, Firefox Klar
 - Iceraven
-- Mull Browser
 - Tor Browser, Tor Browser Alpha
 
 Prohlížeče dobré pro ochranu soukromí:

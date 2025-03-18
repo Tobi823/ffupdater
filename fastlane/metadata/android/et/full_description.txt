@@ -5,7 +5,6 @@ Mozilla poolt loodud või Firefoxil põhinevad brauserid:
 - Firefox Browser, Firefox for Android Beta, Firefox Nightly
 - Firefox Focus, Firefox Focus Beta, Firefox Klar
 - Iceraven
-- Mull Browser
 - Tor Browser, Tor Browser Alpha
 
 Hea privaatsusega brauserid:

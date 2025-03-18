@@ -5,7 +5,6 @@
 - Firefox, Firefox Beta, Firefox Nightly
 - Firefox Focus, Firefox Focus Beta, Firefox Klar
 - Iceraven
-- Mull
 - Tor Browser, Tor Browser Alpha
 
 Добрі конфіденційні браузери:
