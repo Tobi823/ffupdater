@@ -7,10 +7,6 @@
 - Iceraven
 - Tor Browser, Tor Browser Альфа
 
-Хорошие браузеры для обеспечения конфиденциальности:
-- Bromite, Bromite SystemWebView
-- Mulch, Mulch System WebView
-
 Браузеры, которые лучше, чем Google Chrome:
 - Brave Browser, Brave Browser Бета, Brave Browser (Nightly)
 - Chromium

@@ -7,10 +7,6 @@ Navegadores da Mozilla ou baseados no Firefox:
 - Iceraven
 - Navegador Tor, Navegador Tor Alpha
 
-Bons navegadores de privacidade:
-- Bromite, Bromite SystemWebView
-- Mulch, Mulch System WebView
-
 Navegadores que são melhores do que o Google Chrome:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
 - Chromium

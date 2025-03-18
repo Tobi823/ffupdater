@@ -8,10 +8,6 @@ Browsers from Mozilla or based on Firefox:
 - Tor Browser, Tor Browser Alpha
 - Thunderbird for Android, Thunderbird for Android Beta
 
-Good privacy browsers:
-- Bromite, Bromite SystemWebView
-- Mulch, Mulch System WebView
-
 Browser which are better than Google Chrome:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
 - Chromium

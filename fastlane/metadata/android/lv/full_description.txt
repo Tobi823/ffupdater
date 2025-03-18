@@ -7,10 +7,6 @@ Pārlūki no Mozilla vai balstīti uz Firefox:
 - Iceraven
 - Tor, Tor Alpha
 
-Labi konfidencialitātes pārlūki:
-- Bromite, Bromite SystemWebView
-- Mulch, Mulch System WebView
-
 Pārlūki labāki par Google Chrome:
 - Brave, Brave Beta, Brave (Nakts izlaidums)
 - Cromite

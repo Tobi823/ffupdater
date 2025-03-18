@@ -7,10 +7,6 @@ Browser di Mozilla o basati su Firefox:
 - Iceraven
 - Tor Browser, Tor Browser Alpha
 
-Browser buoni per la privacy:
-- Bromite, Bromite SystemWebView
-- Mulch, Mulch System WebView
-
 Browser migliori di Google Chrome:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
 - Chromium

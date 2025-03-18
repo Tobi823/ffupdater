@@ -7,10 +7,6 @@ Mozilla 出品或基于 Firefox 的浏览器：
 - Iceraven
 - Tor 浏览器、Tor 浏览器内测版
 
-优秀的隐私浏览器：
-- Bromite、Bromite SystemWebView
-- Mulch
-
 比 Google Chrome 更好的浏览器：
 - Brave 隐私浏览器、Brave 浏览器（公测版）、Brave 浏览器（每夜版）
 - Chromium

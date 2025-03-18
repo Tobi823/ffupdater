@@ -7,10 +7,6 @@ Przeglądarki Mozilli lub oparte na Firefoksie:
 - Iceraven
 - Tor Browser, Tor Browser Alpha
 
-Przeglądarki dla ochrony Twojej prywatności:
-- Bromite, Bromite SystemWebView
-- Mulch, Mulch System WebView
-
 Przeglądarki, które są lepsze niż Google Chrome:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
 - Chromium

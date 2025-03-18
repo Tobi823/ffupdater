@@ -7,10 +7,6 @@ Mozilla のブラウザー及び Firefox ベースのブラウザー:
 - Iceraven
 - Tor Browser, Tor Browser Alpha
 
-プライバシー保護に優れたブラウザー:
-- Bromite、Bromite SystemWebView
-- Mulch、Mulch System WebView
-
 Google Chrome より優れたブラウザー:
 - Brave プライベートブラウザ、Brave ブラウザ (ベータ版)、Brave ブラウザ (Nightly)
 - Chromium

@@ -7,10 +7,6 @@ Mozilla poolt loodud või Firefoxil põhinevad brauserid:
 - Iceraven
 - Tor Browser, Tor Browser Alpha
 
-Hea privaatsusega brauserid:
-- Bromite, Bromite SystemWebView
-- Mulch, Mulch System WebView
-
 Brauserid, mis on paremad, kui Google Chrome:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
 - Chromium

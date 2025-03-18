@@ -7,10 +7,6 @@
 - Iceraven
 - Tor Browser, Tor Browser Alpha
 
-Καλά προγράμματα περιήγησης απορρήτου:
-- Bromite, Bromite SystemWebView
-- Mulch, Mulch System WebView
-
 Πρόγραμμα περιήγησης που είναι καλύτερο από το Google Chrome:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
 - Chromium
