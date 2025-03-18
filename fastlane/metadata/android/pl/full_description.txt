@@ -13,7 +13,6 @@ Przeglądarki, które są lepsze niż Google Chrome:
 - Cromite
 - Chromium
 - DuckDuckGo Browser
-- Kiwi Browser Next
 - Privacy Browser (F-Droid)
 - Thorium
 - Vivaldi

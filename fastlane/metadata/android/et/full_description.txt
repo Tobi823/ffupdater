@@ -13,7 +13,6 @@ Brauserid, mis on paremad, kui Google Chrome:
 - Cromite
 - Chromium
 - DuckDuckGo Browser
-- Kiwi Browser Next
 - Privacy Browser (F-Droid)
 - Thorium
 - Vivaldi

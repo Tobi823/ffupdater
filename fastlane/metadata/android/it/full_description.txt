@@ -13,7 +13,6 @@ Browser migliori di Google Chrome:
 - Cromite
 - Chromium
 - DuckDuckGo Browser
-- Kiwi Browser Next
 - Browser Privacy (F-Droid)
 - Thorium
 - Vivaldi

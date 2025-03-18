@@ -13,7 +13,6 @@ Google Chrome से बेहतर कौन से ब्राउज़र �
 - Cromite
 - Chromium
 - DuckDuckGo Browser
-- Kiwi Browser Next
 - Privacy Browser (F-Droid)
 - Thorium
 - Vivaldi

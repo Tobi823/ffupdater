@@ -13,7 +13,6 @@ Navegadores que são melhores do que o Google Chrome:
 - Cromite
 - Chromium
 - Navegador DuckDuckGo
-- Kiwi Browser Next
 - Navegador de privacidade (F-Droid)
 - Thorium
 - Vivaldi

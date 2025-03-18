@@ -13,7 +13,6 @@
 - Cromite
 - Chromium
 - DuckDuckGo Browser
-- Kiwi Next
 - Privacy Browser (F-Droid)
 - Thorium
 - Vivaldi

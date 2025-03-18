@@ -13,7 +13,6 @@ Mozilla 出品或基于 Firefox 的浏览器：
 - Cromite
 - Chromium
 - DuckDuckGo 浏览器
-- Kiwi Next 浏览器
 - 隐私浏览器（F-Droid）
 - Thorium
 - Vivaldi

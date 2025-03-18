@@ -13,7 +13,6 @@
 - Cromite
 - Chromium
 - DuckDuckGo Browser
-- Kiwi Browser Next
 - Πρόγραμμα περιήγησης απορρήτου (F-Droid)
 - Θόριο
 - Βιβάλντι

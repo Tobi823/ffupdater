@@ -13,7 +13,6 @@ Navigateurs plus performants que Google Chrome :
 - Cromite
 - Chrome
 - Navigateur DuckDuckGo
-- Kiwi Browser Next
 - Privacy Browser (F-Droid)
 - Vivaldi
 

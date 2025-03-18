@@ -11,10 +11,8 @@ Pārlūki no Mozilla vai balstīti uz Firefox:
 Pārlūki labāki par Google Chrome:
 - Brave, Brave Beta, Brave (Nakts izlaidums)
 - Cromite
-- Cromite
 - Chromium
 - DuckDuckGo
-- Kiwi Browser Next
 - Privacy pārlūks (F-Droid)
 - Thorium
 - Vivaldi
