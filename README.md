@@ -33,6 +33,7 @@ Browser which are better than Google Chrome:
 - [Cromite](https://github.com/uazo/cromite)
 - [Chromium](https://www.chromium.org/chromium-projects/)
 - [DuckDuckGo Browser](https://github.com/duckduckgo/Android)
+- [Privacy Browser](https://f-droid.org/en/packages/com.stoutner.privacybrowser.standard/)
 - [Vivaldi](https://vivaldi.com/download/) ([Incomplete Source Code](https://vivaldi.com/source/))
 - [Thorium](https://github.com/Alex313031/Thorium-Android)
 
