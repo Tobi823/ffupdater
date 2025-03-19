@@ -23,19 +23,19 @@ object InstalledAppsCache {
     private var lastUpdate = 0L
 
     suspend fun getAppsApplicableForBackgroundUpdate(context: Context): List<App> {
-        return getInstalledAppsWithCorrectFingerprint(context).asSequence()
+        return getInstalledAppsWithCorrectSignature(context).asSequence()
             .filter { it !in BackgroundSettings.excludedAppsFromUpdateCheck }
             .filter { it !in ForegroundSettings.hiddenApps }
             .filter { DeviceAbiExtractor.supportsOneOf(it.findImpl().supportedAbis) }.map { it.findImpl() }
             .filter { !it.wasInstalledByOtherApp(context) }.map { it.app }.toList()
     }
 
-    suspend fun getInstalledAppsWithCorrectFingerprint(context: Context): List<App> {
+    suspend fun getInstalledAppsWithCorrectSignature(context: Context): List<App> {
         initializeCacheIfNecessary(context.applicationContext)
         return installedCorrectFingerprint.toImmutableList()
     }
 
-    suspend fun getInstalledAppsWithDifferentFingerprint(context: Context): List<App> {
+    suspend fun getInstalledAppsWithDifferentSignature(context: Context): List<App> {
         initializeCacheIfNecessary(context.applicationContext)
         return installedDifferentFingerprint.toImmutableList()
     }

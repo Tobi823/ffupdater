@@ -35,7 +35,7 @@ class EolAppsWarnerReceiver : BroadcastReceiver() {
     }
 
     private suspend fun findInstalledSupportedEolApps(context: Context): List<String> {
-        return InstalledAppsCache.getInstalledAppsWithCorrectFingerprint(context.applicationContext)
+        return InstalledAppsCache.getInstalledAppsWithCorrectSignature(context.applicationContext)
             .map { it.findImpl() }.filter { it.isEol() }.map { context.getString(it.title) }
     }
 

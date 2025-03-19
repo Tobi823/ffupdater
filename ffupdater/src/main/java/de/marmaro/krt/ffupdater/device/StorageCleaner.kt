@@ -12,7 +12,7 @@ import kotlinx.coroutines.withContext
 object StorageCleaner {
     suspend fun deleteApksOfNotInstalledApps(context: Context) {
         withContext(Dispatchers.IO) {
-            val installedApps = InstalledAppsCache.getInstalledAppsWithCorrectFingerprint(context.applicationContext)
+            val installedApps = InstalledAppsCache.getInstalledAppsWithCorrectSignature(context.applicationContext)
             val apps = App.values()
                 .filter { it !in installedApps }
 

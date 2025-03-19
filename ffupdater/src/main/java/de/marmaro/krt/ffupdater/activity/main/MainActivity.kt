@@ -45,7 +45,6 @@ import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.device.InstalledAppsCache
 import de.marmaro.krt.ffupdater.dialog.RequestInstallationPermissionDialog
 import de.marmaro.krt.ffupdater.dialog.RunningDownloadsDialog
-import de.marmaro.krt.ffupdater.network.LatestVersionCache
 import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.network.exceptions.ApiRateLimitExceededException
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
@@ -59,11 +58,14 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 
 @Keep
 class MainActivity : AppCompatActivity() {
     private lateinit var recyclerView: MainRecyclerView
+    private val recyclerViewMutex = Mutex()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -121,18 +123,12 @@ class MainActivity : AppCompatActivity() {
                     val lastBackgroundUpdateCheckTime = DataStoreHelper.lastAppBackgroundCheck
                     val lastBackgroundUpdateCheckText = if (lastBackgroundUpdateCheckTime != 0L) {
                         DateUtils.getRelativeDateTimeString(
-                            this,
-                            lastBackgroundUpdateCheckTime,
-                            DateUtils.SECOND_IN_MILLIS,
-                            DateUtils.WEEK_IN_MILLIS,
-                            0
+                            this, lastBackgroundUpdateCheckTime, DateUtils.SECOND_IN_MILLIS, DateUtils.WEEK_IN_MILLIS, 0
                         )
                     } else "/"
-                    AlertDialog.Builder(this@MainActivity)
-                        .setTitle(R.string.action_about_title)
+                    AlertDialog.Builder(this@MainActivity).setTitle(R.string.action_about_title)
                         .setMessage(getString(R.string.infobox, lastBackgroundUpdateCheckText))
-                        .setNeutralButton(R.string.ok) { dialog: DialogInterface, _: Int -> dialog.dismiss() }
-                        .create()
+                        .setNeutralButton(R.string.ok) { dialog: DialogInterface, _: Int -> dialog.dismiss() }.create()
                         .show()
                     true
                 }
@@ -146,25 +142,20 @@ class MainActivity : AppCompatActivity() {
     private var userRefreshAppList = OnRefreshListener {
         lifecycleScope.launch(Dispatchers.Main) {
             InstalledAppsCache.updateCache(applicationContext)
-            LatestVersionCache.clear()
             showInstalledApps()
         }
     }
 
     override fun onResume() {
         super.onResume()
-        lifecycleScope.launch(Dispatchers.Main) { onResumeSuspended() }
-    }
-
-    @MainThread
-    private suspend fun onResumeSuspended() {
-        showInstalledApps()
+        lifecycleScope.launch(Dispatchers.Main) {
+            showInstalledApps()
+            findViewById<RecyclerView>(R.id.main_activity__apps).layoutManager?.scrollToPosition(0)
+        }
     }
 
     private fun askForIgnoringBatteryOptimizationIfNecessary() {
-        if (DeviceSdkTester.supportsAndroid6M23() &&
-            !BackgroundWork.isBackgroundUpdateCheckReliableExecuted()
-        ) {
+        if (DeviceSdkTester.supportsAndroid6M23() && !BackgroundWork.isBackgroundUpdateCheckReliableExecuted()) {
             NotificationBuilder.showBackgroundUpdateCheckUnreliableExecutionNotification(this)
         }
     }
@@ -177,17 +168,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private suspend fun showInstalledApps() {
-        val hiddenApps = ForegroundSettings.hiddenApps
-        val correctFingerprintApps = InstalledAppsCache.getInstalledAppsWithCorrectFingerprint(applicationContext)
-            .filter { it !in hiddenApps }
-        val wrongFingerprintApps = InstalledAppsCache.getInstalledAppsWithDifferentFingerprint(applicationContext)
-            .filter { it !in hiddenApps }
+        val context = applicationContext
+        val appsWithCorrectSignature = InstalledAppsCache.getInstalledAppsWithCorrectSignature(context)
+        val appsWithDifferentSignature = InstalledAppsCache.getInstalledAppsWithDifferentSignature(context)
 
-        recyclerView.notifyInstalledApps(
-            correctFingerprintApps,
-            if (ForegroundSettings.isHideAppsSignedByDifferentCertificate) listOf() else wrongFingerprintApps
-        )
-        fetchLatestUpdates(correctFingerprintApps)
+        recyclerViewMutex.withLock {
+            recyclerView.notifyInstalledApps(
+                appsWithCorrectSignature,
+                if (ForegroundSettings.isHideAppsSignedByDifferentCertificate) listOf() else appsWithDifferentSignature
+            )
+        }
+        fetchLatestUpdates(appsWithCorrectSignature)
     }
 
     private suspend fun fetchLatestUpdates(apps: List<App>) {
@@ -203,6 +194,9 @@ class MainActivity : AppCompatActivity() {
                 }.awaitAll()
             }
         }
+        recyclerViewMutex.withLock {
+            recyclerView.sortAppsByUpdateAvailabilityAndName()
+        }
     }
 
     private fun showErrorUnmeteredNetwork(apps: List<App>) {
@@ -215,12 +209,16 @@ class MainActivity : AppCompatActivity() {
 
     private suspend fun updateMetadataOf(app: App): InstalledAppStatus? {
         try {
-            recyclerView.notifyAppChange(app, null)
+            recyclerViewMutex.withLock {
+                recyclerView.notifyAppChange(app, null)
+            }
             val updateStatus = withContext(Dispatchers.IO) {
                 app.findImpl().findStatusOrUseRecentCache(applicationContext)
             }
-            recyclerView.notifyAppChange(app, updateStatus)
-            recyclerView.notifyClearedErrorForApp(app)
+            recyclerViewMutex.withLock {
+                recyclerView.notifyAppChange(app, updateStatus)
+                recyclerView.notifyClearedErrorForApp(app)
+            }
             return updateStatus
         } catch (e: Exception) {
             Log.e(LOG_TAG, "Failed to update the metadata of ${app.name}", e)
@@ -230,7 +228,9 @@ class MainActivity : AppCompatActivity() {
                 is DisplayableException -> R.string.main_activity__an_error_occurred
                 else -> R.string.main_activity__unexpected_error
             }
-            recyclerView.notifyErrorForApp(app, textId, e)
+            recyclerViewMutex.withLock {
+                recyclerView.notifyErrorForApp(app, textId, e)
+            }
             showBriefMessage(getString(textId))
             return null
         }
@@ -256,7 +256,8 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun hasAppInstallPermission() = DeviceSdkTester.supportsAndroid8Oreo26() && !packageManager.canRequestPackageInstalls()
+    private fun hasAppInstallPermission() =
+        DeviceSdkTester.supportsAndroid8Oreo26() && !packageManager.canRequestPackageInstalls()
 
     private fun isNetworkMeterStatusOk() = !ForegroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)
 
@@ -290,8 +291,7 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-        registerForActivityResult(ActivityResultContracts.RequestPermission()) {}
-            .launch(POST_NOTIFICATIONS)
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) {}.launch(POST_NOTIFICATIONS)
     }
 
     companion object {

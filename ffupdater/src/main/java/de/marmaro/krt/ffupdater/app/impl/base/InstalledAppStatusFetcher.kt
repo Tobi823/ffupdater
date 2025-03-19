@@ -35,6 +35,11 @@ interface InstalledAppStatusFetcher : InstalledVersionFetcher, LatestVersionFetc
         return findStatusAndCacheIt(context, LatestVersionCache.getOld(app))
     }
 
+    suspend fun tryGetOldCache(context: Context): InstalledAppStatus? {
+        val cachedVersion = LatestVersionCache.getOld(app) ?: return null
+        return convertToInstalledAppStatus(context, cachedVersion)
+    }
+
     private suspend fun findStatusAndCacheIt(
         context: Context,
         cachedLatestVersion: LatestVersion?,

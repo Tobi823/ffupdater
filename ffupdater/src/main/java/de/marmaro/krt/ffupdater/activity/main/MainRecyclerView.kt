@@ -29,11 +29,14 @@ import de.marmaro.krt.ffupdater.dialog.CardviewOptionsDialog.Companion.APP_WAS_H
 import de.marmaro.krt.ffupdater.dialog.CardviewOptionsDialog.Companion.AUTO_UPDATE_CHANGED
 import de.marmaro.krt.ffupdater.settings.BackgroundSettings
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
 import java.time.DateTimeException
 import java.time.Duration
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
+import java.util.Collections
 
 class MainRecyclerView(private val activity: MainActivity) : RecyclerView.Adapter<MainRecyclerView.AppHolder>() {
 
@@ -43,23 +46,25 @@ class MainRecyclerView(private val activity: MainActivity) : RecyclerView.Adapte
     private var elements = mutableListOf<App>()
     private var errors = mutableMapOf<App, ExceptionWrapper>()
     private var appsWithWrongFingerprint = setOf<App>()
+    private var appsWithCorrectFingerprint = setOf<App>()
     private var appAndUpdateStatus = mutableMapOf<App, InstalledAppStatus>()
-
 
     @UiThread
     @SuppressLint("NotifyDataSetChanged")
-    fun notifyInstalledApps(appsWithCorrectFingerprint: List<App>, appsWithWrongFingerprint: List<App>) {
-        val allElements = appsWithCorrectFingerprint + appsWithWrongFingerprint
-        if (elements != allElements || this.appsWithWrongFingerprint != appsWithWrongFingerprint) {
+    suspend fun notifyInstalledApps(appsWithCorrectFingerprint: List<App>, appsWithWrongFingerprint: List<App>) {
+        val sortedAppsWithCorrectFingerprint = sortApps(appsWithCorrectFingerprint)
+        val allElements = sortedAppsWithCorrectFingerprint + appsWithWrongFingerprint
+        if (elements != allElements) {
             elements = allElements.toMutableList()
             this.appsWithWrongFingerprint = appsWithWrongFingerprint.toSet()
+            this.appsWithCorrectFingerprint = sortedAppsWithCorrectFingerprint.toSet()
             notifyDataSetChanged()
         }
     }
 
     @UiThread
     @Throws(IllegalArgumentException::class)
-    fun notifyAppChange(app: App, updateStatus: InstalledAppStatus?) {
+    suspend fun notifyAppChange(app: App, updateStatus: InstalledAppStatus?) {
         if (updateStatus == null) {
             appAndUpdateStatus.remove(app)
         } else {
@@ -68,6 +73,7 @@ class MainRecyclerView(private val activity: MainActivity) : RecyclerView.Adapte
         val index = elements.indexOf(app)
         require(index != -1)
         notifyItemChanged(index)
+        sortAppsByUpdateAvailabilityAndName(app)
     }
 
     @UiThread
@@ -89,6 +95,52 @@ class MainRecyclerView(private val activity: MainActivity) : RecyclerView.Adapte
             require(index != -1)
             notifyItemChanged(index)
         }
+    }
+
+    private suspend fun sortAppsByUpdateAvailabilityAndName(app: App) {
+        val index = elements.indexOf(app)
+        require(index != -1)
+
+        val newOrder = sortApps(appsWithCorrectFingerprint.toList())
+        val newOrderItemIndex = elements.indexOf(newOrder[index])
+        require(newOrderItemIndex != -1)
+        if (newOrderItemIndex == index) {
+            return // skip because nothing changes
+        }
+
+        require(newOrderItemIndex != -1)
+        Collections.swap(elements, index, newOrderItemIndex)
+        notifyItemChanged(index)
+        notifyItemChanged(newOrderItemIndex)
+    }
+
+    suspend fun sortAppsByUpdateAvailabilityAndName() {
+        appsWithCorrectFingerprint.forEach {
+            sortAppsByUpdateAvailabilityAndName(it)
+        }
+    }
+
+    private fun convertToValue(status: InstalledAppStatus?): Int {
+        if (status == null) {
+            return 2
+        }
+        if (status.isUpdateAvailable) {
+            return 1
+        }
+        return 3
+    }
+
+    private suspend fun sortApps(apps: List<App>): MutableList<App> {
+        val installStatus = apps.map {
+            activity.lifecycleScope.async {
+                it to (appAndUpdateStatus[it] ?: it.findImpl().tryGetOldCache(activity))
+            }
+        }.toList().awaitAll()
+
+        return installStatus.stream() //
+            .sorted(compareBy({ convertToValue(it.second) }, { activity.getString(it.first.findImpl().title) }))
+            .map { it.first } //
+            .toList()
     }
 
     inner class AppHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
