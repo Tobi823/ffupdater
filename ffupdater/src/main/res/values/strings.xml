@@ -271,7 +271,7 @@
     <string name="foreground__hidden_apps__title">Hidden apps</string>
     <string name="cardview_dialog__hide">Hide</string>
     <string name="download_activity__retry_installation">Retry installation</string>
-    <string name="main_activity__update_all_apps_dialog__message">Should all outdated and not disabled apps be updated? The updates will be downloaded in the background. A notification will inform you when the the download is finished. You have to click it to start the update process.</string>
+    <string name="main_activity__update_all_apps_dialog__message">Should all outdated and not disabled apps be updated? The updates will be downloaded in the background. A notification will inform you when the download is finished. You have to click it to start the update process.</string>
     <string name="main_activity__update_all_apps_dialog__confirm">Update apps</string>
     <string name="main_activity__update_all_apps_dialog__abort">Abort</string>
     <string name="main_activity__update_all_apps_dialog__title">Update all apps</string>
