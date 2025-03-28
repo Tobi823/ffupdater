@@ -1,6 +1,6 @@
 [<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="80">](https://f-droid.org/app/de.marmaro.krt.ffupdater)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-19-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-20-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 # Firefox-Updater
@@ -102,6 +102,7 @@ For advanced users: [How to contribute](HOW_TO_CONTRIBUTE.md)
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/TeeTeeHaa"><img src="https://avatars.githubusercontent.com/u/739754?v=4?s=100" width="100px;" alt="TeeTeeHaa"/><br /><sub><b>TeeTeeHaa</b></sub></a><br /><a href="https://github.com/Tobi823/ffupdater/issues?q=author%3ATeeTeeHaa" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/kewisch"><img src="https://avatars.githubusercontent.com/u/607198?v=4?s=100" width="100px;" alt="Philipp Kewisch"/><br /><sub><b>Philipp Kewisch</b></sub></a><br /><a href="https://github.com/Tobi823/ffupdater/commits?author=kewisch" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/kazushi3"><img src="https://avatars.githubusercontent.com/u/57816457?v=4?s=100" width="100px;" alt="kazushi3"/><br /><sub><b>kazushi3</b></sub></a><br /><a href="https://github.com/Tobi823/ffupdater/commits?author=kazushi3" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://coool.id.lv/about"><img src="https://avatars.githubusercontent.com/u/8421903?v=4?s=100" width="100px;" alt="ℂ𝕠𝕠𝕠𝕝 (𝕘𝕚𝕥𝕙𝕦𝕓.𝕔𝕠𝕞/ℂ𝕠𝕠𝕠𝕝)"/><br /><sub><b>ℂ𝕠𝕠𝕠𝕝 (𝕘𝕚𝕥𝕙𝕦𝕓.𝕔𝕠𝕞/ℂ𝕠𝕠𝕠𝕝)</b></sub></a><br /><a href="#translation-Coool" title="Translation">🌍</a></td>
     </tr>
   </tbody>
   <tfoot>
