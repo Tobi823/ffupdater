@@ -91,6 +91,10 @@ android {
     compileOptions {
         encoding = "UTF-8"
         coreLibraryDesugaringEnabled true
+
+        // https://stackoverflow.com/a/59296304 fix error: Didn't find class "androidx.core.app.CoreComponentFactory
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     kotlinOptions {
