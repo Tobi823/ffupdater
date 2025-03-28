@@ -2,6 +2,7 @@ package de.marmaro.krt.ffupdater.app.impl.base
 
 import android.content.Context
 import android.os.Environment
+import android.util.Base64.*
 import android.util.Log
 import androidx.annotation.Keep
 import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
@@ -15,6 +16,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.withContext
 import java.io.File
+import java.nio.charset.Charset
 import java.time.format.DateTimeFormatter
 import java.util.UUID
 import java.util.zip.ZipFile
@@ -40,7 +42,7 @@ interface ApkDownloader : AppAttributes {
     }
 
     suspend fun isApkDownloaded(context: Context, latestVersion: LatestVersion): Boolean {
-        val file = getApkFile(context.applicationContext, latestVersion)
+        val file = getApkCacheFile(context.applicationContext, latestVersion)
         return file.exists() && StorageUtil.isValidZipOrApkFile(file)
     }
 
@@ -48,15 +50,15 @@ interface ApkDownloader : AppAttributes {
         return context.applicationContext.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)!!
     }
 
-    fun getApkFile(context: Context, latestVersion: LatestVersion): File {
+    fun getApkCacheFile(context: Context, latestVersion: LatestVersion): File {
         val cacheFolder = getApkCacheFolder(context.applicationContext)
-        return File(cacheFolder, "${getSanitizedPackageName()}_${getSanitizedVersion(latestVersion)}.apk")
+        return File(cacheFolder, "${app.name}_${convertToBase64(latestVersion)}.apk")
     }
 
     suspend fun deleteFileCache(context: Context) {
         withContext(Dispatchers.IO) {
             getApkCacheFolder(context.applicationContext).listFiles()!!
-                .filter { it.name.startsWith("${getSanitizedPackageName()}_") }.filter { it.name.endsWith(".apk") }
+                .filter { it.name.startsWith("${app.name}_") && it.name.endsWith(".apk") }
                 .forEach {
                     Log.d(LOG_TAG, "ApkDownloader: Delete cached APK of ${app.name} (${it.absolutePath}).")
                     it.delete()
@@ -66,29 +68,27 @@ interface ApkDownloader : AppAttributes {
 
     suspend fun deleteFileCacheExceptLatest(context: Context, latestVersion: LatestVersion) {
         withContext(Dispatchers.IO) {
-            val latestFile = getApkFile(context.applicationContext, latestVersion)
-            getApkCacheFolder(context.applicationContext).listFiles()!!.filter { it != latestFile }
-                .filter { it.name.startsWith("${getSanitizedPackageName()}_") }.filter { it.name.endsWith(".apk") }
-                .also { if (it.isNotEmpty()) Log.i(LOG_TAG, "ApkDownloader: Delete older files from ${app.name}") }
-                .forEach { it.delete() }
+            val latestFile = getApkCacheFile(context.applicationContext, latestVersion)
+            getApkCacheFolder(context.applicationContext).listFiles()!! //
+                .filter { it != latestFile }.filter { it.name.startsWith("${app.name}_") && it.name.endsWith(".apk") }
+                .forEach {
+                    Log.d(LOG_TAG, "ApkDownloader: Delete older APK of ${app.name} (${it.absolutePath}).")
+                    it.delete()
+                }
         }
     }
 
     private fun generateTempApkFile(context: Context): File {
         val cacheFolder = getApkCacheFolder(context.applicationContext)
         val suffix = if (isAppPublishedAsZipArchive()) ".zip" else ".apk"
-        return File(cacheFolder, UUID.randomUUID().toString() + suffix)
+        return File(cacheFolder, "${UUID.randomUUID()}$suffix")
     }
 
-    private fun getSanitizedPackageName(): String {
-        return packageName.replace("""\W""".toRegex(), "_")
-    }
-
-    private fun getSanitizedVersion(latestVersion: LatestVersion): String {
-        val version = latestVersion.version
-        val sanitizedVersionText = version.versionText.replace("""\W""".toRegex(), "_")
-        val dateOrEmptyString = version.buildDate?.format(DateTimeFormatter.BASIC_ISO_DATE)?.let { "_$it" } ?: ""
-        return sanitizedVersionText + dateOrEmptyString
+    private fun convertToBase64(latestVersion: LatestVersion): String {
+        val versionStr = latestVersion.version.versionText
+        val dateStr = latestVersion.version.buildDate?.format(DateTimeFormatter.BASIC_ISO_DATE) ?: ""
+        val input = "$versionStr $dateStr".toByteArray(Charset.forName("UTF8"))
+        return encodeToString(input, URL_SAFE)
     }
 
     private suspend fun checkDownloadFile(file: File, latestVersion: LatestVersion) {
@@ -106,7 +106,7 @@ interface ApkDownloader : AppAttributes {
         downloadFile: File,
         latestVersion: LatestVersion,
     ) {
-        val apkFile = getApkFile(context.applicationContext, latestVersion)
+        val apkFile = getApkCacheFile(context.applicationContext, latestVersion)
         apkFile.delete()
         if (isAppPublishedAsZipArchive()) {
             processZipDownload(downloadFile, apkFile)

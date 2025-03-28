@@ -285,7 +285,7 @@ class DownloadActivity : AppCompatActivity() {
         }
 
         debug("use cached APK file")
-        val file = appImpl.getApkFile(applicationContext, status.latestVersion)
+        val file = appImpl.getApkCacheFile(applicationContext, status.latestVersion)
         gui.show(R.id.useCachedDownloadedApk)
         gui.setText(R.id.useCachedDownloadedApk__path, file.absolutePath)
         return true
@@ -407,7 +407,7 @@ class DownloadActivity : AppCompatActivity() {
     @MainThread
     private suspend fun installAppWithoutErrorChecking(status: InstalledAppStatus) {
         debug("install app (3/3)")
-        val file = appImpl.getApkFile(applicationContext, status.latestVersion)
+        val file = appImpl.getApkCacheFile(applicationContext, status.latestVersion)
 
         var certificateHash = "error"
         findViewById<View>(R.id.installingApplication).visibleDuringExecution {

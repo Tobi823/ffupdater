@@ -84,7 +84,7 @@ class UpdateAllActivity : AppCompatActivity() {
     private suspend fun updateApp(appImpl: AppBase, status: InstalledAppStatus) {
         val title = applicationContext.getString(appImpl.title)
         showText(getString(R.string.update_all_activity__start_update, title))
-        val file = status.app.findImpl().getApkFile(applicationContext, status.latestVersion)
+        val file = status.app.findImpl().getApkCacheFile(applicationContext, status.latestVersion)
         if (!file.exists()) {
             showText(getString(R.string.update_all_activity__downloaded_file_is_missing, title))
             return

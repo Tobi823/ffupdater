@@ -16,6 +16,7 @@ import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.InstalledAppStatus
 import de.marmaro.krt.ffupdater.background.exception.AppUpdaterNonRetryableException
 import de.marmaro.krt.ffupdater.background.exception.AppUpdaterRetryableException
+import de.marmaro.krt.ffupdater.background.exception.NoAppUpdateAvailableException
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.device.PowerSaveModeReceiver
 import de.marmaro.krt.ffupdater.device.PowerSaveModeReceiver.PowerSaveModeDuration.ENABLED_RECENTLY
@@ -55,20 +56,26 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) : CoroutineWo
     override suspend fun doWork(): Result {
         logInfo("Start doWork for ${getApp()}")
 
-        return doWorkInternal().fold(onSuccess = { Result.success() }, onFailure = {
-            logError("Failed to update app", it)
-            if (showUpdateNotification && !(it is AppUpdaterRetryableException && runAttemptCount < MAX_RETRIES)) {
-                showUpdateAvailableNotification(applicationContext, getApp())
-            }
-            if (it is AppUpdaterRetryableException) {
-                return@fold getLimitedRetryValue(Result.success(), it)
-            }
-            if (it is AppUpdaterNonRetryableException) {
-                return@fold Result.success()
-            }
-            // unexpected exception: do a limited retry
-            return@fold getLimitedRetryValue(Result.failure(), it)
-        })
+        return doWorkInternal().fold( //
+            onSuccess = { Result.success() }, //
+            onFailure = {
+                if (it is NoAppUpdateAvailableException) {
+                    logInfo("No update available for app ${getApp().name}")
+                    return@fold Result.success()
+                }
+                logError("Failed to update app", it)
+                if (showUpdateNotification && !(it is AppUpdaterRetryableException && runAttemptCount < MAX_RETRIES)) {
+                    showUpdateAvailableNotification(applicationContext, getApp())
+                }
+                if (it is AppUpdaterRetryableException) {
+                    return@fold getLimitedRetryValue(Result.success(), it)
+                }
+                if (it is AppUpdaterNonRetryableException) {
+                    return@fold Result.success()
+                }
+                // unexpected exception: do a limited retry
+                return@fold getLimitedRetryValue(Result.failure(), it)
+            })
     }
 
     private suspend fun doWorkInternal(): kotlin.Result<Boolean> {
@@ -94,7 +101,7 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) : CoroutineWo
             return failure(e)
         }
         if (!installedAppStatus.isUpdateAvailable) {
-            return failure(AppUpdaterNonRetryableException("No update available for ${app.name}."))
+            return failure(NoAppUpdateAvailableException(app))
         }
         return success(installedAppStatus)
     }
@@ -123,13 +130,14 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) : CoroutineWo
     private suspend fun doInstallation(appStatus: InstalledAppStatus): kotlin.Result<Boolean> {
         isInstallationPossible(appStatus.app).onFailure { return failure(it) }
 
-        return installApplication(appStatus).onSuccess {
-            showInstallSuccessNotification(applicationContext, appStatus.app)
-            return success(true)
-        }.onFailure {
-            showUpdateAvailableNotification(applicationContext, appStatus.app)
-            return failure(AppUpdaterNonRetryableException("Installation failed", it))
-        }
+        return installApplication(appStatus) //
+            .onSuccess {
+                showInstallSuccessNotification(applicationContext, appStatus.app)
+                return success(true)
+            }.onFailure {
+                showUpdateAvailableNotification(applicationContext, appStatus.app)
+                return failure(AppUpdaterNonRetryableException("Installation failed", it))
+            }
     }
 
     private fun getApp(): App {
@@ -142,8 +150,9 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) : CoroutineWo
         if (isStopped) {
             return failure(AppUpdaterNonRetryableException("WorkRequest is stopped."))
         }
-        if (!FileDownloader.isUrlAvailable(app.findImpl().hostnameForInternetCheck)) {
-            return failure(AppUpdaterRetryableException("Simple network test was not successful. Retry later."))
+        val hostnameForInternetCheck = app.findImpl().hostnameForInternetCheck
+        if (!FileDownloader.isUrlAvailable(hostnameForInternetCheck)) {
+            return failure(AppUpdaterRetryableException("Simple network test ($hostnameForInternetCheck) was not successful. Retry later."))
         }
         if (FileDownloader.areDownloadsCurrentlyRunning()) {
             return failure(AppUpdaterRetryableException("Other downloads are running. Retry later."))
@@ -280,7 +289,7 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) : CoroutineWo
     private suspend fun installApplication(installedAppStatus: InstalledAppStatus): kotlin.Result<Boolean> {
         val app = installedAppStatus.app
         val appImpl = app.findImpl()
-        val file = appImpl.getApkFile(applicationContext, installedAppStatus.latestVersion)
+        val file = appImpl.getApkCacheFile(applicationContext, installedAppStatus.latestVersion)
 
         try {
             logInfo("Update/install $app.")
@@ -316,7 +325,7 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) : CoroutineWo
 
     companion object {
         private const val APP_NAME_KEY = "app_name"
-        private const val CLASS_LOGTAG = "AppUpdater:"
+        private const val CLASS_LOGTAG = "AppUpdater"
         private const val MAX_RETRIES = 5 // total of 15.5min waiting time (30s + 60s + 120s + 240s + 480s)
         private val ERROR_IGNORE_TIMESPAN = ofDays(2)
         private const val UPDATE_NOTIFICATION_ONLY_AFTER_MS = 3000

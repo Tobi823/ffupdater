@@ -3,7 +3,7 @@ package de.marmaro.krt.ffupdater.background.exception
 import androidx.annotation.Keep
 
 @Keep
-class AppUpdaterNonRetryableException(
+open class AppUpdaterNonRetryableException(
     message: String,
     exception: Throwable?,
 ) : RuntimeException(message, exception) {
