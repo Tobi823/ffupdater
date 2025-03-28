@@ -109,7 +109,6 @@ class UpdateAllAppsWorker(context: Context, workerParams: WorkerParameters) : Co
     private suspend fun download(
         installedAppStatus: InstalledAppStatus, onUpdate: suspend (DownloadStatus) -> Unit
     ): kotlin.Result<Boolean> {
-        logInfo("Download update for ${installedAppStatus.app}.")
         val appImpl = installedAppStatus.app.findImpl()
         try {
             coroutineScope {

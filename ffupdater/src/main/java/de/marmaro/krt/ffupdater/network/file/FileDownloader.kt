@@ -73,7 +73,7 @@ object FileDownloader {
     suspend fun downloadFile(url: String, file: File, progress: Channel<DownloadStatus>) {
         val body = performHttpRequest(url, "GET", null)
         val size = body.contentLength()
-        val temp = File(file.parentFile, UUID.randomUUID().toString() + file.extension) // temp file only for download
+        val temp = File(file.parentFile, "${UUID.randomUUID()}${file.extension}") // temp file only for download
         temp.delete() // make sure that we always have a new, "clean" target for download
         try {
             body.byteStream().use { source ->

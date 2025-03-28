@@ -95,7 +95,7 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) : Corouti
     companion object {
         private const val CHECK_FOR_UPDATES_KEY = "update_checker"
         private const val DOWNLOADER_INSTALLER_KEY = "ffupdater_downloader_and_installer"
-        private const val CLASS_LOGTAG = "BackgroundJob:"
+        private const val CLASS_LOGTAG = "BackgroundJob"
 
 
         fun start(context: Context) {

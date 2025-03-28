@@ -92,11 +92,13 @@ object NotificationBuilder {
                 "update_notification__${app.name.lowercase()}"
             } else {
                 "update_notification__general"
-            }, name = if (useDifferentChannels) {
+            }, //
+            name = if (useDifferentChannels) {
                 context.getString(notification__update_available__channel_name, appTitle)
             } else {
                 context.getString(notification__update_available__generic_channel_name)
-            }, description = if (useDifferentChannels) {
+            }, //
+            description = if (useDifferentChannels) {
                 context.getString(notification__update_available__channel_descr, appTitle)
             } else {
                 context.getString(notification__update_available__generic_channel_descr)
