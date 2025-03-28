@@ -7,7 +7,7 @@ import androidx.annotation.MainThread
 import androidx.work.CoroutineWorker
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.ExistingPeriodicWorkPolicy.CANCEL_AND_REENQUEUE
-import androidx.work.ExistingPeriodicWorkPolicy.UPDATE
+import androidx.work.ExistingPeriodicWorkPolicy.KEEP
 import androidx.work.ExistingWorkPolicy.REPLACE
 import androidx.work.OneTimeWorkRequest
 import androidx.work.PeriodicWorkRequest
@@ -100,7 +100,7 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) : Corouti
 
         fun start(context: Context) {
             logInfo("Start BackgroundWork")
-            internalStart(context.applicationContext, UPDATE)
+            internalStart(context.applicationContext, KEEP)
         }
 
         fun forceRestart(context: Context) {
