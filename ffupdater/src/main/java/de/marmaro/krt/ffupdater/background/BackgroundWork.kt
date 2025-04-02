@@ -21,6 +21,7 @@ import de.marmaro.krt.ffupdater.notification.NotificationBuilder.showGeneralErro
 import de.marmaro.krt.ffupdater.settings.BackgroundSettings
 import de.marmaro.krt.ffupdater.settings.DataStoreHelper
 import de.marmaro.krt.ffupdater.utils.max
+import kotlinx.coroutines.CancellationException
 import java.time.Duration
 import java.util.concurrent.TimeUnit.MINUTES
 import java.util.concurrent.TimeUnit.SECONDS
@@ -57,6 +58,9 @@ class BackgroundWork(context: Context, workerParams: WorkerParameters) : Corouti
     override suspend fun doWork(): Result {
         try {
             return internalDoWork()
+        } catch (e: CancellationException) {
+            logError("BackgroundWorker: Job was canceled (kotlinx.coroutines.JobCancellationException).", e)
+            return Result.success()
         } catch (e: Exception) {
             logError("BackgroundWorker: Job failed.", e)
             showGeneralErrorNotification(applicationContext, e)
