@@ -64,6 +64,8 @@ object FileDownloader {
             val request = Request.Builder().url(url).cacheControl(CacheControl.FORCE_NETWORK).method("HEAD", null)
             client.newCall(request.build()).await()
             true
+        } catch (e: CancellationException) {
+            throw e // CancellationException is normal and should not treat as error
         } catch (e: Exception) {
             false
         }
@@ -86,6 +88,8 @@ object FileDownloader {
             if (!temp.renameTo(file)) {
                 throw DisplayableException("failed to rename downloaded file $temp to $file")
             }
+        } catch (e: CancellationException) {
+            throw e // CancellationException is normal and should not treat as error
         } catch (e: Exception) {
             when (e) {
                 is IOException,
@@ -143,6 +147,8 @@ object FileDownloader {
                 try {
                     val responseBody = performHttpRequest(url, method, requestBody)
                     responseBody.charStream().buffered().use { execute(it) }
+                } catch (e: CancellationException) {
+                    throw e // CancellationException is normal and should not treat as error
                 } catch (e: Exception) {
                     when (e) {
                         is IOException,

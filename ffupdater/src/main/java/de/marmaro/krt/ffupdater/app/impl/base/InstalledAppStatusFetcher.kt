@@ -13,6 +13,7 @@ import de.marmaro.krt.ffupdater.device.InstalledAppsCache
 import de.marmaro.krt.ffupdater.network.LatestVersionCache
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.utils.MeasureExecutionTime
+import kotlin.coroutines.cancellation.CancellationException
 
 @Keep
 interface InstalledAppStatusFetcher : InstalledVersionFetcher, LatestVersionFetcher, VersionDisplay {
@@ -56,6 +57,8 @@ interface InstalledAppStatusFetcher : InstalledVersionFetcher, LatestVersionFetc
             LatestVersionCache.cache(app, latestVersion)
             Log.i(LOG_TAG, "InstalledAppStatusFetcher: Found ${app.name} ${latestVersion.version} (${duration}ms).")
             return convertToInstalledAppStatus(context, latestVersion)
+        } catch (e: CancellationException) {
+            throw e // CancellationException is normal and should not treat as error
         } catch (e: NetworkException) {
             throw NetworkException("Unable to fetch the latest update for ${app.name}.", e)
         } catch (e: DisplayableException) {

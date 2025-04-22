@@ -53,6 +53,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlin.coroutines.cancellation.CancellationException
 
 
 /**
@@ -248,6 +249,8 @@ class DownloadActivity : AppCompatActivity() {
     private suspend fun fetchDownloadInformation(): InstalledAppStatus? {
         return try {
             fetchDownloadInformationWithoutErrorChecking()
+        } catch (e: CancellationException) {
+            throw e // CancellationException is normal and should not treat as error
         } catch (e: Exception) {
             debug("fetching download information failed for ${app.name}", e)
             if (e !is DisplayableException) throw e
@@ -301,6 +304,8 @@ class DownloadActivity : AppCompatActivity() {
                 }
             }
             true
+        } catch (e: CancellationException) {
+            throw e // CancellationException is normal and should not treat as error
         } catch (e: Exception) {
             debug("reusing the existing download of $[app.name} failed", e)
             if (e !is DisplayableException) throw e
@@ -337,6 +342,8 @@ class DownloadActivity : AppCompatActivity() {
                 }
             }
             true
+        } catch (e: CancellationException) {
+            throw e // CancellationException is normal and should not treat as error
         } catch (e: Exception) {
             debug("download failed", e)
             if (e !is DisplayableException) throw e
@@ -356,6 +363,8 @@ class DownloadActivity : AppCompatActivity() {
                 try {
                     appImpl.download(applicationContext, status.latestVersion, channel)
                     return@async Result.success(true)
+                } catch (e: CancellationException) {
+                    throw e // CancellationException is normal and should not treat as error
                 } catch (e: Exception) {
                     return@async Result.failure(e)
                 } finally {
@@ -394,6 +403,8 @@ class DownloadActivity : AppCompatActivity() {
         return try {
             installAppWithoutErrorChecking(status)
             true
+        } catch (e: CancellationException) {
+            throw e // CancellationException is normal and should not treat as error
         } catch (e: InstallationFailedException) {
             debug("installation failed", e)
             val ex = RuntimeException("Failed to install ${app.name} in the foreground.", e)

@@ -29,6 +29,7 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.withContext
 import kotlin.Result.Companion.failure
 import kotlin.Result.Companion.success
+import kotlin.coroutines.cancellation.CancellationException
 
 @Keep
 class UpdateAllAppsWorker(context: Context, workerParams: WorkerParameters) : CoroutineWorker(context, workerParams) {
@@ -45,6 +46,8 @@ class UpdateAllAppsWorker(context: Context, workerParams: WorkerParameters) : Co
                 updateCheckWrapper(app).map { downloadWrapper(it) }
             }
             NotificationBuilder.UpdateAllUpdates.showFinishNotification(applicationContext)
+        } catch (e: CancellationException) {
+            throw e // CancellationException is normal and should not treat as error
         } catch (e: Exception) {
             NotificationBuilder.UpdateAllUpdates.showErrorNotification(applicationContext, e) //TODO ignore some errors
             throw e
@@ -62,6 +65,8 @@ class UpdateAllAppsWorker(context: Context, workerParams: WorkerParameters) : Co
         isUpdateCheckPossible(app).onFailure { return failure(it) }
         val installedAppStatus = try {
             app.findImpl().findStatusOrUseRecentCache(applicationContext)
+        } catch (e: CancellationException) {
+            throw e // CancellationException is normal and should not treat as error
         } catch (e: Exception) {
             return failure(e)
         }
@@ -118,6 +123,8 @@ class UpdateAllAppsWorker(context: Context, workerParams: WorkerParameters) : Co
                     try {
                         appImpl.download(applicationContext, installedAppStatus.latestVersion, progress)
                         return@async success(true)
+                    } catch (e: CancellationException) {
+                        throw e // CancellationException is normal and should not treat as error
                     } catch (e: Exception) {
                         return@async failure(e)
                     } finally {
@@ -134,6 +141,8 @@ class UpdateAllAppsWorker(context: Context, workerParams: WorkerParameters) : Co
                 }
                 download.await().getOrThrow()
             }
+        } catch (e: CancellationException) {
+            throw e // CancellationException is normal and should not treat as error
         } catch (e: Exception) {
             return failure(e)
         }

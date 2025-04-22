@@ -61,6 +61,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
+import kotlin.coroutines.cancellation.CancellationException
 
 @Keep
 class MainActivity : AppCompatActivity() {
@@ -220,6 +221,8 @@ class MainActivity : AppCompatActivity() {
                 recyclerView.notifyClearedErrorForApp(app)
             }
             return updateStatus
+        } catch (e: CancellationException) {
+            throw e // CancellationException is normal and should not treat as error
         } catch (e: Exception) {
             Log.e(LOG_TAG, "Failed to update the metadata of ${app.name}", e)
             val textId = when (e) {

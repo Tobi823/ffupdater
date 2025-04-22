@@ -7,6 +7,7 @@ import de.marmaro.krt.ffupdater.installer.entity.InstallResult
 import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
 import de.marmaro.krt.ffupdater.security.FingerprintValidator
 import java.io.File
+import kotlin.coroutines.cancellation.CancellationException
 
 class CertificateVerifier(contextParam: Context, private val appImpl: AppBase, private val file: File) {
     private val context = contextParam.applicationContext
@@ -21,6 +22,8 @@ class CertificateVerifier(contextParam: Context, private val appImpl: AppBase, p
     private suspend fun hasApkCorrectCertificate(): String {
         val fileResult = try {
             FingerprintValidator.checkApkFile(context.packageManager, file, appImpl)
+        } catch (e: CancellationException) {
+            throw e // CancellationException is normal and should not treat as error
         } catch (e: Exception) {
             val message = "Can't validate the signature of the APK file."
             val translatedMessage = context.getString(R.string.app_installer__failed_to_validate_signature_of_download)
@@ -39,6 +42,8 @@ class CertificateVerifier(contextParam: Context, private val appImpl: AppBase, p
     private suspend fun hasInstalledAppCorrectCertificate(fileCertHash: String) {
         val appResult = try {
             FingerprintValidator.checkInstalledApp(context.packageManager, appImpl)
+        } catch (e: CancellationException) {
+            throw e // CancellationException is normal and should not treat as error
         } catch (e: Exception) {
             val message = "Failed to check installed app."
             val translated = context.getString(R.string.app_installer__failed_to_verify_signature_of_installed_app)

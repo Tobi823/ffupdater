@@ -11,6 +11,7 @@ import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import kotlin.coroutines.cancellation.CancellationException
 
 object FdroidConsumer {
 
@@ -49,6 +50,8 @@ object FdroidConsumer {
                                 )
                             })
             }
+        } catch (e: CancellationException) {
+            throw e // CancellationException is normal and should not treat as error
         } catch (e: Exception) {
             when (e) {
                 is NullPointerException,

@@ -23,6 +23,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.runBlocking
 import java.io.File
+import kotlin.coroutines.cancellation.CancellationException
 
 
 @Keep
@@ -78,6 +79,8 @@ class IntentInstaller(
             runBlocking {
                 installFailure.send(result)
             }
+        } catch (e: CancellationException) {
+            throw e // CancellationException is normal and should not treat as error
         } catch (e: Exception) {
             throw RuntimeException("Can't use channel to send installation results", e)
         }

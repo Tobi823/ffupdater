@@ -21,6 +21,7 @@ import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import kotlin.coroutines.cancellation.CancellationException
 
 /**
  * https://storage.googleapis.com/chromium-browser-snapshots/index.html?prefix=Android/
@@ -100,6 +101,8 @@ object Chromium : AppBase() {
                     timestamp = storageObject["updated"].asString,
                 )
             }
+        } catch (e: CancellationException) {
+            throw e // CancellationException is normal and should not treat as error
         } catch (e: Exception) {
             when (e) {
                 is NullPointerException,

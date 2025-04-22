@@ -24,6 +24,7 @@ import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlin.coroutines.cancellation.CancellationException
 
 @Keep
 class UpdateAllActivity : AppCompatActivity() {
@@ -63,6 +64,8 @@ class UpdateAllActivity : AppCompatActivity() {
             val appStatus = allApps.mapNotNull {
                 try {
                     it.findImpl().findStatusOrUseOldCache(context)
+                } catch (e: CancellationException) {
+                    throw e // CancellationException is normal and should not treat as error
                 } catch (e: Exception) {
                     null // ignore app if it is not possible to find updates
                 }

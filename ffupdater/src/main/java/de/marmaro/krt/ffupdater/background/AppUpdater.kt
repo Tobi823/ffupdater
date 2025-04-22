@@ -38,6 +38,7 @@ import de.marmaro.krt.ffupdater.settings.BackgroundSettings
 import de.marmaro.krt.ffupdater.settings.DataStoreHelper
 import de.marmaro.krt.ffupdater.settings.InstallerSettings
 import de.marmaro.krt.ffupdater.storage.StorageUtil
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -97,6 +98,8 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) : CoroutineWo
 
         val installedAppStatus = try {
             app.findImpl().findStatusOrUseRecentCache(applicationContext)
+        } catch (e: CancellationException) {
+            throw e // CancellationException is normal and should not treat as error
         } catch (e: Exception) {
             return failure(e)
         }
@@ -216,6 +219,8 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) : CoroutineWo
                     try {
                         appImpl.download(applicationContext, installedAppStatus.latestVersion, progress)
                         return@async success(true)
+                    } catch (e: CancellationException) {
+                        throw e // CancellationException is normal and should not treat as error
                     } catch (e: Exception) {
                         return@async failure(e)
                     } finally {
@@ -232,6 +237,8 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) : CoroutineWo
                 }
                 download.await().getOrThrow()
             }
+        } catch (e: CancellationException) {
+            throw e // CancellationException is normal and should not treat as error
         } catch (e: Exception) {
             return failure(e)
         }
@@ -276,6 +283,8 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) : CoroutineWo
                 gentleUpdatePossible.complete(gentle)
             }
             gentleUpdatePossible.await()
+        } catch (e: CancellationException) {
+            throw e // CancellationException is normal and should not treat as error
         } catch (e: SecurityException) {
             logInfo("Can't check if $app can be gently updated.")
             gentleUpdatePossible.complete(true)
@@ -300,6 +309,8 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) : CoroutineWo
                 appImpl.getApkCacheFolder(applicationContext)
             }
             return success(true)
+        } catch (e: CancellationException) {
+            throw e // CancellationException is normal and should not treat as error
         } catch (e: Exception) {
             if (BackgroundSettings.isDeleteUpdateIfInstallFailed) {
                 app.findImpl().deleteFileCache(applicationContext)
