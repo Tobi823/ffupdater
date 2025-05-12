@@ -1,8 +1,0 @@
-[21:09:48 2025-05-12] FETCHING Version 2.40.7
-[21:09:48 2025-05-12] DOWNLOADING https://github.com/spicetify/cli/releases/download/v2.40.7/spicetify-2.40.7-linux-amd64.tar.gz
-[21:09:49 2025-05-12] EXTRACTING /home/lisa/.spicetify/spicetify.tar.gz
-[21:09:49 2025-05-12] SETTING EXECUTABLE PERMISSIONS TO /home/lisa/.spicetify/spicetify
-[21:09:49 2025-05-12] REMOVING /home/lisa/.spicetify/spicetify.tar.gz
-[21:09:49 2025-05-12] spicetify path already set in /home/lisa/.zshrc, continuing...
-[21:09:49 2025-05-12] spicetify v2.40.7 was installed successfully to /home/lisa/.spicetify
-[21:09:49 2025-05-12] Run 'spicetify --help' to get started
