@@ -286,4 +286,6 @@
     <string name="update_all_activity__start_installation">Start installation of \'%1$s\'.</string>
     <string name="update_all_activity__installation_failed">Installation of \'%1$s\' failed. Continue with the next app.</string>
     <string name="update_all_activity__installation_successful">Installation of \'%1$s\' successful. Certificate hash: %2$s</string>
+    <string name="ironfox__title">IronFox</string>
+    <string name="ironfox__description">Privacy and security-oriented Firefox-based web browser for Android.</string>
 </resources>

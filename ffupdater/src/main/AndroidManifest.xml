@@ -68,6 +68,7 @@
         <package android:name="us.spotco.fennec_dos" />
         <package android:name="us.spotco.mulch" />
         <package android:name="us.spotco.mulch_wv" />
+        <package android:name="org.ironfoxoss.ironfox" />
     </queries>
 
     <application
