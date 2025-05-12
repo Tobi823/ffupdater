@@ -69,7 +69,7 @@ android {
     defaultConfig {
         versionCode 178
         //  (incompatible changes) . (backwards compatible functionality) . (backwards compatible bug fixes)
-        versionName "80.0.0"
+        versionName "80.0.1-ironfox"
         minSdk 21
         targetSdk 35
         vectorDrawables.useSupportLibrary = true
