@@ -23,7 +23,6 @@ object Ironfox : AppBase() {
     override val packageName = "org.ironfoxoss.ironfox"
     override val title = R.string.ironfox__title
     override val description = R.string.ironfox__description
-    override val installationWarning = R.string.ironfox__warning
     override val downloadSource = "GitLab"
     override val icon = R.drawable.ic_logo_ironfox
     override val minApiLevel = Build.VERSION_CODES.N
