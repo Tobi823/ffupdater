@@ -18,6 +18,7 @@ import de.marmaro.krt.ffupdater.app.impl.FirefoxKlar
 import de.marmaro.krt.ffupdater.app.impl.FirefoxNightly
 import de.marmaro.krt.ffupdater.app.impl.FirefoxRelease
 import de.marmaro.krt.ffupdater.app.impl.Iceraven
+import de.marmaro.krt.ffupdater.app.impl.Ironfox
 import de.marmaro.krt.ffupdater.app.impl.K9Mail
 import de.marmaro.krt.ffupdater.app.impl.Orbot
 import de.marmaro.krt.ffupdater.app.impl.PrivacyBrowser
@@ -46,6 +47,7 @@ enum class App {
     FIREFOX_NIGHTLY,
     FIREFOX_RELEASE,
     ICERAVEN,
+    IRONFOX,
     K9MAIL,
     ORBOT,
     PRIVACY_BROWSER,
@@ -54,8 +56,7 @@ enum class App {
     THUNDERBIRD_BETA,
     TOR_BROWSER,
     TOR_BROWSER_ALPHA,
-    VIVALDI,
-    ;
+    VIVALDI;
 
     fun findImpl(): AppBase {
         return when (this) {
@@ -75,6 +76,7 @@ enum class App {
             FIREFOX_NIGHTLY -> FirefoxNightly
             FIREFOX_RELEASE -> FirefoxRelease
             ICERAVEN -> Iceraven
+            IRONFOX -> Ironfox
             K9MAIL -> K9Mail
             ORBOT -> Orbot
             PRIVACY_BROWSER -> PrivacyBrowser
