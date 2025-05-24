@@ -13,28 +13,29 @@ import de.marmaro.krt.ffupdater.device.ABI
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
+import de.marmaro.krt.ffupdater.network.website.MozillaArchiveConsumer
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 /**
- * https://vivaldi.com/download/
+ * https://vivaldi.com/de/download/
  * https://www.apkmirror.com/apk/vivaldi-technologies/vivaldi-browser-beta/
  */
 @Keep
-object Vivaldi : AppBase() {
-    override val app = App.VIVALDI
-    override val packageName = "com.vivaldi.browser"
-    override val title = R.string.vivaldi__title
-    override val description = R.string.vivaldi__description
-    override val installationWarning = R.string.vivaldi__warning
-    override val downloadSource = "https://vivaldi.com/download/"
-    override val icon = R.drawable.ic_logo_vivaldi
+object VivaldiSnapshot : AppBase() {
+    override val app = App.VIVALDI_SNAPSHOT
+    override val packageName = "com.vivaldi.browser.snapshot"
+    override val title = R.string.vivaldi_snapshot_title
+    override val description = R.string.vivaldi_snapshot_description
+    override val installationWarning = R.string.vivaldi_snapshot_warning
+    override val downloadSource = "Vivaldi Blog - Android Snapshot"
+    override val icon = R.drawable.ic_logo_vivaldi_snapshot
     override val minApiLevel = Build.VERSION_CODES.LOLLIPOP
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86_64)
 
     override val signatureHash = "e8a78544655ba8c09817f732768f5689b1662ec4b2bc5a0bc0ec138d33ca3d1e"
-    override val projectPage = "https://vivaldi.com/download/"
+    override val projectPage = "https://vivaldi.com/blog/android/snapshots/"
     override val displayCategory = listOf(BETTER_THAN_GOOGLE_CHROME)
     override val hostnameForInternetCheck = "https://vivaldi.com"
 
@@ -63,7 +64,7 @@ object Vivaldi : AppBase() {
             }
             val regexPattern = Regex.escape("<a href=\"") +
                     "(" +
-                    Regex.escape("https://downloads.vivaldi.com/stable/Vivaldi.") +
+                    Regex.escape("https://downloads.vivaldi.com/snapshot/Vivaldi.") +
                     "([.0-9]{1,24})" +
                     Regex.escape("_$abiString.apk") +
                     ")\""
@@ -81,5 +82,5 @@ object Vivaldi : AppBase() {
         }
     }
 
-    private const val DOWNLOAD_WEBSITE_URL = "https://vivaldi.com/download/"
+    private const val DOWNLOAD_WEBSITE_URL = "https://vivaldi.com/category/android-snapshots/feed/"
 }
