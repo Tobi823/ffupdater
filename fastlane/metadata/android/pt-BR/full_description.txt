@@ -1,0 +1,29 @@
+Instala e atualiza os seguintes navegadores:
+
+Navegadores da Mozilla ou baseados no Firefox:
+- Fennec F-Droid
+- Navegador Firefox, Firefox para Android Beta, Firefox Nightly
+- Firefox Focus, Firefox Focus Beta, Firefox Klar
+- Iceraven
+- Navegador Tor, Navegador Tor Alfa
+- Thunderbird para Android, Thunderbird para Android Beta
+
+Navegadores que são melhores que o Google Chrome:
+- Navegador Privado Brave, Navegador Brave (Beta), Navegador Brave (Nightly)
+- Cromite
+- Chromium
+- Navegador DuckDuckGo
+- Navegador Privacy (F-Droid)
+- Vivaldi
+- Thorium
+
+Outros aplicativos:
+- FairEmail
+- K-9 Mail / Thunderbird Mail
+- Orbot
+
+O FFUpdater procura por atualizações em plano de fundo e baixa-as também. No Android 12+ ou dispositivo 'enraizado', o FFUpdater também pode atualizar os aplicativos sem interação de usuário.
+
+Visite https://notabug.org/Tobiwan/ffupdater/src/master/README.md para mais informações.
+
+Registro de mudanças: https://notabug.org/Tobiwan/ffupdater/src/master/fastlane/metadata/android/pt-BR/changelogs

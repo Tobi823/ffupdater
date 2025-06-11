@@ -1,8 +1,8 @@
-Версія випуску 79.3.0 (176) 
-- Дякуємо за внески Weblate від: Coool, tetify, jrthwlate, Cirnos, nautilusx, gallegonovato, 109247019824, hamburger2048, kazushi3 і Atalanttore 
-— Змінити ключ підпису Git 
-— Додано підтримку для Thunderbird і Thunderbird Beta (дякую, kewisch; Tobi823/ffupdater#642) 
-— Виправлено K-9 Mail (дякую, kewisch; Tobi823/ffupdater#648) 
-- Вирішено проблеми мережі з HTTP 2.0 на деяких смартфонах (дякую TeeTeeHaa; Tobi823/ffupdater#629) 
-- Kiwi тепер EOL 
-- Видаліть Bromite, Bromite SystemWebView, Lockwise та UngoogledChromium
+Випущено версію 79.3.0 (176)
+- Дякуємо за внесок у роботу над Weblate: ℂ𝕠𝕠𝕠𝕝 (𝕘𝕚𝕥𝕙𝕦𝕓.𝕔𝕠𝕞/ℂ𝕠𝕠𝕠𝕝) перекладено 100.0% (302 з 302 рядків), tetify, jrthwlate, Cirnos, nautilusx, gallegonovato, 109247019824, hamburger2048, kazushi3 та Atalanttore
+- Змінено ключ підпису Git'а
+- Додано підтримку Thunderbird та Thunderbird Beta (подяка kewisch; Tobi823/ffupdater#642)
+- Виправлено пошту K-9 (подяка kewisch; Tobi823/ffupdater#648)
+- Виправлено мережеві проблеми з HTTP 2.0 на деяких смартфонах (подяка TeeTeeHaa; Tobi823/ffupdater#629).
+- Kiwi тепер є EOL (Tobi823/ffupdater#621)
+- Видалено Bromite, Bromite SystemWebView, Lockwise та UngoogledChromium

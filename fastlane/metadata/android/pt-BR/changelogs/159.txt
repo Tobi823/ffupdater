@@ -1,0 +1,1 @@
+- desativar Dependency Info Block pois o F-Droid quer e para corrigir compilações reproduzíveis

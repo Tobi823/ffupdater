@@ -1,0 +1,5 @@
+* Obrigado pela contribuição na Weblate de: gallegonovato, atilluF, WhiredPlanck, Oğuz Ersen, Juraj Motuz, 109247019824, ppvnf, nautilusx, Giovanni Donisi, Eduardo Malaspina
+* Se a atualização em plano de fundo falhar (por falta de interação do usuário), mostrar a notificação "atualização está disponível"
+* Corrigir trava ao verificar por atualizações do Mull (do F-Droid)
+* Adicionar Fennec do F-Droid
+* Adicionar Mulch

@@ -283,4 +283,6 @@
     <string name="main_activity__update_all_apps_dialog__confirm">Aggiorna app</string>
     <string name="update_all_activity__all_apps_updated">Fatto. Tutte le app sono state aggiornate (se possibile). Ora è possibile uscire.</string>
     <string name="update_all_activity__downloaded_file_is_missing">Il file scaricato per \'%1$s\' non esiste, continuare con l\'applicazione successiva.</string>
+    <string name="ironfox__title">IronFox</string>
+    <string name="ironfox__description">Browser web per Android basato su Firefox e orientato alla privacy e alla sicurezza.</string>
 </resources>

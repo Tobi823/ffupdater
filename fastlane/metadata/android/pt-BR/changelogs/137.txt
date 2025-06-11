@@ -1,0 +1,2 @@
+* Obrigado pelas contribuições na Weblate de: Dan, nautilusx, Retrial, gallegonovato, MkQtS e Oğuz Ersen
+* Corrigir erro no instalador raiz com Firefox Nightly

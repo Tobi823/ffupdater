@@ -1,0 +1,9 @@
+79.3.0 (176) versija realizēta 2024.11.25
+
+- Paldies par Weblate tulkotāju ieguldījumu: ℂ𝕠𝕠𝕠𝕝 (𝕘𝕚𝕥𝕙𝕦𝕓.𝕔𝕠𝕞/ℂ𝕠𝕠𝕠𝕝) iztulkojis 100.0% (302 no 302 virknēm), tetify, jrthwlate, Cirnos, nautilusx, gallegonovato, 109247019824, hamburger2048, kazushi3 un Atalanttore
+- Mainīta Git paraksta atslēga
+- Pievienotas Thunderbird un Thunderbird Beta lietotnes (paldies kewisch; Tobi823/ffupdater#642)
+- Salabots K-9 Mail (paldies kewisch; Tobi823/ffupdater#648)
+- Dažās ierīcēs novērstas tīkla problēmas saistītas ar HTTP 2.0 (paldies TeeTeeHaa; Tobi823/ffupdater#629)
+- Kiwi pārvietots uz novecojuši pārlūki sadaļu (Tobi823/ffupdater#621)
+- Aizvākti Bromite, Bromite SystemWebView, Lockwise un UngoogledChromium pārlūki

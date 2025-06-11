@@ -1,0 +1,1 @@
+* Corrigir "FFUpdater travando após baixar qualquer APK/ao tentar instalar o APK" (Tobi823/ffupdater#438)

@@ -1,0 +1,3 @@
+* Obrigado pelas contribuições na Weblate de: Kazushi Hayama, nautilusx, gallegonovato e MkQtS
+* Firefox Beta e Firefox Estável agora será baixado do GitHub
+* Kiwi não está mais em fim de vida

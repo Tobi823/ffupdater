@@ -1,0 +1,8 @@
+Versão 79.3.0 (176)
+- Obrigado pelas contribuições na Weblate de: ℂ𝕠𝕠𝕠𝕝 (𝕘𝕚𝕥𝕙𝕦𝕓.𝕔𝕠𝕞/ℂ𝕠𝕠𝕠𝕝) traduziu 100.0% (302 de 302 textos), tetify, jrthwlate, Cirnos, nautilusx, gallegonovato, 109247019824, hamburger2048, kazushi3 e Atalanttore
+- Mudar chave de assinatura Git
+- Adicionar suporte para Thunderbird e Thunderbird Beta (obrigado kewisch; Tobi823/ffupdater#642)
+- Corrigir K-9 Mail (obrigado kewisch; Tobi823/ffupdater#648)
+- Corrigir problemas de rede com HTTP 2.0 em alguns telefones (obrigado TeeTeeHaa; Tobi823/ffupdater#629)
+- Kiwi agora está em fim de vida (Tobi823/ffupdater#621)
+- Remover Bromite, Bromite SystemWebView, Lockwise e UngoogledChromium

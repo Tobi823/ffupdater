@@ -1,0 +1,3 @@
+* Obrigado pela contribuição na Weblate de: nautilusx, Giovanni Donisi, Alexthegib, Retrial, gallegonovato,
+  109247019824 e Kazushi Hayama
+* Correção rápida: Corrigir verificador de atualizações em segundo plano

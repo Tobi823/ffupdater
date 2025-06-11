@@ -1,0 +1,6 @@
+79.3.1 (177) versija realizēta 2024.11.28
+
+- Paldies par Weblate tulkotāju ieguldījumu: Retrial, motuzj un gallegonovato
+- Salabota K-9 Mail nepareizā versija (paldies kazushi3 Tobi823/ffupdater#651)
+- Salabota Tor pārlūka nepareizā versija (Tobi823/ffupdater#649)
+- Atjauninātas izmantoto pakotņu versijas

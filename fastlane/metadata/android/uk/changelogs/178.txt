@@ -1,0 +1,11 @@
+Версія випуску 80.0.0 (178) 
+- Дякуємо за внески Weblate від: TamilNeram, shop_israel, Cirnos, hamburger2048, crowbar, 109247019824, maksimgorpinic2005a, gdonisi, kazushi3, jrthwlate та kirillstuzhuk 
+- видалити Kiwi, Mulch, Mulch SystemWebView і Mull 
+- дозволити встановлення всіх оновлень за один раз ("Оновити всі програми") 
+- зробити Thorium EOL, тому що останньому випуску понад 200 днів 
+- тримайте екран увімкненим у DownloadActivity лише під час завантаження з мережі, а не під час активності Android (Tobi823/ffupdater#620) 
+— MainActivity: паралельні перевірки оновлень (Tobi823/ffupdater#664) 
+- не вилітає через проблеми з мережею (Tobi823/ffupdater#681) 
+- покращити завантаження (має зменшити конфлікти завантажень) 
+- оновлення до Android 15 
+- очищення, рефакторинг, видалення невикористаних рядків перекладу

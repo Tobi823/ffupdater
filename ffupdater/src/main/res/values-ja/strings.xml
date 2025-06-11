@@ -7,7 +7,7 @@
     <string name="application_installation_was_not_successful">アプリをインストールできませんでした</string>
     <string name="application_successfully_installed">アプリを正常にインストールしました</string>
     <string name="available_version">利用可能: %1$s</string>
-    <string name="notification__error__text">このエラーの報告をお願いします。クリックするとエラーレポートが表示されます。</string>
+    <string name="notification__error__text">このエラーの報告をお願いします。クリックするとエラーレポートを表示します。</string>
     <string name="notification__error__title">バックグラウンドでの更新確認に失敗しました</string>
     <string name="brave__description">自由で、プライベートにインターネットを閲覧しましょう！ Brave は、広告ブロック機能とポップアップブロック機能を備えた、高速、無料、かつ安全なプライベートウェブブラウザです。広告主やマルウェア、ポップアップに追跡されることなく、プライベートにインターネットを閲覧、検索できます。</string>
     <string name="brave__title">Brave プライベートブラウザ</string>
@@ -23,7 +23,7 @@
     <string name="crash_report__go_to_github">GitHub に移動</string>
     <string name="crash_report__go_to_gitlab">GitLab に移動</string>
     <string name="crash_report__got_to_notabug_org">notabug.org に移動</string>
-    <string name="notification__download_running__channel_descr">アプリの更新をバックグラウンドでダウンロードしたときに表示されます。</string>
+    <string name="notification__download_running__channel_descr">アプリの更新をバックグラウンドでダウンロードしたときに表示します。</string>
     <string name="notification__download_running__channel_name">バックグラウンドでのダウンロードについての通知</string>
     <string name="notification__download_running__title">アプリの更新をダウンロード中</string>
     <string name="app_card__download_the_app">アプリをダウンロード</string>
@@ -65,8 +65,8 @@
     <string name="download_activity__label">アプリをダウンロード</string>
     <string name="notification__install_success__channel_descr">%1$s の更新完了の通知チャンネル。</string>
     <string name="notification__install_success__channel_name">%1$s の更新完了の通知</string>
-    <string name="notification__install_success__text">アプリはバックグラウンドで正常に更新されました。</string>
-    <string name="notification__install_success__title">%1$s が更新されました</string>
+    <string name="notification__install_success__text">アプリをバックグラウンドで正常に更新しました。</string>
+    <string name="notification__install_success__title">%1$s を更新しました</string>
     <string name="app_installer__installed_app_has_invalid_signature">インストールされたアプリは検証されていません</string>
     <string name="installed_application_is_verified">インストールされたアプリは検証済みです</string>
     <string name="installed_version">インストール済み: %1$s</string>
@@ -226,7 +226,7 @@
     <string name="notification__uncaught_exception__channel_description">予期せぬエラーにより FFUpdater がクラッシュしました。</string>
     <string name="notification__uncaught_exception__title">FFUpdater がクラッシュしました</string>
     <string name="notification__bg_update_check__unreliable_execution__title">バックグラウンドでの更新確認の実行が不確実です</string>
-    <string name="crash_report__report_is_copied_to_clipboard">クラッシュレポートがクリップボードにコピーされました</string>
+    <string name="crash_report__report_is_copied_to_clipboard">クラッシュレポートをクリップボードにコピーしました</string>
     <string name="installer__android_too_old_for_shizuku">Android のバージョンが古すぎるため、Shizuku を利用できません。</string>
     <string name="add_app_activity__title_based_on_firefox">Firefox ベースのブラウザー</string>
     <string name="add_app_activity__title_good_security_browsers">セキュリティーに優れたブラウザー</string>
@@ -275,12 +275,14 @@
     <string name="update_all_activity__label">アプリをすべて更新</string>
     <string name="main_activity_menu__update_all_apps__label">アプリをすべて更新</string>
     <string name="main_activity_menu__install_app__label">アプリをインストール</string>
-    <string name="update_all_activity__these_apps_will_be_updated">次のアプリが更新されます: %1$s</string>
-    <string name="update_all_activity__all_apps_updated">完了。更新可能なアプリをすべて更新しました。移動しても問題ありません。</string>
+    <string name="update_all_activity__these_apps_will_be_updated">次のアプリを更新します: %1$s</string>
+    <string name="update_all_activity__all_apps_updated">完了。更新可能なアプリをすべて更新しました。移動しても構いません。</string>
     <string name="update_all_activity__start_update">「%1$s」の更新をインストール開始</string>
     <string name="update_all_activity__start_installation">「%1$s」のインストールを開始</string>
     <string name="update_all_activity__downloaded_file_is_missing">ダウンロードした「%1$s」のファイルが確認できませんでした。次のアプリの更新を続行します。</string>
     <string name="update_all_activity__no_updates_available">インストールできる更新がありません。終了します。</string>
     <string name="update_all_activity__installation_successful">「%1$s」をインストールしました。証明書のハッシュ: %2$s</string>
     <string name="update_all_activity__installation_failed">「%1$s」をインストールできませんでした。次のアプリに続きます。</string>
+    <string name="ironfox__title">IronFox</string>
+    <string name="ironfox__description">プライバシーとセキュリティを重視する Firefox ベースの Android 版ウェブブラウザー。</string>
 </resources>

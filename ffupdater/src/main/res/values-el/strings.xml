@@ -55,7 +55,7 @@
     <string name="download_activity__external_storage_not_accessible">Ο εξωτερικός χώρος αποθήκευσης δεν είναι διαθέσιμος - δεν είναι δυνατή η έναρξη της λήψης. Η τρέχουσα κατάσταση είναι:</string>
     <string name="download_activity__fetch_url_for_download">Λήψη μεταδεδομένων από %1$s</string>
     <string name="download_activity__fetched_url_for_download_successfully">Λήφθηκαν μεταδεδομένα από %1$s</string>
-    <string name="download_activity__file_uri_exposed_toast">Δεν είναι δυνατή η έκθεση της διαδρομής του αρχείου σε άλλες εφαρμογές. Ανοίξτε τον φάκελο μόνοι σας με τον διαχειριστή αρχείων που προτιμάτε.</string>
+    <string name="download_activity__file_uri_exposed_toast">Δεν είναι δυνατή η έκθεση της διαδρομής του αρχείου σε άλλες εφαρμογές. Ανοίξτε τον φάκελο μόνοι σας με τον διαχειριστή αρχείων που προτιμάτε.\"</string>
     <string name="download_activity__open_cache_explanation">Μπορείτε να ανοίξετε το φάκελο της προσωρινής μνήμης για να αντιγράψετε το αρχείο APK σε ένα μέρος με περισσότερο ελεύθερο χώρο αποθήκευσης. Δυστυχώς, στο Android 11+, μόνο λίγοι διαχειριστές αρχείων μπορούν να έχουν πρόσβαση σε αυτόν τον φάκελο στο Android/data.</string>
     <string name="download_activity__temporary_network_issue">Παρουσιάστηκε ένα προσωρινό πρόβλημα δικτύου. Δοκιμάστε ξανά αργότερα.</string>
     <string name="download_activity__too_low_memory_description">Ο αποθηκευτικός χώρος της συσκευής σας είναι χαμηλός (μόνο %1$d MB ελεύθερα). Αυτό θα οδηγήσει σε αποτυχία λήψης ή εγκατάστασης.</string>
@@ -268,4 +268,19 @@
     <string name="thunderbird__title">Thunderbird</string>
     <string name="thunderbird_beta__title">Thunderbird Beta</string>
     <string name="thunderbird__description">Το Thunderbird είναι μια ισχυρή εφαρμογή ηλεκτρονικού ταχυδρομείου που εστιάζει στο απόρρητο. Διαχειριστείτε εύκολα πολλούς λογαριασμούς email από μία εφαρμογή, με την επιλογή Unified Inbox για μέγιστη παραγωγικότητα. Χτισμένο σε τεχνολογία ανοιχτού κώδικα και υποστηριζόμενο από μια αφοσιωμένη ομάδα προγραμματιστών μαζί με μια παγκόσμια κοινότητα εθελοντών, το Thunderbird δεν αντιμετωπίζει ποτέ τα προσωπικά σας δεδομένα ως προϊόν. Υποστηρίζεται αποκλειστικά από οικονομικές συνεισφορές των χρηστών μας, ώστε να μην χρειάζεται να ξαναδείτε διαφημίσεις αναμεμειγμένες με τα email σας.</string>
+    <string name="update_all_activity__downloaded_file_is_missing">Το ληφθέν αρχείο για το \'%1$s\' δεν υπάρχει, συνεχίστε με την επόμενη εφαρμογή.</string>
+    <string name="update_all_activity__start_installation">Έναρξη εγκατάστασης του \'%1$s\'.</string>
+    <string name="update_all_activity__installation_successful">Επιτυχής εγκατάσταση του \'%1$s\'. Certificate hash: %2$s</string>
+    <string name="main_activity__update_all_apps_dialog__title">Ενημερώστε όλες τις εφαρμογές</string>
+    <string name="update_all_activity__all_apps_updated">Έγινε. Όλες οι εφαρμογές ενημερώθηκαν (όσες ήταν δυνατόν). Μπορείτε να φύγετε τώρα.</string>
+    <string name="main_activity__update_all_apps_dialog__abort">Απόρριψη</string>
+    <string name="main_activity_menu__install_app__label">Εγκατάσταση εφαρμογής</string>
+    <string name="main_activity__update_all_apps_dialog__confirm">Ενημέρωση εφαρμογών</string>
+    <string name="main_activity_menu__update_all_apps__label">Ενημέρωση όλων των εφαρμογών</string>
+    <string name="update_all_activity__label">Ενημέρωση Όλων των Εφαρμογών</string>
+    <string name="update_all_activity__no_updates_available">Δεν υπάρχουν διαθέσιμες ενημερώσεις για εγκατάσταση. Απόρριψη.</string>
+    <string name="update_all_activity__these_apps_will_be_updated">Αυτές οι εφαρμογές θα ενημερωθούν σύντομα: %1$s</string>
+    <string name="main_activity__update_all_apps_dialog__message">Πρέπει να ενημερωθούν όλες οι παλιές και οι μη απενεργοποιημένες εφαρμογές; Οι ενημερώσεις θα ληφθούν στο παρασκήνιο. Μια ειδοποίηση θα σας ενημερώσει όταν ολοκληρωθεί η λήψη. Πρέπει να κάνετε κλικ σε αυτή για να ξεκινήσει η διαδικασία ενημέρωσης.</string>
+    <string name="update_all_activity__start_update">Έναρξη εγκατάστασης ενημέρωσης για \'%1$s\'</string>
+    <string name="update_all_activity__installation_failed">Η εγκατάσταση του \'%1$s\' απέτυχε. Συνεχίστε με την επόμενη εφαρμογή.</string>
 </resources>

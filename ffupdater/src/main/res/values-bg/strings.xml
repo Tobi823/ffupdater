@@ -280,4 +280,6 @@
     <string name="update_all_activity__installation_successful">Приложението „%1$s“ е инсталирано. Отпечатък от сертификата: %2$s</string>
     <string name="update_all_activity__downloaded_file_is_missing">Изтегленият файл с обновяването на „%1$s“ не съществува. Продължаване със следващото приложение.</string>
     <string name="main_activity__update_all_apps_dialog__message">Трябва ли да бъдат обновени всички приложения? Обновяванията ще бъдат изтеглени във фонов режим. Ще бъде показано известие, когато изтеглянето приключи. Натиснете го, за да започне процеса на обновяване.</string>
+    <string name="ironfox__title">IronFox</string>
+    <string name="ironfox__description">Поверителен и защитен мрежов четец за Андроид, на основата на Firefox.</string>
 </resources>

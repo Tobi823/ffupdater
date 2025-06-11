@@ -1,0 +1,2 @@
+* Obrigado pelas contribuições na Weblate de: Kazushi Hayama, 109247019824 e Oğuz Ersen
+* Corrigir trava ao iniciar

@@ -1,7 +1,5 @@
-* Thanks for the Weblate contribution from: gallegonovato, atilluF, WhiredPlanck, Oğuz Ersen, Juraj Motuz,
-  109247019824, ppvnf, nautilusx, Giovanni Donisi, Eduardo Malaspina
-* If the background update fails (due to missing user interaction), show the "update is available"
-  notification
+* Thanks for the Weblate contribution from: gallegonovato, atilluF, WhiredPlanck, Oğuz Ersen, Juraj Motuz, 109247019824, ppvnf, nautilusx, Giovanni Donisi, Eduardo Malaspina
+* If the background update fails (due to missing user interaction), show the "update is available" notification
 * Fix crash when checking for Mull (from F-Droid) updates
 * Add Fennec from F-Droid
 * Add Mulch
