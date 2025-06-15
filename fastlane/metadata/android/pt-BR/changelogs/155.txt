@@ -1,0 +1,2 @@
+* Obrigado pelas contribuições na Weblate de: gallegonovato, MkQtS, Retrial e Eryk Michalak
+* Corrigir trava com Fennec (Tobi823/ffupdater#491)

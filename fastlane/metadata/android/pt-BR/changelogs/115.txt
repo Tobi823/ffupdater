@@ -1,0 +1,3 @@
+* Obrigado pela contribuição na Weblate de: Jacek, gallegonovato, atilluF, 109247019824, nautilusx, Juraj
+  Motuz, Giovanni Donisi e Oğuz Ersen
+* Corrigir erro de atualização do Kiwi: Ignorar versões do GitHub sem arquivos APK

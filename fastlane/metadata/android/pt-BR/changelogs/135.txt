@@ -1,0 +1,1 @@
+* Corrigir trava do Chromium

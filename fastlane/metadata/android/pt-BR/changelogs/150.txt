@@ -1,0 +1,2 @@
+* Obrigado pelas contribuições na Weblate de: gallegonovato, nautilusx, Juraj Motuz, Retrial e atilluF
+* Corrigir "Checkagem de atualizações em plano de fundo falhou" (Tobi823/ffupdater#452)

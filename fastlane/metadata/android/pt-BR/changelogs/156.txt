@@ -1,0 +1,2 @@
+* Obrigado pelas contribuições na Weblate de: Eryk Michalak, nautilusx, Juraj Motuz e gallegonovato
+* Corrigir instalador raiz (Tobi823/ffupdater#462)

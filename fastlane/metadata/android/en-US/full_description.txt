@@ -8,7 +8,7 @@ Browsers from Mozilla or based on Firefox:
 - Tor Browser, Tor Browser Alpha
 - Thunderbird for Android, Thunderbird for Android Beta
 
-Browser which are better than Google Chrome:
+Browsers which are better than Google Chrome:
 - Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
 - Cromite
 - Chromium

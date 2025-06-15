@@ -1,0 +1,3 @@
+* Obrigado pela contribuição na Weblate de: Oğuz Ersen e 109247019824
+* Restaurar Iceraven
+* Retrabalhar interface de usuário para permitir baixamento de aplicativos em fim de vida

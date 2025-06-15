@@ -1,0 +1,2 @@
+* Obrigado pela contribuição na Weblate de: Giovanni Donisi, Retrial, gallegonovato, Jacek, Oğuz Ersen, MkQtS
+* Corrigir trava quando a versão instalada do Navegador Tor é diferente do esperado

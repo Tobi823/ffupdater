@@ -1,0 +1,2 @@
+* Obrigado pelas contribuições na Weblate de: Juraj Motuz, Retrial, gallegonovato e Michael Bæk
+* Firefox Nightly agora foi corrigido: Usar a regra Proguard correta e anotação para classes Gson.

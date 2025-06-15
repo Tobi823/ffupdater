@@ -58,7 +58,7 @@
     <string name="download_activity__external_storage_not_accessible">Внешнее хранилище недоступно — невозможно начать загрузку. Текущее состояние:</string>
     <string name="download_activity__fetch_url_for_download">Получить ссылку с %1$s</string>
     <string name="download_activity__fetched_url_for_download_successfully">Получена ссылка для скачивания с %1$s</string>
-    <string name="download_activity__file_uri_exposed_toast">Не удалось определить путь к другим приложениям. Пожалуйста, откройте каталог с помощью предпочитаемого вами файлового менеджера.\"</string>
+    <string name="download_activity__file_uri_exposed_toast">Не удалось определить путь к другим приложениям. Пожалуйста, откройте каталог с помощью предпочитаемого вами файлового менеджера.</string>
     <string name="download_activity__github_rate_limit_exceeded">Превышен лимит скорости GitHub-API. Пожалуйста, повторите попытку загрузки в течение следующего часа.</string>
     <string name="download_activity__open_cache_explanation">Вы можете открыть папку кэша, чтобы скопировать APK-файл в место с большим объемом свободного пространства. К сожалению, на Android 11+ лишь немногие файловые менеджеры имеют доступ к этому каталогу в Android/data.</string>
     <string name="download_activity__open_cache_folder_button_text">открыть папку кэша</string>
@@ -69,7 +69,7 @@
     <string name="download_activity__too_low_memory_title">Недостаточно места на диске</string>
     <string name="download_activity__use_cached_downloaded_apk">Используйте уже загруженный файл:</string>
     <string name="download_activity__you_can_now_close_this_window">Теперь вы можете закрыть это окно</string>
-    <string name="download_activity__label">Установить приложение</string>
+    <string name="download_activity__label">Скачать приложение</string>
     <string name="notification__install_success__channel_descr">Канал уведомления об успешных обновлениях %1$s.</string>
     <string name="notification__install_success__channel_name">%1$s уведомление об успешном обновлении</string>
     <string name="notification__install_success__text">Приложение было успешно обновлено в фоновом режиме.</string>
@@ -283,4 +283,6 @@
     <string name="update_all_activity__installation_failed">Не удалось установить «%1$s». Перейдите к следующему приложению.</string>
     <string name="update_all_activity__all_apps_updated">Готово. Все приложения были обновлены (где это возможно). Теперь можно выйти.</string>
     <string name="main_activity__update_all_apps_dialog__message">Следует ли обновлять устаревшие и не отключенные приложения? Обновления будут загружаться в фоновом режиме. Когда загрузка будет завершена, Вы будете оповещены уведомлением. Вам необходимо нажать на него, чтобы запустить обновление.</string>
+    <string name="ironfox__title">IronFox</string>
+    <string name="ironfox__description">Браузер для Android на базе Firefox, ориентированный на конфиденциальность и безопасность.</string>
 </resources>

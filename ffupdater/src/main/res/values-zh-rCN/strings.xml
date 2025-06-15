@@ -62,7 +62,7 @@
     <string name="download_activity__external_storage_not_accessible">外部存储不可用——无法开始下载。当前状态：</string>
     <string name="download_activity__fetch_url_for_download">从 %1$s 获取元数据</string>
     <string name="download_activity__fetched_url_for_download_successfully">已从 %1$s 获取元数据</string>
-    <string name="download_activity__file_uri_exposed_toast">无法将文件路径暴露给其他应用。请使用您喜欢的文件管理器自行打开该文件夹。\"</string>
+    <string name="download_activity__file_uri_exposed_toast">无法将文件路径暴露给其他应用。请使用您喜欢的文件管理器自行打开该文件夹。</string>
     <string name="download_activity__github_rate_limit_exceeded">已超出 GitHub API 访问率限制。 请在一个小时后尝试重新下载。</string>
     <string name="download_activity__open_cache_explanation">您可以打开缓存文件夹来将 APK 文件复制到有存储空间更大的位置。遗憾的是，在 Android 11+ 上，只有非常少的文件管理器可以访问 Android/data 中的这个文件夹。</string>
     <string name="download_activity__open_cache_folder_button_text">打开缓存文件夹</string>
@@ -228,7 +228,7 @@
     <string name="notification__bg_update_check__unreliable_execution__title">后台更新检测的执行不可靠</string>
     <string name="installer__android_too_old_for_shizuku">您的 Android 版本过低，无法使用 Shizuku。</string>
     <string name="add_app_activity__title_based_on_firefox">基于 Firefox</string>
-    <string name="add_app_activity__title_good_security_browsers">好的安全浏览器</string>
+    <string name="add_app_activity__title_good_security_browsers">不错的安全浏览器</string>
     <string name="notification__uncaught_exception__channel_name">崩溃通知</string>
     <string name="notification__uncaught_exception__channel_description">FFUpdater 因意外错误崩溃。</string>
     <string name="notification__uncaught_exception__title">FFUpdater 崩溃了</string>
@@ -283,4 +283,6 @@
     <string name="main_activity__update_all_apps_dialog__confirm">更新应用</string>
     <string name="update_all_activity__installation_successful">成功安装了 \'%1$s\'。证书哈希值：%2$s</string>
     <string name="update_all_activity__all_apps_updated">完毕。更新了所有应用（如果可能）。你现在可以关闭本应用了。</string>
+    <string name="ironfox__title">IronFox</string>
+    <string name="ironfox__description">Android 系统上基于 Firefox 的网络浏览器，重试隐私和安全。</string>
 </resources>

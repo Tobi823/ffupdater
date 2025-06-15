@@ -87,7 +87,7 @@
     <string name="add_app_activity__title_based_on_firefox">Firefoxil põhinevad brauserid</string>
     <string name="download_activity__fetched_url_for_download_successfully">Laadisime metainfo siit: %1$s</string>
     <string name="notification__download_running__title">Laadime alla rakenduste uuendusi</string>
-    <string name="download_activity__file_uri_exposed_toast">Turvakaalutlustel ei saa failide asukohti teistele rakendustele näidata. Palun ava kaust oma eelistatud failihalduriga.\"</string>
+    <string name="download_activity__file_uri_exposed_toast">Turvakaalutlustel ei saa failide asukohti teistele rakendustele näidata. Palun ava kaust oma eelistatud failihalduriga.</string>
     <string name="download_activity__github_rate_limit_exceeded">GitHub-API mahupiirang on ületatud. Palun proovi allalaadimist järgmisel täistunnil.</string>
     <string name="installed_application_is_verified">Paigaldatud rakendus on verifitseeritud</string>
     <string name="installed_version">Paigaldatud: %1$s</string>
@@ -280,7 +280,9 @@
     <string name="update_all_activity__start_installation">Alusta „%1$s“ paigaldamist.</string>
     <string name="update_all_activity__installation_failed">„%1$s“ paigaldamine ei õnnestunud. Jätka järgmise rakendusega.</string>
     <string name="update_all_activity__installation_successful">„%1$s“ paigaldamine õnnestus. Sertifikaadi räsi on %2$s</string>
-    <string name="main_activity__update_all_apps_dialog__message">Kas peaksime uuendama kõik aegunud ja kasutusel rakendusi? Uuenduste allalaadimine toimuks taustal. Kui allalaadimine on valmis, siis saad asjakohase teavituse ning uuenduse käivitamiseks pole vaja teha muud, kui seda klõpsida.</string>
+    <string name="main_activity__update_all_apps_dialog__message">Kas peaksime uuendama kõik aegunud ja kasutusel rakendused? Uuenduste allalaadimine toimuks taustal. Kui allalaadimine on valmis, siis saad asjakohase teavituse ning uuenduse käivitamiseks pole vaja teha muud, kui seda klõpsida.</string>
     <string name="update_all_activity__all_apps_updated">Valmis. Kõik rakendused said uuendatud (kui võimalik). Võid nüüd lahkuda.</string>
     <string name="update_all_activity__no_updates_available">Paigaldamiseks ei leidu rakendusi. Katkesta.</string>
+    <string name="ironfox__title">IronFox</string>
+    <string name="ironfox__description">Privaatsus- ja turvakeskne Firefoxipõhine veebibrauser Androidile.</string>
 </resources>

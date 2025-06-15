@@ -1,0 +1,6 @@
+77.0.2 (110) versija realizēta 2022.07.10
+
+* Paldies par Weblate tulkotāju ieguldījumu: WhiredPlanck, 109247019824, Oğuz Ersen, Giovanni Donisi, MkQtS un Hin Weisner
+* Uzlabots paziņojuma teksts, ja fona atjauninājumu pārbaude neizdodas piecas dienas pēc kārtas (vecā vērtība: divas dienas, par ko daži lietotāji sūdzējās, ka ir pārāk īsa).
+* Uzlabots avārijas ziņojums un pēdējais veiksmīgais fona atjauninājumu pārbaudes laiks
+* Nomākt novecojis brīdinājumu (GitHub papildus izmaiņa)

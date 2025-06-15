@@ -1,0 +1,3 @@
+* Obrigado pelas contribuições na Weblate de: Juraj Motuz, Retrial, gallegonovato e MkQtS
+* corrigir erro de baixamento com Navegador Tor / Navegador Tor Alfa (Tobi823/ffupdater#336)
+* refatorar DownloadActivity.kt para o fazer mais confiável

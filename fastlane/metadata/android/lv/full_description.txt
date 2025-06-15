@@ -6,7 +6,7 @@ Pārlūki no Mozilla vai balstīti uz Firefox:
 - Firefox Focus, Firefox Focus Beta, Firefox Klar
 - Iceraven
 - Tor, Tor Alpha
-- Thunderbird for Android, Thunderbird for Android Beta
+- Thunderbird, Thunderbird Beta
 
 Pārlūki labāki par Google Chrome:
 - Brave, Brave Beta, Brave (Nakts izlaidums)
@@ -17,7 +17,7 @@ Pārlūki labāki par Google Chrome:
 - Vivaldi
 - Thorium
 
-Citas lietotnes:
+Pārējās lietotnes:
 - FairEmail
 - K-9 e-pasts / Thunderbird e-pasts
 - Orbot

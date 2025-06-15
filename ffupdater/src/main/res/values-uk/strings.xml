@@ -4,12 +4,12 @@
     <string name="app_description">Оновлювач для конфіденційних браузерів</string>
     <string name="app_icon">піктограма застосунка</string>
     <string name="app_name">FFUpdater</string>
-    <string name="application_installation_was_not_successful">Встановлення застосунка не вдалася</string>
+    <string name="application_installation_was_not_successful">Встановлення застосунка не вдалося</string>
     <string name="application_successfully_installed">Застосунок успішно встановлено</string>
     <string name="available_version">Доступно: %1$s</string>
     <string name="notification__error__text">Повідомте про цю помилку. Натисніть, щоб переглянути звіт про помилку.</string>
     <string name="notification__error__title">Не вдалося перевірити фонове оновлення</string>
-    <string name="brave__description">Безкоштовно переглядайте Інтернет конфіденційно! Brave — це ваш швидкий, безкоштовний і безпечний приватний веб-браузер із блокувальником реклами та спливаючих вікон. Конфіденційно переглядайте та шукайте в Інтернеті без відстеження рекламодавців, зловмисного програмного забезпечення та спливаючих вікон.</string>
+    <string name="brave__description">Користуйтеся Інтернетом конфіденційно та безкоштовно! Brave — це ваш швидкий, безкоштовний і безпечний приватний веб-браузер із блокувальником реклами та спливаючих вікон. Конфіденційно переглядайте та шукайте в Інтернеті без відстеження рекламодавців, зловмисного програмного забезпечення та спливаючих вікон.</string>
     <string name="brave__title">Brave</string>
     <string name="brave__warning">- Brave використовує технічну основу Google Chrome і, таким чином, опосередковано підтримує монопольне положення рушія візуалізації Chromium. \n- Завдяки своїй основній уваги маркуванню на блокчейні Ethereum проект має зв\'язки з криптовалютою. Блокчейн має багато проблем, і слід уникати, на мій погляд.</string>
     <string name="brave_beta__description">Ласкаво просимо до Brave Beta для Android!\nСпробуйте новітні функції та надайте попередній відгук: https://brave.com/msupport\nВи можете встановити Brave Beta разом із поточною версією Brave для Android.</string>
@@ -150,7 +150,7 @@
     <string name="notification__eol_apps__text">У вас є застарілі застосунки, якими більше не слід користуватися: %1$s</string>
     <string name="notification__eol_apps__channel_name">Сповіщення про застарілі застосунки</string>
     <string name="download_activity__different_installer_info__text">Якщо встановлення часто зазнає помилок, спробуйте переключитися на \"нативний інсталятор\" у налаштуваннях.</string>
-    <string name="download_activity__file_uri_exposed_toast">Неможливо надати шлях до файлу іншим застосункам. Будь ласка, відкрийте папку самостійно за допомогою вибраного файлового менеджера.\"</string>
+    <string name="download_activity__file_uri_exposed_toast">Не вдається надати шлях до файлу іншим програмам. Будь ласка, відкрийте папку самостійно за допомогою вибраного файлового менеджера.</string>
     <string name="install_activity__download_file_failed__crash_text">Під час завантаження виникла наступна помилка. Якщо ця помилка виникає часто, не соромтеся надіслати звіт про збій на notabug.org, GitHub або GitLab.</string>
     <string name="crash_report__explain_text__download_activity_install_file">Ця помилка виникла під час встановлення. Якщо ця помилка виникає часто, не соромтеся надіслати звіт про збій на notabug.org, GitHub або GitLab.</string>
     <string name="settings__b_f__delete_cache_if_install_successful">Видаляти завантажене оновлення, якщо встановлення пройшло успішно.</string>
@@ -278,9 +278,11 @@
     <string name="update_all_activity__downloaded_file_is_missing">Завантажений файл для \"%1$s\" не існує, перейдіть до наступної програми.</string>
     <string name="settings__network__use_cloudflare_mirrors__title">Використовуйте дзеркала Cloudflare</string>
     <string name="settings__network__use_cloudflare_mirrors__summary">Увімкніть, щоб зменшити навантаження на ресурси основних серверів, якщо вони доступні.</string>
-    <string name="main_activity__update_all_apps_dialog__message">Чи слід оновлювати всі застарілі та невимкнені програми? Оновлення завантажуватимуться у фоновому режимі. Коли завантаження завершиться, ви отримаєте сповіщення. Ви повинні натиснути його, щоб почати.</string>
-    <string name="generic_beta__warning">- Це бета-версія застосунку, розроблена для розробників і тестувальників. Він може містити різні помилки, які можуть вплинути на ваш досвід.</string>
+    <string name="main_activity__update_all_apps_dialog__message">Чи потрібно оновлювати всі застарілі та не вимкнені програми? Оновлення буде завантажено у фоновому режимі. Коли завантаження завершиться, ви отримаєте сповіщення. Вам потрібно буде натиснути його, щоб розпочати процес оновлення.</string>
+    <string name="generic_beta__warning">- Це бета-версія застосунку, розроблена для розробників і тестувальників. Вона може містити різні помилки, які можуть вплинути на ваш досвід користування.</string>
     <string name="thunderbird__title">Thunderbird</string>
     <string name="thunderbird_beta__title">Thunderbird Beta</string>
     <string name="thunderbird__description">Thunderbird — потужний поштовий клієнт, орієнтований на конфіденційність. Легко керуйте кількома обліковими записами електронної пошти з одного застосунку за допомогою опції єдиної папки вхідних для максимальної продуктивності. Thunderbird, створений на основі технології з відкритим кодом і підтримується спеціальною командою розробників разом із глобальною спільнотою волонтерів, ніколи не розглядає ваші особисті дані як продукт. Підтримується виключно за рахунок фінансових внесків наших користувачів, тому вам більше ніколи не доведеться бачити рекламу разом із вашими електронними листами.</string>
+    <string name="ironfox__title">Залізна Лис</string>
+    <string name="ironfox__description">Веббраузер для Android на базі Firefox, орієнтований на конфіденційність та безпеку.</string>
 </resources>

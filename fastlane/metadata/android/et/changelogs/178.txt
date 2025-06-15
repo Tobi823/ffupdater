@@ -1,0 +1,11 @@
+80.0.0 (178)
+- Tänud tõlkijatele Weblate'is: TamilNeram, shop_israel, Cirnos, hamburger2048, crowbar, 109247019824, maksimgorpinic2005a, gdonisi, kazushi3, jrthwlate and kirillstuzhuk
+- Eemaldasime: Kiwi, Mulch, Mulch SystemWebView, Mull
+- Rakenduste korraga uuendamine
+- Thorium on nüüd aegunud
+- Ekraan on sees vaid allalaadimisel (Tobi823/#620)
+- Rööpsed uuenduskontrollid (Tobi823/#664)
+- Pole krahhe võrguvigadega (Tobi823/#681)
+- Tõhusam allalaadimine
+- Android 15
+- Tõlkemuutujate haldus
