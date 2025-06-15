@@ -67,9 +67,9 @@ android {
     compileSdk 35
 
     defaultConfig {
-        versionCode 178
+        versionCode 179
         //  (incompatible changes) . (backwards compatible functionality) . (backwards compatible bug fixes)
-        versionName "80.0.1-ironfox"
+        versionName "81.0.0"
         minSdk 21
         targetSdk 35
         vectorDrawables.useSupportLibrary = true
