@@ -1,0 +1,7 @@
+Release version 81.0.0 (179)
+- Thanks for the Weblate contributions from: Coool, akiva.bekenstein, Cirnos, Retrial, kazushi3, maksimgorpinic4, gdonisi, 109247019824, hamburger2048, jrthwlate, tetify, crowbar and yurtpage
+- Add IronFox (Thanks BloxerExists https://github.com/Tobi823/ffupdater/pull/719)
+- Fix typo (Thanks zen0bit https://github.com/Tobi823/ffupdater/pull/696)
+- Dont display a JobCancellationException in BackgroundWork because we can safely ignore it (Tobi823#701)
+- Improve APK cache logic
+- Make background update check more reliable
