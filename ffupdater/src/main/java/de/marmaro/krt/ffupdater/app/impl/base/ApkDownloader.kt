@@ -86,8 +86,8 @@ interface ApkDownloader : AppAttributes {
 
     private fun convertToBase64(latestVersion: LatestVersion): String {
         val versionStr = latestVersion.version.versionText
-        val dateStr = latestVersion.version.buildDate?.format(DateTimeFormatter.BASIC_ISO_DATE) ?: ""
-        val input = "$versionStr $dateStr".toByteArray(Charset.forName("UTF8"))
+        val dateTimeStr = latestVersion.version.buildDateTime?.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME) ?: ""
+        val input = "$versionStr $dateTimeStr".toByteArray(Charset.forName("UTF8"))
         return encodeToString(input, URL_SAFE)
     }
 
