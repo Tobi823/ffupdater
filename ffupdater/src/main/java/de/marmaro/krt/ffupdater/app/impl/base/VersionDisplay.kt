@@ -11,15 +11,15 @@ interface VersionDisplay : InstalledVersionFetcher {
     @AnyThread
     suspend fun getDisplayInstalledVersion(context: Context): String {
         val version = getInstalledVersion(context.packageManager) ?: return ""
-        val buildDate = version.buildDate?.let { " [$it]" } ?: ""
-        return context.getString(R.string.installed_version, version.versionText + buildDate)
+        val buildDateTime = version.buildDateTime?.let { " [$it]" } ?: ""
+        return context.getString(R.string.installed_version, version.versionText + buildDateTime)
     }
 
     @AnyThread
     fun getDisplayAvailableVersion(context: Context, availableVersionResult: LatestVersion): String {
         val version = availableVersionResult.version
-        val buildDate = version.buildDate?.let { " [$it]" } ?: ""
-        return context.getString(R.string.available_version, version.versionText + buildDate)
+        val buildDateTime = version.buildDateTime?.let { " [$it]" } ?: ""
+        return context.getString(R.string.available_version, version.versionText + buildDateTime)
     }
 
 }
