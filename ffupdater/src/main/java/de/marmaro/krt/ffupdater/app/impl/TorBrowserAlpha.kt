@@ -68,7 +68,7 @@ object TorBrowserAlpha : AppBase() {
         val versions = Regex(pattern).findAll(content) // find all potential version values from content
             .filter { it.groups[1]?.value == it.groups[4]?.value } // check if version value is valid
             .mapNotNull { it.groups[1]?.value } // use only non null version values
-            .sortedByDescending { Version(it) } // sort and use only the highest version value
+            .sortedByDescending { Version(it.replace("a", "-alpha")) } // sort and use only the highest version value
             .toList()
 
         check(versions.isNotEmpty()) { "Found no versions" }
