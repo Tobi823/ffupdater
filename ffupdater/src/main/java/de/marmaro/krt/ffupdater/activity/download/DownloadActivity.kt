@@ -139,7 +139,7 @@ class DownloadActivity : AppCompatActivity() {
             deleteFileCache()
         }
         findViewById<Button>(R.id.install_activity__open_cache_folder_button).setOnClickListener {
-            SystemFileManager.openFolder(appImpl.getApkCacheFolder(applicationContext), this)
+            SystemFileManager.openFolder(appImpl.getApkDownloadsFolder(applicationContext), this)
         }
         findViewById<Button>(R.id.install_activity__retry_installation_button).setOnClickListener {
             downloadViewModel.clear()

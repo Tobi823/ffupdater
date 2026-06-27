@@ -54,7 +54,7 @@ class GuiHelper(val activity: DownloadActivity) {
             activity.startActivity(intent)
         }
 
-        val cacheFolder = appImpl.getApkCacheFolder(activity).absolutePath
+        val cacheFolder = appImpl.getApkDownloadsFolder(activity).absolutePath
         setText(R.id.install_activity__cache_folder_path, cacheFolder)
         if (!ForegroundSettings.isDeleteUpdateIfInstallFailed) {
             show(R.id.install_activity__delete_cache)

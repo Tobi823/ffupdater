@@ -2,7 +2,8 @@ package de.marmaro.krt.ffupdater.app.impl.base
 
 import android.content.Context
 import android.os.Environment
-import android.util.Base64.*
+import android.util.Base64.URL_SAFE
+import android.util.Base64.encodeToString
 import android.util.Log
 import androidx.annotation.Keep
 import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
@@ -46,18 +47,27 @@ interface ApkDownloader : AppAttributes {
         return file.exists() && StorageUtil.isValidZipOrApkFile(file)
     }
 
-    fun getApkCacheFolder(context: Context): File {
-        return context.applicationContext.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)!!
+    fun getApkDownloadsFolder(context: Context): File {
+        val folder = context.applicationContext.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)!!
+        if (!folder.exists()) {
+            Log.w(LOG_TAG, "ApkDownloader: Folder for APK downloads does not exist yet: ${folder.absolutePath}")
+            if (folder.mkdirs()) {
+                Log.w(LOG_TAG, "ApkDownloader: Created folder(s) for APK downloads: ${folder.absolutePath}")
+            } else {
+                Log.e(LOG_TAG, "ApkDownloader: Could not create folder(s) for APK downloads: ${folder.absolutePath}")
+            }
+        }
+        return folder
     }
 
     fun getApkCacheFile(context: Context, latestVersion: LatestVersion): File {
-        val cacheFolder = getApkCacheFolder(context.applicationContext)
+        val cacheFolder = getApkDownloadsFolder(context)
         return File(cacheFolder, "${app.name}_${convertToBase64(latestVersion)}.apk")
     }
 
     suspend fun deleteFileCache(context: Context) {
         withContext(Dispatchers.IO) {
-            getApkCacheFolder(context.applicationContext).listFiles()!!
+            getApkDownloadsFolder(context).listFiles()!!
                 .filter { it.name.startsWith("${app.name}_") && it.name.endsWith(".apk") }
                 .forEach {
                     Log.d(LOG_TAG, "ApkDownloader: Delete cached APK of ${app.name} (${it.absolutePath}).")
@@ -68,8 +78,8 @@ interface ApkDownloader : AppAttributes {
 
     suspend fun deleteFileCacheExceptLatest(context: Context, latestVersion: LatestVersion) {
         withContext(Dispatchers.IO) {
-            val latestFile = getApkCacheFile(context.applicationContext, latestVersion)
-            getApkCacheFolder(context.applicationContext).listFiles()!! //
+            val latestFile = getApkCacheFile(context, latestVersion)
+            getApkDownloadsFolder(context).listFiles()!! //
                 .filter { it != latestFile }.filter { it.name.startsWith("${app.name}_") && it.name.endsWith(".apk") }
                 .forEach {
                     Log.d(LOG_TAG, "ApkDownloader: Delete older APK of ${app.name} (${it.absolutePath}).")
@@ -79,7 +89,7 @@ interface ApkDownloader : AppAttributes {
     }
 
     private fun generateTempApkFile(context: Context): File {
-        val cacheFolder = getApkCacheFolder(context.applicationContext)
+        val cacheFolder = getApkDownloadsFolder(context.applicationContext)
         val suffix = if (isAppPublishedAsZipArchive()) ".zip" else ".apk"
         return File(cacheFolder, "${UUID.randomUUID()}$suffix")
     }
