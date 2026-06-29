@@ -1,0 +1,3 @@
+發布版本 79.1.1 (169)
+- 感謝來自 Weblate 的貢獻： minh, matte22ladde, markov, v1s7, Priit Jõerüüt, Retrial, Fabio Rusconi, bryce-lynch, Oğuz Ersen, Sebi, Reza Almanda, inson1, gallegonovato, P.O, nautilusx, 109247019824, Juraj Motuz, winver, Daviteusz, Kazushi Hayama, MkQtS, Vitor Henrique, Giovanni Donisi, Сергій 以及 Software In Interlingua
+- 修復損壞的 Tor Browser Alpha 下載 (Tobi823/ffupdater#570)

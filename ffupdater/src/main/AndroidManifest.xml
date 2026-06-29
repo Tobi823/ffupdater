@@ -69,6 +69,7 @@
         <package android:name="us.spotco.mulch" />
         <package android:name="us.spotco.mulch_wv" />
         <package android:name="org.ironfoxoss.ironfox" />
+        <package android:name="net.waterfox.android.release" />
     </queries>
 
     <application

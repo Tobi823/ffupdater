@@ -28,6 +28,7 @@ import de.marmaro.krt.ffupdater.app.impl.ThunderbirdRelease
 import de.marmaro.krt.ffupdater.app.impl.TorBrowser
 import de.marmaro.krt.ffupdater.app.impl.TorBrowserAlpha
 import de.marmaro.krt.ffupdater.app.impl.Vivaldi
+import de.marmaro.krt.ffupdater.app.impl.Waterfox
 
 @Keep
 enum class App {
@@ -56,7 +57,8 @@ enum class App {
     THUNDERBIRD_BETA,
     TOR_BROWSER,
     TOR_BROWSER_ALPHA,
-    VIVALDI;
+    VIVALDI,
+    WATERFOX;
 
     fun findImpl(): AppBase {
         return when (this) {
@@ -86,6 +88,7 @@ enum class App {
             TOR_BROWSER -> TorBrowser
             TOR_BROWSER_ALPHA -> TorBrowserAlpha
             VIVALDI -> Vivaldi
+            WATERFOX -> Waterfox
         }
     }
 

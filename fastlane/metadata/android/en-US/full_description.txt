@@ -5,6 +5,7 @@ Browsers from Mozilla or based on Firefox:
 - Firefox Browser, Firefox for Android Beta, Firefox Nightly
 - Firefox Focus, Firefox Focus Beta, Firefox Klar
 - Iceraven
+- Waterfox
 - Tor Browser, Tor Browser Alpha
 - Thunderbird for Android, Thunderbird for Android Beta
 
