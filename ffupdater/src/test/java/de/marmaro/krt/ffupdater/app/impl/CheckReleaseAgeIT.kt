@@ -64,6 +64,7 @@ class CheckReleaseAgeIT {
             TestData(TorBrowserAlpha, 60),
             TestData(TorBrowser, 60),
             TestData(Vivaldi, null),
+            TestData(VivaldiSnapshot, null)
         )
 
         @AfterAll

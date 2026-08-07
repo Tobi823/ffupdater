@@ -18,7 +18,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 /**
- * https://vivaldi.com/de/download/
+ * https://vivaldi.com/download/
  * https://www.apkmirror.com/apk/vivaldi-technologies/vivaldi-browser-beta/
  */
 @Keep
@@ -34,7 +34,7 @@ object Vivaldi : AppBase() {
     override val supportedAbis = listOf(ABI.ARM64_V8A, ABI.ARMEABI_V7A, ABI.X86_64)
 
     override val signatureHash = "e8a78544655ba8c09817f732768f5689b1662ec4b2bc5a0bc0ec138d33ca3d1e"
-    override val projectPage = "https://vivaldi.com/de/download/"
+    override val projectPage = "https://vivaldi.com/download/"
     override val displayCategory = listOf(BETTER_THAN_GOOGLE_CHROME)
     override val hostnameForInternetCheck = "https://vivaldi.com"
 
@@ -58,7 +58,7 @@ object Vivaldi : AppBase() {
             val abiString = when (DeviceAbiExtractor.findBestAbi(supportedAbis, DeviceSettingsHelper.prefer32BitApks)) {
                 ABI.ARMEABI_V7A -> "armeabi-v7a"
                 ABI.ARM64_V8A -> "arm64-v8a"
-                ABI.X86_64 -> "x86-64.apk"
+                ABI.X86_64 -> "x86-64"
                 else -> throw IllegalArgumentException("ABI is not supported")
             }
             val regexPattern = Regex.escape("<a href=\"") +
