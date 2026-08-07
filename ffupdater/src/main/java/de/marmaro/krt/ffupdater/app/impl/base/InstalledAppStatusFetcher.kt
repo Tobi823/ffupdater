@@ -20,8 +20,8 @@ interface InstalledAppStatusFetcher : InstalledVersionFetcher, LatestVersionFetc
 
     suspend fun isInstalledAppOutdated(context: Context, available: LatestVersion): Boolean {
         val installedVersion = getInstalledVersion(context.packageManager) ?: return true
-        if (installedVersion.versionText == available.version.versionText && installedVersion.buildDate != null && available.version.buildDate != null) {
-            return available.version.buildDate.isAfter(installedVersion.buildDate)
+        if (installedVersion.versionText == available.version.versionText && installedVersion.buildDateTime != null && available.version.buildDateTime != null) {
+            return available.version.buildDateTime.isAfter(installedVersion.buildDateTime)
         }
         return VersionCompareHelper.isAvailableVersionHigher(
             installedVersion.versionText, available.version.versionText

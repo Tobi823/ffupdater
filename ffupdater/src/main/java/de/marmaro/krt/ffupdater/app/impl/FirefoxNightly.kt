@@ -17,7 +17,7 @@ import de.marmaro.krt.ffupdater.network.website.MozillaArchiveConsumer
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 import okio.IOException
 import org.json.JSONException
-import java.time.LocalDate
+import java.time.LocalDateTime
 
 /**
  * https://archive.mozilla.org/pub/fenix/nightly/2024/05/2024-05-20-21-46-33-fenix-128.0a1-android-arm64-v8a/
@@ -53,11 +53,11 @@ object FirefoxNightly : AppBase() {
         val page = findPageUrl(abi)
         val version = Regex("""fenix-(\d+\.\d+a\d+)-android""").find(page)!!.groups[1]!!.value
         val downloadUrl = "${page}fenix-$version.multi.android-$abi.apk"
-        val buildDate = extractBuildDateFromUrl(page).getOrThrow()
+        val buildDateTime = extractBuildDateTimeFromUrl(page).getOrThrow()
         val dateTime = MozillaArchiveConsumer.findDateTimeFromPage(page)
         return LatestVersion(
             downloadUrl = downloadUrl,
-            version = Version(version, buildDate),
+            version = Version(version, buildDateTime),
             publishDate = dateTime.toString(),
             exactFileSizeBytesOfDownload = null,
             fileHash = null,
@@ -78,9 +78,9 @@ object FirefoxNightly : AppBase() {
         return page5
     }
 
-    private fun extractBuildDateFromUrl(url: String): Result<LocalDate> {
-        val matchResult = Regex("""/(\d{4})-(\d{2})-(\d{2})-\d{2}-\d{2}-\d{2}-fenix-""").find(url)
-        if (matchResult == null || matchResult.groups.size != 4) {
+    private fun extractBuildDateTimeFromUrl(url: String): Result<LocalDateTime> {
+        val matchResult = Regex("""/(\d{4})-(\d{2})-(\d{2})-(\d{2})-(\d{2})-(\d{2})-fenix-""").find(url)
+        if (matchResult == null || matchResult.groups.size != 7) {
             return Result.failure(RuntimeException("Can't find build date"))
         }
         val groups = matchResult.groups
@@ -90,19 +90,25 @@ object FirefoxNightly : AppBase() {
             ?: return Result.failure(RuntimeException("Can't extract month from version."))
         val day = groups[3]?.value?.toIntOrNull()
             ?: return Result.failure(RuntimeException("Can't extract day from version."))
+        val hour = groups[4]?.value?.toIntOrNull()
+            ?: return Result.failure(RuntimeException("Can't extract hour from version."))
+        val minute = groups[5]?.value?.toIntOrNull()
+            ?: return Result.failure(RuntimeException("Can't extract minute from version."))
+        val second = groups[6]?.value?.toIntOrNull()
+            ?: return Result.failure(RuntimeException("Can't extract second from version."))
 
-        val date = LocalDate.of(year, month, day)
-        return Result.success(date)
+        val dateTime = LocalDateTime.of(year, month, day, hour, minute, second)
+        return Result.success(dateTime)
     }
 
 
-    private fun extractBuildDateFromInstalledApp(packageManager: PackageManager): Result<LocalDate> {
+    private fun extractBuildDateFromInstalledApp(packageManager: PackageManager): Result<LocalDateTime> {
         val version = extractInternalVersionStringFromInstalledApp(packageManager).onFailure {
             return Result.failure(it)
         }.getOrThrow()
 
-        val matchResult = Regex("""\d+\.\d+\.(\d{4})(\d{2})(\d{2})\.\d+""").find(version)
-        if (matchResult == null || matchResult.groups.size != 4) {
+        val matchResult = Regex("""\d+\.\d+\.(\d{4})(\d{2})(\d{2})\.(\d{1,2})(\d{2})(\d{2})""").find(version)
+        if (matchResult == null || matchResult.groups.size != 7) {
             return Result.failure(RuntimeException("Version schema does not match."))
         }
 
@@ -113,9 +119,15 @@ object FirefoxNightly : AppBase() {
             ?: return Result.failure(RuntimeException("Can't extract month from version."))
         val day = groups[3]?.value?.toIntOrNull()
             ?: return Result.failure(RuntimeException("Can't extract day from version."))
+        val hour = groups[4]?.value?.toIntOrNull()
+            ?: return Result.failure(RuntimeException("Can't extract hour from version."))
+        val minute = groups[5]?.value?.toIntOrNull()
+            ?: return Result.failure(RuntimeException("Can't extract minute from version."))
+        val second = groups[6]?.value?.toIntOrNull()
+            ?: return Result.failure(RuntimeException("Can't extract second from version."))
 
-        val date = LocalDate.of(year, month, day)
-        return Result.success(date)
+        val dateTime = LocalDateTime.of(year, month, day, hour, minute, second)
+        return Result.success(dateTime)
     }
 
     private fun extractInternalVersionStringFromInstalledApp(packageManager: PackageManager): Result<String> {
