@@ -12,10 +12,6 @@
         <item name="colorAccent">@color/crash_report__color_accent</item>
     </style>
 
-    <style name="main_activity__main_title">
-        <item name="titleTextColor">@android:color/white</item>
-    </style>
-
     <style name="install_activity__default_text">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
