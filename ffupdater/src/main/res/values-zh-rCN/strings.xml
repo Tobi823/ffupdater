@@ -285,4 +285,6 @@
     <string name="update_all_activity__all_apps_updated">完毕。更新了所有应用（如果可能）。你现在可以关闭本应用了。</string>
     <string name="ironfox__title">IronFox</string>
     <string name="ironfox__description">Android 系统上基于 Firefox 的网络浏览器，重试隐私和安全。</string>
+    <string name="waterfox__description">Waterfox 是一款开源网络浏览器。它旨在遵循伦理且以用户为中心，是 Firefox 的一个分支。Waterfox 適用於 Windows、macOS、Linux 和 Android。</string>
+    <string name="waterfox__title">Waterfox</string>
 </resources>

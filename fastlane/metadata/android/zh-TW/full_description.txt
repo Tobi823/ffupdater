@@ -1,0 +1,30 @@
+安裝和更新以下瀏覽器：
+
+Mozilla 出品或基於 Firefox 的瀏覽器：
+- Fennec F-Droid
+- Firefox 瀏覽器、Firefox Android 公測版、Firefox 每夜版
+- Firefox Focus、Firefox Focus 公測版、Firefox Klar
+- Iceraven
+- Waterfox
+- Tor 瀏覽器、Tor 瀏覽器內測版
+- Thunderbird for Android, Thunderbird for Android Beta
+
+比 Google Chrome 更好的瀏覽器：
+- Brave 私密瀏覽器、Brave 瀏覽器（公測版）、Brave 瀏覽器（每夜版）
+- Cromite
+- Chromium
+- DuckDuckGo 瀏覽器
+- 隱私瀏覽器（F-Droid）
+- Vivaldi
+- Thorium
+
+其他應用程式：
+- FairEmail
+- K-9 Mail / Thunderbird Mail
+- Orbot
+
+FFUpdater 能在背景檢查和下載更新。在 Android 12+ 或已 Root 裝置上，FFUpdater 也可以在無需使用者操作的情況下更新應用程式。
+
+造訪 https://notabug.org/Tobiwan/ffupdater/src/master/README.md 可了解更多資訊。
+
+繁體中文更新日誌：https://notabug.org/Tobiwan/ffupdater/src/master/fastlane/metadata/android/zh-TW/changelogs

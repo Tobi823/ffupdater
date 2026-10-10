@@ -1,0 +1,6 @@
+發布版本 79.1.0 (168)
+- 感謝來自 Weblate 的貢獻： WhiredPlanck, gallegonovato, Daviteusz, Макар Разин, winver 以及 Kazushi Hayama
+- 可以使用應用程式對話方塊中的「隱藏」按鈕或設定中的「隱藏應用程式」選項，在主頁面隱藏特定應用程式 (Tobi823/ffupdater#540)
+- 修復 Android 10 上安裝新應用程式時的當機問題 (Tobi823/ffupdater#548)
+- 新增解除安裝程式將刪除使用者資料的警告 (Tobi823/ffupdater#546)
+- 改進 FairEmail 警告 (Tobi823/ffupdater#539)

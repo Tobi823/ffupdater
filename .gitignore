@@ -67,3 +67,12 @@ fastlane/readme.md
 /ffupdater/http_cache/
 /ffupdater/release/baselineProfiles/0/ffupdater-release.dm
 /ffupdater/release/baselineProfiles/1/ffupdater-release.dm
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.Spotlight-V100
+.Trashes
