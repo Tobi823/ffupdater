@@ -79,7 +79,7 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) : CoroutineWo
             })
     }
 
-    private suspend fun doWorkInternal(): Result<Boolean> {
+    private suspend fun doWorkInternal(): kotlin.Result<Boolean> {
         val app = getApp()
         logInfo("Start for ${app.name}.")
         NotificationRemover.removeAppStatusNotifications(applicationContext, app)
@@ -93,7 +93,7 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) : CoroutineWo
         return success(true)
     }
 
-    private suspend fun doUpdateCheck(app: App): Result<InstalledAppStatus> {
+    private suspend fun doUpdateCheck(app: App): kotlin.Result<InstalledAppStatus> {
         isUpdateCheckPossible(app).onFailure { return failure(it) }
 
         val installedAppStatus = try {
@@ -109,7 +109,7 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) : CoroutineWo
         return success(installedAppStatus)
     }
 
-    private suspend fun doDownload(installedAppStatus: InstalledAppStatus): Result<Boolean> {
+    private suspend fun doDownload(installedAppStatus: InstalledAppStatus): kotlin.Result<Boolean> {
         isDownloadPossible(installedAppStatus.app).onFailure { return failure(it) }
         val app = installedAppStatus.app
         if (app.findImpl().isApkDownloaded(applicationContext, installedAppStatus.latestVersion)) {
@@ -130,7 +130,7 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) : CoroutineWo
         return result
     }
 
-    private suspend fun doInstallation(appStatus: InstalledAppStatus): Result<Boolean> {
+    private suspend fun doInstallation(appStatus: InstalledAppStatus): kotlin.Result<Boolean> {
         isInstallationPossible(appStatus.app).onFailure { return failure(it) }
 
         return installApplication(appStatus) //
@@ -148,7 +148,7 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) : CoroutineWo
         return App.valueOf(appName)
     }
 
-    private suspend fun isUpdateCheckPossible(app: App): Result<Boolean> {
+    private suspend fun isUpdateCheckPossible(app: App): kotlin.Result<Boolean> {
 
         if (isStopped) {
             return failure(AppUpdaterNonRetryableException("WorkRequest is stopped."))
@@ -184,7 +184,7 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) : CoroutineWo
         return success(true)
     }
 
-    private suspend fun isDownloadPossible(app: App): Result<Boolean> {
+    private suspend fun isDownloadPossible(app: App): kotlin.Result<Boolean> {
         if (isStopped) {
             return failure(AppUpdaterNonRetryableException("WorkRequest is stopped."))
         }
@@ -208,7 +208,7 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) : CoroutineWo
 
     private suspend fun downloadApp(
         installedAppStatus: InstalledAppStatus, onUpdate: suspend (DownloadStatus) -> Unit
-    ): Result<Boolean> {
+    ): kotlin.Result<Boolean> {
         logInfo("Download update for ${installedAppStatus.app}.")
         val appImpl = installedAppStatus.app.findImpl()
         try {
@@ -245,7 +245,7 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) : CoroutineWo
         return success(true)
     }
 
-    private suspend fun isInstallationPossible(app: App): Result<Boolean> {
+    private suspend fun isInstallationPossible(app: App): kotlin.Result<Boolean> {
         if (isStopped) {
             return failure(AppUpdaterNonRetryableException("WorkRequest is stopped."))
         }
@@ -295,7 +295,7 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) : CoroutineWo
         return value
     }
 
-    private suspend fun installApplication(installedAppStatus: InstalledAppStatus): Result<Boolean> {
+    private suspend fun installApplication(installedAppStatus: InstalledAppStatus): kotlin.Result<Boolean> {
         val app = installedAppStatus.app
         val appImpl = app.findImpl()
         val file = appImpl.getApkCacheFile(applicationContext, installedAppStatus.latestVersion)
