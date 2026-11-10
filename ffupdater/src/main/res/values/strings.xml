@@ -288,4 +288,6 @@
     <string name="update_all_activity__installation_successful">Installation of \'%1$s\' successful. Certificate hash: %2$s</string>
     <string name="ironfox__title">IronFox</string>
     <string name="ironfox__description">Privacy and security-oriented Firefox-based web browser for Android.</string>
+    <string name="waterfox__description">Waterfox is an open-source web browser. It is intended to be ethical and user-centric, and it is a fork of Firefox. Waterfox is available for Windows, macOS, Linux and Android.</string>
+    <string name="waterfox__title">Waterfox</string>
 </resources>
