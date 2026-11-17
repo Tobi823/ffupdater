@@ -61,6 +61,7 @@ class CheckReleaseAgeIT {
             TestData(Thorium, 300, "126.0.6478.246"),
             TestData(ThunderbirdRelease, 60),
             TestData(ThunderbirdBeta, 60),
+            TestData(Titanium, 60),
             TestData(TorBrowserAlpha, 60),
             TestData(TorBrowser, 60),
             TestData(Vivaldi, null),

@@ -256,6 +256,8 @@
     <string name="thunderbird__title">Thunderbird</string>
     <string name="thunderbird_beta__title">Thunderbird Beta</string>
     <string name="thunderbird__description">Thunderbird is a powerful, privacy-focused email app. Effortlessly manage multiple email accounts from one app, with a Unified Inbox option for maximum productivity. Built on open-source technology and supported by a dedicated team of developers alongside a global community of volunteers, Thunderbird never treats your private data as a product. Supported solely by financial contributions from our users, so you never have to see ads mixed in with your emails again.</string>
+    <string name="titanium__title">Titanium Browser</string>
+    <string name="titanium__description">A secure and fully open-source, Chromium-based web browser with support for extensions, based on Vanadium by GrapheneOS.</string>
     <string name="fairemail__title">FairEmail</string>
     <string name="fairemail__description">Fully featured, open source, privacy friendly email app for Android</string>
     <string name="cardview_dialog__self_description_label">Self description:</string>

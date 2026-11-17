@@ -19,3 +19,4 @@ The apps are downloaded from these locations:
 - Tor Browser Alpha: <https://www.torproject.org/download/alpha/>
 - Vivaldi: <https://vivaldi.com/download/>
 - Thorium: <https://api.github.com/repos/Alex313031/Thorium-Android/releases/latest>
+- Titanium Browser: <https://api.github.com/repos/jqssun/android-titanium-browser/releases/latest>
