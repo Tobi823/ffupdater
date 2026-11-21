@@ -16,6 +16,7 @@ Browsers which are better than Google Chrome:
 - Privacy Browser (F-Droid)
 - Vivaldi
 - Thorium
+- Titanium Browser
 
 Other applications:
 - FairEmail

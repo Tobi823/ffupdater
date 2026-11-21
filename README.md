@@ -36,6 +36,7 @@ Browser which are better than Google Chrome:
 - [Privacy Browser](https://f-droid.org/en/packages/com.stoutner.privacybrowser.standard/)
 - [Vivaldi](https://vivaldi.com/download/) ([Incomplete Source Code](https://vivaldi.com/source/))
 - [Thorium](https://github.com/Alex313031/Thorium-Android)
+- [Titanium Browser](https://github.com/jqssun/android-titanium-browser)
 
 Other applications:
 

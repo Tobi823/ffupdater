@@ -25,6 +25,7 @@ import de.marmaro.krt.ffupdater.app.impl.PrivacyBrowser
 import de.marmaro.krt.ffupdater.app.impl.Thorium
 import de.marmaro.krt.ffupdater.app.impl.ThunderbirdBeta
 import de.marmaro.krt.ffupdater.app.impl.ThunderbirdRelease
+import de.marmaro.krt.ffupdater.app.impl.Titanium
 import de.marmaro.krt.ffupdater.app.impl.TorBrowser
 import de.marmaro.krt.ffupdater.app.impl.TorBrowserAlpha
 import de.marmaro.krt.ffupdater.app.impl.Vivaldi
@@ -54,6 +55,7 @@ enum class App {
     THORIUM,
     THUNDERBIRD,
     THUNDERBIRD_BETA,
+    TITANIUM,
     TOR_BROWSER,
     TOR_BROWSER_ALPHA,
     VIVALDI;
@@ -83,6 +85,7 @@ enum class App {
             THORIUM -> Thorium
             THUNDERBIRD -> ThunderbirdRelease
             THUNDERBIRD_BETA -> ThunderbirdBeta
+            TITANIUM -> Titanium
             TOR_BROWSER -> TorBrowser
             TOR_BROWSER_ALPHA -> TorBrowserAlpha
             VIVALDI -> Vivaldi
